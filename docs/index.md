@@ -1,5 +1,7 @@
 # Gramps Web
 
+.
+
 Gramps Web API is a web application that provides a RESTful API to a [Gramps](https://gramps-project.org/) family tree database.
 
 The API can be used as a backend for web or mobile applications that allow collaborative editing of a Gramps database.
