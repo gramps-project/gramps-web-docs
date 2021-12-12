@@ -1,3 +1,7 @@
+ 
+!!! warning
+    This page is outdated and needs to be revised.
+
 # Deploying with Docker
 
 To deploy your family tree with the Gramps Web API to a server, either on your local network or the internet, the most convenient option is to use Docker. We recommand using Docker Compose and will assume that Docker and Docker Compose are already installed in your system. Your can use Windows, Mac OS, or Linux as a host system. The supported architectures include not only x86-64 (desktop systems), but also ARM systems such as a Raspberry Pi, which can serve as a low-cost, but powerful (enough) web server.

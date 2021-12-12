@@ -1,18 +1,21 @@
-# Gramps Web API
+# Gramps Web: research & organize your family tree together
 
-Gramps Web API is a web application that provides a RESTful API to a [Gramps](https://gramps-project.org/) family tree database.
+**Gramps Web** is a web app for collaborative genaology. It is based on and interoperable with [Gramps](https://gramps-project.org/blog/), the leading open source genealogy desktop application. Gramps Web is open source software.
 
-The API can be used as a backend for web or mobile applications that allow collaborative editing of a Gramps database.
+![](screenshot.png)
 
 ## Main features
 
-- Query all Gramps objects: people, families, places, events, repositories, sources, citations, media objects, notes, tags
-- Add new objects and edit existing ones
-- Full-text search engine
-- Media file thumbnails
-- Multi-user authentication system based on JSON web tokens
-- Generate and download Gramps reports
-- Use and create Gramps filters
-- Export the family tree as Gramps XML or GEDCOM
+- Browse all objects in your family tree: people, families, events, places, repositories, sources, citations, media objects, and notes
+- Two different interactive pedigree views
+- Display all places on an interactive map
+- Blog section with blog articles stored in Gramps
+- Switch the language of the interface between any of 40 languages
+- Multi-user system with different levels of permission
+- Edit all objects collaboratively
+- Snychronize with your local Gramps database and use Gramps desktop in parallel
 
-As Python application, being powered by the `gramps` library itself (which powers also the Desktop application), Gramps Web API does not reinvent the wheel but builds on a strong foundation.
+## Planned features
+
+- Export the tree as XML or GEDCOM from the web interface
+- Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface

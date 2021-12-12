@@ -1,3 +1,7 @@
+ 
+!!! warning
+    This page is outdated and needs to be revised.
+
 # Configuration
 
 Some configuration is necessary to run the Gramps Web API. When using a configuration file, its path can either be provided on the command line when running the module as a script (`python3 -m gramps_webapi --config path/to/config.cfg ...`), or as an environment variable, `GRAMPS_API_CONFIG=path/to/config.cfg`. Some of the configuration options can also be set without a configuration file, using environment variables (e.g. `TREE='My Tree' python3 -m gramps_webapi ...` ).

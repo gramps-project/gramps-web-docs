@@ -1,3 +1,7 @@
+ 
+!!! warning
+    This page is outdated and needs to be revised.
+    
 # User system
 
 The Gramps Web API comes with an authentication system with role-based user permissions.
@@ -18,7 +22,7 @@ Owner | 4 | All: Editor + manage users
 
 There are two ways to manage users:
 
-- With owner permissions using the API (needs a running server secured with SSL/TLS): see [API docs](api.md)
+- With owner permissions using the API (needs a running server secured with SSL/TLS): see [API docs](dev-backend/api.md)
 - On the command line on the server running the API.
 
 ### Managing users on the command line

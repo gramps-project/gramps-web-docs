@@ -1,27 +1,34 @@
 nav:
-    - Getting Started:
-          - Introduction: index.md
-          - Testing locally: Testing.md
-          - Configuration: Configuration.md
-          - Deployment: Deployment.md
-          - User system: Users.md
-    - API specification: api.md
-    - Developer Guide:
-          - Development environment: Development-instructions.md
-site_name: Gramps Web API
-site_url: https://gramps-project.github.io/gramps-webapi
-repo_url: https://github.com/gramps-project/gramps-webapi
-edit_uri: https://github.com/gramps-project/gramps-webapi/blob/master/docs/
+  - Getting Started:
+      - Introduction: index.md
+      - Setup: setup.md
+      - Deployment:
+        - Configuration: Configuration.md
+        - Deploy with Docker: Deployment.md
+        - User system: Users.md
+  - User guide:
+      - Introduction: user-guide/index.md
+  - Backend development:
+      - Introduction: dev-backend/index.md
+      - API specification: dev-backend/api.md
+      - Development environment: dev-backend/Development-instructions.md
+      - Testing locally: Testing.md
+  - Frontend development:
+      - Introduction: dev-frontend/index.md
+site_name: Gramps Web
+site_url: https://gramps-project.github.io/web
+edit_uri: https://github.com/gramps-project/web/blob/main/docs/
 theme:
-    name: "material"
-    features:
-        - navigation.tabs
-        - navigation.instant
-    palette:
-        scheme: default
-        primary: brown
-        accent: blue
-    logo: logo.svg
+  name: "material"
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.expand
+  palette:
+    scheme: default
+    primary: brown
+    accent: blue
+  logo: logo.svg
 plugins:
   - search
 markdown_extensions:
