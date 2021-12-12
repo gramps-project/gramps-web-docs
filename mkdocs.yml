@@ -29,6 +29,7 @@ theme:
     primary: brown
     accent: blue
   logo: logo.svg
+  favicon: favicon.ico
 plugins:
   - search
 markdown_extensions:
