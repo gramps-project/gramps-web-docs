@@ -1,10 +1,6 @@
- 
-!!! warning
-    This page is outdated and needs to be revised.
-    
 # User system
 
-The Gramps Web API comes with an authentication system with role-based user permissions.
+Gramps Web is not meant to be exposed to the internet for public access, but only by authenticated users. User accounts can be created by the site owner via the command line or web interface, or by self-registration and subsequent approval by the site owner.
 
 ## User roles
 
@@ -14,29 +10,27 @@ Role | Role ID | Permissions
 -----|---------|------------
 Guest | 0 | View non-private objects
 Member | 1 | Guest + view private objects
-Contributor | 2 | Member + add objects
+Contributor* | 2 | Member + add objects
 Editor | 3 | Contributor + edit and delete objects
 Owner | 4 | All: Editor + manage users
+
+\* Note that the "Contributor" role is currently only partially supported; e.g., family objects cannot be added since they imply a modification of the underlying Gramps person objects of family members. It is recommended to use the other roles whenever possible.
 
 ## Managing users
 
 There are two ways to manage users:
 
-- With owner permissions using the API (needs a running server secured with SSL/TLS): see [API docs](dev-backend/api.md)
-- On the command line on the server running the API.
+- With owner permissions using the web interface
+- On the command line on the server
+
+The owner account required to first access the web interface must always be added on the command line.
 
 ### Managing users on the command line
 
-The basic command is
+When using [Docker Compose](Deployment.md), the basic command is
 
 ```bash
-python3 -m gramps_webapi --config path/to/config.cfg user COMMAND [ARGS]
-```
-or, when using a [Docker deployment](Deployment.md),
-
-```bash
-docker-compose run gramps_webapi \
-    python3 -m gramps_webapi user COMMAND [ARGS]
+docker-compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
 ```
 
 The `COMMAND` can be `add` or `delete`. Use `--help` for `[ARGS]` to show the syntax and possible configuration options.

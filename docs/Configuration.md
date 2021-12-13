@@ -1,15 +1,22 @@
- 
-!!! warning
-    This page is outdated and needs to be revised.
-
 # Configuration
 
-Some configuration is necessary to run the Gramps Web API. When using a configuration file, its path can either be provided on the command line when running the module as a script (`python3 -m gramps_webapi --config path/to/config.cfg ...`), or as an environment variable, `GRAMPS_API_CONFIG=path/to/config.cfg`. Some of the configuration options can also be set without a configuration file, using environment variables (e.g. `TREE='My Tree' python3 -m gramps_webapi ...` ).
+Some configuration is necessary to run Gramps Web.
 
+## Configuration file
+
+A configuration file is not mandatory as most settings can also be provided as environment variables. The basic setup shown in the [Deployment](Deployment.md) docs works without one. 
+
+When you use the [Docker Compose based setup](Deployment.md), you can include a configuration file by adding the following list item under the `volumes:` key in the `grampsweb:` block:
+
+```yaml
+      - /path/to/config.cfg:/app/config/config.cfg
+```
+where `/path/to/config.cfg` is the path to the config file in your server's file system (the right-hand side refers to the path in the container and must not be changed).
+
+## Existing configuration settings
 The following configuration options exist. The last column indicates whether the option can be set from an environment variable.
 
-
-## Required settings
+### Required settings
 
 Key | Description | Set from environment
 ----|-------------|---------------------
@@ -23,7 +30,7 @@ Key | Description | Set from environment
     python3 -c "import secrets;print(secrets.token_urlsafe(32))"
     ```
 
-## Optional settings
+### Optional settings
 
 Key | Description | Set from environment
 ----|-------------|---------------------
@@ -41,7 +48,7 @@ Key | Description | Set from environment
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings. | no
 
 
-## Settings only during development
+### Settings only during development
 
 Key | Description | Set from environment
 ----|-------------|---------------------

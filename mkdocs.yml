@@ -1,11 +1,10 @@
 nav:
   - Getting Started:
       - Introduction: index.md
-      - Setup: setup.md
-      - Deployment:
-        - Configuration: Configuration.md
-        - Deploy with Docker: Deployment.md
-        - User system: Users.md
+      - Requirements: requirements.md
+      - Deployment: Deployment.md
+      - User system: Users.md
+      - Configuration: Configuration.md
   - User guide:
       - Introduction: user-guide/index.md
   - Backend development:

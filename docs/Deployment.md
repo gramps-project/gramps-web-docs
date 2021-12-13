@@ -1,10 +1,6 @@
- 
-!!! warning
-    This page is outdated and needs to be revised.
+# Deploying Gramps Web with Docker
 
-# Deploying with Docker
-
-To deploy your family tree with the Gramps Web API to a server, either on your local network or the internet, the most convenient option is to use Docker. We recommand using Docker Compose and will assume that Docker and Docker Compose are already installed in your system. Your can use Windows, Mac OS, or Linux as a host system. The supported architectures include not only x86-64 (desktop systems), but also ARM systems such as a Raspberry Pi, which can serve as a low-cost, but powerful (enough) web server.
+The most convenient option to host Gramps Web is with Docker Compose. We will assume that Docker and Docker Compose are already installed in your system. Your can use Windows, Mac OS, or Linux as a host system. The supported architectures include not only x86-64 (desktop systems), but also ARM systems such as a Raspberry Pi, which can serve as a low-cost, but powerful (enough) web server.
 
 !!! note
     You do not need to install Gramps on the server as it is contained in the docker image.
@@ -35,7 +31,7 @@ Create a new file on the server named `docker-compose.yml` and insert the follow
 version: "3.7"
 
 services:
-  gramps_webapi:
+  grampsweb:
     image: dmstraub/gramps-webapi:latest
     restart: always
     ports:
@@ -44,6 +40,7 @@ services:
       TREE: "..." # set the name of your family tree
       SECRET_KEY: "..." # set your secret key
       BASE_URL: "http://localhost:5554"
+      GRAMPSJS_VERSION: "v0.10.0"
     volumes:
       - gramps_users:/app/users
       - gramps_index:/app/indexdir
@@ -77,19 +74,22 @@ A particularly convenient option is to use a dockerized Nginx reverse proxy with
 version: "3.7"
 
 services:
-  gramps_webapi:
+  grampsweb:
     image: dmstraub/gramps-webapi:latest
     restart: always
     environment:
-      - VIRTUAL_PORT=5000
-      - VIRTUAL_HOST=...  # e.g. gramps.mydomain.com
-      - LETSENCRYPT_HOST=...   # e.g. gramps.mydomain.com
-      - LETSENCRYPT_EMAIL=...  # your email
+      VIRTUAL_PORT: "5000"
+      VIRTUAL_HOST: ...  # e.g. gramps.mydomain.com
+      LETSENCRYPT_HOST: ...   # e.g. gramps.mydomain.com
+      LETSENCRYPT_EMAIL: ...  # your email
+      TREE: "..." # set the name of your family tree
+      SECRET_KEY: "..." # set your secret key
+      BASE_URL: "http://localhost:5554"
+      GRAMPSJS_VERSION: "v0.10.0"
     volumes:
       - gramps_users:/app/users
       - gramps_index:/app/indexdir
       - gramps_thumb_cache:/app/thumbnail_cache
-      - ~/config.cfg:/app/config/config.cfg
       - ~/gramps_db:/root/.gramps/grampsdb
       - ~/gramps_media:/app/media
     networks:
@@ -103,7 +103,7 @@ services:
       - 80:80
       - 443:443
     environment:
-      - ENABLE_IPV6=true
+      ENABLE_IPV6: "true"
     volumes:
       - conf:/etc/nginx/conf.d
       - dhparam:/etc/nginx/dhparam
@@ -153,7 +153,7 @@ If you have copied the Gramps database directory directly in Step 1, you can ski
 If you have uploaded a Gramps XML instead, you need to import it into a new family tree using the Gramps executable inside the docker container. This can be achieved with the command
 
 ```bash
-docker-compose run gramps_webapi \
+docker-compose run grampsweb \
     gramps -C 'My family tree' \
     -i /root/.gramps/grampsdb/my_tree.gramps \
     --config=database.backend:sqlite \
@@ -167,7 +167,7 @@ where `My family tree` is the name of the new family tree (must match the settin
 Initialize the user system by creating an administrator account with the command
 
 ```bash
-docker-compose run gramps_webapi \
+docker-compose run grampsweb \
     python3 -m gramps_webapi user add \
     --fullname 'My full name' \
     --email 'my@email' \
@@ -186,12 +186,4 @@ Run
 docker-compose up -d
 ```
 
-On first run, it will build the full-text search index of the API.
-
-## Optional step: use Gramps.js web frontend
-
-If you want to add the [Gramps.js](https://github.com/DavidMStraub/Gramps.js) web frontend to your installation, simply add
-```yaml
-      - GRAMPSJS_VERSION=v0.x.y
-```
-to the `environment` block in the `gramps_webapi` service section of `docker-compose.yml`, where `v0.x.y` should be replaced by the most recent Gramps.js version number (see [releases](https://github.com/DavidMStraub/Gramps.js/releases)).
+On first run, it will build the full-text search index that powers the app's search function.

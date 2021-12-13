@@ -1,6 +1,6 @@
 # Gramps Web: research & organize your family tree together
 
-**Gramps Web** is a web app for collaborative genealogy. It is based on and interoperable with [Gramps](https://gramps-project.org/blog/), the leading open source genealogy desktop application. Gramps Web is open source software.
+**Gramps Web** is a web app for collaborative genealogy. It is based on and interoperable with [Gramps](https://gramps-project.org/blog/), the leading open source genealogy desktop application. Gramps Web is open source software and puts your privacy and your control of your research data first.
 
 ![](screenshot.png)
 
