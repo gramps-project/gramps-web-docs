@@ -11,7 +11,7 @@ nav:
       - Introduction: dev-backend/index.md
       - API specification: dev-backend/api.md
       - Development environment: dev-backend/Development-instructions.md
-      - Testing locally: Testing.md
+      - Testing locally: dev-backend/Testing.md
   - Frontend development:
       - Introduction: dev-frontend/index.md
 site_name: Gramps Web
