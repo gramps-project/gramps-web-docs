@@ -1,6 +1,6 @@
 # Gramps Web: Documentation
 
-This is the source repository for the [Gramps Web documentation website](https://github.com/gramps-project/gramps-webapi/).
+This is the source repository for the [Gramps Web documentation website](https://gramps-project.github.io/web/).
 
 For the source code of Gramps Web, please see
 
