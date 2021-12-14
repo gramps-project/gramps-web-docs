@@ -34,6 +34,7 @@ If you have followed the setup steps for [backend development](../dev-backend.md
 python3 -m gramps_webapi --config path/to/config run --port 5555
 ```
 
+A backend at a different location can be used during development by changing the `__APIHOST__` variable in `api.js`.
 
 ## Run the frontend in development mode
 
