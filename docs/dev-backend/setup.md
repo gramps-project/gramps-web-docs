@@ -72,7 +72,7 @@ See [Configuration](../Configuration.md) for a full list of config options.
 
 Run
 ```
-python -m gramps_webapi --config path/to/config run
+python3 -m gramps_webapi --config path/to/config run
 ```
 The API will be accesible at `http://127.0.0.1:5000` by default. To choose a different port, add the `--port` option.
 

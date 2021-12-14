@@ -13,6 +13,7 @@ nav:
       - API specification: dev-backend/api.md
   - Frontend development:
       - Introduction: dev-frontend/index.md
+      - Development setup: dev-frontend/setup.md
 site_name: Gramps Web
 site_url: https://gramps-project.github.io/web
 edit_uri: https://github.com/gramps-project/web/blob/main/docs/
