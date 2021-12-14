@@ -1,25 +1,7 @@
- 
-!!! info
-    This page still needs to be written. Please check back later or help out!
+# Gramps Web backend development
 
-<!--
+The backend of Gramps Web is called [Gramps Web API](https://github.com/gramps-project/gramps-webapi/). In fact it is more than just an app backend: it provides a RESTful API to read and modify a Gramps database.
 
+Gramps Web API is a Python application and is powered by the `gramps` library itself (which also powers the Gramps Desktop application).
 
-Gramps Web API is a web application that provides a RESTful API to a [Gramps](https://gramps-project.org/) family tree database.
-
-The API can be used as a backend for web or mobile applications that allow collaborative editing of a Gramps database.
-
-## Main features
-
-- Query all Gramps objects: people, families, places, events, repositories, sources, citations, media objects, notes, tags
-- Add new objects and edit existing ones
-- Full-text search engine
-- Media file thumbnails
-- Multi-user authentication system based on JSON web tokens
-- Generate and download Gramps reports
-- Use and create Gramps filters
-- Export the family tree as Gramps XML or GEDCOM
-
-As Python application, being powered by the `gramps` library itself (which powers also the Desktop application), Gramps Web API does not reinvent the wheel but builds on a strong foundation.
-
--->
+In this section of the docs, you can learn how to contribute to Gramps Web API development.
