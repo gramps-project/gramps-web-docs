@@ -32,7 +32,7 @@ version: "3.7"
 
 services:
   grampsweb:
-    image: dmstraub/gramps-webapi:latest
+    image: ghcr.io/gramps-project/grampsweb:latest
     restart: always
     ports:
       - "80:5000"
@@ -40,7 +40,6 @@ services:
       TREE: "..." # set the name of your family tree
       SECRET_KEY: "..." # set your secret key
       BASE_URL: "http://localhost:5554"
-      GRAMPSJS_VERSION: "v0.10.0"
     volumes:
       - gramps_users:/app/users
       - gramps_index:/app/indexdir
@@ -75,7 +74,7 @@ version: "3.7"
 
 services:
   grampsweb:
-    image: dmstraub/gramps-webapi:latest
+    image: ghcr.io/gramps-project/grampsweb:latest
     restart: always
     environment:
       VIRTUAL_PORT: "5000"
@@ -85,7 +84,6 @@ services:
       TREE: "..." # set the name of your family tree
       SECRET_KEY: "..." # set your secret key
       BASE_URL: "http://localhost:5554"
-      GRAMPSJS_VERSION: "v0.10.0"
     volumes:
       - gramps_users:/app/users
       - gramps_index:/app/indexdir
