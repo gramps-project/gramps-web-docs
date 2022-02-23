@@ -14,7 +14,7 @@
 - Multi-user system with different levels of permissions
 - Edit all objects collaboratively and add new objects
 - Fully responsive & mobile friendly
-- Snychronize with your local Gramps database and use Gramps desktop in parallel
+- Synchronize with your local Gramps database and use Gramps desktop in parallel
 
 ## Planned features
 
