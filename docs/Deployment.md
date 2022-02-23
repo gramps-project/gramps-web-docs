@@ -151,7 +151,7 @@ If you have copied the Gramps database directory directly in Step 1, you can ski
 If you have uploaded a Gramps XML instead, you need to import it into a new family tree using the Gramps executable inside the docker container. This can be achieved with the command
 
 ```bash
-docker-compose run grampsweb \
+docker-compose run --entrypoint "" grampsweb \
     gramps -C 'My family tree' \
     -i /root/.gramps/grampsdb/my_tree.gramps \
     --config=database.backend:sqlite \
