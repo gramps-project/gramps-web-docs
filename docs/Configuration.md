@@ -48,11 +48,13 @@ Key | Description | Set from environment
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings. | no
 
 ### Settings only for PostgreSQL backend database
-This is required if you've configured your gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
+
+This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
 Key | Description | Set from environment
 ----|-------------|---------------------
-`POSTGRES_PASSWORD` | The password for the database user. It is the user defined in settings.ini when passed to gramps-webapi | yes
+`POSTGRES_USER` | The user name for the database connection | yes
+`POSTGRES_PASSWORD` | The password for the database user | yes
 
 ### Settings only during development
 
