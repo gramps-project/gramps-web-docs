@@ -20,4 +20,14 @@ The components in the `src/views` directory usually corresponds to full-page com
 
 ## Data flow
 
-To be continued ...
+Data is exchanged with the Backend/API via the `apiGet`, `apiPut`, and `apiPost` methods in `src/api.js`, which automatically take care of authentication.
+
+Data is passed from parent components to child components via properties (see e.g. the [Lit documentation](https://lit.dev/docs/components/properties/)).
+
+When data needs to be fed back from a child to a parent component, custom events are used that can be fired with the `fireEvent` function in `src/api.js` and listened to using Lit's `@` syntax [(docs)](https://lit.dev/docs/components/events/).
+
+## Authentication
+
+The refresh token and authentication token are stored in the browser's local storage. Whenever an API call is made and the token is expired, the stored refresh token is used to fetch a new access token and the API call is repeated.
+
+The user's authorization scope, which is stored in the access token's claims, is obtained with the `getPermissions` function and used in the top-level `GrampsJs` element to set the boolean properties `canAdd`, `canEdit`, `canManageUsers`, which are flowed down to child elements to implement authorization-specific functionality.
