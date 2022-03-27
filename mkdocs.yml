@@ -7,7 +7,7 @@ nav:
       - Configuration: Configuration.md
       - Advanced topics:
           - Using PostgreSQL: Postgres.md
-          # - Hosting media on S3: s3.md
+          - Hosting media on S3: s3.md
   - User guide:
       - Introduction: user-guide/index.md
   - Backend development:
