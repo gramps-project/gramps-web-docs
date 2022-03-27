@@ -11,6 +11,7 @@ nav:
   - User guide:
       - Introduction: user-guide/index.md
       - Registration: user-guide/registration.md
+      - First login: user-guide/first-login.md
   - Backend development:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md
