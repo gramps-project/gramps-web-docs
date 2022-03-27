@@ -2,7 +2,7 @@ This page lists the steps required to start developing [Gramps Web API](https://
 
 ### Python version
 
-The Web API only works with Python 3.6 or newer. It is recommended to use at least Python 3.7, as 3.6 might be deprecated soon (it reaches EOL in December 2021).
+The Web API requires Python 3.7 or newer.
 
 ### Install Gramps
 
