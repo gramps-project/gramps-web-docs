@@ -29,7 +29,7 @@ at the repository's root.
 
 To see Gramps Web live in action, you need a running Gramps Web API backend where the frontend can fetch its data from.
 
-If you have followed the setup steps for [backend development](../dev-backend.md), this can be achieved with a command like
+If you have followed the setup steps for [backend development](../dev-backend/setup.md), this can be achieved with a command like
 ```
 python3 -m gramps_webapi --config path/to/config run --port 5555
 ```
