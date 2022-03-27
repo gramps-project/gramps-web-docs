@@ -1,3 +1,5 @@
- 
+This section contains the documentation for users of Gramps Web.
+
+
 !!! info
-    This page still needs to be written. Please check back later or help out!
+    The user documentation is still incomplete.

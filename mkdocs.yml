@@ -10,6 +10,7 @@ nav:
           - Hosting media on S3: s3.md
   - User guide:
       - Introduction: user-guide/index.md
+      - Registration: user-guide/registration.md
   - Backend development:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md
