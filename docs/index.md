@@ -20,3 +20,4 @@
 ## Planned features
 
 - Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface
+- Tag people in photos with automatic face detection
