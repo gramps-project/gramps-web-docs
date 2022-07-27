@@ -1,6 +1,8 @@
-# Configuration
+# Server Configuration
 
-Some configuration is necessary to run Gramps Web.
+Using the default Docker image, all necessary configuration can be made from the browser. However, depending on the deployment, it can be necessary to customize the server configuration.
+
+This page lists all methods to change the configuration and all existing configuration options.
 
 ## Configuration file
 

@@ -23,7 +23,7 @@ There are two ways to manage users:
 - With owner permissions using the web interface
 - On the command line on the server
 
-The owner account required to first access the web interface must always be added on the command line.
+The owner account required to first access the web app can be added in the onboarding wizard that is automatically launched when accessing Gramps Web with an empty user database. 
 
 ### Managing users on the command line
 

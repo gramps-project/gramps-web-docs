@@ -4,14 +4,16 @@ nav:
       - Requirements: requirements.md
       - Deployment: Deployment.md
       - User system: Users.md
-      - Configuration: Configuration.md
       - Advanced topics:
+          - Server Configuration: Configuration.md
+          - Docker with Let's Encrypt: LetsEncrypt.md
           - Using PostgreSQL: Postgres.md
           - Hosting media on S3: s3.md
   - User guide:
       - Introduction: user-guide/index.md
       - Registration: user-guide/registration.md
       - First login: user-guide/first-login.md
+      - Synchronize with Gramps: user-guide/sync.md
   - Backend development:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md

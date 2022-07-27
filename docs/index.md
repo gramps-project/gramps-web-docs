@@ -14,7 +14,8 @@
 - Multi-user system with different levels of permissions
 - Edit all objects collaboratively and add new objects
 - Fully responsive & mobile friendly
-- Export the tree as XML or GEDCOM from the web interface
+- Export the tree as Gramps XML or GEDCOM from the web interface
+- Import a tree (in Gramps XML or GEDCOM format)
 - Synchronize with your local Gramps database and use Gramps desktop in parallel
 
 ## Planned features
