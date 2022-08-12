@@ -8,33 +8,9 @@ The most convenient option to host Gramps Web is with Docker Compose. We will as
 
 ## Step 1: Docker configuration
 
-Create a new file on the server named `docker-compose.yml` and insert the following contents:
+Create a new file on the server named `docker-compose.yml` and insert the following contents: [docker-compose.yml](https://raw.githubusercontent.com/gramps-project/web/main/examples/docker-compose-base/docker-compose.yml).
 
-```yaml
-version: "3.7"
 
-services:
-  grampsweb:
-    image: ghcr.io/gramps-project/grampsweb:latest
-    restart: always
-    ports:
-      - "80:5000"  # host:docker
-    volumes:
-      - gramps_users:/app/users  # persist user database
-      - gramps_index:/app/indexdir  # persist search index
-      - gramps_thumb_cache:/app/thumbnail_cache  # persist thumbnails
-      - gramps_secret:/app/secret  # persist flask secret
-      - gramps_db:/root/.gramps/grampsdb  # persist Gramps database
-      - gramps_media:/app/media  # persist media files
-
-volumes:
-  gramps_users:
-  gramps_index:
-  gramps_thumb_cache:
-  gramps_secret:
-  gramps_db:
-  gramps_media:
-```
 
 This will generate six named volumes to make sure that all relevant data will persist when restarting the container.
 
