@@ -24,7 +24,7 @@ cd gramps-webapi
 
 To start development, please install the dependencies by running
 ```
-pip3 install requirements-dev.txt
+pip3 install -r requirements-dev.txt
 ```
 
 ### Set up pre-commit hooks
