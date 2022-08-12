@@ -23,7 +23,7 @@ services:
       - gramps_users:/app/users  # persist user database
       - gramps_index:/app/indexdir  # persist search index
       - gramps_thumb_cache:/app/thumbnail_cache  # persist thumbnails
-      - gramps_secret:/app/secret/secret  # persist flask secret
+      - gramps_secret:/app/secret  # persist flask secret
       - gramps_db:/root/.gramps/grampsdb  # persist Gramps database
       - gramps_media:/app/media  # persist media files
 
