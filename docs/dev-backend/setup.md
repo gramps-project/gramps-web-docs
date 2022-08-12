@@ -8,7 +8,7 @@ The Web API requires Python 3.7 or newer.
 
 The Web API requires the Gramps Python library to be importable. Starting from Gramps 5.2.0, it will be installable via `pip`. Right now, development is still based on Gramps 5.1.x, so the most convenient option is to install the Gramps `apt` package on Ubuntu
 ```
-sudo apt install python3-gramps
+sudo apt install gramps
 ```
 
 ### Clone the Web API repository
