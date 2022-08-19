@@ -1,4 +1,7 @@
-This page describes the steps needed to start with frontend development. It is assumed that you are using Ubuntu Linux. 
+This page describes the steps needed to start with frontend development. It is assumed that you are using Ubuntu Linux.
+
+!!! info
+    Note since the `*.json` translation files are imported with the new syntax suggested in [T39](https://github.com/tc39/proposal-import-assertions), you must use the Chrome browser for the development server to work without errors. This issue is about to change in the feature.
 
 
 ## Install Node.js
