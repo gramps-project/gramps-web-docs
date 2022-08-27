@@ -22,6 +22,7 @@ nav:
       - Introduction: dev-frontend/index.md
       - Architecture: dev-frontend/architecture.md
       - Development setup: dev-frontend/setup.md
+      - Translation: dev-frontend/translation.md
 site_name: Gramps Web
 site_url: https://gramps-project.github.io/web
 edit_uri: https://github.com/gramps-project/web/blob/main/docs/
