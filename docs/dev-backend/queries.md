@@ -38,3 +38,5 @@ You can now use this token in all API calls that require authentication, e.g.
 ```bash
 http -A bearer -a $ACCESS_TOKEN GET http://localhost:5555/api/metadata/
 ```
+
+Note that, by default, access tokens will expire after 15 minutes.
