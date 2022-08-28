@@ -18,9 +18,7 @@ sudo apt install jq
 
 ## Fetching an access token
 
-To fetch an access token, query the token endpoint:
-
-Assuming your development instance is running on `localhost:5555`, you can use the command
+To fetch an access token, query the token endpoint. Assuming your development instance is running on `localhost:5555`, you can use the command
 
 ```bash
 http POST http://localhost:5555/api/token/ username=owner password=owner
