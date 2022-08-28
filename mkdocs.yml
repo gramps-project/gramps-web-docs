@@ -18,6 +18,7 @@ nav:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md
       - API specification: dev-backend/api.md
+      - Manual queries: dev-backend/queries.md
   - Frontend development:
       - Introduction: dev-frontend/index.md
       - Architecture: dev-frontend/architecture.md
