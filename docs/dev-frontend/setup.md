@@ -1,18 +1,6 @@
-This page describes the steps needed to start with frontend development. It is assumed that you are using Ubuntu Linux.
+This page describes the steps needed to start with frontend development. It is assumed that you are using Ubuntu Linux and you will need Docker, docker-compose, and git.
 
-!!! info
-    Note since the `*.json` translation files are imported with the new syntax suggested in [T39](https://github.com/tc39/proposal-import-assertions), you must use the Chrome browser for the development server to work without errors. This issue is about to change in the future.
-
-
-## Install Node.js
-
-To get started, install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
-
-```
-nvm install node
-```
-
-## Clone the repository
+## Step 1: Clone the repository
 
 Clone the Gramps.js repository
 ```
@@ -20,28 +8,20 @@ git clone git@github.com:gramps-project/Gramps.js.git
 cd Gramps.js
 ```
 
-## Install development dependencies
+## Step 2: Build and start the development containers
 
-To install all dependencies, run
-```
-npm install
-```
-at the repository's root.
+To build and start the containers running the Gramps Web backend with the Gramps example database, as well as the frontend in development mode, simply run
 
-## Start the backend
-
-To see Gramps Web live in action, you need a running Gramps Web API backend where the frontend can fetch its data from.
-
-If you have followed the setup steps for [backend development](../dev-backend/setup.md), this can be achieved with a command like
-```
-python3 -m gramps_webapi --config path/to/config run --port 5555
+```bash
+docker-compose up -d
 ```
 
-A backend at a different location can be used during development by changing the `__APIHOST__` variable in `api.js`.
+Gramps Web will be accessible at [http://localhost:5555](http://localhost:5555).
 
-## Run the frontend in development mode
+Once you make changes to the frontend code, you browser will be reloaded automatically.
 
-You can now run the frontend with 
-```
-npm run start
-```
+!!! warning
+    Do not use the development server in production.
+
+!!! info
+    Note since the `*.json` translation files are imported with the new syntax suggested in [T39](https://github.com/tc39/proposal-import-assertions), you must use the Chrome browser for the development server to work without errors. This issue is about to change in the future.
