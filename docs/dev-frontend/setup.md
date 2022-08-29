@@ -24,4 +24,4 @@ Once you make changes to the frontend code, you browser will be reloaded automat
     Do not use the development server in production.
 
 !!! info
-    Note since the `*.json` translation files are imported with the new syntax suggested in [T39](https://github.com/tc39/proposal-import-assertions), you must use the Chrome browser for the development server to work without errors. This issue is about to change in the future.
+    Note since the `*.json` translation files are imported with the new syntax suggested in [T39](https://github.com/tc39/proposal-import-assertions), you must use the Chrome or Chromium browser for the development server to work without errors. This issue is about to change in the future.
