@@ -1,0 +1,74 @@
+version: "3.7"
+
+services:
+  grampsweb:
+    image: ghcr.io/gramps-project/grampsweb:latest
+    restart: always
+    env_file: /root/letsencrypt.env
+    environment:
+      VIRTUAL_PORT: "5000"
+      TREE: Gramps Web
+      GUNICORN_NUM_WORKERS: 3
+    volumes:
+      - gramps_users:/app/users # persist user database
+      - gramps_index:/app/indexdir # persist search index
+      - gramps_thumb_cache:/app/thumbnail_cache # persist thumbnails
+      - gramps_secret:/app/secret # persist flask secret
+      - gramps_db:/root/.gramps/grampsdb # persist Gramps database
+      - /root/gramps_media:/app/media # persist media files
+    networks:
+      - proxy-tier
+      - default
+
+  proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ENABLE_IPV6: "true"
+    volumes:
+      - ./nginx_proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+      - conf:/etc/nginx/conf.d
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs:ro
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy-tier
+
+  acme-companion:
+    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-acme
+    restart: always
+    environment:
+      NGINX_PROXY_CONTAINER: nginx-proxy
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - acme:/etc/acme.sh
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-tier
+    depends_on:
+      - proxy
+
+volumes:
+  acme:
+  certs:
+  conf:
+  dhparam:
+  vhost.d:
+  html:
+  gramps_users:
+  gramps_index:
+  gramps_thumb_cache:
+  gramps_secret:
+  gramps_db:
+
+networks:
+  proxy-tier:
