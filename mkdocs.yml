@@ -2,7 +2,9 @@ nav:
   - Getting Started:
       - Introduction: index.md
       - Requirements: requirements.md
-      - Deployment: Deployment.md
+      - Deployment:
+          - Docker: Deployment.md
+          - DigitalOcean: DigitalOcean.md
       - User system: Users.md
       - Advanced topics:
           - Server Configuration: Configuration.md

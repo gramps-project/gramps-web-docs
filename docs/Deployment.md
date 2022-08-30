@@ -1,6 +1,8 @@
 # Deploying Gramps Web with Docker
 
-The most convenient option to host Gramps Web is with Docker Compose. We will assume that Docker and Docker Compose are already installed in your system. Your can use Windows, Mac OS, or Linux as a host system. The supported architectures include not only x86-64 (desktop systems), but also ARM systems such as a Raspberry Pi, which can serve as a low-cost, but powerful (enough) web server.
+The most convenient option to host Gramps Web on your own server (or virtual server) is with Docker Compose.
+
+We will assume that Docker and Docker Compose are already installed in your system. You can use Windows, Mac OS, or Linux as a host system. The supported architectures include not only x86-64 (desktop systems), but also ARM systems such as a Raspberry Pi, which can serve as a low-cost, but powerful (enough) web server.
 
 !!! note
     You do not need to install Gramps on the server as it is contained in the docker image.
