@@ -36,7 +36,7 @@ Key | Description | Set from environment
 
 Key | Description | Set from environment
 ----|-------------|---------------------
-`MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps | yes
+`MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>` | yes
 `SEARCH_INDEX_DIR` | Path for the full-text search index. Defaults to `indexdir` relative to the path where the script is run | yes
 `STATIC_PATH` | Path to serve static files from (e.g. a static web frontend) | yes
 `BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct passwort reset links | yes
