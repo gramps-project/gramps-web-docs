@@ -8,7 +8,7 @@
 
 - Browse all objects in your family tree: people, families, events, places, repositories, sources, citations, media objects, and notes
 - Two different interactive pedigree views
-- Display all places on an interactive map
+- Display all places on an interactive, searchable map
 - Blog section with blog articles stored in Gramps
 - Switch the language of the interface between any of 40 languages
 - Multi-user system with different levels of permissions
@@ -16,9 +16,9 @@
 - Fully responsive & mobile friendly
 - Export the tree as Gramps XML or GEDCOM from the web interface
 - Import a tree (in Gramps XML or GEDCOM format)
+- Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface
 - Synchronize with your local Gramps database and use Gramps desktop in parallel
 
 ## Planned features
 
-- Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface
 - Tag people in photos with automatic face detection
