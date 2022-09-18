@@ -4,7 +4,7 @@
 
 ![](screenshot.png)
 
-## Main features
+## Features
 
 - Browse all objects in your family tree: people, families, events, places, repositories, sources, citations, media objects, and notes
 - Two different interactive pedigree views
