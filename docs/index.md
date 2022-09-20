@@ -4,6 +4,10 @@
 
 ![](screenshot.png)
 
+[Open Demo](https://gcp-api-puqt5dnf3a-uc.a.run.app/){ .md-button .md-button--primary target="_blank"}
+
+User: `owner`, password: `owner`
+
 ## Features
 
 - Browse all objects in your family tree: people, families, events, places, repositories, sources, citations, media objects, and notes
