@@ -22,7 +22,4 @@ User: `owner`, password: `owner`
 - Import a tree (in Gramps XML or GEDCOM format)
 - Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface
 - Synchronize with your local Gramps database and use Gramps desktop in parallel
-
-## Planned features
-
 - Tag people in photos with automatic face detection
