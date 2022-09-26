@@ -78,8 +78,9 @@ Run
 ```
 python3 -m gramps_webapi --config path/to/config run
 ```
-The API will be accesible at `http://127.0.0.1:5000` by default. To choose a different port, add the `--port` option.
+The API will be accesible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-webapi](https://gramps-project.github.io/gramps-webapi/). For example, to show people go to `http://127.0.0.1:5000/api/people`
 
+To choose a different port, add the `--port` option.
 
 !!! warning
     Do not expose this as-is to a public network or the internet, as anyone will be able to view and modify your family tree!
