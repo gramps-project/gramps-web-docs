@@ -17,12 +17,13 @@ sudo apt install gramps
 
 ### Clone the Web API repository
 
-Clone the Web API to your PC with
+Clone the Web API to your PC (assuming you have set up an SSH key with Github) using
 
 ```
 git clone git@github.com:gramps-project/gramps-webapi.git
 cd gramps-webapi
 ```
+
 
 ### Install prerequisites
 
