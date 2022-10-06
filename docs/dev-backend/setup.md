@@ -32,6 +32,13 @@ To start development, please install the dependencies by running
 pip3 install -r requirements-dev.txt
 ```
 
+### Install the library in editable mode
+
+Run
+```
+pip3 install -e . --user
+```
+
 ### Set up pre-commit hooks
 
 To set up the pre-commit hooks for the repository, run
@@ -47,13 +54,6 @@ To run the unit tests, run
 pytest
 ```
 in the repository root.
-
-### Install the library in editable mode
-
-Run
-```
-pip3 install -e . --user
-```
 
 ### Generate a configuration file
 
