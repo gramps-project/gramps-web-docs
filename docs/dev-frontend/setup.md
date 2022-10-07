@@ -16,6 +16,8 @@ To build and start the containers running the Gramps Web backend with the Gramps
 docker-compose up -d
 ```
 
+Options for logging in are: owner, editor, contributor, guest or member (use same word for both username and password).
+
 !!! warning
     Do not use the development server in production.
 
