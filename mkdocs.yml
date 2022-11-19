@@ -15,6 +15,7 @@ nav:
       - Introduction: user-guide/index.md
       - Registration: user-guide/registration.md
       - First login: user-guide/first-login.md
+      - Add media files: user-guide/media.md
       - Synchronize with Gramps: user-guide/sync.md
   - Backend development:
       - Introduction: dev-backend/index.md
