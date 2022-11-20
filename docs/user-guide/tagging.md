@@ -1,4 +1,4 @@
-Gramps Web allows tagging people in photographs, similar to Grams Desktop, linking the person and the media object. This is simplified by atomated face detection.
+Gramps Web allows tagging people in photographs, similar to Gramps Desktop, linking the person and the media object. This is simplified by automated face detection.
 
 To tag a person in a photo, follow these steps:
 
