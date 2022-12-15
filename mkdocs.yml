@@ -18,6 +18,7 @@ nav:
       - Add media files: user-guide/media.md
       - Tag people in photos: user-guide/tagging.md
       - Synchronize with Gramps: user-guide/sync.md
+      - limit CPU usage: user-guide/cpu-limited.md
   - Backend development:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md
