@@ -11,6 +11,7 @@ nav:
           - Docker with Let's Encrypt: LetsEncrypt.md
           - Using PostgreSQL: Postgres.md
           - Hosting media on S3: s3.md
+          - limit CPU usage: cpu-limited.md
   - User guide:
       - Introduction: user-guide/index.md
       - Registration: user-guide/registration.md
@@ -18,7 +19,6 @@ nav:
       - Add media files: user-guide/media.md
       - Tag people in photos: user-guide/tagging.md
       - Synchronize with Gramps: user-guide/sync.md
-      - limit CPU usage: user-guide/cpu-limited.md
   - Backend development:
       - Introduction: dev-backend/index.md
       - Development setup: dev-backend/setup.md
