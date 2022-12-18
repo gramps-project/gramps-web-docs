@@ -3,7 +3,7 @@
 In order to avoid high CPU/RAM usage, it is possible to set the number of workers
 using the environment variable `GUNICORN_NUM_WORKERS`.
 
-Here, we will take a number of workers = 2. Adgust it according to your needs.
+Here, we will take a number of workers = 2. Adjust it according to your needs.
 It may be a good idea to check the CPU/Threads available before choosing the value:
 
 > lscpu | grep CPU
