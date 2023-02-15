@@ -53,13 +53,14 @@ Key | Description
 `EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to true 
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
+`CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
 
 ### Settings only for PostgreSQL backend database
 
 This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
-Key | Description | Set from environment
-----|-------------|---------------------
+Key | Description 
+----|-------------
 `POSTGRES_USER` | The user name for the database connection
 `POSTGRES_PASSWORD` | The password for the database user
 
