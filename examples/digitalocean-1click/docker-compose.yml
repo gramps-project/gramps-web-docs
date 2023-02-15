@@ -1,7 +1,8 @@
 version: "3.7"
 
 services:
-  grampsweb:
+  grampsweb: &grampsweb
+    container_name: grampsweb
     image: ghcr.io/gramps-project/grampsweb:latest
     restart: always
     env_file: /root/letsencrypt.env
@@ -9,6 +10,9 @@ services:
       VIRTUAL_PORT: "5000"
       TREE: Gramps Web
       GUNICORN_NUM_WORKERS: 3
+      GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
+      GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
+      GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1
     volumes:
       - gramps_users:/app/users # persist user database
       - gramps_index:/app/indexdir # persist search index
@@ -19,6 +23,18 @@ services:
     networks:
       - proxy-tier
       - default
+
+  grampsweb_celery:
+    <<: *grampsweb  # YAML merge key copying the entire grampsweb service config
+    container_name: grampsweb_celery
+    depends_on:
+      - grampsweb_redis
+    command: celery -A gramps_webapi.celery worker --loglevel=INFO
+
+  grampsweb_redis:
+    image: redis:alpine
+    container_name: grampsweb_redis
+    restart: always
 
   proxy:
     image: nginxproxy/nginx-proxy

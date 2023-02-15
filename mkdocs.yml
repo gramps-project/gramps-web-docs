@@ -2,6 +2,7 @@ nav:
   - Getting Started:
       - Introduction: index.md
       - Requirements: requirements.md
+      - Quick Start: quickstart.md
       - Deployment:
           - Docker: Deployment.md
           - DigitalOcean: DigitalOcean.md
