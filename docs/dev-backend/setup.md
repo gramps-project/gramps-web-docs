@@ -61,7 +61,8 @@ Example content:
 
 ```python
 TREE="My Family Tree"
-DISABLE_AUTH=True
+SECRET_KEY="not_secure_enough"
+USER_DB_URI="sqlite:///users.sqlite"
 ```
 
 !!! warning
@@ -71,6 +72,17 @@ See [Configuration](../Configuration.md) for a full list of config options.
 
 !!! warning
     Do not use your production database for development, but use a copy of it or the Gramps example database.
+
+
+### Add users
+
+
+You can add a user with owner permissions by running
+```
+python3 -m gramps_webapi --config path/to/config user add owner owner --role 4
+```
+This uses username and password `owner`.
+
 
 ### Run the app in development mode
 
@@ -82,7 +94,3 @@ python3 -m gramps_webapi --config path/to/config run
 The API will be accesible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-webapi](https://gramps-project.github.io/gramps-webapi/). For example, to show people go to `http://127.0.0.1:5000/api/people`
 
 To choose a different port, add the `--port` option.
-
-!!! warning
-    Do not expose this as-is to a public network or the internet, as anyone will be able to view and modify your family tree!
-
