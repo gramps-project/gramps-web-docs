@@ -20,6 +20,7 @@ services:
       - gramps_secret:/app/secret # persist flask secret
       - gramps_db:/root/.gramps/grampsdb # persist Gramps database
       - /root/gramps_media:/app/media # persist media files
+      - gramps_tmp:/tmp
     networks:
       - proxy-tier
       - default
@@ -85,6 +86,7 @@ volumes:
   gramps_thumb_cache:
   gramps_secret:
   gramps_db:
+  gramps_tmp:
 
 networks:
   proxy-tier:

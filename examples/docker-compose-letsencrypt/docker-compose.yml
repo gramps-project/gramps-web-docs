@@ -21,6 +21,7 @@ services:
       - gramps_secret:/app/secret
       - gramps_db:/root/.gramps/grampsdb
       - gramps_media:/app/media
+      - gramps_tmp:/tmp
     networks:
       - proxy-tier
       - default
@@ -87,6 +88,7 @@ volumes:
   gramps_secret:
   gramps_db:
   gramps_media:
+  gramps_tmp:
 
 networks:
   proxy-tier:

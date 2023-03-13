@@ -20,6 +20,7 @@ services:
       - gramps_secret:/app/secret  # persist flask secret
       - gramps_db:/root/.gramps/grampsdb  # persist Gramps database
       - gramps_media:/app/media  # persist media files
+      - gramps_tmp:/tmp
 
   grampsweb_celery:
     <<: *grampsweb  # YAML merge key copying the entire grampsweb service config
@@ -41,3 +42,4 @@ volumes:
   gramps_secret:
   gramps_db:
   gramps_media:
+  gramps_tmp:
