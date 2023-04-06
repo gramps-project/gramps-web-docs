@@ -7,7 +7,7 @@ services:
     ports:
       - "80:5000"  # host:docker
     environment:
-      TREE: "Gramps Web"  # will create a new tree if not exists
+      GRAMPSWEB_TREE: "Gramps Web"  # will create a new tree if not exists
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1

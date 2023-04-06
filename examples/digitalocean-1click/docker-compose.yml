@@ -8,7 +8,7 @@ services:
     env_file: /root/letsencrypt.env
     environment:
       VIRTUAL_PORT: "5000"
-      TREE: Gramps Web
+      GRAMPSWEB_TREE: Gramps Web
       GUNICORN_NUM_WORKERS: 3
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"

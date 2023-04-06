@@ -6,7 +6,7 @@ services:
     image: ghcr.io/gramps-project/grampsweb:latest
     restart: always
     environment:
-      TREE: "Gramps Web"  # will create a new tree if not exists
+      GRAMPSWEB_TREE: "Gramps Web"  # will create a new tree if not exists
       VIRTUAL_PORT: "5000"
       VIRTUAL_HOST: ...  # e.g. gramps.mydomain.com
       LETSENCRYPT_HOST: ...   # e.g. gramps.mydomain.com
