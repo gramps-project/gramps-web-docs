@@ -12,7 +12,7 @@ TREE = "*"
 
 This will make all trees in the server's Gramps database directory accessible (given sufficient user permissions). The tree's ID is the name of the subdirectory. You can list existing trees (names and IDs) with the command
 
-```python
+```bash
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
@@ -40,7 +40,7 @@ If you want to migrate an existing Gramps Web instance to multi-tree support and
 
 If you are using media files hosted on S3, you can use the script provided in the `scripts` directory of the `gramps-webapi` repository:
 
-```
+```bash
 python scripts/s3_rename.py BUCKET_NAME TREE_ID
 ```
 
@@ -51,7 +51,7 @@ This assumes the relevant access keys are set as environment variables already.
 
 If you want to enable multi-tree support and reuse existing users, you need to assign them to a specific tree. You can use the following command provided for this purpose,
 
-```python
+```bash
 python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID
 ```
 
