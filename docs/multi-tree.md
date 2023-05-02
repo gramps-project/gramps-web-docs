@@ -1,6 +1,6 @@
 By default, Gramps Web only allows accessing a single family tree database ("tree"), specified in the configuration file.
 
-However, since version 1.0 of the Gramps Web API backend, it is also possible to serve multiple trees from a single installation. However, each user is (currently) tied to a single tree, so this setup is not suited for sharing trees among users, but for hosting multiple isolated Gramps Web instances.
+However, starting with version 0.7 of the Gramps Web API backend, it is also possible to serve multiple trees from a single installation. However, each user is (currently) tied to a single tree, so this setup is not suited for sharing trees among users, but for hosting multiple isolated Gramps Web instances.
 
 ## Enable multi-tree support
 
