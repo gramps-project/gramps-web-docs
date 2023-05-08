@@ -50,7 +50,7 @@ Key | Description
 `EMAIL_PORT` | SMTP server port. defaults to 465
 `EMAIL_HOST_USER` | SMTP server username
 `EMAIL_HOST_PASSWORD` | SMTP server password
-`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to true 
+`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to true. When using STARTTLS, set this to false and use a port different from 25.
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
 `CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
