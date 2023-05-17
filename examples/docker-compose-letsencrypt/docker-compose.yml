@@ -18,6 +18,7 @@ services:
       - gramps_users:/app/users
       - gramps_index:/app/indexdir
       - gramps_thumb_cache:/app/thumbnail_cache
+      - gramps_cache:/app/cache
       - gramps_secret:/app/secret
       - gramps_db:/root/.gramps/grampsdb
       - gramps_media:/app/media
@@ -85,6 +86,7 @@ volumes:
   gramps_users:
   gramps_index:
   gramps_thumb_cache:
+  gramps_cache:
   gramps_secret:
   gramps_db:
   gramps_media:
