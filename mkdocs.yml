@@ -31,6 +31,8 @@ nav:
       - Architecture: dev-frontend/architecture.md
       - Development setup: dev-frontend/setup.md
       - Translation: dev-frontend/translation.md
+  - Contribute: contribute.md
+  - Get Help: help.md
 site_name: Gramps Web
 site_url: https://gramps-project.github.io/web
 edit_uri: https://github.com/gramps-project/web/blob/main/docs/
@@ -54,3 +56,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - attr_list
+  - toc:
+      toc_depth : "0"
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
