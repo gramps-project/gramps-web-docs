@@ -80,7 +80,7 @@ Summarize your research in the form of blog stories with pictures. All data is s
 
 ## Fully internationalized
 
-Switch the language of the interface between any of 40 languages
+Switch the language of the interface between any of 40 languages translated by the Gramps community.
 
 
 <div style="clear:both;"></div>
@@ -91,10 +91,9 @@ Switch the language of the interface between any of 40 languages
 
 ![Image title](screenshots/export.png){ align=right width="300"}
 
-## Export & Import
+## No lock-in &ndash; data import and export
 
-- Export the tree as Gramps XML or GEDCOM from the web interface
-- Import a tree (in Gramps XML or GEDCOM format)
+Apart from being able to import data in various formats including Gramps XML and GEDCOM, Gramps Web makes it easy for users to download all of their data (family tree data, media files, user accounts) anytime, for backup purposes or to move to a different server. Your data is yours alone!
 
 
 <div style="clear:both;"></div>
@@ -103,9 +102,9 @@ Switch the language of the interface between any of 40 languages
 
 ![Image title](screenshots/report.png){ align=left width="400"}
 
-## Reports
+## Generate printable reports
 
-- Generate any [report](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) supported by Gramps from the web interface
+Since it's built directly on the core powering Gramps Desktop, you can generate almost all of the [reports](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) the desktop app supports right from the browser, including relationship graphs or book reports as PDF.
 
 <div style="clear:both;"></div>
 <hr>
@@ -115,9 +114,11 @@ Switch the language of the interface between any of 40 languages
 
 ![Image title](screenshots/sync.png){ align=right width="300"}
 
-## Sync
+## Full integration with Gramps Desktop
 
-Synchronize with your local Gramps database and use Gramps desktop in parallel
+Gramps Web uses the core of [Gramps](https://gramps-project.org/), the most powerful and popular open-source cross-platform desktop application. It does not only use the same data model and database for storing genalogical data, but can also be synchronized both ways using a Gramps addon.
+
+Edit your tree on the Web and in the fully-featured desktop app you've grown to love &ndash; they work together seamlessly.
 
 <div style="clear:both;"></div>
 <hr>
@@ -125,9 +126,9 @@ Synchronize with your local Gramps database and use Gramps desktop in parallel
 
 ![Image title](screenshots/tag.png){ align=left width="400"}
 
-## Face detection
+## Tag people in photos with automated face detection
 
-Tag people in photos with automatic face detection
+Collaborate with your relatives to identify ancestors in old family photos. Thanks to automated face detection, tagging people is just two clicks away.
 
 
 <div style="clear:both;"></div>
@@ -138,7 +139,7 @@ Tag people in photos with automatic face detection
 
 ## Powerful full-text search
 
-Search
+The search engine supports searching all Gramps object types, including the content of text notes, and supports wildcard syntax and logical operators.
 
 
 <div style="clear:both;"></div>
