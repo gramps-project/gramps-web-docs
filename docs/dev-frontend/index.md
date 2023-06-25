@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Gramps Web frontend development
 
 The Gramps Web frontend is called [Gramps.js](https://github.com/gramps-project/Gramps.js).

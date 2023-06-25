@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+---
+
+
 # How to contribute to Gramps Web
 
 Thanks for considering to contribute to Gramps Web! Depending on your skills and interests, there are many ways how you can help.
@@ -10,6 +16,10 @@ Gramps & Gramps Web support several dozen different languages. Helping to transl
 ## Help answering other users&apos; questions
 
 If you are already using Gramps Web, help new users finding the answers to their questions by contributing to discussions in the [Gramps Web category](https://gramps.discourse.group/c/gramps-web/) of the official Gramps Discourse forum.
+
+## Help improve the documentation
+
+The documentation site you're looking at is hosted [on Github](https://github.com/gramps-project/web). Contributions to improve it are highly welcome. Just submit a pull request to that repository.
 
 ## Contribute to backend development (Python)
 

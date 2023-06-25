@@ -1,15 +1,16 @@
 nav:
-  - Getting Started:
-      - Introduction: index.md
-      - Requirements: requirements.md
-      - Quick Start: quickstart.md
-      - Deployment:
-          - Docker: Deployment.md
-          - DigitalOcean: DigitalOcean.md
-      - User system: Users.md
-      - Advanced topics:
-          - Server Configuration: Configuration.md
+  - Features:
+      - Features: index.md
+  - Administration:
+      - Getting Started: admin.md
+      - Try out locally: quickstart.md
+      - Installation and Deployment:
+          - Deploy with Docker: Deployment.md
           - Docker with Let's Encrypt: LetsEncrypt.md
+          - DigitalOcean: DigitalOcean.md
+      - Administration Guide:
+          - User system: Users.md
+          - Server Configuration: Configuration.md
           - Using PostgreSQL: Postgres.md
           - Hosting media on S3: s3.md
           - Limit CPU usage: cpu-limited.md
@@ -21,20 +22,22 @@ nav:
       - Add media files: user-guide/media.md
       - Tag people in photos: user-guide/tagging.md
       - Synchronize with Gramps: user-guide/sync.md
-  - Backend development:
-      - Introduction: dev-backend/index.md
-      - Development setup: dev-backend/setup.md
-      - API specification: dev-backend/api.md
-      - Manual queries: dev-backend/queries.md
-  - Frontend development:
-      - Introduction: dev-frontend/index.md
-      - Architecture: dev-frontend/architecture.md
-      - Development setup: dev-frontend/setup.md
-      - Translation: dev-frontend/translation.md
+  - Development:
+      - Overview: dev.md
+      - Backend:
+        - Introduction: dev-backend/index.md
+        - Development setup: dev-backend/setup.md
+        - API specification: dev-backend/api.md
+        - Manual queries: dev-backend/queries.md
+      - Frontend:
+          - Introduction: dev-frontend/index.md
+          - Architecture: dev-frontend/architecture.md
+          - Development setup: dev-frontend/setup.md
+          - Translation: dev-frontend/translation.md
   - Contribute: contribute.md
   - Get Help: help.md
 site_name: Gramps Web
-site_url: https://gramps-project.github.io/web
+site_url: https://www.grampsweb.org
 edit_uri: https://github.com/gramps-project/web/blob/main/docs/
 repo_url: https://github.com/gramps-project/Gramps.js
 theme:
@@ -43,6 +46,7 @@ theme:
     - navigation.tabs
     - navigation.instant
     - navigation.expand
+    - navigation.footer
   palette:
     scheme: default
     primary: brown
@@ -56,8 +60,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - attr_list
-  - toc:
-      toc_depth : "0"
+  # - toc:
+  #     toc_depth : "0"
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

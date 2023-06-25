@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Gramps Web backend development
 
 The backend of Gramps Web is called [Gramps Web API](https://github.com/gramps-project/gramps-webapi/). In fact it is more than just an app backend: it provides a RESTful API to read and modify a Gramps database.

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 If you run into issues or need help with Gramps Web, please pick one of the following options.
 
 [Forum :material-forum:](https://gramps.discourse.group/c/gramps-web/){ .md-button }

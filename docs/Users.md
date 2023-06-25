@@ -12,7 +12,8 @@ Guest | 0 | View non-private objects
 Member | 1 | Guest + view private objects
 Contributor* | 2 | Member + add objects
 Editor | 3 | Contributor + edit and delete objects
-Owner | 4 | All: Editor + manage users
+Owner | 4 | Editor + manage users
+Admin | 5 | Owner + edit other trees in multi-tree setup
 
 \* Note that the "Contributor" role is currently only partially supported; e.g., family objects cannot be added since they imply a modification of the underlying Gramps person objects of family members. It is recommended to use the other roles whenever possible.
 
