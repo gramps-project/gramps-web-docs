@@ -29,3 +29,7 @@ If you are a Python programmer, contribute to the development of the [Gramps Web
 ## Contribute to backend development (Javascript)
 
 If you are a web programmer, contribute to the development of [Gramps.js](https://github.com/gramps-project/Gramps.js/), which is Gramps Web's responsive frontend. See [Frontend development](../dev-frontend) for instructions on how to get started.
+
+## Contribute to the Sync addon (Python)
+
+If you have experience with developing with Python and GTK, contribute to the improvement of The Gramps Web Sync Addon. You can use the [development repository](https://github.com/DavidMStraub/gramps-web-sync/) for suggesting and submitting improvements.
