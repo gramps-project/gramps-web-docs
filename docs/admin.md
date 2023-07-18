@@ -16,7 +16,7 @@ While the first option gives you maximal flexibility and control, it can also be
 
 ## Self-host on your own hardware
 
-The most convenient way to host Gramps Web is via Docker Compose. We also provide Docker images for the ARM architecture, so you can run Gramps Web on a Raspberry Pi in your basement.
+The most convenient way to self-host Gramps Web is via Docker Compose. We also provide Docker images for the ARM architecture, so you can run Gramps Web on a Raspberry Pi in your basement.
 
 See [Deploy with Docker](Deployment.md) for setup instructions.
 
@@ -29,4 +29,8 @@ A simpler option is to use a pre-installed cloud image. One example is our [Digi
 
 ## Sign up for a hosted instance
 
-Features to manage a server hosting multiple, securely separated instances of Gramps Web have been added recently. We expected hosted Gramps Web will be available soon. Stay tuned!
+A hosted Gramps Web is the easiest way to get started with Gramps Web, since no installation or configuration is required.
+
+Here is a list of dedicated hosting providers for Gramps Web (the Gramps open source community does not take responsibility for their services):
+
+- Grampshub ([www.grampshub.com](https://www.grampshub.com)), offered by one of the Gramps Web main contributors
