@@ -6,7 +6,7 @@ services:
     image: ghcr.io/gramps-project/grampsweb:latest
     restart: always
     env_file: /root/letsencrypt.env
-    environment:
+    environment: &grampsweb-env
       VIRTUAL_PORT: "5000"
       GRAMPSWEB_TREE: Gramps Web
       GUNICORN_NUM_WORKERS: 3
@@ -31,6 +31,13 @@ services:
     container_name: grampsweb_celery
     depends_on:
       - grampsweb_redis
+    environment:
+      <<: *grampsweb-env  # YAML merge key copying the grampsweb environment config
+      # overriding let's encrypt variables since celery is not exposed
+      VIRTUAL_PORT: ""
+      VIRTUAL_HOST: ""
+      LETSENCRYPT_HOST: ""
+      LETSENCRYPT_EMAIL: ""
     command: celery -A gramps_webapi.celery worker --loglevel=INFO
 
   grampsweb_redis:
