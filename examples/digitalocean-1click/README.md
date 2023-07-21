@@ -1,6 +1,6 @@
 # Gramps Web DigitalOcean 1-click app
 
-This directory contains the scripts to build a snapshot for the [Gramps Web DigitalOcean 1-click app](https://marketplace.digitalocean.com/apps/gramps-web).
+This directory contains the scripts to build a snapshot for the [Gramps Web DigitalOcean 1-click app](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy).
 
 To build, run
 
