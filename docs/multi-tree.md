@@ -59,3 +59,6 @@ python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID
 ```
 
 
+## Customize the frontend
+
+The registration page accessible from the login page does not work in a multi-tree setup, since a tree needs to be specified for registration. It is thus advisable to set `hideRegisterLink` to `true` in the [frontend configuration](frontend-config.md).

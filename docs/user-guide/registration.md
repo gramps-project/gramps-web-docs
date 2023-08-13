@@ -10,6 +10,7 @@ On the login form on the home page of Gramps Web, usually there is a link "Regis
 
 If this link is missing, it is probably because it is a multi-tree installation of Gramps Web. In that case, contact the tree owner for a registration link.
 
+The tree owner can find and copy the registration link under Settings/Administration.
 
 ## 2. Submit registration form
 
