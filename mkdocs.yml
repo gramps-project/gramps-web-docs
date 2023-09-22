@@ -28,6 +28,8 @@ nav:
         - Tag people in photos: user-guide/tagging.md
         - Use the blog: user-guide/blog.md
         - Manage tasks: user-guide/tasks.md
+      - Advanced features:
+        - DNA: user-guide/dna.md
       - Manage data:
         - Import data: user-guide/import.md
         - Export data: user-guide/export.md
