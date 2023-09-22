@@ -19,14 +19,19 @@ nav:
       # - Command Line Interface: cli.md
   - User guide:
       - Introduction: user-guide/index.md
-      - Create owner account: user-guide/owner.md
-      - Registration: user-guide/registration.md
-      - First login: user-guide/first-login.md
-      - Import data: user-guide/import.md
-      - Add media files: user-guide/media.md
-      - Tag people in photos: user-guide/tagging.md
-      - Synchronize with Gramps: user-guide/sync.md
-      - Export data: user-guide/export.md
+      - First steps:
+        - Create owner account: user-guide/owner.md
+        - Registration: user-guide/registration.md
+        - First login: user-guide/first-login.md
+      - Edit data:  
+        - Add media files: user-guide/media.md
+        - Tag people in photos: user-guide/tagging.md
+        - Use the blog: user-guide/blog.md
+        - Manage tasks: user-guide/tasks.md
+      - Manage data:
+        - Import data: user-guide/import.md
+        - Export data: user-guide/export.md
+        - Synchronize with Gramps: user-guide/sync.md
   - Development:
       - Overview: dev.md
       - Backend:
