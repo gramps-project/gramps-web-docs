@@ -50,12 +50,18 @@ Key | Description
 `EMAIL_PORT` | SMTP server port. defaults to 465
 `EMAIL_HOST_USER` | SMTP server username
 `EMAIL_HOST_PASSWORD` | SMTP server password
-`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to true. When using STARTTLS, set this to false and use a port different from 25.
+`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
 `CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
 `REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
 `EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
+
+
+!!! info
+    When using environment variables for configuration, boolean options like `EMAIL_USE_TLS` must be either the string `true` or `false` (case senitive!).
+
+
 ### Settings only for PostgreSQL backend database
 
 This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
@@ -66,7 +72,7 @@ Key | Description
 `POSTGRES_PASSWORD` | The password for the database user
 
 
-## Settings relevant for hosting multiple trees
+### Settings relevant for hosting multiple trees
 
 The following settings are relevant when [hosting multiple trees](multi-tree.md).
 
