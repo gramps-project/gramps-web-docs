@@ -45,7 +45,7 @@ Upload new sources, photos, or create new objects from any device.
 
 ## Interactive family tree graphs
 
-Navigate your family tree as an ancestor chart or as fan chart, with high-quality interactive graphics and configurable number of generations.
+Navigate your family tree as an ancestor chart, descendant chart, hourglass chart, or as fan chart, with high-quality interactive graphics and configurable number of generations.
 
 
 <div style="clear:both;"></div>
@@ -144,6 +144,27 @@ The search engine supports searching all Gramps object types, including the cont
 
 <div style="clear:both;"></div>
 <hr>
+
+
+![Image title](screenshots/dna.png){ align=left width="400"}
+
+## DNA matches & chromosome broser
+
+If you have DNA match data from one of the DNA genealogy providers, upload it and store it in a future-proof way and view your matches in an interactive chromosome browser.
+
+<div style="clear:both;"></div>
+<hr>
+
+![Image title](screenshots/tasks.png){ align=right width="400"}
+
+## Integrated task management app
+
+Gramps Web comes with an integrated task management app to organize and oplan your genealogical research. The tasks are stored as sources in the Gramps database, so they form part of your genealogical data an can be accessed and edited in Gramps Desktop as well.
+
+
+<div style="clear:both;"></div>
+<hr>
+
 
 <p>&nbsp;</p>
 
