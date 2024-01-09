@@ -159,7 +159,7 @@ If you have DNA match data from one of the DNA genealogy providers, upload it an
 
 ## Integrated task management app
 
-Gramps Web comes with an integrated task management app to organize and oplan your genealogical research. The tasks are stored as sources in the Gramps database, so they form part of your genealogical data an can be accessed and edited in Gramps Desktop as well.
+Gramps Web comes with an integrated task management app to organize and plan your genealogical research. The tasks are stored as sources in the Gramps database, so they form part of your genealogical data an can be accessed and edited in Gramps Desktop as well.
 
 
 <div style="clear:both;"></div>
