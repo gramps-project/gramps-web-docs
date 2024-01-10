@@ -148,7 +148,7 @@ The search engine supports searching all Gramps object types, including the cont
 
 ![Image title](screenshots/dna.png){ align=left width="400"}
 
-## DNA matches & chromosome broser
+## DNA matches & chromosome browser
 
 If you have DNA match data from one of the DNA genealogy providers, upload it and store it in a future-proof way and view your matches in an interactive chromosome browser.
 
