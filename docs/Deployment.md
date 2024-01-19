@@ -10,7 +10,7 @@ We will assume that Docker and Docker Compose are already installed in your syst
 
 ## Step 1: Docker configuration
 
-Create a new file on the server named `docker-compose.yml` and insert the following contents: [docker-compose.yml](https://raw.githubusercontent.com/gramps-project/web/main/examples/docker-compose-base/docker-compose.yml).
+Create a new file on the server named `docker-compose.yml` and insert the following contents: [docker-compose.yml](https://raw.githubusercontent.com/gramps-project/gramps-web-docs/main/examples/docker-compose-base/docker-compose.yml).
 
 
 

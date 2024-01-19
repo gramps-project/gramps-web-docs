@@ -1,6 +1,6 @@
 # Customizing the frontend
 
-The Gramps Web frontend (Gramps.js) is a Javascript application that is deployed as a set of static HTML, CSS, and Javascript files. Normally, no special configuration is necessary for the frontend. However, some behaviour can be changed by setting appropriate options in the `config.js` file at the root of the distriubtion.
+The Gramps Web frontend is a Javascript application that is deployed as a set of static HTML, CSS, and Javascript files. Normally, no special configuration is necessary for the frontend. However, some behaviour can be changed by setting appropriate options in the `config.js` file at the root of the distriubtion.
 
 The file should have the following structure:
 

@@ -62,7 +62,7 @@ caproverOneClickApp:
     variables:
         - id: $$cap_version
           label: Version Tag
-          description: Check out their GitHub page for the valid tags https://github.com/gramps-project/Gramps.js/pkgs/container/grampsweb
+          description: Check out their GitHub page for the valid tags https://github.com/gramps-project/gramps-web/pkgs/container/grampsweb
           defaultValue: 'v0.20.1'
         - id: $$cap_redis_version
           label: Redis Version
@@ -79,4 +79,4 @@ caproverOneClickApp:
     displayName: Gramps Web
     isOfficial: true
     description: Web frontend for the Gramps genealogical research system.
-    documentation: Taken from https://gramps-project.github.io/web/Deployment/
+    documentation: Taken from https://www.grampsweb.org/Deployment/

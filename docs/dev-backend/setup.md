@@ -1,4 +1,4 @@
-This page lists the steps required to start developing [Gramps Web API](https://github.com/gramps-project/gramps-webapi/). It will be assumed that you are using Ubuntu Linux.
+This page lists the steps required to start developing [Gramps Web API](https://github.com/gramps-project/gramps-web-api/). It will be assumed that you are using Ubuntu Linux.
 
 ### Python version
 
@@ -20,8 +20,8 @@ sudo apt install gramps
 Clone the Web API to your PC (assuming you have set up an SSH key with Github) using
 
 ```
-git clone git@github.com:gramps-project/gramps-webapi.git
-cd gramps-webapi
+git clone git@github.com:gramps-project/gramps-web-api.git
+cd gramps-web-api
 ```
 
 
@@ -91,6 +91,6 @@ Run
 ```
 python3 -m gramps_webapi --config path/to/config run
 ```
-The API will be accesible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-webapi](https://gramps-project.github.io/gramps-webapi/). For example, to show people go to `http://127.0.0.1:5000/api/people`
+The API will be accesible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-web-api](https://gramps-project.github.io/gramps-web-api/). For example, to show people go to `http://127.0.0.1:5000/api/people`
 
 To choose a different port, add the `--port` option.

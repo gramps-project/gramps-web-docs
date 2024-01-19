@@ -19,16 +19,16 @@ If you are already using Gramps Web, help new users finding the answers to their
 
 ## Help improve the documentation
 
-The documentation site you're looking at is hosted [on Github](https://github.com/gramps-project/web). Contributions to improve it are highly welcome. Just submit a pull request to that repository.
+The documentation site you're looking at is hosted [on Github](https://github.com/gramps-project/gramps-web-docs). Contributions to improve it are highly welcome. Just submit a pull request to that repository.
 
 ## Contribute to backend development (Python)
 
-If you are a Python programmer, contribute to the development of the [Gramps Web API](https://github.com/gramps-project/gramps-webapi/), which is the backend powering Gramps Web. See [Backend development](../dev-backend) for instructions on how to get started.
+If you are a Python programmer, contribute to the development of the [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), which is the backend powering Gramps Web. See [Backend development](../dev-backend) for instructions on how to get started.
 
 
 ## Contribute to backend development (Javascript)
 
-If you are a web programmer, contribute to the development of [Gramps.js](https://github.com/gramps-project/Gramps.js/), which is Gramps Web's responsive frontend. See [Frontend development](../dev-frontend) for instructions on how to get started.
+If you are a web programmer, contribute to the development of [Gramps Web's responsive frontend](https://github.com/gramps-project/gramps-web/). See [Frontend development](../dev-frontend) for instructions on how to get started.
 
 ## Contribute to the Sync addon (Python)
 

@@ -74,4 +74,4 @@ docker-compose logs grampsweb
 docker-compose logs postgres_grampsweb
 ```
 
-If you suspect there is an issue with Gramps Web (or the documentation), please file an issue [on Github](https://github.com/gramps-project/gramps-webapi/issues).
+If you suspect there is an issue with Gramps Web (or the documentation), please file an issue [on Github](https://github.com/gramps-project/gramps-web-api/issues).

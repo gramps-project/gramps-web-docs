@@ -41,7 +41,7 @@ To authorize (fetch a token), only user name and password are necessary, like in
 
 If you want to migrate an existing Gramps Web instance to multi-tree support and are using local media files, you can simply move them to a subfolder of the original location with the tree ID as name.
 
-If you are using media files hosted on S3, you can use the script provided in the `scripts` directory of the `gramps-webapi` repository:
+If you are using media files hosted on S3, you can use the script provided in the `scripts` directory of the `gramps-web-api` repository:
 
 ```bash
 python scripts/s3_rename.py BUCKET_NAME TREE_ID

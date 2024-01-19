@@ -2,10 +2,10 @@ This page describes the steps needed to start with frontend development. It is a
 
 ## Step 1: Clone the repository
 
-Clone the Gramps.js repository
+Clone the frontend repository
 ```
-git clone git@github.com:gramps-project/Gramps.js.git
-cd Gramps.js
+git clone git@github.com:gramps-project/gramps-web.git
+cd gramps-web
 ```
 
 ## Step 2: Build and start the development containers

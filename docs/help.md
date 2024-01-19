@@ -6,8 +6,8 @@ hide:
 If you run into issues or need help with Gramps Web, please pick one of the following options.
 
 [Forum :material-forum:](https://gramps.discourse.group/c/gramps-web/){ .md-button }
-[Backend issues :material-github:](https://github.com/gramps-project/gramps-webapi/issues){ .md-button }
-[Frontend issues :material-github:](https://github.com/gramps-project/Gramps.js/issues){ .md-button }
+[Backend issues :material-github:](https://github.com/gramps-project/gramps-web-api/issues){ .md-button }
+[Frontend issues :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
 
 See below for some guidance on where to head first.
 
@@ -27,8 +27,8 @@ If you encounter a problem that you believe is a bug in Gramps Web, please suppo
 
 There are two separate repositories for the code used in Gramps Web, one for the user interface (&ldquo;frontend&rdquo;) and one for the server code (&ldquo;backend&rdquo;):
 
-- [Frontend issues](https://github.com/gramps-project/Gramps.js/issues)
-- [Backend issues](https://github.com/gramps-project/gramps-webapi/issues)
+- [Frontend issues](https://github.com/gramps-project/gramps-web/issues)
+- [Backend issues](https://github.com/gramps-project/gramps-web-api/issues)
 
 
 If you are unsure where to file an issue, don't worry and just choose either of the two &ndash; the maintainers will be able to transfer the issue if necessary.
