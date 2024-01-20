@@ -16,6 +16,7 @@ nav:
           - Limit CPU usage: cpu-limited.md
           - Multi-tree setup: multi-tree.md
           - Frontend customization: frontend-config.md
+          - Update: Update.md
       # - Command Line Interface: cli.md
   - User guide:
       - Introduction: user-guide/index.md
