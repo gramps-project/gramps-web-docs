@@ -41,21 +41,21 @@ Key | Description
 
 Key | Description 
 ----|-------------
-`MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
-`SEARCH_INDEX_DIR` | Path for the full-text search index. Defaults to `indexdir` relative to the path where the script is run
-`STATIC_PATH` | Path to serve static files from (e.g. a static web frontend)
-`BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct passwort reset links
-`CORS_ORIGINS` | Origins where CORS requests are allowed from. By default, all are disallowed. Use `"*"` to allow requests from any domain.
-`EMAIL_HOST` | SMTP server host (e.g. for sending password reset e-mails)
-`EMAIL_PORT` | SMTP server port. defaults to 465
-`EMAIL_HOST_USER` | SMTP server username
-`EMAIL_HOST_PASSWORD` | SMTP server password
-`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
-`DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
-`THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
-`CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
-`REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
-`EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
+`GRAMPSWEB_MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
+`GRAMPSWEB_SEARCH_INDEX_DIR` | Path for the full-text search index. Defaults to `indexdir` relative to the path where the script is run
+`GRAMPSWEB_STATIC_PATH` | Path to serve static files from (e.g. a static web frontend)
+`GRAMPSWEB_BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct passwort reset links
+`GRAMPSWEB_CORS_ORIGINS` | Origins where CORS requests are allowed from. By default, all are disallowed. Use `"*"` to allow requests from any domain.
+`GRAMPSWEB_EMAIL_HOST` | SMTP server host (e.g. for sending password reset e-mails)
+`GRAMPSWEB_EMAIL_PORT` | SMTP server port. defaults to 465
+`GRAMPSWEB_EMAIL_HOST_USER` | SMTP server username
+`GRAMPSWEB_EMAIL_HOST_PASSWORD` | SMTP server password
+`GRAMPSWEB_EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
+`GRAMPSWEB_DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
+`GRAMPSWEB_THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
+`GRAMPSWEB_CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
+`GRAMPSWEB_REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
+`GRAMPSWEB_EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
 
 
 !!! info
@@ -68,8 +68,8 @@ This is required if you've configured your Gramps database to work with the [Pos
 
 Key | Description 
 ----|-------------
-`POSTGRES_USER` | The user name for the database connection
-`POSTGRES_PASSWORD` | The password for the database user
+`GRAMPSWEB_POSTGRES_USER` | The user name for the database connection
+`GRAMPSWEB_POSTGRES_PASSWORD` | The password for the database user
 
 
 ### Settings relevant for hosting multiple trees
@@ -78,22 +78,22 @@ The following settings are relevant when [hosting multiple trees](multi-tree.md)
 
 Key | Description 
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
-`NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
+`GRAMPSWEB_MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
+`GRAMPSWEB_NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
 
 
 ## Example configuration file
 
 A minimal configuration file for production could look like this:
 ```python
-TREE="My Family Tree"
-BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # your secret key
-USER_DB_URI="sqlite:////path/to/users.sqlite"
-EMAIL_HOST="mail.example.com"
-EMAIL_PORT=465
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER="gramps@example.com"
-EMAIL_HOST_PASSWORD="..." # your SMTP password
-DEFAULT_FROM_EMAIL="gramps@example.com"
+GRAMPSWEB_TREE="My Family Tree"
+GRAMPSWEB_BASE_URL="https://mytree.example.com"
+GRAMPSWEB_SECRET_KEY="..."  # your secret key
+GRAMPSWEB_USER_DB_URI="sqlite:////path/to/users.sqlite"
+GRAMPSWEB_EMAIL_HOST="mail.example.com"
+GRAMPSWEB_EMAIL_PORT=465
+GRAMPSWEB_EMAIL_USE_TLS=True
+GRAMPSWEB_EMAIL_HOST_USER="gramps@example.com"
+GRAMPSWEB_EMAIL_HOST_PASSWORD="..." # your SMTP password
+GRAMPSWEB_DEFAULT_FROM_EMAIL="gramps@example.com"
 ```
