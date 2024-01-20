@@ -25,7 +25,7 @@ The official Gramps Discourse forum has a [separate category for Gramps Web](htt
 
 If you encounter a problem that you believe is a bug in Gramps Web, please support it via Github.
 
-There are two separate repositories for the code used in Gramps Web, one for the user interface (&ldquo;frontend&rdquo;) and one for the server code (&ldquo;backend&rdquo;):
+There are two separate Github repositories for the code used in Gramps Web, one for the user interface (&ldquo;frontend&rdquo;) and one for the server code (&ldquo;backend&rdquo;):
 
 - [Frontend issues](https://github.com/gramps-project/gramps-web/issues)
 - [Backend issues](https://github.com/gramps-project/gramps-web-api/issues)
@@ -33,8 +33,22 @@ There are two separate repositories for the code used in Gramps Web, one for the
 
 If you are unsure where to file an issue, don't worry and just choose either of the two &ndash; the maintainers will be able to transfer the issue if necessary.
 
+In either case, please always include the following information in your report:
+
+- Details about your setup (e.g. a docker-compose file with sensitive values redacted, or whether your are using a hosted vesion such as Grampshub)
+- Version information. To obtain it, go to the "System information" tab on the Settings page in Gramps Web and copy/paste the values in the box, which should look something like this:
+
+```
+Gramps 5.1.6
+Gramps Web API 1.5.1
+Gramps.js 24.1.0
+locale: en
+multi-tree: false
+task queue: true
+```
+
 ## Suggesting enhancements
 
 For general ideas and discussion about future improvements, feel free to open a discussion in the [forum](https://gramps.discourse.group/c/gramps-web/). You may also want to check the issue pages (see links above) whether a particular feature is already planned or being worked on.
 
-For specific enhancements with a limited scope, feel free to directly open an issue with a feature request on Github.
+For specific enhancements with a limited scope, feel free to directly open an issue with a feature request in the appropriate frontend or backend Github repository.
