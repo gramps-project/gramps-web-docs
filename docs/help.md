@@ -35,7 +35,7 @@ If you are unsure where to file an issue, don't worry and just choose either of 
 
 In either case, please always include the following information in your report:
 
-- Details about your setup (e.g. a docker-compose file with sensitive values redacted, or whether your are using a hosted vesion such as Grampshub)
+- Details about your setup (e.g. a docker-compose file with sensitive values redacted, or whether your are using a hosted version... such as Grampshub or Digital Ocean)
 - Version information. To obtain it, go to the "System information" tab on the Settings page in Gramps Web and copy/paste the values in the box, which should look something like this:
 
 ```
