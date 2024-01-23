@@ -169,12 +169,7 @@ Gramps Web comes with an integrated task management app to organize and plan you
 <p>&nbsp;</p>
 
 
-
-
-
-<!-- 
 ## Demo
-[Open Demo](https://gcp-api-puqt5dnf3a-uc.a.run.app/){ .md-button .md-button--primary target="_blank"}
+[Open Demo](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
-User: `owner`, password: `owner` -->
-
+Use `owner`, `editor`, `contributor`, or `member` as username and the same as password.
