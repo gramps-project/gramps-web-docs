@@ -26,7 +26,7 @@ The documentation site you're looking at is hosted [on Github](https://github.co
 If you are a Python programmer, contribute to the development of the [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), which is the backend powering Gramps Web. See [Backend development](../dev-backend) for instructions on how to get started.
 
 
-## Contribute to backend development (Javascript)
+## Contribute to frontend development (Javascript)
 
 If you are a web programmer, contribute to the development of [Gramps Web's responsive frontend](https://github.com/gramps-project/gramps-web/). See [Frontend development](../dev-frontend) for instructions on how to get started.
 
