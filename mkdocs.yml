@@ -17,11 +17,13 @@ nav:
           - Multi-tree setup: multi-tree.md
           - Frontend customization: frontend-config.md
           - Update: Update.md
+          - 2.0 upgrade guide: setup/v2.md
   - Administration:
       - Introduction: admin.md
       - Create owner account: user-guide/owner.md
       - Import data: user-guide/import.md
       - Export data: user-guide/export.md
+      - Manage search index: admin/search.md
       - Synchronize with Gramps: user-guide/sync.md
       # # - Command Line Interface: cli.md
       # - First steps:
