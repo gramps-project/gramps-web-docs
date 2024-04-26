@@ -6,9 +6,9 @@ If you are using Gramps Desktop, there are two steps to prepare your database to
 
 1. Check and repair the database
     - Optional: create a database backup by exporting to Gramps XML
-    - Run the [Check and repair database tool](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Tools#Check_and_Repair_Database). This fixes some internal inconsistencies that could lead to problems in Gramps Web.
+    - Run the [Check and repair database tool](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). This fixes some internal inconsistencies that could lead to problems in Gramps Web.
 2. Convert media paths to relative
-    - Use the Gramps Media Manager to [convert all media paths from absolute to relative](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Note that even with relative paths, any media files outside of your Gramps media directory will not work properly when synchronized with Gramps Web.
+    - Use the Gramps Media Manager to [convert all media paths from absolute to relative](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Note that even with relative paths, any media files outside of your Gramps media directory will not work properly when synchronized with Gramps Web.
 
 ## Import genealogical data
 

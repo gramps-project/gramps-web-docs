@@ -9,8 +9,13 @@ Using Gramps Web Sync requires tree owner permissions in Gramps Web.
 
 ## Installation
 
-The addon requires Gramps 5.1 running on Python 3.7 or newer.
-It is available in Gramps Desktop and can be installed [in the usual way](https://www.gramps-project.org/wiki/index.php/5.1_Addons#Installing_Addons_in_Gramps).
+The addon requires Gramps 5.2 running on Python 3.8 or newer.
+It is available in Gramps Desktop and can be installed [in the usual way](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps).
+
+
+!!! warn
+    Please make sure to use the same version of Gramps on your desktop as the one running on your server. See the [Get Help](../help.md) section for how to find out which Gramps version your server is running. The Gramps version has the form `MAJOR.MINOR.PATCH`, and `MAJOR` and `MINOR` must be the same on web and desktop.
+
 
 Optional step:
 
