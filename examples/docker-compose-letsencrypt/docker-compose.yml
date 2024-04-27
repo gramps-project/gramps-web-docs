@@ -42,7 +42,7 @@ services:
     command: celery -A gramps_webapi.celery worker --loglevel=INFO
 
   grampsweb_redis:
-    image: redis:alpine
+    image: redis:7.2.4-alpine
     container_name: grampsweb_redis
     restart: always
 
