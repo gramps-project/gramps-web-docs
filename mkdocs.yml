@@ -38,8 +38,10 @@ nav:
         - Tag people in photos: user-guide/tagging.md
         - Use the blog: user-guide/blog.md
         - Manage tasks: user-guide/tasks.md
+      - Revision history: user-guide/revisions.md
       - Advanced features:
         - DNA: user-guide/dna.md
+        - GQL filters: user-guide/gql.md
   - Development:
       - Overview: dev.md
       - Backend:
