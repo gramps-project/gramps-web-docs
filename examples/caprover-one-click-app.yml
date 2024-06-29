@@ -1,7 +1,7 @@
 captainVersion: 4
 services:
     $$cap_appname-redis:
-        image: redis:$$cap_redis_version
+        image: docker.io/library/redis:$$cap_redis_version
         container_name: $$cap_appname-redis
         restart: always
         caproverExtra:
