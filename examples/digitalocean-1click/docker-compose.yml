@@ -41,12 +41,12 @@ services:
     command: celery -A gramps_webapi.celery worker --loglevel=INFO
 
   grampsweb_redis:
-    image: redis:7.2.4-alpine
+    image: docker.io/library/redis:7.2.4-alpine
     container_name: grampsweb_redis
     restart: always
 
   proxy:
-    image: nginxproxy/nginx-proxy
+    image: docker.io/nginxproxy/nginx-proxy
     container_name: nginx-proxy
     restart: always
     ports:
@@ -66,7 +66,7 @@ services:
       - proxy-tier
 
   acme-companion:
-    image: nginxproxy/acme-companion
+    image: docker.io/nginxproxy/acme-companion
     container_name: nginx-proxy-acme
     restart: always
     environment:
