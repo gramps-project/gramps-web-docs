@@ -165,6 +165,13 @@ Gramps Web comes with an integrated task management app to organize and plan you
 <div style="clear:both;"></div>
 <hr>
 
+![Image title](screenshots/ohm.png){ align=left width="400"}
+
+## Integration of OpenHistoricalMap
+
+The historical vector maps created by the [OpenHistoricalMap](https://www.openhistoricalmap.org/) project are the perfect complement to genealogical mapping. Use the time slider to scroll through the evolution of the places in your family history and display the places where ancestors lived or events happened.
+
+<div style="clear:both;"></div>
 
 <p>&nbsp;</p>
 
