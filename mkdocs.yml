@@ -23,7 +23,7 @@ nav:
       - Create owner account: user-guide/owner.md
       - Import data: user-guide/import.md
       - Export data: user-guide/export.md
-      - Manage search index: admin/search.md
+      # - Manage search index: admin/search.md
       - Synchronize with Gramps: user-guide/sync.md
       # # - Command Line Interface: cli.md
       # - First steps:
