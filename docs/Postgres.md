@@ -14,12 +14,13 @@ Using a dockerized PostgreSQL with Gramps is only complicated by the fact the th
     image: ghcr.io/davidmstraub/gramps-postgres:latest
     restart: unless-stopped
     environment:
-      POSTGRES_USER: gramps
-      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_PASSWORD: postgres_password_admin
+      POSTGRES_PASSWORD_GRAMPS: postgres_password_gramps
+      POSTGRES_PASSWORD_GRAMPS_USER: postgres_password_gramps_user
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-and also add `postgres_data:` as key under the `volumes:` section of this YAML file.
+and also add `postgres_data:` as key under the `volumes:` section of this YAML file. This image contains a separate database for Gramps genealogical data and for the Gramps user database; they each can have separate passwords.
 
 ## Importing a Gramps family tree
 
@@ -50,6 +51,26 @@ To configure Web API for use with the PostgreSQL database, add the following und
       # the PostgreSQL container
       POSTGRES_USER: gramps
       POSTGRES_PASSWORD: your_postgres_password
+```
+
+## Using a shared PostgreSQL database in a multi-tree installation
+
+When using a [multi-tree setup](https://www.grampsweb.org/multi-tree/), the SharedPostgreSQL addon is a convenient option to host all trees, also newly created ones via the API, in a single PostgreSQL database without compromising privacy or security.
+
+To achieve this, set up a container based on the `gramps-postgres` image as described above and simply set the config option `NEW_DB_BACKEND` to `sharedpostgresql`, e.g. via the `GRAMPSWEB_NEW_DB_BACKEND` environment variable.
+
+## Using a PostgreSQL database for the user database
+
+Independently of which database backend is used for the genealogical data, the user database can be hosted in a PostgreSQL database by providing an appropriate database URL. The `gramps-postgres` docker image mentioned above contains a separate database `grampswebuser` that can be used for this purpose. In that case, the appropriate value for the `USER_DB_URI` config option would be
+```
+postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
+```
+
+## Using a PostgreSQL database for the search index
+
+Since Gramps Web API version 2.4.0, the search index is hosted either in an SQLite database (the default) or a PostgreSQL database. Also for this purpose, the `gramps-postgres` image can be used. For the search index, we can use the `gramps` database provided by the image, regardless of whether we are hosting our genealogical data in PostgreSQL or not (the search index and genealogical data can coexist in the same database). This can be achieved, in the above example, by setting the `SEARCH_INDEX_DB_URI` config option to
+```
+postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
 
