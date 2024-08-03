@@ -1,33 +1,21 @@
 # Using a PostgreSQL database
 
-By default, Gramps uses a file-based SQLite database to store the family tree. This works perfectly fine for Gramps Web and is recommended for most users. However, starting with Gramps Web API version 0.3.0, also a PostgreSQL server with a single family tree per database is supported, powered by the [Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
+By default, Gramps uses a file-based SQLite database to store the family tree. This works perfectly fine for Gramps Web and is recommended for most users. However, starting with Gramps Web API version 0.3.0, also a PostgreSQL server with a single family tree per database is supported, powered by the [Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Since [version 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0), also the SharedPostgreSQL Addon is supported, which allows hosting multiple family trees in a single database, which is particularly useful when used together with Gramps Web API [multi-tree support](https://www.grampsweb.org/multi-tree/).
 
 ## Setting up the PostgreSQL server
 
-You can follow the [instructions in the Gramps Wiki](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) to set up the PostgreSQL server.
+If you want to set up a new database for use with the PostgreSQLAddon, you can follow the [instructions in the Gramps Wiki](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) to set up the server.
 
 Alternatively, you can also use Docker Compose to run the PostgreSQL server in a container on the same docker host as Gramps Web.
 
-Using a dockerized PostgreSQL with Gramps is only complicated by the fact the the default PostgreSQL images do not have any locales installed, which are however needed by Gramps for localized collation of objects. Thus, it is necessary to use a custom Dockerfile. 
-
-Create a `Dockerfile` with the following contens in a directory `postgres` next to your `docker-compose.yml`:
-
-```
-FROM postgres:14
-
-RUN apt-get update && apt-get install -y locales-all \
-    && rm -rf /var/lib/apt/lists/*
-```
-
-Next, add the following section to your `docker-compose.yml`:
-
+Using a dockerized PostgreSQL with Gramps is only complicated by the fact the the default PostgreSQL images do not have any locales installed, which are however needed by Gramps for localized collation of objects. The easiest option is to use the `gramps-postgres` image released in [this repository](https://github.com/DavidMStraub/gramps-postgres-docker/). To use it, add the following section to your `docker-compose.yml`:
 ```yaml
   postgres_gramps:
-    build: ./postgres
+    image: ghcr.io/davidmstraub/gramps-postgres:latest
     restart: unless-stopped
     environment:
+      POSTGRES_USER: gramps
       POSTGRES_PASSWORD: your_postgres_password
-      POSTGRES_USER: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
@@ -60,7 +48,7 @@ To configure Web API for use with the PostgreSQL database, add the following und
       TREE: postgres
       # The credentials must agree with the ones used for
       # the PostgreSQL container
-      POSTGRES_USER: postgres
+      POSTGRES_USER: gramps
       POSTGRES_PASSWORD: your_postgres_password
 ```
 
