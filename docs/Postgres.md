@@ -35,7 +35,7 @@ docker-compose run --entrypoint "" grampsweb \
     --config=database.backend:postgresql \
     --config=database.host:postgres_gramps \
     --config=database.port:5432 \
-    --username=postgres --password=your_postgres_password
+    --username=gramps --password=postgres_password_gramps
 ```
 
 ## Configuring Web API for use with the database
@@ -50,7 +50,7 @@ To configure Web API for use with the PostgreSQL database, add the following und
       # The credentials must agree with the ones used for
       # the PostgreSQL container
       POSTGRES_USER: gramps
-      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
 ## Using a shared PostgreSQL database in a multi-tree installation
