@@ -180,3 +180,8 @@ The historical vector maps created by the [OpenHistoricalMap](https://www.openhi
 [Open Demo](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 Use `owner`, `editor`, `contributor`, or `member` as username and the same as password.
+
+### Thanks
+
+The demo is kindly supported by DigitalOcean.
+<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
