@@ -19,6 +19,22 @@ This will generate six named volumes to make sure that all relevant data will pe
 !!! warning
     The above will make the API available on port 80 of the host machine **without SSL/TLS protection**. You can use this for local testing, but do not expose this directly to the internet, it is completely insecure!
 
+!!! warning
+    The six named volumes generated from the above example may be removed when issuing `docker compose down`. In order to have truly persistent volumes that will not be removed by docker compose, first create the volumes like this:
+
+    ```
+    docker volume create gramps_users
+    docker volume create gramps_index
+    docker volume create gramps_thumb_cache
+    docker volume create gramps_cache
+    docker volume create gramps_secret
+    docker volume create gramps_db
+    docker volume create gramps_media
+    docker volume create gramps_tmp
+    ```
+
+    Then insert the following contents in your `docker-compose.yml`: [docker-compose.yml](https://raw.githubusercontent.com/gramps-project/gramps-web-docs/main/examples/docker-compose-external-volumes/docker-compose.yml).
+
 ## Step 2: Secure access with SSL/TLS
 
 The web API **must** be served to the public internet over HTTPS. There are several options, e.g.
