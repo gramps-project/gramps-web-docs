@@ -24,14 +24,14 @@ There are two ways to manage users:
 - With owner permissions using the web interface
 - On the command line on the server
 
-The owner account required to first access the web app can be added in the onboarding wizard that is automatically launched when accessing Gramps Web with an empty user database. 
+The owner account required to first access the web app can be added in the onboarding wizard that is automatically launched when accessing Gramps Web with an empty user database.
 
 ### Managing users on the command line
 
 When using [Docker Compose](Deployment.md), the basic command is
 
 ```bash
-docker-compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
+docker compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
 ```
 
 The `COMMAND` can be `add` or `delete`. Use `--help` for `[ARGS]` to show the syntax and possible configuration options.

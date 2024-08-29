@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   grampsweb: &grampsweb
     image: ghcr.io/gramps-project/grampsweb:latest

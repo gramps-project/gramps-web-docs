@@ -7,4 +7,4 @@
 cp -f /etc/skel/.bashrc /root/.bashrc
 
 # start services using docker-compose
-(cd /opt/grampsweb && docker-compose pull && docker-compose stop && docker-compose up --remove-orphans -d)
+(cd /opt/grampsweb && docker compose pull && docker compose stop && docker compose up --remove-orphans -d)

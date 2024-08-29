@@ -13,7 +13,7 @@ cd gramps-web
 To build and start the containers running the Gramps Web backend with the Gramps example database, as well as the frontend in development mode, simply run
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Options for logging in are: owner, editor, contributor, guest or member (use same word for both username and password).
@@ -32,10 +32,10 @@ Once you make changes to the frontend code, you browser will be reloaded automat
 The installed git hooks will format and lint the code on every commit. You can run the scripts manually using
 
 ```
-docker-compose run gramps-frontend format
+docker compose run gramps-frontend format
 ```
 and
 ```
-docker-compose run gramps-frontend lint
+docker compose run gramps-frontend lint
 ```
 respectively.
