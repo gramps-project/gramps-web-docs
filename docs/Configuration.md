@@ -76,6 +76,18 @@ Key | Description
 `POSTGRES_PASSWORD` | The password for the database user
 
 
+### Seetings only for AI features
+
+These settings are needed if you want to use AI-powered features like chat or semantic search.
+
+Key | Description 
+----|-------------
+`LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
+`LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.
+`VECTOR_EMBEDDING_MODEL` | The [Sentence Transformers](https://sbert.net/) model to use for semantic search vector embeddings. If unset (the default), semantic search and chat are disabled.
+
+
+
 ### Settings relevant for hosting multiple trees
 
 The following settings are relevant when [hosting multiple trees](multi-tree.md).
