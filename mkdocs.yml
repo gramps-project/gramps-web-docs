@@ -14,6 +14,7 @@ nav:
           - Using PostgreSQL: Postgres.md
           - Hosting media on S3: s3.md
           - Limit CPU usage: cpu-limited.md
+          - Set up AI chat: ai.md
           - Multi-tree setup: multi-tree.md
           - Frontend customization: frontend-config.md
           - Update: Update.md
@@ -42,6 +43,7 @@ nav:
       - Advanced features:
         - DNA: user-guide/dna.md
         - GQL filters: user-guide/gql.md
+        - AI chat: user-guide/chat.md
   - Development:
       - Overview: dev.md
       - Backend:
