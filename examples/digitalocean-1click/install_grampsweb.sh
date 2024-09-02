@@ -23,7 +23,7 @@ apt-get -qq install --no-install-recommends apt-transport-https ca-certificates 
 # install docker if needed
 if ! command -v docker &> /dev/null; then
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/download.docker.com.gpg
-  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable"
   apt-get update
   apt-get -qq install docker-ce
 fi
@@ -31,7 +31,7 @@ fi
 # install docker-compose if needed
 if ! command -v docker-compose &> /dev/null; then
   apt-get update
-  apt-get -qq install docker-compose
+  apt-get -qq install docker-compose-plugin
 fi
 
 # create user

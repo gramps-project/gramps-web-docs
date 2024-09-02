@@ -35,7 +35,7 @@ If you plan to use Gramps Web only on your local network, you can skip this step
 Run
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 On first run, the app will display a first-run wizard that will allow you to

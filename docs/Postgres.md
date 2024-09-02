@@ -29,7 +29,7 @@ Again, if you have set up the PostgreSQL server yourself, you can follow the [in
 Alternatively, if you have followed the Docker Compose instructions above, you can use the following command to import a Gramps XML file located on your docker host:
 
 ```bash
-docker-compose run --entrypoint "" grampsweb \
+docker compose run --entrypoint "" grampsweb \
     gramps -C postgres \
     -i /root/.gramps/grampsdb/my_tree.gramps \
     --config=database.backend:postgresql \
@@ -44,7 +44,7 @@ To configure Web API for use with the PostgreSQL database, add the following und
 
 ```yaml
       # the PostgreSQL addon assumes the tree name to be
-      # equal to the database name and here the default 
+      # equal to the database name and here the default
       # database name of the PostgreSQL image is used
       TREE: postgres
       # The credentials must agree with the ones used for
@@ -79,8 +79,8 @@ postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 In case of issues, please monitor the log output of Gramps Web and the PostgreSQL server. In the case of docker, this is achieved with
 
 ```
-docker-compose logs grampsweb
-docker-compose logs postgres_grampsweb
+docker compose logs grampsweb
+docker compose logs postgres_grampsweb
 ```
 
 If you suspect there is an issue with Gramps Web (or the documentation), please file an issue [on Github](https://github.com/gramps-project/gramps-web-api/issues).
