@@ -1,7 +1,8 @@
 nav:
+  - Introduction:       index.md
   - Features:
-      - Features: index.md
-  - Setup:
+    - features/features.md
+  - Install/Setup:
       - Getting Started: setup.md
       - Try out locally: quickstart.md
       - Installation and Deployment:
@@ -75,6 +76,8 @@ theme:
   favicon: favicon.ico
 plugins:
   - search
+  - glightbox:
+        manual:    false    # optional lightboxing.  Requires HTML in markdown.
 markdown_extensions:
   - admonition
   - pymdownx.highlight
