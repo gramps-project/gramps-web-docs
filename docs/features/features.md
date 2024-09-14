@@ -28,7 +28,7 @@ Many folks want to keep some details private and we respect that!  You can mark 
 
 
 
-![Image title](screenshots/new_media.png){ align=left width="400"}
+![Image title](screenshots/mobile.png){ align=left width="400"}
 
 ##	Web Browser Convenience
 

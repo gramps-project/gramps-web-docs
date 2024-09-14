@@ -41,6 +41,7 @@ glightbox, then they can view additional images if they like.  win-win
   <img src="features/screenshots/list.png">
   <img src="features/screenshots/report.png">
   <img src="features/screenshots/sync.png">  
+  <img src="features/screenshots/mobile.png">  
 </p>
 
 
@@ -49,8 +50,8 @@ glightbox, then they can view additional images if they like.  win-win
 Gramps Web is designed to be a companion to [***Gramps Desktop***](https://gramps-project.org/blog/), the leading open source genealogy desktop application.  *Gramps Desktop* is the primary tool for building and managing your genealogy database and *Gramps Web* is a portal, through which others can contribute to the database from afar without having to learn or install Gramps Desktop.
 
 *	[Click here to see the Features of Gramps Web](features/features.md) 
-*	[Click here for Install and Setup Information](setup.md)
-*	[Click here for the Administrator's Guide](admin.md)
+*	[Click here for Install and Setup Information](install_setup/setup.md)
+*	[Click here for the Web Administrator's Guide](administration/admin.md)
 *	[Click here for the User Guide](user-guide/)
 *	***Want to try a Demo?***  Click the button below and login using any one of the following four usernames below. Use the same name for the password also.  Special thanks to ***DigitalOcean®*** for hosting the demo!
 
