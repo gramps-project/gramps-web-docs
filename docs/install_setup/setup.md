@@ -1,5 +1,5 @@
 
-# Gramps Web Setup
+# Gramps Web Install / Setup
 
 This section deals with the installation and setup of Gramps Web, as well as other options to get started.
 

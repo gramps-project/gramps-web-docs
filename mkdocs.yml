@@ -1,87 +1,92 @@
 nav:
+  - Introduction:  index.md
   - Features:
-      - Features: index.md
-  - Setup:
-      - Getting Started: setup.md
-      - Try out locally: quickstart.md
+    -                                               features/features.md
+  - Install/Setup:
+      - Getting Started:  install_setup/setup.md
+      - Try out locally:  install_setup/quickstart.md
       - Installation and Deployment:
-          - Deploy with Docker: Deployment.md
-          - Docker with Let's Encrypt: LetsEncrypt.md
-          - DigitalOcean: DigitalOcean.md
+          - Deploy with Docker:  install_setup/deployment.md
+          - Docker with Let's Encrypt:  install_setup/lets_encrypt.md
+          - DigitalOcean:  install_setup/digital_ocean.md
       - Server Administration:
-          - User system: Users.md
-          - Server Configuration: Configuration.md
-          - Using PostgreSQL: Postgres.md
-          - Hosting media on S3: s3.md
-          - Limit CPU usage: cpu-limited.md
-          - Multi-tree setup: multi-tree.md
-          - Frontend customization: frontend-config.md
-          - Update: Update.md
-          - 2.0 upgrade guide: setup/v2.md
+          - User system:  install_setup/users.md
+          - Server Configuration:  install_setup/configuration.md
+          - Using PostgreSQL:  install_setup/postgres.md
+          - Hosting media on S3:  install_setup/s3.md
+          - Limit CPU usage:  install_setup/cpu-limited.md
+          - Multi-tree setup:  install_setup/multi-tree.md
+          - Frontend customization:  install_setup/frontend-config.md
+          - Update:  install_setup/update.md
+          - 2.0 upgrade guide:  install_setup/v2.md
   - Administration:
-      - Introduction: admin.md
-      - Create owner account: user-guide/owner.md
-      - Import data: user-guide/import.md
-      - Export data: user-guide/export.md
-      # - Manage search index: admin/search.md
-      - Synchronize with Gramps: user-guide/sync.md
-      # # - Command Line Interface: cli.md
+      - Introduction:  administration/admin.md
+      - Create owner account:  administration/owner.md
+      - Import data:  administration/import.md
+      - Export data:  administration/export.md
+      # - Manage search index:  admin/search.md
+      - Synchronize with Gramps:  administration/sync.md
+      # # - Command Line Interface:  cli.md
       # - First steps:
-      #   - Create owner account: user-guide/owner.md
-  - Usage:
-      - Introduction: user-guide/index.md
+      #   - Create owner account:  user-guide/owner.md
+  - User Guide:
+      - Introduction:  user-guide/index.md
       - First steps:
-        - Registration: user-guide/registration.md
-        - First login: user-guide/first-login.md
+        - Registration:  user-guide/registration.md
+        - First login:  user-guide/first-login.md
       - Edit data:  
-        - Add media files: user-guide/media.md
-        - Tag people in photos: user-guide/tagging.md
-        - Use the blog: user-guide/blog.md
-        - Manage tasks: user-guide/tasks.md
-      - Revision history: user-guide/revisions.md
+        - Add media files:  user-guide/media.md
+        - Tag people in photos:  user-guide/tagging.md
+        - Use the blog:  user-guide/blog.md
+        - Manage tasks:  user-guide/tasks.md
+      - Revision history:  user-guide/revisions.md
       - Advanced features:
-        - DNA: user-guide/dna.md
-        - GQL filters: user-guide/gql.md
-  - Development:
-      - Overview: dev.md
+        - DNA:  user-guide/dna.md
+        - GQL filters:  user-guide/gql.md
+  - Developers:
+      - Overview:  development/dev.md
       - Backend:
-        - Introduction: dev-backend/index.md
-        - Development setup: dev-backend/setup.md
-        - API specification: dev-backend/api.md
-        - Manual queries: dev-backend/queries.md
+        - Introduction:  development/backend/index.md
+        - Development setup:  development/backend/setup.md
+        - API specification:  development/backend/api.md
+        - Manual queries:  development/backend/queries.md
       - Frontend:
-          - Introduction: dev-frontend/index.md
-          - Architecture: dev-frontend/architecture.md
-          - Development setup: dev-frontend/setup.md
-          - Translation: dev-frontend/translation.md
-  - Contribute: contribute.md
-  - Get Help: help.md
-site_name: Gramps Web
-site_url: https://www.grampsweb.org
-edit_uri: https://github.com/gramps-project/gramps-web-docs/blob/main/docs/
-repo_url: https://github.com/gramps-project/gramps-web
+          - Introduction:  development/frontend/index.md
+          - Architecture:  development/frontend/architecture.md
+          - Development setup:  development/frontend/setup.md
+          - Translation:  development/frontend/translation.md
+  - Contribute:  contribute/contribute.md
+  - Get Help:  help/help.md
+  
+  
+site_name:  Gramps Web
+site_url:  https://www.grampsweb.org
+edit_uri:  https://github.com/gramps-project/gramps-web-docs/blob/main/docs/
+repo_url:  https://github.com/gramps-project/gramps-web
 theme:
-  name: "material"
+  name:  "material"
   features:
     - navigation.tabs
     - navigation.instant
     - navigation.expand
     - navigation.footer
   palette:
-    scheme: default
-    primary: brown
-    accent: blue
-  logo: logo.svg
-  favicon: favicon.ico
+    scheme:  default
+    primary:  brown
+    accent:  blue
+  logo:  logo.svg
+  favicon:  favicon.ico
 plugins:
   - search
+  - glightbox:
+        manual:  false    # optional lightboxing.  Requires HTML in markdown.
 markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
   - attr_list
   # - toc:
-  #     toc_depth : "0"
+  #     toc_depth :  "0"
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index:  !!python/name:materialx.emoji.twemoji
+      emoji_generator:  !!python/name:materialx.emoji.to_svg

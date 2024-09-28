@@ -1,6 +1,8 @@
 # Gramps Web DigitalOcean 1-Click App
 
-Instead of [setting up Gramps Web yourself](Deployment.md), you can also use the [Gramps Web DigitalOcean 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy).
+Instead of [setting up Gramps Web yourself](Deployment.md), you can also use the [Gramps Web DigitalOcean 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy).  Digital Ocean hosts the Demo version of Gramps Web.
+
+<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
 
 As part of the setup procedure, you will have to sign up for an account with DigitalOcean and select a paid plan for the "droplet" (virtual machine) to use.
 
@@ -35,3 +37,6 @@ When this is done, wait for the setup to be completed in the background
 ## Step 5: Launch Gramps Web
 
 Your Gramps Web instance should now be accessible at the root of your domain, with a valid SSL certificate, and it should be showing the first-run assistant.
+
+
+

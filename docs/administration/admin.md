@@ -1,4 +1,4 @@
-# Gramps Web Family Tree Administration
+# Gramps Web Administrator's Guide
 
 Whether you have set up your own instance of Gramps Web or signed up for a pre-installed one, the next step is to populate and manage your family tree database.
 
