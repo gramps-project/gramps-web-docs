@@ -12,7 +12,7 @@ hide:
 
 Gramps Web uses the same **Model / Database** structure that [Gramps Desktop](https://gramps-project.org/) uses for storing genalogical data.  You can browse all the same [Record Types](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) you do in Gramps Desktops: ***people, families, events, places, repositories, sources, citations, media objects, and notes.***
 
-Using the [Gramps Web Add-on](https://gramps-project.org/wiki/index.php/Addon:Gramps_Web) for Gramps Desktop, data can be synchronized bi-directionally between Gramps Web and Gramps Desktop! Go ahead and edit your data with Gramps Web or the Gramps Desktop App which you know and love - they work together seamlessly!
+Using the [Gramps Web Sync Add-on](administration/sync.md) for Gramps Desktop, data can be synchronized bi-directionally between Gramps Web and Gramps Desktop! Go ahead and edit your data with Gramps Web or the Gramps Desktop App which you know and love - they work together seamlessly!
 
 <div style="clear:both;"></div>
 ---
