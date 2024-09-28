@@ -26,7 +26,7 @@ The web API **must** be served to the public internet over HTTPS. There are seve
 - Using docker hosting that includes SSL/TLS automatically
 - Using an Nginx Reverse Proxy with a Let's Encrypt certificate
 
-See [Docker with Let's Encrypt](LetsEncrypt.md) for how to set up the former.
+See [Docker with Let's Encrypt](lets_encrypt.md) for how to set up the former.
 
 If you plan to use Gramps Web only on your local network, you can skip this step.
 
@@ -50,4 +50,4 @@ There are several options for uploading media files.
 
 - When using files stored on the same server as Gramps Web, you can mount a directory into the Docker container instead of using a named volume, i.e. `/home/server_user/gramps_media/:/app/media`instead of `gramps_media:/app/media`, and upload your media files there.
 - When using media files [hosted on S3](s3.md), you can use he S3 Media Uploader Addon
-- The arguably most convenient option is to use [Gramps Web Sync](user-guide/sync.md).
+- The arguably most convenient option is to use [Gramps Web Sync](../administration/sync.md).
