@@ -1,6 +1,6 @@
 # Using a PostgreSQL database
 
-By default, Gramps uses a file-based SQLite database to store the family tree. This works perfectly fine for Gramps Web and is recommended for most users. However, starting with Gramps Web API version 0.3.0, also a PostgreSQL server with a single family tree per database is supported, powered by the [Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Since [version 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0), also the SharedPostgreSQL Addon is supported, which allows hosting multiple family trees in a single database, which is particularly useful when used together with Gramps Web API [multi-tree support](https://www.grampsweb.org/multi-tree/).
+By default, Gramps uses a file-based SQLite database to store the family tree. This works perfectly fine for Gramps Web and is recommended for most users. However, starting with Gramps Web API version 0.3.0, also a PostgreSQL server with a single family tree per database is supported, powered by the [Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Since [version 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0), also the SharedPostgreSQL Addon is supported, which allows hosting multiple family trees in a single database, which is particularly useful when used together with Gramps Web API [multi-tree support](multi-tree.md).
 
 ## Setting up the PostgreSQL server
 
