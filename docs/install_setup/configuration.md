@@ -8,7 +8,7 @@ This page lists all methods to change the configuration and all existing configu
 
 For the settings, you can either use a configuration file or environment variables.
 
-When you use the [Docker Compose based setup](Deployment.md), you can include a configuration file by adding the following list item under the `volumes:` key in the `grampsweb:` block:
+When you use the [Docker Compose based setup](install_setup/deployment.md), you can include a configuration file by adding the following list item under the `volumes:` key in the `grampsweb:` block:
 
 ```yaml
       - /path/to/config.cfg:/app/config/config.cfg

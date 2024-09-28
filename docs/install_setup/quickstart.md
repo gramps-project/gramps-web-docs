@@ -18,4 +18,4 @@ docker run -p "5055:5000" -e TREE=new \
   ghcr.io/gramps-project/grampsweb:latest
 ```
 
-Note that this will not persist the changes you make to the database when you restart the container. To properly set up Gramps Web, continue reading about [Deployment](Deployment.md).
+Note that this will not persist the changes you make to the database when you restart the container. To properly set up Gramps Web, continue reading about [Deployment](install_setup/deployment.md).
