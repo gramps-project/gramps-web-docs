@@ -29,7 +29,7 @@ See [Deploy with Docker](install_setup/deployment.md) for setup instructions.
 
 Installing Gramps Web can be more challenging than other, simple web applications and is not compatible with ordinary "shared hosting" providers. You can sign up for a virtual server and install Gramps Web [manually](install_setup/deployment.md).
 
-A simpler option is to use a pre-installed cloud image. One example is our [DigitalOcean 1-click app](DigitalOcean.md).
+A simpler option is to use a pre-installed cloud image. One example is our [DigitalOcean 1-click app](install_setup/digital_ocean.md).
 
 ## Sign up for a hosted instance
 
@@ -39,4 +39,4 @@ Here is a list of dedicated hosting providers for Gramps Web (the Gramps open so
 
 - Grampshub ([www.grampshub.com](https://www.grampshub.com)), offered by one of the Gramps Web main contributors
 
-If you use a hosted option for Gramps Web, you can skip the rest of this section and jump right to the [Administration](admin.md) section.
+If you use a hosted option for Gramps Web, you can skip the rest of this section and jump right to the [Administration](administration/admin.md) section.
