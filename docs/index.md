@@ -49,7 +49,7 @@ glightbox, then they can view additional images if they like.  win-win
 
 Gramps Web is designed to be a companion to [***Gramps Desktop***](https://gramps-project.org/blog/), the leading open source genealogy desktop application.  <u>Gramps <b><i>Desktop</i></b></u> is the primary tool for building and managing your genealogy database and <u>Gramps <b><i>Web</i></b></u> is a portal, through which others can contribute to the database from afar without having to learn or install Gramps Desktop.
 
-*	[Gramps Web Features Overview](features/features.md) 
+*	[Gramps Web Features Overview](features/index.md) 
 *	[Install and Setup Information](install_setup/setup.md)
 *	[Web Administrator's Guide](administration/admin.md)
 *	[User Guide](user-guide/index.md)

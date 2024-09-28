@@ -1,7 +1,7 @@
 nav:
   - Introduction:  index.md
   - Features:
-    -                                               features/features.md
+    - features/index.md
   - Install/Setup:
       - Getting Started:  install_setup/setup.md
       - Try out locally:  install_setup/quickstart.md
