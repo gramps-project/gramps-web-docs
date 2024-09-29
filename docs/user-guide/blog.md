@@ -6,7 +6,7 @@ In the Gramps database, blog posts are represented as sources with a note attach
 
 ## Add a blog post
 
-To add a blog post, you can use Gramps Web or Gramps Dekstop ([synchronized](sync.md) with Gramps Web), the steps are the same in both cases:
+To add a blog post, you can use Gramps Web or Gramps Dekstop ([synchronized](../administration/sync.md) with Gramps Web), the steps are the same in both cases:
 
 - Add a new source. The title of the source will be the title of your blog post, the author of the source will be the author of the post.
 - Optionally, associate the source with a repository corresponding to your Gramps Web blog

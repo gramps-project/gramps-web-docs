@@ -25,6 +25,6 @@ If the confirmation e-mail does not arrive (and you have checked your Spam folde
 
 ## 4. Enable account
 
-After the e-mail address has been confirmed, the tree owner will receive an e-mail notification and can enable the new user account by going to the "User administration" section in settings page (accessible via the user icon in the top app bar) and changing the user role from "disabled" to any of the [other roles](../Users.md).
+After the e-mail address has been confirmed, the tree owner will receive an e-mail notification and can enable the new user account by going to the "User administration" section in settings page (accessible via the user icon in the top app bar) and changing the user role from "disabled" to any of the [other roles](../install_setup/users.md).
 
 Note that the new user will *not* receive an automated notification that their account has been enabled, so it is advisible for the administrator to notify them personally.
