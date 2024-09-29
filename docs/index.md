@@ -45,9 +45,9 @@ glightbox, then they can view additional images if they like.  win-win
   <img src="features/screenshots/mobile.png">  
 </p>
 
-**Gramps Web** is a Web Browser based application, ideally suited for collaborating with others to build your family tree together. It can be accessed from any mobile or portable web-enabled device. Gramps Web is free & open source software, with the privacy and control of your data a top priority!
+**Gramps Web** is a web based application, ideally suited for collaborating with others to build your family tree together. It can be accessed from any mobile or portable web-enabled device. Gramps Web is free & open source software, with the privacy and control of your data a top priority!
 
-Gramps Web is designed to be a companion to [***Gramps Desktop***](https://gramps-project.org/blog/), the leading open source genealogy desktop application.  <u>Gramps <b><i>Desktop</i></b></u> is the primary tool for building and managing your genealogy database and <u>Gramps <b><i>Web</i></b></u> is a portal, through which others can contribute to the database from afar without having to learn or install Gramps Desktop.
+Gramps Web is designed to be a companion to [*Gramps Desktop*](https://gramps-project.org/blog/), the leading open source genealogy desktop application.  Gramps *Desktop* is the primary tool for building and managing your genealogy database and Gramps *Web* is a portal through which others can contribute to the database from afar without having to learn or install Gramps Desktop.
 
 *	[Gramps Web Features Overview](features/index.md) 
 *	[Install and Setup Information](install_setup/setup.md)
