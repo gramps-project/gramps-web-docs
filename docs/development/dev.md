@@ -12,4 +12,4 @@ Gramps Web is a web application that consists of two components that are develop
 
 A note on versioning: Gramps Web API and and the Gramps Web frontend are versioned independently. At present, "Gramps Web" &ndash; the combined application &ndash; does not have a separate version number. Both projects adhere to [SemVer](https://semver.org/).
 
-If you are not a Python or Javascript developer but would still like to contribute to Gramps Web, check out [Contribute](contribute.md).
+If you are not a Python or Javascript developer but would still like to contribute to Gramps Web, check out [Contribute](../contribute/contribute.md).
