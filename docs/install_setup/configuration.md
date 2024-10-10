@@ -80,10 +80,22 @@ Key | Description
 
 The following settings are relevant when [hosting multiple trees](multi-tree.md).
 
+
 Key | Description 
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
+
+ 
+### Seetings only for AI features
+
+These settings are needed if you want to use AI-powered features like chat or semantic search.
+
+Key | Description 
+----|-------------
+`LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
+`LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.
+`VECTOR_EMBEDDING_MODEL` | The [Sentence Transformers](https://sbert.net/) model to use for semantic search vector embeddings. If unset (the default), semantic search and chat are disabled.
 
 
 ## Example configuration file

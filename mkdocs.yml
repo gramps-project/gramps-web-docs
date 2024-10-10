@@ -11,13 +11,14 @@ nav:
           - DigitalOcean:  install_setup/digital_ocean.md
       - Server Administration:
           - User system:  install_setup/users.md
-          - Server Configuration:  install_setup/configuration.md
-          - Using PostgreSQL:  install_setup/postgres.md
-          - Hosting media on S3:  install_setup/s3.md
-          - Limit CPU usage:  install_setup/cpu-limited.md
+          - Server configuration:  install_setup/configuration.md
+          - Setting up AI chat: install_setup/chat.md
           - Multi-tree setup:  install_setup/multi-tree.md
           - Frontend customization:  install_setup/frontend-config.md
           - Update:  install_setup/update.md
+          - Using PostgreSQL:  install_setup/postgres.md
+          - Hosting media on S3:  install_setup/s3.md
+          - Limit CPU usage:  install_setup/cpu-limited.md
           - 2.0 upgrade guide:  install_setup/v2.md
   - Administration:
       - Introduction:  administration/admin.md
@@ -43,6 +44,7 @@ nav:
       - Advanced features:
         - DNA:  user-guide/dna.md
         - GQL filters:  user-guide/gql.md
+        - AI chat: user-guide/chat.md
   - Developers:
       - Overview:  development/dev.md
       - Backend:
