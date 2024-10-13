@@ -47,7 +47,7 @@ Key | Description
 `MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
 `SEARCH_INDEX_DB_URI` | Database URL for the search index. Only `sqlite` or `postgresql` are allowed as backends. Defaults to `sqlite:///indexdir/search_index.db`, creating an SQLite file in the folder `indexdir` relative to the path where the script is run
 `STATIC_PATH` | Path to serve static files from (e.g. a static web frontend)
-`BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct passwort reset links
+`BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct password reset links
 `CORS_ORIGINS` | Origins where CORS requests are allowed from. By default, all are disallowed. Use `"*"` to allow requests from any domain.
 `EMAIL_HOST` | SMTP server host (e.g. for sending password reset e-mails)
 `EMAIL_PORT` | SMTP server port. defaults to 465
@@ -63,7 +63,7 @@ Key | Description
 
 
 !!! info
-    When using environment variables for configuration, boolean options like `EMAIL_USE_TLS` must be either the string `true` or `false` (case senitive!).
+    When using environment variables for configuration, boolean options like `EMAIL_USE_TLS` must be either the string `true` or `false` (case sensitive!).
 
 
 ### Settings only for PostgreSQL backend database
@@ -87,7 +87,7 @@ Key | Description
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
 
  
-### Seetings only for AI features
+### Settings only for AI features
 
 These settings are needed if you want to use AI-powered features like chat or semantic search.
 
