@@ -35,3 +35,7 @@ docker compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
 ```
 
 The `COMMAND` can be `add` or `delete`. Use `--help` for `[ARGS]` to show the syntax and possible configuration options.
+
+### Approving self-registered users
+
+When a user self-registers, they are not granted immediate access. An email is sent to the tree owner about the new user registration and the user is sent an email request to confirm their email address. Successfully confirming their email address changes their role from `unconfirmed` to `disabled`. While the user account is in either of those two roles, the user cannot log in. The tree owner must review the user's request and assign the user an appropriate role before they are allowed to log in.
