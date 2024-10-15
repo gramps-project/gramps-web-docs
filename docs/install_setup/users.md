@@ -38,4 +38,4 @@ The `COMMAND` can be `add` or `delete`. Use `--help` for `[ARGS]` to show the sy
 
 ### Approving self-registered users
 
-When a user self-registers, they are not granted immediate access. An email is sent to the admin about the new user registration and the user is sent an email request to confirm their email address. Successfully confirming their email address changes their role from `unconfirmed` to `disabled`. While the user account is in either of those two roles, the user cannot log in. The admin must review the user's request and assign the user an appropriate role before they are allowed to log in.
+When a user self-registers, they are not granted immediate access. An email is sent to the tree owner about the new user registration and the user is sent an email request to confirm their email address. Successfully confirming their email address changes their role from `unconfirmed` to `disabled`. While the user account is in either of those two roles, the user cannot log in. The tree owner must review the user's request and assign the user an appropriate role before they are allowed to log in.
