@@ -52,6 +52,9 @@ If the model is not present in the local cache, it will be downloaded when Gramp
 
 Please share learnings about different models with the community!
 
+!!! info
+    The sentence transformers library consumes a significant amount of memory, which might cause worker processes being killed. As a rule of thumb, with semantic search enabled, each Gunicorn worker consumes around 200 MB of memory and each celery worker around 500 MB of memory even when idle, and up to 1 GB when computing embeddings. See [Limit CPU and memory usage](cpu-limited.md) for settings that limit memory usage. In addition, it is advisable to provision a sufficiently large swap partition to prevent OOM errors due to transient memory usage spikes.
+
 ## Setting up an LLM provider
 
 Communication with the LLM uses an OpenAI compatible API using the `openai-python` library. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or an API like OpenAI or Huggingface TGI. The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.

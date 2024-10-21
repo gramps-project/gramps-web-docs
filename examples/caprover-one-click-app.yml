@@ -49,7 +49,7 @@ services:
             notExposeAsWebApp: 'true'
             dockerfileLines:
                 - FROM ghcr.io/gramps-project/grampsweb:$$cap_version
-                - CMD exec celery -A gramps_webapi.celery worker --loglevel=INFO
+                - CMD exec celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
 volumes:
     $$cap_appname-users:
     $$cap_appname-index:

@@ -18,7 +18,7 @@ nav:
           - Update:  install_setup/update.md
           - Using PostgreSQL:  install_setup/postgres.md
           - Hosting media on S3:  install_setup/s3.md
-          - Limit CPU usage:  install_setup/cpu-limited.md
+          - Limit CPU & memory usage:  install_setup/cpu-limited.md
           - 2.0 upgrade guide:  install_setup/v2.md
   - Administration:
       - Introduction:  administration/admin.md

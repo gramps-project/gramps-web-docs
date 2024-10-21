@@ -1,27 +1,58 @@
-# Limit CPU usage
+# Limit CPU and memory usage
 
-In order to avoid high CPU/RAM usage, it is possible to set the number of workers
-using the environment variable `GUNICORN_NUM_WORKERS`.
+In the recommended docker-based setup, Gramps Web uses [Gunicorn](https://gunicorn.org/) to serve the
+backend and [Celery](https://docs.celeryq.dev) for background tasks. In both cases, several worker
+processes can be run in parallel, which makes the application more responsive from a user perspective.
+However, increasing the number of workers also increase the amount of RAM used (even when the application is idle)
+and allowing requests to be processed in parallel can lead to high CPU usage (in particular when many users
+are using the application simultaneously). Both Gunicorn and Celery allow to limit the number of parallel workers.
 
-Here, we will take a number of workers = 2. Adjust it according to your needs.
-It may be a good idea to check the CPU/Threads available before choosing the value:
+## Get information about your system
 
-> lscpu | grep CPU
+On Linux, you can check the number of cores available on your system with the following command:
 
-The easiest way is to declare the variable in the `docker-compose.yml` file,
+```bash
+lscpu | grep CPU
+```
+
+To see how much memory and swap space you have available, use
+
+```bash
+free -h
+```
+
+
+## Limiting the number of Gunicorn workers
+
+The easiest way to set the number of Gunicorn workers when using the default Gramps Web
+docker image is to set the environment variable `GUNICORN_NUM_WORKERS`, e.g. by declaring it
+in the `docker-compose.yml` file,
 under the "environment".
 
-```
-version: "3.7"
+```yaml
 services:
   grampsweb:
     environment:
       GUNICORN_NUM_WORKERS: 2
 ```
 
-Other ways are possible, for example by storing the variable in a file, 
-and calling it in the startup command:
+See [the Gunicorn documentation](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) to decide
+about the ideal number of workers.
 
-> docker compose --env-file ./env up
 
-In this case, the `env` file would contain a single line: GUNICORN_NUM_WORKERS=2
+
+## Limiting the number of Celery workers
+
+To set the number of Celery workers, adapt the `concurrency` setting in the Docker compose file:
+
+```yaml
+  grampsweb_celery:
+    command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
+```
+
+See [the Celery documentation](https://docs.celeryq.dev/en/stable/userguide/workers.html#concurrency) to decide
+about the ideal number of workers.
+
+!!! info
+    If the `concurrency` flag is omitted (which was the case in the Gramps Web documentation until v2.5.0), it
+    defaults to the number of CPU cores available on the system, which might consume a substantial amount of memory.

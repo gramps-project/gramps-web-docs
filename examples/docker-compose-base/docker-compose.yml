@@ -27,7 +27,7 @@ services:
     container_name: grampsweb_celery
     depends_on:
       - grampsweb_redis
-    command: celery -A gramps_webapi.celery worker --loglevel=INFO
+    command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
 
   grampsweb_redis:
     image: docker.io/library/redis:7.2.4-alpine
