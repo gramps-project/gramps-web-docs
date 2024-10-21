@@ -4,9 +4,10 @@ hide:
   - navigation
 ---
 
----
+# Features
 
-![Image title](screenshots/sync.png){ align=right width="300"}
+
+![Image title](screenshots/sync.png){ align=left width="300"}
 
 ## Full integration with Gramps Desktop
 
@@ -122,7 +123,7 @@ Since it's built directly on the core powering Gramps Desktop, you can generate 
 
 
 
-![Image title](screenshots/tag.png){ align=left width="400"}
+![Image title](screenshots/tag.png){ align=right width="400"}
 
 ## Tag people in photos with automated face detection
 
@@ -135,7 +136,7 @@ Collaborate with your relatives to identify ancestors in old family photos. Than
 
 
 
-![Image title](screenshots/search.png){ align=right width="400"}
+![Image title](screenshots/search.png){ align=left width="400"}
 
 ## Powerful full-text search
 
@@ -148,7 +149,7 @@ The search engine supports searching all Gramps object types, including the cont
 
 
 
-![Image title](screenshots/dna.png){ align=left width="400"}
+![Image title](screenshots/dna.png){ align=right width="400"}
 
 ## DNA matches & chromosome browser
 
@@ -159,7 +160,7 @@ If you have DNA match data from one of the DNA genealogy providers, upload it an
 ---
 
 
-![Image title](screenshots/tasks.png){ align=right width="400"}
+![Image title](screenshots/tasks.png){ align=left width="400"}
 
 ## Integrated task management app
 
@@ -171,7 +172,7 @@ Gramps Web comes with an integrated task management app to organize and plan you
 ---
 
 
-![Image title](screenshots/ohm.png){ align=left width="400"}
+![Image title](screenshots/ohm.png){ align=right width="400"}
 
 ## Integration of OpenHistoricalMap
 
@@ -179,9 +180,21 @@ The historical vector maps created by the [OpenHistoricalMap](https://www.openhi
 
 <div style="clear:both;"></div>
 
-<p>&nbsp;</p>
+---
+
+![Image title](screenshots/chat.png){ align=left width="400"}
+
+## Integrated AI chat assistant
+
+Powered by AI, Gramps Web allows you to chat with your family tree &ndash; in your native language!
+
+
+<div style="clear:both;"></div>
 
 ---
+
+
+<p>&nbsp;</p>
 
 ## Demo
 
