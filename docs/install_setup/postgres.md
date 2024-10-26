@@ -55,7 +55,7 @@ To configure Web API for use with the PostgreSQL database, add the following und
 
 ## Using a shared PostgreSQL database in a multi-tree installation
 
-When using a [multi-tree setup](https://www.grampsweb.org/multi-tree/), the SharedPostgreSQL addon is a convenient option to host all trees, also newly created ones via the API, in a single PostgreSQL database without compromising privacy or security.
+When using a [multi-tree setup](multi-tree.md), the SharedPostgreSQL addon is a convenient option to host all trees, also newly created ones via the API, in a single PostgreSQL database without compromising privacy or security.
 
 To achieve this, set up a container based on the `gramps-postgres` image as described above and simply set the config option `NEW_DB_BACKEND` to `sharedpostgresql`, e.g. via the `GRAMPSWEB_NEW_DB_BACKEND` environment variable.
 
