@@ -9,8 +9,16 @@ services:
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -t 1 -q --spider http://127.0.0.1:5000 || exit 1" ]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 3s
     depends_on:
-      - grampsweb_redis
+      grampsweb_redis:
+        condition: service_healthy
+        restart: true
     volumes:
       - gramps_users:/app/users  # persist user database
       - gramps_index:/app/indexdir  # persist search index
@@ -25,14 +33,28 @@ services:
     <<: *grampsweb  # YAML merge key copying the entire grampsweb service config
     ports: []
     container_name: grampsweb_celery
+    healthcheck:
+      test: [ "CMD-SHELL", "export GRAMPSWEB_SECRET_KEY=$(cat /app/secret/secret); celery -A gramps_webapi.celery inspect ping" ]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 3s
     depends_on:
-      - grampsweb_redis
+      grampsweb_redis:
+        condition: service_healthy
+        restart: true
     command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
 
   grampsweb_redis:
     image: docker.io/library/redis:7.2.4-alpine
     container_name: grampsweb_redis
     restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
 volumes:
   gramps_users:
