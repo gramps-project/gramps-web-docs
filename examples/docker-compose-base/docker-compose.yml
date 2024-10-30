@@ -38,7 +38,7 @@ services:
       interval: 30s
       retries: 5
       start_period: 10s
-      timeout: 3s
+      timeout: 10s
     depends_on:
       grampsweb_redis:
         condition: service_healthy
