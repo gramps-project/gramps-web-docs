@@ -93,4 +93,19 @@ python3 -m gramps_webapi --config path/to/config run
 ```
 The API will be accesible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-web-api](https://gramps-project.github.io/gramps-web-api/). For example, to show people go to `http://127.0.0.1:5000/api/people`
 
-To choose a different port, add the `--port` option.
+#### Options
+
+To choose a different port, add the `--port PORT` option, where `PORT` is a number. The default port is `5000`.
+
+To send the log data to a file, use `--log-file FILENAME`. The default is not to log to a file.
+
+To set the log level (for console or file) use `--debug-level LEVEL` where LEVEL is `info`, `debug`, `warning`, or `critical`. The default is `info`.
+
+If running the gramps-web-api server locally, the following additional flags may be useful:
+
+* `--use-wsgi` - adds a WSGI wrapper to the application.
+* `--host IP` - the IP address to use for the WSGI listener. The default IP is `127.0.0.1`.
+* `--max-workers NUMBER` - for the WSGI server. Default is set dynamically based on the number of CPUs.
+* `--open-browser WHERE` - to open the browser on the default gramps-web-api page in a `tab` or a `window`. The default of `WHERE` is `no`, meaning to not open a browser tab or window.
+
+To find out more about the options, use `--help`.
