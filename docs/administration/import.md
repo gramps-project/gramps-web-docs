@@ -30,4 +30,4 @@ It expects a ZIP file with the missing media files inside. The folder structure 
 
 Note that this feature only works for files that have the correct checksum in the Gramps database (which should be ensured by running the check and repair tool in the first step).
 
-When moving to Gramps Web from a different genalogy program including media files, it is recommended to first import everything into Gramps Desktop, which has more options to associate existing media files with an imported tree.
+When moving to Gramps Web from a different genealogy program including media files, it is recommended to first import everything into Gramps Desktop, which has more options to associate existing media files with an imported tree.

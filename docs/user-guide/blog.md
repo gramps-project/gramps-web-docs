@@ -2,11 +2,11 @@
 
 The blog is meant for presenting stories about your family history research.
 
-In the Gramps database, blog posts are represented as sources with a note attached, containg the blog's text, and optionally, media files for the images of the blog post. Gramps Web treats every source with a tag `Blog` as blog article.
+In the Gramps database, blog posts are represented as sources with a note attached, containing the blog's text, and optionally, media files for the images of the blog post. Gramps Web treats every source with a tag `Blog` as blog article.
 
 ## Add a blog post
 
-To add a blog post, you can use Gramps Web or Gramps Dekstop ([synchronized](../administration/sync.md) with Gramps Web), the steps are the same in both cases:
+To add a blog post, you can use Gramps Web or Gramps Desktop ([synchronized](../administration/sync.md) with Gramps Web), the steps are the same in both cases:
 
 - Add a new source. The title of the source will be the title of your blog post, the author of the source will be the author of the post.
 - Optionally, associate the source with a repository corresponding to your Gramps Web blog

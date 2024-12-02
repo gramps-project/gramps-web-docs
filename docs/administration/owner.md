@@ -20,7 +20,7 @@ However, the owner creation form will not be displayed automatically on the Gram
 
 A possible workflow for a site administrator to create a new tree is to
 
-- Create a tree via the REST API, obtaing the tree ID of the new tree
+- Create a tree via the REST API, obtaining the tree ID of the new tree
 - Share the link to the owner creation form with the appropriate tree ID with the prospective tree owner
 
 The tree owner creation form is analogous to the admin creation form described above, except that it does not allow to change the e-mail configuration (which is only allowed for admins).

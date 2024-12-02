@@ -1,14 +1,14 @@
-# Settung up AI chat
+# Setting up AI chat
 
 !!! info
     AI chat requires Gramps Web API version 2.5.0 or higher.
 
 
-Gramps Web API supports asking questions about the genealogical database using large language modes (LLM) via a technique called reasearch augmented generation (RAG).
+Gramps Web API supports asking questions about the genealogical database using large language models (LLM) via a technique called retrieval-augmented generation (RAG).
 
 RAG works as follows. First, a *vector embedding model* is used to create an index of all objects in the Gramps database in the form of numerical vectors that encode the objects' meaning. This process is similar to the creation of the full-text search index, but more computationally expensive.
 
-Next, when a user asks a question via the chat enpoint, that question is converted to a vector as well, by the same embedding model,  and compared the objects in the Gramps database. This *semantic search* will return objects in the database that are most semantically similar to the question.
+Next, when a user asks a question via the chat endpoint, that question is converted to a vector as well, by the same embedding model,  and compared the objects in the Gramps database. This *semantic search* will return objects in the database that are most semantically similar to the question.
 
 In the final step, the question and the retrieved objects are sent to an LLM to formulate an answer based on the provided information. In this way, the chatbot has access to detailed information about the contents of the genealogical database instead of relying solely on pre-existing knowledge.
 
@@ -18,7 +18,7 @@ To enable the chat endpoint in Gramps Web API, three steps are necessary:
 2. Enabling semantic search,
 3. Setting up an LLM provider.
 
-The three step are described below in turn.
+The three step are described below in turn. Finally, an owner or administrator must [configure which users can access the chat feature](users.md#configuring-who-can-use-ai-chat) in the Manage Users settings.
 
 ## Installing required dependencies
 
@@ -57,7 +57,7 @@ Please share learnings about different models with the community!
 
 ## Setting up an LLM provider
 
-Communication with the LLM uses an OpenAI compatible API using the `openai-python` library. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or an API like OpenAI or Huggingface TGI. The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
+Communication with the LLM uses an OpenAI compatible API using the `openai-python` library. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or an API like OpenAI or Hugging Face TGI (Text Generation Inference). The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
 
 
 ### Using a hosted LLM via the OpenAI API
@@ -84,7 +84,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      ollama_data:/root/.ollama
+      - ollama_data:/root/.ollama
 
 volumes:
     ollama_data:
