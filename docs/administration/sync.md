@@ -23,7 +23,7 @@ Optional step:
 
 ## Usage
 
-Once installed, the addon is availabe in Gramps under *Tools > Family Tree Processing > Gramps&nbsp;Web&nbsp;Sync*. Once started, and after confirming the dialog that the undo history will be discarded, the tool will ask you for the base URL (example: `https://mygrampsweb.com/`) of your Gramps Web instance, your username, and password. You need an account with owner privileges To sync changes back to your remote database. The username and URL will be stored in plain text in your Gramps user directory, the password will only be stored if `keyring` is installed (see above).
+Once installed, the addon is available in Gramps under *Tools > Family Tree Processing > Gramps&nbsp;Web&nbsp;Sync*. Once started, and after confirming the dialog that the undo history will be discarded, the tool will ask you for the base URL (example: `https://mygrampsweb.com/`) of your Gramps Web instance, your username, and password. You need an account with owner privileges To sync changes back to your remote database. The username and URL will be stored in plain text in your Gramps user directory, the password will only be stored if `keyring` is installed (see above).
 
 If there are any changes, the tool will display a confirmation dialog before applying the changes. (At present, the confirmation dialog only shows the Gramps IDs of the affected objects.)
 
@@ -57,4 +57,4 @@ The principles of operation of the tool are very simple:
 - If an object is different but changed after **t** only in one database, sync to the other one (assume modified object)
 - If an object is different but changed after **t** in both databases, merge them (assume conflicting modification)
 
-This algorithm is simple and robust as it does not require tracking syncrhonization history. However, it works best when you *synchronize often*.
+This algorithm is simple and robust as it does not require tracking synchronization history. However, it works best when you *synchronize often*.
