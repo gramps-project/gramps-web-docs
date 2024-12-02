@@ -17,6 +17,10 @@ Admin | 5 | Owner + edit other trees in multi-tree setup
 
 \* Note that the "Contributor" role is currently only partially supported; e.g., family objects cannot be added since they imply a modification of the underlying Gramps person objects of family members. It is recommended to use the other roles whenever possible.
 
+## Configuring who can use AI chat
+
+If you have [configured AI chat](chat.md), you will see an option here to choose which user groups are allowed to use the chat feature.
+
 ## Managing users
 
 There are two ways to manage users:
