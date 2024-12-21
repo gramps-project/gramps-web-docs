@@ -90,7 +90,9 @@ volumes:
     ollama_data:
 ```
 
-and then set the `LLM_BASE_URL` configuration parameter to `http://ollama:11434/v1` and the `LLM_MODEL` to a model supported by Ollama.
+and then set the `LLM_BASE_URL` configuration parameter to `http://ollama:11434/v1`. Set `LLM_MODEL` to a model supported by Ollama, and pull it down in your container with `ollama pull <model>`.  Finally, set `OPENAI_API_KEY` to `ollama`.
+
+To troubleshoot problems with Ollama, you can enable debug logging by setting environment variable `OLLAMA_DEBUG=1` in the Ollama service environment.
 
 !!! info
     If you are using Ollama for Gramps Web AI chat, please support the community by completing this documentation with any missing details.
