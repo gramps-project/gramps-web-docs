@@ -96,6 +96,7 @@ Key | Description
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
 `LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.
 `VECTOR_EMBEDDING_MODEL` | The [Sentence Transformers](https://sbert.net/) model to use for semantic search vector embeddings. If unset (the default), semantic search and chat are disabled.
+`LLM_MAX_CONTEXT_LENGTH` | Character limit for the family tree context provided to the LLM. Defaults to 50000.
 
 
 ## Example configuration file
