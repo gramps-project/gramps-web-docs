@@ -32,7 +32,7 @@ The owner account required to first access the web app can be added in the onboa
 
 ### Managing users on the command line
 
-When using [Docker Compose](install_setup/deployment.md), the basic command is
+When using [Docker Compose](deployment.md), the basic command is
 
 ```bash
 docker compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]

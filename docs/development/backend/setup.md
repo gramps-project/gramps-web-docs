@@ -68,7 +68,7 @@ USER_DB_URI="sqlite:///users.sqlite"
 !!! warning
     Do not use this configuration in production.
 
-See [Configuration](../Configuration.md) for a full list of config options.
+See [Configuration](../../install_setup/configuration.md) for a full list of config options.
 
 !!! warning
     Do not use your production database for development, but use a copy of it or the Gramps example database.

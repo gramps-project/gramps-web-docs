@@ -15,7 +15,7 @@ It is available in Gramps Desktop and can be installed [in the usual way](https:
 
 
 !!! warn
-    Please make sure to use the same version of Gramps on your desktop as the one running on your server. See the [Get Help](../help.md) section for how to find out which Gramps version your server is running. The Gramps version has the form `MAJOR.MINOR.PATCH`, and `MAJOR` and `MINOR` must be the same on web and desktop.
+    Please make sure to use the same version of Gramps on your desktop as the one running on your server. See the [Get Help](../help/help.md) section for how to find out which Gramps version your server is running. The Gramps version has the form `MAJOR.MINOR.PATCH`, and `MAJOR` and `MINOR` must be the same on web and desktop.
 
 
 Optional step:
