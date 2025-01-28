@@ -82,6 +82,9 @@ plugins:
   - search
   - glightbox:
         manual:  false    # optional lightboxing.  Requires HTML in markdown.
+  - redirects:
+      redirect_maps:
+        'help.md': 'help/help.md'
 markdown_extensions:
   - admonition
   - pymdownx.highlight
