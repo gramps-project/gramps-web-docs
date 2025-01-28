@@ -1,5 +1,9 @@
 # DNA segment map
 
+!!! warning
+    This page is outdated as of Gramps Web v25.1.0 released in January 2025. It will be updated soon.
+
+
 The DNA segment map view, accessible under the "DNA" tab in the person view, shows DNA matches with other people in the tree as segments highlighted on the person's chromosomes.
 
 This feature does not rely on raw DNA data being uploaded to Gramps Web, but on the segment match data directly, which can be obtained from websites like Gedmatch or MyHeritage.
