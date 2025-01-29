@@ -1,5 +1,5 @@
 nav:
-  - Introduction:  index.md
+  - Home:  index.md
   - Features:
     - features/index.md
   - Install/Setup:
@@ -41,6 +41,10 @@ nav:
         - Use the blog:  user-guide/blog.md
         - Manage tasks:  user-guide/tasks.md
       - Revision history:  user-guide/revisions.md
+      # - DNA: 
+      #   - Overview: user-guide/dna.md
+      #   - DNA matches: user-guide/dna-matches.md
+      #   - Chromosome browser: user-guide/chromosome-browser.md
       - Advanced features:
         - DNA:  user-guide/dna.md
         - GQL filters:  user-guide/gql.md
@@ -62,10 +66,12 @@ nav:
   
   
 site_name:  Gramps Web
+site_description: Open Source Genealogy
 site_url:  https://www.grampsweb.org
 edit_uri:  https://github.com/gramps-project/gramps-web-docs/blob/main/docs/
 repo_url:  https://github.com/gramps-project/gramps-web
 theme:
+  custom_dir: overrides
   name:  "material"
   features:
     - navigation.tabs
@@ -80,6 +86,8 @@ theme:
     accent:  blue
   logo:  logo.svg
   favicon:  favicon.ico
+  font:
+    text: Inter
 plugins:
   - search
   - glightbox:
@@ -87,6 +95,8 @@ plugins:
   - redirects:
       redirect_maps:
         'help.md': 'help/help.md'
+        'development.md': 'development/dev.md'
+        'development/index.md': 'development/dev.md'
 markdown_extensions:
   - admonition
   - pymdownx.highlight
