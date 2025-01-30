@@ -1,13 +1,9 @@
-# DNA segment map
+# Using Gramps Web for DNA genealogy
 
-!!! warning
-    This page is outdated as of Gramps Web v25.1.0 released in January 2025. It will be updated soon.
+There are three branches of DNA genealogy dependending on the type of DNA used:
 
+- Autosomal chromosomes (numbered 1&ndash;22) are inherited from father and mother, so the probability of inheriting a piece of DNA from a given ancestor reduces exponentially with the number of generations. This makes them useful for finding degrees of separation with relatives when there is a relatively recent (few generations) common ancestor.
+- The Y chromosome is only passed on from father to son, so it can be used to trace the paternal lineage.
+- Mitochondrial DNA is passed on from mother to daughter, so it can be used to trace the maternal lineage.
 
-The DNA segment map view, accessible under the "DNA" tab in the person view, shows DNA matches with other people in the tree as segments highlighted on the person's chromosomes.
-
-This feature does not rely on raw DNA data being uploaded to Gramps Web, but on the segment match data directly, which can be obtained from websites like Gedmatch or MyHeritage.
-
-The DNA segment map is based on the [Gramplet Addon](https://gramps-project.org/wiki/index.php/Addon:DNASegmentMapGramplet) that provides the same functionality in Gramps Desktop. Its wiki page contains more details about how to obtain the data, how to interpret it, and how to enter the data in Gramps.
-
-The data is added as notes attached to associations (or attached to association citations), which is possible directly in Gramps Web.
+At present, Gramps Web provides tools to work with [matches from autosomal DNA tests](dna-matches.md). To obtain this data, you need access to a DNA test that is uploaded to a matching database that allows to view DNA segment match data (e.g. MyHeritage, Gedmatch, FamilytreeDNA). Gramps Web does not perform the matching itself, as it only has access to the data you upload.
