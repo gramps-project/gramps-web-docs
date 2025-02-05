@@ -97,6 +97,7 @@ plugins:
         'help.md': 'help/help.md'
         'development.md': 'development/dev.md'
         'development/index.md': 'development/dev.md'
+        'user-guide/sync.md': 'administration/sync.md'
 markdown_extensions:
   - admonition
   - pymdownx.highlight
