@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block header %}
+<!-- Custom Banner 
+<div class="banner">
+    <span><a href="/install_setup/v3/">News on Gramps Web &amp; Gramps 6.0</a></span>
+</div>
+-->
+{{ super() }}
+{% endblock %}
+
+
+
+
+{% block styles %}
+{{ super() }}
+<style>
+  .banner {
+    height: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #66BB6A;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: Inter;
+}
+
+.banner a:link, .banner a:visited, .banner a:hover, .banner a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.banner a:hover {
+    font-weight: 600;
+}
+
+  /* .md-header {
+      top: 24px;
+  } */
+
+</style>
+{% endblock %}
