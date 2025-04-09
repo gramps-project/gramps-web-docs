@@ -24,8 +24,8 @@ Create an account at [DigitalOcean](https://www.digitalocean.com/) if you don't 
 
 !!! info
     You may need to wait up to ten minutes for the 1-Click App to install the latest `docker-compose` version.
-    Using the latest version of `docker-compose` can mitigate errors referencing `firstlogin.sh`.
-
+    Using the latest version of `docker-compose` can mitigate errors referencing `firstlogin.sh`. 
+    
 ## Step 3: Set up a domain name
 
 You will need a domain name (or subdomain). If you own a domain, point it to the IP address of your droplet. Otherwise, you could use a free service such as [DuckDNS](https://www.duckdns.org/).
