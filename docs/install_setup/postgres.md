@@ -32,6 +32,7 @@ Alternatively, if you have followed the Docker Compose instructions above, you c
 docker compose run --entrypoint "" grampsweb \
     gramps -C postgres \
     -i /root/.gramps/grampsdb/my_tree.gramps \
+    --config=database.path:/root/.gramps/grampsdb \
     --config=database.backend:postgresql \
     --config=database.host:postgres_gramps \
     --config=database.port:5432 \
