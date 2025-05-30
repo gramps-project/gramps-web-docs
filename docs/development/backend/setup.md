@@ -1,111 +1,37 @@
-This page lists the steps required to start developing [Gramps Web API](https://github.com/gramps-project/gramps-web-api/). It will be assumed that you are using Ubuntu Linux.
+# Backend development setup
 
-### Python version
-
-The Web API requires Python 3.7 or newer.
-
-### Install Gramps
-
-The Web API requires the Gramps Python library to be importable. Starting from Gramps 5.2.0, it will be installable via `pip`. Right now, development is still based on Gramps 5.1.x, so the most convenient option is to install the Gramps `apt` package on Ubuntu
-
-```
-sudo apt install gramps
-```
-
-!!! info
-    Note that using the `gramps` Python package from Gramps installed with `apt` requires using the system Python interpreter, so you cannot work in a virtual environment.
-
-### Clone the Web API repository
-
-Clone the Web API to your PC (assuming you have set up an SSH key with Github) using
-
-```
-git clone git@github.com:gramps-project/gramps-web-api.git
-cd gramps-web-api
-```
+This page lists the steps required to start developing [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), the backend (server component) of Gramps Web.
 
 
-### Install prerequisites
+## Prerequisites
 
-To start development, please install the dependencies by running
-```
-pip3 install -r requirements-dev.txt
-```
+The recommended development setup uses Visual Studio Code with devcontainers. This approach will create a preconfigured development environment with all the tools you need. To get started, you'll need the following ingredients:
 
-### Install the library in editable mode
+- [Docker](https://docs.docker.com/get-docker/)
+- [Visual Studio Code](https://code.visualstudio.com/) with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed
+- [Git](https://git-scm.com)
 
-Run
-```
-pip3 install -e . --user
-```
-
-### Set up pre-commit hooks
-
-To set up the pre-commit hooks for the repository, run
-```
-pre-commit install
-```
-in the repository root. This will e.g. make sure that all source files are nicely formatted with `black`.
-
-### Run tests
-
-To run the unit tests, run
-```
-pytest
-```
-in the repository root.
-
-### Generate a configuration file
-
-Example content:
-
-```python
-TREE="My Family Tree"
-SECRET_KEY="not_secure_enough"
-USER_DB_URI="sqlite:///users.sqlite"
-```
-
-!!! warning
-    Do not use this configuration in production.
-
-See [Configuration](../../install_setup/configuration.md) for a full list of config options.
-
-!!! warning
-    Do not use your production database for development, but use a copy of it or the Gramps example database.
+You can use Linux, macOS, or Windows as your operating system.
 
 
-### Add users
+## Getting started
+
+1. Open the [Gramps Web API repository](https://github.com/gramps-project/gramps-web-api) and click "fork"
+2. Clone your forked repository to your local machine using Git
+3. Open the cloned repository in Visual Studio Code. When prompted, select "Reopen in Container" or manually open the command palette (Ctrl+Shift+P or Cmd+Shift+P) and select "Dev Containers: Rebuild and Reopen in Container".
+4. Wait for the dev container to build and start. This may take a few minutes, especially the first time.
 
 
-You can add a user with owner permissions by running
-```
-python3 -m gramps_webapi --config path/to/config user add owner owner --role 4
-```
-This uses username and password `owner`.
+## Tasks
 
+If you are only modifying the backend code, you do not necessarily need to spin up a web server - unit tests use a Flask test client that allow simulating requests to the API without needing a running server.
 
-### Run the app in development mode
+However, running a server is useful if you
 
+- want to try out your changes with real HTTP requests (see [manual queries](queries.md)), 
+- want to preview the impact of changes on the full Gramps Web application, or
+- also want to make simultaneous changes to the frontend (see [frontend development setup](../frontend/setup.md)).
 
-Run
-```
-python3 -m gramps_webapi --config path/to/config run
-```
-The API will be accessible at `http://127.0.0.1:5000` by default, which displays an empty page.  Access your Gramps data using the API described by [gramps-project.github.io/gramps-web-api](https://gramps-project.github.io/gramps-web-api/). For example, to show people go to `http://127.0.0.1:5000/api/people`
-
-#### Options
-
-To choose a different port, add the `--port PORT` option, where `PORT` is a number. The default port is `5000`.
-
-To send the log data to a file, use `--log-file FILENAME`. The default is not to log to a file.
-
-To set the log level (for console or file) use `--debug-level LEVEL` where LEVEL is `info`, `debug`, `warning`, or `critical`. The default is `info`.
-
-If running the gramps-web-api server locally, the following additional flags may be useful:
-
-* `--use-wsgi` - adds a WSGI wrapper to the application.
-* `--host IP` - the IP address to use for the WSGI listener. The default IP is `127.0.0.1`.
-* `--max-workers NUMBER` - for the WSGI server. Default is set dynamically based on the number of CPUs.
-* `--open-browser WHERE` - to open the browser on the default gramps-web-api page in a `tab` or a `window`. The default of `WHERE` is `no`, meaning to not open a browser tab or window.
-
-To find out more about the options, use `--help`.
+Running the server is simplified in the dev container by predefined tasks. You can run these tasks from the command palette (Ctrl+Shift+P or Cmd+Shift+P) by selecting "Tasks: Run Task" and then choosing one of the following:
+- "Serve Web API" - starts the Flask development server on port 5555 with debug logging enabled
+- "Start Celery worker" - starts a Celery worker to process background tasks.
