@@ -1,41 +1,28 @@
-This page describes the steps needed to start with frontend development. It is assumed that you are using Ubuntu Linux and you will need Docker, docker-compose, and git.
+# Frontend development setup
 
-## Step 1: Clone the repository
+This page describes the steps needed to start with frontend development. 
 
-Clone the frontend repository
-```
-git clone git@github.com:gramps-project/gramps-web.git
-cd gramps-web
-```
+## Prerequisites
 
-## Step 2: Build and start the development containers
+The recommended development setup uses Visual Studio Code with devcontainers. This approach will create a preconfigured development environment with all the tools you need.
 
-To build and start the containers running the Gramps Web backend with the Gramps example database, as well as the frontend in development mode, simply run
+See [Backend development setup](../backend/setup.md#prerequisites) for the prerequisites needed.
 
-```bash
-docker compose up -d
-```
+## Getting started
 
-Options for logging in are: owner, editor, contributor, guest or member (use same word for both username and password).
+1. Open the [Gramps Web frontend repository](https://github.com/gramps-project/gramps-web) and click "fork"
+2. Clone your forked repository to your local machine using Git
+3. Open the cloned repository in Visual Studio Code. When prompted, select "Reopen in Container" or manually open the command palette (Ctrl+Shift+P or Cmd+Shift+P) and select "Dev Containers: Rebuild and Reopen in Container".
+4. Wait for the dev container to build and start. This may take a few minutes, especially the first time.
 
-!!! warning
-    Do not use the development server in production.
 
-As part of the build process, git hooks for formatting and linting will be installed as well.
+## Running the frontend development server
 
-## Usage instructions
+To run the frontend development server and preview the impact of your changes in the browser, you can use the predefined tasks in the dev container.
 
-Once the containers are up and running, Gramps Web will be accessible at [http://localhost:5555](http://localhost:5555).
+For that to work, you first need to spin up an instance of the [Gramps Web API backend](../backend/setup.md#tasks). The easiest way to do this is to use the backend dev container and [run the "Serve Web API" task](../backend/setup.md#tasks) in a separate VS Code window.
 
-Once you make changes to the frontend code, you browser will be reloaded automatically.
+Once the backend is running, you can run the frontend development server by selecting "Tasks: Run Task" from the command palette (Ctrl+Shift+P or Cmd+Shift+P) and then choosing "Serve Gramps Web frontend".
 
-The installed git hooks will format and lint the code on every commit. You can run the scripts manually using
+This will start the frontend development server on port 8001, which you can access in your browser at `http://localhost:8001`. The browser will automatically reload when you make changes to the frontend code, allowing you to see the impact of your changes immediately.
 
-```
-docker compose run gramps-frontend format
-```
-and
-```
-docker compose run gramps-frontend lint
-```
-respectively.
