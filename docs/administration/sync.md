@@ -19,12 +19,13 @@ It is available in Gramps Desktop and can be installed [in the usual way](https:
 
 Optional step:
 
-- Install `keyring` (e.g. `sudo apt install python3-keyring` or `sudo dnf install python3-keyring`) to allow storing the API password safely in your system's password manager 
-
-??? note Gnome keyring bug
+??? note inline end "Gnome keyring bug"
     There is currently a [bug in python keyring](https://github.com/jaraco/keyring/issues/496) that affects many Gnome desktop configurations.  You may need to create the configuration file `~/.config/python_keyring/keyringrc.cfg` and edit it to look like this:
+
         [backend]
         default-keyring=keyring.backends.SecretService.Keyring
+
+- Install `keyring` (e.g. `sudo apt install python3-keyring` or `sudo dnf install python3-keyring`) to allow storing the API password safely in your system's password manager 
 
 ## Usage
 
