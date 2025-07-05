@@ -102,6 +102,7 @@ plugins:
         'user-guide/sync.md': 'administration/sync.md'
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - pymdownx.highlight
   - pymdownx.superfences
   - attr_list
