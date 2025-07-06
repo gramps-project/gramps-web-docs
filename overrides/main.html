@@ -2,7 +2,7 @@
 
 {% block header %}
 <div class="banner">
-    <span><a href="/install_setup/v3/">News on Gramps Web &amp; Gramps 6.0</a></span>
+    <span></span>
 </div>
 {{ super() }}
 {% endblock %}
@@ -21,7 +21,7 @@
     width: 100%;
     z-index: 1;
     text-align: center;
-    display: flex;
+    display: none;  /* set to flex to show banner */
     align-items: center;
     justify-content: center;
     background-color: #66BB6A;
@@ -41,7 +41,7 @@
 }
 
   .md-header {
-      top: 24px;
+      top: 0px;   /* set to 24px when banner is visible */
   }
 
 </style>

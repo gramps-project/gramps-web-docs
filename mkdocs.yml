@@ -19,6 +19,7 @@ nav:
           - Using PostgreSQL:  install_setup/postgres.md
           - Hosting media on S3:  install_setup/s3.md
           - Limit CPU & memory usage:  install_setup/cpu-limited.md
+          - Telemetry: install_setup/telemetry.md
           - Gramps 5.2 upgrade guide:  install_setup/v2.md
           - Gramps 6.0 upgrade guide:  install_setup/v3.md
   - Administration:
@@ -59,8 +60,8 @@ nav:
         - Manual queries:  development/backend/queries.md
       - Frontend:
           - Introduction:  development/frontend/index.md
-          - Architecture:  development/frontend/architecture.md
           - Development setup:  development/frontend/setup.md
+          - Architecture:  development/frontend/architecture.md
           - Translation:  development/frontend/translation.md
   - Contribute:  contribute/contribute.md
   - Get Help:  help/help.md

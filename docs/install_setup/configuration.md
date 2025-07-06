@@ -56,10 +56,13 @@ Key | Description
 `EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
+`REQUEST_CACHE_CONFIG` | Dictionary with settings for the request cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
+`PERSISTENT_CACHE_CONFIG` | Dictionary with settings for the persistent cache, used e.g. for telemetry. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
 `CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
 `REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
 `EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
 `REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`)
+`DISABLE_TELEMETRY` | If `True`, disable statistics telemetry (default `False`). See [telemetry](telemetry.md) for details.
 
 
 !!! info
@@ -85,6 +88,8 @@ Key | Description
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
+`POSTGRES_HOST` | The host name of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
+`POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 
  
 ### Settings only for AI features
