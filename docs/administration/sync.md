@@ -84,6 +84,12 @@ This will print many helpful logging statements to the command line that will he
 
 If the first step already fails, please double-check the server URL, your username and password.
 
+Server credential error messages may include:
+```
+URL error while connecting to server.
+```
+- In the **Login** dialog page, confirm the **Server URL** is correct.
+
 ### Permissions problems
 
 If you encounter an error involving permissions, please check the user role of your Gramps Web user account. You can only apply changes to the remote database if you are a user with role editor, owner, or administrator.
