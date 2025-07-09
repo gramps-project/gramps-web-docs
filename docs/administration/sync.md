@@ -17,10 +17,15 @@ It is available in Gramps Desktop and can be installed [in the usual way](https:
 !!! warn
     Please make sure to use the same version of Gramps on your desktop as the one running on your server. See the [Get Help](../help/help.md) section for how to find out which Gramps version your server is running. The Gramps version has the form `MAJOR.MINOR.PATCH`, and `MAJOR` and `MINOR` must be the same on web and desktop.
 
-
 Optional step:
 
-- Install `keyring` (e.g. `sudo apt install python3-keyring`) to allow storing the API password safely in your system's password manager 
+??? note inline end "Gnome keyring bug"
+    There is currently a [bug in python keyring](https://github.com/jaraco/keyring/issues/496) that affects many Gnome desktop configurations.  You may need to create the configuration file `~/.config/python_keyring/keyringrc.cfg` and edit it to look like this:
+
+        [backend]
+        default-keyring=keyring.backends.SecretService.Keyring
+
+- Install `keyring` (e.g. `sudo apt install python3-keyring` or `sudo dnf install python3-keyring`) to allow storing the API password safely in your system's password manager 
 
 ## Usage
 
