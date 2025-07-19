@@ -6,8 +6,6 @@ Before you can start using Gramps Web, you need to create an account for the tre
 
 On a server with single-tree setup, when no user account exists yet, opening Gramps Web shows a form to create an admin account. The admin user will be both the owner of the (single) tree and the administrator of the installation. The form also allows setting the e-mail configuration needed for e-mail notifications (e.g. resetting a user password). If the e-mail configuration has already been added via a configuration file or environment variables on the server, this part of the form can be left empty.
 
-The form also allows to import genealogical data by uploading a file. This can also be done later from the "Import" page in Gramps Web (see [Import data](import.md)).
-
 ## Multi-tree setup: create admin account
 
 In a multi-tree setup, the same form to create an admin account will be shown if no users exists *in any tree*, i.e. when the server has just been created.
