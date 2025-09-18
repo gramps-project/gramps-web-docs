@@ -46,6 +46,7 @@ nav:
         - Overview: user-guide/dna.md
         - DNA matches: user-guide/dna-matches.md
         - Chromosome browser: user-guide/chromosome-browser.md
+        - Y-DNA: user-guide/y-dna.md
       - Revision history:  user-guide/revisions.md
       - Advanced features:
         # - DNA:  user-guide/dna.md
