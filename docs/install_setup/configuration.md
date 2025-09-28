@@ -92,11 +92,43 @@ Key | Description
 `POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 
  
+### Settings for OIDC authentication
+
+These settings are needed if you want to use OpenID Connect (OIDC) authentication with external providers.
+
+Key | Description
+----|-------------
+`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Defaults to `False`.
+`OIDC_ISSUER` | OIDC provider issuer URL (for custom OIDC providers)
+`OIDC_CLIENT_ID` | OAuth client ID (for custom OIDC providers)
+`OIDC_CLIENT_SECRET` | OAuth client secret (for custom OIDC providers)
+`OIDC_NAME` | Custom display name for the provider. Defaults to "OIDC"
+`OIDC_REDIRECT_URI` | Redirect URI for OAuth flow
+`OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
+`OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
+
+#### Built-in OIDC providers
+
+For built-in providers (Google, Microsoft, GitHub), use these settings:
+
+Key | Description
+----|-------------
+`OIDC_GOOGLE_CLIENT_ID` | Client ID for Google OAuth
+`OIDC_GOOGLE_CLIENT_SECRET` | Client secret for Google OAuth
+`OIDC_MICROSOFT_CLIENT_ID` | Client ID for Microsoft OAuth
+`OIDC_MICROSOFT_CLIENT_SECRET` | Client secret for Microsoft OAuth
+`OIDC_GITHUB_CLIENT_ID` | Client ID for GitHub OAuth
+`OIDC_GITHUB_CLIENT_SECRET` | Client secret for GitHub OAuth
+
+!!! info "OIDC Setup"
+    You can configure multiple OIDC providers simultaneously. Each provider requires at minimum a client ID and client secret. The system will automatically detect which providers are available based on the presence of these configuration values.
+
 ### Settings only for AI features
 
 These settings are needed if you want to use AI-powered features like chat or semantic search.
 
-Key | Description 
+Key | Description
 ----|-------------
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
 `LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.
@@ -112,6 +144,33 @@ TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # your secret key
 USER_DB_URI="sqlite:////path/to/users.sqlite"
+EMAIL_HOST="mail.example.com"
+EMAIL_PORT=465
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER="gramps@example.com"
+EMAIL_HOST_PASSWORD="..." # your SMTP password
+DEFAULT_FROM_EMAIL="gramps@example.com"
+```
+
+### Example with custom OIDC provider
+
+If you want to enable OIDC authentication with a custom provider (e.g., Keycloak):
+```python
+TREE="My Family Tree"
+BASE_URL="https://mytree.example.com"
+SECRET_KEY="..."  # your secret key
+USER_DB_URI="sqlite:////path/to/users.sqlite"
+
+# Custom OIDC Configuration
+OIDC_ENABLED=True
+OIDC_ISSUER="https://auth.example.com/realms/myrealm"
+OIDC_CLIENT_ID="gramps-web"
+OIDC_CLIENT_SECRET="your-client-secret"
+OIDC_NAME="Family SSO"
+OIDC_SCOPES="openid email profile"
+OIDC_AUTO_REDIRECT=True  # Optional: automatically redirect to SSO login
+OIDC_DISABLE_LOCAL_AUTH=True  # Optional: disable username/password login
+
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
 EMAIL_USE_TLS=True
