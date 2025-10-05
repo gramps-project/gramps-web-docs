@@ -145,6 +145,44 @@ Key | Description
     - Users are assigned the highest role they are entitled to based on their group membership
     - Role mapping is case-sensitive by default (depends on your OIDC provider)
 
+#### OIDC Logout
+
+Gramps Web supports Single Sign-Out (SSO logout) for OIDC providers. When a user logs out from Gramps Web after authenticating via OIDC, they will be automatically redirected to the identity provider's logout page if the provider supports the `end_session_endpoint`.
+
+**Backchannel Logout**: Gramps Web implements the OpenID Connect Back-Channel Logout specification. This allows identity providers to notify Gramps Web when a user logs out from another application or the identity provider itself.
+
+To configure backchannel logout with your identity provider:
+
+1. **Register the backchannel logout endpoint** in your identity provider's client configuration:
+   ```
+   https://your-gramps-instance.com/api/oidc/backchannel-logout/
+   ```
+
+2. **Configure your provider** to send logout notifications. The exact steps depend on your provider:
+
+   **Keycloak:**
+   - In your client configuration, navigate to "Settings"
+   - Set "Backchannel Logout URL" to `https://your-gramps-instance.com/api/oidc/backchannel-logout/`
+   - Enable "Backchannel Logout Session Required" if you want session-based logout
+
+   **Authentik:**
+   - In your provider configuration, add the backchannel logout URL
+   - Ensure the provider is configured to send logout tokens
+
+!!! warning "Token Expiration"
+    Due to the stateless nature of JWT tokens, backchannel logout currently logs the logout event but cannot immediately revoke already-issued JWT tokens. Tokens will remain valid until they expire (default: 15 minutes for access tokens).
+
+    For enhanced security, consider:
+    - Reducing JWT token expiration time (`JWT_ACCESS_TOKEN_EXPIRES`)
+    - Educating users to manually log out from Gramps Web when logging out from your identity provider
+
+!!! tip "How It Works"
+    When a user logs out from your identity provider or another application:
+    1. The provider sends a `logout_token` JWT to Gramps Web's backchannel logout endpoint
+    2. Gramps Web validates the token and logs the logout event
+    3. The logout token's JTI is added to a blocklist to prevent replay attacks
+    4. Any new API requests with the user's JWT will be denied once tokens expire
+
 ### Settings only for AI features
 
 These settings are needed if you want to use AI-powered features like chat or semantic search.
