@@ -105,6 +105,8 @@ Key | Description
 `OIDC_NAME` | Custom display name for the provider. Defaults to "OIDC"
 `OIDC_REDIRECT_URI` | Redirect URI for OAuth flow
 `OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
+`OIDC_USERNAME_CLAIM` | The claim to use for the username. Defaults to "preferred_username"
+`OIDC_OPENID_CONFIG_URL` | Optional: URL to the OpenID Connect configuration endpoint (if not using standard `/.well-known/openid-configuration`)
 `OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
 `OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
 
@@ -123,6 +125,25 @@ Key | Description
 
 !!! info "OIDC Setup"
     You can configure multiple OIDC providers simultaneously. Each provider requires at minimum a client ID and client secret. The system will automatically detect which providers are available based on the presence of these configuration values.
+
+#### OIDC Role Mapping
+
+These settings allow you to map OIDC groups/roles from your identity provider to Gramps Web user roles:
+
+Key | Description
+----|-------------
+`OIDC_ROLE_CLAIM` | The claim name in the OIDC token that contains the user's groups/roles. Defaults to "groups"
+`OIDC_GROUP_ADMIN` | The group/role name from your OIDC provider that maps to the Gramps "Admin" role
+`OIDC_GROUP_OWNER` | The group/role name from your OIDC provider that maps to the Gramps "Owner" role
+`OIDC_GROUP_EDITOR` | The group/role name from your OIDC provider that maps to the Gramps "Editor" role
+`OIDC_GROUP_CONTRIBUTOR` | The group/role name from your OIDC provider that maps to the Gramps "Contributor" role
+`OIDC_GROUP_MEMBER` | The group/role name from your OIDC provider that maps to the Gramps "Member" role
+`OIDC_GROUP_GUEST` | The group/role name from your OIDC provider that maps to the Gramps "Guest" role
+
+!!! note "Role Mapping Behavior"
+    - If no role mapping is configured (no `OIDC_GROUP_*` variables set), existing user roles are preserved
+    - Users are assigned the highest role they are entitled to based on their group membership
+    - Role mapping is case-sensitive by default (depends on your OIDC provider)
 
 ### Settings only for AI features
 
@@ -170,6 +191,12 @@ OIDC_NAME="Family SSO"
 OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # Optional: automatically redirect to SSO login
 OIDC_DISABLE_LOCAL_AUTH=True  # Optional: disable username/password login
+
+# Optional: Role mapping from OIDC groups to Gramps roles
+OIDC_ROLE_CLAIM="groups"  # or "roles" depending on your provider
+OIDC_GROUP_ADMIN="gramps-admins"
+OIDC_GROUP_EDITOR="gramps-editors"
+OIDC_GROUP_MEMBER="gramps-members"
 
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
