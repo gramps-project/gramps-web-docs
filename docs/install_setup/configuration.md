@@ -126,6 +126,13 @@ Key | Description
 !!! info "OIDC Setup"
     You can configure multiple OIDC providers simultaneously. Each provider requires at minimum a client ID and client secret. The system will automatically detect which providers are available based on the presence of these configuration values.
 
+!!! note "Required Redirect URI"
+    When configuring your OIDC provider (Keycloak, Authentik, Google, etc.), you must register the following redirect URI:
+
+    - `https://your-gramps-instance.com/api/oidc/callback/*`
+
+    Some providers may require you to add the URI explicitly, while others (like Keycloak) support wildcard patterns.
+
 #### OIDC Role Mapping
 
 These settings allow you to map OIDC groups/roles from your identity provider to Gramps Web user roles:
