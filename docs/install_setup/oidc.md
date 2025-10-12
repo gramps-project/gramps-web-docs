@@ -112,11 +112,13 @@ To configure backchannel logout with your identity provider:
     Due to the stateless nature of JWT tokens, backchannel logout currently logs the logout event but cannot immediately revoke already-issued JWT tokens. Tokens will remain valid until they expire (default: 15 minutes for access tokens).
 
     For enhanced security, consider:
+
     - Reducing JWT token expiration time (`JWT_ACCESS_TOKEN_EXPIRES`)
     - Educating users to manually log out from Gramps Web when logging out from your identity provider
 
 !!! tip "How It Works"
     When a user logs out from your identity provider or another application:
+
     1. The provider sends a `logout_token` JWT to Gramps Web's backchannel logout endpoint
     2. Gramps Web validates the token and logs the logout event
     3. The logout token's JTI is added to a blocklist to prevent replay attacks
