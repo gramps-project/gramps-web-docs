@@ -27,7 +27,7 @@ The following configuration options exist.
 
 ### Required settings
 
-Key | Description 
+Key | Description
 ----|-------------
 `TREE` | The name of the family tree database to use. Show available trees with `gramps -l`. If a tree with this name does not exist, a new empty one will be created.
 `SECRET_KEY` | The secret key for flask. The secret must not be shared publicly. Changing it will invalidate all access tokens.
@@ -42,7 +42,7 @@ Key | Description
 
 ### Optional settings
 
-Key | Description 
+Key | Description
 ----|-------------
 `MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
 `SEARCH_INDEX_DB_URI` | Database URL for the search index. Only `sqlite` or `postgresql` are allowed as backends. Defaults to `sqlite:///indexdir/search_index.db`, creating an SQLite file in the folder `indexdir` relative to the path where the script is run
@@ -73,7 +73,7 @@ Key | Description
 
 This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
-Key | Description 
+Key | Description
 ----|-------------
 `POSTGRES_USER` | The user name for the database connection
 `POSTGRES_PASSWORD` | The password for the database user
@@ -84,17 +84,17 @@ Key | Description
 The following settings are relevant when [hosting multiple trees](multi-tree.md).
 
 
-Key | Description 
+Key | Description
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
 `POSTGRES_HOST` | The host name of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 `POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 
- 
+
 ### Settings for OIDC authentication
 
-These settings are needed if you want to use OpenID Connect (OIDC) authentication with external providers.
+These settings are needed if you want to use OpenID Connect (OIDC) authentication with external providers. For detailed setup instructions and examples, see [OIDC Authentication](oidc.md).
 
 Key | Description
 ----|-------------
@@ -103,7 +103,6 @@ Key | Description
 `OIDC_CLIENT_ID` | OAuth client ID (for custom OIDC providers)
 `OIDC_CLIENT_SECRET` | OAuth client secret (for custom OIDC providers)
 `OIDC_NAME` | Custom display name for the provider. Defaults to "OIDC"
-`OIDC_REDIRECT_URI` | Redirect URI for OAuth flow
 `OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
 `OIDC_USERNAME_CLAIM` | The claim to use for the username. Defaults to "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Optional: URL to the OpenID Connect configuration endpoint (if not using standard `/.well-known/openid-configuration`)
@@ -123,16 +122,6 @@ Key | Description
 `OIDC_GITHUB_CLIENT_ID` | Client ID for GitHub OAuth
 `OIDC_GITHUB_CLIENT_SECRET` | Client secret for GitHub OAuth
 
-!!! info "OIDC Setup"
-    You can configure multiple OIDC providers simultaneously. Each provider requires at minimum a client ID and client secret. The system will automatically detect which providers are available based on the presence of these configuration values.
-
-!!! note "Required Redirect URI"
-    When configuring your OIDC provider (Keycloak, Authentik, Google, etc.), you must register the following redirect URI:
-
-    - `https://your-gramps-instance.com/api/oidc/callback/*`
-
-    Some providers may require you to add the URI explicitly, while others (like Keycloak) support wildcard patterns.
-
 #### OIDC Role Mapping
 
 These settings allow you to map OIDC groups/roles from your identity provider to Gramps Web user roles:
@@ -146,49 +135,6 @@ Key | Description
 `OIDC_GROUP_CONTRIBUTOR` | The group/role name from your OIDC provider that maps to the Gramps "Contributor" role
 `OIDC_GROUP_MEMBER` | The group/role name from your OIDC provider that maps to the Gramps "Member" role
 `OIDC_GROUP_GUEST` | The group/role name from your OIDC provider that maps to the Gramps "Guest" role
-
-!!! note "Role Mapping Behavior"
-    - If no role mapping is configured (no `OIDC_GROUP_*` variables set), existing user roles are preserved
-    - Users are assigned the highest role they are entitled to based on their group membership
-    - Role mapping is case-sensitive by default (depends on your OIDC provider)
-
-#### OIDC Logout
-
-Gramps Web supports Single Sign-Out (SSO logout) for OIDC providers. When a user logs out from Gramps Web after authenticating via OIDC, they will be automatically redirected to the identity provider's logout page if the provider supports the `end_session_endpoint`.
-
-**Backchannel Logout**: Gramps Web implements the OpenID Connect Back-Channel Logout specification. This allows identity providers to notify Gramps Web when a user logs out from another application or the identity provider itself.
-
-To configure backchannel logout with your identity provider:
-
-1. **Register the backchannel logout endpoint** in your identity provider's client configuration:
-   ```
-   https://your-gramps-instance.com/api/oidc/backchannel-logout/
-   ```
-
-2. **Configure your provider** to send logout notifications. The exact steps depend on your provider:
-
-   **Keycloak:**
-   - In your client configuration, navigate to "Settings"
-   - Set "Backchannel Logout URL" to `https://your-gramps-instance.com/api/oidc/backchannel-logout/`
-   - Enable "Backchannel Logout Session Required" if you want session-based logout
-
-   **Authentik:**
-   - In your provider configuration, add the backchannel logout URL
-   - Ensure the provider is configured to send logout tokens
-
-!!! warning "Token Expiration"
-    Due to the stateless nature of JWT tokens, backchannel logout currently logs the logout event but cannot immediately revoke already-issued JWT tokens. Tokens will remain valid until they expire (default: 15 minutes for access tokens).
-
-    For enhanced security, consider:
-    - Reducing JWT token expiration time (`JWT_ACCESS_TOKEN_EXPIRES`)
-    - Educating users to manually log out from Gramps Web when logging out from your identity provider
-
-!!! tip "How It Works"
-    When a user logs out from your identity provider or another application:
-    1. The provider sends a `logout_token` JWT to Gramps Web's backchannel logout endpoint
-    2. Gramps Web validates the token and logs the logout event
-    3. The logout token's JTI is added to a blocklist to prevent replay attacks
-    4. Any new API requests with the user's JWT will be denied once tokens expire
 
 ### Settings only for AI features
 
@@ -210,39 +156,6 @@ TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # your secret key
 USER_DB_URI="sqlite:////path/to/users.sqlite"
-EMAIL_HOST="mail.example.com"
-EMAIL_PORT=465
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER="gramps@example.com"
-EMAIL_HOST_PASSWORD="..." # your SMTP password
-DEFAULT_FROM_EMAIL="gramps@example.com"
-```
-
-### Example with custom OIDC provider
-
-If you want to enable OIDC authentication with a custom provider (e.g., Keycloak):
-```python
-TREE="My Family Tree"
-BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # your secret key
-USER_DB_URI="sqlite:////path/to/users.sqlite"
-
-# Custom OIDC Configuration
-OIDC_ENABLED=True
-OIDC_ISSUER="https://auth.example.com/realms/myrealm"
-OIDC_CLIENT_ID="gramps-web"
-OIDC_CLIENT_SECRET="your-client-secret"
-OIDC_NAME="Family SSO"
-OIDC_SCOPES="openid email profile"
-OIDC_AUTO_REDIRECT=True  # Optional: automatically redirect to SSO login
-OIDC_DISABLE_LOCAL_AUTH=True  # Optional: disable username/password login
-
-# Optional: Role mapping from OIDC groups to Gramps roles
-OIDC_ROLE_CLAIM="groups"  # or "roles" depending on your provider
-OIDC_GROUP_ADMIN="gramps-admins"
-OIDC_GROUP_EDITOR="gramps-editors"
-OIDC_GROUP_MEMBER="gramps-members"
-
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
 EMAIL_USE_TLS=True
