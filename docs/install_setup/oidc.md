@@ -33,18 +33,21 @@ You can configure multiple providers simultaneously. The system will automatical
 
 For custom OIDC providers (like Keycloak, Authentik, or any standard OIDC-compliant provider), use these settings:
 
-- `OIDC_ENABLED=True`
-- `OIDC_ISSUER`: Your provider's issuer URL
-- `OIDC_CLIENT_ID`: OAuth client ID
-- `OIDC_CLIENT_SECRET`: OAuth client secret
-- `OIDC_NAME`: Custom display name (optional, defaults to "preferred_username" claim)
-- `OIDC_SCOPES`: OAuth scopes (optional, defaults to "openid email profile")
+Key | Description
+----|-------------
+`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Set to `True`.
+`OIDC_ISSUER` | Your provider's issuer URL
+`OIDC_CLIENT_ID` | Client ID for your OIDC provider
+`OIDC_CLIENT_SECRET` | Client secret for your OIDC provider
+`OIDC_NAME` | Custom display name (optional, defaults to "OIDC")
+`OIDC_SCOPES` | OAuth scopes (optional, defaults to "openid email profile")
 
 ## Required Redirect URIs
 
 When configuring your OIDC provider, you must register the following redirect URI:
 
 **For web application access:**
+
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 Where `*` is a regex wildcard. Depending on your provider's regex interpreter this could also be a `.*` or similar.
@@ -59,13 +62,15 @@ Gramps Web can automatically map OIDC groups or roles from your identity provide
 
 Use these settings to configure role mapping:
 
-- `OIDC_ROLE_CLAIM`: The claim name in the OIDC token that contains groups/roles (defaults to "groups")
-- `OIDC_GROUP_ADMIN`: Group name that maps to the Gramps "Admin" role
-- `OIDC_GROUP_OWNER`: Group name that maps to the Gramps "Owner" role
-- `OIDC_GROUP_EDITOR`: Group name that maps to the Gramps "Editor" role
-- `OIDC_GROUP_CONTRIBUTOR`: Group name that maps to the Gramps "Contributor" role
-- `OIDC_GROUP_MEMBER`: Group name that maps to the Gramps "Member" role
-- `OIDC_GROUP_GUEST`: Group name that maps to the Gramps "Guest" role
+Key | Description
+----|-------------
+`OIDC_ROLE_CLAIM` | The claim name in the OIDC token that contains the user's groups/roles. Defaults to "groups"
+`OIDC_GROUP_ADMIN` | The group/role name from your OIDC provider that maps to the Gramps "Admin" role
+`OIDC_GROUP_OWNER` | The group/role name from your OIDC provider that maps to the Gramps "Owner" role
+`OIDC_GROUP_EDITOR` | The group/role name from your OIDC provider that maps to the Gramps "Editor" role
+`OIDC_GROUP_CONTRIBUTOR` | The group/role name from your OIDC provider that maps to the Gramps "Contributor" role
+`OIDC_GROUP_MEMBER` | The group/role name from your OIDC provider that maps to the Gramps "Member" role
+`OIDC_GROUP_GUEST` | The group/role name from your OIDC provider that maps to the Gramps "Guest" role
 
 ### Role Mapping Behavior
 
@@ -93,11 +98,13 @@ To configure backchannel logout with your identity provider:
 2. **Configure your provider** to send logout notifications. The exact steps depend on your provider:
 
    **Keycloak:**
+
    - In your client configuration, navigate to "Settings"
    - Set "Backchannel Logout URL" to `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
    - Enable "Backchannel Logout Session Required" if you want session-based logout
 
    **Authentik:**
+
    - In your provider configuration, add the backchannel logout URL
    - Ensure the provider is configured to send logout tokens
 
