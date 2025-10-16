@@ -6,11 +6,11 @@
     As with any synchronization tool, please do not consider this as a backup tool. An accidental deletion on one side will be propagated to the other side. Make sure to create regular backups (in Gramps XML format) of your family tree.
 
 !!! info
-    The documentation refers to the Gramps Web Sync Addon version 1.2.1. Please use the Gramps addon manager to update the addon to the latest version if needed.
+    The documentation refers to the latest version of the Gramps Web Sync Addon. Please use the Gramps addon manager to update the addon to the latest version if needed.
 
 ## Installation
 
-The addon requires Gramps 5.2 running on Python 3.9 or newer.
+The addon requires Gramps 6.0 running on Python 3.10 or newer.
 It is available in Gramps Desktop and can be installed [in the usual way](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps).
 
 
