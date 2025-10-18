@@ -27,7 +27,7 @@ The following configuration options exist.
 
 ### Required settings
 
-Key | Description 
+Key | Description
 ----|-------------
 `TREE` | The name of the family tree database to use. Show available trees with `gramps -l`. If a tree with this name does not exist, a new empty one will be created.
 `SECRET_KEY` | The secret key for flask. The secret must not be shared publicly. Changing it will invalidate all access tokens.
@@ -42,7 +42,7 @@ Key | Description
 
 ### Optional settings
 
-Key | Description 
+Key | Description
 ----|-------------
 `MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
 `SEARCH_INDEX_DB_URI` | Database URL for the search index. Only `sqlite` or `postgresql` are allowed as backends. Defaults to `sqlite:///indexdir/search_index.db`, creating an SQLite file in the folder `indexdir` relative to the path where the script is run
@@ -73,7 +73,7 @@ Key | Description
 
 This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
-Key | Description 
+Key | Description
 ----|-------------
 `POSTGRES_USER` | The user name for the database connection
 `POSTGRES_PASSWORD` | The password for the database user
@@ -84,19 +84,63 @@ Key | Description
 The following settings are relevant when [hosting multiple trees](multi-tree.md).
 
 
-Key | Description 
+Key | Description
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
 `POSTGRES_HOST` | The host name of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 `POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 
- 
+
+### Settings for OIDC authentication
+
+These settings are needed if you want to use OpenID Connect (OIDC) authentication with external providers. For detailed setup instructions and examples, see [OIDC Authentication](oidc.md).
+
+Key | Description
+----|-------------
+`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Defaults to `False`.
+`OIDC_ISSUER` | OIDC provider issuer URL (for custom OIDC providers)
+`OIDC_CLIENT_ID` | OAuth client ID (for custom OIDC providers)
+`OIDC_CLIENT_SECRET` | OAuth client secret (for custom OIDC providers)
+`OIDC_NAME` | Custom display name for the provider. Defaults to "OIDC"
+`OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
+`OIDC_USERNAME_CLAIM` | The claim to use for the username. Defaults to "preferred_username"
+`OIDC_OPENID_CONFIG_URL` | Optional: URL to the OpenID Connect configuration endpoint (if not using standard `/.well-known/openid-configuration`)
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
+`OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
+
+#### Built-in OIDC providers
+
+For built-in providers (Google, Microsoft, GitHub), use these settings:
+
+Key | Description
+----|-------------
+`OIDC_GOOGLE_CLIENT_ID` | Client ID for Google OAuth
+`OIDC_GOOGLE_CLIENT_SECRET` | Client secret for Google OAuth
+`OIDC_MICROSOFT_CLIENT_ID` | Client ID for Microsoft OAuth
+`OIDC_MICROSOFT_CLIENT_SECRET` | Client secret for Microsoft OAuth
+`OIDC_GITHUB_CLIENT_ID` | Client ID for GitHub OAuth
+`OIDC_GITHUB_CLIENT_SECRET` | Client secret for GitHub OAuth
+
+#### OIDC Role Mapping
+
+These settings allow you to map OIDC groups/roles from your identity provider to Gramps Web user roles:
+
+Key | Description
+----|-------------
+`OIDC_ROLE_CLAIM` | The claim name in the OIDC token that contains the user's groups/roles. Defaults to "groups"
+`OIDC_GROUP_ADMIN` | The group/role name from your OIDC provider that maps to the Gramps "Admin" role
+`OIDC_GROUP_OWNER` | The group/role name from your OIDC provider that maps to the Gramps "Owner" role
+`OIDC_GROUP_EDITOR` | The group/role name from your OIDC provider that maps to the Gramps "Editor" role
+`OIDC_GROUP_CONTRIBUTOR` | The group/role name from your OIDC provider that maps to the Gramps "Contributor" role
+`OIDC_GROUP_MEMBER` | The group/role name from your OIDC provider that maps to the Gramps "Member" role
+`OIDC_GROUP_GUEST` | The group/role name from your OIDC provider that maps to the Gramps "Guest" role
+
 ### Settings only for AI features
 
 These settings are needed if you want to use AI-powered features like chat or semantic search.
 
-Key | Description 
+Key | Description
 ----|-------------
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
 `LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.

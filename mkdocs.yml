@@ -12,6 +12,7 @@ nav:
       - Server Administration:
           - User system:  install_setup/users.md
           - Server configuration:  install_setup/configuration.md
+          - OIDC authentication:  install_setup/oidc.md
           - Setting up AI chat: install_setup/chat.md
           - Multi-tree setup:  install_setup/multi-tree.md
           - Frontend customization:  install_setup/frontend-config.md
