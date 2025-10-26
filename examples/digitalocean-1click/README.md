@@ -5,7 +5,7 @@ This directory contains the scripts to build a snapshot for the [Gramps Web Digi
 To build, run
 
 ```bash
-packer build grampsweb.json 
+packer build grampsweb.json
 ```
 
 See [https://github.com/digitalocean/marketplace-partners](https://github.com/digitalocean/marketplace-partners) for general instructions.

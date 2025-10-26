@@ -11,6 +11,8 @@ services:
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1
+    depends_on:
+      - grampsweb_redis
     volumes:
       - gramps_users:/app/users # persist user database
       - gramps_index:/app/indexdir # persist search index
@@ -28,6 +30,7 @@ services:
     <<: *grampsweb  # YAML merge key copying the entire grampsweb service config
     container_name: grampsweb_celery
     depends_on:
+      - grampsweb
       - grampsweb_redis
     environment:
       <<: *grampsweb-env  # YAML merge key copying the grampsweb environment config
