@@ -46,13 +46,16 @@ Key | Description
 
 When configuring your OIDC provider, you must register the following redirect URI:
 
-**For web application access:**
+**For OIDC providers that support wildcards: (e.g., Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 Where `*` is a regex wildcard. Depending on your provider's regex interpreter this could also be a `.*` or similar.
 Ensure that regex is enabled if your provider requires it (e.g., Authentik).
 
+**For OIDC providers that do not support wildcards: (e.g., Authelia)**
+
+- `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
 
 ## Role Mapping
 
@@ -196,3 +199,7 @@ OIDC_GOOGLE_CLIENT_SECRET="your-google-client-secret"
 OIDC_GITHUB_CLIENT_ID="your-github-client-id"
 OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
 ```
+
+### Authelia
+
+A community-made OIDC setup guide for Gramps Web is available on the [official Authelia documentation website](https://www.authelia.com/integration/openid-connect/clients/gramps/).
