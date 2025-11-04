@@ -35,3 +35,29 @@ However, running a server is useful if you
 Running the server is simplified in the dev container by predefined tasks. You can run these tasks from the command palette (Ctrl+Shift+P or Cmd+Shift+P) by selecting "Tasks: Run Task" and then choosing one of the following:
 - "Serve Web API" - starts the Flask development server on port 5555 with debug logging enabled
 - "Start Celery worker" - starts a Celery worker to process background tasks.
+
+
+## Debugging
+
+Debugging can sometimes be challenging, especially when trying to trace complex behavior or identify subtle issues. To make this easier, you can debug both a running API instance and individual test cases directly within Visual Studio Code.
+
+### Debugging the Gramps Web API
+
+To debug the running API:
+
+1. Open Visual Studio Code and go to the **Run and Debug** view.  
+2. Select the **"Web API"** configuration from the dropdown menu.  
+3. Start debugging.  
+4. When you send requests to the backend (either manually or through the Gramps Web GUI), the execution will pause at any breakpoints you have set in the code.  
+   This allows you to inspect variables, control flow, and other runtime details.
+
+### Debugging Test Cases
+
+To debug a specific test case:
+
+1. Open the test file you want to debug (for example, `test_people.py`).  
+2. In Visual Studio Code, open the **Run and Debug** view.  
+3. Choose the **"Current Test File"** configuration.  
+4. Start debugging — execution will stop at any breakpoints set within that test file.  
+
+This setup allows you to step through test logic, examine variable values, and better understand test failures or unexpected results.
