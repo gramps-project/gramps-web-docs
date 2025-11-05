@@ -1,6 +1,6 @@
 # Working with DNA matches
 
-DNA matches are segments of DNA that agree between to individuals, identified by the presence of markers, so-called SNPs (the acronym for single nucleotide polymorphisms, pronounced &ldquo;snips&rdquo;).
+DNA matches are segments of DNA that agree between two individuals, identified by the presence of markers, so-called SNPs (the acronym for single nucleotide polymorphisms, pronounced &ldquo;snips&rdquo;).
 
 To obtain this data, you need access to a DNA test that is uploaded to a matching database that allows to view DNA segment match data (e.g. MyHeritage, Gedmatch, FamilytreeDNA). Gramps Web does not perform the matching itself, as it only has access to the data you upload.
 
