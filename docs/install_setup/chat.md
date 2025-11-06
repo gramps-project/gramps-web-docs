@@ -15,7 +15,7 @@ In the final step, the question and the retrieved objects are sent to an LLM to 
 To enable the chat endpoint in Gramps Web API, three steps are necessary:
 
 1. Installing required dependencies,
-2. Enabling semantic search,
+2. Configure semantic search and generate semantic search index,
 3. Setting up an LLM provider.
 
 The three step are described below in turn. Finally, an owner or administrator must [configure which users can access the chat feature](users.md#configuring-who-can-use-ai-chat) in the Manage Users settings.
@@ -33,9 +33,9 @@ pip install gramps_webapi[ai]
 ```
 
 
-## Enabling semantic search
+## Configuring semantic search
 
-If the necessary dependencies are installed, enabling semantic search can be as simple as setting the `VECTOR_EMBEDDING_MODEL` configuration option (e.g. by setting the `GRAMPSWEB_VECTOR_EMBEDDING_MODEL` environment variable), see [Server Configuration](configuration.md). This can be any string of a model supported by the [Sentence Transformers](https://sbert.net/) library. See the documentation of this project for details and the available models.
+If the necessary dependencies are installed, configuring semantic search can be as simple as setting the `VECTOR_EMBEDDING_MODEL` configuration option (e.g. by setting the `GRAMPSWEB_VECTOR_EMBEDDING_MODEL` environment variable), see [Server Configuration](configuration.md). This can be any string of a model supported by the [Sentence Transformers](https://sbert.net/) library. See the documentation of this project for details and the available models.
 
 
 !!! warning
@@ -50,10 +50,12 @@ There are several considerations to make when choosing a model.
 
 If the model is not present in the local cache, it will be downloaded when Gramps Web API is started for the first time with the new configuration. The model `sentence-transformers/distiluse-base-multilingual-cased-v2` is already available locally when using the standard docker images. This model is a good starting point and supports multilingual input.
 
+After semantinc search is configured, it is necessary to regenerate the semantic search index in the Administration section.
+
 Please share learnings about different models with the community!
 
 !!! info
-    The sentence transformers library consumes a significant amount of memory, which might cause worker processes being killed. As a rule of thumb, with semantic search enabled, each Gunicorn worker consumes around 200 MB of memory and each celery worker around 500 MB of memory even when idle, and up to 1 GB when computing embeddings. See [Limit CPU and memory usage](cpu-limited.md) for settings that limit memory usage. In addition, it is advisable to provision a sufficiently large swap partition to prevent OOM errors due to transient memory usage spikes.
+    The sentence transformers library consumes a significant amount of memory, which might cause worker processes being killed. As a rule of thumb, with semantic search configured, each Gunicorn worker consumes around 200 MB of memory and each celery worker around 500 MB of memory even when idle, and up to 1 GB when computing embeddings. See [Limit CPU and memory usage](cpu-limited.md) for settings that limit memory usage. In addition, it is advisable to provision a sufficiently large swap partition to prevent OOM errors due to transient memory usage spikes.
 
 ## Setting up an LLM provider
 
