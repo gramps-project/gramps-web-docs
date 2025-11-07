@@ -13,7 +13,7 @@ services:
       test: [ "CMD-SHELL", "wget -t 1 -q --spider http://127.0.0.1:5000 || exit 1" ]
       interval: 30s
       retries: 5
-      start_period: 15s
+      start_period: 10s
       timeout: 3s
     depends_on:
       grampsweb_redis:
@@ -37,7 +37,7 @@ services:
       test: [ "CMD-SHELL", "export GRAMPSWEB_SECRET_KEY=$(cat /app/secret/secret); celery -A gramps_webapi.celery inspect ping" ]
       interval: 30s
       retries: 5
-      start_period: 10s
+      start_period: 15s
       timeout: 10s
     depends_on:
       grampsweb_redis:
