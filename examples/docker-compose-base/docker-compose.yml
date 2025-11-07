@@ -13,7 +13,7 @@ services:
       test: [ "CMD-SHELL", "wget -t 1 -q --spider http://127.0.0.1:5000 || exit 1" ]
       interval: 30s
       retries: 5
-      start_period: 10s
+      start_period: 15s
       timeout: 3s
     depends_on:
       grampsweb_redis:
