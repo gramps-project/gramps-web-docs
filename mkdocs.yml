@@ -9,6 +9,7 @@ nav:
           - Deploy with Docker:  install_setup/deployment.md
           - Docker with Let's Encrypt:  install_setup/lets_encrypt.md
           - DigitalOcean:  install_setup/digital_ocean.md
+          - TrueNAS:  install_setup/truenas.md
       - Server Administration:
           - User system:  install_setup/users.md
           - Server configuration:  install_setup/configuration.md
