@@ -14,6 +14,7 @@ The following option keys exist.
 
 Key |Type | Description 
 ----|-----|-----------
+`hideDNALink` | boolean | If true, hide the DNA link on the navigation bar.
 `hideRegisterLink` | boolean | If true, hide the registration link on the login page. This should be used for multi-tree deployments.
 `loginRedirect` | string | URL to redirect to when not logged in and navigating to any page other than "login" or "register"
 `leafletTileUrl` | string | Custom tile URL for Leaflet maps
