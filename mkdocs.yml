@@ -94,6 +94,7 @@ theme:
     text: Inter
 plugins:
   - i18n:
+      docs_structure: folder
       default_language: en
       languages:
         - locale: en

@@ -11,16 +11,16 @@ on:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    
+
     permissions:
-      contents: write  # Required to push translations
-    
+      contents: write # Required to push translations
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for git diff
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for auth
+          token: ${{ secrets.GITHUB_TOKEN }} # Use GitHub token for auth
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -89,17 +89,17 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
           git add docs/de/ docs/fr/
-          
+
           # Create commit message with list of translated files
           COMMIT_MSG="Auto-translate documentation\n\nTranslated files:\n"
           for file in ${{ steps.changed-files.outputs.files }}; do
             COMMIT_MSG="${COMMIT_MSG}- ${file}\n"
           done
-          
+
           git commit -m "$(echo -e "$COMMIT_MSG")"
-      
+
       - name: Push changes
         if: steps.check-changes.outputs.has_changes == 'true'
         run: |

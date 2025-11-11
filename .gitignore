@@ -5,6 +5,7 @@
 *.bbprojectd
 venv/
 venv
-
+site
+site/
 # Translation config with API key
 config_local.yaml
