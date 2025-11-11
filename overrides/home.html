@@ -142,18 +142,50 @@
       </div>
       <div class="hero-text">
         <h1>{{ config.site_name }}</h1>
+        {% if config.theme.language == 'de' %}
+        <p>Das kostenlose, quelloffene Genealogie-System zum Aufbau Ihres Stammbaums &ndash; gemeinsam.
+          Nutzen Sie es eigenständig oder als Ergänzung zu Gramps Desktop, mit voller Kontrolle über Ihre Daten und Datenschutz als oberste Priorität.
+        </p>
+        <a href="https://demo.grampsweb.org/" target="_blank"><b>Demo ausprobieren</b> (owner / owner)</a>
+        {% elif config.theme.language == 'fr' %}
+        <p>Le système de généalogie gratuit et open-source pour construire votre arbre généalogique &ndash; ensemble.
+          Utilisez-le de manière autonome ou en complément de Gramps Desktop, avec un contrôle total sur vos données et la confidentialité comme priorité absolue.
+        </p>
+        <a href="https://demo.grampsweb.org/" target="_blank"><b>Essayer la démo</b> (owner / owner)</a>
+        {% else %}
         <p>The free, open-source genealogy system for building your family tree &ndash; together.
           Use it standalone or as a companion to Gramps Desktop, with full control over your data and privacy as the top priority.
         </p>
         <a href="https://demo.grampsweb.org/" target="_blank"><b>Try the demo</b> (owner / owner)</a>
+        {% endif %}
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
 
   
 {% block content %}
 <div class="home-content">
+  {% if config.theme.language == 'de' %}
+  <h2>Mehr erfahren</h2>
+    <ul class="home">
+        <li><a href="features/">Gramps Web Funktionsübersicht</a><br>Entdecken Sie die leistungsstarken Funktionen, die Gramps Web zum idealen Werkzeug für die kollaborative Familienforschung machen.</li>
+        <li><a href="install_setup/setup/">Installations- und Einrichtungsinformationen</a><br>Starten Sie mit Schritt-für-Schritt-Anleitungen zur Installation und Konfiguration von Gramps Web.</li>
+        <li><a href="administration/admin/">Web-Administrator-Handbuch</a><br>Erfahren Sie, wie Sie eine Gramps Web-Instanz einfach verwalten und warten.</li>
+        <li><a href="user-guide/">Benutzerhandbuch</a><br>Entdecken Sie, wie Sie Gramps Web zur Dokumentation Ihrer Familiengeschichte navigieren und nutzen.</li>
+        <li><a href="development/dev/">Entwicklerdokumentation</a><br>Tauchen Sie ein in die Codebasis, API-Dokumentation und technische Details zur Erweiterung von Gramps Web.</li>
+    </ul>
+  {% elif config.theme.language == 'fr' %}
+  <h2>En savoir plus</h2>
+    <ul class="home">
+        <li><a href="features/">Présentation des fonctionnalités de Gramps Web</a><br>Explorez les fonctionnalités puissantes qui font de Gramps Web l'outil idéal pour la recherche collaborative en histoire familiale.</li>
+        <li><a href="install_setup/setup/">Informations d'installation et de configuration</a><br>Commencez avec des instructions étape par étape pour installer et configurer Gramps Web.</li>
+        <li><a href="administration/admin/">Guide de l'administrateur Web</a><br>Apprenez à gérer et maintenir une instance Gramps Web en toute simplicité.</li>
+        <li><a href="user-guide/">Guide utilisateur</a><br>Découvrez comment naviguer et utiliser Gramps Web pour documenter votre histoire familiale.</li>
+        <li><a href="development/dev/">Documentation développeur</a><br>Plongez dans la base de code, la documentation API et les détails techniques pour étendre Gramps Web.</li>
+    </ul>
+  {% else %}
   <h2>Learn more</h2>
     <ul class="home">
         <li><a href="features/">Gramps Web Features Overview</a><br>Explore the powerful features that make Gramps Web the ideal tool for collaborative family history research.</li>
@@ -162,6 +194,7 @@
         <li><a href="user-guide/">User Guide</a><br>Discover how to navigate and use Gramps Web for documenting your family history.</li>
         <li><a href="development/dev/">Developer Documentation</a><br>Dive into the codebase, API documentation, and technical details for extending Gramps Web.</li>
     </ul>
+  {% endif %}
 </div>
 
 {% endblock %}
