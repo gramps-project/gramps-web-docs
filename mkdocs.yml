@@ -1,83 +1,82 @@
 nav:
-  - Home:  index.md
+  - Home: index.md
   - Features:
-    - features/index.md
+      - features/index.md
   - Install/Setup:
-      - Getting Started:  install_setup/setup.md
-      - Try out locally:  install_setup/quickstart.md
+      - Getting Started: install_setup/setup.md
+      - Try out locally: install_setup/quickstart.md
       - Installation and Deployment:
-          - Deploy with Docker:  install_setup/deployment.md
-          - Docker with Let's Encrypt:  install_setup/lets_encrypt.md
-          - DigitalOcean:  install_setup/digital_ocean.md
-          - TrueNAS:  install_setup/truenas.md
+          - Deploy with Docker: install_setup/deployment.md
+          - Docker with Let's Encrypt: install_setup/lets_encrypt.md
+          - DigitalOcean: install_setup/digital_ocean.md
+          - TrueNAS: install_setup/truenas.md
       - Server Administration:
-          - User system:  install_setup/users.md
-          - Server configuration:  install_setup/configuration.md
-          - OIDC authentication:  install_setup/oidc.md
+          - User system: install_setup/users.md
+          - Server configuration: install_setup/configuration.md
+          - OIDC authentication: install_setup/oidc.md
           - Setting up AI chat: install_setup/chat.md
-          - Multi-tree setup:  install_setup/multi-tree.md
-          - Frontend customization:  install_setup/frontend-config.md
-          - Update:  install_setup/update.md
-          - Using PostgreSQL:  install_setup/postgres.md
-          - Hosting media on S3:  install_setup/s3.md
-          - Limit CPU & memory usage:  install_setup/cpu-limited.md
+          - Multi-tree setup: install_setup/multi-tree.md
+          - Frontend customization: install_setup/frontend-config.md
+          - Update: install_setup/update.md
+          - Using PostgreSQL: install_setup/postgres.md
+          - Hosting media on S3: install_setup/s3.md
+          - Limit CPU & memory usage: install_setup/cpu-limited.md
           - Telemetry: install_setup/telemetry.md
-          - Gramps 5.2 upgrade guide:  install_setup/v2.md
-          - Gramps 6.0 upgrade guide:  install_setup/v3.md
+          - Gramps 5.2 upgrade guide: install_setup/v2.md
+          - Gramps 6.0 upgrade guide: install_setup/v3.md
   - Administration:
-      - Introduction:  administration/admin.md
-      - Create owner account:  administration/owner.md
-      - Import data:  administration/import.md
-      - Export data:  administration/export.md
+      - Introduction: administration/admin.md
+      - Create owner account: administration/owner.md
+      - Import data: administration/import.md
+      - Export data: administration/export.md
       # - Manage search index:  admin/search.md
-      - Synchronize with Gramps:  administration/sync.md
+      - Synchronize with Gramps: administration/sync.md
       # # - Command Line Interface:  cli.md
       # - First steps:
       #   - Create owner account:  user-guide/owner.md
   - User Guide:
-      - Introduction:  user-guide/index.md
+      - Introduction: user-guide/index.md
       - First steps:
-        - Registration:  user-guide/registration.md
-        - First login:  user-guide/first-login.md
-      - Edit data:  
-        - Add media files:  user-guide/media.md
-        - Tag people in photos:  user-guide/tagging.md
-        - Use the blog:  user-guide/blog.md
-        - Manage tasks:  user-guide/tasks.md
-      - DNA: 
-        - Overview: user-guide/dna.md
-        - DNA matches: user-guide/dna-matches.md
-        - Chromosome browser: user-guide/chromosome-browser.md
-        - Y-DNA: user-guide/y-dna.md
-      - Revision history:  user-guide/revisions.md
+          - Registration: user-guide/registration.md
+          - First login: user-guide/first-login.md
+      - Edit data:
+          - Add media files: user-guide/media.md
+          - Tag people in photos: user-guide/tagging.md
+          - Use the blog: user-guide/blog.md
+          - Manage tasks: user-guide/tasks.md
+      - DNA:
+          - Overview: user-guide/dna.md
+          - DNA matches: user-guide/dna-matches.md
+          - Chromosome browser: user-guide/chromosome-browser.md
+          - Y-DNA: user-guide/y-dna.md
+      - Revision history: user-guide/revisions.md
       - Advanced features:
-        # - DNA:  user-guide/dna.md
-        - GQL filters:  user-guide/gql.md
-        - AI chat: user-guide/chat.md
+          # - DNA:  user-guide/dna.md
+          - GQL filters: user-guide/gql.md
+          - AI chat: user-guide/chat.md
   - Developers:
-      - Overview:  development/dev.md
+      - Overview: development/dev.md
       - Backend:
-        - Introduction:  development/backend/index.md
-        - Development setup:  development/backend/setup.md
-        - API specification:  development/backend/api.md
-        - Manual queries:  development/backend/queries.md
+          - Introduction: development/backend/index.md
+          - Development setup: development/backend/setup.md
+          - API specification: development/backend/api.md
+          - Manual queries: development/backend/queries.md
       - Frontend:
-          - Introduction:  development/frontend/index.md
-          - Development setup:  development/frontend/setup.md
-          - Architecture:  development/frontend/architecture.md
-          - Translation:  development/frontend/translation.md
-  - Contribute:  contribute/contribute.md
-  - Get Help:  help/help.md
-  
-  
-site_name:  Gramps Web
+          - Introduction: development/frontend/index.md
+          - Development setup: development/frontend/setup.md
+          - Architecture: development/frontend/architecture.md
+          - Translation: development/frontend/translation.md
+  - Contribute: contribute/contribute.md
+  - Get Help: help/help.md
+
+site_name: Gramps Web
 site_description: Open Source Genealogy
-site_url:  https://www.grampsweb.org
-edit_uri:  https://github.com/gramps-project/gramps-web-docs/blob/main/docs/
-repo_url:  https://github.com/gramps-project/gramps-web
+site_url: https://www.grampsweb.org
+edit_uri: https://github.com/gramps-project/gramps-web-docs/blob/main/docs/
+repo_url: https://github.com/gramps-project/gramps-web
 theme:
   custom_dir: overrides
-  name:  "material"
+  name: "material"
   features:
     - navigation.tabs
     - navigation.instant
@@ -86,23 +85,36 @@ theme:
     - content.action.edit
     - content.code.copy
   palette:
-    scheme:  default
-    primary:  brown
-    accent:  blue
-  logo:  logo.svg
-  favicon:  favicon.ico
+    scheme: default
+    primary: brown
+    accent: blue
+  logo: logo.svg
+  favicon: favicon.ico
   font:
     text: Inter
 plugins:
+  - i18n:
+      default_language: en
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: de
+          name: Deutsch
+          build: true
+        - locale: fr
+          name: Français
+          build: true
   - search
   - glightbox:
-        manual:  false    # optional lightboxing.  Requires HTML in markdown.
+      manual: false # optional lightboxing.  Requires HTML in markdown.
   - redirects:
       redirect_maps:
-        'help.md': 'help/help.md'
-        'development.md': 'development/dev.md'
-        'development/index.md': 'development/dev.md'
-        'user-guide/sync.md': 'administration/sync.md'
+        "help.md": "help/help.md"
+        "development.md": "development/dev.md"
+        "development/index.md": "development/dev.md"
+        "user-guide/sync.md": "administration/sync.md"
 markdown_extensions:
   - admonition
   - pymdownx.details

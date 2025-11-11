@@ -1,0 +1,8 @@
+Lorsque vous vous connectez pour la première fois à Gramps Web, un formulaire Préférences (Employer Settings) sera affiché et l'utilisateur devra sélectionner une langue pour la façade et un [Home Person](https://www.gramps-project.org/wiki/index.php/Gramps_Glossary#home_person). La sélection de la personne à domicile peut également être modifiée à partir de la page d'accueil du site Web.
+
+La personne à domicile pour un utilisateur d'un site Web Gramps n'a pas à être la même personne que le propriétaire du site choisi dans Gramps pour les ordinateurs de bureau — c'est un paramètre personnel qui peut être différent pour chaque utilisateur de Gramps Web. La personne à la maison est utilisée pour la vue initiale de l'arbre généalogique et le point de départ de la plupart des rapports. Un choix typique serait pour un utilisateur de se choisir comme personne à domicile. Lorsqu'ils collaborent avec un autre membre d'un arbre, ces utilisateurs pourraient vouloir définir l'ancêtre commun comme la personne à domicile. Cela assure un point de référence commun pour les relations lointaines.
+
+Pour sélectionner une personne en tant que personne à domicile, commencez à taper un nom de famille dans le champ texte et une liste déroulante avec des correspondances apparaîtra.
+
+Les paramètres de la langue et de la personne d'accueil sont stockés dans le stockage local du navigateur, de sorte qu'ils persisteront sur un appareil donné.
+.

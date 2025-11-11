@@ -1,0 +1,35 @@
+# Translation Configuration Template
+# Copy this file to config_local.yaml and add your API key
+
+# OpenAI API Configuration
+api:
+  provider: "openai"  # or "libretranslate" for fallback
+  
+  # OpenAI settings
+  openai_api_key: ""  # Add your key in config_local.yaml
+  model: "gpt-4o-mini"  # Fast and cheap: ~$0.02 for all docs
+  
+  # LibreTranslate fallback (optional)
+  libretranslate_url: "https://translate.eduard-krasnov.de/translate"
+  libretranslate_api_key: ""
+  
+  # Request settings
+  timeout: 60
+  max_retries: 3
+
+# Translation Settings
+translation:
+  source_language: "en"
+  target_languages:
+    - "de"
+    - "fr"
+  
+  # Paths
+  docs_dir: "docs"
+  source_dir: "docs/en"
+
+# Terms that should not be translated (case-sensitive)
+# Add domain-specific terms here if needed
+protected_terms: []
+#  - "Gramps"
+#  - "GEDCOM"

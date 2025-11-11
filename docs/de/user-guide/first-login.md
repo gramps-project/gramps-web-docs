@@ -1,0 +1,7 @@
+Beim ersten Anmelden bei Gramps Web wird ein Einstellungsformular (mit der Bezeichnung Benutzereinstellungen) angezeigt, in dem der Benutzer eine Sprache für das Frontend und eine [Heim-Person](https://www.gramps-project.org/wiki/index.php/Gramps_Glossary#home_person) auswählen muss. Die Auswahl der Heim-Person kann auch von der Startseite der Website aus geändert werden.
+
+Die Heim-Person für einen Benutzer einer Gramps Web-Website muss nicht die gleiche Person sein, die der Eigentümer der Website in Gramps für Desktops gewählt hat — es handelt sich um eine persönliche Einstellung, die für jeden Benutzer von Gramps Web unterschiedlich sein kann. Die Heim-Person wird für die anfängliche Ansicht des Stammbaums und als Ausgangspunkt für die meisten Berichte verwendet. Eine typische Wahl wäre, dass ein Benutzer sich selbst als Heim-Person auswählt. Bei der Zusammenarbeit mit einem anderen Mitglied eines Baums möchten diese Benutzer möglicherweise den gemeinsamen Vorfahren als Heim-Person festlegen. Dies gewährleistet einen gemeinsamen Bezugspunkt für die entfernten Beziehungen.
+
+Um eine Person als Heim-Person auszuwählen, beginnen Sie, einen Vor- oder Nachnamen im Textfeld einzugeben, und eine Dropdown-Liste mit Übereinstimmungen wird angezeigt.
+
+Die Einstellungen für Sprache und Heim-Person werden im lokalen Speicher des Browsers gespeichert, sodass sie auf einem bestimmten Gerät bestehen bleiben.

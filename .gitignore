@@ -3,3 +3,8 @@
 .idea*
 .packer_cache
 *.bbprojectd
+venv/
+venv
+
+# Translation config with API key
+config_local.yaml
