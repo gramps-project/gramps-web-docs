@@ -4,9 +4,9 @@ Si vous utilisez Gramps Desktop, il y a deux étapes pour préparer votre base d
 
 1. Vérifiez et réparez la base de données
     - Optionnel : créez une sauvegarde de la base de données en exportant au format Gramps XML
-    - Exécutez l'[outil de vérification et de réparation de la base de données](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Cela corrige certaines incohérences internes qui pourraient entraîner des problèmes dans Gramps Web.
+    - Exécutez l'outil de [Vérification et réparation de la base de données](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Cela corrige certaines incohérences internes qui pourraient entraîner des problèmes dans Gramps Web.
 2. Convertir les chemins des médias en relatifs
-    - Utilisez le Gestionnaire de Médias Gramps pour [convertir tous les chemins des médias d'absolus en relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez que même avec des chemins relatifs, tous les fichiers multimédias en dehors de votre répertoire de médias Gramps ne fonctionneront pas correctement lorsqu'ils seront synchronisés avec Gramps Web.
+    - Utilisez le Gestionnaire de médias Gramps pour [convertir tous les chemins des médias d'absolus en relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez qu même avec des chemins relatifs, tous les fichiers multimédias en dehors de votre répertoire de médias Gramps ne fonctionneront pas correctement lorsqu'ils seront synchronisés avec Gramps Web.
 
 ## Importer des données généalogiques
 
@@ -24,8 +24,8 @@ Pour importer les fichiers multimédias appartenant à un fichier `.gramps` impo
 
 Si vous avez téléchargé un arbre généalogique et devez télécharger les fichiers multimédias correspondants, vous pouvez utiliser le bouton "importer l'archive multimédia" sur la page "Importer".
 
-Il attend un fichier ZIP contenant les fichiers multimédias manquants à l'intérieur. La structure des dossiers dans le fichier ZIP n'a pas besoin d'être la même que la structure des dossiers à l'intérieur du dossier de médias Gramps, car les fichiers sont associés aux objets multimédias par leur somme de contrôle.
+Il attend un fichier ZIP contenant les fichiers multimédias manquants à l'intérieur. La structure des dossiers dans le fichier ZIP n'a pas besoin d'être la même que la structure des dossiers à l'intérieur du dossier multimédia Gramps, car les fichiers sont associés aux objets multimédias par leur somme de contrôle.
 
 Notez que cette fonctionnalité ne fonctionne que pour les fichiers ayant la somme de contrôle correcte dans la base de données Gramps (ce qui devrait être assuré en exécutant l'outil de vérification et de réparation à la première étape).
 
-Lors de la migration vers Gramps Web depuis un autre programme de généalogie incluant des fichiers multimédias, il est recommandé d'importer d'abord tout dans Gramps Desktop, qui dispose de plus d'options pour associer des fichiers multimédias existants avec un arbre importé.
+Lors de la migration vers Gramps Web depuis un autre programme de généalogie incluant des fichiers multimédias, il est recommandé d'importer d'abord tout dans Gramps Desktop, qui offre plus d'options pour associer des fichiers multimédias existants avec un arbre importé.

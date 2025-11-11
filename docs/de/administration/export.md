@@ -1,12 +1,12 @@
 ## Sichern Sie Ihren Stammbaum
 
-Um ein Backup Ihres Stammbaums zu erstellen, öffnen Sie die Exportseite in Gramps Web und wählen Sie das Gramps XML-Format aus.
+Um eine Sicherung Ihres Stammbaums zu erstellen, öffnen Sie die Exportseite in Gramps Web und wählen Sie das Gramps XML-Format aus.
 
 Ein Klick auf "exportieren" generiert die Datei und startet den Download, sobald sie bereit ist.
 
-Bitte beachten Sie, dass, wenn Ihr Gramps Web-Benutzer keine Berechtigung hat, private Datensätze anzuzeigen, der Export kein vollständiges Backup sein wird, da er keine privaten Datensätze enthält.
+Bitte beachten Sie, dass, wenn Ihr Gramps Web-Benutzer keine Berechtigung hat, private Datensätze anzuzeigen, der Export kein vollständiges Backup sein wird, da er keine privaten Datensätze enthalten wird.
 
-## Teilen Sie Ihren Stammbaum mit Nutzern anderer Genealogie-Programme
+## Teilen Sie Ihren Stammbaum mit Benutzern anderer Genealogie-Programme
 
 Wenn das Teilen genealogischer Daten im Gramps XML-Format keine Option ist, können Sie auch eine GEDCOM-Datei exportieren. Bitte beachten Sie, dass dies nicht als Backup Ihres Gramps Web-Stammbaums geeignet ist.
 
@@ -27,10 +27,10 @@ Gramps Web bindet Sie nicht an einen bestimmten Anbieter, und Sie können jederz
 Um eine vollständige Migration zu erreichen, befolgen Sie diese Schritte (vorausgesetzt, Sie haben die Berechtigung als Baum-Eigentümer):
 
 1. Gehen Sie zur Exportseite und exportieren Sie Ihren Baum als Gramps XML (`.gramps`) Datei. Wenn Sie das [Sync-Addon](sync.md) verwenden, können Sie den Export auch in Gramps Desktop generieren.
-2. Erstellen und laden Sie auf der Exportseite ein Medienarchiv herunter. Wenn Sie das [Sync-Addon](sync.md) verwenden, können Sie auch einfach Ihren lokalen Gramps-Medienordner ZIP-en.
+2. Generieren und laden Sie auf der Exportseite ein Medienarchiv herunter. Wenn Sie das [Sync-Addon](sync.md) verwenden, können Sie auch einfach Ihren lokalen Gramps-Medienordner ZIPpen.
 3. Gehen Sie zu Einstellungen > Verwaltung > Benutzer verwalten und klicken Sie auf die Schaltfläche "Benutzerdetails exportieren". Es wird eine JSON-Datei heruntergeladen.
 4. Öffnen Sie in der neuen Gramps Web-Instanz die Importseite. Importieren Sie die in Schritt 1 exportierte `.gramps`-Datei.
 5. Laden Sie auf der Importseite der neuen Gramps Web-Instanz das Medienarchiv (ZIP) hoch.
 6. Gehen Sie zu Einstellungen > Verwaltung > Benutzer der neuen Gramps Web-Instanz verwalten. Klicken Sie auf die Schaltfläche "Benutzerkonten importieren" und laden Sie die in Schritt 3 heruntergeladene JSON-Datei hoch.
 
-Bitte beachten Sie, dass, während Ihre Benutzerkonten migriert werden, alle Ihre Benutzer neue Passwörter über den Link "Passwort vergessen" festlegen müssen, da Passwörter in verschlüsselter Form gespeichert werden und nicht exportiert werden können.
+Bitte beachten Sie, dass, während Ihre Benutzerkonten migriert werden, alle Ihre Benutzer neue Passwörter festlegen müssen, indem sie den Link "Passwort vergessen" verwenden, da Passwörter in verschlüsselter Form gespeichert werden und nicht exportiert werden können.

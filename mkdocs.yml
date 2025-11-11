@@ -104,9 +104,127 @@ plugins:
         - locale: de
           name: Deutsch
           build: true
+          nav_translations:
+            Home: Startseite
+            Features: Funktionen
+            Install/Setup: Installation/Einrichtung
+            Getting Started: Erste Schritte
+            Try out locally: Lokal ausprobieren
+            Installation and Deployment: Installation und Bereitstellung
+            Deploy with Docker: Mit Docker bereitstellen
+            Docker with Let's Encrypt: Docker mit Let's Encrypt
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Serververwaltung
+            User system: Benutzersystem
+            Server configuration: Serverkonfiguration
+            OIDC authentication: OIDC-Authentifizierung
+            Setting up AI chat: AI-Chat einrichten
+            Multi-tree setup: Multi-Baum-Einrichtung
+            Frontend customization: Frontend-Anpassung
+            Update: Aktualisierung
+            Using PostgreSQL: PostgreSQL verwenden
+            Hosting media on S3: Medien auf S3 hosten
+            Limit CPU & memory usage: CPU & Speicher begrenzen
+            Telemetry: Telemetrie
+            Gramps 5.2 upgrade guide: Gramps 5.2 Upgrade-Anleitung
+            Gramps 6.0 upgrade guide: Gramps 6.0 Upgrade-Anleitung
+            Administration: Verwaltung
+            Introduction: Einführung
+            Create owner account: Besitzerkonto erstellen
+            Import data: Daten importieren
+            Export data: Daten exportieren
+            Synchronize with Gramps: Mit Gramps synchronisieren
+            User Guide: Benutzerhandbuch
+            First steps: Erste Schritte
+            Registration: Registrierung
+            First login: Erste Anmeldung
+            Edit data: Daten bearbeiten
+            Add media files: Mediendateien hinzufügen
+            Tag people in photos: Personen auf Fotos markieren
+            Use the blog: Blog verwenden
+            Manage tasks: Aufgaben verwalten
+            DNA: DNA
+            Overview: Übersicht
+            DNA matches: DNA-Übereinstimmungen
+            Chromosome browser: Chromosomen-Browser
+            Y-DNA: Y-DNA
+            Revision history: Versionshistorie
+            Advanced features: Erweiterte Funktionen
+            GQL filters: GQL-Filter
+            AI chat: AI-Chat
+            Developers: Entwickler
+            Backend: Backend
+            Development setup: Entwicklungsumgebung
+            API specification: API-Spezifikation
+            Manual queries: Manuelle Abfragen
+            Frontend: Frontend
+            Architecture: Architektur
+            Translation: Übersetzung
+            Contribute: Mitwirken
+            Get Help: Hilfe erhalten
         - locale: fr
           name: Français
           build: true
+          nav_translations:
+            Home: Accueil
+            Features: Fonctionnalités
+            Install/Setup: Installation/Configuration
+            Getting Started: Premiers pas
+            Try out locally: Essayer localement
+            Installation and Deployment: Installation et Déploiement
+            Deploy with Docker: Déployer avec Docker
+            Docker with Let's Encrypt: Docker avec Let's Encrypt
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Administration du serveur
+            User system: Système utilisateur
+            Server configuration: Configuration du serveur
+            OIDC authentication: Authentification OIDC
+            Setting up AI chat: Configuration du chat IA
+            Multi-tree setup: Configuration multi-arbre
+            Frontend customization: Personnalisation du frontend
+            Update: Mise à jour
+            Using PostgreSQL: Utilisation de PostgreSQL
+            Hosting media on S3: Hébergement de médias sur S3
+            Limit CPU & memory usage: Limiter l'utilisation CPU & mémoire
+            Telemetry: Télémétrie
+            Gramps 5.2 upgrade guide: Guide de mise à niveau Gramps 5.2
+            Gramps 6.0 upgrade guide: Guide de mise à niveau Gramps 6.0
+            Administration: Administration
+            Introduction: Introduction
+            Create owner account: Créer un compte propriétaire
+            Import data: Importer des données
+            Export data: Exporter des données
+            Synchronize with Gramps: Synchroniser avec Gramps
+            User Guide: Guide utilisateur
+            First steps: Premiers pas
+            Registration: Inscription
+            First login: Première connexion
+            Edit data: Modifier les données
+            Add media files: Ajouter des fichiers média
+            Tag people in photos: Identifier des personnes sur les photos
+            Use the blog: Utiliser le blog
+            Manage tasks: Gérer les tâches
+            DNA: ADN
+            Overview: Vue d'ensemble
+            DNA matches: Correspondances ADN
+            Chromosome browser: Navigateur de chromosomes
+            Y-DNA: ADN-Y
+            Revision history: Historique des révisions
+            Advanced features: Fonctionnalités avancées
+            GQL filters: Filtres GQL
+            AI chat: Chat IA
+            Developers: Développeurs
+            Backend: Backend
+            Development setup: Configuration de développement
+            API specification: Spécification API
+            Manual queries: Requêtes manuelles
+            Frontend: Frontend
+            Architecture: Architecture
+            Translation: Traduction
+            Contribute: Contribuer
+            Get Help: Obtenir de l'aide
   - search
   - glightbox:
       manual: false # optional lightboxing.  Requires HTML in markdown.
