@@ -22,7 +22,21 @@ To add a new page to the documentation, create a new Markdown file in the `docs/
 
 ## Adding translations
 
-The documentation currently supports English (default), German, and French. The translations of the actual `.md files` are managed automatically using OpenAI GPT-4o-mini. The navigation (under `mkdocs.yml`) and `home.html` need to be translated manually.
+The documentation currently supports :
+
+1. **English** (en) - Default
+2. **Deutsch** (de) - German
+3. **Français** (fr) - French
+4. **Español** (es) - Spanish
+5. **简体中文** (zh-hans) - Simplified Chinese
+6. **Tiếng Việt** (vi) - Vietnamese
+7. **Українська** (uk) - Ukrainian
+8. **Türkçe** (tr) - Turkish
+9. **Русский** (ru) - Russian
+10. **Português** (pt) - Portuguese
+11. **日本語** (ja) - Japanese
+
+The translations of the actual `.md files` are managed automatically using OpenAI GPT-4o-mini. The navigation (under `mkdocs.yml`) and `home.html` need to be translated manually.
 
 ### Adding a new language
 
@@ -48,7 +62,7 @@ To add a new language to the documentation:
    }
    ```
 
-2. **Add the language to MkDocs** in `mkdocs.yml`:
+2. **Add the language to MkDocs** in `mkdocs.yml` and add the navigation translations:
 
    ```yaml
    plugins:
@@ -63,7 +77,43 @@ To add a new language to the documentation:
                # ... add all navigation translations
    ```
 
-3. **Add homepage translations** in `overrides/translations/home.yml`:
+3. **Extend github workflow in** `.github\workflows\translate.yml`:
+
+   ```
+    - name: Check for translation changes
+           id: check-changes
+           if: steps.changed-files.outputs.changed == 'true'
+           run: |
+             # Check if any translations were actually changed
+
+             # ADD NEW LANGUAGES HERE
+             if git diff --quiet docs/de/ docs/fr/ docs/es/ docs/zh-hans/ docs/vi/ docs/uk/ docs/tr/ docs/ru/ docs/pt/ docs/ja/; then
+               echo "No translation changes"
+               echo "has_changes=false" >> $GITHUB_OUTPUT
+             else
+               echo "Translation changes detected"
+               echo "has_changes=true" >> $GITHUB_OUTPUT
+             fi
+
+         - name: Commit translations
+           if: steps.check-changes.outputs.has_changes == 'true'
+           run: |
+             git config --local user.email "github-actions[bot]@users.noreply.github.com"
+             git config --local user.name "github-actions[bot]"
+
+             # ADD NEW LANGUAGES HERE
+             git add docs/de/ docs/fr/ docs/es/ docs/zh-hans/ docs/vi/ docs/uk/ docs/tr/ docs/ru/ docs/pt/ docs/ja/
+
+             # Create commit message with list of translated files
+             COMMIT_MSG="Auto-translate documentation\n\nTranslated files:\n"
+             for file in ${{ steps.changed-files.outputs.files }}; do
+               COMMIT_MSG="${COMMIT_MSG}- ${file}\n"
+             done
+
+             git commit -m "$(echo -e "$COMMIT_MSG")"
+   ```
+
+4. **Add homepage translations** in `overrides/translations/home.yml`:
 
    ```yaml
    hero:
@@ -77,7 +127,7 @@ To add a new language to the documentation:
        # ... add all homepage translations
    ```
 
-4. **Run the translation**:
+5. **Run the translation**:
 
    ```bash
    python translate.py --lang es
