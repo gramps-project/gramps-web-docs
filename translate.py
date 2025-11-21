@@ -5,63 +5,59 @@ Translates Markdown documentation while preserving formatting.
 """
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
-import yaml
 from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables from .env file if it exists
+load_dotenv()
 
 
-def load_config():
-    """Load configuration from YAML files"""
-    config_file = Path("config.yaml.example")
-    local_config_file = Path("config_local.yaml")
-    
-    if not config_file.exists():
-        raise FileNotFoundError("config.yaml.example not found")
-    
-    with open(config_file, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
-    
-    # Merge with local config if it exists
-    if local_config_file.exists():
-        with open(local_config_file, "r", encoding="utf-8") as f:
-            local_config = yaml.safe_load(f)
-            if local_config:
-                # Deep merge
-                for key, value in local_config.items():
-                    if isinstance(value, dict) and key in config:
-                        config[key].update(value)
-                    else:
-                        config[key] = value
-    
-    # Validate
-    if not config.get("api", {}).get("openai_api_key"):
-        raise ValueError("openai_api_key not found in config. Add it to config_local.yaml")
-    
-    return config
+# Configuration
+CONFIG = {
+    "api": {
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "timeout": 60,
+        "max_retries": 3
+    },
+    "translation": {
+        "source_language": "en",
+        "target_languages": ["de", "fr"],
+        "docs_dir": "docs",
+        "source_dir": "docs/en"
+    }
+}
 
+# Language names for prompting and display
+LANGUAGE_NAMES = {
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish",
+    "it": "Italian",
+    "en": "English"
+}
 
-CONFIG = load_config()
+# Get API key from environment variable
+API_KEY = os.getenv("OPENAI_API_KEY")
+if not API_KEY:
+    raise ValueError(
+        "OPENAI_API_KEY environment variable not set.\n"
+        "Set it in .env file or as environment variable."
+    )
 
 
 def translate_with_openai(content, target_lang, source_lang="en"):
     """Translate Markdown content using OpenAI GPT-4o-mini"""
     api_config = CONFIG["api"]
-    client = OpenAI(api_key=api_config["openai_api_key"])
-    model = api_config.get("model", "gpt-4o-mini")
+    client = OpenAI(api_key=API_KEY)
+    model = api_config["model"]
     
-    # Language names for better prompting
-    lang_names = {
-        "de": "German",
-        "fr": "French",
-        "es": "Spanish",
-        "it": "Italian",
-        "en": "English"
-    }
-    
-    target_lang_name = lang_names.get(target_lang, target_lang)
-    source_lang_name = lang_names.get(source_lang, source_lang)
+    target_lang_name = LANGUAGE_NAMES.get(target_lang, target_lang)
+    source_lang_name = LANGUAGE_NAMES.get(source_lang, source_lang)
     
     prompt = f"""You are translating technical documentation from {source_lang_name} to {target_lang_name}.
 

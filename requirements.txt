@@ -4,6 +4,5 @@ mkdocs-glightbox
 mkdocs-redirects
 mkdocs-static-i18n
 
-pyyaml
 openai
-requests
+python-dotenv

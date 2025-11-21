@@ -92,7 +92,29 @@ theme:
   favicon: favicon.ico
   font:
     text: Inter
+hooks:
+  - overrides/hooks.py
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 plugins:
+  - search
+  - glightbox:
+      manual: false # optional lightboxing.  Requires HTML in markdown.
+  - redirects:
+      redirect_maps:
+        "help.md": "help/help.md"
+        "development.md": "development/dev.md"
+        "development/index.md": "development/dev.md"
+        "user-guide/sync.md": "administration/sync.md"
   - i18n:
       docs_structure: folder
       default_language: en
@@ -225,23 +247,3 @@ plugins:
             Translation: Traduction
             Contribute: Contribuer
             Get Help: Obtenir de l'aide
-  - search
-  - glightbox:
-      manual: false # optional lightboxing.  Requires HTML in markdown.
-  - redirects:
-      redirect_maps:
-        "help.md": "help/help.md"
-        "development.md": "development/dev.md"
-        "development/index.md": "development/dev.md"
-        "user-guide/sync.md": "administration/sync.md"
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - attr_list
-  - toc:
-      permalink: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
