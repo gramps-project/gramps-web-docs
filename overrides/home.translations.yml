@@ -54,6 +54,10 @@ hero:
     title: "Gramps Web"
     description: "Il sistema genealogico gratuito e open-source per costruire il tuo albero genealogico - insieme. Usalo in modo autonomo o come complemento a Gramps Desktop, con il pieno controllo sui tuoi dati e la privacy come priorità assoluta."
     demo_button: "Prova la demo"
+  uk:
+    title: "Gramps Web"
+    description: "Безкоштовна система генеалогії з відкритим вихідним кодом для побудови вашого родинного дерева - разом. Використовуйте автономно або як доповнення до Gramps Desktop, з повним контролем над вашими даними та конфіденційністю як головним пріоритетом."
+    demo_button: "Спробувати демо"
 
 learn_more:
   en:
@@ -277,3 +281,20 @@ learn_more:
     development:
       title: "Documentazione per sviluppatori"
       description: "Immergiti nel codebase, nella documentazione API e nei dettagli tecnici per estendere Gramps Web."
+  uk:
+    title: "Дізнатися більше"
+    features:
+      title: "Огляд можливостей Gramps Web"
+      description: "Дослідіть потужні функції, які роблять Gramps Web ідеальним інструментом для спільного дослідження родинної історії."
+    install:
+      title: "Інформація про встановлення та налаштування"
+      description: "Почніть з покрокових інструкцій для встановлення та налаштування Gramps Web."
+    admin:
+      title: "Посібник веб-адміністратора"
+      description: "Дізнайтеся, як легко керувати та підтримувати екземпляр Gramps Web."
+    user_guide:
+      title: "Посібник користувача"
+      description: "Відкрийте для себе, як користуватися Gramps Web для документування вашої родинної історії."
+    development:
+      title: "Документація для розробників"
+      description: "Зануртеся в кодову базу, документацію API та технічні деталі для розширення Gramps Web."

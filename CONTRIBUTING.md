@@ -37,6 +37,7 @@ The documentation currently supports:
 11. **Dansk** (da) - Danish
 12. **Suomi** (fi) - Finnish
 13. **Italiano** (it) - Italian
+14. **Українська** (uk) - Ukrainian
 
 The translations of the actual `.md files` are managed automatically using OpenAI GPT-4o-mini. The navigation (under `mkdocs.yml`) and `home.html` need to be translated manually.
 

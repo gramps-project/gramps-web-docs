@@ -867,3 +867,65 @@ plugins:
             Translation: Traduzione
             Contribute: Contribuisci
             Get Help: Ottieni Aiuto
+        - locale: uk
+          name: Українська
+          build: true
+          nav_translations:
+            Home: Головна
+            Features: Можливості
+            Install/Setup: Встановлення/Налаштування
+            Getting Started: Початок роботи
+            Try out locally: Спробувати локально
+            Installation and Deployment: Встановлення та розгортання
+            Deploy with Docker: Розгортання з Docker
+            Docker with Let's Encrypt: Docker з Let's Encrypt
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Адміністрування сервера
+            User system: Система користувачів
+            Server configuration: Конфігурація сервера
+            OIDC authentication: OIDC автентифікація
+            Setting up AI chat: Налаштування AI чату
+            Multi-tree setup: Налаштування кількох дерев
+            Frontend customization: Налаштування інтерфейсу
+            Update: Оновлення
+            Using PostgreSQL: Використання PostgreSQL
+            Hosting media on S3: Розміщення медіа на S3
+            Limit CPU & memory usage: Обмеження використання CPU та пам'яті
+            Telemetry: Телеметрія
+            Gramps 5.2 upgrade guide: Посібник з оновлення Gramps 5.2
+            Gramps 6.0 upgrade guide: Посібник з оновлення Gramps 6.0
+            Administration: Адміністрування
+            Introduction: Вступ
+            Create owner account: Створити обліковий запис власника
+            Import data: Імпорт даних
+            Export data: Експорт даних
+            Synchronize with Gramps: Синхронізація з Gramps
+            User Guide: Посібник користувача
+            First steps: Перші кроки
+            Registration: Реєстрація
+            First login: Перший вхід
+            Edit data: Редагування даних
+            Add media files: Додати медіафайли
+            Tag people in photos: Позначити людей на фото
+            Use the blog: Використання блогу
+            Manage tasks: Управління завданнями
+            DNA: ДНК
+            Overview: Огляд
+            DNA matches: Збіги ДНК
+            Chromosome browser: Браузер хромосом
+            Y-DNA: Y-ДНК
+            Revision history: Історія ревізій
+            Advanced features: Розширені можливості
+            GQL filters: GQL фільтри
+            AI chat: AI чат
+            Developers: Розробники
+            Backend: Бекенд
+            Development setup: Налаштування розробки
+            API specification: Специфікація API
+            Manual queries: Ручні запити
+            Frontend: Фронтенд
+            Architecture: Архітектура
+            Translation: Переклад
+            Contribute: Внесок
+            Get Help: Отримати допомогу
