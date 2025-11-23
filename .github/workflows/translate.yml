@@ -72,7 +72,7 @@ jobs:
           # Check if any translations were actually changed
 
           # ADD NEW LANGUAGES HERE
-          if git diff --quiet docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/; then
+          if git diff --quiet docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/ docs/da/ docs/fi/ docs/it/; then
             echo "No translation changes"
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
@@ -87,7 +87,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
           # ADD NEW LANGUAGES HERE
-          git add docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/ 
+          git add docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/ docs/da/ docs/fi/ docs/it/ 
 
           # Create commit message with list of translated files
           COMMIT_MSG="Auto-translate documentation\n\nTranslated files:\n"

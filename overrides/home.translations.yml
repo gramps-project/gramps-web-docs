@@ -42,6 +42,18 @@ hero:
     title: "Gramps Web"
     description: "家系図を一緒に構築するための無料のオープンソース家系図システム。Gramps Desktop のスタンドアロンまたはコンパニオンとして使用し、データとプライバシーを最優先に完全にコントロールします。"
     demo_button: "デモを試す"
+  da:
+    title: "Gramps Web"
+    description: "Det gratis, open source genealogi-system til at bygge dit slægtstræ - sammen. Brug det selvstændigt eller som supplement til Gramps Desktop, med fuld kontrol over dine data og privatliv som topprioritet."
+    demo_button: "Prøv demoen"
+  fi:
+    title: "Gramps Web"
+    description: "Ilmainen, avoimen lähdekoodin sukututkimusjärjestelmä sukupuusi rakentamiseen - yhdessä. Käytä itsenäisenä tai Gramps Desktopin kumppanina, täydellä hallinnalla tiedoistasi ja yksityisyys ensisijaisena."
+    demo_button: "Kokeile demoa"
+  it:
+    title: "Gramps Web"
+    description: "Il sistema genealogico gratuito e open-source per costruire il tuo albero genealogico - insieme. Usalo in modo autonomo o come complemento a Gramps Desktop, con il pieno controllo sui tuoi dati e la privacy come priorità assoluta."
+    demo_button: "Prova la demo"
 
 learn_more:
   en:
@@ -214,3 +226,54 @@ learn_more:
     development:
       title: "開発者ドキュメント"
       description: "Gramps Web を拡張するためのコードベース、API ドキュメント、および技術的な詳細に飛び込みます。"
+  da:
+    title: "Lær mere"
+    features:
+      title: "Oversigt over Gramps Web-funktioner"
+      description: "Udforsk de kraftfulde funktioner, der gør Gramps Web til det ideelle værktøj til samarbejdsforskning i slægtshistorie."
+    install:
+      title: "Installations- og opsætningsoplysninger"
+      description: "Kom i gang med trin-for-trin instruktioner til installation og konfiguration af Gramps Web."
+    admin:
+      title: "Webadministratorvejledning"
+      description: "Lær, hvordan du administrerer og vedligeholder din Gramps Web-instans med lethed."
+    user_guide:
+      title: "Brugervejledning"
+      description: "Opdag, hvordan du navigerer og bruger Gramps Web til at dokumentere din slægtshistorie."
+    development:
+      title: "Udviklerdokumentation"
+      description: "Dyk ned i kodebasen, API-dokumentation og tekniske detaljer for at udvide Gramps Web."
+  fi:
+    title: "Lue lisää"
+    features:
+      title: "Gramps Web -ominaisuuksien yleiskatsaus"
+      description: "Tutustu tehokkaisiin ominaisuuksiin, jotka tekevät Gramps Webistä ihanteellisen työkalun yhteistyössä tehtävään sukututkimukseen."
+    install:
+      title: "Asennus- ja määritystiedot"
+      description: "Aloita vaiheittaisilla ohjeilla Gramps Webin asentamiseen ja konfigurointiin."
+    admin:
+      title: "Web-ylläpitäjän opas"
+      description: "Opi hallitsemaan ja ylläpitämään Gramps Web -instanssiasi helposti."
+    user_guide:
+      title: "Käyttöopas"
+      description: "Tutustu Gramps Webin käyttöön ja navigointiin sukuhistoriasi dokumentointiin."
+    development:
+      title: "Kehittäjädokumentaatio"
+      description: "Sukella koodipohjaan, API-dokumentaatioon ja teknisiin yksityiskohtiin laajentaaksesi Gramps Webiä."
+  it:
+    title: "Scopri di più"
+    features:
+      title: "Panoramica delle funzionalità di Gramps Web"
+      description: "Esplora le potenti funzionalità che rendono Gramps Web lo strumento ideale per la ricerca genealogica collaborativa."
+    install:
+      title: "Informazioni su installazione e configurazione"
+      description: "Inizia con istruzioni passo-passo per installare e configurare Gramps Web."
+    admin:
+      title: "Guida per l'amministratore web"
+      description: "Scopri come gestire e mantenere la tua istanza di Gramps Web con facilità."
+    user_guide:
+      title: "Guida utente"
+      description: "Scopri come navigare e utilizzare Gramps Web per documentare la tua storia familiare."
+    development:
+      title: "Documentazione per sviluppatori"
+      description: "Immergiti nel codebase, nella documentazione API e nei dettagli tecnici per estendere Gramps Web."

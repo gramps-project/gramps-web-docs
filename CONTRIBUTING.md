@@ -22,19 +22,21 @@ To add a new page to the documentation, create a new Markdown file in the `docs/
 
 ## Adding translations
 
-The documentation currently supports :
+The documentation currently supports:
 
 1. **English** (en) - Default
 2. **Deutsch** (de) - German
 3. **Français** (fr) - French
 4. **Español** (es) - Spanish
-5. **简体中文** (zh-hans) - Simplified Chinese
+5. **简体中文** (zh) - Simplified Chinese
 6. **Tiếng Việt** (vi) - Vietnamese
-7. **Українська** (uk) - Ukrainian
-8. **Türkçe** (tr) - Turkish
-9. **Русский** (ru) - Russian
-10. **Português** (pt) - Portuguese
-11. **日本語** (ja) - Japanese
+7. **Türkçe** (tr) - Turkish
+8. **Русский** (ru) - Russian
+9. **Português** (pt) - Portuguese
+10. **日本語** (ja) - Japanese
+11. **Dansk** (da) - Danish
+12. **Suomi** (fi) - Finnish
+13. **Italiano** (it) - Italian
 
 The translations of the actual `.md files` are managed automatically using OpenAI GPT-4o-mini. The navigation (under `mkdocs.yml`) and `home.html` need to be translated manually.
 

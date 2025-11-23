@@ -26,7 +26,7 @@ CONFIG = {
     },
     "translation": {
         "source_language": "en",
-        "target_languages": ["de", "fr", "es", "zh", "vi", "tr", "ru", "pt", "ja"],
+        "target_languages": ["de", "fr", "es", "zh", "vi", "tr", "ru", "pt", "ja", "da", "fi", "it"],
         "docs_dir": "docs",
         "source_dir": "docs/en"
     }
@@ -43,6 +43,9 @@ LANGUAGE_NAMES = {
     "ru": "Russian",
     "pt": "Portuguese",
     "ja": "Japanese",
+    "da": "Danish",
+    "fi": "Finnish",
+    "it": "Italian",
     "en": "English"
 }
 
@@ -163,7 +166,7 @@ def main():
     parser.add_argument(
         "--lang",
         type=str,
-        choices=["de", "fr", "es", "zh", "vi", "tr", "ru", "pt", "ja", "all"],
+        choices=["de", "fr", "es", "zh", "vi", "tr", "ru", "pt", "ja", "da", "fi", "it", "all"],
         default="all",
         help="Target language(s)"
     )

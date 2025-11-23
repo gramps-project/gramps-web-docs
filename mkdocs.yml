@@ -681,3 +681,189 @@ plugins:
             Translation: 翻訳
             Contribute: 貢献
             Get Help: ヘルプを取得
+        - locale: da
+          name: Dansk
+          build: true
+          nav_translations:
+            Home: Hjem
+            Features: Funktioner
+            Install/Setup: Installation/Opsætning
+            Getting Started: Kom godt i gang
+            Try out locally: Prøv lokalt
+            Installation and Deployment: Installation og udrulning
+            Deploy with Docker: Implementér med Docker
+            Docker with Let's Encrypt: Docker med Let's Encrypt
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Serveradministration
+            User system: Brugersystem
+            Server configuration: Serverkonfiguration
+            OIDC authentication: OIDC-godkendelse
+            Setting up AI chat: Opsætning af AI-chat
+            Multi-tree setup: Multi-træ opsætning
+            Frontend customization: Frontend-tilpasning
+            Update: Opdatering
+            Using PostgreSQL: Brug af PostgreSQL
+            Hosting media on S3: Hosting af medier på S3
+            Limit CPU & memory usage: Begræns CPU- og hukommelsesforbrug
+            Telemetry: Telemetri
+            Gramps 5.2 upgrade guide: Gramps 5.2 opgraderingsvejledning
+            Gramps 6.0 upgrade guide: Gramps 6.0 opgraderingsvejledning
+            Administration: Administration
+            Introduction: Introduktion
+            Create owner account: Opret ejerkonto
+            Import data: Importér data
+            Export data: Eksportér data
+            Synchronize with Gramps: Synkroniser med Gramps
+            User Guide: Brugervejledning
+            First steps: Første trin
+            Registration: Registrering
+            First login: Første login
+            Edit data: Redigér data
+            Add media files: Tilføj mediefiler
+            Tag people in photos: Tag personer i billeder
+            Use the blog: Brug bloggen
+            Manage tasks: Administrer opgaver
+            DNA: DNA
+            Overview: Oversigt
+            DNA matches: DNA-matches
+            Chromosome browser: Kromosombrowser
+            Y-DNA: Y-DNA
+            Revision history: Revisionshistorik
+            Advanced features: Avancerede funktioner
+            GQL filters: GQL-filtre
+            AI chat: AI-chat
+            Developers: Udviklere
+            Backend: Backend
+            Development setup: Udviklingsopsætning
+            API specification: API-specifikation
+            Manual queries: Manuelle forespørgsler
+            Frontend: Frontend
+            Architecture: Arkitektur
+            Translation: Oversættelse
+            Contribute: Bidrag
+            Get Help: Få hjælp
+        - locale: fi
+          name: Suomi
+          build: true
+          nav_translations:
+            Home: Etusivu
+            Features: Ominaisuudet
+            Install/Setup: Asennus/Asetukset
+            Getting Started: Aloittaminen
+            Try out locally: Kokeile paikallisesti
+            Installation and Deployment: Asennus ja käyttöönotto
+            Deploy with Docker: Käytä Dockeria
+            Docker with Let's Encrypt: Docker Let's Encryptin kanssa
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Palvelinhallinta
+            User system: Käyttäjäjärjestelmä
+            Server configuration: Palvelinmääritykset
+            OIDC authentication: OIDC-todennus
+            Setting up AI chat: AI-chatin asetukset
+            Multi-tree setup: Monipuuasetukset
+            Frontend customization: Käyttöliittymän muokkaus
+            Update: Päivitys
+            Using PostgreSQL: PostgreSQL:n käyttö
+            Hosting media on S3: Median ylläpito S3:ssa
+            Limit CPU & memory usage: Rajoita CPU:n ja muistin käyttöä
+            Telemetry: Telemetria
+            Gramps 5.2 upgrade guide: Gramps 5.2 päivitysopas
+            Gramps 6.0 upgrade guide: Gramps 6.0 päivitysopas
+            Administration: Hallinta
+            Introduction: Johdanto
+            Create owner account: Luo omistajatili
+            Import data: Tuo tietoja
+            Export data: Vie tietoja
+            Synchronize with Gramps: Synkronoi Grampsin kanssa
+            User Guide: Käyttöopas
+            First steps: Ensimmäiset askeleet
+            Registration: Rekisteröityminen
+            First login: Ensimmäinen kirjautuminen
+            Edit data: Muokkaa tietoja
+            Add media files: Lisää mediatiedostoja
+            Tag people in photos: Merkitse henkilöt kuviin
+            Use the blog: Käytä blogia
+            Manage tasks: Hallitse tehtäviä
+            DNA: DNA
+            Overview: Yleiskatsaus
+            DNA matches: DNA-osumat
+            Chromosome browser: Kromosomiselain
+            Y-DNA: Y-DNA
+            Revision history: Versiohistoria
+            Advanced features: Edistyneet ominaisuudet
+            GQL filters: GQL-suodattimet
+            AI chat: AI-chat
+            Developers: Kehittäjät
+            Backend: Taustajärjestelmä
+            Development setup: Kehitysympäristön asennus
+            API specification: API-määrittely
+            Manual queries: Manuaaliset kyselyt
+            Frontend: Käyttöliittymä
+            Architecture: Arkkitehtuuri
+            Translation: Käännös
+            Contribute: Osallistu
+            Get Help: Pyydä apua
+        - locale: it
+          name: Italiano
+          build: true
+          nav_translations:
+            Home: Home
+            Features: Caratteristiche
+            Install/Setup: Installazione/Configurazione
+            Getting Started: Iniziare
+            Try out locally: Prova in locale
+            Installation and Deployment: Installazione e Distribuzione
+            Deploy with Docker: Distribuisci con Docker
+            Docker with Let's Encrypt: Docker con Let's Encrypt
+            DigitalOcean: DigitalOcean
+            TrueNAS: TrueNAS
+            Server Administration: Amministrazione del Server
+            User system: Sistema utenti
+            Server configuration: Configurazione del server
+            OIDC authentication: Autenticazione OIDC
+            Setting up AI chat: Configurazione chat AI
+            Multi-tree setup: Configurazione multi-albero
+            Frontend customization: Personalizzazione del frontend
+            Update: Aggiornamento
+            Using PostgreSQL: Utilizzo di PostgreSQL
+            Hosting media on S3: Hosting di media su S3
+            Limit CPU & memory usage: Limitare l'uso di CPU e memoria
+            Telemetry: Telemetria
+            Gramps 5.2 upgrade guide: Guida all'aggiornamento Gramps 5.2
+            Gramps 6.0 upgrade guide: Guida all'aggiornamento Gramps 6.0
+            Administration: Amministrazione
+            Introduction: Introduzione
+            Create owner account: Crea account proprietario
+            Import data: Importa dati
+            Export data: Esporta dati
+            Synchronize with Gramps: Sincronizza con Gramps
+            User Guide: Guida Utente
+            First steps: Primi passi
+            Registration: Registrazione
+            First login: Primo accesso
+            Edit data: Modifica dati
+            Add media files: Aggiungi file multimediali
+            Tag people in photos: Tagga persone nelle foto
+            Use the blog: Usa il blog
+            Manage tasks: Gestisci attività
+            DNA: DNA
+            Overview: Panoramica
+            DNA matches: Corrispondenze DNA
+            Chromosome browser: Browser dei cromosomi
+            Y-DNA: DNA-Y
+            Revision history: Cronologia revisioni
+            Advanced features: Funzionalità avanzate
+            GQL filters: Filtri GQL
+            AI chat: Chat AI
+            Developers: Sviluppatori
+            Backend: Backend
+            Development setup: Configurazione sviluppo
+            API specification: Specifiche API
+            Manual queries: Query manuali
+            Frontend: Frontend
+            Architecture: Architettura
+            Translation: Traduzione
+            Contribute: Contribuisci
+            Get Help: Ottieni Aiuto
