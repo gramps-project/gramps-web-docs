@@ -1,0 +1,7 @@
+Al iniciar sesión en Gramps Web por primera vez, se mostrará un formulario de Preferencias (etiquetado como Configuración del Usuario) que requerirá que el usuario seleccione un idioma para la interfaz y una [Persona Principal](https://www.gramps-project.org/wiki/index.php/Gramps_Glossary#home_person). La selección de la Persona Principal también se puede cambiar desde la Página Principal del sitio web.
+
+La Persona Principal para un usuario de un sitio web de Gramps Web no tiene que ser la misma persona que el propietario del sitio eligió en Gramps para Escritorios; es una configuración personal que puede ser diferente para cada usuario de Gramps Web. La persona principal se utiliza para la vista inicial del árbol genealógico y el punto de partida para la mayoría de los Informes. Una elección típica sería que un usuario se seleccione a sí mismo como Persona Principal. Al colaborar con otro miembro de un Árbol, esos usuarios podrían querer establecer el ancestro común como la Persona Principal. Esto asegura un punto de referencia común para las relaciones distantes.
+
+Para seleccionar a una persona como Persona Principal, comience a escribir un Nombre o Apellido en el campo de texto y aparecerá una lista desplegable con coincidencias.
+
+Las configuraciones de idioma y Persona Principal se almacenan en el almacenamiento local del navegador, por lo que persistirán en un dispositivo dado.

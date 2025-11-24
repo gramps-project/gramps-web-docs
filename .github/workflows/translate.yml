@@ -1,0 +1,120 @@
+name: Auto-Translate Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/en/**/*.md"
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # Required to push translations
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for git diff
+          token: ${{ secrets.GITHUB_TOKEN }} # Use GitHub token for auth
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of changed Markdown files in docs/en/
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '^docs/en/.*\.md$' || true)
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No Markdown files changed in docs/en/"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            
+            # Convert to space-separated list for easier processing
+            FILES_LIST=$(echo "$CHANGED_FILES" | tr '\n' ' ')
+            echo "files=$FILES_LIST" >> $GITHUB_OUTPUT
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Translate changed files
+        if: steps.changed-files.outputs.changed == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # Translate each changed file
+          for file in ${{ steps.changed-files.outputs.files }}; do
+            # Remove 'docs/en/' prefix to get relative path
+            RELATIVE_PATH="${file#docs/en/}"
+            
+            echo "Translating: $RELATIVE_PATH"
+            python translate.py --file "$RELATIVE_PATH" --lang all --force
+          done
+
+      - name: Check for translation changes
+        id: check-changes
+        if: steps.changed-files.outputs.changed == 'true'
+        run: |
+          # Check if any translations were actually changed
+
+          # ADD NEW LANGUAGES HERE
+          if git diff --quiet docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/ docs/da/ docs/fi/ docs/it/ docs/uk/; then
+            echo "No translation changes"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Translation changes detected"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit translations
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # ADD NEW LANGUAGES HERE
+          git add docs/de/ docs/fr/ docs/es/ docs/zh/ docs/vi/ docs/tr/ docs/ru/ docs/pt/ docs/ja/ docs/da/ docs/fi/ docs/it/ docs/uk/ 
+
+          # Create commit message with list of translated files
+          COMMIT_MSG="Auto-translate documentation\n\nTranslated files:\n"
+          for file in ${{ steps.changed-files.outputs.files }}; do
+            COMMIT_MSG="${COMMIT_MSG}- ${file}\n"
+          done
+
+          git commit -m "$(echo -e "$COMMIT_MSG")"
+
+      - name: Push changes
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git push
+
+      - name: Summary
+        if: steps.changed-files.outputs.changed == 'true'
+        run: |
+          echo "## Translation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Changed files in docs/en/:" >> $GITHUB_STEP_SUMMARY
+          for file in ${{ steps.changed-files.outputs.files }}; do
+            echo "- $file" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.check-changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ Translations updated and committed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No translation changes needed" >> $GITHUB_STEP_SUMMARY
+          fi

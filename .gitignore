@@ -3,3 +3,8 @@
 .idea*
 .packer_cache
 *.bbprojectd
+venv/
+venv
+site
+site/
+.env

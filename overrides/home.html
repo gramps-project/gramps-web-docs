@@ -1,14 +1,11 @@
-{% extends "main.html" %}
-
-
-
-{% block styles %}
-{{ super() }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+{% extends "main.html" %} {% block styles %} {{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
 <style>
-
   .hero-container {
     width: 100vw;
     /* position: absolute;
@@ -32,9 +29,8 @@
     margin-top: -50px;
     padding-bottom: 3rem;
     font-size: 16px;
-    color:rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
   }
-
 
   .home-content h2 {
     font-family: Poppins;
@@ -63,7 +59,11 @@
   .hero-content {
     width: 100%;
     height: 100%;
-    background: linear-gradient(185deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 100%);
+    background: linear-gradient(
+      185deg,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,10 +73,10 @@
 
   @media (max-width: 768px) {
     .hero-content {
-        flex-direction: column;
-        text-align: center;
+      flex-direction: column;
+      text-align: center;
     }
-}
+  }
 
   .hero-image {
     max-width: 400px;
@@ -104,7 +104,6 @@
     line-height: 28px;
   }
 
-
   .hero h1 {
     font-family: Poppins;
     color: rgba(255, 255, 255, 0.9);
@@ -113,7 +112,9 @@
     font-weight: 600;
   }
 
-  .hero a, .hero a:link, .hero a:visited  {
+  .hero a,
+  .hero a:link,
+  .hero a:visited {
     display: inline-block;
     padding: 12px 24px;
     background: rgba(255, 255, 255, 0.8);
@@ -125,43 +126,58 @@
     font-size: 16px;
   }
 
-  .hero a:hover, .hero a:active {
+  .hero a:hover,
+  .hero a:active {
     background: rgba(255, 255, 255, 0.45);
     color: var(--md-primary-bg-color);
   }
 </style>
-{% endblock %}
-
-{% block tabs %}
-{{ super() }}
+{% endblock %} {% block tabs %} {{ super() }}
 <div class="hero-container">
   <div class="hero">
     <div class="hero-content">
       <div class="hero-image">
-        <img src="screenshot.png" alt="Gramps Web">
+        <img src="/screenshot.png" alt="Gramps Web" />
       </div>
       <div class="hero-text">
         <h1>{{ config.site_name }}</h1>
-        <p>The free, open-source genealogy system for building your family tree &ndash; together.
-          Use it standalone or as a companion to Gramps Desktop, with full control over your data and privacy as the top priority.
-        </p>
-        <a href="https://demo.grampsweb.org/" target="_blank"><b>Try the demo</b> (owner / owner)</a>
+        {% set lang = config.theme.language or 'en' %} {% set hero =
+        home_translations.hero[lang] %}
+        <p>{{ hero.description }}</p>
+        <a href="https://demo.grampsweb.org/" target="_blank"
+          ><b>{{ hero.demo_button }}</b> (owner / owner)</a
+        >
       </div>
     </div>
   </div>
-{% endblock %}
-
-  
-{% block content %}
+</div>
+{% endblock %} {% block content %}
 <div class="home-content">
-  <h2>Learn more</h2>
-    <ul class="home">
-        <li><a href="features/">Gramps Web Features Overview</a><br>Explore the powerful features that make Gramps Web the ideal tool for collaborative family history research.</li>
-        <li><a href="install_setup/setup/">Install and Setup Information</a><br>Get started with step-by-step instructions for installing and configuring Gramps Web.</li>
-        <li><a href="administration/admin/">Web Administrator's Guide</a><br>Learn how to manage and maintain a Gramps Web instance with ease.</li>
-        <li><a href="user-guide/">User Guide</a><br>Discover how to navigate and use Gramps Web for documenting your family history.</li>
-        <li><a href="development/dev/">Developer Documentation</a><br>Dive into the codebase, API documentation, and technical details for extending Gramps Web.</li>
-    </ul>
+  {% set lang = config.theme.language or 'en' %} {% set learn =
+  home_translations.learn_more[lang] %}
+  <h2>{{ learn.title }}</h2>
+  <ul class="home">
+    <li>
+      <a href="features/">{{ learn.features.title }}</a><br />{{
+      learn.features.description }}
+    </li>
+    <li>
+      <a href="install_setup/setup/">{{ learn.install.title }}</a><br />{{
+      learn.install.description }}
+    </li>
+    <li>
+      <a href="administration/admin/">{{ learn.admin.title }}</a><br />{{
+      learn.admin.description }}
+    </li>
+    <li>
+      <a href="user-guide/">{{ learn.user_guide.title }}</a><br />{{
+      learn.user_guide.description }}
+    </li>
+    <li>
+      <a href="development/dev/">{{ learn.development.title }}</a><br />{{
+      learn.development.description }}
+    </li>
+  </ul>
 </div>
 
 {% endblock %}
