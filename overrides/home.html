@@ -181,3 +181,30 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+  (function() {
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+      return;
+    }
+
+    const availableLanguages = ['da', 'de', 'es', 'fi', 'fr', 'it', 'ja', 'pt', 'ru', 'tr', 'uk', 'vi', 'zh'];
+    const browserLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
+    
+    for (const browserLang of browserLanguages) {
+      const langCode = browserLang.split('-')[0].toLowerCase();
+      
+      if (langCode === 'en') {
+        return;
+      }
+      
+      if (availableLanguages.includes(langCode)) {
+        window.location.href = '/' + langCode + '/';
+        return;
+      }
+    }
+  })();
+</script>
+{% endblock %}
