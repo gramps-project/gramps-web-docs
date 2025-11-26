@@ -1,6 +1,6 @@
-# OIDC Kimlik Doğrulaması
+# OIDC Kimlik Doğrulama
 
-Gramps Web, kullanıcıların dış kimlik sağlayıcıları kullanarak oturum açmalarına olanak tanıyan OpenID Connect (OIDC) kimlik doğrulamasını destekler. Bu, Google, Microsoft ve GitHub gibi popüler sağlayıcıların yanı sıra Keycloak, Authentik ve diğer özel OIDC sağlayıcılarını da içerir.
+Gramps Web, kullanıcıların dış kimlik sağlayıcılarını kullanarak giriş yapmalarını sağlayan OpenID Connect (OIDC) kimlik doğrulamasını destekler. Bu, Google, Microsoft ve GitHub gibi popüler sağlayıcıların yanı sıra Keycloak, Authentik ve diğer özel OIDC sağlayıcılarını da içerir.
 
 ## Genel Bakış
 
@@ -10,18 +10,18 @@ OIDC kimlik doğrulaması ile şunları yapabilirsiniz:
 - Aynı anda birden fazla kimlik doğrulama sağlayıcısını destekleyin
 - OIDC gruplarını/rollerini Gramps Web kullanıcı rollerine eşleyin
 - Tek Oturum Açma (SSO) ve Tek Oturum Kapatma uygulayın
-- İsteğe bağlı olarak yerel kullanıcı adı/parola kimlik doğrulamasını devre dışı bırakın
+- İsteğe bağlı olarak yerel kullanıcı adı/şifre kimlik doğrulamasını devre dışı bırakın
 
 ## Yapılandırma
 
 OIDC kimlik doğrulamasını etkinleştirmek için Gramps Web yapılandırma dosyanızda veya ortam değişkenlerinizde uygun ayarları yapılandırmanız gerekir. Mevcut OIDC ayarlarının tam listesi için [Sunucu Yapılandırması](configuration.md#settings-for-oidc-authentication) sayfasına bakın.
 
 !!! info
-    Ortam değişkenlerini kullanırken, her ayar adını `GRAMPSWEB_` ile ön eklemeyi unutmayın (örneğin, `GRAMPSWEB_OIDC_ENABLED`). Ayrıntılar için [Yapılandırma dosyası vs. ortam değişkenleri](configuration.md#configuration-file-vs-environment-variables) sayfasına bakın.
+    Ortam değişkenlerini kullanırken, her ayar adını `GRAMPSWEB_` ile ön eklemeyi unutmayın (örn., `GRAMPSWEB_OIDC_ENABLED`). Ayrıntılar için [Yapılandırma dosyası vs. ortam değişkenleri](configuration.md#configuration-file-vs-environment-variables) sayfasına bakın.
 
 ### Yerleşik Sağlayıcılar
 
-Gramps Web, popüler kimlik sağlayıcıları için yerleşik destek sunar. Bunları kullanmak için yalnızca istemci kimliği ve istemci sırrını sağlamanız yeterlidir:
+Gramps Web, popüler kimlik sağlayıcıları için yerleşik destek sunar. Bunları kullanmak için yalnızca istemci kimliği ve istemci sırrını sağlamanız gerekir:
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` ve `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` ve `OIDC_MICROSOFT_CLIENT_SECRET`
@@ -39,25 +39,24 @@ Anahtar | Açıklama
 `OIDC_ISSUER` | Sağlayıcınızın verici URL'si
 `OIDC_CLIENT_ID` | OIDC sağlayıcınız için istemci kimliği
 `OIDC_CLIENT_SECRET` | OIDC sağlayıcınız için istemci sırrı
-`OIDC_NAME` | Özel görüntü adı (isteğe bağlı, varsayılan "OIDC"dır)
-`OIDC_SCOPES` | OAuth kapsamları (isteğe bağlı, varsayılan "openid email profile"dır)
+`OIDC_NAME` | Özel görüntü adı (isteğe bağlı, varsayılan "OIDC")
+`OIDC_SCOPES` | OAuth kapsamları (isteğe bağlı, varsayılan "openid email profile")
 
 ## Gerekli Yönlendirme URI'leri
 
-OIDC sağlayıcınızı yapılandırırken, aşağıdaki yönlendirme URI'sini kaydetmelisiniz:
+OIDC sağlayıcınızı yapılandırırken, aşağıdaki yönlendirme URI'sını kaydetmelisiniz:
 
-**Wildcard'ları destekleyen OIDC sağlayıcıları için: (örneğin, Authentik)**
+**Wildcard'ları destekleyen OIDC sağlayıcıları için: (örn., Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
-Burada `*` bir regex wildcard'dır. Sağlayıcınızın regex yorumlayıcısına bağlı olarak bu aynı zamanda `.*` veya benzeri olabilir.
-Eğer sağlayıcınız bunu gerektiriyorsa regex'in etkin olduğundan emin olun (örneğin, Authentik).
+Burada `*` bir regex wildcard'dır. Sağlayıcınızın regex yorumlayıcısına bağlı olarak bu aynı zamanda `.*` veya benzeri bir şey de olabilir. Sağlayıcınızın bunu gerektirmesi durumunda regex'in etkin olduğundan emin olun (örn., Authentik).
 
-**Wildcard'ları desteklemeyen OIDC sağlayıcıları için: (örneğin, Authelia)**
+**Wildcard'ları desteklemeyen OIDC sağlayıcıları için: (örn., Authelia)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
 
-## Rol Eşleme
+## Rol Eşlemesi
 
 Gramps Web, kimlik sağlayıcınızdan OIDC gruplarını veya rollerini Gramps Web kullanıcı rollerine otomatik olarak eşleyebilir. Bu, kullanıcı izinlerini merkezi olarak kimlik sağlayıcınızda yönetmenizi sağlar.
 
@@ -68,26 +67,26 @@ Rol eşlemesini yapılandırmak için bu ayarları kullanın:
 Anahtar | Açıklama
 ----|-------------
 `OIDC_ROLE_CLAIM` | Kullanıcının gruplarını/rollerini içeren OIDC token'ındaki talep adı. Varsayılan "groups"
-`OIDC_GROUP_ADMIN` | Gramps "Admin" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_OWNER` | Gramps "Owner" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_EDITOR` | Gramps "Editor" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_CONTRIBUTOR` | Gramps "Contributor" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_MEMBER` | Gramps "Member" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_GUEST` | Gramps "Guest" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
+`OIDC_GROUP_ADMIN` | Gramps "Admin" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
+`OIDC_GROUP_OWNER` | Gramps "Owner" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
+`OIDC_GROUP_EDITOR` | Gramps "Editor" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
+`OIDC_GROUP_CONTRIBUTOR` | Gramps "Contributor" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
+`OIDC_GROUP_MEMBER` | Gramps "Member" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
+`OIDC_GROUP_GUEST` | Gramps "Guest" rolüne eşlenen OIDC sağlayıcınızdan grup/rol adı
 
 ### Rol Eşleme Davranışı
 
-- Eğer rol eşlemesi yapılandırılmamışsa (hiçbir `OIDC_GROUP_*` değişkeni ayarlanmamışsa), mevcut kullanıcı rolleri korunur
-- Kullanıcılara grup üyeliklerine göre hak kazandıkları en yüksek rol atanır
+- Eğer rol eşlemesi yapılandırılmamışsa (hiç `OIDC_GROUP_*` değişkeni ayarlanmamışsa), mevcut kullanıcı rolleri korunur
+- Kullanıcılara grup üyeliklerine dayanarak hak kazandıkları en yüksek rol atanır
 - Rol eşlemesi varsayılan olarak büyük/küçük harf duyarlıdır (OIDC sağlayıcınıza bağlıdır)
 
 ## OIDC Çıkışı
 
-Gramps Web, OIDC sağlayıcıları için Tek Oturum Kapatma (SSO çıkışı) desteği sunar. Bir kullanıcı OIDC aracılığıyla kimlik doğruladıktan sonra Gramps Web'den çıkış yaptığında, sağlayıcı `end_session_endpoint`'i destekliyorsa otomatik olarak kimlik sağlayıcısının çıkış sayfasına yönlendirilir.
+Gramps Web, OIDC sağlayıcıları için Tek Oturum Kapatma (SSO çıkışı) desteği sunar. Bir kullanıcı OIDC aracılığıyla kimlik doğrulaması yaptıktan sonra Gramps Web'den çıkış yaptığında, sağlayıcı `end_session_endpoint` desteği varsa otomatik olarak kimlik sağlayıcısının çıkış sayfasına yönlendirilir.
 
 ### Arka Kanal Çıkışı
 
-Gramps Web, OpenID Connect Arka Kanal Çıkışı spesifikasyonunu uygular. Bu, kimlik sağlayıcılarının bir kullanıcının başka bir uygulamadan veya kimlik sağlayıcısından çıkış yaptığında Gramps Web'e bildirim göndermesine olanak tanır.
+Gramps Web, OpenID Connect Arka Kanal Çıkış spesifikasyonunu uygular. Bu, kimlik sağlayıcılarının bir kullanıcının başka bir uygulamadan veya kimlik sağlayıcısından çıkış yaptığında Gramps Web'e bildirimde bulunmasını sağlar.
 
 #### Yapılandırma
 
@@ -98,7 +97,7 @@ Kimlik sağlayıcınızla arka kanal çıkışını yapılandırmak için:
    https://your-gramps-backend.com/api/oidc/backchannel-logout/
    ```
 
-2. **Sağlayıcınızı çıkış bildirimlerini gönderecek şekilde yapılandırın.** Kesin adımlar sağlayıcınıza bağlıdır:
+2. **Sağlayıcınızı çıkış bildirimleri gönderecek şekilde yapılandırın.** Kesin adımlar sağlayıcınıza bağlıdır:
 
    **Keycloak:**
 
@@ -112,20 +111,20 @@ Kimlik sağlayıcınızla arka kanal çıkışını yapılandırmak için:
    - Sağlayıcının çıkış token'larını gönderecek şekilde yapılandırıldığından emin olun
 
 !!! warning "Token Süresi"
-    JWT token'larının durumsuz doğası nedeniyle, arka kanal çıkışı şu anda çıkış olayını kaydeder ancak zaten verilmiş olan JWT token'larını hemen iptal edemez. Token'lar süresi dolana kadar geçerli kalacaktır (varsayılan: erişim token'ları için 15 dakika).
+    JWT token'larının durumsuz doğası nedeniyle, arka kanal çıkışı şu anda çıkış olayını kaydeder ancak daha önce verilmiş JWT token'larını hemen iptal edemez. Token'lar, süresi dolana kadar geçerli kalacaktır (varsayılan: erişim token'ları için 15 dakika).
 
-    Güvenliği artırmak için, şunları dikkate alın:
+    Geliştirilmiş güvenlik için, dikkate alabilirsiniz:
 
-    - JWT token süresini azaltma (`JWT_ACCESS_TOKEN_EXPIRES`)
-    - Kullanıcıları kimlik sağlayıcınızdan çıkış yaparken Gramps Web'den manuel olarak çıkış yapmaları konusunda bilgilendirme
+    - JWT token süresini azaltmak (`JWT_ACCESS_TOKEN_EXPIRES`)
+    - Kullanıcılara kimlik sağlayıcınızdan çıkış yaparken Gramps Web'den manuel olarak çıkış yapmalarını öğretmek
 
 !!! tip "Nasıl Çalışır"
     Bir kullanıcı kimlik sağlayıcınızdan veya başka bir uygulamadan çıkış yaptığında:
 
     1. Sağlayıcı, Gramps Web'in arka kanal çıkış uç noktasına bir `logout_token` JWT gönderir
     2. Gramps Web token'ı doğrular ve çıkış olayını kaydeder
-    3. Çıkış token'ının JTI'si yeniden oynatma saldırılarını önlemek için bir kara listeye eklenir
-    4. Kullanıcının JWT'si ile yapılan yeni API talepleri, token'lar süresi dolduğunda reddedilecektir
+    3. Çıkış token'ının JTI'si, yeniden oynatma saldırılarını önlemek için bir kara listeye eklenir
+    4. Kullanıcının JWT'si ile yapılan yeni API istekleri, token'lar süresi dolduğunda reddedilecektir
 
 ## Örnek Yapılandırmalar
 
@@ -145,9 +144,9 @@ OIDC_CLIENT_SECRET="your-client-secret"
 OIDC_NAME="Aile SSO"
 OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # İsteğe bağlı: SSO girişine otomatik yönlendirme
-OIDC_DISABLE_LOCAL_AUTH=True  # İsteğe bağlı: kullanıcı adı/parola girişini devre dışı bırak
+OIDC_DISABLE_LOCAL_AUTH=True  # İsteğe bağlı: kullanıcı adı/şifre girişini devre dışı bırak
 
-# İsteğe bağlı: OIDC gruplarından Gramps rollerine rol eşleme
+# İsteğe bağlı: OIDC gruplarından Gramps rollerine rol eşlemesi
 OIDC_ROLE_CLAIM="groups"  # veya sağlayıcınıza bağlı olarak "roles"
 OIDC_GROUP_ADMIN="gramps-admins"
 OIDC_GROUP_EDITOR="gramps-editors"
@@ -202,4 +201,14 @@ OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
 
 ### Authelia
 
-Gramps Web için topluluk tarafından oluşturulmuş bir OIDC kurulum kılavuzu, [resmi Authelia belgeleri web sitesinde](https://www.authelia.com/integration/openid-connect/clients/gramps/) mevcuttur.
+Gramps Web için topluluk tarafından yapılmış bir OIDC kurulum kılavuzu [resmi Authelia belgeleri web sitesinde](https://www.authelia.com/integration/openid-connect/clients/gramps/) mevcuttur.
+
+### Keycloak
+
+Keycloak için yapılandırmanın çoğu varsayılan olarak bırakılabilir (*İstemci → İstemci oluştur → İstemci kimlik doğrulaması AÇIK*). Bazı istisnalar vardır:
+
+1. **OpenID kapsamı** – `openid` kapsamı, tüm Keycloak sürümlerinde varsayılan olarak dahil edilmez. Sorun yaşamamak için manuel olarak ekleyin: *İstemci → [Gramps istemcisi] → İstemci kapsamları → Kapsam ekle → Ad: `openid` → Varsayılan olarak ayarla.*
+2. **Roller** – Roller, ya istemci düzeyinde ya da realm başına genel olarak atanabilir.
+
+    * İstemci rollerini kullanıyorsanız, `OIDC_ROLE_CLAIM` yapılandırma seçeneğini şu şekilde ayarlayın: `resource_access.[gramps-client-name].roles`
+    * Rollerin Gramps'a görünür olması için *İstemci Kapsamları* bölümüne gidin (belirli istemci altında değil, üst düzey bölüm), ardından: *Roller → Haritalayıcılar → istemci rolleri → Kullanıcı bilgilerine ekle → AÇIK.*

@@ -9,7 +9,7 @@ L'authentification OIDC vous permet de :
 - Utiliser des fournisseurs d'identité externes pour l'authentification des utilisateurs
 - Prendre en charge plusieurs fournisseurs d'authentification simultanément
 - Mapper les groupes/rôles OIDC aux rôles d'utilisateur de Gramps Web
-- Mettre en œuvre le Single Sign-On (SSO) et le Single Sign-Out
+- Implémenter le Single Sign-On (SSO) et le Single Sign-Out
 - Désactiver optionnellement l'authentification locale par nom d'utilisateur/mot de passe
 
 ## Configuration
@@ -31,7 +31,7 @@ Vous pouvez configurer plusieurs fournisseurs simultanément. Le système détec
 
 ### Fournisseurs OIDC personnalisés
 
-Pour les fournisseurs OIDC personnalisés (comme Keycloak, Authentik ou tout fournisseur conforme à la norme OIDC), utilisez ces paramètres :
+Pour les fournisseurs OIDC personnalisés (comme Keycloak, Authentik, ou tout fournisseur conforme aux normes OIDC), utilisez ces paramètres :
 
 Clé | Description
 ----|-------------
@@ -42,9 +42,9 @@ Clé | Description
 `OIDC_NAME` | Nom d'affichage personnalisé (optionnel, par défaut "OIDC")
 `OIDC_SCOPES` | Scopes OAuth (optionnel, par défaut "openid email profile")
 
-## URI de redirection requises
+## URIs de redirection requises
 
-Lorsque vous configurez votre fournisseur OIDC, vous devez enregistrer l'URI de redirection suivante :
+Lors de la configuration de votre fournisseur OIDC, vous devez enregistrer l'URI de redirection suivante :
 
 **Pour les fournisseurs OIDC qui prennent en charge les jokers : (par exemple, Authentik)**
 
@@ -74,7 +74,7 @@ Clé | Description
 `OIDC_GROUP_MEMBER` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Member" de Gramps
 `OIDC_GROUP_GUEST` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Guest" de Gramps
 
-### Comportement du mapping des rôles
+### Comportement de mapping des rôles
 
 - Si aucun mapping de rôle n'est configuré (aucune variable `OIDC_GROUP_*` définie), les rôles d'utilisateur existants sont préservés
 - Les utilisateurs se voient attribuer le rôle le plus élevé auquel ils ont droit en fonction de leur appartenance à un groupe
@@ -84,15 +84,15 @@ Clé | Description
 
 Gramps Web prend en charge la déconnexion Single Sign-Out (SSO) pour les fournisseurs OIDC. Lorsqu'un utilisateur se déconnecte de Gramps Web après s'être authentifié via OIDC, il sera automatiquement redirigé vers la page de déconnexion du fournisseur d'identité si le fournisseur prend en charge le `end_session_endpoint`.
 
-### Déconnexion en arrière-plan
+### Déconnexion par canal secondaire
 
-Gramps Web met en œuvre la spécification de déconnexion en arrière-plan OpenID Connect. Cela permet aux fournisseurs d'identité de notifier Gramps Web lorsqu'un utilisateur se déconnecte d'une autre application ou du fournisseur d'identité lui-même.
+Gramps Web implémente la spécification de déconnexion par canal secondaire OpenID Connect. Cela permet aux fournisseurs d'identité de notifier Gramps Web lorsqu'un utilisateur se déconnecte d'une autre application ou du fournisseur d'identité lui-même.
 
 #### Configuration
 
-Pour configurer la déconnexion en arrière-plan avec votre fournisseur d'identité :
+Pour configurer la déconnexion par canal secondaire avec votre fournisseur d'identité :
 
-1. **Enregistrez l'endpoint de déconnexion en arrière-plan** dans la configuration du client de votre fournisseur d'identité :
+1. **Enregistrez le point de terminaison de déconnexion par canal secondaire** dans la configuration du client de votre fournisseur d'identité :
    ```
    https://your-gramps-backend.com/api/oidc/backchannel-logout/
    ```
@@ -102,16 +102,16 @@ Pour configurer la déconnexion en arrière-plan avec votre fournisseur d'identi
    **Keycloak :**
 
    - Dans la configuration de votre client, accédez à "Paramètres"
-   - Définissez "URL de déconnexion en arrière-plan" sur `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
-   - Activez "Déconnexion en arrière-plan requise pour la session" si vous souhaitez une déconnexion basée sur la session
+   - Définissez "URL de déconnexion par canal secondaire" sur `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
+   - Activez "Déconnexion par canal secondaire requise" si vous souhaitez une déconnexion basée sur la session
 
    **Authentik :**
 
-   - Dans la configuration de votre fournisseur, ajoutez l'URL de déconnexion en arrière-plan
+   - Dans la configuration de votre fournisseur, ajoutez l'URL de déconnexion par canal secondaire
    - Assurez-vous que le fournisseur est configuré pour envoyer des jetons de déconnexion
 
 !!! warning "Expiration du jeton"
-    En raison de la nature sans état des jetons JWT, la déconnexion en arrière-plan enregistre actuellement l'événement de déconnexion mais ne peut pas révoquer immédiatement les jetons JWT déjà émis. Les jetons resteront valides jusqu'à leur expiration (par défaut : 15 minutes pour les jetons d'accès).
+    En raison de la nature sans état des jetons JWT, la déconnexion par canal secondaire enregistre actuellement l'événement de déconnexion mais ne peut pas révoquer immédiatement les jetons JWT déjà émis. Les jetons resteront valides jusqu'à leur expiration (par défaut : 15 minutes pour les jetons d'accès).
 
     Pour une sécurité accrue, envisagez de :
 
@@ -121,7 +121,7 @@ Pour configurer la déconnexion en arrière-plan avec votre fournisseur d'identi
 !!! tip "Comment ça fonctionne"
     Lorsqu'un utilisateur se déconnecte de votre fournisseur d'identité ou d'une autre application :
 
-    1. Le fournisseur envoie un `logout_token` JWT à l'endpoint de déconnexion en arrière-plan de Gramps Web
+    1. Le fournisseur envoie un `logout_token` JWT au point de terminaison de déconnexion par canal secondaire de Gramps Web
     2. Gramps Web valide le jeton et enregistre l'événement de déconnexion
     3. Le JTI du jeton de déconnexion est ajouté à une liste noire pour prévenir les attaques par rejeu
     4. Toute nouvelle requête API avec le JWT de l'utilisateur sera refusée une fois les jetons expirés
@@ -146,7 +146,7 @@ OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # Optionnel : rediriger automatiquement vers la connexion SSO
 OIDC_DISABLE_LOCAL_AUTH=True  # Optionnel : désactiver la connexion par nom d'utilisateur/mot de passe
 
-# Optionnel : Mapping des rôles des groupes OIDC aux rôles Gramps
+# Optionnel : Mapping des rôles des groupes OIDC aux rôles de Gramps
 OIDC_ROLE_CLAIM="groups"  # ou "roles" selon votre fournisseur
 OIDC_GROUP_ADMIN="gramps-admins"
 OIDC_GROUP_EDITOR="gramps-editors"
@@ -188,7 +188,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.exemple.com/realms/monrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="votre-secret-client"
-OIDC_NAME="SSO d'Entreprise"
+OIDC_NAME="SSO Entreprise"
 
 # Google OAuth
 OIDC_GOOGLE_CLIENT_ID="votre-id-client-google"
@@ -201,4 +201,14 @@ OIDC_GITHUB_CLIENT_SECRET="votre-secret-client-github"
 
 ### Authelia
 
-Un guide de configuration OIDC réalisé par la communauté pour Gramps Web est disponible sur le [site officiel de la documentation d'Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+Un guide de configuration OIDC réalisé par la communauté pour Gramps Web est disponible sur le [site officiel de documentation d'Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+
+### Keycloak
+
+La plupart des configurations pour Keycloak peuvent rester à leurs valeurs par défaut (*Client → Créer un client → Authentification du client ACTIVÉ*). Il y a quelques exceptions :
+
+1. **Scope OpenID** – Le scope `openid` n'est pas inclus par défaut dans toutes les versions de Keycloak. Pour éviter des problèmes, ajoutez-le manuellement : *Client → [Client Gramps] → Scopes de client → Ajouter un scope → Nom : `openid` → Définir comme défaut.*
+2. **Rôles** – Les rôles peuvent être attribués soit au niveau du client, soit globalement par royaume.
+
+    * Si vous utilisez des rôles de client, définissez l'option de configuration `OIDC_ROLE_CLAIM` sur : `resource_access.[nom-client-gramps].roles`
+    * Pour rendre les rôles visibles pour Gramps, accédez à *Scopes de client* (la section de niveau supérieur, pas sous le client spécifique), puis : *Rôles → Mappers → rôles de client → Ajouter à userinfo → ACTIVÉ.*

@@ -21,7 +21,7 @@ Um die OIDC-Authentifizierung zu aktivieren, müssen Sie die entsprechenden Eins
 
 ### Eingebaute Anbieter
 
-Gramps Web unterstützt eingebaut beliebte Identitätsanbieter. Um sie zu verwenden, müssen Sie nur die Client-ID und das Client-Geheimnis angeben:
+Gramps Web hat eingebaute Unterstützung für beliebte Identitätsanbieter. Um sie zu verwenden, müssen Sie nur die Client-ID und das Client-Geheimnis angeben:
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` und `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` und `OIDC_MICROSOFT_CLIENT_SECRET`
@@ -42,9 +42,9 @@ Key | Beschreibung
 `OIDC_NAME` | Benutzerdefinierter Anzeigename (optional, standardmäßig "OIDC")
 `OIDC_SCOPES` | OAuth-Bereiche (optional, standardmäßig "openid email profile")
 
-## Erforderliche Weiterleitungs-URIs
+## Erforderliche Umleitungs-URIs
 
-Bei der Konfiguration Ihres OIDC-Anbieters müssen Sie die folgende Weiterleitungs-URI registrieren:
+Bei der Konfiguration Ihres OIDC-Anbieters müssen Sie die folgende Umleitungs-URI registrieren:
 
 **Für OIDC-Anbieter, die Wildcards unterstützen: (z. B. Authentik)**
 
@@ -62,7 +62,7 @@ Gramps Web kann OIDC-Gruppen oder -Rollen von Ihrem Identitätsanbieter automati
 
 ### Konfiguration
 
-Verwenden Sie diese Einstellungen zur Konfiguration der Rollenabbildung:
+Verwenden Sie diese Einstellungen, um die Rollenabbildung zu konfigurieren:
 
 Key | Beschreibung
 ----|-------------
@@ -78,7 +78,7 @@ Key | Beschreibung
 
 - Wenn keine Rollenabbildung konfiguriert ist (keine `OIDC_GROUP_*` Variablen gesetzt), werden die bestehenden Benutzerrollen beibehalten
 - Benutzern wird die höchste Rolle zugewiesen, auf die sie basierend auf ihrer Gruppenmitgliedschaft Anspruch haben
-- Die Rollenabbildung ist standardmäßig groß-/kleinschreibungsempfindlich (abhängig von Ihrem OIDC-Anbieter)
+- Die Rollenabbildung ist standardmäßig groß-/kleinschreibungsempfindlich (hängt von Ihrem OIDC-Anbieter ab)
 
 ## OIDC-Abmeldung
 
@@ -102,16 +102,16 @@ Um die Backchannel-Abmeldung mit Ihrem Identitätsanbieter zu konfigurieren:
    **Keycloak:**
 
    - Navigieren Sie in Ihrer Client-Konfiguration zu "Einstellungen"
-   - Setzen Sie "Backchannel Logout URL" auf `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
+   - Setzen Sie die "Backchannel Logout URL" auf `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
    - Aktivieren Sie "Backchannel Logout Session Required", wenn Sie eine sitzungsbasierte Abmeldung wünschen
 
    **Authentik:**
 
    - Fügen Sie in Ihrer Anbieter-Konfiguration die Backchannel-Abmeldungs-URL hinzu
-   - Stellen Sie sicher, dass der Anbieter so konfiguriert ist, dass Abmeldetokens gesendet werden
+   - Stellen Sie sicher, dass der Anbieter so konfiguriert ist, dass Abmeldetoken gesendet werden
 
 !!! warning "Token-Ablauf"
-    Aufgrund der zustandslosen Natur von JWT-Tokens protokolliert die Backchannel-Abmeldung derzeit das Abmeldeereignis, kann jedoch bereits ausgegebene JWT-Tokens nicht sofort widerrufen. Tokens bleiben gültig, bis sie ablaufen (Standard: 15 Minuten für Zugriffstokens).
+    Aufgrund der zustandslosen Natur von JWT-Token protokolliert die Backchannel-Abmeldung derzeit das Abmeldeereignis, kann jedoch bereits ausgegebene JWT-Token nicht sofort widerrufen. Tokens bleiben gültig, bis sie ablaufen (Standard: 15 Minuten für Zugriffstoken).
 
     Für erhöhte Sicherheit sollten Sie in Betracht ziehen:
 
@@ -202,3 +202,13 @@ OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
 ### Authelia
 
 Ein von der Community erstellter OIDC-Setup-Leitfaden für Gramps Web ist auf der [offiziellen Authelia-Dokumentationswebsite](https://www.authelia.com/integration/openid-connect/clients/gramps/) verfügbar.
+
+### Keycloak
+
+Die meisten Konfigurationen für Keycloak können auf ihren Standardwerten belassen werden (*Client → Client erstellen → Client-Authentifizierung EIN*). Es gibt einige Ausnahmen:
+
+1. **OpenID-Bereich** – Der `openid` Bereich ist nicht standardmäßig in allen Keycloak-Versionen enthalten. Um Probleme zu vermeiden, fügen Sie ihn manuell hinzu: *Client → [Gramps-Client] → Client-Bereiche → Bereich hinzufügen → Name: `openid` → Als Standard festlegen.*
+2. **Rollen** – Rollen können entweder auf der Client-Ebene oder global pro Realm zugewiesen werden.
+
+    * Wenn Sie Client-Rollen verwenden, setzen Sie die Konfigurationsoption `OIDC_ROLE_CLAIM` auf: `resource_access.[gramps-client-name].roles`
+    * Um Rollen für Gramps sichtbar zu machen, navigieren Sie zu *Client-Bereichen* (der oberste Abschnitt, nicht unter dem spezifischen Client), dann: *Rollen → Mapper → Client-Rollen → Zu Benutzerinformationen hinzufügen → EIN.*

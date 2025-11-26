@@ -17,7 +17,7 @@ La autenticación OIDC te permite:
 Para habilitar la autenticación OIDC, necesitas configurar los ajustes apropiados en tu archivo de configuración de Gramps Web o en las variables de entorno. Consulta la página de [Configuración del servidor](configuration.md#settings-for-oidc-authentication) para obtener una lista completa de los ajustes OIDC disponibles.
 
 !!! info
-    Al usar variables de entorno, recuerda anteponer cada nombre de configuración con `GRAMPSWEB_` (por ejemplo, `GRAMPSWEB_OIDC_ENABLED`). Consulta [Archivo de configuración vs. variables de entorno](configuration.md#configuration-file-vs-environment-variables) para más detalles.
+    Al usar variables de entorno, recuerda anteponer cada nombre de ajuste con `GRAMPSWEB_` (por ejemplo, `GRAMPSWEB_OIDC_ENABLED`). Consulta [Archivo de configuración vs. variables de entorno](configuration.md#configuration-file-vs-environment-variables) para más detalles.
 
 ### Proveedores integrados
 
@@ -46,13 +46,13 @@ Clave | Descripción
 
 Al configurar tu proveedor OIDC, debes registrar la siguiente URI de redirección:
 
-**Para proveedores OIDC que admiten comodines: (por ejemplo, Authentik)**
+**Para proveedores OIDC que soportan comodines: (por ejemplo, Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 Donde `*` es un comodín regex. Dependiendo del intérprete regex de tu proveedor, esto también podría ser un `.*` o similar. Asegúrate de que el regex esté habilitado si tu proveedor lo requiere (por ejemplo, Authentik).
 
-**Para proveedores OIDC que no admiten comodines: (por ejemplo, Authelia)**
+**Para proveedores OIDC que no soportan comodines: (por ejemplo, Authelia)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
 
@@ -78,7 +78,7 @@ Clave | Descripción
 
 - Si no se configura el mapeo de roles (sin variables `OIDC_GROUP_*` establecidas), se preservan los roles de usuario existentes
 - A los usuarios se les asigna el rol más alto al que tienen derecho según su pertenencia a grupos
-- El mapeo de roles es sensible a mayúsculas por defecto (depende de tu proveedor OIDC)
+- El mapeo de roles es sensible a mayúsculas y minúsculas por defecto (depende de tu proveedor OIDC)
 
 ## Cierre de sesión OIDC
 
@@ -86,7 +86,7 @@ Gramps Web admite el cierre de sesión Single Sign-Out (SSO) para proveedores OI
 
 ### Cierre de sesión por canal de retroceso
 
-Gramps Web implementa la especificación de Cierre de Sesión por Canal de Retroceso de OpenID Connect. Esto permite que los proveedores de identidad notifiquen a Gramps Web cuando un usuario cierra sesión desde otra aplicación o desde el propio proveedor de identidad.
+Gramps Web implementa la especificación de Cierre de sesión por canal de retroceso de OpenID Connect. Esto permite a los proveedores de identidad notificar a Gramps Web cuando un usuario cierra sesión desde otra aplicación o desde el propio proveedor de identidad.
 
 #### Configuración
 
@@ -102,8 +102,8 @@ Para configurar el cierre de sesión por canal de retroceso con tu proveedor de 
    **Keycloak:**
 
    - En la configuración de tu cliente, navega a "Configuración"
-   - Establece "URL de Cierre de Sesión por Canal de Retroceso" en `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
-   - Habilita "Se requiere sesión de cierre de sesión por canal de retroceso" si deseas un cierre de sesión basado en sesión
+   - Establece "URL de cierre de sesión por canal de retroceso" en `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
+   - Habilita "Se requiere sesión de cierre de sesión por canal de retroceso" si deseas un cierre de sesión basado en la sesión
 
    **Authentik:**
 
@@ -113,7 +113,7 @@ Para configurar el cierre de sesión por canal de retroceso con tu proveedor de 
 !!! warning "Expiración del token"
     Debido a la naturaleza sin estado de los tokens JWT, el cierre de sesión por canal de retroceso actualmente registra el evento de cierre de sesión pero no puede revocar inmediatamente los tokens JWT ya emitidos. Los tokens seguirán siendo válidos hasta que expiren (por defecto: 15 minutos para los tokens de acceso).
 
-    Para mayor seguridad, considera:
+    Para una mayor seguridad, considera:
 
     - Reducir el tiempo de expiración del token JWT (`JWT_ACCESS_TOKEN_EXPIRES`)
     - Educar a los usuarios para que cierren sesión manualmente en Gramps Web al cerrar sesión en tu proveedor de identidad
@@ -143,8 +143,8 @@ OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="tu-secreto-de-cliente"
 OIDC_NAME="SSO Familiar"
 OIDC_SCOPES="openid email profile"
-OIDC_AUTO_REDIRECT=True  # Opcional: redirigir automáticamente a la sesión SSO
-OIDC_DISABLE_LOCAL_AUTH=True  # Opcional: deshabilitar inicio de sesión con nombre de usuario/contraseña
+OIDC_AUTO_REDIRECT=True  # Opcional: redirigir automáticamente a la página de inicio de sesión SSO
+OIDC_DISABLE_LOCAL_AUTH=True  # Opcional: deshabilitar el inicio de sesión con nombre de usuario/contraseña
 
 # Opcional: Mapeo de roles de grupos OIDC a roles de Gramps
 OIDC_ROLE_CLAIM="groups"  # o "roles" dependiendo de tu proveedor
@@ -202,3 +202,13 @@ OIDC_GITHUB_CLIENT_SECRET="tu-secreto-de-cliente-github"
 ### Authelia
 
 Una guía de configuración OIDC hecha por la comunidad para Gramps Web está disponible en el [sitio web oficial de documentación de Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+
+### Keycloak
+
+La mayor parte de la configuración para Keycloak puede dejarse en sus valores predeterminados (*Cliente → Crear cliente → Autenticación del cliente ACTIVADA*). Hay algunas excepciones:
+
+1. **Alcance OpenID** – El alcance `openid` no está incluido por defecto en todas las versiones de Keycloak. Para evitar problemas, agrégalo manualmente: *Cliente → [Cliente Gramps] → Alcances de cliente → Agregar alcance → Nombre: `openid` → Establecer como predeterminado.*
+2. **Roles** – Los roles pueden asignarse a nivel de cliente o globalmente por reino.
+
+    * Si estás utilizando roles de cliente, establece la opción de configuración `OIDC_ROLE_CLAIM` en: `resource_access.[nombre-del-cliente-gramps].roles`
+    * Para hacer que los roles sean visibles para Gramps, navega a *Alcances de cliente* (la sección de nivel superior, no bajo el cliente específico), luego: *Roles → Mapeadores → roles de cliente → Agregar a userinfo → ACTIVADO.*
