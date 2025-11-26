@@ -1,4 +1,4 @@
-name: Auto-Translate Documentation
+name: Translate and Deploy Documentation
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  translate:
+  translate-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
@@ -127,3 +127,12 @@ jobs:
             echo "- ✅ Succeeded: ${{ steps.translate.outputs.translation_success }}" >> $GITHUB_STEP_SUMMARY
             echo "- ⚠️ Failed: ${{ steps.translate.outputs.translation_failed }}" >> $GITHUB_STEP_SUMMARY
           fi
+
+      - name: Deploy docs
+        if: steps.check-changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONFIG_FILE: mkdocs.yml
+          EXTRA_PACKAGES: build-base
+          REQUIREMENTS: requirements.txt
