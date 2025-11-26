@@ -9,7 +9,7 @@ hide:
 [后端问题 :material-github:](https://github.com/gramps-project/gramps-web-api/issues){ .md-button }
 [前端问题 :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
 
-请参阅以下内容以获取一些指导，了解首先该去哪里。
+请参阅以下内容以获取有关首先该去哪里的一些指导。
 
 ## 提问
 
@@ -23,18 +23,18 @@ hide:
 
 ## 报告问题
 
-如果您遇到一个您认为是 Gramps Web 中的错误的问题，请通过 Github 进行支持。
+如果您遇到您认为是 Gramps Web 中的错误的问题，请通过 GitHub 报告。
 
-Gramps Web 使用的代码有两个独立的 Github 存储库，一个用于用户界面（“前端”），一个用于服务器代码（“后端”）：
+Gramps Web 使用的代码有两个独立的 GitHub 存储库，一个用于用户界面（“前端”），一个用于服务器代码（“后端”）：
 
 - [前端问题](https://github.com/gramps-project/gramps-web/issues)
 - [后端问题](https://github.com/gramps-project/gramps-web-api/issues)
 
-如果您不确定在哪里提交问题，请不要担心，只需选择其中一个 - 维护者在必要时将能够转移该问题。
+如果您不确定在哪里提交问题，请不要担心，只需选择其中一个 - 维护者会在必要时转移问题。
 
 在任何情况下，请始终在您的报告中包含以下信息：
 
-- 有关您设置的详细信息（例如，带有敏感值已编辑的 docker-compose 文件，或您是否使用托管版本，例如 Grampshub，或预配置的镜像，例如 DigitalOcean）
+- 有关您设置的详细信息（例如，带有敏感值已编辑的 docker-compose 文件，或您是否使用托管版本，例如 Grampshub，或预配置的映像，例如 DigitalOcean）
 - 版本信息。要获取它，请转到 Gramps Web 设置页面上的“系统信息”选项卡，并复制/粘贴框中的值，应该类似于以下内容：
 
 ```
@@ -48,6 +48,6 @@ task queue: true
 
 ## 建议增强功能
 
-有关未来改进的一般想法和讨论，请随时在 [论坛](https://gramps.discourse.group/c/gramps-web/) 中开启讨论。您可能还想查看问题页面（请参见上面的链接），以了解特定功能是否已经计划或正在开发中。
+对于关于未来改进的一般想法和讨论，请随时在 [论坛](https://gramps.discourse.group/c/gramps-web/) 中开启讨论。您也可以查看问题页面（见上面的链接），以了解某个特定功能是否已经计划或正在开发中。
 
-对于具有有限范围的具体增强功能，请随时在适当的前端或后端 Github 存储库中直接打开一个功能请求问题。
+对于范围有限的特定增强功能，请随时在适当的前端或后端 GitHub 存储库中直接打开一个功能请求问题。

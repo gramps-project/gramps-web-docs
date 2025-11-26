@@ -3,38 +3,38 @@ hide:
   - navigation
 ---
 
-Gramps Web ile ilgili sorunlarla karşılaşırsanız veya yardıma ihtiyacınız olursa, lütfen aşağıdaki seçeneklerden birini seçin.
+Gramps Web ile ilgili sorunlarla karşılaşırsanız veya yardıma ihtiyacınız olursa, aşağıdaki seçeneklerden birini seçin.
 
 [Forum :material-forum:](https://gramps.discourse.group/c/gramps-web/){ .md-button }
 [Arka uç sorunları :material-github:](https://github.com/gramps-project/gramps-web-api/issues){ .md-button }
-[Ön uç sorunları :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
+[Ön yüz sorunları :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
 
-İlk olarak nereye yönelmeniz gerektiği konusunda bazı rehberlikler aşağıda verilmiştir.
+İlk olarak nereye yönelmeniz gerektiği konusunda bazı yönergeler aşağıda verilmiştir.
 
 ## Soru sorma
 
-Resmi Gramps Discourse forumunda [Gramps Web için ayrı bir kategori](https://gramps.discourse.group/c/gramps-web/) bulunmaktadır. Gramps Web ile ilgili herhangi bir sorunuz varsa bunu kullanabilirsiniz, örneğin
+Resmi Gramps Discourse forumunda [Gramps Web için ayrı bir kategori](https://gramps.discourse.group/c/gramps-web/) bulunmaktadır. Gramps Web ile ilgili herhangi bir sorunuz varsa, lütfen bunu kullanın, örneğin
 
 - Gramps Web'in kullanımıyla ilgili sorular
-- Gramps Web'in yapılandırmasıyla ilgili sorular
-- Gramps Web'in dağıtımında sorun giderme
+- Gramps Web'in yapılandırılmasıyla ilgili sorular
+- Gramps Web'in bir dağıtımında sorun giderme
 - Gramps Web ile ilgili iyileştirme fikirleri
 - ...
 
 ## Sorun bildirme
 
-Gramps Web'de bir hata olduğunu düşündüğünüz bir sorunla karşılaşırsanız, lütfen bunu Github üzerinden bildirin.
+Gramps Web'de bir hata olduğunu düşündüğünüz bir sorunla karşılaşırsanız, lütfen bunu GitHub üzerinden bildirin.
 
-Gramps Web'de kullanılan kod için iki ayrı Github deposu bulunmaktadır, biri kullanıcı arayüzü (“ön uç”) ve diğeri sunucu kodu (“arka uç”) içindir:
+Gramps Web'de kullanılan kodlar için iki ayrı GitHub deposu bulunmaktadır; biri kullanıcı arayüzü (“ön yüz”) ve diğeri sunucu kodu (“arka uç”) içindir:
 
-- [Ön uç sorunları](https://github.com/gramps-project/gramps-web/issues)
+- [Ön yüz sorunları](https://github.com/gramps-project/gramps-web/issues)
 - [Arka uç sorunları](https://github.com/gramps-project/gramps-web-api/issues)
 
-Eğer bir sorunu nereye bildireceğinizden emin değilseniz, endişelenmeyin ve iki seçenekten birini seçin - bakımcılar gerekirse sorunu aktarabilecektir.
+Bir sorunu nereye bildireceğinizden emin değilseniz, endişelenmeyin ve iki seçenekten birini seçin – bakım yapanlar gerekirse sorunu aktarabilecektir.
 
 Her durumda, lütfen raporunuzda her zaman aşağıdaki bilgileri ekleyin:
 
-- Kurulumunuz hakkında detaylar (örneğin, hassas değerlerin gizlendiği bir docker-compose dosyası veya Grampshub gibi barındırılan bir versiyon mu kullandığınız, ya da DigitalOcean gibi önceden yapılandırılmış bir görüntü mü kullandığınız)
+- Kurulumunuz hakkında ayrıntılar (örneğin, hassas değerlerin gizlendiği bir docker-compose dosyası veya Grampshub gibi barındırılan bir sürüm mü yoksa DigitalOcean gibi önceden yapılandırılmış bir görüntü mü kullandığınız)
 - Sürüm bilgileri. Bunu almak için, Gramps Web'deki Ayarlar sayfasında "Sistem bilgileri" sekmesine gidin ve kutudaki değerleri kopyalayıp yapıştırın; bu değerler aşağıdaki gibi görünmelidir:
 
 ```
@@ -50,4 +50,4 @@ task queue: true
 
 Gelecek iyileştirmeler hakkında genel fikirler ve tartışmalar için, [forumda](https://gramps.discourse.group/c/gramps-web/) bir tartışma açmaktan çekinmeyin. Belirli bir özelliğin zaten planlanıp planlanmadığını veya üzerinde çalışılıp çalışılmadığını kontrol etmek için sorun sayfalarını (yukarıdaki bağlantılara bakın) da incelemek isteyebilirsiniz.
 
-Sınırlı kapsamda belirli iyileştirmeler için, uygun ön uç veya arka uç Github deposunda doğrudan bir özellik isteği ile bir sorun açmaktan çekinmeyin.
+Sınırlı kapsamda belirli iyileştirmeler için, uygun ön yüz veya arka uç GitHub deposunda doğrudan bir özellik isteği ile bir sorun açmaktan çekinmeyin.

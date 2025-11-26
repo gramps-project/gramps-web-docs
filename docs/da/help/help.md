@@ -13,7 +13,7 @@ Se nedenfor for nogle retningslinjer om, hvor du skal starte.
 
 ## Stille spørgsmål
 
-Det officielle Gramps Discourse forum har en [separat kategori for Gramps Web](https://gramps.discourse.group/c/gramps-web/). Brug venligst denne til at stille eventuelle spørgsmål, du måtte have om Gramps Web, for eksempel
+Det officielle Gramps Discourse forum har en [separat kategori for Gramps Web](https://gramps.discourse.group/c/gramps-web/). Brug det til at stille eventuelle spørgsmål, du måtte have om Gramps Web, for eksempel
 
 - Spørgsmål om brugen af Gramps Web
 - Spørgsmål om konfigurationen af Gramps Web
@@ -23,19 +23,19 @@ Det officielle Gramps Discourse forum har en [separat kategori for Gramps Web](h
 
 ## Rapportere problemer
 
-Hvis du støder på et problem, som du mener er en fejl i Gramps Web, så rapporter det via Github.
+Hvis du støder på et problem, som du mener er en fejl i Gramps Web, bedes du rapportere det via GitHub.
 
-Der er to separate Github-repositorier for koden, der bruges i Gramps Web, et til brugergrænsefladen (“frontend”) og et til serverkoden (“backend”):
+Der er to separate GitHub-repositorier for koden, der bruges i Gramps Web, et til brugergrænsefladen (“frontend”) og et til serverkoden (“backend”):
 
 - [Frontend problemer](https://github.com/gramps-project/gramps-web/issues)
 - [Backend problemer](https://github.com/gramps-project/gramps-web-api/issues)
 
-Hvis du er usikker på, hvor du skal indgive et problem, så bekymr dig ikke og vælg blot en af de to – vedligeholderne vil kunne overføre problemet, hvis det er nødvendigt.
+Hvis du er usikker på, hvor du skal indgive et problem, så bekymre dig ikke og vælg blot en af de to – vedligeholderne vil være i stand til at overføre problemet, hvis det er nødvendigt.
 
-I begge tilfælde, så inkluder venligst altid følgende oplysninger i din rapport:
+I begge tilfælde bedes du altid inkludere følgende oplysninger i din rapport:
 
 - Oplysninger om din opsætning (f.eks. en docker-compose fil med følsomme værdier redigeret, eller om du bruger en hosted version, såsom Grampshub, eller et forudkonfigureret billede, såsom DigitalOcean)
-- Versionsoplysninger. For at få disse, gå til fanen "Systeminformation" på indstillingssiden i Gramps Web og kopier/indsæt værdierne i boksen, som bør se nogenlunde således ud:
+- Versionsoplysninger. For at få det, gå til fanen "Systeminformation" på indstillingssiden i Gramps Web og kopier/indsæt værdierne i boksen, som skal se nogenlunde sådan ud:
 
 ```
 Gramps 5.1.6
@@ -48,6 +48,6 @@ task queue: true
 
 ## Forslå forbedringer
 
-For generelle ideer og diskussioner om fremtidige forbedringer, er du velkommen til at åbne en diskussion i [forumet](https://gramps.discourse.group/c/gramps-web/). Du kan også tjekke issuesiderne (se links ovenfor) for at se, om en bestemt funktion allerede er planlagt eller under udvikling.
+For generelle ideer og diskussioner om fremtidige forbedringer, er du velkommen til at åbne en diskussion i [forumet](https://gramps.discourse.group/c/gramps-web/). Du kan også tjekke issuesiderne (se links ovenfor) for at se, om en bestemt funktion allerede er planlagt eller er under udvikling.
 
-For specifikke forbedringer med et begrænset omfang, er du velkommen til direkte at åbne et issue med en funktionsanmodning i det relevante frontend eller backend Github-repositorium.
+For specifikke forbedringer med et begrænset omfang, er du velkommen til direkte at åbne et issue med en funktionsanmodning i det relevante frontend- eller backend-Github-repositorium.

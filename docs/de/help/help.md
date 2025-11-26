@@ -23,19 +23,19 @@ Das offizielle Gramps Discourse-Forum hat eine [separate Kategorie für Gramps W
 
 ## Probleme melden
 
-Wenn Sie auf ein Problem stoßen, von dem Sie glauben, dass es ein Fehler in Gramps Web ist, unterstützen Sie es bitte über Github.
+Wenn Sie auf ein Problem stoßen, von dem Sie glauben, dass es ein Fehler in Gramps Web ist, melden Sie es bitte über GitHub.
 
-Es gibt zwei separate Github-Repositories für den Code, der in Gramps Web verwendet wird, eines für die Benutzeroberfläche („Frontend“) und eines für den Servercode („Backend“):
+Es gibt zwei separate GitHub-Repositories für den Code, der in Gramps Web verwendet wird, eines für die Benutzeroberfläche („Frontend“) und eines für den Servercode („Backend“):
 
 - [Frontend-Probleme](https://github.com/gramps-project/gramps-web/issues)
 - [Backend-Probleme](https://github.com/gramps-project/gramps-web-api/issues)
 
-Wenn Sie sich nicht sicher sind, wo Sie ein Problem melden sollen, machen Sie sich keine Sorgen und wählen Sie einfach eines der beiden – die Maintainer können das Problem bei Bedarf übertragen.
+Wenn Sie sich nicht sicher sind, wo Sie ein Problem melden sollen, machen Sie sich keine Sorgen und wählen Sie einfach eines der beiden – die Maintainer werden in der Lage sein, das Problem bei Bedarf zu übertragen.
 
-In jedem Fall sollten Sie immer die folgenden Informationen in Ihrem Bericht angeben:
+In jedem Fall fügen Sie bitte immer die folgenden Informationen in Ihren Bericht ein:
 
-- Details zu Ihrer Konfiguration (z. B. eine docker-compose-Datei mit anonymisierten sensiblen Werten oder ob Sie eine gehostete Version wie Grampshub oder ein vorkonfiguriertes Image wie DigitalOcean verwenden)
-- Versionsinformationen. Um diese zu erhalten, gehen Sie zum Tab „Systeminformationen“ auf der Einstellungsseite in Gramps Web und kopieren Sie die Werte aus dem Feld, das ungefähr so aussehen sollte:
+- Details zu Ihrer Konfiguration (z. B. eine docker-compose-Datei mit sensiblen Werten entfernt oder ob Sie eine gehostete Version wie Grampshub oder ein vorkonfiguriertes Image wie DigitalOcean verwenden)
+- Versionsinformationen. Um diese zu erhalten, gehen Sie zum Tab „Systeminformationen“ auf der Einstellungsseite in Gramps Web und kopieren Sie die Werte aus dem Feld, das etwa so aussehen sollte:
 
 ```
 Gramps 5.1.6
@@ -50,4 +50,4 @@ task queue: true
 
 Für allgemeine Ideen und Diskussionen über zukünftige Verbesserungen können Sie gerne eine Diskussion im [Forum](https://gramps.discourse.group/c/gramps-web/) eröffnen. Sie möchten möglicherweise auch die Problembereiche (siehe Links oben) überprüfen, ob eine bestimmte Funktion bereits geplant oder in Arbeit ist.
 
-Für spezifische Verbesserungen mit begrenztem Umfang können Sie direkt ein Problem mit einem Funktionswunsch im entsprechenden Frontend- oder Backend-Github-Repository eröffnen.
+Für spezifische Verbesserungen mit begrenztem Umfang können Sie gerne direkt ein Problem mit einem Funktionswunsch im entsprechenden Frontend- oder Backend-GitHub-Repository eröffnen.
