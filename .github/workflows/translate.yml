@@ -129,7 +129,6 @@ jobs:
           fi
 
       - name: Deploy docs
-        if: steps.check-changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

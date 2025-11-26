@@ -203,3 +203,14 @@ OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
 ### Authelia
 
 A community-made OIDC setup guide for Gramps Web is available on the [official Authelia documentation website](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+
+### Keycloak
+
+Most of the configuration for Keycloak can be left at its defaults (*Client → Create client → Client authentication ON*).
+There are a few exceptions:
+
+1. **OpenID scope** – The `openid` scope isn't included by default in all Keycloak versions. To avoid issues, add it manually: *Client → [Gramps client] → Client scopes → Add scope → Name: `openid` → Set as default.*
+2. **Roles** – Roles can be assigned either at the client level or globally per realm.
+
+    * If you're using client roles, set the `OIDC_ROLE_CLAIM` config option to: `resource_access.[gramps-client-name].roles`
+    * To make roles visible to Gramps, navigate to *Client Scopes* (the top‑level section, not under the specific client), then: *Roles → Mappers → client roles → Add to userinfo → ON.*
