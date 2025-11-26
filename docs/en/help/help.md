@@ -23,9 +23,9 @@ The official Gramps Discourse forum has a [separate category for Gramps Web](htt
 
 ## Reporting issues
 
-If you encounter a problem that you believe is a bug in Gramps Web, please support it via Github.
+If you encounter a problem that you believe is a bug in Gramps Web, please report it via GitHub.
 
-There are two separate Github repositories for the code used in Gramps Web, one for the user interface (&ldquo;frontend&rdquo;) and one for the server code (&ldquo;backend&rdquo;):
+There are two separate GitHub repositories for the code used in Gramps Web, one for the user interface (&ldquo;frontend&rdquo;) and one for the server code (&ldquo;backend&rdquo;):
 
 - [Frontend issues](https://github.com/gramps-project/gramps-web/issues)
 - [Backend issues](https://github.com/gramps-project/gramps-web-api/issues)
