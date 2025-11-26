@@ -11,6 +11,7 @@ on:
 jobs:
   translate:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
 
     permissions:
       contents: write # Required to push translations
@@ -117,4 +118,12 @@ jobs:
             echo "✅ Translations updated and committed" >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ No translation changes needed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # Add translation stats if available
+          if [ -n "${{ steps.translate.outputs.translation_success }}" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Translation Stats:**" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Succeeded: ${{ steps.translate.outputs.translation_success }}" >> $GITHUB_STEP_SUMMARY
+            echo "- ⚠️ Failed: ${{ steps.translate.outputs.translation_failed }}" >> $GITHUB_STEP_SUMMARY
           fi

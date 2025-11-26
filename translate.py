@@ -21,8 +21,9 @@ CONFIG = {
     "api": {
         "provider": "openai",
         "model": "gpt-4o-mini",
-        "timeout": 60,
-        "max_retries": 3
+        "timeout": 180,
+        "max_retries": 3,
+        "retry_delay": 5
     },
     "translation": {
         "source_language": "en",
@@ -83,7 +84,8 @@ Document to translate:
 Translated document in {target_lang_name}:"""
 
     max_retries = api_config.get("max_retries", 3)
-    timeout = api_config.get("timeout", 60)
+    timeout = api_config.get("timeout", 180)
+    retry_delay = api_config.get("retry_delay", 5)
     
     for attempt in range(max_retries):
         try:
@@ -113,7 +115,7 @@ Translated document in {target_lang_name}:"""
             
         except Exception as e:
             if attempt < max_retries - 1:
-                wait_time = 2 ** attempt
+                wait_time = retry_delay * (2 ** attempt)  # Exponential backoff
                 print(f"   Retry {attempt + 1}/{max_retries} after error: {e}")
                 time.sleep(wait_time)
             else:
