@@ -55,7 +55,7 @@ Ensure that regex is enabled if your provider requires it (e.g., Authentik).
 
 **For OIDC providers that do not support wildcards: (e.g., Authelia)**
 
-- `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
+- `https://your-gramps-backend.com/api/oidc/callback/custom`
 
 ## Role Mapping
 
