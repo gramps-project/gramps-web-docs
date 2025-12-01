@@ -1,8 +1,8 @@
 # Authentification OIDC
 
-Gramps Web prend en charge l'authentification OpenID Connect (OIDC), permettant aux utilisateurs de se connecter en utilisant des fournisseurs d'identité externes. Cela inclut à la fois des fournisseurs populaires comme Google, Microsoft et GitHub, ainsi que des fournisseurs OIDC personnalisés comme Keycloak, Authentik, et d'autres.
+Gramps Web prend en charge l'authentification OpenID Connect (OIDC), permettant aux utilisateurs de se connecter en utilisant des fournisseurs d'identité externes. Cela inclut à la fois des fournisseurs populaires comme Google, Microsoft et GitHub, ainsi que des fournisseurs OIDC personnalisés comme Keycloak, Authentik et d'autres.
 
-## Aperçu
+## Vue d'ensemble
 
 L'authentification OIDC vous permet de :
 
@@ -31,7 +31,7 @@ Vous pouvez configurer plusieurs fournisseurs simultanément. Le système détec
 
 ### Fournisseurs OIDC personnalisés
 
-Pour les fournisseurs OIDC personnalisés (comme Keycloak, Authentik, ou tout fournisseur conforme aux normes OIDC), utilisez ces paramètres :
+Pour les fournisseurs OIDC personnalisés (comme Keycloak, Authentik ou tout fournisseur conforme à la norme OIDC), utilisez ces paramètres :
 
 Clé | Description
 ----|-------------
@@ -39,8 +39,8 @@ Clé | Description
 `OIDC_ISSUER` | L'URL de l'émetteur de votre fournisseur
 `OIDC_CLIENT_ID` | ID client pour votre fournisseur OIDC
 `OIDC_CLIENT_SECRET` | Secret client pour votre fournisseur OIDC
-`OIDC_NAME` | Nom d'affichage personnalisé (optionnel, par défaut "OIDC")
-`OIDC_SCOPES` | Scopes OAuth (optionnel, par défaut "openid email profile")
+`OIDC_NAME` | Nom d'affichage personnalisé (facultatif, par défaut "OIDC")
+`OIDC_SCOPES` | Scopes OAuth (facultatif, par défaut "openid email profile")
 
 ## URIs de redirection requises
 
@@ -54,7 +54,7 @@ Où `*` est un joker regex. Selon l'interpréteur regex de votre fournisseur, ce
 
 **Pour les fournisseurs OIDC qui ne prennent pas en charge les jokers : (par exemple, Authelia)**
 
-- `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
+- `https://your-gramps-backend.com/api/oidc/callback/custom`
 
 ## Mapping des rôles
 
@@ -74,7 +74,7 @@ Clé | Description
 `OIDC_GROUP_MEMBER` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Member" de Gramps
 `OIDC_GROUP_GUEST` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Guest" de Gramps
 
-### Comportement de mapping des rôles
+### Comportement du mapping des rôles
 
 - Si aucun mapping de rôle n'est configuré (aucune variable `OIDC_GROUP_*` définie), les rôles d'utilisateur existants sont préservés
 - Les utilisateurs se voient attribuer le rôle le plus élevé auquel ils ont droit en fonction de leur appartenance à un groupe
@@ -82,17 +82,17 @@ Clé | Description
 
 ## Déconnexion OIDC
 
-Gramps Web prend en charge la déconnexion Single Sign-Out (SSO) pour les fournisseurs OIDC. Lorsqu'un utilisateur se déconnecte de Gramps Web après s'être authentifié via OIDC, il sera automatiquement redirigé vers la page de déconnexion du fournisseur d'identité si le fournisseur prend en charge le `end_session_endpoint`.
+Gramps Web prend en charge le Single Sign-Out (déconnexion SSO) pour les fournisseurs OIDC. Lorsqu'un utilisateur se déconnecte de Gramps Web après s'être authentifié via OIDC, il sera automatiquement redirigé vers la page de déconnexion du fournisseur d'identité si le fournisseur prend en charge le `end_session_endpoint`.
 
-### Déconnexion par canal secondaire
+### Déconnexion par canal de retour
 
-Gramps Web implémente la spécification de déconnexion par canal secondaire OpenID Connect. Cela permet aux fournisseurs d'identité de notifier Gramps Web lorsqu'un utilisateur se déconnecte d'une autre application ou du fournisseur d'identité lui-même.
+Gramps Web implémente la spécification de déconnexion par canal de retour OpenID Connect. Cela permet aux fournisseurs d'identité de notifier Gramps Web lorsqu'un utilisateur se déconnecte d'une autre application ou du fournisseur d'identité lui-même.
 
 #### Configuration
 
-Pour configurer la déconnexion par canal secondaire avec votre fournisseur d'identité :
+Pour configurer la déconnexion par canal de retour avec votre fournisseur d'identité :
 
-1. **Enregistrez le point de terminaison de déconnexion par canal secondaire** dans la configuration du client de votre fournisseur d'identité :
+1. **Enregistrez le point de terminaison de déconnexion par canal de retour** dans la configuration du client de votre fournisseur d'identité :
    ```
    https://your-gramps-backend.com/api/oidc/backchannel-logout/
    ```
@@ -102,29 +102,29 @@ Pour configurer la déconnexion par canal secondaire avec votre fournisseur d'id
    **Keycloak :**
 
    - Dans la configuration de votre client, accédez à "Paramètres"
-   - Définissez "URL de déconnexion par canal secondaire" sur `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
-   - Activez "Déconnexion par canal secondaire requise" si vous souhaitez une déconnexion basée sur la session
+   - Définissez "URL de déconnexion par canal de retour" sur `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
+   - Activez "Déconnexion par canal de retour requise" si vous souhaitez une déconnexion basée sur la session
 
    **Authentik :**
 
-   - Dans la configuration de votre fournisseur, ajoutez l'URL de déconnexion par canal secondaire
+   - Dans la configuration de votre fournisseur, ajoutez l'URL de déconnexion par canal de retour
    - Assurez-vous que le fournisseur est configuré pour envoyer des jetons de déconnexion
 
 !!! warning "Expiration du jeton"
-    En raison de la nature sans état des jetons JWT, la déconnexion par canal secondaire enregistre actuellement l'événement de déconnexion mais ne peut pas révoquer immédiatement les jetons JWT déjà émis. Les jetons resteront valides jusqu'à leur expiration (par défaut : 15 minutes pour les jetons d'accès).
+    En raison de la nature sans état des jetons JWT, la déconnexion par canal de retour enregistre actuellement l'événement de déconnexion mais ne peut pas révoquer immédiatement les jetons JWT déjà émis. Les jetons resteront valides jusqu'à leur expiration (par défaut : 15 minutes pour les jetons d'accès).
 
-    Pour une sécurité accrue, envisagez de :
+    Pour une sécurité accrue, envisagez :
 
-    - Réduire le temps d'expiration des jetons JWT (`JWT_ACCESS_TOKEN_EXPIRES`)
-    - Éduquer les utilisateurs à se déconnecter manuellement de Gramps Web lorsqu'ils se déconnectent de votre fournisseur d'identité
+    - De réduire le temps d'expiration des jetons JWT (`JWT_ACCESS_TOKEN_EXPIRES`)
+    - D'informer les utilisateurs de se déconnecter manuellement de Gramps Web lorsqu'ils se déconnectent de votre fournisseur d'identité
 
 !!! tip "Comment ça fonctionne"
     Lorsqu'un utilisateur se déconnecte de votre fournisseur d'identité ou d'une autre application :
 
-    1. Le fournisseur envoie un `logout_token` JWT au point de terminaison de déconnexion par canal secondaire de Gramps Web
+    1. Le fournisseur envoie un `logout_token` JWT au point de terminaison de déconnexion par canal de retour de Gramps Web
     2. Gramps Web valide le jeton et enregistre l'événement de déconnexion
     3. Le JTI du jeton de déconnexion est ajouté à une liste noire pour prévenir les attaques par rejeu
-    4. Toute nouvelle requête API avec le JWT de l'utilisateur sera refusée une fois les jetons expirés
+    4. Toute nouvelle demande d'API avec le JWT de l'utilisateur sera refusée une fois les jetons expirés
 
 ## Exemples de configurations
 
@@ -188,7 +188,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.exemple.com/realms/monrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="votre-secret-client"
-OIDC_NAME="SSO Entreprise"
+OIDC_NAME="SSO d'Entreprise"
 
 # Google OAuth
 OIDC_GOOGLE_CLIENT_ID="votre-id-client-google"
@@ -201,14 +201,14 @@ OIDC_GITHUB_CLIENT_SECRET="votre-secret-client-github"
 
 ### Authelia
 
-Un guide de configuration OIDC réalisé par la communauté pour Gramps Web est disponible sur le [site officiel de documentation d'Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+Un guide de configuration OIDC réalisé par la communauté pour Gramps Web est disponible sur le [site officiel de la documentation Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
 
 ### Keycloak
 
-La plupart des configurations pour Keycloak peuvent rester à leurs valeurs par défaut (*Client → Créer un client → Authentification du client ACTIVÉ*). Il y a quelques exceptions :
+La plupart de la configuration pour Keycloak peut rester à ses valeurs par défaut (*Client → Créer un client → Authentification du client ON*). Il y a quelques exceptions :
 
-1. **Scope OpenID** – Le scope `openid` n'est pas inclus par défaut dans toutes les versions de Keycloak. Pour éviter des problèmes, ajoutez-le manuellement : *Client → [Client Gramps] → Scopes de client → Ajouter un scope → Nom : `openid` → Définir comme défaut.*
+1. **Scope OpenID** – Le scope `openid` n'est pas inclus par défaut dans toutes les versions de Keycloak. Pour éviter des problèmes, ajoutez-le manuellement : *Client → [Client Gramps] → Scopes de client → Ajouter un scope → Nom : `openid` → Définir comme par défaut.*
 2. **Rôles** – Les rôles peuvent être attribués soit au niveau du client, soit globalement par royaume.
 
-    * Si vous utilisez des rôles de client, définissez l'option de configuration `OIDC_ROLE_CLAIM` sur : `resource_access.[nom-client-gramps].roles`
-    * Pour rendre les rôles visibles pour Gramps, accédez à *Scopes de client* (la section de niveau supérieur, pas sous le client spécifique), puis : *Rôles → Mappers → rôles de client → Ajouter à userinfo → ACTIVÉ.*
+    * Si vous utilisez des rôles de client, définissez l'option de configuration `OIDC_ROLE_CLAIM` sur : `resource_access.[nom-du-client-gramps].roles`
+    * Pour rendre les rôles visibles à Gramps, accédez à *Scopes de client* (la section de niveau supérieur, pas sous le client spécifique), puis : *Rôles → Mappers → rôles de client → Ajouter à userinfo → ON.*

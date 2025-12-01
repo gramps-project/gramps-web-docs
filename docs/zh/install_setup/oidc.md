@@ -10,7 +10,7 @@ OIDC 认证允许您：
 - 同时支持多个认证提供者
 - 将 OIDC 组/角色映射到 Gramps Web 用户角色
 - 实现单点登录 (SSO) 和单点注销
-- 可选地禁用本地用户名/密码认证
+- 可选择禁用本地用户名/密码认证
 
 ## 配置
 
@@ -31,16 +31,16 @@ Gramps Web 内置支持流行的身份提供者。要使用它们，您只需提
 
 ### 自定义 OIDC 提供者
 
-对于自定义 OIDC 提供者（如 Keycloak、Authentik 或任何标准 OIDC 兼容提供者），使用以下设置：
+对于自定义 OIDC 提供者（如 Keycloak、Authentik 或任何标准 OIDC 兼容提供者），请使用以下设置：
 
-| 键                     | 描述                                         |
-|------------------------|--------------------------------------------|
-| `OIDC_ENABLED`         | 布尔值，是否启用 OIDC 认证。设置为 `True`。 |
-| `OIDC_ISSUER`         | 您提供者的发行者 URL                       |
-| `OIDC_CLIENT_ID`      | 您的 OIDC 提供者的客户端 ID                |
-| `OIDC_CLIENT_SECRET`   | 您的 OIDC 提供者的客户端密钥                |
-| `OIDC_NAME`           | 自定义显示名称（可选，默认为 "OIDC"）      |
-| `OIDC_SCOPES`         | OAuth 范围（可选，默认为 "openid email profile"） |
+| Key                  | Description                                               |
+|----------------------|-----------------------------------------------------------|
+| `OIDC_ENABLED`       | 布尔值，是否启用 OIDC 认证。设置为 `True`。              |
+| `OIDC_ISSUER`       | 您提供者的发行者 URL                                     |
+| `OIDC_CLIENT_ID`    | 您的 OIDC 提供者的客户端 ID                              |
+| `OIDC_CLIENT_SECRET` | 您的 OIDC 提供者的客户端密钥                            |
+| `OIDC_NAME`         | 自定义显示名称（可选，默认为 "OIDC"）                    |
+| `OIDC_SCOPES`       | OAuth 范围（可选，默认为 "openid email profile"）        |
 
 ## 必需的重定向 URI
 
@@ -51,23 +51,23 @@ Gramps Web 内置支持流行的身份提供者。要使用它们，您只需提
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 其中 `*` 是正则表达式通配符。根据您提供者的正则表达式解释器，这也可以是 `.*` 或类似的。
-确保如果您的提供者需要，正则表达式已启用（例如，Authentik）。
+如果您的提供者需要，请确保启用正则表达式（例如，Authentik）。
 
 **对于不支持通配符的 OIDC 提供者：（例如，Authelia）**
 
-- `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
+- `https://your-gramps-backend.com/api/oidc/callback/custom`
 
 ## 角色映射
 
-Gramps Web 可以自动将来自您的身份提供者的 OIDC 组或角色映射到 Gramps Web 用户角色。这允许您在身份提供者中集中管理用户权限。
+Gramps Web 可以自动将来自您的身份提供者的 OIDC 组或角色映射到 Gramps Web 用户角色。这使您能够在身份提供者中集中管理用户权限。
 
 ### 配置
 
 使用以下设置配置角色映射：
 
-| 键                     | 描述                                         |
-|------------------------|--------------------------------------------|
-| `OIDC_ROLE_CLAIM`     | OIDC 令牌中包含用户组/角色的声明名称。默认为 "groups" |
+| Key                   | Description                                               |
+|-----------------------|-----------------------------------------------------------|
+| `OIDC_ROLE_CLAIM`     | OIDC 令牌中包含用户组/角色的声明名称。默认为 "groups"    |
 | `OIDC_GROUP_ADMIN`    | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Admin" 角色 |
 | `OIDC_GROUP_OWNER`    | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Owner" 角色 |
 | `OIDC_GROUP_EDITOR`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Editor" 角色 |
@@ -78,12 +78,12 @@ Gramps Web 可以自动将来自您的身份提供者的 OIDC 组或角色映射
 ### 角色映射行为
 
 - 如果未配置角色映射（未设置 `OIDC_GROUP_*` 变量），则保留现有用户角色
-- 根据用户的组成员资格，分配他们有权获得的最高角色
-- 角色映射默认区分大小写（取决于您的 OIDC 提供者）
+- 根据用户的组成员资格，用户将被分配他们有权获得的最高角色
+- 默认情况下，角色映射区分大小写（取决于您的 OIDC 提供者）
 
 ## OIDC 注销
 
-Gramps Web 支持 OIDC 提供者的单点注销（SSO 注销）。当用户在通过 OIDC 认证后从 Gramps Web 注销时，如果提供者支持 `end_session_endpoint`，他们将自动重定向到身份提供者的注销页面。
+Gramps Web 支持 OIDC 提供者的单点注销 (SSO 注销)。当用户在通过 OIDC 认证后从 Gramps Web 注销时，如果提供者支持 `end_session_endpoint`，他们将自动重定向到身份提供者的注销页面。
 
 ### 后台注销
 
@@ -98,7 +98,7 @@ Gramps Web 实现了 OpenID Connect 后台注销规范。这允许身份提供�
    https://your-gramps-backend.com/api/oidc/backchannel-logout/
    ```
 
-2. **配置您的提供者**以发送注销通知。具体步骤取决于您的提供者：
+2. **配置您的提供者** 以发送注销通知。具体步骤取决于您的提供者：
 
    **Keycloak：**
 
@@ -112,19 +112,19 @@ Gramps Web 实现了 OpenID Connect 后台注销规范。这允许身份提供�
    - 确保提供者配置为发送注销令牌
 
 !!! warning "令牌过期"
-    由于 JWT 令牌的无状态特性，后台注销目前记录注销事件，但无法立即撤销已发出的 JWT 令牌。令牌将在过期之前保持有效（默认：访问令牌 15 分钟）。
+    由于 JWT 令牌的无状态特性，后台注销目前记录注销事件，但无法立即撤销已发出的 JWT 令牌。令牌将保持有效，直到过期（默认：访问令牌 15 分钟）。
 
     为了增强安全性，请考虑：
 
-    - 减少 JWT 令牌的过期时间（`JWT_ACCESS_TOKEN_EXPIRES`）
+    - 减少 JWT 令牌过期时间 (`JWT_ACCESS_TOKEN_EXPIRES`)
     - 教育用户在从身份提供者注销时手动从 Gramps Web 注销
 
 !!! tip "工作原理"
     当用户从您的身份提供者或其他应用程序注销时：
 
-    1. 提供者将 `logout_token` JWT 发送到 Gramps Web 的后台注销端点
+    1. 提供者向 Gramps Web 的后台注销端点发送 `logout_token` JWT
     2. Gramps Web 验证令牌并记录注销事件
-    3. 注销令牌的 JTI 被添加到黑名单以防止重放攻击
+    3. 注销令牌的 JTI 被添加到黑名单，以防止重放攻击
     4. 一旦令牌过期，任何带有用户 JWT 的新 API 请求将被拒绝
 
 ## 示例配置
@@ -132,7 +132,7 @@ Gramps Web 实现了 OpenID Connect 后台注销规范。这允许身份提供�
 ### 自定义 OIDC 提供者 (Keycloak)
 
 ```python
-TREE="我的家谱"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # 您的密钥
 USER_DB_URI="sqlite:////path/to/users.sqlite"
@@ -142,7 +142,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.example.com/realms/myrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="your-client-secret"
-OIDC_NAME="家庭 SSO"
+OIDC_NAME="Family SSO"
 OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # 可选：自动重定向到 SSO 登录
 OIDC_DISABLE_LOCAL_AUTH=True  # 可选：禁用用户名/密码登录
@@ -164,7 +164,7 @@ DEFAULT_FROM_EMAIL="gramps@example.com"
 ### 内置提供者 (Google)
 
 ```python
-TREE="我的家谱"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # 您的密钥
 USER_DB_URI="sqlite:////path/to/users.sqlite"
@@ -179,7 +179,7 @@ OIDC_GOOGLE_CLIENT_SECRET="your-google-client-secret"
 您可以同时启用多个 OIDC 提供者：
 
 ```python
-TREE="我的家谱"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # 您的密钥
 USER_DB_URI="sqlite:////path/to/users.sqlite"
@@ -189,7 +189,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.example.com/realms/myrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="your-client-secret"
-OIDC_NAME="公司 SSO"
+OIDC_NAME="Company SSO"
 
 # Google OAuth
 OIDC_GOOGLE_CLIENT_ID="your-google-client-id"
@@ -202,12 +202,12 @@ OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
 
 ### Authelia
 
-可在 [官方 Authelia 文档网站](https://www.authelia.com/integration/openid-connect/clients/gramps/) 上找到 Gramps Web 的社区制作 OIDC 设置指南。
+Gramps Web 的社区 OIDC 设置指南可在 [官方 Authelia 文档网站](https://www.authelia.com/integration/openid-connect/clients/gramps/) 上找到。
 
 ### Keycloak
 
-Keycloak 的大多数配置可以保持默认设置（*客户端 → 创建客户端 → 客户端认证开启*）。
-有一些例外：
+Keycloak 的大部分配置可以保持默认设置（*客户端 → 创建客户端 → 客户端认证开启*）。
+有几个例外：
 
 1. **OpenID 范围** – 在所有 Keycloak 版本中，`openid` 范围并不默认包含。为避免问题，请手动添加：*客户端 → [Gramps 客户端] → 客户端范围 → 添加范围 → 名称: `openid` → 设置为默认。*
 2. **角色** – 角色可以在客户端级别或每个领域全局分配。

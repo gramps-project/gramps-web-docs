@@ -1,6 +1,6 @@
 # Autenticação OIDC
 
-O Gramps Web suporta autenticação OpenID Connect (OIDC), permitindo que os usuários façam login usando provedores de identidade externos. Isso inclui tanto provedores populares como Google, Microsoft e GitHub, quanto provedores OIDC personalizados como Keycloak, Authentik e outros.
+Gramps Web suporta autenticação OpenID Connect (OIDC), permitindo que os usuários façam login usando provedores de identidade externos. Isso inclui tanto provedores populares como Google, Microsoft e GitHub, quanto provedores OIDC personalizados como Keycloak, Authentik e outros.
 
 ## Visão Geral
 
@@ -14,14 +14,14 @@ A autenticação OIDC permite que você:
 
 ## Configuração
 
-Para habilitar a autenticação OIDC, você precisa configurar as configurações apropriadas no seu arquivo de configuração do Gramps Web ou nas variáveis de ambiente. Consulte a página de [Configuração do Servidor](configuration.md#settings-for-oidc-authentication) para uma lista completa das configurações OIDC disponíveis.
+Para habilitar a autenticação OIDC, você precisa configurar as configurações apropriadas no seu arquivo de configuração do Gramps Web ou em variáveis de ambiente. Consulte a página de [Configuração do Servidor](configuration.md#settings-for-oidc-authentication) para uma lista completa das configurações OIDC disponíveis.
 
 !!! info
-    Ao usar variáveis de ambiente, lembre-se de prefixar cada nome de configuração com `GRAMPSWEB_` (por exemplo, `GRAMPSWEB_OIDC_ENABLED`). Consulte [Arquivo de configuração vs. variáveis de ambiente](configuration.md#configuration-file-vs-environment-variables) para mais detalhes.
+    Ao usar variáveis de ambiente, lembre-se de prefixar cada nome de configuração com `GRAMPSWEB_` (por exemplo, `GRAMPSWEB_OIDC_ENABLED`). Consulte [Arquivo de configuração vs. variáveis de ambiente](configuration.md#configuration-file-vs-environment-variables) para detalhes.
 
 ### Provedores Integrados
 
-O Gramps Web tem suporte integrado para provedores de identidade populares. Para usá-los, você só precisa fornecer o ID do cliente e o segredo do cliente:
+Gramps Web tem suporte integrado para provedores de identidade populares. Para usá-los, você só precisa fornecer o ID do cliente e o segredo do cliente:
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` e `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` e `OIDC_MICROSOFT_CLIENT_SECRET`
@@ -37,29 +37,29 @@ Chave | Descrição
 ----|-------------
 `OIDC_ENABLED` | Booleano, se deve habilitar a autenticação OIDC. Defina como `True`.
 `OIDC_ISSUER` | URL do emissor do seu provedor
-`OIDC_CLIENT_ID` | ID do cliente para seu provedor OIDC
-`OIDC_CLIENT_SECRET` | Segredo do cliente para seu provedor OIDC
+`OIDC_CLIENT_ID` | ID do cliente para o seu provedor OIDC
+`OIDC_CLIENT_SECRET` | Segredo do cliente para o seu provedor OIDC
 `OIDC_NAME` | Nome de exibição personalizado (opcional, padrão é "OIDC")
 `OIDC_SCOPES` | Escopos OAuth (opcional, padrão é "openid email profile")
 
-## URIs de Redirecionamento Requeridas
+## URIs de Redirecionamento Requeridos
 
-Ao configurar seu provedor OIDC, você deve registrar o seguinte URI de redirecionamento:
+Ao configurar seu provedor OIDC, você deve registrar a seguinte URI de redirecionamento:
 
 **Para provedores OIDC que suportam curingas: (por exemplo, Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 Onde `*` é um curinga regex. Dependendo do interpretador regex do seu provedor, isso também pode ser um `.*` ou similar. 
-Certifique-se de que o regex esteja habilitado se o seu provedor exigir (por exemplo, Authentik).
+Certifique-se de que o regex está habilitado se o seu provedor exigir (por exemplo, Authentik).
 
 **Para provedores OIDC que não suportam curingas: (por exemplo, Authelia)**
 
-- `https://your-gramps-backend.com/api/oidc/callback/?provider=custom`
+- `https://your-gramps-backend.com/api/oidc/callback/custom`
 
 ## Mapeamento de Papéis
 
-O Gramps Web pode mapear automaticamente grupos ou papéis OIDC do seu provedor de identidade para papéis de usuário do Gramps Web. Isso permite que você gerencie permissões de usuários centralmente em seu provedor de identidade.
+Gramps Web pode mapear automaticamente grupos ou papéis OIDC do seu provedor de identidade para papéis de usuário do Gramps Web. Isso permite que você gerencie permissões de usuários centralmente em seu provedor de identidade.
 
 ### Configuração
 
@@ -75,19 +75,19 @@ Chave | Descrição
 `OIDC_GROUP_MEMBER` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Member" do Gramps
 `OIDC_GROUP_GUEST` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Guest" do Gramps
 
-### Comportamento de Mapeamento de Papéis
+### Comportamento do Mapeamento de Papéis
 
 - Se nenhum mapeamento de papel estiver configurado (nenhuma variável `OIDC_GROUP_*` definida), os papéis de usuário existentes são preservados
-- Os usuários são atribuídos ao papel mais alto ao qual têm direito com base em sua associação a grupos
-- O mapeamento de papéis é sensível a maiúsculas por padrão (depende do seu provedor OIDC)
+- Os usuários são atribuídos ao papel mais alto ao qual têm direito com base na filiação a grupos
+- O mapeamento de papéis é sensível a maiúsculas e minúsculas por padrão (depende do seu provedor OIDC)
 
 ## Logout OIDC
 
-O Gramps Web suporta Single Sign-Out (logout SSO) para provedores OIDC. Quando um usuário faz logout do Gramps Web após autenticar via OIDC, ele será redirecionado automaticamente para a página de logout do provedor de identidade, se o provedor suportar o `end_session_endpoint`.
+Gramps Web suporta Single Sign-Out (logout SSO) para provedores OIDC. Quando um usuário faz logout do Gramps Web após se autenticar via OIDC, ele será automaticamente redirecionado para a página de logout do provedor de identidade se o provedor suportar o `end_session_endpoint`.
 
 ### Logout de Backchannel
 
-O Gramps Web implementa a especificação de Logout de Back-Channel do OpenID Connect. Isso permite que os provedores de identidade notifiquem o Gramps Web quando um usuário faz logout de outro aplicativo ou do próprio provedor de identidade.
+Gramps Web implementa a especificação de Logout de Back-Channel do OpenID Connect. Isso permite que provedores de identidade notifiquem o Gramps Web quando um usuário faz logout de outro aplicativo ou do próprio provedor de identidade.
 
 #### Configuração
 
@@ -104,12 +104,12 @@ Para configurar o logout de backchannel com seu provedor de identidade:
 
    - Na configuração do seu cliente, navegue até "Configurações"
    - Defina "URL de Logout de Backchannel" como `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
-   - Ative "Logout de Backchannel Requer Sessão" se você quiser logout baseado em sessão
+   - Habilite "Logout de Backchannel Requer Sessão" se você quiser logout baseado em sessão
 
    **Authentik:**
 
    - Na configuração do seu provedor, adicione a URL de logout de backchannel
-   - Certifique-se de que o provedor esteja configurado para enviar tokens de logout
+   - Certifique-se de que o provedor está configurado para enviar tokens de logout
 
 !!! warning "Expiração do Token"
     Devido à natureza sem estado dos tokens JWT, o logout de backchannel atualmente registra o evento de logout, mas não pode revogar imediatamente os tokens JWT já emitidos. Os tokens permanecerão válidos até expirarem (padrão: 15 minutos para tokens de acesso).
@@ -123,9 +123,9 @@ Para configurar o logout de backchannel com seu provedor de identidade:
     Quando um usuário faz logout do seu provedor de identidade ou de outro aplicativo:
 
     1. O provedor envia um `logout_token` JWT para o endpoint de logout de backchannel do Gramps Web
-    2. O Gramps Web valida o token e registra o evento de logout
+    2. Gramps Web valida o token e registra o evento de logout
     3. O JTI do token de logout é adicionado a uma lista de bloqueio para prevenir ataques de repetição
-    4. Quaisquer novas solicitações de API com o JWT do usuário serão negadas uma vez que os tokens expirarem
+    4. Quaisquer novas solicitações de API com o JWT do usuário serão negadas uma vez que os tokens expirem
 
 ## Exemplos de Configurações
 
@@ -133,7 +133,7 @@ Para configurar o logout de backchannel com seu provedor de identidade:
 
 ```python
 TREE="Minha Árvore Genealógica"
-BASE_URL="https://minhaarvore.exemplo.com"
+BASE_URL="https://minhatree.exemplo.com"
 SECRET_KEY="..."  # sua chave secreta
 USER_DB_URI="sqlite:////caminho/para/usuarios.sqlite"
 
@@ -142,7 +142,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.exemplo.com/realms/meurealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="seu-segredo-do-cliente"
-OIDC_NAME="SSO Familiar"
+OIDC_NAME="SSO da Família"
 OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # Opcional: redirecionar automaticamente para o login SSO
 OIDC_DISABLE_LOCAL_AUTH=True  # Opcional: desativar login por nome de usuário/senha
@@ -165,7 +165,7 @@ DEFAULT_FROM_EMAIL="gramps@exemplo.com"
 
 ```python
 TREE="Minha Árvore Genealógica"
-BASE_URL="https://minhaarvore.exemplo.com"
+BASE_URL="https://minhatree.exemplo.com"
 SECRET_KEY="..."  # sua chave secreta
 USER_DB_URI="sqlite:////caminho/para/usuarios.sqlite"
 
@@ -180,7 +180,7 @@ Você pode habilitar múltiplos provedores OIDC simultaneamente:
 
 ```python
 TREE="Minha Árvore Genealógica"
-BASE_URL="https://minhaarvore.exemplo.com"
+BASE_URL="https://minhatree.exemplo.com"
 SECRET_KEY="..."  # sua chave secreta
 USER_DB_URI="sqlite:////caminho/para/usuarios.sqlite"
 
@@ -202,7 +202,7 @@ OIDC_GITHUB_CLIENT_SECRET="seu-segredo-do-cliente-github"
 
 ### Authelia
 
-Um guia de configuração OIDC feito pela comunidade para o Gramps Web está disponível no [site oficial da documentação do Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+Um guia de configuração OIDC feito pela comunidade para Gramps Web está disponível no [site oficial da documentação do Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
 
 ### Keycloak
 
@@ -213,4 +213,4 @@ Existem algumas exceções:
 2. **Papéis** – Os papéis podem ser atribuídos no nível do cliente ou globalmente por realm.
 
     * Se você estiver usando papéis de cliente, defina a opção de configuração `OIDC_ROLE_CLAIM` como: `resource_access.[nome-do-cliente-gramps].roles`
-    * Para tornar os papéis visíveis para o Gramps, navegue até *Escopos do Cliente* (a seção de nível superior, não sob o cliente específico), então: *Papéis → Mapeadores → papéis do cliente → Adicionar a userinfo → ATIVADO.*
+    * Para tornar os papéis visíveis para o Gramps, navegue até *Escopos do Cliente* (a seção de nível superior, não sob o cliente específico), então: *Papéis → Mapeadores → papéis de cliente → Adicionar a userinfo → ATIVADO.*
