@@ -44,12 +44,12 @@ nav:
           - Tag people in photos: user-guide/tagging.md
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
-          - Keyboard Shortcuts:  user-guide/shortcuts.md
       - DNA:
           - Overview: user-guide/dna.md
           - DNA matches: user-guide/dna-matches.md
           - Chromosome browser: user-guide/chromosome-browser.md
           - Y-DNA: user-guide/y-dna.md
+      - Keyboard Shortcuts:  user-guide/shortcuts.md
       - Revision history: user-guide/revisions.md
       - Advanced features:
           # - DNA:  user-guide/dna.md
