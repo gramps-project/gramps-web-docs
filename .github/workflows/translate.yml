@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "docs/en/**/*.md"
   workflow_dispatch: # Allow manual triggering
 
 jobs:
@@ -38,6 +36,7 @@ jobs:
         run: |
           # Get list of added or modified Markdown files in docs/en/
           # Using --diff-filter=AM to include both Added and Modified files
+          # Only check for changed files if docs were actually modified
           CHANGED_FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD | grep '^docs/en/.*\.md$' || true)
 
           if [ -z "$CHANGED_FILES" ]; then
@@ -130,6 +129,7 @@ jobs:
           fi
 
       - name: Deploy docs
+        if: always() && !failure() && !cancelled()
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
