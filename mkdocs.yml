@@ -107,19 +107,8 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 plugins:
-  - search
-  - glightbox:
-      manual: false # optional lightboxing.  Requires HTML in markdown.
-  - redirects:
-      redirect_maps:
-        "help.md": "help/help.md"
-        "development.md": "development/dev.md"
-        "development/index.md": "development/dev.md"
-        "user-guide/sync.md": "administration/sync.md"
   - i18n:
       docs_structure: folder
-      reconfigure_search: true
-      reconfigure_material: true
       languages:
         - locale: en
           name: English
@@ -944,3 +933,12 @@ plugins:
             Translation: Переклад
             Contribute: Внесок
             Get Help: Отримати допомогу
+  - search
+  - glightbox:
+      manual: false # optional lightboxing.  Requires HTML in markdown.
+  - redirects:
+      redirect_maps:
+        "help.md": "help/help.md"
+        "development.md": "development/dev.md"
+        "development/index.md": "development/dev.md"
+        "user-guide/sync.md": "administration/sync.md"
