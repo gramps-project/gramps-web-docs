@@ -10,6 +10,7 @@ nav:
           - Docker with Let's Encrypt: install_setup/lets_encrypt.md
           - DigitalOcean: install_setup/digital_ocean.md
           - TrueNAS: install_setup/truenas.md
+          - Synology NAS: install_setup/synology.md
       - Server Administration:
           - User system: install_setup/users.md
           - Server configuration: install_setup/configuration.md
@@ -128,6 +129,7 @@ plugins:
             Docker with Let's Encrypt: Docker mit Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Serververwaltung
             User system: Benutzersystem
             Server configuration: Serverkonfiguration
@@ -191,6 +193,7 @@ plugins:
             Docker with Let's Encrypt: Docker avec Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Administration du serveur
             User system: Système utilisateur
             Server configuration: Configuration du serveur
@@ -254,6 +257,7 @@ plugins:
             Docker with Let's Encrypt: Docker con Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Administración del servidor
             User system: Sistema de usuarios
             Server configuration: Configuración del servidor
@@ -317,6 +321,7 @@ plugins:
             Docker with Let's Encrypt: Docker 与 Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: 服务器管理
             User system: 用户系统
             Server configuration: 服务器配置
@@ -380,6 +385,7 @@ plugins:
             Docker with Let's Encrypt: Docker với Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Quản trị máy chủ
             User system: Hệ thống người dùng
             Server configuration: Cấu hình máy chủ
@@ -443,6 +449,7 @@ plugins:
             Docker with Let's Encrypt: Let's Encrypt ile Docker
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Sunucu Yönetimi
             User system: Kullanıcı sistemi
             Server configuration: Sunucu yapılandırması
@@ -506,6 +513,7 @@ plugins:
             Docker with Let's Encrypt: Docker с Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Администрирование сервера
             User system: Система пользователей
             Server configuration: Конфигурация сервера
@@ -569,6 +577,7 @@ plugins:
             Docker with Let's Encrypt: Docker com Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Administração do servidor
             User system: Sistema de usuários
             Server configuration: Configuração do servidor
@@ -632,6 +641,7 @@ plugins:
             Docker with Let's Encrypt: Let's Encrypt を使用した Docker
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: サーバー管理
             User system: ユーザーシステム
             Server configuration: サーバー設定
@@ -695,6 +705,7 @@ plugins:
             Docker with Let's Encrypt: Docker med Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Serveradministration
             User system: Brugersystem
             Server configuration: Serverkonfiguration
@@ -758,6 +769,7 @@ plugins:
             Docker with Let's Encrypt: Docker Let's Encryptin kanssa
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Palvelinhallinta
             User system: Käyttäjäjärjestelmä
             Server configuration: Palvelinmääritykset
@@ -821,6 +833,7 @@ plugins:
             Docker with Let's Encrypt: Docker con Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Amministrazione del Server
             User system: Sistema utenti
             Server configuration: Configurazione del server
@@ -884,6 +897,7 @@ plugins:
             Docker with Let's Encrypt: Docker з Let's Encrypt
             DigitalOcean: DigitalOcean
             TrueNAS: TrueNAS
+            Synology NAS: Synology NAS
             Server Administration: Адміністрування сервера
             User system: Система користувачів
             Server configuration: Конфігурація сервера
