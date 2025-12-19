@@ -1,33 +1,42 @@
 # Sử dụng trò chuyện AI
 
 !!! info
-    Trò chuyện AI yêu cầu Gramps Web API phiên bản 2.5.0 trở lên và Gramps Web phiên bản 24.10.0 trở lên.
+    Trò chuyện AI yêu cầu Gramps Web API phiên bản 2.5.0 trở lên và Gramps Web phiên bản 24.10.0 trở lên. Gramps Web API phiên bản 3.6.0 đã giới thiệu khả năng gọi công cụ để tương tác thông minh hơn.
 
-
-
-Chế độ xem trò chuyện trong Gramps Web (nếu có trong cài đặt của bạn) cung cấp quyền truy cập vào một trợ lý AI có thể trả lời các câu hỏi về cây gia đình của bạn.
+Chế độ xem trò chuyện trong Gramps Web (nếu có trong cài đặt của bạn) cung cấp quyền truy cập vào một trợ lý AI có thể trả lời các câu hỏi về gia phả của bạn.
 
 !!! warning
     Vì đây vẫn là một tính năng mới và đang phát triển, một số loại câu hỏi hoạt động tốt trong khi những loại khác thì không. Ngoài ra, giống như bất kỳ trợ lý AI nào, nó có thể đưa ra những câu trả lời không chính xác về mặt thực tế, vì vậy hãy chắc chắn luôn kiểm tra lại.
 
-## Cách nó hoạt động
+## Cách hoạt động
 
-Để hiểu các loại câu hỏi mà trợ lý có thể trả lời, điều quan trọng là hiểu cách nó hoạt động bên trong:
+Để hiểu loại câu hỏi nào mà trợ lý có thể trả lời, điều quan trọng là hiểu cách nó hoạt động bên trong:
 
 1. Người dùng đặt câu hỏi.
-2. Gramps Web xác định một số (ví dụ, mười) đối tượng Gramps có khả năng chứa thông tin trả lời câu hỏi. Để làm điều này, nó sử dụng một kỹ thuật gọi là "tìm kiếm ngữ nghĩa". Ví dụ, nếu bạn hỏi "Tên của con cái của John Doe là gì?", nếu có một gia đình tồn tại với John Doe là cha, nó có khả năng nằm trong số các kết quả hàng đầu.
-3. Gramps Web gửi câu hỏi của người dùng cùng với thông tin ngữ cảnh đã được truy xuất đến một mô hình ngôn ngữ lớn ("chatbot") và yêu cầu nó trích xuất câu trả lời đúng.
-4. Câu trả lời được hiển thị cho người dùng.
+2. Trợ lý AI có thể sử dụng nhiều phương pháp để tìm câu trả lời:
+   - **Tìm kiếm ngữ nghĩa**: Gramps Web xác định các đối tượng trong gia phả của bạn có khả năng chứa thông tin liên quan nhất. Ví dụ, nếu bạn hỏi "Tên của con cái của John Doe là gì?", các gia đình có John Doe là cha sẽ nằm trong số các kết quả hàng đầu.
+   - **Gọi công cụ (Gramps Web API v3.6.0+)**: Trợ lý có thể truy vấn trực tiếp cơ sở dữ liệu của bạn bằng cách sử dụng các công cụ chuyên dụng để tìm kiếm, lọc người/dự kiện/gia đình/nơi chốn theo các tiêu chí cụ thể, tính toán mối quan hệ giữa các cá nhân và lấy thông tin chi tiết.
+3. Gramps Web cung cấp câu hỏi cùng với thông tin đã lấy được cho một mô hình ngôn ngữ lớn để hình thành câu trả lời.
+4. Câu trả lời được hiển thị cho bạn.
 
-## Cách đặt câu hỏi
+## Những gì bạn có thể hỏi
 
-Do cách mà trò chuyện hoạt động, hiện tại không thể cho trợ lý AI trả lời các câu hỏi về các mối quan hệ cụ thể khác ngoài cha mẹ hoặc con cái, trừ khi thông tin này được chứa dưới dạng văn bản trong một ghi chú.
+Với khả năng gọi công cụ được giới thiệu trong Gramps Web API phiên bản 3.6.0, trợ lý AI giờ đây có thể xử lý các câu hỏi phức tạp hơn:
 
-Vì mỗi câu trả lời dựa trên một số lượng kết quả tìm kiếm ngữ nghĩa hàng đầu có hạn, nó cũng không thể trả lời các câu hỏi về thống kê ("có bao nhiêu người trong cơ sở dữ liệu của tôi ...").
+- **Mối quan hệ gia đình**: "Ông bà của Jane Smith là ai?" hoặc "John Doe có quan hệ như thế nào với Mary Johnson?"
+- **Tìm kiếm có lọc**: "Cho tôi xem tất cả những người sinh ra ở London sau năm 1850" hoặc "Những sự kiện nào đã xảy ra ở Paris?"
+- **Câu hỏi dựa trên ngày tháng**: "Ai đã chết trước năm 1900?" hoặc "Liệt kê các cuộc hôn nhân diễn ra giữa năm 1920 và 1950"
+- **Thông tin về địa điểm**: "Có những địa điểm nào ở Pháp?" hoặc "Cho tôi biết về Nhà thờ St. Mary"
+- **Câu hỏi chung**: "Tên của con cái của John Doe là gì?" hoặc "Mary Smith sinh năm nào?"
 
-Để tránh sự mơ hồ và hiểu lầm, điều hữu ích là diễn đạt câu hỏi một cách chi tiết nhất có thể.
+## Mẹo để đặt câu hỏi
 
-Lưu ý rằng các mô hình ngôn ngữ lớn là đa ngôn ngữ, vì vậy bạn có thể nói chuyện với nó bằng ngôn ngữ của riêng bạn và nó sẽ trả lời bằng cùng một ngôn ngữ.
+Để có được kết quả tốt nhất từ trợ lý AI:
+
+- **Cụ thể**: Hãy đặt câu hỏi của bạn với càng nhiều chi tiết càng tốt để tránh sự mơ hồ. Ví dụ, "Khi nào John Smith sinh năm 1850 ở Boston kết hôn?" thì tốt hơn là "Khi nào John Smith kết hôn?"
+- **Sử dụng tên riêng**: Đề cập đến các tên, địa điểm và ngày tháng cụ thể khi có liên quan.
+- **Hỏi một điều tại một thời điểm**: Phân tách các câu hỏi phức tạp thành các phần đơn giản hơn để có kết quả tốt hơn.
+- **Sử dụng ngôn ngữ của bạn**: Các mô hình ngôn ngữ lớn là đa ngôn ngữ, vì vậy bạn có thể đặt câu hỏi bằng ngôn ngữ của mình và nhận câu trả lời bằng cùng một ngôn ngữ.
 
 !!! tip
-    Vui lòng chia sẻ trải nghiệm của bạn về những điều hoạt động và không hoạt động với cộng đồng.
+    Xin vui lòng chia sẻ trải nghiệm của bạn về những điều hoạt động và không hoạt động với cộng đồng.
