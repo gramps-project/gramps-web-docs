@@ -1,16 +1,18 @@
 # Setting up AI chat
 
 !!! info
-    AI chat requires Gramps Web API version 2.5.0 or higher.
+    AI chat requires Gramps Web API version 2.5.0 or higher. Version 3.6.0 introduced tool calling capabilities for more intelligent interactions.
 
 
-Gramps Web API supports asking questions about the genealogical database using large language models (LLM) via a technique called retrieval-augmented generation (RAG).
+Gramps Web API supports asking questions about the genealogical database using large language models (LLM) via a technique called retrieval-augmented generation (RAG) combined with tool calling.
 
-RAG works as follows. First, a *vector embedding model* is used to create an index of all objects in the Gramps database in the form of numerical vectors that encode the objects' meaning. This process is similar to the creation of the full-text search index, but more computationally expensive.
+## How it works
 
-Next, when a user asks a question via the chat endpoint, that question is converted to a vector as well, by the same embedding model,  and compared the objects in the Gramps database. This *semantic search* will return objects in the database that are most semantically similar to the question.
+The AI assistant uses two complementary approaches:
 
-In the final step, the question and the retrieved objects are sent to an LLM to formulate an answer based on the provided information. In this way, the chatbot has access to detailed information about the contents of the genealogical database instead of relying solely on pre-existing knowledge.
+**Retrieval-Augmented Generation (RAG)**: A *vector embedding model* creates an index of all objects in the Gramps database in the form of numerical vectors that encode the objects' meaning. When a user asks a question, that question is converted to a vector as well, and compared to the objects in the database. This *semantic search* returns objects that are most semantically similar to the question.
+
+**Tool Calling (v3.6.0+)**: The AI assistant can now use specialized tools to query your genealogy data directly. These tools allow the assistant to search the database, filter people/events/families/places by specific criteria, calculate relationships between individuals, and retrieve detailed object information. This makes the assistant much more capable of answering complex genealogical questions accurately.
 
 To enable the chat endpoint in Gramps Web API, three steps are necessary:
 
@@ -57,17 +59,32 @@ Please share learnings about different models with the community!
 
 ## Setting up an LLM provider
 
-Communication with the LLM uses an OpenAI compatible API using the `openai-python` library. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or an API like OpenAI or Hugging Face TGI (Text Generation Inference). The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
+Communication with the LLM uses the Pydantic AI framework, which supports OpenAI-compatible APIs. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or hosted APIs like OpenAI, Anthropic, or Hugging Face TGI (Text Generation Inference). The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
 
 
 ### Using a hosted LLM via the OpenAI API
 
-When using the OpenAI API, `LLM_BASE_URL` can be left unset, while `LLM_MODEL` has to be set to one of the OpenAI models, e.g. `gpt-4o-mini`. Note that, due to the RAG approach, the LLM is "only" used to select the right information from the semantic search results and formulate an answer, it does not require deep genealogical or historical knowledge. Therefore, you can try if a small/cheap model is sufficient.
+When using the OpenAI API, `LLM_BASE_URL` can be left unset, while `LLM_MODEL` has to be set to one of the OpenAI models, e.g. `gpt-4o-mini`. The LLM uses both RAG and tool calling to answer questions: it selects relevant information from semantic search results and can directly query the database using specialized tools. It does not require deep genealogical or historical knowledge. Therefore, you can try if a small/cheap model is sufficient.
 
 You will also need to sign up for an account, get an API key and store it in the `OPENAI_API_KEY` environment variable.
 
 !!! info
-    `LLM_MODEL` is a configuration parameter; if you want to set it via an environment variable, use `GRAMPSWEB_LLM_MODEL` (see [Configuration](configuration.md)). `OPENAI_API_KEY` is not a configuration parameter but an environment variable directly used by the `openai-python` library, so it should not be prefixed.
+    `LLM_MODEL` is a configuration parameter; if you want to set it via an environment variable, use `GRAMPSWEB_LLM_MODEL` (see [Configuration](configuration.md)). `OPENAI_API_KEY` is not a configuration parameter but an environment variable directly used by the Pydantic AI library, so it should not be prefixed.
+
+
+### Using Mistral AI
+
+To use Mistral AI's hosted models, prefix the model name with `mistral:` when setting `LLM_MODEL`.
+
+You will need to sign up for a Mistral AI account, get an API key, and store it in the `MISTRAL_API_KEY` environment variable. No need to set `LLM_BASE_URL` as Pydantic AI will automatically use the correct Mistral API endpoint.
+
+Example configuration when using docker compose with environment variables:
+```yaml
+environment:
+  GRAMPSWEB_LLM_MODEL: mistral:mistral-large-latest
+  MISTRAL_API_KEY: your-mistral-api-key-here
+  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: sentence-transformers/distiluse-base-multilingual-cased-v2
+```
 
 
 ### Using a local LLM via Ollama

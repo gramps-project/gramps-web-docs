@@ -53,7 +53,9 @@ Key | Description
 `EMAIL_PORT` | SMTP server port. defaults to 465
 `EMAIL_HOST_USER` | SMTP server username
 `EMAIL_HOST_PASSWORD` | SMTP server password
-`EMAIL_USE_TLS` | Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
+`EMAIL_USE_TLS` | **Deprecated** (use `EMAIL_USE_SSL` or `EMAIL_USE_STARTTLS` instead). Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
+`EMAIL_USE_SSL` | Boolean, whether to use implicit SSL/TLS for SMTP (v3.6.0+). Defaults to `True` if `EMAIL_USE_TLS` is not explicitly set. Typically used with port 465.
+`EMAIL_USE_STARTTLS` | Boolean, whether to use explicit STARTTLS for SMTP (v3.6.0+). Defaults to `False`. Typically used with port 587 or 25.
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
 `REQUEST_CACHE_CONFIG` | Dictionary with settings for the request cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
@@ -143,9 +145,10 @@ These settings are needed if you want to use AI-powered features like chat or se
 Key | Description
 ----|-------------
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
-`LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled.
+`LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled. As of v3.6.0, the AI assistant uses Pydantic AI with tool calling capabilities.
 `VECTOR_EMBEDDING_MODEL` | The [Sentence Transformers](https://sbert.net/) model to use for semantic search vector embeddings. If unset (the default), semantic search and chat are disabled.
 `LLM_MAX_CONTEXT_LENGTH` | Character limit for the family tree context provided to the LLM. Defaults to 50000.
+`LLM_SYSTEM_PROMPT` | Custom system prompt for the LLM chat assistant (v3.6.0+). If unset, uses the default genealogy-optimized prompt.
 
 
 ## Example configuration file
@@ -158,7 +161,7 @@ SECRET_KEY="..."  # your secret key
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
-EMAIL_USE_TLS=True
+EMAIL_USE_SSL=True  # Use implicit SSL for port 465
 EMAIL_HOST_USER="gramps@example.com"
 EMAIL_HOST_PASSWORD="..." # your SMTP password
 DEFAULT_FROM_EMAIL="gramps@example.com"
