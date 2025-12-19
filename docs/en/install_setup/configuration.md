@@ -4,6 +4,7 @@ Using the default Docker image, all necessary configuration can be made from the
 
 This page lists all methods to change the configuration and all existing configuration options.
 
+
 ## Configuration file vs. environment variables
 
 For the settings, you can either use a configuration file or environment variables.

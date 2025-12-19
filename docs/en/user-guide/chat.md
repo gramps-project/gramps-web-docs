@@ -4,6 +4,7 @@
     AI chat requires Gramps Web API version 2.5.0 or higher and Gramps Web version 24.10.0 or higher.
 
 
+
 The chat view in Gramps Web (if available in your installation) gives access to an AI assistant that can answer questions about your family tree.
 
 !!! warning
