@@ -101,6 +101,7 @@ jobs:
       - name: Push changes
         if: steps.check-changes.outputs.has_changes == 'true'
         run: |
+          git pull --rebase origin main
           git push
 
       - name: Summary
