@@ -4,7 +4,6 @@
     AI chat requires Gramps Web API version 2.5.0 or higher. Version 3.6.0 introduced tool calling capabilities for more intelligent interactions.
 
 
-
 Gramps Web API supports asking questions about the genealogical database using large language models (LLM) via a technique called retrieval-augmented generation (RAG) combined with tool calling.
 
 ## How it works
