@@ -1,13 +1,12 @@
-# Usando el chat de IA
+# Uso del chat de IA
 
 !!! info
-    El chat de IA requiere Gramps Web API versión 2.5.0 o superior y Gramps Web versión 24.10.0 o superior.
-
+    El chat de IA requiere la API web de Gramps versión 2.5.0 o superior y la versión web de Gramps 24.10.0 o superior.
 
 La vista de chat en Gramps Web (si está disponible en tu instalación) da acceso a un asistente de IA que puede responder preguntas sobre tu árbol genealógico.
 
 !!! warning
-    Dado que esta sigue siendo una función nueva y en evolución, algunos tipos de preguntas funcionan bien mientras que otros no. Además, al igual que con cualquier asistente de IA, puede dar respuestas factualmente incorrectas, así que asegúrate de verificar siempre.
+    Dado que esta sigue siendo una función nueva y en evolución, algunos tipos de preguntas funcionan bien mientras que otros no. Además, al igual que con cualquier asistente de IA, puede dar respuestas incorrectas desde el punto de vista factual, así que asegúrate de verificar siempre.
 
 ## Cómo funciona
 
@@ -15,7 +14,7 @@ Para entender qué tipos de preguntas puede responder el asistente, es útil com
 
 1. El usuario hace una pregunta.
 2. Gramps Web identifica un número de (por ejemplo, diez) objetos de Gramps que probablemente contengan la información que responde a la pregunta. Para ello, utiliza una técnica llamada "búsqueda semántica". Por ejemplo, si preguntas "¿Cuál es el nombre de los hijos de John Doe?", si existe una familia con John Doe como padre, es probable que esté entre los resultados principales.
-3. Gramps Web envía la pregunta del usuario junto con la información de contexto recuperada a un modelo de lenguaje grande ("chatbot") y le pide que extraiga la respuesta correcta.
+3. Gramps Web envía la pregunta del usuario junto con la información contextual recuperada a un modelo de lenguaje grande ("chatbot") y le pide que extraiga la respuesta correcta.
 4. La respuesta se muestra al usuario.
 
 ## Cómo hacer una pregunta

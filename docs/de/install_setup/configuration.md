@@ -1,14 +1,15 @@
 # Serverkonfiguration
 
-Mit dem Standard-Docker-Image kann die gesamte erforderliche Konfiguration über den Browser vorgenommen werden. Je nach Bereitstellung kann es jedoch notwendig sein, die Serverkonfiguration anzupassen.
+Mit dem Standard-Docker-Image kann die gesamte erforderliche Konfiguration über den Browser vorgenommen werden. Abhängig von der Bereitstellung kann es jedoch notwendig sein, die Serverkonfiguration anzupassen.
 
-Diese Seite listet alle Methoden zur Änderung der Konfiguration und alle vorhandenen Konfigurationsoptionen auf.
+Diese Seite listet alle Methoden auf, um die Konfiguration zu ändern, sowie alle vorhandenen Konfigurationsoptionen.
+
 
 ## Konfigurationsdatei vs. Umgebungsvariablen
 
 Für die Einstellungen können Sie entweder eine Konfigurationsdatei oder Umgebungsvariablen verwenden.
 
-Wenn Sie das [Docker Compose-basierte Setup](deployment.md) verwenden, können Sie eine Konfigurationsdatei einfügen, indem Sie den folgenden Listeneintrag unter dem Schlüssel `volumes:` im Block `grampsweb:` hinzufügen:
+Wenn Sie das [Docker Compose basierte Setup](deployment.md) verwenden, können Sie eine Konfigurationsdatei einfügen, indem Sie den folgenden Listeneintrag unter dem Schlüssel `volumes:` im Block `grampsweb:` hinzufügen:
 
 ```yaml
       - /path/to/config.cfg:/app/config/config.cfg
@@ -17,21 +18,21 @@ wobei `/path/to/config.cfg` der Pfad zur Konfigurationsdatei im Dateisystem Ihre
 
 Bei der Verwendung von Umgebungsvariablen,
 
-- prefixen Sie jeden Einstellungsnamen mit `GRAMPSWEB_`, um den Namen der Umgebungsvariable zu erhalten
-- Verwenden Sie doppelte Unterstriche für verschachtelte Dictionary-Einstellungen, z. B. wird `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` den Wert der Konfigurationsoption `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` setzen
+- prefixen Sie jeden Einstellungsnamen mit `GRAMPSWEB_`, um den Namen der Umgebungsvariablen zu erhalten
+- Verwenden Sie doppelte Unterstriche für verschachtelte Wörterbuch-Einstellungen, z. B. wird `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` den Wert der Konfigurationsoption `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` setzen
 
-Beachten Sie, dass Konfigurationsoptionen, die über die Umgebung festgelegt werden, Vorrang vor denen in der Konfigurationsdatei haben. Wenn beide vorhanden sind, "gewinnt" die Umgebungsvariable.
+Bitte beachten Sie, dass Konfigurationsoptionen, die über die Umgebung festgelegt werden, Vorrang vor denen in der Konfigurationsdatei haben. Wenn beide vorhanden sind, "gewinnt" die Umgebungsvariable.
 
 ## Vorhandene Konfigurationseinstellungen
-Die folgenden Konfigurationsoptionen existieren.
+Die folgenden Konfigurationsoptionen sind vorhanden.
 
 ### Erforderliche Einstellungen
 
 Schlüssel | Beschreibung
 ----|-------------
-`TREE` | Der Name der zu verwendenden Familienstammbaum-Datenbank. Zeigen Sie verfügbare Bäume mit `gramps -l` an. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer Baum erstellt.
+`TREE` | Der Name der zu verwendenden Familienstammbaum-Datenbank. Zeigen Sie verfügbare Bäume mit `gramps -l` an. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer erstellt.
 `SECRET_KEY` | Der geheime Schlüssel für Flask. Der Schlüssel darf nicht öffentlich geteilt werden. Eine Änderung macht alle Zugriffstoken ungültig.
-`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist zulässig.
+`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist erlaubt.
 
 !!! info
     Sie können einen sicheren geheimen Schlüssel z. B. mit dem Befehl
@@ -44,28 +45,32 @@ Schlüssel | Beschreibung
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet wird, das das in Gramps festgelegte Medienbasisverzeichnis überschreibt. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
-`SEARCH_INDEX_DB_URI` | Datenbank-URL für den Suchindex. Nur `sqlite` oder `postgresql` sind als Backends zulässig. Standardmäßig `sqlite:///indexdir/search_index.db`, was eine SQLite-Datei im Ordner `indexdir` erstellt, relativ zu dem Pfad, von dem das Skript ausgeführt wird.
-`STATIC_PATH` | Pfad, um statische Dateien bereitzustellen (z. B. ein statisches Web-Frontend).
-`BASE_URL` | Basis-URL, unter der die API erreichbar ist (z. B. `https://mygramps.mydomain.com/`). Dies ist notwendig, um z. B. korrekte Links zum Zurücksetzen des Passworts zu erstellen.
+`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet wird, und das Basisverzeichnis für Medien, das in Gramps festgelegt ist, überschreibt. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
+`SEARCH_INDEX_DB_URI` | Datenbank-URL für den Suchindex. Nur `sqlite` oder `postgresql` sind als Backends erlaubt. Standardmäßig `sqlite:///indexdir/search_index.db`, wodurch eine SQLite-Datei im Ordner `indexdir` relativ zu dem Pfad erstellt wird, von dem das Skript ausgeführt wird.
+`STATIC_PATH` | Pfad, von dem aus statische Dateien bereitgestellt werden (z. B. ein statisches Web-Frontend).
+`BASE_URL` | Basis-URL, unter der die API erreichbar ist (z. B. `https://mygramps.mydomain.com/`). Dies ist notwendig, um z. B. korrekte Links zum Zurücksetzen von Passwörtern zu erstellen.
 `CORS_ORIGINS` | Ursprünge, von denen CORS-Anfragen erlaubt sind. Standardmäßig sind alle nicht erlaubt. Verwenden Sie `"*"`, um Anfragen von jeder Domain zuzulassen.
-`EMAIL_HOST` | SMTP-Server-Host (z. B. zum Senden von E-Mails zum Zurücksetzen des Passworts).
+`EMAIL_HOST` | SMTP-Server-Host (z. B. zum Senden von E-Mails zum Zurücksetzen von Passwörtern).
 `EMAIL_PORT` | SMTP-Server-Port. Standardmäßig 465.
 `EMAIL_HOST_USER` | SMTP-Server-Benutzername.
 `EMAIL_HOST_PASSWORD` | SMTP-Server-Passwort.
-`EMAIL_USE_TLS` | Boolean, ob TLS zum Senden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden einen anderen Port als 25.
+`EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Senden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden Sie einen anderen Port als 25.
+`EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `True`, wenn `EMAIL_USE_TLS` nicht ausdrücklich festgelegt ist. Typischerweise mit Port 465 verwendet.
+`EMAIL_USE_STARTTLS` | Boolean, ob explizites STARTTLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `False`. Typischerweise mit Port 587 oder 25 verwendet.
 `DEFAULT_FROM_EMAIL` | "Von"-Adresse für automatisierte E-Mails.
-`THUMBNAIL_CACHE_CONFIG` | Dictionary mit Einstellungen für den Thumbnail-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
-`REQUEST_CACHE_CONFIG` | Dictionary mit Einstellungen für den Anfrage-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
-`PERSISTENT_CACHE_CONFIG` | Dictionary mit Einstellungen für den persistenten Cache, der z. B. für Telemetrie verwendet wird. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
+`THUMBNAIL_CACHE_CONFIG` | Wörterbuch mit Einstellungen für den Thumbnail-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
+`REQUEST_CACHE_CONFIG` | Wörterbuch mit Einstellungen für den Anfrage-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
+`PERSISTENT_CACHE_CONFIG` | Wörterbuch mit Einstellungen für den persistenten Cache, der z. B. für Telemetrie verwendet wird. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
 `CELERY_CONFIG` | Einstellungen für die Celery-Hintergrundaufgabenwarteschlange. Siehe [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) für mögliche Einstellungen.
-`REPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgabe von ausgeführten Gramps-Berichten gespeichert wird.
-`EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgabe des Exports der Gramps-Datenbank gespeichert wird.
-`REGISTRATION_DISABLED` | Wenn `True`, wird die Registrierung neuer Benutzer nicht erlaubt (Standard `False`).
-`DISABLE_TELEMETRY` | Wenn `True`, wird die Statistiktelemetrie deaktiviert (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
+`REPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben von ausgeführten Gramps-Berichten gespeichert werden.
+`EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben des Exports der Gramps-Datenbank gespeichert werden.
+`REGISTRATION_DISABLED` | Wenn `True`, neue Benutzerregistrierungen nicht zulassen (Standard `False`).
+`DISABLE_TELEMETRY` | Wenn `True`, die Telemetrie von Statistiken deaktivieren (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
+
 
 !!! info
-    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_TLS` entweder den String `true` oder `false` (groß- und kleinschreibungssensitiv!) haben.
+    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_TLS` entweder der String `true` oder `false` sein (groß-/kleinschreibung beachten!).
+
 
 ### Einstellungen nur für PostgreSQL-Backend-Datenbank
 
@@ -76,20 +81,23 @@ Schlüssel | Beschreibung
 `POSTGRES_USER` | Der Benutzername für die Datenbankverbindung.
 `POSTGRES_PASSWORD` | Das Passwort für den Datenbankbenutzer.
 
+
 ### Einstellungen, die für das Hosting mehrerer Bäume relevant sind
 
-Die folgenden Einstellungen sind relevant, wenn [mehrere Bäume gehostet werden](multi-tree.md).
+Die folgenden Einstellungen sind relevant, wenn Sie [mehrere Bäume hosten](multi-tree.md).
+
 
 Schlüssel | Beschreibung
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baumes verwendet werden soll. Standardmäßig `False`, aber es wird dringend empfohlen, `True` in einem Multi-Tree-Setup zu verwenden.
-`NEW_DB_BACKEND` | Das Datenbank-Backend, das für neu erstellte Familienstammbäume verwendet werden soll. Muss eines von `sqlite`, `postgresql` oder `sharedpostgresql` sein. Standardmäßig `sqlite`.
+`NEW_DB_BACKEND` | Das Datenbank-Backend, das für neu erstellte Familienstämme verwendet werden soll. Muss eines von `sqlite`, `postgresql` oder `sharedpostgresql` sein. Standardmäßig `sqlite`.
 `POSTGRES_HOST` | Der Hostname des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Tree-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 `POSTGRES_PORT` | Der Port des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Tree-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 
+
 ### Einstellungen für OIDC-Authentifizierung
 
-Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC) Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Installationsanweisungen und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
+Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC)-Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Anweisungen zur Einrichtung und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
 
 Schlüssel | Beschreibung
 ----|-------------
@@ -117,9 +125,9 @@ Schlüssel | Beschreibung
 `OIDC_GITHUB_CLIENT_ID` | Client-ID für GitHub OAuth.
 `OIDC_GITHUB_CLIENT_SECRET` | Client-Geheimnis für GitHub OAuth.
 
-#### OIDC-Rollen-Zuordnung
+#### OIDC-Rollenmapping
 
-Diese Einstellungen ermöglichen es Ihnen, OIDC-Gruppen/Rollen von Ihrem Identitätsanbieter auf Gramps Web-Benutzerrollen abzubilden:
+Diese Einstellungen ermöglichen es Ihnen, OIDC-Gruppen/Rollen von Ihrem Identitätsanbieter auf Gramps Web-Benutzerrollen zuzuordnen:
 
 Schlüssel | Beschreibung
 ----|-------------
@@ -138,9 +146,11 @@ Diese Einstellungen sind erforderlich, wenn Sie KI-gestützte Funktionen wie Cha
 Schlüssel | Beschreibung
 ----|-------------
 `LLM_BASE_URL` | Basis-URL für die OpenAI-kompatible Chat-API. Standardmäßig `None`, was die OpenAI-API verwendet.
-`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht festgelegt (Standard), ist der Chat deaktiviert.
+`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht festgelegt (Standard), ist der Chat deaktiviert. Ab v3.6.0 verwendet der KI-Assistent Pydantic AI mit Tool-Calling-Funktionen.
 `VECTOR_EMBEDDING_MODEL` | Das [Sentence Transformers](https://sbert.net/) Modell, das für semantische Suchvektor-Einbettungen verwendet werden soll. Wenn nicht festgelegt (Standard), sind semantische Suche und Chat deaktiviert.
-`LLM_MAX_CONTEXT_LENGTH` | Zeichenlimit für den Familienstammbaumkontext, der dem LLM bereitgestellt wird. Standardmäßig 50000.
+`LLM_MAX_CONTEXT_LENGTH` | Zeichenbegrenzung für den Familienstammbaum-Kontext, der dem LLM bereitgestellt wird. Standardmäßig 50000.
+`LLM_SYSTEM_PROMPT` | Benutzerdefinierter System-Prompt für den LLM-Chat-Assistenten (v3.6.0+). Wenn nicht festgelegt, wird der standardmäßige, genealogisch optimierte Prompt verwendet.
+
 
 ## Beispielkonfigurationsdatei
 
@@ -152,7 +162,7 @@ SECRET_KEY="..."  # Ihr geheimer Schlüssel
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
-EMAIL_USE_TLS=True
+EMAIL_USE_SSL=True  # Verwenden Sie implizites SSL für Port 465
 EMAIL_HOST_USER="gramps@example.com"
 EMAIL_HOST_PASSWORD="..." # Ihr SMTP-Passwort
 DEFAULT_FROM_EMAIL="gramps@example.com"
