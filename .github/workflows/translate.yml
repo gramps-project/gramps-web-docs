@@ -54,6 +54,7 @@ jobs:
 
       - name: Translate changed files
         if: steps.changed-files.outputs.changed == 'true'
+        continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
@@ -63,7 +64,7 @@ jobs:
             RELATIVE_PATH="${file#docs/en/}"
             
             echo "Translating: $RELATIVE_PATH"
-            python translate.py --file "$RELATIVE_PATH" --lang all --force
+            python translate.py --file "$RELATIVE_PATH" --lang all --force || echo "Translation failed for $RELATIVE_PATH but continuing..."
           done
 
       - name: Check for translation changes
@@ -120,7 +121,7 @@ jobs:
           else
             echo "ℹ️ No translation changes needed" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           # Add translation stats if available
           if [ -n "${{ steps.translate.outputs.translation_success }}" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
