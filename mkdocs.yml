@@ -55,6 +55,7 @@ nav:
           # - DNA:  user-guide/dna.md
           - GQL filters: user-guide/gql.md
           - AI chat: user-guide/chat.md
+      - External Search: user-guide/external-search.md
   - Developers:
       - Overview: development/dev.md
       - Backend:
