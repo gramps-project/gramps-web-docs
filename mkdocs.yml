@@ -168,6 +168,7 @@ plugins:
             Advanced features: Erweiterte Funktionen
             GQL filters: GQL-Filter
             AI chat: KI-Chat
+            External Search: Externe Suche
             Developers: Entwickler
             Backend: Backend
             Development setup: Entwicklungsumgebung
@@ -231,6 +232,7 @@ plugins:
             Advanced features: Fonctionnalités avancées
             GQL filters: Filtres GQL
             AI chat: Chat IA
+            External Search: Recherche externe
             Developers: Développeurs
             Backend: Backend
             Development setup: Configuration de développement
@@ -294,6 +296,7 @@ plugins:
             Advanced features: Características avanzadas
             GQL filters: Filtros GQL
             AI chat: Chat de IA
+            External Search: Búsqueda externa
             Developers: Desarrolladores
             Backend: Backend
             Development setup: Configuración de desarrollo
@@ -357,6 +360,7 @@ plugins:
             Advanced features: 高级功能
             GQL filters: GQL 过滤器
             AI chat: AI 聊天
+            External Search: 外部搜索
             Developers: 开发者
             Backend: 后端
             Development setup: 开发环境设置
@@ -420,6 +424,7 @@ plugins:
             Advanced features: Tính năng nâng cao
             GQL filters: Bộ lọc GQL
             AI chat: Trò chuyện AI
+            External Search: Tìm kiếm bên ngoài
             Developers: Nhà phát triển
             Backend: Backend
             Development setup: Thiết lập phát triển
@@ -483,6 +488,7 @@ plugins:
             Advanced features: Gelişmiş özellikler
             GQL filters: GQL filtreleri
             AI chat: AI sohbet
+            External Search: Harici arama
             Developers: Geliştiriciler
             Backend: Backend
             Development setup: Geliştirme kurulumu
@@ -546,6 +552,7 @@ plugins:
             Advanced features: Расширенные функции
             GQL filters: Фильтры GQL
             AI chat: AI-чат
+            External Search: Внешний поиск
             Developers: Разработчики
             Backend: Бэкенд
             Development setup: Настройка разработки
@@ -609,6 +616,7 @@ plugins:
             Advanced features: Recursos avançados
             GQL filters: Filtros GQL
             AI chat: Chat de IA
+            External Search: Pesquisa externa
             Developers: Desenvolvedores
             Backend: Backend
             Development setup: Configuração de desenvolvimento
@@ -672,6 +680,7 @@ plugins:
             Advanced features: 高度な機能
             GQL filters: GQL フィルター
             AI chat: AI チャット
+            External Search: 外部検索
             Developers: 開発者
             Backend: バックエンド
             Development setup: 開発環境のセットアップ
@@ -735,6 +744,7 @@ plugins:
             Advanced features: Avancerede funktioner
             GQL filters: GQL-filtre
             AI chat: AI-chat
+            External Search: Ekstern søgning
             Developers: Udviklere
             Backend: Backend
             Development setup: Udviklingsopsætning
@@ -798,6 +808,7 @@ plugins:
             Advanced features: Edistyneet ominaisuudet
             GQL filters: GQL-suodattimet
             AI chat: AI-chat
+            External Search: Ulkoinen haku
             Developers: Kehittäjät
             Backend: Taustajärjestelmä
             Development setup: Kehitysympäristön asennus
@@ -861,6 +872,7 @@ plugins:
             Advanced features: Funzionalità avanzate
             GQL filters: Filtri GQL
             AI chat: Chat AI
+            External Search: Ricerca esterna
             Developers: Sviluppatori
             Backend: Backend
             Development setup: Configurazione sviluppo
@@ -924,6 +936,7 @@ plugins:
             Advanced features: Розширені можливості
             GQL filters: GQL фільтри
             AI chat: AI чат
+            External Search: Зовнішній пошук
             Developers: Розробники
             Backend: Бекенд
             Development setup: Налаштування розробки
