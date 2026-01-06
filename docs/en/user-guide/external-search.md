@@ -2,6 +2,7 @@
 
 Gramps Web allows you to search for people on external genealogy websites directly from a person's detail page.
 
+
 ## Performing an external search
 
 To search for a person on external websites:
