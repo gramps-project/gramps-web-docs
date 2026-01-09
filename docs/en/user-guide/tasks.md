@@ -1,6 +1,6 @@
 # Use the built-in task management
 
-Gramps Web contains a built-in genealogical task management tool. It is meant to enable reserarches to plan and prioritize, but also document their tasks. This is why tasks are represented as sources in the Gramps database. After completing a task, the associated content can serve as a source documenting the research process.
+Gramps Web contains a built-in genealogical task management tool. It is meant to enable researchers to plan and prioritize, but also document their tasks. This is why tasks are represented as sources in the Gramps database. After completing a task, the associated content can serve as a source documenting the research process.
 
 ## Task basics
 
