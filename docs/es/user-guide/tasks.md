@@ -1,17 +1,17 @@
-# Uso de la gestión de tareas integrada
+# Utilizar la gestión de tareas integrada
 
-Gramps Web contiene una herramienta de gestión de tareas genealógicas integrada. Está destinada a permitir a los investigadores planificar y priorizar, pero también documentar sus tareas. Por esta razón, las tareas se representan como fuentes en la base de datos de Gramps. Después de completar una tarea, el contenido asociado puede servir como una fuente que documenta el proceso de investigación.
+Gramps Web contiene una herramienta de gestión de tareas genealógicas integrada. Está diseñada para permitir a los investigadores planificar y priorizar, pero también documentar sus tareas. Por esta razón, las tareas se representan como fuentes en la base de datos de Gramps. Después de completar una tarea, el contenido asociado puede servir como una fuente que documenta el proceso de investigación.
 
 ## Conceptos básicos de las tareas
 
 Las tareas tienen las siguientes propiedades:
 
-- Estado. Esto puede ser "Abierto", "En Progreso", "Bloqueado" o "Hecho"
-- Prioridad. Esto puede ser "Baja", "Media" o "Alta"
+- Estado. Puede ser "Abierto", "En Progreso", "Bloqueado" o "Hecho"
+- Prioridad. Puede ser "Baja", "Media" o "Alta"
 - Etiquetas. Las etiquetas son etiquetas normales de Gramps de la fuente subyacente. (Tenga en cuenta que todas las tareas además tienen la etiqueta `ToDo` para identificarlas como tareas, pero esta etiqueta está oculta en la lista de tareas para evitar desorden.)
 - Título. Se muestra en la lista de tareas
-- Descripción. Un campo de texto enriquecido que se puede usar para describir la declaración del problema, pero también documentar cualquier progreso realizado
-- Medios. Cualquier archivo multimedia adjunto a la tarea
+- Descripción. Un campo de texto enriquecido que se puede utilizar para describir el enunciado del problema, pero también documentar cualquier progreso realizado
+- Medios. Cualquier archivo de medios adjunto a la tarea
 
 ## Crear una tarea
 
@@ -21,9 +21,9 @@ Para crear una tarea, haga clic en el botón + en la página de la lista de tare
 
 ## Editar una tarea
 
-Para editar cualquiera de los detalles de la tarea, haga clic en ella en la lista de tareas.
+Para editar cualquier detalle de la tarea, haga clic en ella en la lista de tareas.
 
-La página de detalles de la tarea no tiene un "modo de edición" separado como otros objetos de Gramps. Los cambios en el título, estado y prioridad se aplican de inmediato. Los cambios en la descripción de texto enriquecido requieren hacer clic en el botón "guardar" debajo de ella.
+La página de detalles de la tarea no tiene un "modo de edición" separado como otros objetos de Gramps. Los cambios en el título, estado y prioridad se aplican inmediatamente. Los cambios en la descripción de texto enriquecido requieren hacer clic en el botón "guardar" debajo de ella.
 
 ## Cambio masivo de propiedades de tareas
 
@@ -31,9 +31,9 @@ La prioridad y el estado de las tareas se pueden cambiar en masa utilizando las 
 
 ## Tareas en Gramps Desktop
 
-Al agregar tareas a través de Gramps Web, tanto las fuentes como las notas tendrán la etiqueta `ToDo` adjunta, por lo que las tareas aparecerán en el [Gramplet de Notas de Tareas](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) de escritorio, así como en el [Informe de Tareas](https://gramps-project.org/wiki/index.php/Addon:ToDoReport).
+Al agregar tareas a través de Gramps Web, tanto las fuentes como las notas tendrán la etiqueta `ToDo` adjunta, por lo que las tareas aparecerán en el [Gramplet de Notas por Hacer](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) de escritorio, así como en el [Informe de Tareas por Hacer](https://gramps-project.org/wiki/index.php/Addon:ToDoReport).
 
-Para agregar o editar una tarea en Gramps Desktop, use las siguientes pautas:
+Para agregar o editar una tarea en Gramps Desktop, utilice las siguientes pautas
 
 - Agregue una fuente con la etiqueta `ToDo` y el título de la tarea como título
 - Opcionalmente, agregue una nota a la fuente con la etiqueta `ToDo`, tipo "Por Hacer", y la descripción como texto
