@@ -21,6 +21,16 @@ You can use Linux, macOS, or Windows as your operating system.
 3. Open the cloned repository in Visual Studio Code. When prompted, select "Reopen in Container" or manually open the command palette (Ctrl+Shift+P or Cmd+Shift+P) and select "Dev Containers: Rebuild and Reopen in Container".
 4. Wait for the dev container to build and start. This may take a few minutes, especially the first time.
 
+    **After the Dev Container build is successful, the command will return:**
+
+    `Successfully installed gramps-webapi-x.x.x.`
+
+    !!! info
+        To Rebuild Container In Visual Studio Code:
+
+        - If in the container, use the "Rebuild in container" palette command.
+
+        - If in the folder view (i.e. not in the container) use the "Rebuild and Reopen in Container" palette command.
 
 ## Tasks
 
