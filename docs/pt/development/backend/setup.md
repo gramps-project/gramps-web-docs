@@ -5,7 +5,7 @@ Esta página lista os passos necessários para começar a desenvolver a [Gramps 
 
 ## Pré-requisitos
 
-A configuração de desenvolvimento recomendada utiliza o Visual Studio Code com devcontainers. Esta abordagem criará um ambiente de desenvolvimento pré-configurado com todas as ferramentas que você precisa. Para começar, você precisará dos seguintes ingredientes:
+A configuração de desenvolvimento recomendada utiliza o Visual Studio Code com devcontainers. Esta abordagem criará um ambiente de desenvolvimento pré-configurado com todas as ferramentas necessárias. Para começar, você precisará dos seguintes ingredientes:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Visual Studio Code](https://code.visualstudio.com/) com a [extensão Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) instalada
@@ -21,6 +21,16 @@ Você pode usar Linux, macOS ou Windows como seu sistema operacional.
 3. Abra o repositório clonado no Visual Studio Code. Quando solicitado, selecione "Reabrir no Container" ou abra manualmente a paleta de comandos (Ctrl+Shift+P ou Cmd+Shift+P) e selecione "Dev Containers: Rebuild and Reopen in Container".
 4. Aguarde o dev container ser construído e iniciado. Isso pode levar alguns minutos, especialmente na primeira vez.
 
+    **Após a construção bem-sucedida do Dev Container, o comando retornará:**
+
+    `Successfully installed gramps-webapi-x.x.x.`
+
+    !!! info
+        Para Rebuild Container no Visual Studio Code:
+
+        - Se estiver no container, use o comando da paleta "Rebuild in container".
+
+        - Se estiver na visualização da pasta (ou seja, não no container), use o comando da paleta "Rebuild and Reopen in Container".
 
 ## Tarefas
 
@@ -32,8 +42,8 @@ No entanto, executar um servidor é útil se você
 - quiser visualizar o impacto das alterações na aplicação completa do Gramps Web, ou
 - também quiser fazer alterações simultâneas no frontend (veja [configuração de desenvolvimento do frontend](../frontend/setup.md)).
 
-Executar o servidor é simplificado no dev container por tarefas predefinidas. Você pode executar essas tarefas a partir da paleta de comandos (Ctrl+Shift+P ou Cmd+Shift+P) selecionando "Tasks: Run Task" e, em seguida, escolhendo uma das seguintes:
-- "Serve Web API" - inicia o servidor de desenvolvimento Flask na porta 5555 com registro de depuração ativado
+Executar o servidor é simplificado no dev container por meio de tarefas predefinidas. Você pode executar essas tarefas a partir da paleta de comandos (Ctrl+Shift+P ou Cmd+Shift+P) selecionando "Tasks: Run Task" e, em seguida, escolhendo uma das seguintes opções:
+- "Serve Web API" - inicia o servidor de desenvolvimento Flask na porta 5555 com registro de depuração habilitado
 - "Start Celery worker" - inicia um trabalhador Celery para processar tarefas em segundo plano.
 
 
@@ -48,7 +58,7 @@ Para depurar a API em execução:
 1. Abra o Visual Studio Code e vá para a visualização **Executar e Depurar**.  
 2. Selecione a configuração **"Web API"** no menu suspenso.  
 3. Comece a depuração.  
-4. Quando você enviar solicitações para o backend (seja manualmente ou através da GUI do Gramps Web), a execução será pausada em qualquer ponto de interrupção que você tenha definido no código.  
+4. Quando você enviar solicitações ao backend (seja manualmente ou através da GUI do Gramps Web), a execução será pausada em qualquer ponto de interrupção que você tenha definido no código.  
    Isso permite que você inspecione variáveis, controle o fluxo e outros detalhes em tempo de execução.
 
 ### Depurando Casos de Teste
@@ -57,7 +67,7 @@ Para depurar um caso de teste específico:
 
 1. Abra o arquivo de teste que você deseja depurar (por exemplo, `test_people.py`).  
 2. No Visual Studio Code, abra a visualização **Executar e Depurar**.  
-3. Escolha a configuração **"Arquivo de Teste Atual"**.  
+3. Escolha a configuração **"Current Test File"**.  
 4. Comece a depuração — a execução será interrompida em qualquer ponto de interrupção definido dentro desse arquivo de teste.  
 
 Essa configuração permite que você percorra a lógica do teste, examine os valores das variáveis e compreenda melhor as falhas dos testes ou resultados inesperados.

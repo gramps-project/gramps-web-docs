@@ -1,11 +1,11 @@
 # Impostazione dello sviluppo backend
 
-Questa pagina elenca i passaggi necessari per iniziare a sviluppare [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), il backend (componente server) di Gramps Web.
+Questa pagina elenca i passaggi necessari per iniziare a sviluppare il [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), il backend (componente server) di Gramps Web.
 
 
 ## Requisiti
 
-L'impostazione di sviluppo consigliata utilizza Visual Studio Code con devcontainers. Questo approccio creerà un ambiente di sviluppo preconfigurato con tutti gli strumenti necessari. Per iniziare, avrai bisogno dei seguenti ingredienti:
+L'impostazione di sviluppo consigliata utilizza Visual Studio Code con devcontainers. Questo approccio creerà un ambiente di sviluppo preconfigurato con tutti gli strumenti di cui hai bisogno. Per iniziare, avrai bisogno dei seguenti ingredienti:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Visual Studio Code](https://code.visualstudio.com/) con l'estensione [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installata
@@ -21,10 +21,20 @@ Puoi utilizzare Linux, macOS o Windows come sistema operativo.
 3. Apri il repository clonato in Visual Studio Code. Quando richiesto, seleziona "Reopen in Container" oppure apri manualmente il palette dei comandi (Ctrl+Shift+P o Cmd+Shift+P) e seleziona "Dev Containers: Rebuild and Reopen in Container".
 4. Attendi che il dev container venga costruito e avviato. Questo potrebbe richiedere alcuni minuti, specialmente la prima volta.
 
+    **Dopo che la costruzione del Dev Container è stata completata con successo, il comando restituirà:**
+
+    `Successfully installed gramps-webapi-x.x.x.`
+
+    !!! info
+        Per ricostruire il container in Visual Studio Code:
+
+        - Se sei nel container, utilizza il comando palette "Rebuild in container".
+
+        - Se sei nella vista cartella (cioè non nel container) utilizza il comando palette "Rebuild and Reopen in Container".
 
 ## Attività
 
-Se stai modificando solo il codice backend, non è necessario avviare un server web - i test unitari utilizzano un client di test Flask che consente di simulare richieste all'API senza la necessità di un server in esecuzione.
+Se stai solo modificando il codice backend, non è necessario avviare un server web - i test unitari utilizzano un client di test Flask che consente di simulare richieste all'API senza la necessità di un server in esecuzione.
 
 Tuttavia, eseguire un server è utile se
 
@@ -39,16 +49,16 @@ L'esecuzione del server è semplificata nel dev container da attività predefini
 
 ## Debugging
 
-Il debugging può essere a volte impegnativo, specialmente quando si cerca di tracciare comportamenti complessi o identificare problemi sottili. Per semplificare questo processo, puoi eseguire il debug sia di un'istanza API in esecuzione che di singoli casi di test direttamente all'interno di Visual Studio Code.
+Il debugging può essere a volte impegnativo, specialmente quando si cerca di tracciare comportamenti complessi o identificare problemi sottili. Per facilitare questo, puoi eseguire il debug sia di un'istanza API in esecuzione che di singoli casi di test direttamente all'interno di Visual Studio Code.
 
-### Debugging della Gramps Web API
+### Debugging del Gramps Web API
 
 Per eseguire il debug dell'API in esecuzione:
 
 1. Apri Visual Studio Code e vai alla vista **Esegui e Debug**.  
 2. Seleziona la configurazione **"Web API"** dal menu a discesa.  
 3. Inizia il debugging.  
-4. Quando invii richieste al backend (sia manualmente che tramite l'interfaccia grafica di Gramps Web), l'esecuzione si fermerà a qualsiasi punto di interruzione impostato nel codice.  
+4. Quando invii richieste al backend (sia manualmente che tramite l'interfaccia grafica di Gramps Web), l'esecuzione si fermerà a qualsiasi punto di interruzione che hai impostato nel codice.  
    Questo ti consente di ispezionare variabili, flusso di controllo e altri dettagli di runtime.
 
 ### Debugging dei Casi di Test
@@ -60,4 +70,4 @@ Per eseguire il debug di un caso di test specifico:
 3. Scegli la configurazione **"Current Test File"**.  
 4. Inizia il debugging — l'esecuzione si fermerà a qualsiasi punto di interruzione impostato all'interno di quel file di test.  
 
-Questa configurazione ti consente di eseguire il passo attraverso la logica del test, esaminare i valori delle variabili e comprendere meglio i fallimenti dei test o i risultati inaspettati.
+Questa configurazione ti consente di eseguire il passo attraverso la logica del test, esaminare i valori delle variabili e comprendere meglio i fallimenti dei test o i risultati imprevisti.
