@@ -66,6 +66,7 @@ Key | Description
 `EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
 `REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`)
 `DISABLE_TELEMETRY` | If `True`, disable statistics telemetry (default `False`). See [telemetry](telemetry.md) for details.
+`PILLOW_MAX_IMAGE_PIXELS` | Sets the PIL.Image.MAX_IMAGE_PIXELS parameter, which indicates the number of pixels that the processed image can contain. See [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) for details.
 
 
 !!! info
