@@ -149,7 +149,9 @@ Key | Description
 ----|-------------
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
 `LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled. As of v3.6.0, the AI assistant uses Pydantic AI with tool calling capabilities.
-`VECTOR_EMBEDDING_MODEL` | The [Sentence Transformers](https://sbert.net/) model to use for semantic search vector embeddings. If unset (the default), semantic search and chat are disabled.
+`VECTOR_EMBEDDING_MODEL` | The model to use for semantic search vector embeddings. When using a local model, this must be a [Sentence Transformers](https://sbert.net/) model name. When using a remote API (see `VECTOR_EMBEDDING_BASE_URL`), this is the model name passed to the remote provider. If unset (the default), semantic search and chat are disabled.
+`VECTOR_EMBEDDING_BASE_URL` | Base URL for a remote OpenAI-compatible embedding API (e.g. Ollama, OpenAI, LiteLLM). If unset (the default), a local Sentence Transformers model is used. See [Using a remote embedding API](chat.md#using-a-remote-embedding-api) for details.
+`VECTOR_EMBEDDING_API_KEY` | API key for authenticated remote embedding providers. Only needed when `VECTOR_EMBEDDING_BASE_URL` is set and the provider requires authentication.
 `LLM_MAX_CONTEXT_LENGTH` | Character limit for the family tree context provided to the LLM. Defaults to 50000.
 `LLM_SYSTEM_PROMPT` | Custom system prompt for the LLM chat assistant (v3.6.0+). If unset, uses the default genealogy-optimized prompt.
 
