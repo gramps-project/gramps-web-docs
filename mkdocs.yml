@@ -29,6 +29,7 @@ nav:
       - Create owner account: administration/owner.md
       - Import data: administration/import.md
       - Export data: administration/export.md
+      - Manage users: administration/users.md
       # - Manage search index:  admin/search.md
       - Synchronize with Gramps: administration/sync.md
       # # - Command Line Interface:  cli.md
@@ -148,6 +149,7 @@ plugins:
             Create owner account: Besitzerkonto erstellen
             Import data: Daten importieren
             Export data: Daten exportieren
+            Manage users: Benutzer verwalten
             Synchronize with Gramps: Mit Gramps synchronisieren
             User Guide: Benutzerhandbuch
             First steps: Erste Schritte
@@ -212,6 +214,7 @@ plugins:
             Create owner account: Créer un compte propriétaire
             Import data: Importer des données
             Export data: Exporter des données
+            Manage users: Gérer les utilisateurs
             Synchronize with Gramps: Synchroniser avec Gramps
             User Guide: Guide utilisateur
             First steps: Premiers pas
@@ -276,6 +279,7 @@ plugins:
             Create owner account: Crear cuenta de propietario
             Import data: Importar datos
             Export data: Exportar datos
+            Manage users: Gestionar usuarios
             Synchronize with Gramps: Sincronizar con Gramps
             User Guide: Guía del usuario
             First steps: Primeros pasos
@@ -340,6 +344,7 @@ plugins:
             Create owner account: 创建所有者账户
             Import data: 导入数据
             Export data: 导出数据
+            Manage users: 管理用户
             Synchronize with Gramps: 与 Gramps 同步
             User Guide: 用户指南
             First steps: 第一步
@@ -404,6 +409,7 @@ plugins:
             Create owner account: Tạo tài khoản chủ sở hữu
             Import data: Nhập dữ liệu
             Export data: Xuất dữ liệu
+            Manage users: Quản lý người dùng
             Synchronize with Gramps: Đồng bộ với Gramps
             User Guide: Hướng dẫn sử dụng
             First steps: Các bước đầu tiên
@@ -468,6 +474,7 @@ plugins:
             Create owner account: Sahip hesabı oluştur
             Import data: Veri içe aktar
             Export data: Veri dışa aktar
+            Manage users: Kullanıcıları yönet
             Synchronize with Gramps: Gramps ile senkronize et
             User Guide: Kullanıcı Kılavuzu
             First steps: İlk adımlar
@@ -532,6 +539,7 @@ plugins:
             Create owner account: Создать учетную запись владельца
             Import data: Импорт данных
             Export data: Экспорт данных
+            Manage users: Управление пользователями
             Synchronize with Gramps: Синхронизация с Gramps
             User Guide: Руководство пользователя
             First steps: Первые шаги
@@ -596,6 +604,7 @@ plugins:
             Create owner account: Criar conta de proprietário
             Import data: Importar dados
             Export data: Exportar dados
+            Manage users: Gerir utilizadores
             Synchronize with Gramps: Sincronizar com Gramps
             User Guide: Guia do usuário
             First steps: Primeiros passos
@@ -660,6 +669,7 @@ plugins:
             Create owner account: オーナーアカウントの作成
             Import data: データのインポート
             Export data: データのエクスポート
+            Manage users: ユーザーの管理
             Synchronize with Gramps: Gramps と同期
             User Guide: ユーザーガイド
             First steps: 最初のステップ
@@ -724,6 +734,7 @@ plugins:
             Create owner account: Opret ejerkonto
             Import data: Importér data
             Export data: Eksportér data
+            Manage users: Administrer brugere
             Synchronize with Gramps: Synkroniser med Gramps
             User Guide: Brugervejledning
             First steps: Første trin
@@ -788,6 +799,7 @@ plugins:
             Create owner account: Luo omistajatili
             Import data: Tuo tietoja
             Export data: Vie tietoja
+            Manage users: Hallitse käyttäjiä
             Synchronize with Gramps: Synkronoi Grampsin kanssa
             User Guide: Käyttöopas
             First steps: Ensimmäiset askeleet
@@ -852,6 +864,7 @@ plugins:
             Create owner account: Crea account proprietario
             Import data: Importa dati
             Export data: Esporta dati
+            Manage users: Gestisci utenti
             Synchronize with Gramps: Sincronizza con Gramps
             User Guide: Guida Utente
             First steps: Primi passi
@@ -916,6 +929,7 @@ plugins:
             Create owner account: Створити обліковий запис власника
             Import data: Імпорт даних
             Export data: Експорт даних
+            Manage users: Керування користувачами
             Synchronize with Gramps: Синхронізація з Gramps
             User Guide: Посібник користувача
             First steps: Перші кроки
