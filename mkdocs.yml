@@ -38,6 +38,7 @@ nav:
       #   - Create owner account:  user-guide/owner.md
   - User Guide:
       - Introduction: user-guide/index.md
+      - Search: user-guide/search.md
       - First steps:
           - Registration: user-guide/registration.md
           - First login: user-guide/first-login.md
@@ -147,6 +148,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 Upgrade-Anleitung
             Administration: Verwaltung
             Introduction: Einführung
+            Search: Suche
             Create owner account: Besitzerkonto erstellen
             Import data: Daten importieren
             Export data: Daten exportieren
@@ -213,6 +215,7 @@ plugins:
             Gramps 6.0 upgrade guide: Guide de mise à niveau Gramps 6.0
             Administration: Administration
             Introduction: Introduction
+            Search: Recherche
             Create owner account: Créer un compte propriétaire
             Import data: Importer des données
             Export data: Exporter des données
@@ -279,6 +282,7 @@ plugins:
             Gramps 6.0 upgrade guide: Guía de actualización Gramps 6.0
             Administration: Administración
             Introduction: Introducción
+            Search: Búsqueda
             Create owner account: Crear cuenta de propietario
             Import data: Importar datos
             Export data: Exportar datos
@@ -345,6 +349,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 升级指南
             Administration: 管理
             Introduction: 介绍
+            Search: 搜索
             Create owner account: 创建所有者账户
             Import data: 导入数据
             Export data: 导出数据
@@ -411,6 +416,7 @@ plugins:
             Gramps 6.0 upgrade guide: Hướng dẫn nâng cấp Gramps 6.0
             Administration: Quản trị
             Introduction: Giới thiệu
+            Search: Tìm kiếm
             Create owner account: Tạo tài khoản chủ sở hữu
             Import data: Nhập dữ liệu
             Export data: Xuất dữ liệu
@@ -477,6 +483,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 yükseltme kılavuzu
             Administration: Yönetim
             Introduction: Giriş
+            Search: Arama
             Create owner account: Sahip hesabı oluştur
             Import data: Veri içe aktar
             Export data: Veri dışa aktar
@@ -543,6 +550,7 @@ plugins:
             Gramps 6.0 upgrade guide: Руководство по обновлению Gramps 6.0
             Administration: Администрирование
             Introduction: Введение
+            Search: Поиск
             Create owner account: Создать учетную запись владельца
             Import data: Импорт данных
             Export data: Экспорт данных
@@ -609,6 +617,7 @@ plugins:
             Gramps 6.0 upgrade guide: Guia de atualização Gramps 6.0
             Administration: Administração
             Introduction: Introdução
+            Search: Pesquisa
             Create owner account: Criar conta de proprietário
             Import data: Importar dados
             Export data: Exportar dados
@@ -675,6 +684,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 アップグレードガイド
             Administration: 管理
             Introduction: はじめに
+            Search: 検索
             Create owner account: オーナーアカウントの作成
             Import data: データのインポート
             Export data: データのエクスポート
@@ -741,6 +751,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 opgraderingsvejledning
             Administration: Administration
             Introduction: Introduktion
+            Search: Søgning
             Create owner account: Opret ejerkonto
             Import data: Importér data
             Export data: Eksportér data
@@ -807,6 +818,7 @@ plugins:
             Gramps 6.0 upgrade guide: Gramps 6.0 päivitysopas
             Administration: Hallinta
             Introduction: Johdanto
+            Search: Haku
             Create owner account: Luo omistajatili
             Import data: Tuo tietoja
             Export data: Vie tietoja
@@ -873,6 +885,7 @@ plugins:
             Gramps 6.0 upgrade guide: Guida all'aggiornamento Gramps 6.0
             Administration: Amministrazione
             Introduction: Introduzione
+            Search: Ricerca
             Create owner account: Crea account proprietario
             Import data: Importa dati
             Export data: Esporta dati
@@ -939,6 +952,7 @@ plugins:
             Gramps 6.0 upgrade guide: Посібник з оновлення Gramps 6.0
             Administration: Адміністрування
             Introduction: Вступ
+            Search: Пошук
             Create owner account: Створити обліковий запис власника
             Import data: Імпорт даних
             Export data: Експорт даних

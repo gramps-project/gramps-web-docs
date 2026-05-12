@@ -10,11 +10,11 @@ See [User system](../install_setup/users.md) for a full description of the avail
 
 The manage users page shows a table of all registered user accounts with the following columns:
 
-- **Username** — the login name
-- **Full Name** — the display name
-- **E-mail** — the user's e-mail address
-- **Role** — the assigned role (Guest, Member, Contributor, Editor, Owner, or Administrator)
-- **Account Source** — either "Password" (local account) or the name of an external identity provider (e.g. when using OIDC)
+- **Username** – the login name
+- **Full Name** – the display name
+- **E-mail** – the user's e-mail address
+- **Role** – the assigned role (Guest, Member, Contributor, Editor, Owner, or Administrator)
+- **Account Source** – either "Password" (local account) or the name of an external identity provider (e.g. when using OIDC)
 
 Use the search field and role drop-down at the top of the table to filter the list. Click the filter-clear button to reset all filters.
 
@@ -40,8 +40,8 @@ Click the delete (trash) icon on any row and confirm the dialog. This action can
 
 These buttons are useful when [migrating to a different Gramps Web instance](export.md).
 
-- **Export user details** (download icon) — downloads a JSON file containing all user accounts (without passwords, since passwords are stored in encrypted form).
-- **Import user accounts** (group-add icon) — uploads a previously exported JSON file to create user accounts in bulk. All imported users will need to set a new password via the "Forgot password" link, since passwords cannot be transferred.
+- **Export user details** (download icon) – downloads a JSON file containing all user accounts (without passwords, since passwords are stored in encrypted form).
+- **Import user accounts** (group-add icon) – uploads a previously exported JSON file to create user accounts in bulk. All imported users will need to set a new password via the "Forgot password" link, since passwords cannot be transferred.
 
 ## Registration link (multi-tree setup only)
 

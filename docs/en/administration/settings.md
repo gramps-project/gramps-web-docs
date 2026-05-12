@@ -6,8 +6,8 @@ The **Settings > Administration** page is accessible via the user icon in the to
 
 The top of the page shows current usage relative to any configured limits:
 
-- **People** — the number of person objects in the tree versus the configured maximum (∞ if unlimited)
-- **Media storage** — total size of uploaded media files versus the configured storage quota (∞ if unlimited)
+- **People** – the number of person objects in the tree versus the configured maximum (∞ if unlimited)
+- **Media storage** – total size of uploaded media files versus the configured storage quota (∞ if unlimited)
 
 Quotas are set by the server administrator; see [Server configuration](../install_setup/configuration.md) for details.
 
@@ -38,8 +38,8 @@ Click **Update search index** to trigger a full rebuild. A progress indicator is
 
 If the server has [semantic (AI-powered) search enabled](../install_setup/configuration.md), an additional section appears with two actions:
 
-- **Regenerate semantic search index** — rebuilds the entire semantic index from scratch. This is computationally expensive and can take a long time.
-- **Update semantic search index** — performs an incremental update, adding only objects not yet indexed. Faster than a full rebuild.
+- **Regenerate semantic search index** – rebuilds the entire semantic index from scratch. This is computationally expensive and can take a long time.
+- **Update semantic search index** – performs an incremental update, adding only objects not yet indexed. Faster than a full rebuild.
 
 ## Family Tree name
 
@@ -50,7 +50,7 @@ This allows to change the name of the underlying Gramps family tree database. En
 
 ## Check and Repair Database
 
-This tool checks the Gramps database for internal inconsistencies and fixes the ones it can — analogous to the [Check and Repair Database tool](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) in Gramps Desktop.
+This tool checks the Gramps database for internal inconsistencies and fixes the ones it can – analogous to the [Check and Repair Database tool](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) in Gramps Desktop.
 
 Click **Check and Repair** and wait for the progress indicator to complete. The result is shown below the button:
 
@@ -68,8 +68,8 @@ Run this tool if you encounter unexpected errors or behavior that may be caused 
 
 Removes objects from the family tree. Clicking **Delete** opens a dialog where you can choose to delete:
 
-- **All objects** — completely clears the tree
-- **Specific object types** — for example, only events or only media objects
+- **All objects** – completely clears the tree
+- **Specific object types** – for example, only events or only media objects
 
 You will be asked to re-authenticate (log in again) to confirm the action. The deletion runs as a background task and a progress indicator is shown.
 

@@ -1,0 +1,19 @@
+INHERIT: mkdocs.yml
+
+plugins:
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+  - search
+  - glightbox:
+      manual: false
+  - redirects:
+      redirect_maps:
+        "help.md": "help/help.md"
+        "development.md": "development/dev.md"
+        "development/index.md": "development/dev.md"
+        "user-guide/sync.md": "administration/sync.md"
