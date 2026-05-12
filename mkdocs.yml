@@ -30,6 +30,7 @@ nav:
       - Import data: administration/import.md
       - Export data: administration/export.md
       - Manage users: administration/users.md
+      - Administration settings: administration/settings.md
       # - Manage search index:  admin/search.md
       - Synchronize with Gramps: administration/sync.md
       # # - Command Line Interface:  cli.md
@@ -150,6 +151,7 @@ plugins:
             Import data: Daten importieren
             Export data: Daten exportieren
             Manage users: Benutzer verwalten
+            Administration settings: Verwaltungseinstellungen
             Synchronize with Gramps: Mit Gramps synchronisieren
             User Guide: Benutzerhandbuch
             First steps: Erste Schritte
@@ -215,6 +217,7 @@ plugins:
             Import data: Importer des données
             Export data: Exporter des données
             Manage users: Gérer les utilisateurs
+            Administration settings: Paramètres d'administration
             Synchronize with Gramps: Synchroniser avec Gramps
             User Guide: Guide utilisateur
             First steps: Premiers pas
@@ -280,6 +283,7 @@ plugins:
             Import data: Importar datos
             Export data: Exportar datos
             Manage users: Gestionar usuarios
+            Administration settings: Configuración de administración
             Synchronize with Gramps: Sincronizar con Gramps
             User Guide: Guía del usuario
             First steps: Primeros pasos
@@ -345,6 +349,7 @@ plugins:
             Import data: 导入数据
             Export data: 导出数据
             Manage users: 管理用户
+            Administration settings: 管理设置
             Synchronize with Gramps: 与 Gramps 同步
             User Guide: 用户指南
             First steps: 第一步
@@ -410,6 +415,7 @@ plugins:
             Import data: Nhập dữ liệu
             Export data: Xuất dữ liệu
             Manage users: Quản lý người dùng
+            Administration settings: Cài đặt quản trị
             Synchronize with Gramps: Đồng bộ với Gramps
             User Guide: Hướng dẫn sử dụng
             First steps: Các bước đầu tiên
@@ -475,6 +481,7 @@ plugins:
             Import data: Veri içe aktar
             Export data: Veri dışa aktar
             Manage users: Kullanıcıları yönet
+            Administration settings: Yönetim ayarları
             Synchronize with Gramps: Gramps ile senkronize et
             User Guide: Kullanıcı Kılavuzu
             First steps: İlk adımlar
@@ -540,6 +547,7 @@ plugins:
             Import data: Импорт данных
             Export data: Экспорт данных
             Manage users: Управление пользователями
+            Administration settings: Настройки администрирования
             Synchronize with Gramps: Синхронизация с Gramps
             User Guide: Руководство пользователя
             First steps: Первые шаги
@@ -605,6 +613,7 @@ plugins:
             Import data: Importar dados
             Export data: Exportar dados
             Manage users: Gerir utilizadores
+            Administration settings: Definições de administração
             Synchronize with Gramps: Sincronizar com Gramps
             User Guide: Guia do usuário
             First steps: Primeiros passos
@@ -670,6 +679,7 @@ plugins:
             Import data: データのインポート
             Export data: データのエクスポート
             Manage users: ユーザーの管理
+            Administration settings: 管理設定
             Synchronize with Gramps: Gramps と同期
             User Guide: ユーザーガイド
             First steps: 最初のステップ
@@ -735,6 +745,7 @@ plugins:
             Import data: Importér data
             Export data: Eksportér data
             Manage users: Administrer brugere
+            Administration settings: Administrationsindstillinger
             Synchronize with Gramps: Synkroniser med Gramps
             User Guide: Brugervejledning
             First steps: Første trin
@@ -800,6 +811,7 @@ plugins:
             Import data: Tuo tietoja
             Export data: Vie tietoja
             Manage users: Hallitse käyttäjiä
+            Administration settings: Hallinta-asetukset
             Synchronize with Gramps: Synkronoi Grampsin kanssa
             User Guide: Käyttöopas
             First steps: Ensimmäiset askeleet
@@ -865,6 +877,7 @@ plugins:
             Import data: Importa dati
             Export data: Esporta dati
             Manage users: Gestisci utenti
+            Administration settings: Impostazioni di amministrazione
             Synchronize with Gramps: Sincronizza con Gramps
             User Guide: Guida Utente
             First steps: Primi passi
@@ -930,6 +943,7 @@ plugins:
             Import data: Імпорт даних
             Export data: Експорт даних
             Manage users: Керування користувачами
+            Administration settings: Налаштування адміністрування
             Synchronize with Gramps: Синхронізація з Gramps
             User Guide: Посібник користувача
             First steps: Перші кроки
