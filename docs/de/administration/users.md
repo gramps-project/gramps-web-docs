@@ -10,11 +10,11 @@ Siehe [Benutzersystem](../install_setup/users.md) für eine vollständige Beschr
 
 Die Seite "Benutzer verwalten" zeigt eine Tabelle aller registrierten Benutzerkonten mit den folgenden Spalten:
 
-- **Benutzername** — der Anmeldename
-- **Vollständiger Name** — der Anzeigename
-- **E-Mail** — die E-Mail-Adresse des Benutzers
-- **Rolle** — die zugewiesene Rolle (Gast, Mitglied, Mitwirkender, Redakteur, Eigentümer oder Administrator)
-- **Kontenquelle** — entweder "Passwort" (lokales Konto) oder der Name eines externen Identitätsanbieters (z. B. bei Verwendung von OIDC)
+- **Benutzername** – der Anmeldename
+- **Vollständiger Name** – der Anzeigename
+- **E-Mail** – die E-Mail-Adresse des Benutzers
+- **Rolle** – die zugewiesene Rolle (Gast, Mitglied, Mitwirkender, Redakteur, Eigentümer oder Administrator)
+- **Kontenquelle** – entweder "Passwort" (lokales Konto) oder der Name eines externen Identitätsanbieters (z. B. bei Verwendung von OIDC)
 
 Verwenden Sie das Suchfeld und das Rollenauswahlfeld oben in der Tabelle, um die Liste zu filtern. Klicken Sie auf die Schaltfläche zum Zurücksetzen der Filter, um alle Filter zurückzusetzen.
 
@@ -26,37 +26,37 @@ Klicken Sie auf das Bearbeiten (Stift)-Symbol in einer beliebigen Zeile, um den 
 - E-Mail-Adresse
 - Rolle
 
-Dies ist der primäre Weg, um **einen neu selbst registrierten Benutzer zu aktivieren**: Ändern Sie seine Rolle von *deaktiviert* zu einer aktiven Rolle (z. B. Mitglied oder Redakteur).
+Dies ist die primäre Möglichkeit, um **einen neu selbstregistrierten Benutzer zu aktivieren**: Ändern Sie seine Rolle von *deaktiviert* zu einer aktiven Rolle (z. B. Mitglied oder Redakteur).
 
 ## Benutzer manuell hinzufügen
 
-Klicken Sie auf das **Benutzer hinzufügen** (Person hinzufügen)-Symbol über der Tabelle, um ein neues Benutzerkonto direkt zu erstellen, ohne eine Selbstregistrierung zu benötigen. Füllen Sie im Dialogfeld den Benutzernamen, den vollständigen Namen, die E-Mail-Adresse, das Passwort und die Rolle aus und klicken Sie auf **Speichern**.
+Klicken Sie auf das **Benutzer hinzufügen** (Person hinzufügen)-Symbol über der Tabelle, um ein neues Benutzerkonto direkt zu erstellen, ohne dass eine Selbstregistrierung erforderlich ist. Füllen Sie im Dialogfeld den Benutzernamen, den vollständigen Namen, die E-Mail-Adresse, das Passwort und die Rolle aus und klicken Sie auf **Speichern**.
 
 ## Benutzer löschen
 
-Klicken Sie auf das Löschen (Müll)-Symbol in einer beliebigen Zeile und bestätigen Sie den Dialog. Diese Aktion kann nicht rückgängig gemacht werden.
+Klicken Sie auf das Löschen (Papierkorb)-Symbol in einer beliebigen Zeile und bestätigen Sie den Dialog. Diese Aktion kann nicht rückgängig gemacht werden.
 
 ## Benutzerkonten exportieren und importieren
 
 Diese Schaltflächen sind nützlich beim [Migrieren zu einer anderen Gramps Web-Instanz](export.md).
 
-- **Benutzerdetails exportieren** (Download-Symbol) — lädt eine JSON-Datei herunter, die alle Benutzerkonten enthält (ohne Passwörter, da Passwörter in verschlüsselter Form gespeichert werden).
-- **Benutzerkonten importieren** (Gruppe hinzufügen-Symbol) — lädt eine zuvor exportierte JSON-Datei hoch, um Benutzerkonten in großen Mengen zu erstellen. Alle importierten Benutzer müssen ein neues Passwort über den Link "Passwort vergessen" festlegen, da Passwörter nicht übertragen werden können.
+- **Benutzerdetails exportieren** (Download-Symbol) – lädt eine JSON-Datei herunter, die alle Benutzerkonten enthält (ohne Passwörter, da Passwörter in verschlüsselter Form gespeichert werden).
+- **Benutzerkonten importieren** (Gruppe hinzufügen-Symbol) – lädt eine zuvor exportierte JSON-Datei hoch, um Benutzerkonten in großen Mengen zu erstellen. Alle importierten Benutzer müssen ein neues Passwort über den Link "Passwort vergessen" festlegen, da Passwörter nicht übertragen werden können.
 
-## Registrierungslink (nur Mehrbaum-Setup)
+## Registrierungslink (nur bei Mehrbaum-Setup)
 
-In einem Mehrbaum-Setup wird der Registrierungslink für neue Benutzer oben auf der Seite "Benutzer verwalten" angezeigt. Sie können diesen Link kopieren und mit Personen teilen, die Sie einladen möchten, ein Konto auf Ihrem Baum zu registrieren.
+In einem Mehrbaum-Setup wird der Registrierungslink für neue Benutzer oben auf der Seite "Benutzer verwalten" angezeigt. Sie können diesen Link kopieren und mit Personen teilen, die Sie einladen möchten, ein Konto in Ihrem Baum zu registrieren.
 
 !!! Hinweis
-    In einem Einzelbaum-Setup gibt es einen generischen "Registrieren"-Link auf der Anmeldeseite; der pro-Baum-Registrierungslink wird nur in Mehrbaum-Installationen benötigt.
+    In einem Einbaum-Setup gibt es einen generischen "Registrieren"-Link auf der Anmeldeseite; der spezifische Registrierungslink pro Baum wird nur in Mehrbaum-Installationen benötigt.
 
 ## AI-Chat-Berechtigungen
 
-Wenn der AI-Chat auf dem Server aktiviert wurde, können Sie über ein Dropdown-Menü oben auf der Seite steuern, welche Benutzerrollen berechtigt sind, die Chat-Funktion zu nutzen:
+Wenn der AI-Chat auf dem Server aktiviert wurde, können Sie über ein Dropdown-Menü oben auf der Seite steuern, welche Benutzerrollen den Chat nutzen dürfen:
 
 - Jeder (einschließlich Gäste)
-- Mitglieder und höher
-- Mitwirkende und höher
-- Redakteure und höher
+- Mitglied und höher
+- Mitwirkender und höher
+- Redakteur und höher
 - Nur Eigentümer und Administratoren
 - Niemand (Chat für alle Benutzer deaktivieren)

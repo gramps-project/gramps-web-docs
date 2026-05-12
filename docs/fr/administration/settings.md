@@ -1,13 +1,13 @@
 # Paramètres d'administration
 
-La page **Paramètres > Administration** est accessible via l'icône utilisateur dans la barre d'application en haut. Elle n'est disponible que pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur et fournit des outils pour gérer la base de données de l'arbre généalogique.
+La page **Paramètres > Administration** est accessible via l'icône utilisateur dans la barre d'application en haut. Elle est uniquement disponible pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur et fournit des outils pour gérer la base de données de l'arbre généalogique.
 
 ## Quotas d'utilisation
 
-Le haut de la page montre l'utilisation actuelle par rapport à toutes les limites configurées :
+Le haut de la page affiche l'utilisation actuelle par rapport à toutes les limites configurées :
 
-- **Personnes** — le nombre d'objets personne dans l'arbre par rapport au maximum configuré (∞ si illimité)
-- **Stockage multimédia** — taille totale des fichiers multimédias téléchargés par rapport au quota de stockage configuré (∞ si illimité)
+- **Personnes** – le nombre d'objets personne dans l'arbre par rapport au maximum configuré (∞ si illimité)
+- **Stockage multimédia** – taille totale des fichiers multimédias téléchargés par rapport au quota de stockage configuré (∞ si illimité)
 
 Les quotas sont définis par l'administrateur du serveur ; voir [Configuration du serveur](../install_setup/configuration.md) pour plus de détails.
 
@@ -38,40 +38,40 @@ Cliquez sur **Mettre à jour l'index de recherche** pour déclencher une reconst
 
 Si le serveur a [la recherche sémantique (alimentée par l'IA) activée](../install_setup/configuration.md), une section supplémentaire apparaît avec deux actions :
 
-- **Régénérer l'index de recherche sémantique** — reconstruit l'ensemble de l'index sémantique à partir de zéro. Cela est coûteux en ressources et peut prendre beaucoup de temps.
-- **Mettre à jour l'index de recherche sémantique** — effectue une mise à jour incrémentielle, ajoutant uniquement les objets qui ne sont pas encore indexés. Plus rapide qu'une reconstruction complète.
+- **Régénérer l'index de recherche sémantique** – reconstruit l'ensemble de l'index sémantique à partir de zéro. Cela est coûteux en ressources et peut prendre beaucoup de temps.
+- **Mettre à jour l'index de recherche sémantique** – effectue une mise à jour incrémentielle, ajoutant uniquement des objets non encore indexés. Plus rapide qu'une reconstruction complète.
 
 ## Nom de l'arbre généalogique
 
 !!! note
-    Renommer l'arbre ne fonctionne que dans une [configuration multi-arbres](../install_setup/multi-tree.md) ou lorsque `TREE_ID` est explicitement défini dans la [configuration du serveur](../install_setup/configuration.md). Sur une installation par défaut à arbre unique sans `TREE_ID` défini, cela générera une erreur.
+    Renommer l'arbre ne fonctionne que dans une [configuration multi-arbres](../install_setup/multi-tree.md) ou lorsque `TREE_ID` est explicitement défini dans la [configuration du serveur](../install_setup/configuration.md). Dans une installation par défaut à arbre unique sans `TREE_ID` défini, cela générera une erreur.
 
 Cela permet de changer le nom de la base de données d'arbre généalogique Gramps sous-jacente. Entrez un nouveau nom et cliquez sur **Renommer** pour appliquer.
 
 ## Vérifier et réparer la base de données
 
-Cet outil vérifie la base de données Gramps pour des incohérences internes et corrige celles qu'il peut — analogue à l'outil [Vérifier et réparer la base de données](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) dans Gramps Desktop.
+Cet outil vérifie la base de données Gramps pour des incohérences internes et corrige celles qu'il peut – analogue à l'outil [Vérifier et réparer la base de données](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) dans Gramps Desktop.
 
 Cliquez sur **Vérifier et réparer** et attendez que l'indicateur de progression se termine. Le résultat est affiché sous le bouton :
 
 - Si aucune erreur n'a été trouvée, un message de confirmation est affiché.
 - Si des erreurs ont été trouvées, un résumé des corrections appliquées est affiché.
 
-Exécutez cet outil si vous rencontrez des erreurs ou des comportements inattendus qui peuvent être causés par des incohérences dans la base de données, comme des relations manquantes entre les objets.
+Exécutez cet outil si vous rencontrez des erreurs ou un comportement inattendu qui pourrait être causé par des incohérences dans la base de données, telles que des relations manquantes entre des objets.
 
 ## Zone de danger
 
 !!! danger
-    Les actions dans la zone de danger sont **irréversibles**. Faites une sauvegarde avant de continuer.
+    Les actions dans la Zone de danger sont **irréversibles**. Faites une sauvegarde avant de continuer.
 
 ### Supprimer tous les objets
 
-Supprime les objets de l'arbre généalogique. Cliquer sur **Supprimer** ouvre une boîte de dialogue où vous pouvez choisir de supprimer :
+Supprime les objets de l'arbre généalogique. En cliquant sur **Supprimer**, une boîte de dialogue s'ouvre où vous pouvez choisir de supprimer :
 
-- **Tous les objets** — vide complètement l'arbre
-- **Types d'objets spécifiques** — par exemple, uniquement des événements ou uniquement des objets multimédias
+- **Tous les objets** – efface complètement l'arbre
+- **Types d'objets spécifiques** – par exemple, uniquement des événements ou uniquement des objets multimédias
 
-Vous serez invité à vous réauthentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tant que tâche en arrière-plan et un indicateur de progression est affiché.
+Vous serez invité à vous ré-authentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tant que tâche en arrière-plan et un indicateur de progression est affiché.
 
 !!! warning
     Supprimer uniquement un sous-ensemble de types d'objets (plutôt que tous les objets en une seule fois) peut prendre beaucoup de temps pour de grands arbres, car le serveur doit vérifier et mettre à jour toutes les relations entre les objets.
