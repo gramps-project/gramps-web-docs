@@ -47,6 +47,7 @@ nav:
           - Tag people in photos: user-guide/tagging.md
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
+      - Family Tree: user-guide/tree.md
       - DNA:
           - Overview: user-guide/dna.md
           - DNA matches: user-guide/dna-matches.md
@@ -169,6 +170,7 @@ plugins:
             DNA matches: DNA-Übereinstimmungen
             Chromosome browser: Chromosomen-Browser
             Y-DNA: Y-DNA
+            Family Tree: Stammbaum
             Keyboard Shortcuts: Tastaturkürzel
             Revision history: Versionshistorie
             Advanced features: Erweiterte Funktionen
@@ -236,6 +238,7 @@ plugins:
             DNA matches: Correspondances ADN
             Chromosome browser: Navigateur de chromosomes
             Y-DNA: ADN-Y
+            Family Tree: Arbre généalogique
             Keyboard Shortcuts: Raccourcis clavier
             Revision history: Historique des révisions
             Advanced features: Fonctionnalités avancées
@@ -303,6 +306,7 @@ plugins:
             DNA matches: Coincidencias de ADN
             Chromosome browser: Navegador de cromosomas
             Y-DNA: ADN-Y
+            Family Tree: Árbol genealógico
             Keyboard Shortcuts: Atajos de teclado
             Revision history: Historial de revisiones
             Advanced features: Características avanzadas
@@ -370,6 +374,7 @@ plugins:
             DNA matches: DNA 匹配
             Chromosome browser: 染色体浏览器
             Y-DNA: Y-DNA
+            Family Tree: 家谱树
             Keyboard Shortcuts: 键盘快捷键
             Revision history: 修订历史
             Advanced features: 高级功能
@@ -437,6 +442,7 @@ plugins:
             DNA matches: Khớp DNA
             Chromosome browser: Trình duyệt nhiễm sắc thể
             Y-DNA: Y-DNA
+            Family Tree: Cây gia phả
             Keyboard Shortcuts: Phím tắt
             Revision history: Lịch sử sửa đổi
             Advanced features: Tính năng nâng cao
@@ -504,6 +510,7 @@ plugins:
             DNA matches: DNA eşleşmeleri
             Chromosome browser: Kromozom tarayıcısı
             Y-DNA: Y-DNA
+            Family Tree: Soy ağacı
             Keyboard Shortcuts: Klavye kısayolları
             Revision history: Revizyon geçmişi
             Advanced features: Gelişmiş özellikler
@@ -571,6 +578,7 @@ plugins:
             DNA matches: Совпадения ДНК
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
+            Family Tree: Генеалогическое дерево
             Keyboard Shortcuts: Сочетания клавиш
             Revision history: История изменений
             Advanced features: Расширенные функции
@@ -638,6 +646,7 @@ plugins:
             DNA matches: Correspondências de DNA
             Chromosome browser: Navegador de cromossomos
             Y-DNA: DNA-Y
+            Family Tree: Árvore genealógica
             Keyboard Shortcuts: Atalhos de teclado
             Revision history: Histórico de revisões
             Advanced features: Recursos avançados
@@ -705,6 +714,7 @@ plugins:
             DNA matches: DNA マッチ
             Chromosome browser: 染色体ブラウザ
             Y-DNA: Y-DNA
+            Family Tree: 家系図
             Keyboard Shortcuts: キーボードショートカット
             Revision history: 改訂履歴
             Advanced features: 高度な機能
@@ -772,6 +782,7 @@ plugins:
             DNA matches: DNA-matches
             Chromosome browser: Kromosombrowser
             Y-DNA: Y-DNA
+            Family Tree: Stamtræ
             Keyboard Shortcuts: Tastaturgenveje
             Revision history: Revisionshistorik
             Advanced features: Avancerede funktioner
@@ -839,6 +850,7 @@ plugins:
             DNA matches: DNA-osumat
             Chromosome browser: Kromosomiselain
             Y-DNA: Y-DNA
+            Family Tree: Sukupuu
             Keyboard Shortcuts: Pikanäppäimet
             Revision history: Versiohistoria
             Advanced features: Edistyneet ominaisuudet
@@ -906,6 +918,7 @@ plugins:
             DNA matches: Corrispondenze DNA
             Chromosome browser: Browser dei cromosomi
             Y-DNA: DNA-Y
+            Family Tree: Albero genealogico
             Keyboard Shortcuts: Scorciatoie da tastiera
             Revision history: Cronologia revisioni
             Advanced features: Funzionalità avanzate
@@ -973,6 +986,7 @@ plugins:
             DNA matches: Збіги ДНК
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
+            Family Tree: Родовід
             Keyboard Shortcuts: Комбінації клавіш
             Revision history: Історія ревізій
             Advanced features: Розширені можливості
