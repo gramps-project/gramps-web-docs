@@ -39,6 +39,7 @@ nav:
   - User Guide:
       - Introduction: user-guide/index.md
       - Search: user-guide/search.md
+      - Map: user-guide/map.md
       - First steps:
           - Registration: user-guide/registration.md
           - First login: user-guide/first-login.md
@@ -150,6 +151,7 @@ plugins:
             Administration: Verwaltung
             Introduction: Einführung
             Search: Suche
+            Map: Karte
             Create owner account: Besitzerkonto erstellen
             Import data: Daten importieren
             Export data: Daten exportieren
@@ -218,6 +220,7 @@ plugins:
             Administration: Administration
             Introduction: Introduction
             Search: Recherche
+            Map: Carte
             Create owner account: Créer un compte propriétaire
             Import data: Importer des données
             Export data: Exporter des données
@@ -286,6 +289,7 @@ plugins:
             Administration: Administración
             Introduction: Introducción
             Search: Búsqueda
+            Map: Mapa
             Create owner account: Crear cuenta de propietario
             Import data: Importar datos
             Export data: Exportar datos
@@ -354,6 +358,7 @@ plugins:
             Administration: 管理
             Introduction: 介绍
             Search: 搜索
+            Map: 地图
             Create owner account: 创建所有者账户
             Import data: 导入数据
             Export data: 导出数据
@@ -422,6 +427,7 @@ plugins:
             Administration: Quản trị
             Introduction: Giới thiệu
             Search: Tìm kiếm
+            Map: Bản đồ
             Create owner account: Tạo tài khoản chủ sở hữu
             Import data: Nhập dữ liệu
             Export data: Xuất dữ liệu
@@ -490,6 +496,7 @@ plugins:
             Administration: Yönetim
             Introduction: Giriş
             Search: Arama
+            Map: Harita
             Create owner account: Sahip hesabı oluştur
             Import data: Veri içe aktar
             Export data: Veri dışa aktar
@@ -558,6 +565,7 @@ plugins:
             Administration: Администрирование
             Introduction: Введение
             Search: Поиск
+            Map: Карта
             Create owner account: Создать учетную запись владельца
             Import data: Импорт данных
             Export data: Экспорт данных
@@ -626,6 +634,7 @@ plugins:
             Administration: Administração
             Introduction: Introdução
             Search: Pesquisa
+            Map: Mapa
             Create owner account: Criar conta de proprietário
             Import data: Importar dados
             Export data: Exportar dados
@@ -694,6 +703,7 @@ plugins:
             Administration: 管理
             Introduction: はじめに
             Search: 検索
+            Map: 地図
             Create owner account: オーナーアカウントの作成
             Import data: データのインポート
             Export data: データのエクスポート
@@ -762,6 +772,7 @@ plugins:
             Administration: Administration
             Introduction: Introduktion
             Search: Søgning
+            Map: Kort
             Create owner account: Opret ejerkonto
             Import data: Importér data
             Export data: Eksportér data
@@ -830,6 +841,7 @@ plugins:
             Administration: Hallinta
             Introduction: Johdanto
             Search: Haku
+            Map: Kartta
             Create owner account: Luo omistajatili
             Import data: Tuo tietoja
             Export data: Vie tietoja
@@ -898,6 +910,7 @@ plugins:
             Administration: Amministrazione
             Introduction: Introduzione
             Search: Ricerca
+            Map: Mappa
             Create owner account: Crea account proprietario
             Import data: Importa dati
             Export data: Esporta dati
@@ -966,6 +979,7 @@ plugins:
             Administration: Адміністрування
             Introduction: Вступ
             Search: Пошук
+            Map: Карта
             Create owner account: Створити обліковий запис власника
             Import data: Імпорт даних
             Export data: Експорт даних
