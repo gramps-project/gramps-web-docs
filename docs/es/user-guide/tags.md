@@ -1,6 +1,7 @@
 # Etiquetas
 
-Las etiquetas son etiquetas que se pueden aplicar a cualquier objeto en la base de datos de Gramps: personas, familias, eventos, lugares, fuentes, citas, repositorios, notas y medios. Son útiles para agrupar y filtrar objetos. Las etiquetas se almacenan en la base de datos del árbol genealógico de Gramps y se comparten entre todos los usuarios; también son totalmente compatibles con las etiquetas creadas en Gramps Desktop.
+Las etiquetas son etiquetas que se pueden aplicar a cualquier objeto en la base de datos de Gramps: personas, familias, eventos, lugares, fuentes, citas, repositorios, notas y medios. Son útiles para agrupar y filtrar objetos. Las etiquetas se almacenan en la base de datos del árbol genealógico de Gramps y se comparten entre todos los usuarios; también son completamente compatibles con las etiquetas creadas en Gramps Desktop.
+
 
 ## Gestión de etiquetas
 
@@ -16,7 +17,7 @@ La página de **Etiquetas** es accesible desde la barra lateral y solo es visibl
 
 ## Aplicando etiquetas a objetos
 
-Las etiquetas se pueden aplicar o quitar de un objeto en su página de detalles cuando está en modo de edición.
+Las etiquetas se pueden aplicar o eliminar de un objeto en su página de detalles cuando está en modo de edición.
 
 ## Filtrando por etiqueta
 

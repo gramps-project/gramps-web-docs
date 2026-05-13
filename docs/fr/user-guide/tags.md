@@ -2,6 +2,7 @@
 
 Les étiquettes sont des labels qui peuvent être appliqués à tout objet dans la base de données Gramps – personnes, familles, événements, lieux, sources, citations, dépôts, notes et médias. Elles sont utiles pour regrouper et filtrer les objets. Les étiquettes sont stockées dans la base de données de l'arbre généalogique Gramps et sont partagées entre tous les utilisateurs ; elles sont également entièrement compatibles avec les étiquettes créées dans Gramps Desktop.
 
+
 ## Gestion des étiquettes
 
 La page **Étiquettes** est accessible depuis la barre latérale et n'est visible que par les utilisateurs ayant le rôle d'Éditeur ou supérieur. Elle affiche toutes les étiquettes existantes et vous permet de :
