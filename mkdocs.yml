@@ -57,6 +57,7 @@ nav:
       - Reports: user-guide/reports.md
       - Keyboard Shortcuts:  user-guide/shortcuts.md
       - Revision history: user-guide/revisions.md
+      - User Settings: user-guide/settings.md
       - Advanced features:
           # - DNA:  user-guide/dna.md
           - GQL filters: user-guide/gql.md
@@ -177,6 +178,7 @@ plugins:
             Reports: Berichte
             Keyboard Shortcuts: Tastaturkürzel
             Revision history: Versionshistorie
+            User Settings: Benutzereinstellungen
             Advanced features: Erweiterte Funktionen
             GQL filters: GQL-Filter
             AI chat: KI-Chat
@@ -247,6 +249,7 @@ plugins:
             Reports: Rapports
             Keyboard Shortcuts: Raccourcis clavier
             Revision history: Historique des révisions
+            User Settings: Paramètres utilisateur
             Advanced features: Fonctionnalités avancées
             GQL filters: Filtres GQL
             AI chat: Chat IA
@@ -317,6 +320,7 @@ plugins:
             Reports: Informes
             Keyboard Shortcuts: Atajos de teclado
             Revision history: Historial de revisiones
+            User Settings: Configuración de usuario
             Advanced features: Características avanzadas
             GQL filters: Filtros GQL
             AI chat: Chat de IA
@@ -387,6 +391,7 @@ plugins:
             Reports: 报告
             Keyboard Shortcuts: 键盘快捷键
             Revision history: 修订历史
+            User Settings: 用户设置
             Advanced features: 高级功能
             GQL filters: GQL 过滤器
             AI chat: AI 聊天
@@ -457,6 +462,7 @@ plugins:
             Reports: Báo cáo
             Keyboard Shortcuts: Phím tắt
             Revision history: Lịch sử sửa đổi
+            User Settings: Cài đặt người dùng
             Advanced features: Tính năng nâng cao
             GQL filters: Bộ lọc GQL
             AI chat: Trò chuyện AI
@@ -527,6 +533,7 @@ plugins:
             Reports: Raporlar
             Keyboard Shortcuts: Klavye kısayolları
             Revision history: Revizyon geçmişi
+            User Settings: Kullanıcı ayarları
             Advanced features: Gelişmiş özellikler
             GQL filters: GQL filtreleri
             AI chat: AI sohbet
@@ -597,6 +604,7 @@ plugins:
             Reports: Отчёты
             Keyboard Shortcuts: Сочетания клавиш
             Revision history: История изменений
+            User Settings: Настройки пользователя
             Advanced features: Расширенные функции
             GQL filters: Фильтры GQL
             AI chat: AI-чат
@@ -667,6 +675,7 @@ plugins:
             Reports: Relatórios
             Keyboard Shortcuts: Atalhos de teclado
             Revision history: Histórico de revisões
+            User Settings: Configurações do utilizador
             Advanced features: Recursos avançados
             GQL filters: Filtros GQL
             AI chat: Chat de IA
@@ -737,6 +746,7 @@ plugins:
             Reports: レポート
             Keyboard Shortcuts: キーボードショートカット
             Revision history: 改訂履歴
+            User Settings: ユーザー設定
             Advanced features: 高度な機能
             GQL filters: GQL フィルター
             AI chat: AI チャット
@@ -807,6 +817,7 @@ plugins:
             Reports: Rapporter
             Keyboard Shortcuts: Tastaturgenveje
             Revision history: Revisionshistorik
+            User Settings: Brugerindstillinger
             Advanced features: Avancerede funktioner
             GQL filters: GQL-filtre
             AI chat: AI-chat
@@ -877,6 +888,7 @@ plugins:
             Reports: Raportit
             Keyboard Shortcuts: Pikanäppäimet
             Revision history: Versiohistoria
+            User Settings: Käyttäjäasetukset
             Advanced features: Edistyneet ominaisuudet
             GQL filters: GQL-suodattimet
             AI chat: AI-chat
@@ -947,6 +959,7 @@ plugins:
             Reports: Rapporti
             Keyboard Shortcuts: Scorciatoie da tastiera
             Revision history: Cronologia revisioni
+            User Settings: Impostazioni utente
             Advanced features: Funzionalità avanzate
             GQL filters: Filtri GQL
             AI chat: Chat AI
@@ -1017,6 +1030,7 @@ plugins:
             Reports: Звіти
             Keyboard Shortcuts: Комбінації клавіш
             Revision history: Історія ревізій
+            User Settings: Налаштування користувача
             Advanced features: Розширені можливості
             GQL filters: GQL фільтри
             AI chat: AI чат
