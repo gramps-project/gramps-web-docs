@@ -62,3 +62,7 @@ Chart preference settings are stored in the browser's local storage, so they per
 
 The chart type shown when you first open the Family Tree page can be configured in [User Settings](settings.md). Your chosen default applies on all your devices.
 
+## Editing the tree
+
+Users with the Editor role or above can add and link people directly from the Ancestor Tree. See [Editing the family tree](tree-edit.md) for details.
+

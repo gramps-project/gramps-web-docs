@@ -51,6 +51,7 @@ nav:
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
           - Tags: user-guide/tags.md
+          - Edit in tree view: user-guide/tree-edit.md
       - DNA:
           - Overview: user-guide/dna.md
           - DNA matches: user-guide/dna-matches.md
@@ -179,6 +180,7 @@ plugins:
             Use the blog: Blog verwenden
             Manage tasks: Aufgaben verwalten
             Tags: Tags
+            Edit in tree view: Im Stammbaum bearbeiten
             DNA: DNA
             Overview: Übersicht
             DNA matches: DNA-Übereinstimmungen
@@ -257,6 +259,7 @@ plugins:
             Use the blog: Utiliser le blog
             Manage tasks: Gérer les tâches
             Tags: Étiquettes
+            Edit in tree view: Modifier dans l'arbre
             DNA: ADN
             Overview: Vue d'ensemble
             DNA matches: Correspondances ADN
@@ -335,6 +338,7 @@ plugins:
             Use the blog: Usar el blog
             Manage tasks: Gestionar tareas
             Tags: Etiquetas
+            Edit in tree view: Editar en el árbol
             DNA: ADN
             Overview: Descripción general
             DNA matches: Coincidencias de ADN
@@ -413,6 +417,7 @@ plugins:
             Use the blog: 使用博客
             Manage tasks: 管理任务
             Tags: 标签
+            Edit in tree view: 在家谱中编辑
             DNA: DNA
             Overview: 概述
             DNA matches: DNA 匹配
@@ -491,6 +496,7 @@ plugins:
             Use the blog: Sử dụng blog
             Manage tasks: Quản lý nhiệm vụ
             Tags: Thẻ
+            Edit in tree view: Chỉnh sửa trong cây
             DNA: DNA
             Overview: Tổng quan
             DNA matches: Khớp DNA
@@ -569,6 +575,7 @@ plugins:
             Use the blog: Blog kullan
             Manage tasks: Görevleri yönet
             Tags: Etiketler
+            Edit in tree view: Ağaçta düzenle
             DNA: DNA
             Overview: Genel Bakış
             DNA matches: DNA eşleşmeleri
@@ -647,6 +654,7 @@ plugins:
             Use the blog: Использование блога
             Manage tasks: Управление задачами
             Tags: Метки
+            Edit in tree view: Редактировать в дереве
             DNA: ДНК
             Overview: Обзор
             DNA matches: Совпадения ДНК
@@ -725,6 +733,7 @@ plugins:
             Use the blog: Usar o blog
             Manage tasks: Gerenciar tarefas
             Tags: Etiquetas
+            Edit in tree view: Editar na árvore
             DNA: DNA
             Overview: Visão geral
             DNA matches: Correspondências de DNA
@@ -803,6 +812,7 @@ plugins:
             Use the blog: ブログの使用
             Manage tasks: タスクの管理
             Tags: タグ
+            Edit in tree view: 家系図で編集
             DNA: DNA
             Overview: 概要
             DNA matches: DNA マッチ
@@ -881,6 +891,7 @@ plugins:
             Use the blog: Brug bloggen
             Manage tasks: Administrer opgaver
             Tags: Etiketter
+            Edit in tree view: Rediger i stamtræet
             DNA: DNA
             Overview: Oversigt
             DNA matches: DNA-matches
@@ -959,6 +970,7 @@ plugins:
             Use the blog: Käytä blogia
             Manage tasks: Hallitse tehtäviä
             Tags: Tunnisteet
+            Edit in tree view: Muokkaa sukupuussa
             DNA: DNA
             Overview: Yleiskatsaus
             DNA matches: DNA-osumat
@@ -1037,6 +1049,7 @@ plugins:
             Use the blog: Usa il blog
             Manage tasks: Gestisci attività
             Tags: Etichette
+            Edit in tree view: Modifica nell'albero
             DNA: DNA
             Overview: Panoramica
             DNA matches: Corrispondenze DNA
@@ -1115,6 +1128,7 @@ plugins:
             Use the blog: Використання блогу
             Manage tasks: Управління завданнями
             Tags: Мітки
+            Edit in tree view: Редагувати в дереві
             DNA: ДНК
             Overview: Огляд
             DNA matches: Збіги ДНК
