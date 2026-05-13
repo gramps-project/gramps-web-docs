@@ -54,6 +54,7 @@ nav:
           - DNA matches: user-guide/dna-matches.md
           - Chromosome browser: user-guide/chromosome-browser.md
           - Y-DNA: user-guide/y-dna.md
+      - Reports: user-guide/reports.md
       - Keyboard Shortcuts:  user-guide/shortcuts.md
       - Revision history: user-guide/revisions.md
       - Advanced features:
@@ -173,6 +174,7 @@ plugins:
             Chromosome browser: Chromosomen-Browser
             Y-DNA: Y-DNA
             Family Tree: Stammbaum
+            Reports: Berichte
             Keyboard Shortcuts: Tastaturkürzel
             Revision history: Versionshistorie
             Advanced features: Erweiterte Funktionen
@@ -242,6 +244,7 @@ plugins:
             Chromosome browser: Navigateur de chromosomes
             Y-DNA: ADN-Y
             Family Tree: Arbre généalogique
+            Reports: Rapports
             Keyboard Shortcuts: Raccourcis clavier
             Revision history: Historique des révisions
             Advanced features: Fonctionnalités avancées
@@ -311,6 +314,7 @@ plugins:
             Chromosome browser: Navegador de cromosomas
             Y-DNA: ADN-Y
             Family Tree: Árbol genealógico
+            Reports: Informes
             Keyboard Shortcuts: Atajos de teclado
             Revision history: Historial de revisiones
             Advanced features: Características avanzadas
@@ -380,6 +384,7 @@ plugins:
             Chromosome browser: 染色体浏览器
             Y-DNA: Y-DNA
             Family Tree: 家谱树
+            Reports: 报告
             Keyboard Shortcuts: 键盘快捷键
             Revision history: 修订历史
             Advanced features: 高级功能
@@ -449,6 +454,7 @@ plugins:
             Chromosome browser: Trình duyệt nhiễm sắc thể
             Y-DNA: Y-DNA
             Family Tree: Cây gia phả
+            Reports: Báo cáo
             Keyboard Shortcuts: Phím tắt
             Revision history: Lịch sử sửa đổi
             Advanced features: Tính năng nâng cao
@@ -518,6 +524,7 @@ plugins:
             Chromosome browser: Kromozom tarayıcısı
             Y-DNA: Y-DNA
             Family Tree: Soy ağacı
+            Reports: Raporlar
             Keyboard Shortcuts: Klavye kısayolları
             Revision history: Revizyon geçmişi
             Advanced features: Gelişmiş özellikler
@@ -587,6 +594,7 @@ plugins:
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
             Family Tree: Генеалогическое дерево
+            Reports: Отчёты
             Keyboard Shortcuts: Сочетания клавиш
             Revision history: История изменений
             Advanced features: Расширенные функции
@@ -656,6 +664,7 @@ plugins:
             Chromosome browser: Navegador de cromossomos
             Y-DNA: DNA-Y
             Family Tree: Árvore genealógica
+            Reports: Relatórios
             Keyboard Shortcuts: Atalhos de teclado
             Revision history: Histórico de revisões
             Advanced features: Recursos avançados
@@ -725,6 +734,7 @@ plugins:
             Chromosome browser: 染色体ブラウザ
             Y-DNA: Y-DNA
             Family Tree: 家系図
+            Reports: レポート
             Keyboard Shortcuts: キーボードショートカット
             Revision history: 改訂履歴
             Advanced features: 高度な機能
@@ -794,6 +804,7 @@ plugins:
             Chromosome browser: Kromosombrowser
             Y-DNA: Y-DNA
             Family Tree: Stamtræ
+            Reports: Rapporter
             Keyboard Shortcuts: Tastaturgenveje
             Revision history: Revisionshistorik
             Advanced features: Avancerede funktioner
@@ -863,6 +874,7 @@ plugins:
             Chromosome browser: Kromosomiselain
             Y-DNA: Y-DNA
             Family Tree: Sukupuu
+            Reports: Raportit
             Keyboard Shortcuts: Pikanäppäimet
             Revision history: Versiohistoria
             Advanced features: Edistyneet ominaisuudet
@@ -932,6 +944,7 @@ plugins:
             Chromosome browser: Browser dei cromosomi
             Y-DNA: DNA-Y
             Family Tree: Albero genealogico
+            Reports: Rapporti
             Keyboard Shortcuts: Scorciatoie da tastiera
             Revision history: Cronologia revisioni
             Advanced features: Funzionalità avanzate
@@ -1001,6 +1014,7 @@ plugins:
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
             Family Tree: Родовід
+            Reports: Звіти
             Keyboard Shortcuts: Комбінації клавіш
             Revision history: Історія ревізій
             Advanced features: Розширені можливості
