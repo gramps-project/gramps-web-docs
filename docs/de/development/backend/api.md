@@ -5,4 +5,6 @@ hide:
 
 # API-Spezifikation
 
-Die vollständige API-Spezifikation für die Gramps Web API finden Sie unter [https://gramps-project.github.io/gramps-web-api/](https://gramps-project.github.io/gramps-web-api/).
+Die interaktive API-Spezifikation (Swagger UI) wird direkt von Ihrer Gramps Web-Instanz unter `/api/swagger-ui` bereitgestellt – zum Beispiel `https://mygrampsweb.example.com/api/swagger-ui`.
+
+Sie können auch über [Benutzereinstellungen](../../user-guide/settings.md) darauf zugreifen, indem Sie auf die Schaltfläche **Swagger starten** klicken, die die Swagger UI mit Ihrem Sitzungstoken vorausgefüllt öffnet.

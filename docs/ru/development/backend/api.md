@@ -5,4 +5,6 @@ hide:
 
 # Спецификация API
 
-Полная спецификация API для Gramps Web API доступна по адресу [https://gramps-project.github.io/gramps-web-api/](https://gramps-project.github.io/gramps-web-api/).
+Интерактивная спецификация API (Swagger UI) предоставляется непосредственно вашим экземпляром Gramps Web по адресу `/api/swagger-ui` – например `https://mygrampsweb.example.com/api/swagger-ui`.
+
+Вы также можете получить к ней доступ из [Настроек пользователя](../../user-guide/settings.md) через кнопку **Запустить Swagger**, которая открывает Swagger UI с заранее заполненным токеном вашей сессии.
