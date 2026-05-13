@@ -48,6 +48,7 @@ nav:
           - Tag people in photos: user-guide/tagging.md
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
+          - Tags: user-guide/tags.md
       - Family Tree: user-guide/tree.md
       - DNA:
           - Overview: user-guide/dna.md
@@ -171,6 +172,7 @@ plugins:
             Tag people in photos: Personen auf Fotos markieren
             Use the blog: Blog verwenden
             Manage tasks: Aufgaben verwalten
+            Tags: Tags
             DNA: DNA
             Overview: Übersicht
             DNA matches: DNA-Übereinstimmungen
@@ -244,6 +246,7 @@ plugins:
             Tag people in photos: Identifier des personnes sur les photos
             Use the blog: Utiliser le blog
             Manage tasks: Gérer les tâches
+            Tags: Étiquettes
             DNA: ADN
             Overview: Vue d'ensemble
             DNA matches: Correspondances ADN
@@ -317,6 +320,7 @@ plugins:
             Tag people in photos: Etiquetar personas en fotos
             Use the blog: Usar el blog
             Manage tasks: Gestionar tareas
+            Tags: Etiquetas
             DNA: ADN
             Overview: Descripción general
             DNA matches: Coincidencias de ADN
@@ -390,6 +394,7 @@ plugins:
             Tag people in photos: 在照片中标记人物
             Use the blog: 使用博客
             Manage tasks: 管理任务
+            Tags: 标签
             DNA: DNA
             Overview: 概述
             DNA matches: DNA 匹配
@@ -463,6 +468,7 @@ plugins:
             Tag people in photos: Gắn thẻ người trong ảnh
             Use the blog: Sử dụng blog
             Manage tasks: Quản lý nhiệm vụ
+            Tags: Thẻ
             DNA: DNA
             Overview: Tổng quan
             DNA matches: Khớp DNA
@@ -536,6 +542,7 @@ plugins:
             Tag people in photos: Fotoğraflarda kişileri etiketle
             Use the blog: Blog kullan
             Manage tasks: Görevleri yönet
+            Tags: Etiketler
             DNA: DNA
             Overview: Genel Bakış
             DNA matches: DNA eşleşmeleri
@@ -609,6 +616,7 @@ plugins:
             Tag people in photos: Отметка людей на фото
             Use the blog: Использование блога
             Manage tasks: Управление задачами
+            Tags: Метки
             DNA: ДНК
             Overview: Обзор
             DNA matches: Совпадения ДНК
@@ -682,6 +690,7 @@ plugins:
             Tag people in photos: Marcar pessoas em fotos
             Use the blog: Usar o blog
             Manage tasks: Gerenciar tarefas
+            Tags: Etiquetas
             DNA: DNA
             Overview: Visão geral
             DNA matches: Correspondências de DNA
@@ -755,6 +764,7 @@ plugins:
             Tag people in photos: 写真の人物タグ付け
             Use the blog: ブログの使用
             Manage tasks: タスクの管理
+            Tags: タグ
             DNA: DNA
             Overview: 概要
             DNA matches: DNA マッチ
@@ -828,6 +838,7 @@ plugins:
             Tag people in photos: Tag personer i billeder
             Use the blog: Brug bloggen
             Manage tasks: Administrer opgaver
+            Tags: Etiketter
             DNA: DNA
             Overview: Oversigt
             DNA matches: DNA-matches
@@ -901,6 +912,7 @@ plugins:
             Tag people in photos: Merkitse henkilöt kuviin
             Use the blog: Käytä blogia
             Manage tasks: Hallitse tehtäviä
+            Tags: Tunnisteet
             DNA: DNA
             Overview: Yleiskatsaus
             DNA matches: DNA-osumat
@@ -974,6 +986,7 @@ plugins:
             Tag people in photos: Tagga persone nelle foto
             Use the blog: Usa il blog
             Manage tasks: Gestisci attività
+            Tags: Etichette
             DNA: DNA
             Overview: Panoramica
             DNA matches: Corrispondenze DNA
@@ -1047,6 +1060,7 @@ plugins:
             Tag people in photos: Позначити людей на фото
             Use the blog: Використання блогу
             Manage tasks: Управління завданнями
+            Tags: Мітки
             DNA: ДНК
             Overview: Огляд
             DNA matches: Збіги ДНК

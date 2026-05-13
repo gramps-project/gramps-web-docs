@@ -7,6 +7,9 @@ hide:
 
 This section documents the features available to users of Gramps Web.
 
+!!! note "Not seeing all features?"
+    Gramps Web uses a role-based permission system. Some features – such as editing data, managing tags, or viewing private records – are only available to users with sufficient permissions. You can check your current role in [User Settings](settings.md). If you need more access, contact your tree owner or administrator. See [User system](../install_setup/users.md) for a description of all roles.
+
 ## Navigating the interface
 
 ### Main navigation
