@@ -38,34 +38,37 @@ nav:
       #   - Create owner account:  user-guide/owner.md
   - User Guide:
       - Introduction: user-guide/index.md
-      - Search: user-guide/search.md
-      - Map: user-guide/map.md
-      - First steps:
+      - Getting started:
           - Registration: user-guide/registration.md
           - First login: user-guide/first-login.md
+      - Browsing your tree:
+          - Search: user-guide/search.md
+          - Family Tree: user-guide/tree.md
+          - Map: user-guide/map.md
       - Edit data:
           - Add media files: user-guide/media.md
           - Tag people in photos: user-guide/tagging.md
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
           - Tags: user-guide/tags.md
-      - Family Tree: user-guide/tree.md
       - DNA:
           - Overview: user-guide/dna.md
           - DNA matches: user-guide/dna-matches.md
           - Chromosome browser: user-guide/chromosome-browser.md
           - Y-DNA: user-guide/y-dna.md
-      - Reports: user-guide/reports.md
-      - Bookmarks: user-guide/bookmarks.md
-      - History: user-guide/recent.md
-      - Keyboard Shortcuts:  user-guide/shortcuts.md
-      - Revision history: user-guide/revisions.md
-      - User Settings: user-guide/settings.md
-      - Advanced features:
-          # - DNA:  user-guide/dna.md
+      - Research tools:
+          - Reports: user-guide/reports.md
+          - Bookmarks: user-guide/bookmarks.md
+          - History: user-guide/recent.md
+          - Revision history: user-guide/revisions.md
+      - Advanced:
           - GQL filters: user-guide/gql.md
           - AI chat: user-guide/chat.md
-      - External Search: user-guide/external-search.md
+          - External Search: user-guide/external-search.md
+      - Account & preferences:
+          - User Settings: user-guide/settings.md
+          - Keyboard Shortcuts: user-guide/shortcuts.md
+          - Notifications: user-guide/notifications.md
   - Developers:
       - Overview: development/dev.md
       - Backend:
@@ -164,7 +167,10 @@ plugins:
             Administration settings: Verwaltungseinstellungen
             Synchronize with Gramps: Mit Gramps synchronisieren
             User Guide: Benutzerhandbuch
-            First steps: Erste Schritte
+            Getting started: Erste Schritte
+            Browsing your tree: Ihren Stammbaum erkunden
+            Research tools: Recherche-Werkzeuge
+            Account & preferences: Konto & Einstellungen
             Registration: Registrierung
             First login: Erste Anmeldung
             Edit data: Daten bearbeiten
@@ -185,7 +191,8 @@ plugins:
             Keyboard Shortcuts: Tastaturkürzel
             Revision history: Versionshistorie
             User Settings: Benutzereinstellungen
-            Advanced features: Erweiterte Funktionen
+            Notifications: Benachrichtigungen
+            Advanced: Erweitert
             GQL filters: GQL-Filter
             AI chat: KI-Chat
             External Search: Externe Suche
@@ -238,7 +245,10 @@ plugins:
             Administration settings: Paramètres d'administration
             Synchronize with Gramps: Synchroniser avec Gramps
             User Guide: Guide utilisateur
-            First steps: Premiers pas
+            Getting started: Premiers pas
+            Browsing your tree: Explorer votre arbre
+            Research tools: Outils de recherche
+            Account & preferences: Compte & préférences
             Registration: Inscription
             First login: Première connexion
             Edit data: Modifier les données
@@ -259,7 +269,8 @@ plugins:
             Keyboard Shortcuts: Raccourcis clavier
             Revision history: Historique des révisions
             User Settings: Paramètres utilisateur
-            Advanced features: Fonctionnalités avancées
+            Notifications: Notifications
+            Advanced: Avancé
             GQL filters: Filtres GQL
             AI chat: Chat IA
             External Search: Recherche externe
@@ -312,7 +323,10 @@ plugins:
             Administration settings: Configuración de administración
             Synchronize with Gramps: Sincronizar con Gramps
             User Guide: Guía del usuario
-            First steps: Primeros pasos
+            Getting started: Primeros pasos
+            Browsing your tree: Explorar su árbol
+            Research tools: Herramientas de investigación
+            Account & preferences: Cuenta y preferencias
             Registration: Registro
             First login: Primer inicio de sesión
             Edit data: Editar datos
@@ -333,7 +347,8 @@ plugins:
             Keyboard Shortcuts: Atajos de teclado
             Revision history: Historial de revisiones
             User Settings: Configuración de usuario
-            Advanced features: Características avanzadas
+            Notifications: Notificaciones
+            Advanced: Avanzado
             GQL filters: Filtros GQL
             AI chat: Chat de IA
             External Search: Búsqueda externa
@@ -386,7 +401,10 @@ plugins:
             Administration settings: 管理设置
             Synchronize with Gramps: 与 Gramps 同步
             User Guide: 用户指南
-            First steps: 第一步
+            Getting started: 第一步
+            Browsing your tree: 浏览您的家谱
+            Research tools: 研究工具
+            Account & preferences: 账户与偏好设置
             Registration: 注册
             First login: 首次登录
             Edit data: 编辑数据
@@ -407,7 +425,8 @@ plugins:
             Keyboard Shortcuts: 键盘快捷键
             Revision history: 修订历史
             User Settings: 用户设置
-            Advanced features: 高级功能
+            Notifications: 通知
+            Advanced: 高级
             GQL filters: GQL 过滤器
             AI chat: AI 聊天
             External Search: 外部搜索
@@ -460,7 +479,10 @@ plugins:
             Administration settings: Cài đặt quản trị
             Synchronize with Gramps: Đồng bộ với Gramps
             User Guide: Hướng dẫn sử dụng
-            First steps: Các bước đầu tiên
+            Getting started: Các bước đầu tiên
+            Browsing your tree: Duyệt cây gia phả
+            Research tools: Công cụ nghiên cứu
+            Account & preferences: Tài khoản & tùy chọn
             Registration: Đăng ký
             First login: Đăng nhập lần đầu
             Edit data: Chỉnh sửa dữ liệu
@@ -481,7 +503,8 @@ plugins:
             Keyboard Shortcuts: Phím tắt
             Revision history: Lịch sử sửa đổi
             User Settings: Cài đặt người dùng
-            Advanced features: Tính năng nâng cao
+            Notifications: Thông báo
+            Advanced: Nâng cao
             GQL filters: Bộ lọc GQL
             AI chat: Trò chuyện AI
             External Search: Tìm kiếm bên ngoài
@@ -534,7 +557,10 @@ plugins:
             Administration settings: Yönetim ayarları
             Synchronize with Gramps: Gramps ile senkronize et
             User Guide: Kullanıcı Kılavuzu
-            First steps: İlk adımlar
+            Getting started: İlk adımlar
+            Browsing your tree: Ağacınızı keşfedin
+            Research tools: Araştırma araçları
+            Account & preferences: Hesap ve tercihler
             Registration: Kayıt
             First login: İlk giriş
             Edit data: Veri düzenle
@@ -555,7 +581,8 @@ plugins:
             Keyboard Shortcuts: Klavye kısayolları
             Revision history: Revizyon geçmişi
             User Settings: Kullanıcı ayarları
-            Advanced features: Gelişmiş özellikler
+            Notifications: Bildirimler
+            Advanced: Gelişmiş
             GQL filters: GQL filtreleri
             AI chat: AI sohbet
             External Search: Harici arama
@@ -608,7 +635,10 @@ plugins:
             Administration settings: Настройки администрирования
             Synchronize with Gramps: Синхронизация с Gramps
             User Guide: Руководство пользователя
-            First steps: Первые шаги
+            Getting started: Первые шаги
+            Browsing your tree: Просмотр дерева
+            Research tools: Инструменты исследования
+            Account & preferences: Аккаунт и настройки
             Registration: Регистрация
             First login: Первый вход
             Edit data: Редактирование данных
@@ -629,7 +659,8 @@ plugins:
             Keyboard Shortcuts: Сочетания клавиш
             Revision history: История изменений
             User Settings: Настройки пользователя
-            Advanced features: Расширенные функции
+            Notifications: Уведомления
+            Advanced: Расширенные
             GQL filters: Фильтры GQL
             AI chat: AI-чат
             External Search: Внешний поиск
@@ -682,7 +713,10 @@ plugins:
             Administration settings: Definições de administração
             Synchronize with Gramps: Sincronizar com Gramps
             User Guide: Guia do usuário
-            First steps: Primeiros passos
+            Getting started: Primeiros passos
+            Browsing your tree: Explorar a sua árvore
+            Research tools: Ferramentas de investigação
+            Account & preferences: Conta e preferências
             Registration: Registro
             First login: Primeiro login
             Edit data: Editar dados
@@ -703,7 +737,8 @@ plugins:
             Keyboard Shortcuts: Atalhos de teclado
             Revision history: Histórico de revisões
             User Settings: Configurações do utilizador
-            Advanced features: Recursos avançados
+            Notifications: Notificações
+            Advanced: Avançado
             GQL filters: Filtros GQL
             AI chat: Chat de IA
             External Search: Pesquisa externa
@@ -756,7 +791,10 @@ plugins:
             Administration settings: 管理設定
             Synchronize with Gramps: Gramps と同期
             User Guide: ユーザーガイド
-            First steps: 最初のステップ
+            Getting started: 最初のステップ
+            Browsing your tree: 家系図を閲覧
+            Research tools: 調査ツール
+            Account & preferences: アカウントと設定
             Registration: 登録
             First login: 初回ログイン
             Edit data: データの編集
@@ -777,7 +815,8 @@ plugins:
             Keyboard Shortcuts: キーボードショートカット
             Revision history: 改訂履歴
             User Settings: ユーザー設定
-            Advanced features: 高度な機能
+            Notifications: 通知
+            Advanced: 高度
             GQL filters: GQL フィルター
             AI chat: AI チャット
             External Search: 外部検索
@@ -830,7 +869,10 @@ plugins:
             Administration settings: Administrationsindstillinger
             Synchronize with Gramps: Synkroniser med Gramps
             User Guide: Brugervejledning
-            First steps: Første trin
+            Getting started: Første trin
+            Browsing your tree: Gennemse dit stamtræ
+            Research tools: Forskningsværktøjer
+            Account & preferences: Konto og indstillinger
             Registration: Registrering
             First login: Første login
             Edit data: Redigér data
@@ -851,7 +893,8 @@ plugins:
             Keyboard Shortcuts: Tastaturgenveje
             Revision history: Revisionshistorik
             User Settings: Brugerindstillinger
-            Advanced features: Avancerede funktioner
+            Notifications: Notifikationer
+            Advanced: Avanceret
             GQL filters: GQL-filtre
             AI chat: AI-chat
             External Search: Ekstern søgning
@@ -904,7 +947,10 @@ plugins:
             Administration settings: Hallinta-asetukset
             Synchronize with Gramps: Synkronoi Grampsin kanssa
             User Guide: Käyttöopas
-            First steps: Ensimmäiset askeleet
+            Getting started: Ensimmäiset askeleet
+            Browsing your tree: Selaa sukupuutasi
+            Research tools: Tutkimustyökalut
+            Account & preferences: Tili ja asetukset
             Registration: Rekisteröityminen
             First login: Ensimmäinen kirjautuminen
             Edit data: Muokkaa tietoja
@@ -925,7 +971,8 @@ plugins:
             Keyboard Shortcuts: Pikanäppäimet
             Revision history: Versiohistoria
             User Settings: Käyttäjäasetukset
-            Advanced features: Edistyneet ominaisuudet
+            Notifications: Ilmoitukset
+            Advanced: Edistynyt
             GQL filters: GQL-suodattimet
             AI chat: AI-chat
             External Search: Ulkoinen haku
@@ -978,7 +1025,10 @@ plugins:
             Administration settings: Impostazioni di amministrazione
             Synchronize with Gramps: Sincronizza con Gramps
             User Guide: Guida Utente
-            First steps: Primi passi
+            Getting started: Primi passi
+            Browsing your tree: Esplora il tuo albero
+            Research tools: Strumenti di ricerca
+            Account & preferences: Account e preferenze
             Registration: Registrazione
             First login: Primo accesso
             Edit data: Modifica dati
@@ -999,7 +1049,8 @@ plugins:
             Keyboard Shortcuts: Scorciatoie da tastiera
             Revision history: Cronologia revisioni
             User Settings: Impostazioni utente
-            Advanced features: Funzionalità avanzate
+            Notifications: Notifiche
+            Advanced: Avanzato
             GQL filters: Filtri GQL
             AI chat: Chat AI
             External Search: Ricerca esterna
@@ -1052,7 +1103,10 @@ plugins:
             Administration settings: Налаштування адміністрування
             Synchronize with Gramps: Синхронізація з Gramps
             User Guide: Посібник користувача
-            First steps: Перші кроки
+            Getting started: Перші кроки
+            Browsing your tree: Перегляд дерева
+            Research tools: Інструменти дослідження
+            Account & preferences: Обліковий запис і налаштування
             Registration: Реєстрація
             First login: Перший вхід
             Edit data: Редагування даних
@@ -1073,7 +1127,8 @@ plugins:
             Keyboard Shortcuts: Комбінації клавіш
             Revision history: Історія ревізій
             User Settings: Налаштування користувача
-            Advanced features: Розширені можливості
+            Notifications: Сповіщення
+            Advanced: Розширені
             GQL filters: GQL фільтри
             AI chat: AI чат
             External Search: Зовнішній пошук
