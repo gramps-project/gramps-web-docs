@@ -7,34 +7,37 @@ hide:
 
 Tässä osiossa dokumentoidaan Gramps Webin käyttäjille saatavilla olevat ominaisuudet.
 
-## Käyttöliittymän navigointi
+!!! note "Etkö näe kaikkia ominaisuuksia?"
+    Gramps Web käyttää roolipohjaista käyttöoikeusjärjestelmää. Jotkin ominaisuudet – kuten tietojen muokkaaminen, tagien hallinta tai yksityisten tietojen tarkastelu – ovat saatavilla vain käyttäjille, joilla on riittävät käyttöoikeudet. Voit tarkistaa nykyisen roolisi [Käyttäjäasetuksista](settings.md). Jos tarvitset enemmän pääsyä, ota yhteyttä puun omistajaan tai ylläpitäjään. Katso [Käyttäjäjärjestelmä](../install_setup/users.md) saadaksesi kuvauksen kaikista rooleista.
+
+## Käyttöliittymässä navigointi
 
 ### Päävalikko
 
 Sivupalkki (tai hampurilaisvalikko mobiilissa) on ensisijainen tapa siirtyä osioiden välillä:
 
-- **Koti** – hallintapaneeli (katso alla)
+- **Etusivu** – hallintapaneeli (katso alla)
 - **Blogi** – perhehistorian tarinoita blogikirjoituksina
-- **Ihmiset, Perheet, Tapahtumat, Paikat, Lähteet, Viitteet, Arkistot, Muistiinpanot** – selaa kaikkia kunkin tyyppisiä objekteja
-- **Media** – selaa kaikkia media tiedostoja (valokuvia, asiakirjoja jne.)
+- **Ihmiset, Perheet, Tapahtumat, Paikat, Lähteet, Viittaukset, Arkistot, Muistiinpanot** – selaa kaikkia kunkin tyyppisiä objekteja
+- **Media** – selaa kaikkia mediakuvia (valokuvia, asiakirjoja jne.)
 - **Kartta** – maantieteellinen näkymä paikoista puussa
-- **Suku puu** – interaktiiviset puukaaviot
+- **Sukupuu** – interaktiiviset puukaaviot
 - **DNA** – DNA-yhteensopivuusanalyysityökalut
-- **Chat** – AI-chat-avustaja (jos järjestelmänvalvoja on ottanut sen käyttöön)
+- **Chat** – AI-chat-avustaja (jos ylläpitäjä on mahdollistanut)
 - **Historia** – äskettäin muutetut objektit
 - **Kirjanmerkit** – tallennetut kirjanmerkit
 - **Tehtävät** – tutkimustehtävät
 - **Vienti** – vie sukupuu
 - **Raportit** – luo raportteja
 - **Muokkaukset** – täydellinen tapahtumahistoria (näkyvissä jäsenille ja sitä korkeammille)
-- **Tunnisteet** – hallitse tunnisteita (näkyvissä toimittajille ja sitä korkeammille)
+- **Tagit** – hallitse tageja (näkyvissä muokkaajille ja sitä korkeammille)
 - **Ilmoitukset** – aiemmat ilmoitukset
 
-### Ylä sovellus palkki
+### Yläsovelluskaari
 
-Jokaisen sivun yläreunassa oleva palkki sisältää:
+Jokaisen sivun yläosassa on:
 
-- **Lisää** (plus-kuvake, näkyvissä kontribuuttoreille ja sitä korkeammille) – avaa valikon uuden objektin luomiseksi: Henkilö, Perhe, Tapahtuma, Paikka, Lähde, Viite, Arkisto, Muistiinpano, Mediaobjekti tai Tehtävä
+- **Lisää** (plus-kuvake, näkyvissä kontribuuttoreille ja sitä korkeammille) – avaa valikon uuden objektin luomiseksi: Henkilö, Perhe, Tapahtuma, Paikka, Lähde, Viittaus, Arkisto, Muistiinpano, Mediakohde tai Tehtävä
 - **Haku** (suurenennuslasi) – avaa hakusivun
 - **Käyttäjäkuvake** – avaa asetusten valikon: Käyttäjäasetukset, Hallinta (vain omistajille), Hallitse käyttäjiä (vain omistajille), Järjestelmän tiedot
 
@@ -44,9 +47,9 @@ Hallintapaneeli näkyy, kun kirjaudut ensimmäisen kerran sisään. Siinä on ka
 
 **Vasen sarake:**
 
-- **Koti henkilö kortti** – näyttää valitun koti henkilön nimen, valokuvan (jos saatavilla) ja keskeiset tiedot, linkin heidän täydelliseen profiiliinsa ja nopean navigoinnin sukupuuhun. Napsauta **Aseta koti henkilö** -painiketta kortilla etsiäksesi ja valitaksesi toisen henkilön.
+- **Kotihenkilön kortti** – näyttää valitun kotihenkilön nimen, valokuvan (jos saatavilla) ja keskeiset tiedot, linkin heidän täydelliseen profiiliinsa ja nopean navigoinnin sukupuuhun. Napsauta kortilla olevaa **Aseta kotihenkilö** -painiketta etsiäksesi ja valitaksesi toisen henkilön.
 - **Merkkipäivät** – tulevat syntymäpäivät ja merkkipäivät puusta, perustuen tämän päivän päivämäärään.
-- **Äskettäin muutetut** – lyhyt lista äskettäin muokatuista objekteista, hyödyllinen yhteistyömuokkausten seuraamiseen.
+- **Äskettäin muutettu** – lyhyt lista äskettäin muokatuista objekteista, hyödyllinen yhteistyömuokkauksen seuraamiseen.
 
 **Oikea sarake:**
 
@@ -54,4 +57,4 @@ Hallintapaneeli näkyy, kun kirjaudut ensimmäisen kerran sisään. Siinä on ka
 - **Tilastot** – yhteenveto objektien määrästä puussa (ihmisten, perheiden, tapahtumien jne. määrä).
 
 !!! tip
-    Jos puu on tyhjillään ja sinulla on muokkausoikeudet, hallintapaneeli näyttää "Aloita" -kehotteen, jossa on painikkeet ensimmäisen henkilön lisäämiseksi tai perhepuutiedoston tuomiseksi.
+    Jos puu on tyhjää ja sinulla on muokkausoikeudet, hallintapaneeli näyttää "Aloita" -kehotteen, jossa on painikkeet ensimmäisen henkilön lisäämiseen tai perhesukupuun tiedoston tuomiseen.

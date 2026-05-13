@@ -5,18 +5,21 @@ hide:
 
 # Brugervejledning
 
-Dette afsnit dokumenterer de funktioner, der er tilgængelige for brugere af Gramps Web.
+Denne sektion dokumenterer de funktioner, der er tilgængelige for brugere af Gramps Web.
 
-## Navigering i grænsefladen
+!!! note "Ser du ikke alle funktioner?"
+    Gramps Web bruger et rollebaseret tilladelsessystem. Nogle funktioner – såsom redigering af data, administration af tags eller visning af private optegnelser – er kun tilgængelige for brugere med tilstrækkelige tilladelser. Du kan tjekke din nuværende rolle i [Brugerindstillinger](settings.md). Hvis du har brug for mere adgang, skal du kontakte ejeren af dit træ eller administratoren. Se [Brugersystem](../install_setup/users.md) for en beskrivelse af alle roller.
+
+## Navigere i grænsefladen
 
 ### Hovednavigation
 
-Sidebaren (eller hamburger-menuen på mobile enheder) er den primære måde at bevæge sig mellem sektioner:
+Sidebaren (eller hamburger-menuen på mobil) er den primære måde at bevæge sig mellem sektioner:
 
 - **Hjem** – dashboardet (se nedenfor)
 - **Blog** – familiehistorier skrevet som blogindlæg
-- **Personer, Familier, Begivenheder, Steder, Kilder, Citeringer, Arkiver, Noter** – gennemse alle objekter af hver type
-- **Medier** – gennemse alle mediefiler (fotos, dokumenter osv.)
+- **Personer, Familier, Begivenheder, Steder, Kilder, Citeringer, Repositorier, Noter** – gennemse alle objekter af hver type
+- **Medier** – gennemse alle mediefiler (billeder, dokumenter osv.)
 - **Kort** – geografisk visning af steder i træet
 - **Slægtstræ** – interaktive trædiagrammer
 - **DNA** – DNA-matchanalyseværktøjer
@@ -34,7 +37,7 @@ Sidebaren (eller hamburger-menuen på mobile enheder) er den primære måde at b
 
 Baren øverst på hver side indeholder:
 
-- **Tilføj** (plus-ikon, synlig for bidragydere og derover) – åbner en menu for at oprette et nyt objekt: Person, Familie, Begivenhed, Sted, Kilde, Citering, Arkiv, Note, Medieobjekt eller Opgave
+- **Tilføj** (plus-ikon, synlig for bidragydere og derover) – åbner en menu til at oprette et nyt objekt: Person, Familie, Begivenhed, Sted, Kilde, Citering, Repository, Note, Medieobjekt eller Opgave
 - **Søg** (forstørrelsesglas) – åbner søgesiden
 - **Brugerikon** – åbner indstillingsmenuen: Brugerindstillinger, Administration (kun ejere), Administrer brugere (kun ejere), Systeminfo
 
@@ -44,14 +47,14 @@ Dashboardet vises, når du logger ind for første gang. Det har to kolonner:
 
 **Venstre kolonne:**
 
-- **Hjempersonkort** – viser navnet, fotoet (hvis tilgængeligt) og nøglefakta om din valgte hjemperson, med et link til deres fulde profil og hurtig navigation til slægtstræet. Klik på **Indstil hjemperson**-knappen på kortet for at søge efter og vælge en anden person.
+- **Hjemmepersonkort** – viser navnet, fotoet (hvis tilgængeligt) og nøglefakta om din valgte hjemmeperson, med et link til deres fulde profil og hurtig navigation til slægtstræet. Klik på **Indstil hjemmeperson**-knappen på kortet for at søge efter og vælge en anden person.
 - **Årsdage** – kommende fødselsdage og årsager fra træet, baseret på dagens dato.
 - **Nyligt ændret** – en kort liste over de senest modificerede objekter, nyttig til at spore samarbejdende redigeringer.
 
 **Højre kolonne:**
 
 - **Nye blogindlæg** – de seneste indlæg fra [bloggen](blog.md), hvis der findes nogen.
-- **Statistik** – et resumé af objekttællinger i træet (antal personer, familier, begivenheder osv.).
+- **Statistikker** – et resumé af objekttællinger i træet (antal personer, familier, begivenheder osv.).
 
 !!! tip
-    Hvis træet er tomt, og du har redigeringsrettigheder, viser dashboardet en "Kom i gang"-prompt med knapper til at tilføje din første person eller importere en slægtstræfil.
+    Hvis træet er tomt, og du har redigeringstilladelser, viser dashboardet en "Kom i gang"-prompt med knapper til at tilføje din første person eller importere en slægtstræfil.
