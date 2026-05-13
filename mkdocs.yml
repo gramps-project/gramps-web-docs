@@ -55,6 +55,8 @@ nav:
           - Chromosome browser: user-guide/chromosome-browser.md
           - Y-DNA: user-guide/y-dna.md
       - Reports: user-guide/reports.md
+      - Bookmarks: user-guide/bookmarks.md
+      - History: user-guide/recent.md
       - Keyboard Shortcuts:  user-guide/shortcuts.md
       - Revision history: user-guide/revisions.md
       - User Settings: user-guide/settings.md
@@ -176,6 +178,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: Stammbaum
             Reports: Berichte
+            Bookmarks: Lesezeichen
+            History: Verlauf
             Keyboard Shortcuts: Tastaturkürzel
             Revision history: Versionshistorie
             User Settings: Benutzereinstellungen
@@ -247,6 +251,8 @@ plugins:
             Y-DNA: ADN-Y
             Family Tree: Arbre généalogique
             Reports: Rapports
+            Bookmarks: Signets
+            History: Historique
             Keyboard Shortcuts: Raccourcis clavier
             Revision history: Historique des révisions
             User Settings: Paramètres utilisateur
@@ -318,6 +324,8 @@ plugins:
             Y-DNA: ADN-Y
             Family Tree: Árbol genealógico
             Reports: Informes
+            Bookmarks: Marcadores
+            History: Historial
             Keyboard Shortcuts: Atajos de teclado
             Revision history: Historial de revisiones
             User Settings: Configuración de usuario
@@ -389,6 +397,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: 家谱树
             Reports: 报告
+            Bookmarks: 书签
+            History: 历史记录
             Keyboard Shortcuts: 键盘快捷键
             Revision history: 修订历史
             User Settings: 用户设置
@@ -460,6 +470,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: Cây gia phả
             Reports: Báo cáo
+            Bookmarks: Dấu trang
+            History: Lịch sử
             Keyboard Shortcuts: Phím tắt
             Revision history: Lịch sử sửa đổi
             User Settings: Cài đặt người dùng
@@ -531,6 +543,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: Soy ağacı
             Reports: Raporlar
+            Bookmarks: Yer imleri
+            History: Geçmiş
             Keyboard Shortcuts: Klavye kısayolları
             Revision history: Revizyon geçmişi
             User Settings: Kullanıcı ayarları
@@ -602,6 +616,8 @@ plugins:
             Y-DNA: Y-ДНК
             Family Tree: Генеалогическое дерево
             Reports: Отчёты
+            Bookmarks: Закладки
+            History: История
             Keyboard Shortcuts: Сочетания клавиш
             Revision history: История изменений
             User Settings: Настройки пользователя
@@ -673,6 +689,8 @@ plugins:
             Y-DNA: DNA-Y
             Family Tree: Árvore genealógica
             Reports: Relatórios
+            Bookmarks: Marcadores
+            History: Histórico
             Keyboard Shortcuts: Atalhos de teclado
             Revision history: Histórico de revisões
             User Settings: Configurações do utilizador
@@ -744,6 +762,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: 家系図
             Reports: レポート
+            Bookmarks: ブックマーク
+            History: 履歴
             Keyboard Shortcuts: キーボードショートカット
             Revision history: 改訂履歴
             User Settings: ユーザー設定
@@ -815,6 +835,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: Stamtræ
             Reports: Rapporter
+            Bookmarks: Bogmærker
+            History: Historik
             Keyboard Shortcuts: Tastaturgenveje
             Revision history: Revisionshistorik
             User Settings: Brugerindstillinger
@@ -886,6 +908,8 @@ plugins:
             Y-DNA: Y-DNA
             Family Tree: Sukupuu
             Reports: Raportit
+            Bookmarks: Kirjanmerkit
+            History: Historia
             Keyboard Shortcuts: Pikanäppäimet
             Revision history: Versiohistoria
             User Settings: Käyttäjäasetukset
@@ -957,6 +981,8 @@ plugins:
             Y-DNA: DNA-Y
             Family Tree: Albero genealogico
             Reports: Rapporti
+            Bookmarks: Segnalibri
+            History: Cronologia
             Keyboard Shortcuts: Scorciatoie da tastiera
             Revision history: Cronologia revisioni
             User Settings: Impostazioni utente
@@ -1028,6 +1054,8 @@ plugins:
             Y-DNA: Y-ДНК
             Family Tree: Родовід
             Reports: Звіти
+            Bookmarks: Закладки
+            History: Історія
             Keyboard Shortcuts: Комбінації клавіш
             Revision history: Історія ревізій
             User Settings: Налаштування користувача
