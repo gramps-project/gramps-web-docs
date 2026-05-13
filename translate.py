@@ -69,6 +69,16 @@ def translate_with_openai(content, target_lang, source_lang="en"):
     target_lang_name = LANGUAGE_NAMES.get(target_lang, target_lang)
     source_lang_name = LANGUAGE_NAMES.get(source_lang, source_lang)
     
+    # Per-language terminology glossaries for consistent translation of key terms
+    GLOSSARIES = {
+        "de": """
+TERMINOLOGY (always use these translations, consistent with official Gramps German):
+- Tag / Tags → Etikett / Etiketten
+- Home Person → Hauptperson
+""",
+    }
+    glossary = GLOSSARIES.get(target_lang, "")
+
     prompt = f"""You are translating technical documentation from {source_lang_name} to {target_lang_name}.
 
 INSTRUCTIONS:
@@ -76,7 +86,7 @@ INSTRUCTIONS:
 - Preserve ALL Markdown formatting exactly (tables, links, code blocks, etc.)
 - Keep URLs, file paths, and code unchanged
 - Maintain the exact structure and line breaks
-
+{glossary}
 Document to translate:
 
 {content}

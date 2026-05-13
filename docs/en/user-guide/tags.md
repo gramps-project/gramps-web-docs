@@ -2,6 +2,7 @@
 
 Tags are labels that can be applied to any object in the Gramps database – people, families, events, places, sources, citations, repositories, notes, and media. They are useful for grouping and filtering objects. Tags are stored in the Gramps family tree database and are shared across all users; they are also fully compatible with tags created in Gramps Desktop.
 
+
 ## Managing tags
 
 The **Tags** page is accessible from the sidebar and is only visible to users with the Editor role or above. It shows all existing tags and allows you to:
