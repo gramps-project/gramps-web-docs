@@ -1,16 +1,35 @@
 # User Settings
 
-User Settings are accessible via the user icon in the top app bar, then **User Settings**. Changes take effect immediately unless noted otherwise.
+User Settings are accessible via the user icon in the top app bar, then **User Settings**. The page is organized into collapsible sections. Changes take effect immediately unless noted otherwise.
 
-## User information
+!!! note
+    Changes in User Settings only affect your own account. Settings that affect all users of the tree are managed in [Administration Settings](../administration/settings.md).
+
+## Account
+
+Covers your profile information, credentials, and account security.
+
+### User information
 
 Shows your **username** and current **user role** (e.g. Guest, Member, Editor). These are read-only.
 
-## Language
+### Change e-mail
+
+Enter a new e-mail address and click **Submit** to update the address associated with your account. The e-mail address is used for password resets and (if configured) notifications.
+
+### Change password
+
+Enter your current password and a new password, then click **Submit**. If you have forgotten your current password, use the **Forgot password** link on the login page instead.
+
+## Appearance
+
+Controls display preferences saved on your device.
+
+### Language
 
 Select the language for the Gramps Web interface. The language setting is stored in the browser's local storage and applies only to the current device.
 
-## Theme
+### Theme
 
 Choose between:
 
@@ -20,17 +39,9 @@ Choose between:
 
 The theme setting is stored in the browser's local storage.
 
-## Change e-mail
+### Family tree preferences
 
-Enter a new e-mail address and click **Submit** to update the address associated with your account. The e-mail address is used for password resets and (if configured) notifications.
-
-## Change password
-
-Enter your current password and a new password, then click **Submit**. If you have forgotten your current password, use the **Forgot password** link on the login page instead.
-
-## Family tree preferences
-
-### Default family tree view
+#### Default family tree view
 
 Sets which chart type opens by default when you navigate to the [Family Tree](tree.md) page. Options are Ancestor Tree, Descendant Tree, Hourglass Graph, Relationship Graph, and Fan Chart.
 
