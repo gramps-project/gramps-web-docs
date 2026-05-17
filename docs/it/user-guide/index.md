@@ -8,7 +8,7 @@ hide:
 Questa sezione documenta le funzionalità disponibili per gli utenti di Gramps Web.
 
 !!! note "Non vedi tutte le funzionalità?"
-    Gramps Web utilizza un sistema di autorizzazioni basato sui ruoli. Alcune funzionalità – come la modifica dei dati, la gestione dei tag o la visualizzazione di record privati – sono disponibili solo per gli utenti con autorizzazioni sufficienti. Puoi controllare il tuo ruolo attuale in [Impostazioni utente](settings.md). Se hai bisogno di maggiore accesso, contatta il proprietario del tuo albero o l'amministratore. Vedi [Sistema utenti](../install_setup/users.md) per una descrizione di tutti i ruoli.
+    Gramps Web utilizza un sistema di permessi basato sui ruoli. Alcune funzionalità – come la modifica dei dati, la gestione dei tag o la visualizzazione di registri privati – sono disponibili solo per gli utenti con permessi sufficienti. Puoi controllare il tuo ruolo attuale in [Impostazioni utente](settings.md). Se hai bisogno di maggior accesso, contatta il proprietario del tuo albero o l'amministratore. Vedi [Sistema utenti](../install_setup/users.md) per una descrizione di tutti i ruoli.
 
 ## Navigare nell'interfaccia
 
@@ -16,19 +16,19 @@ Questa sezione documenta le funzionalità disponibili per gli utenti di Gramps W
 
 La barra laterale (o menu hamburger su mobile) è il modo principale per spostarsi tra le sezioni:
 
-- **Home** – la dashboard (vedi sotto)
+- **Home** – il cruscotto (vedi sotto)
 - **Blog** – storie di storia familiare scritte come post del blog
 - **Persone, Famiglie, Eventi, Luoghi, Fonti, Citazioni, Archivi, Note** – esplora tutti gli oggetti di ciascun tipo
 - **Media** – esplora tutti i file multimediali (foto, documenti, ecc.)
 - **Mappa** – vista geografica dei luoghi nell'albero
 - **Albero genealogico** – grafici interattivi dell'albero
-- **DNA** – strumenti di analisi delle corrispondenze DNA
+- **DNA** – strumenti di analisi delle corrispondenze del DNA
 - **Chat** – assistente chat AI (se abilitato dall'amministratore)
-- **Storia** – oggetti recentemente modificati
+- **Storia** – oggetti modificati di recente
 - **Segnalibri** – i tuoi segnalibri salvati
-- **Attività** – attività di ricerca
+- **Compiti** – compiti di ricerca
 - **Esporta** – esporta l'albero genealogico
-- **Report** – genera report
+- **Rapporti** – genera rapporti
 - **Revisioni** – cronologia completa delle transazioni (visibile ai membri e superiori)
 - **Tag** – gestisci i tag (visibile agli editor e superiori)
 - **Notifiche** – notifiche passate
@@ -37,24 +37,26 @@ La barra laterale (o menu hamburger su mobile) è il modo principale per spostar
 
 La barra in cima a ogni pagina contiene:
 
-- **Aggiungi** (icona del più, visibile ai collaboratori e superiori) – apre un menu per creare un nuovo oggetto: Persona, Famiglia, Evento, Luogo, Fonte, Citazione, Archivio, Nota, Oggetto multimediale o Attività
-- **Cerca** (lente d'ingrandimento) – apre la pagina di ricerca
-- **Icona utente** – apre il menu delle impostazioni: Impostazioni utente, Amministrazione (solo proprietari), Gestisci utenti (solo proprietari), Informazioni di sistema
+- **Aggiungi** (icona del più, visibile ai collaboratori e superiori) – apre un menu per creare un nuovo oggetto: Persona, Famiglia, Evento, Luogo, Fonte, Citazione, Archivio, Nota, Oggetto multimediale o Compito
+- **Cerca** (lente di ingrandimento) – apre la pagina di ricerca
+- **Icona utente** – apre il menu delle impostazioni: Impostazioni utente, Amministrazione (solo per i proprietari), Gestisci utenti (solo per i proprietari), Informazioni di sistema
 
-## La home page (dashboard)
+## La home page (cruscotto)
 
-La dashboard viene mostrata quando accedi per la prima volta. Ha due colonne:
+Il cruscotto viene mostrato quando accedi per la prima volta. Ha due colonne:
 
 **Colonna sinistra:**
 
-- **Scheda persona principale** – mostra il nome, la foto (se disponibile) e i fatti principali della persona principale scelta, con un link al loro profilo completo e navigazione rapida all'albero genealogico. Clicca sul pulsante **Imposta persona principale** sulla scheda per cercare e selezionare un'altra persona.
+- **Scheda persona principale** – mostra il nome, la foto (se disponibile) e i fatti chiave della persona principale scelta, con un link al loro profilo completo e navigazione rapida all'albero genealogico. Clicca sul pulsante **Imposta persona principale** sulla scheda per cercare e selezionare un'altra persona.
 - **Anniversari** – compleanni e anniversari imminenti dall'albero, basati sulla data odierna.
-- **Recentemente modificati** – un breve elenco degli oggetti modificati più di recente, utile per tenere traccia delle modifiche collaborative.
+- **Modifiche recenti** – un breve elenco degli oggetti modificati di recente, utile per tenere traccia delle modifiche collaborative.
 
 **Colonna destra:**
 
-- **Post del blog recenti** – le ultime voci dal [blog](blog.md), se ce ne sono.
+- **Post del blog recenti** – le ultime voci dal [blog](blog.md), se esistono.
 - **Statistiche** – un riepilogo del conteggio degli oggetti nell'albero (numero di persone, famiglie, eventi, ecc.).
 
+Se l'amministratore dell'albero ha configurato una **nota della home page** e/o un **immagine della home page**, queste vengono visualizzate in modo prominente sopra le colonne principali. L'immagine appare accanto al testo della nota quando entrambi sono impostati. Vedi [Impostazioni di amministrazione](../administration/settings.md#customization) per come configurare questi elementi.
+
 !!! tip
-    Se l'albero è vuoto e hai autorizzazioni di modifica, la dashboard mostra un messaggio "Inizia" con pulsanti per aggiungere la tua prima persona o importare un file di albero genealogico.
+    Se l'albero è vuoto e hai permessi di modifica, il cruscotto mostra un messaggio "Inizia" con pulsanti per aggiungere la tua prima persona o importare un file dell'albero genealogico.

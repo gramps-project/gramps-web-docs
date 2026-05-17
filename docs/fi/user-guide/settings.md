@@ -1,38 +1,49 @@
 # Käyttäjäasetukset
 
-Käyttäjäasetukset ovat saatavilla käyttäjäkuvakkeesta sovelluksen ylävalikossa, sitten **Käyttäjäasetukset**. Muutokset astuvat voimaan heti, ellei toisin mainita.
+Käyttäjäasetukset ovat saatavilla käyttäjäkuvakkeesta ylävalikkopalkissa, sitten **Käyttäjäasetukset**. Sivusto on järjestetty taitettaviin osioihin. Muutokset tulevat voimaan heti, ellei toisin mainita.
 
-## Käyttäjätiedot
+!!! note
+    Muutokset käyttäjäasetuksissa vaikuttavat vain omaan tiliisi. Asetukset, jotka vaikuttavat kaikkiin puun käyttäjiin, hallitaan [Hallinta-asetuksissa](../administration/settings.md).
 
-Näyttää sinun **käyttäjänimesi** ja nykyisen **käyttäjäroolisi** (esim. Vieraana, Jäsenenä, Toimittajana). Nämä ovat vain lukuoikeudella.
+## Tili
 
-## Kieli
+Kattaa profiilitietosi, tunnistetietosi ja tilin turvallisuuden.
 
-Valitse kieli Gramps Web -käyttöliittymälle. Kieliasetus tallennetaan selaimen paikalliseen tallennustilaan ja se koskee vain nykyistä laitetta.
+### Käyttäjätiedot
 
-## Teema
+Näyttää **käyttäjänimesi** ja nykyisen **käyttäjäroolisi** (esim. Vieraana, Jäsenenä, Toimittajana). Nämä ovat vain luku -tilassa.
+
+### Vaihda sähköposti
+
+Syötä uusi sähköpostiosoite ja napsauta **Lähetä** päivittääksesi tilisi liitetyn osoitteen. Sähköpostiosoitetta käytetään salasanan palautuksiin ja (jos määritetty) ilmoituksiin.
+
+### Vaihda salasana
+
+Syötä nykyinen salasanasi ja uusi salasana, sitten napsauta **Lähetä**. Jos olet unohtanut nykyisen salasanasi, käytä **Unohditko salasanan** -linkkiä kirjautumissivulla sen sijaan.
+
+## Ulkoasu
+
+Hallinnoi laitteellasi tallennettuja näyttöasetuksia.
+
+### Kieli
+
+Valitse kieli Gramps Web -käyttöliittymälle. Kieli-asetus tallennetaan selaimen paikalliseen tallennustilaan ja se koskee vain nykyistä laitetta.
+
+### Teema
 
 Valitse seuraavista:
 
-- **Järjestelmä** – seuraa käyttöjärjestelmän vaaleaa/tumma asetusta (oletusarvo)
+- **Järjestelmä** – seuraa käyttöjärjestelmän vaaleaa/tumma mieltymystä (oletusarvo)
 - **Vaalea** – käytä aina vaaleaa teemaa
 - **Tumma** – käytä aina tummaa teemaa
 
 Teema-asetus tallennetaan selaimen paikalliseen tallennustilaan.
 
-## Vaihda sähköposti
+### Sukupuupreferenssit
 
-Syötä uusi sähköpostiosoite ja napsauta **Lähetä** päivittääksesi tilisi yhteydessä olevan osoitteen. Sähköpostiosoitetta käytetään salasanan nollaamiseen ja (jos määritetty) ilmoituksiin.
+#### Oletussukupuu näkymä
 
-## Vaihda salasana
-
-Syötä nykyinen salasanasi ja uusi salasana, sitten napsauta **Lähetä**. Jos olet unohtanut nykyisen salasanasi, käytä **Unohditko salasanan** -linkkiä kirjautumissivulla sen sijaan.
-
-## Sukupuuyksikön asetukset
-
-### Oletussukupuu-näkymä
-
-Määrittää, mikä kaaviotyyppi avautuu oletuksena, kun navigoit [Sukupuu](tree.md) -sivulle. Vaihtoehtoja ovat Esivanhempien puu, Jälkeläisten puu, Hiekkakellokaavio, Suhdekaavio ja Tuulettimikaavio.
+Määrittää, mikä kaaviotyyppi avautuu oletuksena, kun siirryt [Sukupuuhun](tree.md) sivulle. Vaihtoehtoja ovat Esivanhempien puu, Jälkeläisten puu, Tiimalasikaavio, Suhdekaavio ja Tuulettimikaavio.
 
 Tämä asetus tallennetaan selaimen paikalliseen tallennustilaan.
 
@@ -40,9 +51,9 @@ Tämä asetus tallennetaan selaimen paikalliseen tallennustilaan.
 
 ### API-tunnus
 
-Kopioi nykyinen istuntotunnuksesi leikepöydälle. Tunnusta voidaan käyttää suoraan REST API:n todennukseen, esimerkiksi Gramps Web -instanssisi tarjoamassa interaktiivisessa Swagger UI:ssa osoitteessa `/api/swagger-ui`.
+Kopioi nykyinen istuntotunnuksesi leikepöydälle. Tunnusta voidaan käyttää suoraan REST API:in todennukseen, esimerkiksi Gramps Web -instanssisi tarjoamassa interaktiivisessa Swagger UI:ssa osoitteessa `/api/swagger-ui`.
 
 Napsauta **Avaa Swagger** avataksesi Swagger UI:n uudessa välilehdessä, jossa istuntosi on jo käytettävissä.
 
 !!! note
-    Istuntotunnus on lyhytikäinen. Kopioi se heti ennen käyttöä Swaggerissa, sillä se voi vanhentua.
+    Istuntotunnus on lyhytkestoinen. Kopioi se heti ennen sen käyttöä Swaggerissa, sillä se saattaa vanhentua.

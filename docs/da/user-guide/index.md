@@ -5,25 +5,25 @@ hide:
 
 # Brugervejledning
 
-Denne sektion dokumenterer de funktioner, der er tilgængelige for brugere af Gramps Web.
+Dette afsnit dokumenterer de funktioner, der er tilgængelige for brugere af Gramps Web.
 
 !!! note "Ser du ikke alle funktioner?"
     Gramps Web bruger et rollebaseret tilladelsessystem. Nogle funktioner – såsom redigering af data, administration af tags eller visning af private optegnelser – er kun tilgængelige for brugere med tilstrækkelige tilladelser. Du kan tjekke din nuværende rolle i [Brugerindstillinger](settings.md). Hvis du har brug for mere adgang, skal du kontakte ejeren af dit træ eller administratoren. Se [Brugersystem](../install_setup/users.md) for en beskrivelse af alle roller.
 
-## Navigere i grænsefladen
+## Navigering i grænsefladen
 
 ### Hovednavigation
 
-Sidebaren (eller hamburger-menuen på mobil) er den primære måde at bevæge sig mellem sektioner:
+Sidebaren (eller hamburger-menuen på mobile enheder) er den primære måde at bevæge sig mellem sektioner:
 
 - **Hjem** – dashboardet (se nedenfor)
 - **Blog** – familiehistorier skrevet som blogindlæg
-- **Personer, Familier, Begivenheder, Steder, Kilder, Citeringer, Repositorier, Noter** – gennemse alle objekter af hver type
-- **Medier** – gennemse alle mediefiler (billeder, dokumenter osv.)
+- **Personer, Familier, Begivenheder, Steder, Kilder, Citeringer, Arkiver, Noter** – gennemse alle objekter af hver type
+- **Medier** – gennemse alle mediefiler (fotos, dokumenter osv.)
 - **Kort** – geografisk visning af steder i træet
 - **Slægtstræ** – interaktive trædiagrammer
 - **DNA** – DNA-matchanalyseværktøjer
-- **Chat** – AI chat-assistent (hvis aktiveret af administratoren)
+- **Chat** – AI chatassistent (hvis aktiveret af administratoren)
 - **Historik** – nyligt ændrede objekter
 - **Bogmærker** – dine gemte bogmærker
 - **Opgaver** – forskningsopgaver
@@ -37,24 +37,26 @@ Sidebaren (eller hamburger-menuen på mobil) er den primære måde at bevæge si
 
 Baren øverst på hver side indeholder:
 
-- **Tilføj** (plus-ikon, synlig for bidragydere og derover) – åbner en menu til at oprette et nyt objekt: Person, Familie, Begivenhed, Sted, Kilde, Citering, Repository, Note, Medieobjekt eller Opgave
+- **Tilføj** (plus-ikon, synlig for bidragydere og derover) – åbner en menu for at oprette et nyt objekt: Person, Familie, Begivenhed, Sted, Kilde, Citering, Arkiv, Note, Medieobjekt eller Opgave
 - **Søg** (forstørrelsesglas) – åbner søgesiden
 - **Brugerikon** – åbner indstillingsmenuen: Brugerindstillinger, Administration (kun ejere), Administrer brugere (kun ejere), Systeminfo
 
 ## Hjemmesiden (dashboard)
 
-Dashboardet vises, når du logger ind for første gang. Det har to kolonner:
+Dashboardet vises, når du logger ind første gang. Det har to kolonner:
 
 **Venstre kolonne:**
 
-- **Hjemmepersonkort** – viser navnet, fotoet (hvis tilgængeligt) og nøglefakta om din valgte hjemmeperson, med et link til deres fulde profil og hurtig navigation til slægtstræet. Klik på **Indstil hjemmeperson**-knappen på kortet for at søge efter og vælge en anden person.
+- **Hjempersonkort** – viser navnet, fotoet (hvis tilgængeligt) og nøglefakta om din valgte hjemperson, med et link til deres fulde profil og hurtig navigation til slægtstræet. Klik på knappen **Indstil hjemperson** på kortet for at søge efter og vælge en anden person.
 - **Årsdage** – kommende fødselsdage og årsager fra træet, baseret på dagens dato.
-- **Nyligt ændret** – en kort liste over de senest modificerede objekter, nyttig til at spore samarbejdende redigeringer.
+- **Nyligt ændret** – en kort liste over de senest ændrede objekter, nyttig til at spore samarbejdende redigeringer.
 
 **Højre kolonne:**
 
 - **Nye blogindlæg** – de seneste indlæg fra [bloggen](blog.md), hvis der findes nogen.
-- **Statistikker** – et resumé af objekttællinger i træet (antal personer, familier, begivenheder osv.).
+- **Statistik** – et resumé af objektantal i træet (antal personer, familier, begivenheder osv.).
+
+Hvis træadministrator har konfigureret en **hjemmeside note** og/eller et **hjemmeside billede**, vises disse fremtrædende over de vigtigste kolonner. Billedet vises ved siden af noteteksten, når begge er indstillet. Se [Administrationsindstillinger](../administration/settings.md#customization) for hvordan man konfigurerer disse.
 
 !!! tip
-    Hvis træet er tomt, og du har redigeringstilladelser, viser dashboardet en "Kom i gang"-prompt med knapper til at tilføje din første person eller importere en slægtstræfil.
+    Hvis træet er tomt, og du har redigeringstilladelser, viser dashboardet en "Kom i gang" prompt med knapper til at tilføje din første person eller importere en slægtstræfil.
