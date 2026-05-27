@@ -68,6 +68,7 @@ Key | Description
 `REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`)
 `DISABLE_TELEMETRY` | If `True`, disable statistics telemetry (default `False`). See [telemetry](telemetry.md) for details.
 `PILLOW_MAX_IMAGE_PIXELS` | Sets the PIL.Image.MAX_IMAGE_PIXELS parameter, which indicates the number of pixels that the processed image can contain. See [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) for details.
+`MAX_THUMBNAIL_FILE_BYTES` | Sets a hard maximum file size for thumbnails. Defaults to `50 * 1024 * 1024` (50 MB). Raising it can greatly increase memory usage and may lead to out-of-memory crashes or data loss if large files are decompressed in memory.
 
 
 !!! info
