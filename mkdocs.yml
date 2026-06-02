@@ -17,6 +17,7 @@ nav:
           - Setting up AI chat: install_setup/chat.md
           - Multi-tree setup: install_setup/multi-tree.md
           - Frontend customization: install_setup/frontend-config.md
+          - Theming and appearance: install_setup/theming.md
           - Update: install_setup/update.md
           - Using PostgreSQL: install_setup/postgres.md
           - Hosting media on S3: install_setup/s3.md
