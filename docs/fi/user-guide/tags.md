@@ -1,32 +1,32 @@
-# Tagit
+# Tunnisteet
 
-Tagit ovat etikettejä, joita voidaan soveltaa mihin tahansa objektiin Gramps-tietokannassa – ihmisiin, perheisiin, tapahtumiin, paikkoihin, lähteisiin, viittauksiin, arkistoihin, muistiinpanoihin ja mediaan. Ne ovat hyödyllisiä objektien ryhmittelyssä ja suodattamisessa. Tagit tallennetaan Gramps-perhesuunnitelmatietokantaan ja ne jaetaan kaikkien käyttäjien kesken; ne ovat myös täysin yhteensopivia Gramps Desktopissa luotujen tagien kanssa.
+Tunnisteet ovat etikettejä, joita voidaan soveltaa mihin tahansa objektiin Gramps-tietokannassa – ihmisiin, perheisiin, tapahtumiin, paikkoihin, lähteisiin, viittauksiin, arkistoihin, muistiinpanoihin ja mediaan. Ne ovat hyödyllisiä objektien ryhmittelyssä ja suodattamisessa. Tunnisteet tallennetaan Gramps-perhesuunnitelmatietokantaan ja ne ovat kaikkien käyttäjien käytettävissä; ne ovat myös täysin yhteensopivia Gramps Desktopissa luotujen tunnisteiden kanssa.
 
-## Tagien hallinta
+## Tunnisteiden hallinta
 
-**Tagit**-sivu on saatavilla sivupalkista ja se on näkyvissä vain käyttäjille, joilla on Editor-rooli tai korkeampi. Se näyttää kaikki olemassa olevat tagit ja mahdollistaa:
+Tunnisteita hallitaan **Tunnisteet**-osiossa [Hallintasettings](../administration/settings.md#tags), joka on saatavilla vain käyttäjille, joilla on Omistaja- tai Ylläpitäjärooli. Se näyttää kaikki olemassa olevat tunnisteet ja mahdollistaa:
 
-- **Luo** uusi tagi + -painikkeella (alhaalla oikealla)
-- **Nimeä** tagi uudelleen muokkaus (kynä) kuvaketta käyttäen
-- **Vaihda tagin väri** värivalitsimella
-- **Poista** tagi poistokuvaketta käyttäen
+- **Luo** uusi tunniste **Uusi tunniste** -painikkeella
+- **Nimeä** tunniste uudelleen muokkaus (kynä) kuvaketta käyttäen
+- **Vaihda tunnisteen väri** värivalitsimen avulla
+- **Poista** tunniste poistoikonia käyttäen
 
-!!! note
-    Tagin poistaminen poistaa sen kaikista objekteista, joihin se on sovellettu.
+!!! huomautus
+    Tunnisteen poistaminen poistaa sen kaikista objekteista, joihin se on sovellettu.
 
-## Tagien soveltaminen objekteihin
+## Tunnisteiden soveltaminen objekteihin
 
-Tagit voidaan soveltaa tai poistaa objektista sen yksityiskohtasivulla muokkaustilassa.
+Tunnisteita voidaan soveltaa tai poistaa objektista sen yksityiskohtasivulla muokkaustilassa.
 
-## Suodatus tagin mukaan
+## Suodattaminen tunnisteen mukaan
 
-Kaikilla objektin luettelon sivuilla (Ihmiset, Perheet, Tapahtumat, Paikat, Lähteet, Viittaukset, Arkistot, Muistiinpanot, Media) on tagisuodatin. Käytä sitä näyttämään vain objektit, joihin on sovellettu tietty tagi.
+Kaikki objektin luettelon sivut (Ihmiset, Perheet, Tapahtumat, Paikat, Lähteet, Viittaukset, Arkistot, Muistiinpanot, Media) sisältävät tunnistesuodattimen. Käytä sitä näyttämään vain ne objektit, joihin on sovellettu tiettyä tunnistetta.
 
-## Erityiset tagit
+## Erityiset tunnisteet
 
-Kaksi tagia on erityistä merkitystä Gramps Webissä:
+Kaksi tunnistetta on erityistä merkitystä Gramps Webissä:
 
 - **`Blog`** – mikä tahansa lähde, johon on merkitty `Blog`, käsitellään blogikirjoituksena ja se näkyy [Blogi](blog.md) -näkymässä
 - **`ToDo`** – mikä tahansa muistiinpano, johon on merkitty `ToDo`, käsitellään tutkimustehtävänä ja se näkyy [Tehtävät](tasks.md) -näkymässä
 
-Nämä tagit luodaan automaattisesti, kun käytät ensimmäisen kerran Blogi- tai Tehtävät-ominaisuuksia. Niiden nimeäminen uudelleen tai poistaminen rikkoo vastaavaa ominaisuutta.
+Nämä tunnisteet luodaan automaattisesti, kun käytät ensimmäistä kertaa Blogi- tai Tehtävät-ominaisuuksia. Niiden nimeäminen uudelleen tai poistaminen rikkoo vastaavaa ominaisuutta.

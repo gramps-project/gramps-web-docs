@@ -8,30 +8,33 @@ hide:
 Cette section documente les fonctionnalités disponibles pour les utilisateurs de Gramps Web.
 
 !!! note "Vous ne voyez pas toutes les fonctionnalités ?"
-    Gramps Web utilise un système de permissions basé sur les rôles. Certaines fonctionnalités – telles que l'édition de données, la gestion des étiquettes ou la consultation de dossiers privés – ne sont disponibles que pour les utilisateurs disposant de permissions suffisantes. Vous pouvez vérifier votre rôle actuel dans [Paramètres de l'utilisateur](settings.md). Si vous avez besoin de plus d'accès, contactez le propriétaire de votre arbre ou l'administrateur. Consultez [Système des utilisateurs](../install_setup/users.md) pour une description de tous les rôles.
+    Gramps Web utilise un système de permissions basé sur les rôles. Certaines fonctionnalités – telles que l'édition de données, la gestion des étiquettes ou la visualisation des enregistrements privés – ne sont disponibles que pour les utilisateurs disposant de permissions suffisantes. Vous pouvez vérifier votre rôle actuel dans [Paramètres de l'utilisateur](settings.md). Si vous avez besoin de plus d'accès, contactez le propriétaire de votre arbre ou l'administrateur. Consultez [Système d'utilisateur](../install_setup/users.md) pour une description de tous les rôles.
 
 ## Navigation dans l'interface
 
 ### Navigation principale
 
-La barre latérale (ou le menu hamburger sur mobile) est le principal moyen de se déplacer entre les sections :
+La barre latérale (ou le menu hamburger sur mobile) est le moyen principal de naviguer entre les sections :
 
 - **Accueil** – le tableau de bord (voir ci-dessous)
 - **Blog** – histoires de généalogie écrites sous forme de billets de blog
-- **Personnes, Familles, Événements, Lieux, Sources, Citations, Dépôts, Notes** – parcourez tous les objets de chaque type
-- **Médias** – parcourez tous les fichiers multimédias (photos, documents, etc.)
+- **Arbre généalogique** – graphiques d'arbres interactifs
+- **Chronologie** – vue chronologique des événements dans l'arbre (nécessite une version suffisamment récente de l'API Gramps Web)
 - **Carte** – vue géographique des lieux dans l'arbre
-- **Arbre généalogique** – graphiques d'arbre interactifs
 - **ADN** – outils d'analyse de correspondance ADN
-- **Chat** – assistant de chat IA (si activé par l'administrateur)
+- **Listes** – parcourir tous les objets de chaque type : Personnes, Familles, Événements, Lieux, Sources, Citations, Dépôts, Notes
+- **Médias** – parcourir tous les fichiers multimédias (photos, documents, etc.)
+- **Assistant** – assistant de chat IA (si activé par l'administrateur)
 - **Historique** – objets récemment modifiés
-- **Favoris** – vos favoris enregistrés
+- **Signets** – vos signets enregistrés
 - **Tâches** – tâches de recherche
-- **Exporter** – exporter l'arbre généalogique
 - **Rapports** – générer des rapports
+- **Exporter** – exporter l'arbre généalogique
 - **Révisions** – historique complet des transactions (visible pour les membres et au-dessus)
-- **Étiquettes** – gérer les étiquettes (visible pour les éditeurs et au-dessus)
 - **Notifications** – notifications passées
+
+!!! note
+    Les étiquettes ne sont plus gérées depuis la barre latérale – la gestion des étiquettes a été déplacée vers [Paramètres d'administration](../administration/settings.md#tags) (Propriétaire/Administrateur uniquement). Consultez [Étiquettes](tags.md) pour savoir comment les étiquettes sont utilisées.
 
 ### Barre d'application supérieure
 
@@ -47,7 +50,7 @@ Le tableau de bord s'affiche lorsque vous vous connectez pour la première fois.
 
 **Colonne de gauche :**
 
-- **Carte de la personne d'accueil** – affiche le nom, la photo (si disponible) et les faits clés de votre personne d'accueil choisie, avec un lien vers son profil complet et une navigation rapide vers l'arbre généalogique. Cliquez sur le bouton **Définir la personne d'accueil** sur la carte pour rechercher et sélectionner une autre personne.
+- **Carte de la personne d'accueil** – montre le nom, la photo (si disponible) et les faits clés de votre personne d'accueil choisie, avec un lien vers son profil complet et une navigation rapide vers l'arbre généalogique. Cliquez sur le bouton **Définir la personne d'accueil** sur la carte pour rechercher et sélectionner une autre personne.
 - **Anniversaires** – anniversaires et anniversaires à venir de l'arbre, basés sur la date d'aujourd'hui.
 - **Récemment modifié** – une courte liste des objets les plus récemment modifiés, utile pour suivre les modifications collaboratives.
 
@@ -56,7 +59,7 @@ Le tableau de bord s'affiche lorsque vous vous connectez pour la première fois.
 - **Articles de blog récents** – les dernières entrées du [blog](blog.md), s'il y en a.
 - **Statistiques** – un résumé des comptes d'objets dans l'arbre (nombre de personnes, familles, événements, etc.).
 
-Si l'administrateur de l'arbre a configuré une **note de page d'accueil** et/ou une **image de page d'accueil**, celles-ci sont affichées de manière proéminente au-dessus des colonnes principales. L'image apparaît à côté du texte de la note lorsque les deux sont définis. Consultez [Paramètres d'administration](../administration/settings.md#customization) pour savoir comment les configurer.
+Si l'administrateur de l'arbre a configuré une **note de page d'accueil** et/ou une **image de page d'accueil**, celles-ci sont affichées en évidence au-dessus des colonnes principales. L'image apparaît à côté du texte de la note lorsque les deux sont définis. Consultez [Paramètres d'administration](../administration/settings.md#customization) pour savoir comment configurer cela.
 
 !!! tip
     Si l'arbre est vide et que vous avez des permissions d'édition, le tableau de bord affiche une invite "Commencer" avec des boutons pour ajouter votre première personne ou importer un fichier d'arbre généalogique.

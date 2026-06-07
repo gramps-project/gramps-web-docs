@@ -3,16 +3,15 @@
 !!! bilgi
     AI sohbeti, Gramps Web API sürüm 2.5.0 veya daha yüksek bir sürüm gerektirir. Sürüm 3.6.0, daha akıllı etkileşimler için araç çağırma yeteneklerini tanıttı.
 
-
-Gramps Web API, büyük dil modelleri (LLM) aracılığıyla soybilim veritabanı hakkında sorular sormayı destekler; bu, araç çağırma ile birleştirilmiş bir teknik olan retrieval-augmented generation (RAG) kullanılarak gerçekleştirilir.
+Gramps Web API, büyük dil modelleri (LLM) aracılığıyla soybilim veritabanı hakkında soru sormayı destekler. Bu, araç çağırma ile birleştirilmiş bir teknik olan geri alma artırımlı üretim (RAG) ile gerçekleştirilir.
 
 ## Nasıl çalışır
 
 AI asistanı, iki tamamlayıcı yaklaşım kullanır:
 
-**Retrieval-Augmented Generation (RAG)**: Bir *vektör gömme modeli*, Gramps veritabanındaki tüm nesnelerin anlamını kodlayan sayısal vektörler biçiminde bir dizin oluşturur. Bir kullanıcı bir soru sorduğunda, o soru da bir vektöre dönüştürülür ve veritabanındaki nesnelerle karşılaştırılır. Bu *anlamsal arama*, soruyla en anlamsal olarak benzer nesneleri döndürür.
+**Geri Alma Artırımlı Üretim (RAG)**: Bir *vektör gömme modeli*, Gramps veritabanındaki tüm nesnelerin anlamını kodlayan sayısal vektörler biçiminde bir dizin oluşturur. Bir kullanıcı bir soru sorduğunda, o soru da bir vektöre dönüştürülür ve veritabanındaki nesnelerle karşılaştırılır. Bu *anlamsal arama*, soruyla en anlamsal olarak benzer nesneleri döndürür.
 
-**Araç Çağırma (v3.6.0+)**: AI asistanı artık soybilim verilerinizi doğrudan sorgulamak için özel araçlar kullanabilir. Bu araçlar, asistanın veritabanında arama yapmasına, belirli kriterlere göre insanlar/olaylar/aileler/yerler filtrelemesine, bireyler arasındaki ilişkileri hesaplamasına ve ayrıntılı nesne bilgilerini almasına olanak tanır. Bu, asistanın karmaşık soybilim sorularını doğru bir şekilde yanıtlamasını çok daha yetenekli hale getirir.
+**Araç Çağırma (v3.6.0+)**: AI asistanı artık soybilim verilerinizi doğrudan sorgulamak için özel araçlar kullanabilir. Bu araçlar, asistanın veritabanında arama yapmasına, belirli kriterlere göre insanlar/olaylar/aileler/yerler filtrelemesine, bireyler arasındaki ilişkileri hesaplamasına ve ayrıntılı nesne bilgilerini almasına olanak tanır. Bu, asistanın karmaşık soybilim sorularını doğru bir şekilde yanıtlayabilme yeteneğini artırır.
 
 Gramps Web API'de sohbet uç noktasını etkinleştirmek için üç adım gereklidir:
 
@@ -20,13 +19,13 @@ Gramps Web API'de sohbet uç noktasını etkinleştirmek için üç adım gerekl
 2. Anlamsal aramanın etkinleştirilmesi,
 3. Bir LLM sağlayıcısının ayarlanması.
 
-Bu üç adım sırayla aşağıda açıklanmıştır. Son olarak, bir sahip veya yönetici, [hangi kullanıcıların sohbet özelliğine erişebileceğini yapılandırmalıdır](users.md#configuring-who-can-use-ai-chat) Kullanıcıları Yönet ayarlarında.
+Bu üç adım sırayla aşağıda açıklanmıştır. Son olarak, bir sahip veya yönetici, [kullanıcıların sohbet özelliğine erişimini yapılandırmalıdır](users.md#configuring-who-can-use-ai-chat) Kullanıcıları Yönet ayarlarında.
 
 ## Gerekli bağımlılıkların yüklenmesi
 
 AI sohbeti, Sentence Transformers ve PyTorch kütüphanelerinin yüklenmesini gerektirir.
 
-Gramps Web için standart docker görüntüleri, `amd64` (örneğin 64-bit masaüstü PC) ve `arm64` (örneğin 64-bit Raspberry Pi) mimarileri için önceden yüklenmiş olarak gelir. Ne yazık ki, AI sohbeti `armv7` (örneğin 32-bit Raspberry Pi) mimarisinde PyTorch desteğinin olmaması nedeniyle desteklenmemektedir.
+Gramps Web için standart docker görüntüleri, `amd64` (örneğin 64-bit masaüstü PC) ve `arm64` (örneğin 64-bit Raspberry Pi) mimarileri için bunları önceden yüklenmiş olarak içerir. Ne yazık ki, AI sohbeti `armv7` (örneğin 32-bit Raspberry Pi) mimarisinde PyTorch desteği eksik olduğu için desteklenmemektedir.
 
 Gramps Web API'yi `pip` aracılığıyla yüklerken (Docker görüntülerini kullanırken bu gerekli değildir) gerekli bağımlılıklar şu komutla yüklenir:
 
@@ -43,35 +42,35 @@ Gerekli bağımlılıklar yüklendiyse, anlamsal aramanın etkinleştirilmesi, `
 
 Bir model seçerken dikkate alınması gereken birkaç husus vardır.
 
-- Modeli değiştirdiğinizde, ağacınız (veya çoklu ağaç kurulumunda tüm ağaçlar) için anlamsal arama dizinini manuel olarak yeniden oluşturmanız gerekir, aksi takdirde hatalarla veya anlamsız sonuçlarla karşılaşırsınız.
+- Modeli değiştirdiğinizde, ağaçlarınız için anlamsal arama dizinini manuel olarak yeniden oluşturmanız gerekir (veya çoklu ağaç yapılandırmasında tüm ağaçlar için), aksi takdirde hatalarla veya anlamsız sonuçlarla karşılaşabilirsiniz. Gramps Web, yapılandırılan gömme modelinin mevcut dizinle artık eşleşmediğini algılar ve yöneticilere [Yönetim Ayarları](../administration/settings.md#semantic-search-index) üzerinden tam bir yeniden dizinleme tetiklemeleri için sürekli bir bildirim gösterir.
 - Modeller, bir yandan doğruluk/genellik ile diğer yandan hesaplama süresi/depolama alanı arasında bir denge sağlar. Eğer Gramps Web API'yi güçlü bir GPU'ya erişimi olan bir sistemde çalıştırmıyorsanız, daha büyük modeller genellikle pratikte çok yavaş olur.
-- Veritabanınız tamamen İngilizce değilse ve tüm kullanıcılarınızın yalnızca İngilizce sohbet soruları sorması beklenmiyorsa, daha nadir olan çok dilli bir gömme modeline ihtiyacınız olacaktır; bu, saf İngilizce modellerden daha nadirdir.
+- Veritabanınızın tamamı İngilizce değilse ve tüm kullanıcılarınızın yalnızca İngilizce olarak sohbet soruları sorması beklenmiyorsa, çok dilli bir gömme modeline ihtiyacınız olacaktır; bu modeller saf İngilizce modellerine göre daha nadirdir.
 
-Model yerel önbellekte yoksa, Gramps Web API ilk kez yeni yapılandırma ile başlatıldığında indirilecektir. `sentence-transformers/distiluse-base-multilingual-cased-v2` modeli, standart docker görüntülerini kullanırken zaten yerel olarak mevcuttur. Bu model iyi bir başlangıç noktasıdır ve çok dilli girişi destekler.
+Model yerel önbellekte yoksa, Gramps Web API ilk kez yeni yapılandırma ile başlatıldığında indirilecektir. `sentence-transformers/distiluse-base-multilingual-cased-v2` modeli standart docker görüntülerini kullanırken zaten yerel olarak mevcuttur. Bu model iyi bir başlangıç noktasıdır ve çok dilli girişi destekler.
 
 Farklı modeller hakkında öğrendiklerinizi toplulukla paylaşın!
 
 !!! bilgi
-    Sentence transformers kütüphanesi önemli miktarda bellek tüketir, bu da işçi süreçlerinin öldürülmesine neden olabilir. Genel bir kural olarak, anlamsal arama etkinleştirildiğinde, her Gunicorn işçisi yaklaşık 200 MB bellek tüketirken, her celery işçisi boşta bile yaklaşık 500 MB bellek tüketir ve gömme hesaplama sırasında 1 GB'a kadar çıkabilir. Bellek kullanımını sınırlayan ayarlar için [CPU ve bellek kullanımını sınırlama](cpu-limited.md) sayfasına bakın. Ayrıca, geçici bellek kullanımındaki ani artışlar nedeniyle OOM hatalarını önlemek için yeterince büyük bir takas bölümü ayırmak önerilir.
+    Sentence transformers kütüphanesi önemli miktarda bellek tüketir, bu da işçi süreçlerinin öldürülmesine neden olabilir. Genel bir kural olarak, anlamsal arama etkinleştirildiğinde, her Gunicorn işçisi yaklaşık 200 MB bellek tüketir ve her celery işçisi, boşta bile yaklaşık 500 MB bellek tüketir ve gömme hesaplama sırasında 1 GB'a kadar çıkabilir. Bellek kullanımını sınırlayan ayarlar için [CPU ve bellek kullanımını sınırlama](cpu-limited.md) belgesine bakın. Ayrıca, geçici bellek kullanımı zirvelerinden kaynaklanan OOM hatalarını önlemek için yeterince büyük bir takas bölümü sağlamanız önerilir.
 
-## Bir LLM sağlayıcısının ayarlanması
+## Bir LLM sağlayıcısını ayarlama
 
-LLM ile iletişim, OpenAI uyumlu API'leri destekleyen Pydantic AI çerçevesini kullanır. Bu, yerel olarak dağıtılmış bir LLM'yi Ollama aracılığıyla (bkz. [Ollama OpenAI uyumluluğu](https://ollama.com/blog/openai-compatibility)) veya OpenAI, Anthropic veya Hugging Face TGI (Metin Üretim Çıkarımı) gibi barındırılan API'leri kullanmayı sağlar. LLM, `LLM_MODEL` ve `LLM_BASE_URL` yapılandırma parametreleri aracılığıyla yapılandırılır.
+LLM ile iletişim, OpenAI uyumlu API'leri destekleyen Pydantic AI çerçevesini kullanır. Bu, yerel olarak dağıtılmış bir LLM'yi Ollama aracılığıyla (bkz. [Ollama OpenAI uyumluluğu](https://ollama.com/blog/openai-compatibility)) veya OpenAI, Anthropic veya Hugging Face TGI (Metin Üretim Çıkarımı) gibi barındırılan API'ler aracılığıyla kullanmayı sağlar. LLM, `LLM_MODEL` ve `LLM_BASE_URL` yapılandırma parametreleri aracılığıyla yapılandırılır.
 
 ### OpenAI API aracılığıyla barındırılan bir LLM kullanma
 
-OpenAI API'sini kullanırken, `LLM_BASE_URL` ayarı boş bırakılabilirken, `LLM_MODEL` OpenAI modellerinden birine, örneğin `gpt-4o-mini` olarak ayarlanmalıdır. LLM, soruları yanıtlamak için hem RAG hem de araç çağırmayı kullanır: anlamsal arama sonuçlarından ilgili bilgileri seçer ve özel araçlar kullanarak veritabanını doğrudan sorgulayabilir. Derin soybilim veya tarih bilgisi gerektirmez. Bu nedenle, küçük/ucuz bir modelin yeterli olup olmadığını deneyebilirsiniz.
+OpenAI API'sini kullanırken, `LLM_BASE_URL` ayarsız bırakılabilirken, `LLM_MODEL` OpenAI modellerinden birine, örneğin `gpt-4o-mini` olarak ayarlanmalıdır. LLM, soruları yanıtlamak için hem RAG hem de araç çağırmayı kullanır: anlamsal arama sonuçlarından ilgili bilgileri seçer ve özel araçlar kullanarak veritabanını doğrudan sorgulayabilir. Derin soybilim veya tarih bilgisi gerektirmez. Bu nedenle, küçük/ucuz bir modelin yeterli olup olmadığını deneyebilirsiniz.
 
-Ayrıca bir hesap oluşturmanız, bir API anahtarı almanız ve bunu `OPENAI_API_KEY` ortam değişkeninde saklamanız gerekecek.
+Ayrıca bir hesap açmanız, bir API anahtarı almanız ve bunu `OPENAI_API_KEY` ortam değişkeninde saklamanız gerekecektir.
 
 !!! bilgi
-    `LLM_MODEL`, bir yapılandırma parametresidir; eğer bir ortam değişkeni aracılığıyla ayarlamak istiyorsanız, `GRAMPSWEB_LLM_MODEL` kullanın (bkz. [Yapılandırma](configuration.md)). `OPENAI_API_KEY`, bir yapılandırma parametresi değil, Pydantic AI kütüphanesi tarafından doğrudan kullanılan bir ortam değişkenidir, bu nedenle ön ek kullanılmamalıdır.
+    `LLM_MODEL` bir yapılandırma parametresidir; eğer bir ortam değişkeni aracılığıyla ayarlamak istiyorsanız, `GRAMPSWEB_LLM_MODEL` kullanın (bkz. [Yapılandırma](configuration.md)). `OPENAI_API_KEY` bir yapılandırma parametresi değil, Pydantic AI kütüphanesi tarafından doğrudan kullanılan bir ortam değişkenidir, bu nedenle ön ek olmamalıdır.
 
 ### Mistral AI kullanma
 
-Mistral AI'nin barındırılan modellerini kullanmak için, `LLM_MODEL` ayarını yaparken model adının önüne `mistral:` ekleyin.
+Mistral AI'nin barındırılan modellerini kullanmak için, `LLM_MODEL` ayarlarken model adını `mistral:` ile ön ekleyin.
 
-Bir Mistral AI hesabı oluşturmanız, bir API anahtarı almanız ve bunu `MISTRAL_API_KEY` ortam değişkeninde saklamanız gerekecek. `LLM_BASE_URL` ayarını yapmanıza gerek yoktur çünkü Pydantic AI otomatik olarak doğru Mistral API uç noktasını kullanacaktır.
+Mistral AI hesabı açmanız, bir API anahtarı almanız ve bunu `MISTRAL_API_KEY` ortam değişkeninde saklamanız gerekecektir. `LLM_BASE_URL` ayarlamanıza gerek yoktur çünkü Pydantic AI otomatik olarak doğru Mistral API uç noktasını kullanacaktır.
 
 Ortam değişkenleri ile docker compose kullanırken örnek yapılandırma:
 ```yaml
@@ -83,7 +82,7 @@ environment:
 
 ### Ollama aracılığıyla yerel bir LLM kullanma
 
-[Ollama](https://ollama.com/) LLM'leri yerel olarak çalıştırmanın pratik bir yoludur. Ayrıntılar için Ollama belgelerine başvurun. LLM'lerin önemli hesaplama kaynakları gerektirdiğini ve en küçük modeller dışında tüm modellerin GPU desteği olmadan muhtemelen çok yavaş olacağını lütfen unutmayın. İhtiyaçlarınızı karşılayıp karşılamadığını görmek için [`tinyllama`](https://ollama.com/library/tinyllama) deneyebilirsiniz. Eğer yeterli değilse, daha büyük modellerden birini deneyin. Herhangi bir deneyiminizi toplulukla paylaşın!
+[Ollama](https://ollama.com/) LLM'leri yerel olarak çalıştırmanın pratik bir yoludur. Ayrıntılar için Ollama belgelerine başvurun. LLM'lerin önemli hesaplama kaynakları gerektirdiğini ve en küçük modeller dışında hepsinin GPU desteği olmadan muhtemelen çok yavaş olacağını lütfen unutmayın. İhtiyaçlarınızı karşılayıp karşılamadığını görmek için [`tinyllama`](https://ollama.com/library/tinyllama) deneyebilirsiniz. Eğer yeterli değilse, daha büyük modellerden birini deneyin. Herhangi bir deneyiminizi toplulukla paylaşın!
 
 Gramps Web'i Docker Compose ile dağıtırken, bir Ollama hizmeti ekleyebilirsiniz:
 
@@ -101,9 +100,9 @@ volumes:
     ollama_data:
 ```
 
-Ardından `LLM_BASE_URL` yapılandırma parametresini `http://ollama:11434/v1` olarak ayarlayın. `LLM_MODEL`'i Ollama tarafından desteklenen bir model olarak ayarlayın ve konteynerinizde `ollama pull <model>` komutuyla indirin. Son olarak, `OPENAI_API_KEY`'i `ollama` olarak ayarlayın.
+Ardından, `LLM_BASE_URL` yapılandırma parametresini `http://ollama:11434/v1` olarak ayarlayın. `LLM_MODEL`'i Ollama tarafından desteklenen bir model olarak ayarlayın ve konteynerinizde `ollama pull <model>` ile indirin. Son olarak, `OPENAI_API_KEY`'i `ollama` olarak ayarlayın.
 
-Ollama ile ilgili sorunları gidermek için, Ollama hizmeti ortamında `OLLAMA_DEBUG=1` ortam değişkenini ayarlayarak hata ayıklama günlüğünü etkinleştirebilirsiniz.
+Ollama ile ilgili sorunları gidermek için, Ollama hizmeti ortamında `OLLAMA_DEBUG=1` ortam değişkenini ayarlayarak hata ayıklama kaydını etkinleştirebilirsiniz.
 
 !!! bilgi
     Gramps Web AI sohbeti için Ollama kullanıyorsanız, lütfen topluluğu desteklemek için bu belgeleri eksik ayrıntılarla tamamlayın.

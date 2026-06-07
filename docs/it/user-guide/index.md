@@ -8,7 +8,7 @@ hide:
 Questa sezione documenta le funzionalità disponibili per gli utenti di Gramps Web.
 
 !!! note "Non vedi tutte le funzionalità?"
-    Gramps Web utilizza un sistema di permessi basato sui ruoli. Alcune funzionalità – come la modifica dei dati, la gestione dei tag o la visualizzazione di registri privati – sono disponibili solo per gli utenti con permessi sufficienti. Puoi controllare il tuo ruolo attuale in [Impostazioni utente](settings.md). Se hai bisogno di maggior accesso, contatta il proprietario del tuo albero o l'amministratore. Vedi [Sistema utenti](../install_setup/users.md) per una descrizione di tutti i ruoli.
+    Gramps Web utilizza un sistema di permessi basato sui ruoli. Alcune funzionalità – come la modifica dei dati, la gestione dei tag o la visualizzazione di record privati – sono disponibili solo per gli utenti con permessi sufficienti. Puoi controllare il tuo ruolo attuale in [Impostazioni utente](settings.md). Se hai bisogno di maggior accesso, contatta il proprietario del tuo albero o l'amministratore. Vedi [Sistema utente](../install_setup/users.md) per una descrizione di tutti i ruoli.
 
 ## Navigare nell'interfaccia
 
@@ -16,34 +16,37 @@ Questa sezione documenta le funzionalità disponibili per gli utenti di Gramps W
 
 La barra laterale (o menu hamburger su mobile) è il modo principale per spostarsi tra le sezioni:
 
-- **Home** – il cruscotto (vedi sotto)
+- **Home** – la dashboard (vedi sotto)
 - **Blog** – storie di storia familiare scritte come post del blog
-- **Persone, Famiglie, Eventi, Luoghi, Fonti, Citazioni, Archivi, Note** – esplora tutti gli oggetti di ciascun tipo
-- **Media** – esplora tutti i file multimediali (foto, documenti, ecc.)
-- **Mappa** – vista geografica dei luoghi nell'albero
 - **Albero genealogico** – grafici interattivi dell'albero
+- **Cronologia** – vista cronologica degli eventi nell'albero (richiede una versione API di Gramps Web sufficientemente recente)
+- **Mappa** – vista geografica dei luoghi nell'albero
 - **DNA** – strumenti di analisi delle corrispondenze del DNA
-- **Chat** – assistente chat AI (se abilitato dall'amministratore)
-- **Storia** – oggetti modificati di recente
+- **Elenco** – sfoglia tutti gli oggetti di ciascun tipo: Persone, Famiglie, Eventi, Luoghi, Fonti, Citazioni, Archivi, Note
+- **Media** – sfoglia tutti i file multimediali (foto, documenti, ecc.)
+- **Assistente** – assistente chat AI (se abilitato dall'amministratore)
+- **Storia** – oggetti recentemente modificati
 - **Segnalibri** – i tuoi segnalibri salvati
-- **Compiti** – compiti di ricerca
+- **Attività** – attività di ricerca
+- **Report** – genera report
 - **Esporta** – esporta l'albero genealogico
-- **Rapporti** – genera rapporti
 - **Revisioni** – cronologia completa delle transazioni (visibile ai membri e superiori)
-- **Tag** – gestisci i tag (visibile agli editor e superiori)
 - **Notifiche** – notifiche passate
+
+!!! note
+    I tag non sono più gestiti dalla barra laterale – la gestione dei tag è stata spostata in [Impostazioni di amministrazione](../administration/settings.md#tags) (solo Proprietario/Amministratore). Vedi [Tag](tags.md) per come vengono utilizzati i tag.
 
 ### Barra superiore dell'app
 
 La barra in cima a ogni pagina contiene:
 
-- **Aggiungi** (icona del più, visibile ai collaboratori e superiori) – apre un menu per creare un nuovo oggetto: Persona, Famiglia, Evento, Luogo, Fonte, Citazione, Archivio, Nota, Oggetto multimediale o Compito
+- **Aggiungi** (icona del più, visibile ai collaboratori e superiori) – apre un menu per creare un nuovo oggetto: Persona, Famiglia, Evento, Luogo, Fonte, Citazione, Archivio, Nota, Oggetto multimediale o Attività
 - **Cerca** (lente di ingrandimento) – apre la pagina di ricerca
 - **Icona utente** – apre il menu delle impostazioni: Impostazioni utente, Amministrazione (solo per i proprietari), Gestisci utenti (solo per i proprietari), Informazioni di sistema
 
-## La home page (cruscotto)
+## La pagina principale (dashboard)
 
-Il cruscotto viene mostrato quando accedi per la prima volta. Ha due colonne:
+La dashboard viene mostrata quando accedi per la prima volta. Ha due colonne:
 
 **Colonna sinistra:**
 
@@ -53,10 +56,10 @@ Il cruscotto viene mostrato quando accedi per la prima volta. Ha due colonne:
 
 **Colonna destra:**
 
-- **Post del blog recenti** – le ultime voci dal [blog](blog.md), se esistono.
-- **Statistiche** – un riepilogo del conteggio degli oggetti nell'albero (numero di persone, famiglie, eventi, ecc.).
+- **Post recenti del blog** – le ultime voci dal [blog](blog.md), se esistono.
+- **Statistiche** – un riepilogo dei conteggi degli oggetti nell'albero (numero di persone, famiglie, eventi, ecc.).
 
-Se l'amministratore dell'albero ha configurato una **nota della home page** e/o un **immagine della home page**, queste vengono visualizzate in modo prominente sopra le colonne principali. L'immagine appare accanto al testo della nota quando entrambi sono impostati. Vedi [Impostazioni di amministrazione](../administration/settings.md#customization) per come configurare questi elementi.
+Se l'amministratore dell'albero ha configurato una **nota della pagina principale** e/o un **immagine della pagina principale**, queste vengono visualizzate in modo prominente sopra le colonne principali. L'immagine appare accanto al testo della nota quando entrambi sono impostati. Vedi [Impostazioni di amministrazione](../administration/settings.md#customization) per come configurare questi elementi.
 
 !!! tip
-    Se l'albero è vuoto e hai permessi di modifica, il cruscotto mostra un messaggio "Inizia" con pulsanti per aggiungere la tua prima persona o importare un file dell'albero genealogico.
+    Se l'albero è vuoto e hai permessi di modifica, la dashboard mostra un messaggio "Inizia" con pulsanti per aggiungere la tua prima persona o importare un file di albero genealogico.

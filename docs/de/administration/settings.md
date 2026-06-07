@@ -1,8 +1,8 @@
-# Verwaltungseinstellungen
+# Administrations-Einstellungen
 
-Die **Einstellungen > Verwaltung**-Seite ist über das Benutzersymbol in der oberen App-Leiste zugänglich. Sie ist nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar und bietet Werkzeuge zur Verwaltung der Familienstammbaum-Datenbank.
+Die **Einstellungen > Administration**-Seite ist über das Benutzersymbol in der oberen App-Leiste zugänglich. Sie ist nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar und bietet Werkzeuge zur Verwaltung der Familienstammbaum-Datenbank.
 
-Die Seite ist in zusammenklappbare Abschnitte organisiert. Klicken Sie auf einen Abschnittsüberschrift, um ihn zu erweitern.
+Die Seite ist in zusammenklappbare Abschnitte organisiert. Klicken Sie auf einen Abschnittsheader, um ihn zu erweitern.
 
 ## Daten
 
@@ -10,12 +10,12 @@ Behandelt Nutzungskontingente, Datenimport und Medienverwaltungsdateien.
 
 ### Nutzungskontingente
 
-Oben im Abschnitt werden die aktuellen Nutzungen im Verhältnis zu den konfigurierten Limits angezeigt:
+Oben im Abschnitt wird die aktuelle Nutzung im Verhältnis zu den konfigurierten Limits angezeigt:
 
 - **Personen** – die Anzahl der Personenobjekte im Baum im Vergleich zur konfigurierten maximalen Anzahl (∞, wenn unbegrenzt)
 - **Medien-Speicher** – die Gesamtgröße der hochgeladenen Mediendateien im Vergleich zum konfigurierten Speicherkontingent (∞, wenn unbegrenzt)
 
-Die Kontingente werden vom Serveradministrator festgelegt; siehe [Serverkonfiguration](../install_setup/configuration.md) für Details.
+Kontingente werden vom Serveradministrator festgelegt; siehe [Serverkonfiguration](../install_setup/configuration.md) für Details.
 
 ### Daten importieren
 
@@ -28,7 +28,7 @@ Dieser Abschnitt zeigt:
 - Die Gesamtzahl der Medienobjekte im Baum und ob einige eine Prüfziffer vermissen
 - Die Anzahl der Medienobjekte, deren zugehörige Datei auf dem Server fehlt
 
-Ein grünes Häkchen zeigt an, dass alles in Ordnung ist. Wenn Probleme erkannt werden, werden Links zu den betroffenen Objekten angezeigt. Fehlende Prüfziffern treten typischerweise auf, wenn Daten aus einem Format wie GEDCOM importiert wurden, das Medienreferenzen, aber nicht die tatsächlichen Dateien enthält. Die fehlenden Dateien können über die Funktion Medienarchiv importieren hochgeladen werden.
+Ein grünes Häkchen zeigt an, dass alles in Ordnung ist. Wenn Probleme festgestellt werden, werden Links zu den betroffenen Objekten angezeigt. Fehlende Prüfziffern treten typischerweise auf, wenn Daten aus einem Format wie GEDCOM importiert wurden, das Medienreferenzen, aber nicht die tatsächlichen Dateien enthält. Die fehlenden Dateien können über die Funktion Medienarchiv importieren hochgeladen werden.
 
 ### Medienarchiv importieren
 
@@ -47,21 +47,21 @@ Klicken Sie auf **Suchindex aktualisieren**, um einen vollständigen Neuaufbau a
 Wenn der Server [semantische (KI-gestützte) Suche aktiviert hat](../install_setup/configuration.md), erscheint ein zusätzlicher Abschnitt mit zwei Aktionen:
 
 - **Semantischen Suchindex neu generieren** – baut den gesamten semantischen Index von Grund auf neu. Dies ist rechenintensiv und kann lange dauern.
-- **Semantischen Suchindex aktualisieren** – führt ein inkrementelles Update durch, das nur Objekte hinzufügt, die noch nicht indiziert sind. Schneller als ein vollständiger Neuaufbau.
+- **Semantischen Suchindex aktualisieren** – führt ein inkrementelles Update durch, bei dem nur Objekte hinzugefügt werden, die noch nicht indiziert sind. Schneller als ein vollständiger Neuaufbau.
 
 ## Baum-Einstellungen
 
 ### Name des Familienstammbaums
 
-!!! note
-    Das Umbenennen des Baums funktioniert nur in einer [Multi-Baum-Konfiguration](../install_setup/multi-tree.md) oder wenn `TREE_ID` explizit in der [Serverkonfiguration](../install_setup/configuration.md) festgelegt ist. Bei einer Standardinstallation mit nur einem Baum ohne festgelegte `TREE_ID` wird ein Fehler angezeigt.
+!!! Hinweis
+    Das Umbenennen des Baums funktioniert nur in einer [Multi-Baum-Installation](../install_setup/multi-tree.md) oder wenn `TREE_ID` explizit in der [Serverkonfiguration](../install_setup/configuration.md) festgelegt ist. Bei einer Standardinstallation mit nur einem Baum, bei der `TREE_ID` nicht festgelegt ist, tritt ein Fehler auf.
 
-Dies ermöglicht das Ändern des Namens der zugrunde liegenden Gramps-Familienstammbaum-Datenbank. Geben Sie einen neuen Namen ein und klicken Sie auf **Umbenennen**, um die Änderung anzuwenden.
+Dies ermöglicht das Ändern des Namens der zugrunde liegenden Gramps-Familienstammbaum-Datenbank. Geben Sie einen neuen Namen ein und klicken Sie auf **Umbenennen**, um die Änderungen anzuwenden.
 
-!!! tip
+!!! Tipp
     Wenn Sie nur den Namen ändern möchten, der in der App-Leiste angezeigt wird, ohne die Datenbank umzubenennen, verwenden Sie stattdessen die Einstellung [App-Titel](#app-title).
 
-### Informationen zum Forscher
+### Forscherinformationen
 
 Legen Sie den Namen, die Adresse und die Kontaktdaten des Hauptforschers fest. Diese Informationen sind in Exporten (z. B. GEDCOM-Dateien) eingebettet.
 
@@ -69,31 +69,31 @@ Legen Sie den Namen, die Adresse und die Kontaktdaten des Hauptforschers fest. D
 
 ### Farbthemen
 
-Legen Sie eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps Web-Oberfläche fest. Diese Farben werden allen Benutzern dieses Baums angewendet und treten sofort nach dem Speichern in Kraft.
+Legen Sie eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps Web-Oberfläche fest. Diese Farben werden für alle Benutzer dieses Baums angewendet und treten sofort nach dem Speichern in Kraft.
 
-Verwenden Sie die Farbauswahl, um Farben auszuwählen, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Zurücksetzen**, um die Standardwerte wiederherzustellen.
+Verwenden Sie die Farbauswähler, um Farben auszuwählen, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Zurücksetzen**, um die Standardwerte wiederherzustellen.
 
 ### App-Titel
 
-Legen Sie einen benutzerdefinierten Titel für die Anwendung fest. Wenn festgelegt, überschreibt dies den Namen des Familienstammbaums in der Titelleiste des Browsers und der oberen App-Leiste.
+Legen Sie einen benutzerdefinierten Titel für die Anwendung fest. Wenn festgelegt, überschreibt dies den Namen des Familienstammbaums in der Titelleiste des Browsers und in der oberen App-Leiste.
 
-Geben Sie einen Titel ein und klicken Sie auf **Speichern**. Lassen Sie das Feld leer, um den Standard (den Namen des Familienstammbaums) zu verwenden.
+Geben Sie einen Titel ein und klicken Sie auf **Speichern**. Lassen Sie das Feld leer, um den Standardwert (den Namen des Familienstammbaums) zu verwenden.
 
-### Hinweis auf der Startseite
+### Notiz auf der Startseite
 
-Wählen Sie ein Gramps **Hinweis**-Objekt aus, das auf der Startseite des Dashboards angezeigt werden soll. Der Inhalt des Hinweises wird unter den Hauptspalten des Dashboards gerendert und ist für alle Benutzer sichtbar, die Zugriff auf den Baum haben.
+Wählen Sie ein Gramps **Notiz**-Objekt aus, das auf der Startseite des Dashboards angezeigt werden soll. Der Inhalt der Notiz wird unter den Hauptspalten des Dashboards gerendert und ist für alle Benutzer sichtbar, die Zugriff auf den Baum haben.
 
-Verwenden Sie den Objektauswähler, um nach einem Hinweis zu suchen und ihn auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um den aktuellen Hinweis auf der Startseite zu löschen.
+Verwenden Sie den Objektauswähler, um nach einer Notiz zu suchen und eine auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um die aktuelle Notiz auf der Startseite zu löschen.
 
 ### Bild auf der Startseite
 
-Wählen Sie ein Gramps **Medien**-Objekt aus, das als Bild auf der Startseite des Dashboards angezeigt werden soll. In Kombination mit einem Hinweis auf der Startseite erscheint das Bild neben dem Hinweistext. Ohne einen Hinweis wird nur das Bild angezeigt.
+Wählen Sie ein Gramps **Medien**-Objekt aus, das als Bild auf der Startseite des Dashboards angezeigt werden soll. In Kombination mit einer Notiz auf der Startseite erscheint das Bild neben dem Notiztext. Ohne eine Notiz wird nur das Bild angezeigt.
 
-Verwenden Sie den Objektauswähler, um nach einem Medienobjekt zu suchen und es auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um das aktuelle Bild auf der Startseite zu löschen.
+Verwenden Sie den Objektauswähler, um nach einem Medienobjekt zu suchen und eines auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um das aktuelle Bild auf der Startseite zu löschen.
 
-### Export-/Importeinstellungen
+### Export-/Import-Einstellungen
 
-Baumebene Einstellungen (App-Titel, Farbthemen, Hinweis/Bild auf der Startseite usw.) können als JSON-Datei zur Sicherung oder zum Kopieren in eine andere Gramps Web-Instanz exportiert werden.
+Baum-Einstellungen (App-Titel, Farbthemen, Notiz/Bild auf der Startseite usw.) können als JSON-Datei für Backups oder zum Kopieren in eine andere Gramps Web-Instanz exportiert werden.
 
 - Klicken Sie auf **Einstellungen exportieren**, um die aktuellen Einstellungen als JSON-Datei herunterzuladen.
 - Klicken Sie auf **Baumeinstellungen importieren**, um eine zuvor exportierte JSON-Datei hochzuladen und die Einstellungen anzuwenden.
@@ -107,26 +107,39 @@ Dieses Tool überprüft die Gramps-Datenbank auf interne Inkonsistenzen und behe
 Klicken Sie auf **Überprüfen und Reparieren** und warten Sie, bis der Fortschrittsindikator abgeschlossen ist. Das Ergebnis wird unter dem Button angezeigt:
 
 - Wenn keine Fehler gefunden wurden, wird eine Bestätigungsnachricht angezeigt.
-- Wenn Fehler gefunden wurden, wird eine Zusammenfassung der angewendeten Korrekturen angezeigt.
+- Wenn Fehler gefunden wurden, wird eine Zusammenfassung der durchgeführten Korrekturen angezeigt.
 
 Führen Sie dieses Tool aus, wenn Sie unerwartete Fehler oder Verhaltensweisen feststellen, die durch Datenbankinkonsistenzen verursacht werden könnten, wie z. B. fehlende Beziehungen zwischen Objekten.
 
+## Etiketten
+
+### Etiketten verwalten
+
+Erstellen, umbenennen, umfärben und löschen Sie [Etiketten](../user-guide/tags.md) für den Familienstammbaum. Etiketten werden in der Gramps-Datenbank gespeichert, die von allen Benutzern geteilt wird, und sind vollständig mit Gramps Desktop kompatibel.
+
+Klicken Sie auf **Neues Etikett**, um ein Etikett zu erstellen. Verwenden Sie die Steuerelemente neben einem vorhandenen Etikett, um es umzubenennen (Bleistiftsymbol), seine Farbe zu ändern (Farbauswähler) oder es zu löschen (Löschsymbol).
+
+!!! Hinweis
+    Das Löschen eines Etiketts entfernt es von allen Objekten, auf die es angewendet wurde.
+
+Siehe [Etiketten](../user-guide/tags.md) für Informationen, wie Etiketten in Gramps Web verwendet werden, einschließlich der speziellen Etiketten `Blog` und `ToDo`.
+
 ## Gefahrenzone
 
-!!! danger
+!!! Gefahr
     Aktionen in der Gefahrenzone sind **irreversibel**. Machen Sie ein Backup, bevor Sie fortfahren.
 
 ### Alle Objekte löschen
 
-Entfernt Objekte aus dem Familienstammbaum. Ein Klick auf **Löschen** öffnet einen Dialog, in dem Sie wählen können, ob Sie löschen möchten:
+Entfernt Objekte aus dem Familienstammbaum. Durch Klicken auf **Löschen** wird ein Dialog geöffnet, in dem Sie auswählen können, ob Sie löschen möchten:
 
-- **Alle Objekte** – leert den Baum vollständig
-- **Bestimmte Objekttypen** – zum Beispiel nur Ereignisse oder nur Medienobjekte
+- **Alle Objekte** – löscht den Baum vollständig
+- **Spezifische Objekttypen** – zum Beispiel nur Ereignisse oder nur Medienobjekte
 
-Sie werden aufgefordert, sich erneut zu authentifizieren (sich erneut anzumelden), um die Aktion zu bestätigen. Die Löschung wird als Hintergrundaufgabe ausgeführt und ein Fortschrittsindikator wird angezeigt.
+Sie werden aufgefordert, sich erneut zu authentifizieren (sich erneut anzumelden), um die Aktion zu bestätigen. Die Löschung wird als Hintergrundaufgabe ausgeführt, und ein Fortschrittsindikator wird angezeigt.
 
-!!! warning
-    Das Löschen nur einer Teilmenge von Objekttypen (anstatt aller Objekte auf einmal) kann bei großen Bäumen sehr lange dauern, da der Server alle Beziehungen zwischen Objekten überprüfen und aktualisieren muss.
+!!! Warnung
+    Das Löschen nur einer Teilmenge von Objekttypen (anstatt aller Objekte auf einmal) kann für große Bäume sehr lange dauern, da der Server alle Beziehungen zwischen Objekten überprüfen und aktualisieren muss.
 
-!!! tip
-    Verwenden Sie dies, um frisch zu starten, bevor Sie einen neuen Baum importieren, oder um bestimmte Objekttypen zu entfernen, die falsch importiert wurden.
+!!! Tipp
+    Verwenden Sie dies, um frisch zu starten, bevor Sie einen neuen Baum importieren, oder um spezifische Objekttypen zu entfernen, die falsch importiert wurden.

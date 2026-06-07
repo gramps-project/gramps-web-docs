@@ -1,13 +1,12 @@
 # Étiquettes
 
-Les étiquettes sont des labels qui peuvent être appliqués à tout objet dans la base de données Gramps – personnes, familles, événements, lieux, sources, citations, dépôts, notes et médias. Elles sont utiles pour regrouper et filtrer les objets. Les étiquettes sont stockées dans la base de données de l'arbre généalogique Gramps et sont partagées entre tous les utilisateurs ; elles sont également entièrement compatibles avec les étiquettes créées dans Gramps Desktop.
-
+Les étiquettes sont des labels qui peuvent être appliqués à tout objet dans la base de données Gramps – personnes, familles, événements, lieux, sources, citations, dépôts, notes et médias. Elles sont utiles pour regrouper et filtrer des objets. Les étiquettes sont stockées dans la base de données de l'arbre généalogique Gramps et sont partagées entre tous les utilisateurs ; elles sont également entièrement compatibles avec les étiquettes créées dans Gramps Desktop.
 
 ## Gestion des étiquettes
 
-La page **Étiquettes** est accessible depuis la barre latérale et n'est visible que par les utilisateurs ayant le rôle d'Éditeur ou supérieur. Elle affiche toutes les étiquettes existantes et vous permet de :
+Les étiquettes sont gérées depuis la section **Étiquettes** des [Paramètres d'administration](../administration/settings.md#tags), qui est uniquement disponible pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur. Elle affiche toutes les étiquettes existantes et vous permet de :
 
-- **Créer** une nouvelle étiquette en utilisant le bouton + (en bas à droite)
+- **Créer** une nouvelle étiquette en utilisant le bouton **Nouvelle Étiquette**
 - **Renommer** une étiquette en utilisant l'icône d'édition (crayon)
 - **Changer la couleur** d'une étiquette en utilisant le sélecteur de couleur
 - **Supprimer** une étiquette en utilisant l'icône de suppression

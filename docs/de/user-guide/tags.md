@@ -4,11 +4,11 @@ Etiketten sind Bezeichnungen, die auf jedes Objekt in der Gramps-Datenbank angew
 
 ## Verwaltung von Etiketten
 
-Die **Etiketten**-Seite ist über die Seitenleiste zugänglich und nur für Benutzer mit der Rolle Editor oder höher sichtbar. Sie zeigt alle vorhandenen Etiketten an und ermöglicht Ihnen:
+Etiketten werden im Abschnitt **Etiketten** der [Administrations-Einstellungen](../administration/settings.md#tags) verwaltet, der nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar ist. Es zeigt alle vorhandenen Etiketten an und ermöglicht Ihnen:
 
-- **Ein neues Etikett** mit der +-Schaltfläche (unten rechts) zu erstellen
+- **Ein neues Etikett** mit der Schaltfläche **Neues Etikett** zu erstellen
 - **Ein Etikett umzubenennen** mit dem Bearbeiten (Bleistift)-Symbol
-- **Die Farbe** eines Etiketts mit dem Farbauswahlwerkzeug zu ändern
+- **Die Farbe** eines Etiketts mit dem Farbwähler zu ändern
 - **Ein Etikett zu löschen** mit dem Löschsymbol
 
 !!! Hinweis
@@ -20,7 +20,7 @@ Etiketten können auf einem Objekt auf seiner Detailseite im Bearbeitungsmodus a
 
 ## Filtern nach Etikett
 
-Alle Objektlistenseiten (Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Repositories, Notizen, Medien) enthalten einen Etikettenfilter. Verwenden Sie ihn, um nur Objekte anzuzeigen, die ein bestimmtes Etikett haben.
+Alle Objektlisten-Seiten (Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Repositories, Notizen, Medien) enthalten einen Etikettenfilter. Verwenden Sie ihn, um nur Objekte anzuzeigen, die ein bestimmtes Etikett haben.
 
 ## Besondere Etiketten
 

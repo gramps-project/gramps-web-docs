@@ -26,9 +26,9 @@ A seção de importação permite que você faça o upload de um arquivo de árv
 Esta seção mostra:
 
 - O número total de objetos de mídia na árvore e se algum está sem um checksum
-- O número de objetos de mídia cujo arquivo associado está faltando no servidor
+- O número de objetos de mídia cujo arquivo associado está ausente do servidor
 
-Um sinal verde indica que está tudo em ordem. Se problemas forem detectados, links para os objetos afetados são exibidos. Checksums ausentes geralmente ocorrem quando os dados foram importados de um formato como GEDCOM que inclui referências de mídia, mas não os arquivos reais. Os arquivos ausentes podem ser enviados através do recurso de importação de arquivo de mídia.
+Um sinal verde indica que tudo está em ordem. Se problemas forem detectados, links para os objetos afetados são exibidos. Checksums ausentes geralmente ocorrem quando os dados foram importados de um formato como GEDCOM que inclui referências de mídia, mas não os arquivos reais. Os arquivos ausentes podem ser enviados via o recurso de importação de arquivo de mídia.
 
 ### Importar arquivo de mídia
 
@@ -38,7 +38,7 @@ Permite o upload de um arquivo ZIP de arquivos de mídia para preencher arquivos
 
 ### Gerenciar índice de pesquisa
 
-O Gramps Web mantém um índice de pesquisa de texto completo que normalmente é atualizado automaticamente sempre que os dados mudam. O indicador de status mostra quantos objetos estão atualmente indexados em comparação com o total de objetos.
+O Gramps Web mantém um índice de pesquisa de texto completo que normalmente é atualizado automaticamente sempre que os dados mudam. O indicador de status mostra quantos objetos estão atualmente indexados em comparação com a contagem total de objetos.
 
 Clique em **Atualizar índice de pesquisa** para acionar uma reconstrução completa. Um indicador de progresso é exibido enquanto a tarefa é executada em segundo plano. Isso geralmente é necessário apenas após uma atualização do servidor.
 
@@ -47,19 +47,19 @@ Clique em **Atualizar índice de pesquisa** para acionar uma reconstrução comp
 Se o servidor tiver [pesquisa semântica (potencializada por IA) habilitada](../install_setup/configuration.md), uma seção adicional aparece com duas ações:
 
 - **Regenerar índice de pesquisa semântica** – reconstrói todo o índice semântico do zero. Isso é computacionalmente caro e pode levar muito tempo.
-- **Atualizar índice de pesquisa semântica** – realiza uma atualização incremental, adicionando apenas objetos que ainda não foram indexados. Mais rápido do que uma reconstrução completa.
+- **Atualizar índice de pesquisa semântica** – realiza uma atualização incremental, adicionando apenas objetos ainda não indexados. Mais rápido do que uma reconstrução completa.
 
-## Configurações da árvore
+## Configurações da Árvore
 
 ### Nome da Árvore Genealógica
 
-!!! note
+!!! nota
     Renomear a árvore só funciona em uma [configuração de múltiplas árvores](../install_setup/multi-tree.md) ou quando `TREE_ID` está explicitamente definido na [configuração do servidor](../install_setup/configuration.md). Em uma instalação padrão de árvore única sem `TREE_ID` definido, isso gerará um erro.
 
-Isso permite alterar o nome do banco de dados da árvore genealógica do Gramps subjacente. Insira um novo nome e clique em **Renomear** para aplicar.
+Isso permite alterar o nome do banco de dados da árvore genealógica Gramps subjacente. Insira um novo nome e clique em **Renomear** para aplicar.
 
-!!! tip
-    Se você só quiser mudar o nome exibido na barra do aplicativo sem renomear o banco de dados, use a configuração [Título do aplicativo](#app-title) em vez disso.
+!!! dica
+    Se você só quiser mudar o nome exibido na barra do aplicativo sem renomear o banco de dados, use a configuração de [Título do aplicativo](#app-title) em vez disso.
 
 ### Informações do Pesquisador
 
@@ -71,7 +71,7 @@ Defina o nome, endereço e detalhes de contato do pesquisador principal. Essas i
 
 Defina uma **cor primária** e uma **cor de destaque** personalizadas para a interface do Gramps Web. Essas cores são aplicadas a todos os usuários desta árvore e entram em vigor imediatamente após a salvamento.
 
-Use os seletores de cores para escolher cores, depois clique em **Salvar**. Clique em **Redefinir** para reverter aos padrões.
+Use os seletores de cores para escolher cores, depois clique em **Salvar**. Clique em **Redefinir** para voltar aos padrões.
 
 ### Título do aplicativo
 
@@ -93,7 +93,7 @@ Use o seletor de objetos para pesquisar e escolher um objeto de mídia, depois s
 
 ### Configurações de Exportação/Importação
 
-As configurações em nível de árvore (título do aplicativo, cores do tema, nota/imagem da página inicial, etc.) podem ser exportadas como um arquivo JSON para backup ou para copiar para outra instância do Gramps Web.
+As configurações de nível de árvore (título do aplicativo, cores do tema, nota/imagem da página inicial, etc.) podem ser exportadas como um arquivo JSON para backup ou para copiar para outra instância do Gramps Web.
 
 - Clique em **Exportar configurações** para baixar as configurações atuais como um arquivo JSON.
 - Clique em **Importar configurações da árvore** para fazer o upload de um arquivo JSON exportado anteriormente e aplicar as configurações.
@@ -104,17 +104,30 @@ As configurações em nível de árvore (título do aplicativo, cores do tema, n
 
 Esta ferramenta verifica o banco de dados do Gramps em busca de inconsistências internas e corrige aquelas que pode – análogo à ferramenta [Verificar e Reparar Banco de Dados](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) no Gramps Desktop.
 
-Clique em **Verificar e Reparar** e aguarde a conclusão do indicador de progresso. O resultado é exibido abaixo do botão:
+Clique em **Verificar e Reparar** e aguarde o indicador de progresso completar. O resultado é exibido abaixo do botão:
 
 - Se nenhum erro for encontrado, uma mensagem de confirmação é exibida.
 - Se erros forem encontrados, um resumo das correções aplicadas é exibido.
 
 Execute esta ferramenta se você encontrar erros ou comportamentos inesperados que podem ser causados por inconsistências no banco de dados, como relacionamentos ausentes entre objetos.
 
+## Etiquetas
+
+### Gerenciar etiquetas
+
+Crie, renomeie, mude a cor e exclua [etiquetas](../user-guide/tags.md) para a árvore genealógica. As etiquetas são armazenadas no banco de dados do Gramps, compartilhadas entre todos os usuários e totalmente compatíveis com o Gramps Desktop.
+
+Clique em **Nova Etiqueta** para criar uma etiqueta. Use os controles ao lado de uma etiqueta existente para renomeá-la (ícone de lápis), mudar sua cor (seletor de cores) ou excluí-la (ícone de exclusão).
+
+!!! nota
+    Excluir uma etiqueta a remove de todos os objetos aos quais foi aplicada.
+
+Consulte [Etiquetas](../user-guide/tags.md) para saber como as etiquetas são usadas em todo o Gramps Web, incluindo as etiquetas especiais `Blog` e `ToDo`.
+
 ## Zona de Perigo
 
-!!! danger
-    Ações na Zona de Perigo são **irreversíveis**. Faça um backup antes de prosseguir.
+!!! perigo
+    As ações na Zona de Perigo são **irreversíveis**. Faça um backup antes de prosseguir.
 
 ### Excluir todos os objetos
 
@@ -123,10 +136,10 @@ Remove objetos da árvore genealógica. Clicar em **Excluir** abre um diálogo o
 - **Todos os objetos** – limpa completamente a árvore
 - **Tipos de objetos específicos** – por exemplo, apenas eventos ou apenas objetos de mídia
 
-Você será solicitado a reautenticar (fazer login novamente) para confirmar a ação. A exclusão é executada como uma tarefa em segundo plano e um indicador de progresso é exibido.
+Você será solicitado a re-autenticar (fazer login novamente) para confirmar a ação. A exclusão é executada como uma tarefa em segundo plano e um indicador de progresso é exibido.
 
-!!! warning
+!!! aviso
     Excluir apenas um subconjunto de tipos de objetos (em vez de todos os objetos de uma vez) pode levar muito tempo para árvores grandes, pois o servidor deve verificar e atualizar todos os relacionamentos entre objetos.
 
-!!! tip
+!!! dica
     Use isso para começar do zero antes de importar uma nova árvore, ou para remover tipos de objetos específicos que foram importados incorretamente.

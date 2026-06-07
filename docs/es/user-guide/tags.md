@@ -2,15 +2,14 @@
 
 Las etiquetas son etiquetas que se pueden aplicar a cualquier objeto en la base de datos de Gramps: personas, familias, eventos, lugares, fuentes, citas, repositorios, notas y medios. Son útiles para agrupar y filtrar objetos. Las etiquetas se almacenan en la base de datos del árbol genealógico de Gramps y se comparten entre todos los usuarios; también son completamente compatibles con las etiquetas creadas en Gramps Desktop.
 
-
 ## Gestión de etiquetas
 
-La página de **Etiquetas** es accesible desde la barra lateral y solo es visible para los usuarios con el rol de Editor o superior. Muestra todas las etiquetas existentes y te permite:
+Las etiquetas se gestionan desde la sección **Etiquetas** de [Configuración de Administración](../administration/settings.md#tags), que solo está disponible para usuarios con el rol de Propietario o Administrador. Muestra todas las etiquetas existentes y te permite:
 
-- **Crear** una nueva etiqueta usando el botón + (esquina inferior derecha)
-- **Renombrar** una etiqueta usando el icono de editar (lápiz)
+- **Crear** una nueva etiqueta usando el botón **Nueva Etiqueta**
+- **Renombrar** una etiqueta usando el ícono de editar (lápiz)
 - **Cambiar el color** de una etiqueta usando el selector de color
-- **Eliminar** una etiqueta usando el icono de eliminar
+- **Eliminar** una etiqueta usando el ícono de eliminar
 
 !!! nota
     Eliminar una etiqueta la quita de todos los objetos a los que se aplicó.

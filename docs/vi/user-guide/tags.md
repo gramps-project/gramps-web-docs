@@ -5,19 +5,19 @@ Thẻ là nhãn có thể được áp dụng cho bất kỳ đối tượng nà
 
 ## Quản lý thẻ
 
-Trang **Thẻ** có thể truy cập từ thanh bên và chỉ hiển thị cho người dùng có vai trò Biên tập viên hoặc cao hơn. Nó hiển thị tất cả các thẻ hiện có và cho phép bạn:
+Thẻ được quản lý từ phần **Thẻ** của [Cài đặt Quản trị](../administration/settings.md#tags), chỉ có sẵn cho người dùng có vai trò Chủ sở hữu hoặc Quản trị viên. Nó hiển thị tất cả các thẻ hiện có và cho phép bạn:
 
-- **Tạo** một thẻ mới bằng cách sử dụng nút + (góc dưới bên phải)
+- **Tạo** một thẻ mới bằng cách sử dụng nút **Thẻ Mới**
 - **Đổi tên** một thẻ bằng cách sử dụng biểu tượng chỉnh sửa (bút chì)
 - **Thay đổi màu sắc** của một thẻ bằng cách sử dụng bộ chọn màu
 - **Xóa** một thẻ bằng cách sử dụng biểu tượng xóa
 
 !!! note
-    Xóa một thẻ sẽ loại bỏ nó khỏi tất cả các đối tượng mà nó đã được áp dụng.
+    Việc xóa một thẻ sẽ loại bỏ nó khỏi tất cả các đối tượng mà nó đã được áp dụng.
 
 ## Áp dụng thẻ cho đối tượng
 
-Thẻ có thể được áp dụng hoặc xóa khỏi một đối tượng trên trang chi tiết của nó khi ở chế độ chỉnh sửa.
+Thẻ có thể được áp dụng hoặc gỡ bỏ khỏi một đối tượng trên trang chi tiết của nó khi ở chế độ chỉnh sửa.
 
 ## Lọc theo thẻ
 
@@ -30,4 +30,4 @@ Hai thẻ có ý nghĩa đặc biệt trong Gramps Web:
 - **`Blog`** – bất kỳ nguồn nào được gán thẻ `Blog` sẽ được coi là một bài viết blog và xuất hiện trong chế độ xem [Blog](blog.md)
 - **`ToDo`** – bất kỳ ghi chú nào được gán thẻ `ToDo` sẽ được coi là một nhiệm vụ nghiên cứu và xuất hiện trong chế độ xem [Nhiệm vụ](tasks.md)
 
-Các thẻ này được tạo tự động khi bạn lần đầu tiên sử dụng các tính năng Blog hoặc Nhiệm vụ. Đổi tên hoặc xóa chúng sẽ làm hỏng tính năng tương ứng.
+Các thẻ này được tạo tự động khi bạn lần đầu tiên sử dụng các tính năng Blog hoặc Nhiệm vụ. Việc đổi tên hoặc xóa chúng sẽ làm hỏng tính năng tương ứng.
