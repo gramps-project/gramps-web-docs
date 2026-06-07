@@ -5,9 +5,9 @@ Tags are labels that can be applied to any object in the Gramps database – peo
 
 ## Managing tags
 
-The **Tags** page is accessible from the sidebar and is only visible to users with the Editor role or above. It shows all existing tags and allows you to:
+Tags are managed from the **Tags** section of [Administration Settings](../administration/settings.md#tags), which is only available to users with the Owner or Administrator role. It shows all existing tags and allows you to:
 
-- **Create** a new tag using the + button (bottom right)
+- **Create** a new tag using the **New Tag** button
 - **Rename** a tag using the edit (pencil) icon
 - **Change the colour** of a tag using the colour picker
 - **Delete** a tag using the delete icon

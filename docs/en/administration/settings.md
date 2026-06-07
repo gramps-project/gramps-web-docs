@@ -111,6 +111,19 @@ Click **Check and Repair** and wait for the progress indicator to complete. The 
 
 Run this tool if you encounter unexpected errors or behavior that may be caused by database inconsistencies, such as missing relationships between objects.
 
+## Tags
+
+### Manage tags
+
+Create, rename, recolor, and delete [tags](../user-guide/tags.md) for the family tree. Tags are stored in the Gramps database, shared across all users, and fully compatible with Gramps Desktop.
+
+Click **New Tag** to create a tag. Use the controls next to an existing tag to rename it (pencil icon), change its colour (colour picker), or delete it (delete icon).
+
+!!! note
+    Deleting a tag removes it from all objects it was applied to.
+
+See [Tags](../user-guide/tags.md) for how tags are used throughout Gramps Web, including the special `Blog` and `ToDo` tags.
+
 ## Danger Zone
 
 !!! danger

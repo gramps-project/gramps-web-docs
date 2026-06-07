@@ -18,20 +18,23 @@ The sidebar (or hamburger menu on mobile) is the primary way to move between sec
 
 - **Home** – the dashboard (see below)
 - **Blog** – family history stories written as blog posts
-- **People, Families, Events, Places, Sources, Citations, Repositories, Notes** – browse all objects of each type
-- **Media** – browse all media files (photos, documents, etc.)
-- **Map** – geographic view of places in the tree
 - **Family Tree** – interactive tree charts
+- **Timeline** – chronological view of events across the tree (requires a sufficiently recent Gramps Web API version)
+- **Map** – geographic view of places in the tree
 - **DNA** – DNA match analysis tools
-- **Chat** – AI chat assistant (if enabled by the administrator)
+- **Lists** – browse all objects of each type: People, Families, Events, Places, Sources, Citations, Repositories, Notes
+- **Media** – browse all media files (photos, documents, etc.)
+- **Assistant** – AI chat assistant (if enabled by the administrator)
 - **History** – recently changed objects
 - **Bookmarks** – your saved bookmarks
 - **Tasks** – research tasks
-- **Export** – export the family tree
 - **Reports** – generate reports
+- **Export** – export the family tree
 - **Revisions** – full transaction history (visible to members and above)
-- **Tags** – manage tags (visible to editors and above)
 - **Notifications** – past notifications
+
+!!! note
+    Tags are no longer managed from the sidebar – tag management has moved to [Administration Settings](../administration/settings.md#tags) (Owner/Administrator only). See [Tags](tags.md) for how tags are used.
 
 ### Top app bar
 

@@ -44,6 +44,7 @@ nav:
       - Browsing your tree:
           - Search: user-guide/search.md
           - Family Tree: user-guide/tree.md
+          - Timeline: user-guide/timeline.md
           - Map: user-guide/map.md
       - Edit data:
           - Add media files: user-guide/media.md
@@ -64,7 +65,7 @@ nav:
           - Revision history: user-guide/revisions.md
       - Advanced:
           - GQL filters: user-guide/gql.md
-          - AI chat: user-guide/chat.md
+          - AI Assistant: user-guide/chat.md
           - External Search: user-guide/external-search.md
       - Account & preferences:
           - User Settings: user-guide/settings.md
@@ -187,6 +188,7 @@ plugins:
             Chromosome browser: Chromosomen-Browser
             Y-DNA: Y-DNA
             Family Tree: Stammbaum
+            Timeline: Zeitleiste
             Reports: Berichte
             Bookmarks: Lesezeichen
             History: Verlauf
@@ -196,7 +198,7 @@ plugins:
             Notifications: Benachrichtigungen
             Advanced: Erweitert
             GQL filters: GQL-Filter
-            AI chat: KI-Chat
+            AI Assistant: KI-Assistent
             External Search: Externe Suche
             Developers: Entwickler
             Backend: Backend
@@ -266,6 +268,7 @@ plugins:
             Chromosome browser: Navigateur de chromosomes
             Y-DNA: ADN-Y
             Family Tree: Arbre généalogique
+            Timeline: Chronologie
             Reports: Rapports
             Bookmarks: Signets
             History: Historique
@@ -275,7 +278,7 @@ plugins:
             Notifications: Notifications
             Advanced: Avancé
             GQL filters: Filtres GQL
-            AI chat: Chat IA
+            AI Assistant: Assistant IA
             External Search: Recherche externe
             Developers: Développeurs
             Backend: Backend
@@ -345,6 +348,7 @@ plugins:
             Chromosome browser: Navegador de cromosomas
             Y-DNA: ADN-Y
             Family Tree: Árbol genealógico
+            Timeline: Cronología
             Reports: Informes
             Bookmarks: Marcadores
             History: Historial
@@ -354,7 +358,7 @@ plugins:
             Notifications: Notificaciones
             Advanced: Avanzado
             GQL filters: Filtros GQL
-            AI chat: Chat de IA
+            AI Assistant: Asistente de IA
             External Search: Búsqueda externa
             Developers: Desarrolladores
             Backend: Backend
@@ -424,6 +428,7 @@ plugins:
             Chromosome browser: 染色体浏览器
             Y-DNA: Y-DNA
             Family Tree: 家谱树
+            Timeline: 时间线
             Reports: 报告
             Bookmarks: 书签
             History: 历史记录
@@ -433,7 +438,7 @@ plugins:
             Notifications: 通知
             Advanced: 高级
             GQL filters: GQL 过滤器
-            AI chat: AI 聊天
+            AI Assistant: AI 助手
             External Search: 外部搜索
             Developers: 开发者
             Backend: 后端
@@ -503,6 +508,7 @@ plugins:
             Chromosome browser: Trình duyệt nhiễm sắc thể
             Y-DNA: Y-DNA
             Family Tree: Cây gia phả
+            Timeline: Dòng thời gian
             Reports: Báo cáo
             Bookmarks: Dấu trang
             History: Lịch sử
@@ -512,7 +518,7 @@ plugins:
             Notifications: Thông báo
             Advanced: Nâng cao
             GQL filters: Bộ lọc GQL
-            AI chat: Trò chuyện AI
+            AI Assistant: Trợ lý AI
             External Search: Tìm kiếm bên ngoài
             Developers: Nhà phát triển
             Backend: Backend
@@ -582,6 +588,7 @@ plugins:
             Chromosome browser: Kromozom tarayıcısı
             Y-DNA: Y-DNA
             Family Tree: Soy ağacı
+            Timeline: Zaman Çizelgesi
             Reports: Raporlar
             Bookmarks: Yer imleri
             History: Geçmiş
@@ -591,7 +598,7 @@ plugins:
             Notifications: Bildirimler
             Advanced: Gelişmiş
             GQL filters: GQL filtreleri
-            AI chat: AI sohbet
+            AI Assistant: AI Asistanı
             External Search: Harici arama
             Developers: Geliştiriciler
             Backend: Backend
@@ -661,6 +668,7 @@ plugins:
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
             Family Tree: Генеалогическое дерево
+            Timeline: Хронология
             Reports: Отчёты
             Bookmarks: Закладки
             History: История
@@ -670,7 +678,7 @@ plugins:
             Notifications: Уведомления
             Advanced: Расширенные
             GQL filters: Фильтры GQL
-            AI chat: AI-чат
+            AI Assistant: ИИ-ассистент
             External Search: Внешний поиск
             Developers: Разработчики
             Backend: Бэкенд
@@ -740,6 +748,7 @@ plugins:
             Chromosome browser: Navegador de cromossomos
             Y-DNA: DNA-Y
             Family Tree: Árvore genealógica
+            Timeline: Linha do tempo
             Reports: Relatórios
             Bookmarks: Marcadores
             History: Histórico
@@ -749,7 +758,7 @@ plugins:
             Notifications: Notificações
             Advanced: Avançado
             GQL filters: Filtros GQL
-            AI chat: Chat de IA
+            AI Assistant: Assistente de IA
             External Search: Pesquisa externa
             Developers: Desenvolvedores
             Backend: Backend
@@ -819,6 +828,7 @@ plugins:
             Chromosome browser: 染色体ブラウザ
             Y-DNA: Y-DNA
             Family Tree: 家系図
+            Timeline: タイムライン
             Reports: レポート
             Bookmarks: ブックマーク
             History: 履歴
@@ -828,7 +838,7 @@ plugins:
             Notifications: 通知
             Advanced: 高度
             GQL filters: GQL フィルター
-            AI chat: AI チャット
+            AI Assistant: AIアシスタント
             External Search: 外部検索
             Developers: 開発者
             Backend: バックエンド
@@ -898,6 +908,7 @@ plugins:
             Chromosome browser: Kromosombrowser
             Y-DNA: Y-DNA
             Family Tree: Stamtræ
+            Timeline: Tidslinje
             Reports: Rapporter
             Bookmarks: Bogmærker
             History: Historik
@@ -907,7 +918,7 @@ plugins:
             Notifications: Notifikationer
             Advanced: Avanceret
             GQL filters: GQL-filtre
-            AI chat: AI-chat
+            AI Assistant: AI-assistent
             External Search: Ekstern søgning
             Developers: Udviklere
             Backend: Backend
@@ -977,6 +988,7 @@ plugins:
             Chromosome browser: Kromosomiselain
             Y-DNA: Y-DNA
             Family Tree: Sukupuu
+            Timeline: Aikajana
             Reports: Raportit
             Bookmarks: Kirjanmerkit
             History: Historia
@@ -986,7 +998,7 @@ plugins:
             Notifications: Ilmoitukset
             Advanced: Edistynyt
             GQL filters: GQL-suodattimet
-            AI chat: AI-chat
+            AI Assistant: Tekoälyavustaja
             External Search: Ulkoinen haku
             Developers: Kehittäjät
             Backend: Taustajärjestelmä
@@ -1056,6 +1068,7 @@ plugins:
             Chromosome browser: Browser dei cromosomi
             Y-DNA: DNA-Y
             Family Tree: Albero genealogico
+            Timeline: Linea temporale
             Reports: Rapporti
             Bookmarks: Segnalibri
             History: Cronologia
@@ -1065,7 +1078,7 @@ plugins:
             Notifications: Notifiche
             Advanced: Avanzato
             GQL filters: Filtri GQL
-            AI chat: Chat AI
+            AI Assistant: Assistente IA
             External Search: Ricerca esterna
             Developers: Sviluppatori
             Backend: Backend
@@ -1135,6 +1148,7 @@ plugins:
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
             Family Tree: Родовід
+            Timeline: Хронологія
             Reports: Звіти
             Bookmarks: Закладки
             History: Історія
@@ -1144,7 +1158,7 @@ plugins:
             Notifications: Сповіщення
             Advanced: Розширені
             GQL filters: GQL фільтри
-            AI chat: AI чат
+            AI Assistant: ШІ-асистент
             External Search: Зовнішній пошук
             Developers: Розробники
             Backend: Бекенд

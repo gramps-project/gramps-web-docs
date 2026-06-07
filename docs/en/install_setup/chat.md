@@ -45,7 +45,7 @@ If the necessary dependencies are installed, enabling semantic search can be as 
 
 There are several considerations to make when choosing a model.
 
-- When you change the model, you have to manually recreate the semantic search index for your tree (or all trees in a multi-tree setup), otherwise you will encounter errors or meaningless results.
+- When you change the model, you have to manually recreate the semantic search index for your tree (or all trees in a multi-tree setup), otherwise you will encounter errors or meaningless results. Gramps Web detects when the configured embedding model no longer matches the existing index and shows a persistent notice to administrators prompting them to trigger a full reindex from [Administration Settings](../administration/settings.md#semantic-search-index).
 - The models are a tradeoff between accuracy/generality on the one hand and computational time/storage space on the other. If you aren't running Gramps Web API on a system that has access to a powerful GPU, bigger models are usually too slow in practice.
 - Unless your entire database is in English and all your users are only expected to ask chat questions in English, you will need a multilingual embedding model, which are more rare than pure English models.
 

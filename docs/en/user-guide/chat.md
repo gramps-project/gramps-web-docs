@@ -1,11 +1,11 @@
-# Using AI chat
+# Using the AI Assistant
 
 !!! info
-    AI chat requires Gramps Web API version 2.5.0 or higher and Gramps Web version 24.10.0 or higher. Gramps Web API version 3.6.0 introduced tool calling capabilities for more intelligent interactions.
+    The AI Assistant requires Gramps Web API version 2.5.0 or higher and Gramps Web version 24.10.0 or higher. Gramps Web API version 3.6.0 introduced tool calling capabilities for more intelligent interactions.
 
 
 
-The chat view in Gramps Web (if available in your installation) gives access to an AI assistant that can answer questions about your family tree.
+The **Assistant** view in Gramps Web (if available in your installation, labelled "Chat" in older versions) gives access to an AI assistant that can answer questions about your family tree.
 
 !!! warning
     Since this is still a new and evolving feature, some types of question work well while others don't. Also, as with any AI assistant, it can give factually incorrect answers, so be sure to always double check.
@@ -20,6 +20,8 @@ To understand which types of question the assistant can answer, it is helpful to
    - **Tool Calling (Gramps Wev API v3.6.0+)**: The assistant can directly query your database using specialized tools to search, filter people/events/families/places by specific criteria, calculate relationships between individuals, and retrieve detailed information.
 3. Gramps Web feeds the question along with the retrieved information to a large language model to formulate an answer.
 4. The answer is displayed to you.
+
+While the assistant is working, indicators show which tools it is currently using (e.g. searching people, looking up relationships) so you can follow along as it builds its answer. Longer-running questions are processed as background tasks – you can navigate away and come back, and progress is also reflected in [Notifications](notifications.md). Answers are formatted with Markdown (lists, emphasis, links, etc.) for easier reading.
 
 ## What you can ask
 
