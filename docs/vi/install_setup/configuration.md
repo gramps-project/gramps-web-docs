@@ -55,9 +55,9 @@ Key | Mô tả
 `EMAIL_PORT` | Cổng máy chủ SMTP. mặc định là 465
 `EMAIL_HOST_USER` | Tên người dùng máy chủ SMTP
 `EMAIL_HOST_PASSWORD` | Mật khẩu máy chủ SMTP
-`EMAIL_USE_TLS` | **Đã ngừng sử dụng** (sử dụng `EMAIL_USE_SSL` hoặc `EMAIL_USE_STARTTLS` thay thế). Boolean, có sử dụng TLS để gửi email hay không. Mặc định là `True`. Khi sử dụng STARTTLS, đặt giá trị này thành `False` và sử dụng một cổng khác ngoài 25.
-`EMAIL_USE_SSL` | Boolean, có sử dụng SSL/TLS ngầm định cho SMTP (v3.6.0+). Mặc định là `True` nếu `EMAIL_USE_TLS` không được thiết lập rõ ràng. Thường được sử dụng với cổng 465.
-`EMAIL_USE_STARTTLS` | Boolean, có sử dụng STARTTLS rõ ràng cho SMTP (v3.6.0+). Mặc định là `False`. Thường được sử dụng với cổng 587 hoặc 25.
+`EMAIL_USE_TLS` | **Đã ngừng sử dụng** (sử dụng `EMAIL_USE_SSL` hoặc `EMAIL_USE_STARTTLS` thay thế). Boolean, có sử dụng TLS để gửi email hay không. Mặc định là `true`. Khi sử dụng STARTTLS, đặt giá trị này thành `false` và sử dụng một cổng khác ngoài 25.
+`EMAIL_USE_SSL` | Boolean, có sử dụng SSL/TLS ngầm định cho SMTP (v3.6.0+). Mặc định là `true` nếu `EMAIL_USE_TLS` không được thiết lập rõ ràng. Thường được sử dụng với cổng 465.
+`EMAIL_USE_STARTTLS` | Boolean, có sử dụng STARTTLS rõ ràng cho SMTP (v3.6.0+). Mặc định là `false`. Thường được sử dụng với cổng 587 hoặc 25.
 `DEFAULT_FROM_EMAIL` | Địa chỉ "Từ" cho các email tự động
 `THUMBNAIL_CACHE_CONFIG` | Từ điển với các thiết lập cho bộ nhớ cache hình thu nhỏ. Xem [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) để biết các thiết lập có thể.
 `REQUEST_CACHE_CONFIG` | Từ điển với các thiết lập cho bộ nhớ cache yêu cầu. Xem [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) để biết các thiết lập có thể.
@@ -65,8 +65,8 @@ Key | Mô tả
 `CELERY_CONFIG` | Các thiết lập cho hàng đợi tác vụ nền Celery. Xem [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) để biết các thiết lập có thể.
 `REPORT_DIR` | Thư mục tạm thời nơi đầu ra của việc chạy báo cáo Gramps sẽ được lưu trữ
 `EXPORT_DIR` | Thư mục tạm thời nơi đầu ra của việc xuất cơ sở dữ liệu Gramps sẽ được lưu trữ
-`REGISTRATION_DISABLED` | Nếu `True`, không cho phép đăng ký người dùng mới (mặc định `False`)
-`DISABLE_TELEMETRY` | Nếu `True`, vô hiệu hóa telemetry thống kê (mặc định `False`). Xem [telemetry](telemetry.md) để biết thêm chi tiết.
+`REGISTRATION_DISABLED` | Nếu `true`, không cho phép đăng ký người dùng mới (mặc định `false`)
+`DISABLE_TELEMETRY` | Nếu `true`, vô hiệu hóa telemetry thống kê (mặc định `false`). Xem [telemetry](telemetry.md) để biết thêm chi tiết.
 `PILLOW_MAX_IMAGE_PIXELS` | Thiết lập tham số PIL.Image.MAX_IMAGE_PIXELS, chỉ ra số pixel mà hình ảnh đã xử lý có thể chứa. Xem [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) để biết thêm chi tiết.
 `MAX_THUMBNAIL_FILE_BYTES` | Thiết lập kích thước tệp tối đa cứng cho hình thu nhỏ. Mặc định là `50 * 1024 * 1024` (50 MB). Tăng nó có thể làm tăng đáng kể mức sử dụng bộ nhớ và có thể dẫn đến sự cố hết bộ nhớ hoặc mất dữ liệu nếu các tệp lớn được giải nén trong bộ nhớ.
 
@@ -92,7 +92,7 @@ Các thiết lập sau đây có liên quan khi [lưu trữ nhiều cây](multi-
 
 Key | Mô tả
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, có sử dụng một thư mục con riêng cho các tệp phương tiện của mỗi cây hay không. Mặc định là `False`, nhưng rất khuyến nghị sử dụng `True` trong cài đặt nhiều cây
+`MEDIA_PREFIX_TREE` | Boolean, có sử dụng một thư mục con riêng cho các tệp phương tiện của mỗi cây hay không. Mặc định là `false`, nhưng rất khuyến nghị sử dụng `true` trong cài đặt nhiều cây
 `NEW_DB_BACKEND` | Backend cơ sở dữ liệu để sử dụng cho các cây gia đình mới được tạo. Phải là một trong `sqlite`, `postgresql`, hoặc `sharedpostgresql`. Mặc định là `sqlite`.
 `POSTGRES_HOST` | Tên máy chủ của máy chủ PostgreSQL được sử dụng để tạo các cây mới khi sử dụng cài đặt nhiều cây với backend SharedPostgreSQL
 `POSTGRES_PORT` | Cổng của máy chủ PostgreSQL được sử dụng để tạo các cây mới khi sử dụng cài đặt nhiều cây với backend SharedPostgreSQL
@@ -104,7 +104,7 @@ Các thiết lập này cần thiết nếu bạn muốn sử dụng xác thực
 
 Key | Mô tả
 ----|-------------
-`OIDC_ENABLED` | Boolean, có kích hoạt xác thực OIDC hay không. Mặc định là `False`.
+`OIDC_ENABLED` | Boolean, có kích hoạt xác thực OIDC hay không. Mặc định là `false`.
 `OIDC_ISSUER` | URL nhà cung cấp OIDC (đối với các nhà cung cấp OIDC tùy chỉnh)
 `OIDC_CLIENT_ID` | ID khách hàng OAuth (đối với các nhà cung cấp OIDC tùy chỉnh)
 `OIDC_CLIENT_SECRET` | Mật khẩu khách hàng OAuth (đối với các nhà cung cấp OIDC tùy chỉnh)
@@ -112,8 +112,8 @@ Key | Mô tả
 `OIDC_SCOPES` | Các phạm vi OAuth. Mặc định là "openid email profile"
 `OIDC_USERNAME_CLAIM` | Khẳng định để sử dụng cho tên người dùng. Mặc định là "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Tùy chọn: URL đến điểm cuối cấu hình OpenID Connect (nếu không sử dụng tiêu chuẩn `/.well-known/openid-configuration`)
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, có vô hiệu hóa xác thực tên người dùng/mật khẩu cục bộ hay không. Mặc định là `False`
-`OIDC_AUTO_REDIRECT` | Boolean, có tự động chuyển hướng đến OIDC khi chỉ có một nhà cung cấp được cấu hình hay không. Mặc định là `False`
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, có vô hiệu hóa xác thực tên người dùng/mật khẩu cục bộ hay không. Mặc định là `false`
+`OIDC_AUTO_REDIRECT` | Boolean, có tự động chuyển hướng đến OIDC khi chỉ có một nhà cung cấp được cấu hình hay không. Mặc định là `false`
 
 #### Các nhà cung cấp OIDC tích hợp sẵn
 

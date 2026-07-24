@@ -18,7 +18,7 @@ Tämä tekee kaikki puut palvelimen Gramps-tietokantahakemistossa saavutettaviks
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Lisäksi sinun tulisi asettaa `MEDIA_PREFIX_TREE` -asetuksen arvo `True`, jotta varmistat, että mediasisältö tallennetaan erillisiin alihakemistoihin. Muuten käyttäjät voivat käyttää mediasisältöjä, jotka kuuluvat puulle, johon heillä ei ole oikeuksia!
+Lisäksi sinun tulisi asettaa `MEDIA_PREFIX_TREE` -asetuksen arvo `true`, jotta varmistat, että mediasisältö tallennetaan erillisiin alihakemistoihin. Muuten käyttäjät voivat käyttää mediasisältöjä, jotka kuuluvat puulle, johon heillä ei ole oikeuksia!
 
 ## Lisää käyttäjätili tiettyyn puuhun
 

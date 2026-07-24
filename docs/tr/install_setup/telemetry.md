@@ -45,4 +45,4 @@ Bu grafikler Gramps Web dokümantasyon sitesinde yayınlanacaktır.
 
 Yine de, Gramps Web kullanıcıları tam kontrol sağlar, bu nedenle isterseniz bu özelliği devre dışı bırakmayı seçebilirsiniz.
 
-Bunu yapmak için, `DISABLE_TELEMETRY` yapılandırma seçeneğini `True` olarak ayarlamanız yeterlidir (örneğin, `GRAMPSWEB_DISABLE_TELEMETRY` ortam değişkenini `true` olarak ayarlayarak &ndash; ayrıntılar için [yapılandırma belgelerine](configuration.md) bakın).
+Bunu yapmak için, `DISABLE_TELEMETRY` yapılandırma seçeneğini `true` olarak ayarlamanız yeterlidir (örneğin, `GRAMPSWEB_DISABLE_TELEMETRY` ortam değişkenini `true` olarak ayarlayarak &ndash; ayrıntılar için [yapılandırma belgelerine](configuration.md) bakın).

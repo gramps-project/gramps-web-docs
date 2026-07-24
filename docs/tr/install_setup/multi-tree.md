@@ -18,7 +18,7 @@ Bu, sunucunun Gramps veritabanı dizinindeki tüm ağaçların erişilebilir olm
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Ayrıca, medya dosyalarının ayrı alt klasörlerde saklandığından emin olmak için `MEDIA_PREFIX_TREE` yapılandırma seçeneğini `True` olarak ayarlamalısınız. Aksi takdirde, kullanıcılar, izinleri olmayan bir ağaca ait medya dosyalarına erişebilir!
+Ayrıca, medya dosyalarının ayrı alt klasörlerde saklandığından emin olmak için `MEDIA_PREFIX_TREE` yapılandırma seçeneğini `true` olarak ayarlamalısınız. Aksi takdirde, kullanıcılar, izinleri olmayan bir ağaca ait medya dosyalarına erişebilir!
 
 ## Belirli bir ağaca kullanıcı hesabı ekleyin
 

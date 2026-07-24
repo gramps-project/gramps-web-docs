@@ -45,4 +45,4 @@ Gramps Web API サーバーにリクエストが送信されると、最後の 2
 
 それでも、Gramps Web はユーザーに完全なコントロールを提供しているため、もちろん希望する場合はこの機能を無効にすることができます。
 
-そのためには、単に `DISABLE_TELEMETRY` 設定オプションを `True` に設定してください（例：`GRAMPSWEB_DISABLE_TELEMETRY` 環境変数を `true` に設定することで &ndash; 詳細は [設定ドキュメント](configuration.md) を参照してください）。
+そのためには、単に `DISABLE_TELEMETRY` 設定オプションを `true` に設定してください（例：`GRAMPSWEB_DISABLE_TELEMETRY` 環境変数を `true` に設定することで &ndash; 詳細は [設定ドキュメント](configuration.md) を参照してください）。

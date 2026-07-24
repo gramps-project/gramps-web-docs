@@ -45,4 +45,4 @@ Koska tilastotiedot ovat hyödyllisiä Gramps Web -tiimille ja olemme varmistane
 
 Kuitenkin Gramps Web antaa käyttäjille täyden hallinnan, joten voit tietenkin valita poistaa ominaisuuden käytöstä, jos haluat.
 
-Tätä varten aseta yksinkertaisesti `DISABLE_TELEMETRY` -konfiguraatioasetukseksi `True` (esim. asettamalla `GRAMPSWEB_DISABLE_TELEMETRY` -ympäristömuuttuja arvoksi `true` &ndash; katso [konfiguraatiosivut](configuration.md) lisätietoja varten).
+Tätä varten aseta yksinkertaisesti `DISABLE_TELEMETRY` -konfiguraatioasetukseksi `true` (esim. asettamalla `GRAMPSWEB_DISABLE_TELEMETRY` -ympäristömuuttuja arvoksi `true` &ndash; katso [konfiguraatiosivut](configuration.md) lisätietoja varten).

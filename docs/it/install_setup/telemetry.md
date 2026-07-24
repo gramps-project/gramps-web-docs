@@ -45,4 +45,4 @@ Poiché i dati statistici sono utili per il team di Gramps Web e abbiamo garanti
 
 Tuttavia, Gramps Web mette gli utenti completamente sotto controllo, quindi ovviamente puoi scegliere di disabilitare la funzione se lo desideri.
 
-Per farlo, basta impostare l'opzione di configurazione `DISABLE_TELEMETRY` su `True` (ad esempio impostando la variabile d'ambiente `GRAMPSWEB_DISABLE_TELEMETRY` su `true` &ndash; consulta la [documentazione di configurazione](configuration.md) per dettagli).
+Per farlo, basta impostare l'opzione di configurazione `DISABLE_TELEMETRY` su `true` (ad esempio impostando la variabile d'ambiente `GRAMPSWEB_DISABLE_TELEMETRY` su `true` &ndash; consulta la [documentazione di configurazione](configuration.md) per dettagli).

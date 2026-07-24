@@ -55,9 +55,9 @@ Avain | Kuvaus
 `EMAIL_PORT` | SMTP-palvelimen portti. oletusarvoisesti 465
 `EMAIL_HOST_USER` | SMTP-palvelimen käyttäjänimi
 `EMAIL_HOST_PASSWORD` | SMTP-palvelimen salasana
-`EMAIL_USE_TLS` | **Vanha** (käytä `EMAIL_USE_SSL` tai `EMAIL_USE_STARTTLS` sen sijaan). Boolean, käytetäänkö TLS:ää sähköpostien lähettämiseen. Oletusarvoisesti `True`. Kun käytetään STARTTLS:ää, aseta tämä `False` ja käytä porttia, joka ei ole 25.
-`EMAIL_USE_SSL` | Boolean, käytetäänkö implisiittistä SSL/TLS:ää SMTP:ssä (v3.6.0+). Oletusarvoisesti `True`, jos `EMAIL_USE_TLS` ei ole nimenomaan asetettu. Käytetään tyypillisesti portilla 465.
-`EMAIL_USE_STARTTLS` | Boolean, käytetäänkö eksplisiittistä STARTTLS:ää SMTP:ssä (v3.6.0+). Oletusarvoisesti `False`. Käytetään tyypillisesti portilla 587 tai 25.
+`EMAIL_USE_TLS` | **Vanha** (käytä `EMAIL_USE_SSL` tai `EMAIL_USE_STARTTLS` sen sijaan). Boolean, käytetäänkö TLS:ää sähköpostien lähettämiseen. Oletusarvoisesti `true`. Kun käytetään STARTTLS:ää, aseta tämä `false` ja käytä porttia, joka ei ole 25.
+`EMAIL_USE_SSL` | Boolean, käytetäänkö implisiittistä SSL/TLS:ää SMTP:ssä (v3.6.0+). Oletusarvoisesti `true`, jos `EMAIL_USE_TLS` ei ole nimenomaan asetettu. Käytetään tyypillisesti portilla 465.
+`EMAIL_USE_STARTTLS` | Boolean, käytetäänkö eksplisiittistä STARTTLS:ää SMTP:ssä (v3.6.0+). Oletusarvoisesti `false`. Käytetään tyypillisesti portilla 587 tai 25.
 `DEFAULT_FROM_EMAIL` | "From" -osoite automatisoiduille sähköposteille
 `THUMBNAIL_CACHE_CONFIG` | Sanakirja, jossa on asetuksia pikkukuvien välimuistille. Katso [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) mahdollisista asetuksista.
 `REQUEST_CACHE_CONFIG` | Sanakirja, jossa on asetuksia pyyntövälimuistille. Katso [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) mahdollisista asetuksista.
@@ -65,8 +65,8 @@ Avain | Kuvaus
 `CELERY_CONFIG` | Asetukset Celery-taustatehtäväjonolle. Katso [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) mahdollisista asetuksista.
 `REPORT_DIR` | Väliaikainen hakemisto, johon Gramps-raporttien suorittamisen tulokset tallennetaan
 `EXPORT_DIR` | Väliaikainen hakemisto, johon Gramps-tietokannan vientitulokset tallennetaan
-`REGISTRATION_DISABLED` | Jos `True`, estä uusi käyttäjärekisteröinti (oletusarvo `False`)
-`DISABLE_TELEMETRY` | Jos `True`, poista käytöstä tilastotietojen telemetria (oletusarvo `False`). Katso [telemetria](telemetry.md) lisätietoja varten.
+`REGISTRATION_DISABLED` | Jos `true`, estä uusi käyttäjärekisteröinti (oletusarvo `false`)
+`DISABLE_TELEMETRY` | Jos `true`, poista käytöstä tilastotietojen telemetria (oletusarvo `false`). Katso [telemetria](telemetry.md) lisätietoja varten.
 `PILLOW_MAX_IMAGE_PIXELS` | Asettaa PIL.Image.MAX_IMAGE_PIXELS -parametrin, joka osoittaa, kuinka monta pikseliä käsitelty kuva voi sisältää. Katso [dokumentaatio](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) lisätietoja varten.
 `MAX_THUMBNAIL_FILE_BYTES` | Asettaa kovaksi maksimi tiedostokoon pikkukuville. Oletusarvoisesti `50 * 1024 * 1024` (50 MB). Sen nostaminen voi suuresti lisätä muistin käyttöä ja voi johtaa muistivaurioihin tai tietojen menetykseen, jos suuria tiedostoja purkautuu muistiin.
 
@@ -92,7 +92,7 @@ Seuraavat asetukset ovat relevantteja, kun [isännöidään useita puita](multi-
 
 Avain | Kuvaus
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, käytetäänkö erillistä alihakemistoa jokaisen puun media-tiedostoille. Oletusarvoisesti `False`, mutta suositellaan vahvasti käyttämään `True` usean puun asetuksessa
+`MEDIA_PREFIX_TREE` | Boolean, käytetäänkö erillistä alihakemistoa jokaisen puun media-tiedostoille. Oletusarvoisesti `false`, mutta suositellaan vahvasti käyttämään `true` usean puun asetuksessa
 `NEW_DB_BACKEND` | Tietokantatausta, jota käytetään uusille sukupuulle. Sen on oltava yksi `sqlite`, `postgresql` tai `sharedpostgresql`. Oletusarvoisesti `sqlite`.
 `POSTGRES_HOST` | PostgreSQL-palvelimen isäntänimi, jota käytetään uusien puiden luomiseen, kun käytetään usean puun asetusta SharedPostgreSQL-taustalla
 `POSTGRES_PORT` | PostgreSQL-palvelimen portti, jota käytetään uusien puiden luomiseen, kun käytetään usean puun asetusta SharedPostgreSQL-taustalla
@@ -104,7 +104,7 @@ Nämä asetukset ovat tarpeen, jos haluat käyttää OpenID Connect (OIDC) -tode
 
 Avain | Kuvaus
 ----|-------------
-`OIDC_ENABLED` | Boolean, käytetäänkö OIDC-todennusta. Oletusarvoisesti `False`.
+`OIDC_ENABLED` | Boolean, käytetäänkö OIDC-todennusta. Oletusarvoisesti `false`.
 `OIDC_ISSUER` | OIDC-palveluntarjoajan myöntäjän URL (muille OIDC-palveluntarjoajille)
 `OIDC_CLIENT_ID` | OAuth-asiakastunnus (muille OIDC-palveluntarjoajille)
 `OIDC_CLIENT_SECRET` | OAuth-asiakassalaisuus (muille OIDC-palveluntarjoajille)
@@ -112,8 +112,8 @@ Avain | Kuvaus
 `OIDC_SCOPES` | OAuth-alueet. Oletusarvoisesti "openid email profile"
 `OIDC_USERNAME_CLAIM` | Vaatimus, jota käytetään käyttäjänimenä. Oletusarvoisesti "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Valinnainen: URL OpenID Connect -konfigurointipisteeseen (jos ei käytetä standardia `/.well-known/openid-configuration`)
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, estetäänkö paikallinen käyttäjänimi/salasana-todennus. Oletusarvoisesti `False`
-`OIDC_AUTO_REDIRECT` | Boolean, ohjataanko automaattisesti OIDC:hen, kun vain yksi tarjoaja on konfiguroitu. Oletusarvoisesti `False`
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, estetäänkö paikallinen käyttäjänimi/salasana-todennus. Oletusarvoisesti `false`
+`OIDC_AUTO_REDIRECT` | Boolean, ohjataanko automaattisesti OIDC:hen, kun vain yksi tarjoaja on konfiguroitu. Oletusarvoisesti `false`
 
 #### Sisäänrakennetut OIDC-palveluntarjoajat
 

@@ -55,9 +55,9 @@ Clé | Description
 `EMAIL_PORT` | Port du serveur SMTP. par défaut 465.
 `EMAIL_HOST_USER` | Nom d'utilisateur du serveur SMTP.
 `EMAIL_HOST_PASSWORD` | Mot de passe du serveur SMTP.
-`EMAIL_USE_TLS` | **Obsolète** (utilisez `EMAIL_USE_SSL` ou `EMAIL_USE_STARTTLS` à la place). Booléen, indique s'il faut utiliser TLS pour l'envoi d'e-mails. Par défaut, c'est `True`. Lors de l'utilisation de STARTTLS, définissez ceci sur `False` et utilisez un port différent de 25.
-`EMAIL_USE_SSL` | Booléen, indique s'il faut utiliser SSL/TLS implicite pour SMTP (v3.6.0+). Par défaut, c'est `True` si `EMAIL_USE_TLS` n'est pas explicitement défini. Utilisé généralement avec le port 465.
-`EMAIL_USE_STARTTLS` | Booléen, indique s'il faut utiliser STARTTLS explicite pour SMTP (v3.6.0+). Par défaut, c'est `False`. Utilisé généralement avec le port 587 ou 25.
+`EMAIL_USE_TLS` | **Obsolète** (utilisez `EMAIL_USE_SSL` ou `EMAIL_USE_STARTTLS` à la place). Booléen, indique s'il faut utiliser TLS pour l'envoi d'e-mails. Par défaut, c'est `true`. Lors de l'utilisation de STARTTLS, définissez ceci sur `false` et utilisez un port différent de 25.
+`EMAIL_USE_SSL` | Booléen, indique s'il faut utiliser SSL/TLS implicite pour SMTP (v3.6.0+). Par défaut, c'est `true` si `EMAIL_USE_TLS` n'est pas explicitement défini. Utilisé généralement avec le port 465.
+`EMAIL_USE_STARTTLS` | Booléen, indique s'il faut utiliser STARTTLS explicite pour SMTP (v3.6.0+). Par défaut, c'est `false`. Utilisé généralement avec le port 587 ou 25.
 `DEFAULT_FROM_EMAIL` | Adresse "De" pour les e-mails automatisés.
 `THUMBNAIL_CACHE_CONFIG` | Dictionnaire avec les paramètres pour le cache des vignettes. Voir [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) pour les paramètres possibles.
 `REQUEST_CACHE_CONFIG` | Dictionnaire avec les paramètres pour le cache des requêtes. Voir [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) pour les paramètres possibles.
@@ -65,8 +65,8 @@ Clé | Description
 `CELERY_CONFIG` | Paramètres pour la file d'attente de tâches en arrière-plan Celery. Voir [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) pour les paramètres possibles.
 `REPORT_DIR` | Répertoire temporaire où la sortie des rapports Gramps sera stockée.
 `EXPORT_DIR` | Répertoire temporaire où la sortie de l'exportation de la base de données Gramps sera stockée.
-`REGISTRATION_DISABLED` | Si `True`, interdit l'enregistrement de nouveaux utilisateurs (par défaut `False`).
-`DISABLE_TELEMETRY` | Si `True`, désactive la télémétrie des statistiques (par défaut `False`). Voir [télémétrie](telemetry.md) pour plus de détails.
+`REGISTRATION_DISABLED` | Si `true`, interdit l'enregistrement de nouveaux utilisateurs (par défaut `false`).
+`DISABLE_TELEMETRY` | Si `true`, désactive la télémétrie des statistiques (par défaut `false`). Voir [télémétrie](telemetry.md) pour plus de détails.
 `PILLOW_MAX_IMAGE_PIXELS` | Définit le paramètre PIL.Image.MAX_IMAGE_PIXELS, qui indique le nombre de pixels que l'image traitée peut contenir. Voir [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) pour plus de détails.
 `MAX_THUMBNAIL_FILE_BYTES` | Définit une taille de fichier maximale stricte pour les vignettes. Par défaut, c'est `50 * 1024 * 1024` (50 Mo). L'augmentation de cette valeur peut considérablement augmenter l'utilisation de la mémoire et peut entraîner des plantages par manque de mémoire ou une perte de données si de gros fichiers sont décompressés en mémoire.
 
@@ -92,7 +92,7 @@ Les paramètres suivants sont pertinents lors de l'[hébergement de plusieurs ar
 
 Clé | Description
 ----|-------------
-`MEDIA_PREFIX_TREE` | Booléen, indique s'il faut ou non utiliser un sous-dossier séparé pour les fichiers multimédias de chaque arbre. Par défaut, c'est `False`, mais il est fortement recommandé d'utiliser `True` dans une configuration multi-arbres.
+`MEDIA_PREFIX_TREE` | Booléen, indique s'il faut ou non utiliser un sous-dossier séparé pour les fichiers multimédias de chaque arbre. Par défaut, c'est `false`, mais il est fortement recommandé d'utiliser `true` dans une configuration multi-arbres.
 `NEW_DB_BACKEND` | Le backend de base de données à utiliser pour les arbres généalogiques nouvellement créés. Doit être l'un de `sqlite`, `postgresql`, ou `sharedpostgresql`. Par défaut, c'est `sqlite`.
 `POSTGRES_HOST` | Le nom d'hôte du serveur PostgreSQL utilisé pour créer de nouveaux arbres lors de l'utilisation d'une configuration multi-arbres avec le backend SharedPostgreSQL.
 `POSTGRES_PORT` | Le port du serveur PostgreSQL utilisé pour créer de nouveaux arbres lors de l'utilisation d'une configuration multi-arbres avec le backend SharedPostgreSQL.
@@ -104,7 +104,7 @@ Ces paramètres sont nécessaires si vous souhaitez utiliser l'authentification 
 
 Clé | Description
 ----|-------------
-`OIDC_ENABLED` | Booléen, indique s'il faut activer l'authentification OIDC. Par défaut, c'est `False`.
+`OIDC_ENABLED` | Booléen, indique s'il faut activer l'authentification OIDC. Par défaut, c'est `false`.
 `OIDC_ISSUER` | URL de l'émetteur du fournisseur OIDC (pour les fournisseurs OIDC personnalisés).
 `OIDC_CLIENT_ID` | ID client OAuth (pour les fournisseurs OIDC personnalisés).
 `OIDC_CLIENT_SECRET` | Secret client OAuth (pour les fournisseurs OIDC personnalisés).
@@ -112,8 +112,8 @@ Clé | Description
 `OIDC_SCOPES` | Scopes OAuth. Par défaut, c'est "openid email profile".
 `OIDC_USERNAME_CLAIM` | La revendication à utiliser pour le nom d'utilisateur. Par défaut, c'est "preferred_username".
 `OIDC_OPENID_CONFIG_URL` | Optionnel : URL vers le point de terminaison de configuration OpenID Connect (si vous n'utilisez pas le standard `/.well-known/openid-configuration`).
-`OIDC_DISABLE_LOCAL_AUTH` | Booléen, indique s'il faut désactiver l'authentification locale par nom d'utilisateur/mot de passe. Par défaut, c'est `False`.
-`OIDC_AUTO_REDIRECT` | Booléen, indique s'il faut rediriger automatiquement vers OIDC lorsqu'un seul fournisseur est configuré. Par défaut, c'est `False`.
+`OIDC_DISABLE_LOCAL_AUTH` | Booléen, indique s'il faut désactiver l'authentification locale par nom d'utilisateur/mot de passe. Par défaut, c'est `false`.
+`OIDC_AUTO_REDIRECT` | Booléen, indique s'il faut rediriger automatiquement vers OIDC lorsqu'un seul fournisseur est configuré. Par défaut, c'est `false`.
 
 #### Fournisseurs OIDC intégrés
 

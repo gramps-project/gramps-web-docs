@@ -55,9 +55,9 @@ Clave | Descripción
 `EMAIL_PORT` | Puerto del servidor SMTP. Por defecto, es 465.
 `EMAIL_HOST_USER` | Nombre de usuario del servidor SMTP.
 `EMAIL_HOST_PASSWORD` | Contraseña del servidor SMTP.
-`EMAIL_USE_TLS` | **Obsoleto** (usa `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` en su lugar). Booleano, si se debe usar TLS para enviar correos electrónicos. Por defecto, es `True`. Al usar STARTTLS, establece esto en `False` y usa un puerto diferente de 25.
-`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto, es `True` si `EMAIL_USE_TLS` no está establecido explícitamente. Típicamente se usa con el puerto 465.
-`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto, es `False`. Típicamente se usa con el puerto 587 o 25.
+`EMAIL_USE_TLS` | **Obsoleto** (usa `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` en su lugar). Booleano, si se debe usar TLS para enviar correos electrónicos. Por defecto, es `true`. Al usar STARTTLS, establece esto en `false` y usa un puerto diferente de 25.
+`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto, es `true` si `EMAIL_USE_TLS` no está establecido explícitamente. Típicamente se usa con el puerto 465.
+`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto, es `false`. Típicamente se usa con el puerto 587 o 25.
 `DEFAULT_FROM_EMAIL` | Dirección "De" para correos electrónicos automatizados.
 `THUMBNAIL_CACHE_CONFIG` | Diccionario con ajustes para la caché de miniaturas. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
 `REQUEST_CACHE_CONFIG` | Diccionario con ajustes para la caché de solicitudes. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
@@ -65,8 +65,8 @@ Clave | Descripción
 `CELERY_CONFIG` | Ajustes para la cola de tareas en segundo plano de Celery. Consulta [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para posibles configuraciones.
 `REPORT_DIR` | Directorio temporal donde se almacenará la salida de la ejecución de informes de Gramps.
 `EXPORT_DIR` | Directorio temporal donde se almacenará la salida de la exportación de la base de datos de Gramps.
-`REGISTRATION_DISABLED` | Si `True`, deshabilita el registro de nuevos usuarios (por defecto `False`).
-`DISABLE_TELEMETRY` | Si `True`, deshabilita la telemetría de estadísticas (por defecto `False`). Consulta [telemetría](telemetry.md) para más detalles.
+`REGISTRATION_DISABLED` | Si `true`, deshabilita el registro de nuevos usuarios (por defecto `false`).
+`DISABLE_TELEMETRY` | Si `true`, deshabilita la telemetría de estadísticas (por defecto `false`). Consulta [telemetría](telemetry.md) para más detalles.
 `PILLOW_MAX_IMAGE_PIXELS` | Establece el parámetro PIL.Image.MAX_IMAGE_PIXELS, que indica el número de píxeles que la imagen procesada puede contener. Consulta [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) para más detalles.
 `MAX_THUMBNAIL_FILE_BYTES` | Establece un tamaño máximo de archivo duro para miniaturas. Por defecto, es `50 * 1024 * 1024` (50 MB). Aumentarlo puede incrementar significativamente el uso de memoria y puede provocar fallos por falta de memoria o pérdida de datos si se descomprimen archivos grandes en memoria.
 
@@ -92,7 +92,7 @@ Los siguientes ajustes son relevantes al [alojar múltiples árboles](multi-tree
 
 Clave | Descripción
 ----|-------------
-`MEDIA_PREFIX_TREE` | Booleano, si se debe usar una subcarpeta separada para los archivos multimedia de cada árbol. Por defecto, es `False`, pero se recomienda encarecidamente usar `True` en una configuración de múltiples árboles.
+`MEDIA_PREFIX_TREE` | Booleano, si se debe usar una subcarpeta separada para los archivos multimedia de cada árbol. Por defecto, es `false`, pero se recomienda encarecidamente usar `true` en una configuración de múltiples árboles.
 `NEW_DB_BACKEND` | El backend de base de datos a utilizar para los árboles genealógicos recién creados. Debe ser uno de `sqlite`, `postgresql` o `sharedpostgresql`. Por defecto, es `sqlite`.
 `POSTGRES_HOST` | El nombre del host del servidor PostgreSQL utilizado para crear nuevos árboles cuando se usa una configuración de múltiples árboles con el backend SharedPostgreSQL.
 `POSTGRES_PORT` | El puerto del servidor PostgreSQL utilizado para crear nuevos árboles cuando se usa una configuración de múltiples árboles con el backend SharedPostgreSQL.
@@ -104,7 +104,7 @@ Estos ajustes son necesarios si deseas usar autenticación OpenID Connect (OIDC)
 
 Clave | Descripción
 ----|-------------
-`OIDC_ENABLED` | Booleano, si se debe habilitar la autenticación OIDC. Por defecto, es `False`.
+`OIDC_ENABLED` | Booleano, si se debe habilitar la autenticación OIDC. Por defecto, es `false`.
 `OIDC_ISSUER` | URL del emisor del proveedor OIDC (para proveedores OIDC personalizados).
 `OIDC_CLIENT_ID` | ID de cliente OAuth (para proveedores OIDC personalizados).
 `OIDC_CLIENT_SECRET` | Secreto de cliente OAuth (para proveedores OIDC personalizados).
@@ -112,8 +112,8 @@ Clave | Descripción
 `OIDC_SCOPES` | Alcances de OAuth. Por defecto, es "openid email profile".
 `OIDC_USERNAME_CLAIM` | La reclamación a utilizar para el nombre de usuario. Por defecto, es "preferred_username".
 `OIDC_OPENID_CONFIG_URL` | Opcional: URL al punto final de configuración de OpenID Connect (si no se usa el estándar `/.well-known/openid-configuration`).
-`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe deshabilitar la autenticación local de nombre de usuario/contraseña. Por defecto, es `False`.
-`OIDC_AUTO_REDIRECT` | Booleano, si se debe redirigir automáticamente a OIDC cuando solo se configura un proveedor. Por defecto, es `False`.
+`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe deshabilitar la autenticación local de nombre de usuario/contraseña. Por defecto, es `false`.
+`OIDC_AUTO_REDIRECT` | Booleano, si se debe redirigir automáticamente a OIDC cuando solo se configura un proveedor. Por defecto, es `false`.
 
 #### Proveedores OIDC integrados
 

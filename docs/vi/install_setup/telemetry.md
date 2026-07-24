@@ -45,4 +45,4 @@ Vì dữ liệu thống kê là hữu ích cho nhóm Gramps Web và chúng tôi 
 
 Tuy nhiên, Gramps Web cho phép người dùng hoàn toàn kiểm soát, vì vậy bạn có thể chọn tắt tính năng này nếu bạn muốn.
 
-Để làm điều đó, chỉ cần đặt tùy chọn cấu hình `DISABLE_TELEMETRY` thành `True` (ví dụ: bằng cách đặt biến môi trường `GRAMPSWEB_DISABLE_TELEMETRY` thành `true` &ndash; xem [tài liệu cấu hình](configuration.md) để biết chi tiết).
+Để làm điều đó, chỉ cần đặt tùy chọn cấu hình `DISABLE_TELEMETRY` thành `true` (ví dụ: bằng cách đặt biến môi trường `GRAMPSWEB_DISABLE_TELEMETRY` thành `true` &ndash; xem [tài liệu cấu hình](configuration.md) để biết chi tiết).

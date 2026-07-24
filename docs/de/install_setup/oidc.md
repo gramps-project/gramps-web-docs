@@ -35,7 +35,7 @@ Für benutzerdefinierte OIDC-Anbieter (wie Keycloak, Authentik oder jeden standa
 
 Key | Beschreibung
 ----|-------------
-`OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Auf `True` setzen.
+`OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Auf `true` setzen.
 `OIDC_ISSUER` | Die Issuer-URL Ihres Anbieters
 `OIDC_CLIENT_ID` | Client-ID für Ihren OIDC-Anbieter
 `OIDC_CLIENT_SECRET` | Client-Geheimnis für Ihren OIDC-Anbieter

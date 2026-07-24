@@ -55,9 +55,9 @@
 `EMAIL_PORT` | SMTP 服务器端口。默认为 465
 `EMAIL_HOST_USER` | SMTP 服务器用户名
 `EMAIL_HOST_PASSWORD` | SMTP 服务器密码
-`EMAIL_USE_TLS` | **已弃用**（请使用 `EMAIL_USE_SSL` 或 `EMAIL_USE_STARTTLS`）。布尔值，是否使用 TLS 发送电子邮件。默认为 `True`。使用 STARTTLS 时，将其设置为 `False`，并使用与 25 不同的端口。
-`EMAIL_USE_SSL` | 布尔值，是否对 SMTP 使用隐式 SSL/TLS（v3.6.0+）。如果未明确设置 `EMAIL_USE_TLS`，则默认为 `True`。通常与端口 465 一起使用。
-`EMAIL_USE_STARTTLS` | 布尔值，是否对 SMTP 使用显式 STARTTLS（v3.6.0+）。默认为 `False`。通常与端口 587 或 25 一起使用。
+`EMAIL_USE_TLS` | **已弃用**（请使用 `EMAIL_USE_SSL` 或 `EMAIL_USE_STARTTLS`）。布尔值，是否使用 TLS 发送电子邮件。默认为 `true`。使用 STARTTLS 时，将其设置为 `false`，并使用与 25 不同的端口。
+`EMAIL_USE_SSL` | 布尔值，是否对 SMTP 使用隐式 SSL/TLS（v3.6.0+）。如果未明确设置 `EMAIL_USE_TLS`，则默认为 `true`。通常与端口 465 一起使用。
+`EMAIL_USE_STARTTLS` | 布尔值，是否对 SMTP 使用显式 STARTTLS（v3.6.0+）。默认为 `false`。通常与端口 587 或 25 一起使用。
 `DEFAULT_FROM_EMAIL` | 自动电子邮件的“发件人”地址
 `THUMBNAIL_CACHE_CONFIG` | 用于缩略图缓存的设置字典。有关可能的设置，请参见 [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)。
 `REQUEST_CACHE_CONFIG` | 用于请求缓存的设置字典。有关可能的设置，请参见 [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)。
@@ -65,8 +65,8 @@
 `CELERY_CONFIG` | Celery 后台任务队列的设置。有关可能的设置，请参见 [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html)。
 `REPORT_DIR` | 运行 Gramps 报告的输出存储的临时目录
 `EXPORT_DIR` | 导出 Gramps 数据库的输出存储的临时目录
-`REGISTRATION_DISABLED` | 如果为 `True`，则不允许新用户注册（默认 `False`）
-`DISABLE_TELEMETRY` | 如果为 `True`，则禁用统计遥测（默认 `False`）。有关详细信息，请参见 [遥测](telemetry.md)。
+`REGISTRATION_DISABLED` | 如果为 `true`，则不允许新用户注册（默认 `false`）
+`DISABLE_TELEMETRY` | 如果为 `true`，则禁用统计遥测（默认 `false`）。有关详细信息，请参见 [遥测](telemetry.md)。
 `PILLOW_MAX_IMAGE_PIXELS` | 设置 PIL.Image.MAX_IMAGE_PIXELS 参数，指示处理后的图像可以包含的像素数量。有关详细信息，请参见 [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS)。
 `MAX_THUMBNAIL_FILE_BYTES` | 设置缩略图的硬最大文件大小。默认为 `50 * 1024 * 1024`（50 MB）。提高此值可能会大幅增加内存使用量，并可能导致内存溢出崩溃或在内存中解压大文件时数据丢失。
 
@@ -91,7 +91,7 @@
 
 键 | 描述
 ----|-------------
-`MEDIA_PREFIX_TREE` | 布尔值，是否为每棵树的媒体文件使用单独的子文件夹。默认为 `False`，但在多树设置中强烈建议使用 `True`
+`MEDIA_PREFIX_TREE` | 布尔值，是否为每棵树的媒体文件使用单独的子文件夹。默认为 `false`，但在多树设置中强烈建议使用 `true`
 `NEW_DB_BACKEND` | 新创建的家谱树使用的数据库后端。必须是 `sqlite`、`postgresql` 或 `sharedpostgresql` 之一。默认为 `sqlite`。
 `POSTGRES_HOST` | 在使用共享 PostgreSQL 后端的多树设置中，用于创建新树的 PostgreSQL 服务器的主机名
 `POSTGRES_PORT` | 在使用共享 PostgreSQL 后端的多树设置中，用于创建新树的 PostgreSQL 服务器的端口
@@ -103,7 +103,7 @@
 
 键 | 描述
 ----|-------------
-`OIDC_ENABLED` | 布尔值，是否启用 OIDC 认证。默认为 `False`。
+`OIDC_ENABLED` | 布尔值，是否启用 OIDC 认证。默认为 `false`。
 `OIDC_ISSUER` | OIDC 提供者的发行者 URL（用于自定义 OIDC 提供者）
 `OIDC_CLIENT_ID` | OAuth 客户端 ID（用于自定义 OIDC 提供者）
 `OIDC_CLIENT_SECRET` | OAuth 客户端密钥（用于自定义 OIDC 提供者）
@@ -111,8 +111,8 @@
 `OIDC_SCOPES` | OAuth 范围。默认为 "openid email profile"
 `OIDC_USERNAME_CLAIM` | 用于用户名的声明。默认为 "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | 可选：OpenID Connect 配置端点的 URL（如果不使用标准的 `/.well-known/openid-configuration`）
-`OIDC_DISABLE_LOCAL_AUTH` | 布尔值，是否禁用本地用户名/密码认证。默认为 `False`
-`OIDC_AUTO_REDIRECT` | 布尔值，是否在仅配置一个提供者时自动重定向到 OIDC。默认为 `False`
+`OIDC_DISABLE_LOCAL_AUTH` | 布尔值，是否禁用本地用户名/密码认证。默认为 `false`
+`OIDC_AUTO_REDIRECT` | 布尔值，是否在仅配置一个提供者时自动重定向到 OIDC。默认为 `false`
 
 #### 内置 OIDC 提供者
 

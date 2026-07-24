@@ -35,7 +35,7 @@ Pour les fournisseurs OIDC personnalisés (comme Keycloak, Authentik ou tout fou
 
 Clé | Description
 ----|-------------
-`OIDC_ENABLED` | Booléen, indique si l'authentification OIDC doit être activée. Défini sur `True`.
+`OIDC_ENABLED` | Booléen, indique si l'authentification OIDC doit être activée. Défini sur `true`.
 `OIDC_ISSUER` | L'URL de l'émetteur de votre fournisseur
 `OIDC_CLIENT_ID` | ID client pour votre fournisseur OIDC
 `OIDC_CLIENT_SECRET` | Secret client pour votre fournisseur OIDC

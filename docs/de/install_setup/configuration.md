@@ -55,9 +55,9 @@ Schlüssel | Beschreibung
 `EMAIL_PORT` | SMTP-Serverport. Standardmäßig 465.
 `EMAIL_HOST_USER` | SMTP-Serverbenutzername.
 `EMAIL_HOST_PASSWORD` | SMTP-Serverpasswort.
-`EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Versenden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden einen anderen Port als 25.
-`EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `True`, wenn `EMAIL_USE_TLS` nicht explizit gesetzt ist. Typischerweise mit Port 465 verwendet.
-`EMAIL_USE_STARTTLS` | Boolean, ob explizites STARTTLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `False`. Typischerweise mit Port 587 oder 25 verwendet.
+`EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Versenden von E-Mails verwendet werden soll. Standardmäßig `true`. Bei Verwendung von STARTTLS setzen Sie dies auf `false` und verwenden einen anderen Port als 25.
+`EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `true`, wenn `EMAIL_USE_TLS` nicht explizit gesetzt ist. Typischerweise mit Port 465 verwendet.
+`EMAIL_USE_STARTTLS` | Boolean, ob explizites STARTTLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `false`. Typischerweise mit Port 587 oder 25 verwendet.
 `DEFAULT_FROM_EMAIL` | "Von"-Adresse für automatisierte E-Mails.
 `THUMBNAIL_CACHE_CONFIG` | Dictionary mit Einstellungen für den Thumbnail-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
 `REQUEST_CACHE_CONFIG` | Dictionary mit Einstellungen für den Anfrage-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
@@ -65,8 +65,8 @@ Schlüssel | Beschreibung
 `CELERY_CONFIG` | Einstellungen für die Celery-Hintergrundaufgabenwarteschlange. Siehe [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) für mögliche Einstellungen.
 `REPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben von ausgeführten Gramps-Berichten gespeichert werden.
 `EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben des Exports der Gramps-Datenbank gespeichert werden.
-`REGISTRATION_DISABLED` | Wenn `True`, keine neue Benutzerregistrierung zulassen (Standard `False`).
-`DISABLE_TELEMETRY` | Wenn `True`, Telemetrie-Statistiken deaktivieren (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
+`REGISTRATION_DISABLED` | Wenn `true`, keine neue Benutzerregistrierung zulassen (Standard `false`).
+`DISABLE_TELEMETRY` | Wenn `true`, Telemetrie-Statistiken deaktivieren (Standard `false`). Siehe [Telemetrie](telemetry.md) für Details.
 `PILLOW_MAX_IMAGE_PIXELS` | Setzt den Parameter PIL.Image.MAX_IMAGE_PIXELS, der angibt, wie viele Pixel das verarbeitete Bild enthalten kann. Siehe [Docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) für Details.
 `MAX_THUMBNAIL_FILE_BYTES` | Setzt eine harte maximale Dateigröße für Thumbnails. Standardmäßig `50 * 1024 * 1024` (50 MB). Eine Erhöhung kann den Speicherverbrauch erheblich steigern und zu Speicherüberläufen oder Datenverlust führen, wenn große Dateien im Speicher dekomprimiert werden.
 
@@ -92,7 +92,7 @@ Die folgenden Einstellungen sind relevant, wenn [mehrere Bäume gehostet werden]
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baums verwendet werden soll. Standardmäßig `False`, wird jedoch dringend empfohlen, `True` in einer Multi-Baum-Konfiguration zu verwenden.
+`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baums verwendet werden soll. Standardmäßig `false`, wird jedoch dringend empfohlen, `true` in einer Multi-Baum-Konfiguration zu verwenden.
 `NEW_DB_BACKEND` | Das Datenbank-Backend, das für neu erstellte Familienbäume verwendet werden soll. Muss eines von `sqlite`, `postgresql` oder `sharedpostgresql` sein. Standardmäßig `sqlite`.
 `POSTGRES_HOST` | Der Hostname des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 `POSTGRES_PORT` | Der Port des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
@@ -104,7 +104,7 @@ Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC)-Authen
 
 Schlüssel | Beschreibung
 ----|-------------
-`OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Standardmäßig `False`.
+`OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Standardmäßig `false`.
 `OIDC_ISSUER` | OIDC-Anbieter-Issuer-URL (für benutzerdefinierte OIDC-Anbieter).
 `OIDC_CLIENT_ID` | OAuth-Client-ID (für benutzerdefinierte OIDC-Anbieter).
 `OIDC_CLIENT_SECRET` | OAuth-Client-Geheimnis (für benutzerdefinierte OIDC-Anbieter).
@@ -112,8 +112,8 @@ Schlüssel | Beschreibung
 `OIDC_SCOPES` | OAuth-Scopes. Standardmäßig "openid email profile".
 `OIDC_USERNAME_CLAIM` | Der Anspruch, der für den Benutzernamen verwendet werden soll. Standardmäßig "preferred_username".
 `OIDC_OPENID_CONFIG_URL` | Optional: URL zum OpenID Connect-Konfigurationsendpunkt (wenn nicht die Standard-`/.well-known/openid-configuration` verwendet wird).
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, ob die lokale Benutzername/Passwort-Authentifizierung deaktiviert werden soll. Standardmäßig `False`.
-`OIDC_AUTO_REDIRECT` | Boolean, ob automatisch zu OIDC umgeleitet werden soll, wenn nur ein Anbieter konfiguriert ist. Standardmäßig `False`.
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, ob die lokale Benutzername/Passwort-Authentifizierung deaktiviert werden soll. Standardmäßig `false`.
+`OIDC_AUTO_REDIRECT` | Boolean, ob automatisch zu OIDC umgeleitet werden soll, wenn nur ein Anbieter konfiguriert ist. Standardmäßig `false`.
 
 #### Eingebaute OIDC-Anbieter
 

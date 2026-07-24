@@ -35,7 +35,7 @@ Birden fazla sağlayıcıyı aynı anda yapılandırabilirsiniz. Sistem, yapıla
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğinizi belirten Boolean. `True` olarak ayarlayın.
+`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğinizi belirten Boolean. `true` olarak ayarlayın.
 `OIDC_ISSUER` | Sağlayıcınızın verici URL'si
 `OIDC_CLIENT_ID` | OIDC sağlayıcınız için istemci kimliği
 `OIDC_CLIENT_SECRET` | OIDC sağlayıcınız için istemci sırrı

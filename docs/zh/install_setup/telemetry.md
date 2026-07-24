@@ -45,4 +45,4 @@
 
 然而，Gramps Web 让用户完全控制，因此您当然可以选择禁用此功能。
 
-为此，只需将 `DISABLE_TELEMETRY` 配置选项设置为 `True`（例如，通过将 `GRAMPSWEB_DISABLE_TELEMETRY` 环境变量设置为 `true` &ndash; 有关详细信息，请参见 [配置文档](configuration.md)）。
+为此，只需将 `DISABLE_TELEMETRY` 配置选项设置为 `true`（例如，通过将 `GRAMPSWEB_DISABLE_TELEMETRY` 环境变量设置为 `true` &ndash; 有关详细信息，请参见 [配置文档](configuration.md)）。

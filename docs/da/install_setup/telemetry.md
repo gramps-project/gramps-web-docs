@@ -45,4 +45,4 @@ Da statistikdataene er nyttige for Gramps Web-teamet, og vi har sikret os, at de
 
 Ikke desto mindre giver Gramps Web brugerne fuld kontrol, så selvfølgelig kan du vælge at deaktivere funktionen, hvis du ønsker det.
 
-For at gøre dette skal du blot indstille konfigurationsmuligheden `DISABLE_TELEMETRY` til `True` (f.eks. ved at indstille miljøvariablen `GRAMPSWEB_DISABLE_TELEMETRY` til `true` &ndash; se [konfigurationsdokumentationen](configuration.md) for detaljer).
+For at gøre dette skal du blot indstille konfigurationsmuligheden `DISABLE_TELEMETRY` til `true` (f.eks. ved at indstille miljøvariablen `GRAMPSWEB_DISABLE_TELEMETRY` til `true` &ndash; se [konfigurationsdokumentationen](configuration.md) for detaljer).

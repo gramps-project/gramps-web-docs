@@ -55,9 +55,9 @@ Nøgle | Beskrivelse
 `EMAIL_PORT` | SMTP-serverport. standard til 465
 `EMAIL_HOST_USER` | SMTP-serverbrugernavn
 `EMAIL_HOST_PASSWORD` | SMTP-serveradgangskode
-`EMAIL_USE_TLS` | **Forældet** (brug `EMAIL_USE_SSL` eller `EMAIL_USE_STARTTLS` i stedet). Boolean, om der skal bruges TLS til at sende e-mails. Standard til `True`. Når du bruger STARTTLS, skal du indstille dette til `False` og bruge en port, der er forskellig fra 25.
-`EMAIL_USE_SSL` | Boolean, om der skal bruges implicit SSL/TLS til SMTP (v3.6.0+). Standard til `True`, hvis `EMAIL_USE_TLS` ikke er eksplicit indstillet. Typisk brugt med port 465.
-`EMAIL_USE_STARTTLS` | Boolean, om der skal bruges eksplicit STARTTLS til SMTP (v3.6.0+). Standard til `False`. Typisk brugt med port 587 eller 25.
+`EMAIL_USE_TLS` | **Forældet** (brug `EMAIL_USE_SSL` eller `EMAIL_USE_STARTTLS` i stedet). Boolean, om der skal bruges TLS til at sende e-mails. Standard til `true`. Når du bruger STARTTLS, skal du indstille dette til `false` og bruge en port, der er forskellig fra 25.
+`EMAIL_USE_SSL` | Boolean, om der skal bruges implicit SSL/TLS til SMTP (v3.6.0+). Standard til `true`, hvis `EMAIL_USE_TLS` ikke er eksplicit indstillet. Typisk brugt med port 465.
+`EMAIL_USE_STARTTLS` | Boolean, om der skal bruges eksplicit STARTTLS til SMTP (v3.6.0+). Standard til `false`. Typisk brugt med port 587 eller 25.
 `DEFAULT_FROM_EMAIL` | "Fra" adresse til automatiserede e-mails
 `THUMBNAIL_CACHE_CONFIG` | Ordbog med indstillinger for miniaturecache. Se [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for mulige indstillinger.
 `REQUEST_CACHE_CONFIG` | Ordbog med indstillinger for anmodningscache. Se [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for mulige indstillinger.
@@ -65,8 +65,8 @@ Nøgle | Beskrivelse
 `CELERY_CONFIG` | Indstillinger for Celery-baggrundsopgavekøen. Se [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for mulige indstillinger.
 `REPORT_DIR` | Midlertidig mappe, hvor output fra kørsel af Gramps-rapporter vil blive gemt.
 `EXPORT_DIR` | Midlertidig mappe, hvor output fra eksport af Gramps-databasen vil blive gemt.
-`REGISTRATION_DISABLED` | Hvis `True`, forbyder ny brugerregistrering (standard `False`)
-`DISABLE_TELEMETRY` | Hvis `True`, deaktiverer statistiktelemetri (standard `False`). Se [telemetri](telemetry.md) for detaljer.
+`REGISTRATION_DISABLED` | Hvis `true`, forbyder ny brugerregistrering (standard `false`)
+`DISABLE_TELEMETRY` | Hvis `true`, deaktiverer statistiktelemetri (standard `false`). Se [telemetri](telemetry.md) for detaljer.
 `PILLOW_MAX_IMAGE_PIXELS` | Indstiller parameteren PIL.Image.MAX_IMAGE_PIXELS, som angiver antallet af pixels, som det behandlede billede kan indeholde. Se [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) for detaljer.
 `MAX_THUMBNAIL_FILE_BYTES` | Indstiller en hård maksimal filstørrelse for miniaturebilleder. Standard til `50 * 1024 * 1024` (50 MB). At hæve den kan i høj grad øge hukommelsesforbruget og kan føre til hukommelsesfejl eller datatab, hvis store filer dekomprimeres i hukommelsen.
 
@@ -92,7 +92,7 @@ Følgende indstillinger er relevante, når du [hoster flere træer](multi-tree.m
 
 Nøgle | Beskrivelse
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, om der skal bruges en separat undermappe til mediefilerne for hvert træ. Standard til `False`, men anbefales stærkt at bruge `True` i en multi-træ opsætning.
+`MEDIA_PREFIX_TREE` | Boolean, om der skal bruges en separat undermappe til mediefilerne for hvert træ. Standard til `false`, men anbefales stærkt at bruge `true` i en multi-træ opsætning.
 `NEW_DB_BACKEND` | Den databasebackend, der skal bruges til nyoprettede familietræer. Skal være en af `sqlite`, `postgresql` eller `sharedpostgresql`. Standard til `sqlite`.
 `POSTGRES_HOST` | Værtsnavnet på PostgreSQL-serveren, der bruges til at oprette nye træer, når der bruges en multi-træ opsætning med SharedPostgreSQL-backend.
 `POSTGRES_PORT` | Porten på PostgreSQL-serveren, der bruges til at oprette nye træer, når der bruges en multi-træ opsætning med SharedPostgreSQL-backend.
@@ -104,7 +104,7 @@ Disse indstillinger er nødvendige, hvis du vil bruge OpenID Connect (OIDC) godk
 
 Nøgle | Beskrivelse
 ----|-------------
-`OIDC_ENABLED` | Boolean, om OIDC-godkendelse skal aktiveres. Standard til `False`.
+`OIDC_ENABLED` | Boolean, om OIDC-godkendelse skal aktiveres. Standard til `false`.
 `OIDC_ISSUER` | OIDC-udbyderens udsteder-URL (til brugerdefinerede OIDC-udbydere)
 `OIDC_CLIENT_ID` | OAuth-klient-ID (til brugerdefinerede OIDC-udbydere)
 `OIDC_CLIENT_SECRET` | OAuth-klienthemmelighed (til brugerdefinerede OIDC-udbydere)
@@ -112,8 +112,8 @@ Nøgle | Beskrivelse
 `OIDC_SCOPES` | OAuth-scopes. Standard til "openid email profile"
 `OIDC_USERNAME_CLAIM` | Den påstand, der skal bruges til brugernavnet. Standard til "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Valgfri: URL til OpenID Connect-konfigurationsendepunktet (hvis ikke standard `/.well-known/openid-configuration`)
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, om lokal brugernavn/adgangskode-godkendelse skal deaktiveres. Standard til `False`
-`OIDC_AUTO_REDIRECT` | Boolean, om der skal omdirigeres automatisk til OIDC, når kun én udbyder er konfigureret. Standard til `False`
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, om lokal brugernavn/adgangskode-godkendelse skal deaktiveres. Standard til `false`
+`OIDC_AUTO_REDIRECT` | Boolean, om der skal omdirigeres automatisk til OIDC, når kun én udbyder er konfigureret. Standard til `false`
 
 #### Indbyggede OIDC-udbydere
 

@@ -35,7 +35,7 @@ Mukautettuja OIDC-palveluntarjoajia (kuten Keycloak, Authentik tai mikä tahansa
 
 | Avain                  | Kuvaus                                                                 |
 |-----------------------|------------------------------------------------------------------------|
-| `OIDC_ENABLED`        | Boolean, onko OIDC-todennus käytössä. Aseta arvoon `True`.            |
+| `OIDC_ENABLED`        | Boolean, onko OIDC-todennus käytössä. Aseta arvoon `true`.            |
 | `OIDC_ISSUER`        | Palveluntarjoajasi myöntäjän URL-osoite                                |
 | `OIDC_CLIENT_ID`      | Asiakastunnus OIDC-palveluntarjoajallesi                               |
 | `OIDC_CLIENT_SECRET`  | Asiakassalaisuus OIDC-palveluntarjoajallesi                           |

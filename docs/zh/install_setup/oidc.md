@@ -35,7 +35,7 @@ Gramps Web 内置支持流行的身份提供者。要使用它们，您只需提
 
 | Key                  | Description                                               |
 |----------------------|-----------------------------------------------------------|
-| `OIDC_ENABLED`       | 布尔值，是否启用 OIDC 认证。设置为 `True`。              |
+| `OIDC_ENABLED`       | 布尔值，是否启用 OIDC 认证。设置为 `true`。              |
 | `OIDC_ISSUER`       | 您提供者的发行者 URL                                     |
 | `OIDC_CLIENT_ID`    | 您的 OIDC 提供者的客户端 ID                              |
 | `OIDC_CLIENT_SECRET` | 您的 OIDC 提供者的客户端密钥                            |

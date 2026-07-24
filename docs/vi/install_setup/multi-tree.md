@@ -18,7 +18,7 @@ TREE = "*"
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Ngoài ra, bạn nên đặt tùy chọn cấu hình `MEDIA_PREFIX_TREE` thành `True` để đảm bảo các tệp phương tiện được lưu trữ trong các thư mục con riêng biệt. Nếu không, người dùng có thể truy cập các tệp phương tiện thuộc về một cây mà họ không có quyền truy cập!
+Ngoài ra, bạn nên đặt tùy chọn cấu hình `MEDIA_PREFIX_TREE` thành `true` để đảm bảo các tệp phương tiện được lưu trữ trong các thư mục con riêng biệt. Nếu không, người dùng có thể truy cập các tệp phương tiện thuộc về một cây mà họ không có quyền truy cập!
 
 ## Thêm tài khoản người dùng vào một cây cụ thể
 

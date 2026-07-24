@@ -55,9 +55,9 @@ Key | Description
 `EMAIL_PORT` | SMTP server port. defaults to 465
 `EMAIL_HOST_USER` | SMTP server username
 `EMAIL_HOST_PASSWORD` | SMTP server password
-`EMAIL_USE_TLS` | **Deprecated** (use `EMAIL_USE_SSL` or `EMAIL_USE_STARTTLS` instead). Boolean, whether to use TLS for sending e-mails. Defaults to `True`. When using STARTTLS, set this to `False` and use a port different from 25.
-`EMAIL_USE_SSL` | Boolean, whether to use implicit SSL/TLS for SMTP (v3.6.0+). Defaults to `True` if `EMAIL_USE_TLS` is not explicitly set. Typically used with port 465.
-`EMAIL_USE_STARTTLS` | Boolean, whether to use explicit STARTTLS for SMTP (v3.6.0+). Defaults to `False`. Typically used with port 587 or 25.
+`EMAIL_USE_TLS` | **Deprecated** (use `EMAIL_USE_SSL` or `EMAIL_USE_STARTTLS` instead). Boolean, whether to use TLS for sending e-mails. Defaults to `true`. When using STARTTLS, set this to `false` and use a port different from 25.
+`EMAIL_USE_SSL` | Boolean, whether to use implicit SSL/TLS for SMTP (v3.6.0+). Defaults to `true` if `EMAIL_USE_TLS` is not explicitly set. Typically used with port 465.
+`EMAIL_USE_STARTTLS` | Boolean, whether to use explicit STARTTLS for SMTP (v3.6.0+). Defaults to `false`. Typically used with port 587 or 25.
 `DEFAULT_FROM_EMAIL` | "From" address for automated e-mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary with settings for the thumbnail cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
 `REQUEST_CACHE_CONFIG` | Dictionary with settings for the request cache. See [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) for possible settings.
@@ -65,8 +65,8 @@ Key | Description
 `CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
 `REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
 `EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
-`REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`)
-`DISABLE_TELEMETRY` | If `True`, disable statistics telemetry (default `False`). See [telemetry](telemetry.md) for details.
+`REGISTRATION_DISABLED` | If `true`, disallow new user registration (default `false`)
+`DISABLE_TELEMETRY` | If `true`, disable statistics telemetry (default `false`). See [telemetry](telemetry.md) for details.
 `PILLOW_MAX_IMAGE_PIXELS` | Sets the PIL.Image.MAX_IMAGE_PIXELS parameter, which indicates the number of pixels that the processed image can contain. See [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) for details.
 `MAX_THUMBNAIL_FILE_BYTES` | Sets a hard maximum file size for thumbnails. Defaults to `50 * 1024 * 1024` (50 MB). Raising it can greatly increase memory usage and may lead to out-of-memory crashes or data loss if large files are decompressed in memory.
 
@@ -92,7 +92,7 @@ The following settings are relevant when [hosting multiple trees](multi-tree.md)
 
 Key | Description
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
+`MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `false`, but strongly recommend to use `true` in a multi-tree setup
 `NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
 `POSTGRES_HOST` | The host name of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 `POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
@@ -104,7 +104,7 @@ These settings are needed if you want to use OpenID Connect (OIDC) authenticatio
 
 Key | Description
 ----|-------------
-`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Defaults to `False`.
+`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Defaults to `false`.
 `OIDC_ISSUER` | OIDC provider issuer URL (for custom OIDC providers)
 `OIDC_CLIENT_ID` | OAuth client ID (for custom OIDC providers)
 `OIDC_CLIENT_SECRET` | OAuth client secret (for custom OIDC providers)
@@ -112,8 +112,8 @@ Key | Description
 `OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
 `OIDC_USERNAME_CLAIM` | The claim to use for the username. Defaults to "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Optional: URL to the OpenID Connect configuration endpoint (if not using standard `/.well-known/openid-configuration`)
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
-`OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `false`
+`OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `false`
 
 #### Built-in OIDC providers
 

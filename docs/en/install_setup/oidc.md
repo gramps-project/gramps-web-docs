@@ -35,7 +35,7 @@ For custom OIDC providers (like Keycloak, Authentik, or any standard OIDC-compli
 
 Key | Description
 ----|-------------
-`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Set to `True`.
+`OIDC_ENABLED` | Boolean, whether to enable OIDC authentication. Set to `true`.
 `OIDC_ISSUER` | Your provider's issuer URL
 `OIDC_CLIENT_ID` | Client ID for your OIDC provider
 `OIDC_CLIENT_SECRET` | Client secret for your OIDC provider

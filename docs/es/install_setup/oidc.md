@@ -35,7 +35,7 @@ Para proveedores OIDC personalizados (como Keycloak, Authentik o cualquier prove
 
 Clave | Descripción
 ----|-------------
-`OIDC_ENABLED` | Booleano, si habilitar la autenticación OIDC. Establecer en `True`.
+`OIDC_ENABLED` | Booleano, si habilitar la autenticación OIDC. Establecer en `true`.
 `OIDC_ISSUER` | La URL del emisor de tu proveedor
 `OIDC_CLIENT_ID` | ID de cliente para tu proveedor OIDC
 `OIDC_CLIENT_SECRET` | Secreto del cliente para tu proveedor OIDC

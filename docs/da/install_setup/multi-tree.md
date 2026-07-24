@@ -18,7 +18,7 @@ Dette vil gøre alle træer i serverens Gramps database katalog tilgængelige (g
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Derudover bør du sætte `MEDIA_PREFIX_TREE` konfigurationsmuligheden til `True` for at sikre, at mediefiler opbevares i separate undermapper. Ellers kan brugere få adgang til mediefiler, der tilhører et træ, de ikke har tilladelse til!
+Derudover bør du sætte `MEDIA_PREFIX_TREE` konfigurationsmuligheden til `true` for at sikre, at mediefiler opbevares i separate undermapper. Ellers kan brugere få adgang til mediefiler, der tilhører et træ, de ikke har tilladelse til!
 
 ## Tilføj en brugerkonto til et specifikt træ
 

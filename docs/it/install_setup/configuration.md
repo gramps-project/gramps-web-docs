@@ -55,9 +55,9 @@ Chiave | Descrizione
 `EMAIL_PORT` | Porta del server SMTP. predefinito a 465.
 `EMAIL_HOST_USER` | Nome utente del server SMTP.
 `EMAIL_HOST_PASSWORD` | Password del server SMTP.
-`EMAIL_USE_TLS` | **Deprecato** (utilizza `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` invece). Booleano, se utilizzare TLS per inviare e-mail. Predefinito a `True`. Quando si utilizza STARTTLS, impostalo su `False` e utilizza una porta diversa da 25.
-`EMAIL_USE_SSL` | Booleano, se utilizzare SSL/TLS implicito per SMTP (v3.6.0+). Predefinito a `True` se `EMAIL_USE_TLS` non è esplicitamente impostato. Tipicamente utilizzato con la porta 465.
-`EMAIL_USE_STARTTLS` | Booleano, se utilizzare STARTTLS esplicito per SMTP (v3.6.0+). Predefinito a `False`. Tipicamente utilizzato con la porta 587 o 25.
+`EMAIL_USE_TLS` | **Deprecato** (utilizza `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` invece). Booleano, se utilizzare TLS per inviare e-mail. Predefinito a `true`. Quando si utilizza STARTTLS, impostalo su `false` e utilizza una porta diversa da 25.
+`EMAIL_USE_SSL` | Booleano, se utilizzare SSL/TLS implicito per SMTP (v3.6.0+). Predefinito a `true` se `EMAIL_USE_TLS` non è esplicitamente impostato. Tipicamente utilizzato con la porta 465.
+`EMAIL_USE_STARTTLS` | Booleano, se utilizzare STARTTLS esplicito per SMTP (v3.6.0+). Predefinito a `false`. Tipicamente utilizzato con la porta 587 o 25.
 `DEFAULT_FROM_EMAIL` | Indirizzo "Da" per e-mail automatiche.
 `THUMBNAIL_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle miniature. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le possibili impostazioni.
 `REQUEST_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle richieste. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le possibili impostazioni.
@@ -65,8 +65,8 @@ Chiave | Descrizione
 `CELERY_CONFIG` | Impostazioni per la coda di attività in background Celery. Vedi [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) per le possibili impostazioni.
 `REPORT_DIR` | Directory temporanea in cui verrà memorizzato l'output dei report di Gramps.
 `EXPORT_DIR` | Directory temporanea in cui verrà memorizzato l'output dell'esportazione del database di Gramps.
-`REGISTRATION_DISABLED` | Se `True`, vieta la registrazione di nuovi utenti (predefinito `False`).
-`DISABLE_TELEMETRY` | Se `True`, disabilita la telemetria delle statistiche (predefinito `False`). Vedi [telemetria](telemetry.md) per dettagli.
+`REGISTRATION_DISABLED` | Se `true`, vieta la registrazione di nuovi utenti (predefinito `false`).
+`DISABLE_TELEMETRY` | Se `true`, disabilita la telemetria delle statistiche (predefinito `false`). Vedi [telemetria](telemetry.md) per dettagli.
 `PILLOW_MAX_IMAGE_PIXELS` | Imposta il parametro PIL.Image.MAX_IMAGE_PIXELS, che indica il numero di pixel che l'immagine elaborata può contenere. Vedi [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) per dettagli.
 `MAX_THUMBNAIL_FILE_BYTES` | Imposta una dimensione massima fissa per i file delle miniature. Predefinito a `50 * 1024 * 1024` (50 MB). Aumentarla può aumentare notevolmente l'uso della memoria e può portare a crash per esaurimento della memoria o perdita di dati se file di grandi dimensioni vengono decompressi in memoria.
 
@@ -92,7 +92,7 @@ Le seguenti impostazioni sono rilevanti quando [si ospitano più alberi](multi-t
 
 Chiave | Descrizione
 ----|-------------
-`MEDIA_PREFIX_TREE` | Booleano, se utilizzare o meno una sottocartella separata per i file multimediali di ciascun albero. Predefinito a `False`, ma si consiglia vivamente di utilizzare `True` in un'installazione multi-albero.
+`MEDIA_PREFIX_TREE` | Booleano, se utilizzare o meno una sottocartella separata per i file multimediali di ciascun albero. Predefinito a `false`, ma si consiglia vivamente di utilizzare `true` in un'installazione multi-albero.
 `NEW_DB_BACKEND` | Il backend del database da utilizzare per i nuovi alberi genealogici creati. Deve essere uno di `sqlite`, `postgresql` o `sharedpostgresql`. Predefinito a `sqlite`.
 `POSTGRES_HOST` | Il nome host del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza un'installazione multi-albero con il backend SharedPostgreSQL.
 `POSTGRES_PORT` | La porta del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza un'installazione multi-albero con il backend SharedPostgreSQL.
@@ -104,7 +104,7 @@ Queste impostazioni sono necessarie se desideri utilizzare l'autenticazione Open
 
 Chiave | Descrizione
 ----|-------------
-`OIDC_ENABLED` | Booleano, se abilitare l'autenticazione OIDC. Predefinito a `False`.
+`OIDC_ENABLED` | Booleano, se abilitare l'autenticazione OIDC. Predefinito a `false`.
 `OIDC_ISSUER` | URL dell'emittente del fornitore OIDC (per fornitori OIDC personalizzati).
 `OIDC_CLIENT_ID` | ID client OAuth (per fornitori OIDC personalizzati).
 `OIDC_CLIENT_SECRET` | Segreto client OAuth (per fornitori OIDC personalizzati).
@@ -112,8 +112,8 @@ Chiave | Descrizione
 `OIDC_SCOPES` | Scopi OAuth. Predefinito a "openid email profile".
 `OIDC_USERNAME_CLAIM` | Il claim da utilizzare per il nome utente. Predefinito a "preferred_username".
 `OIDC_OPENID_CONFIG_URL` | Facoltativo: URL per l'endpoint di configurazione OpenID Connect (se non si utilizza il standard `/.well-known/openid-configuration`).
-`OIDC_DISABLE_LOCAL_AUTH` | Booleano, se disabilitare l'autenticazione locale con nome utente/password. Predefinito a `False`.
-`OIDC_AUTO_REDIRECT` | Booleano, se reindirizzare automaticamente a OIDC quando è configurato solo un fornitore. Predefinito a `False`.
+`OIDC_DISABLE_LOCAL_AUTH` | Booleano, se disabilitare l'autenticazione locale con nome utente/password. Predefinito a `false`.
+`OIDC_AUTO_REDIRECT` | Booleano, se reindirizzare automaticamente a OIDC quando è configurato solo un fornitore. Predefinito a `false`.
 
 #### Fornitori OIDC integrati
 

@@ -35,7 +35,7 @@ For tilpassede OIDC udbydere (som Keycloak, Authentik eller enhver standard OIDC
 
 Key | Beskrivelse
 ----|-------------
-`OIDC_ENABLED` | Boolean, om OIDC autentificering skal aktiveres. Sæt til `True`.
+`OIDC_ENABLED` | Boolean, om OIDC autentificering skal aktiveres. Sæt til `true`.
 `OIDC_ISSUER` | Din udbyders issuer URL
 `OIDC_CLIENT_ID` | Klient-ID for din OIDC udbyder
 `OIDC_CLIENT_SECRET` | Klienthemmelighed for din OIDC udbyder

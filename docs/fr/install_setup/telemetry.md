@@ -45,4 +45,4 @@ Ces graphiques seront publiés sur le site de documentation de Gramps Web.
 
 Néanmoins, Gramps Web donne aux utilisateurs un contrôle total, donc bien sûr vous pouvez choisir de désactiver la fonctionnalité si vous le souhaitez.
 
-Pour ce faire, il vous suffit de définir l'option de configuration `DISABLE_TELEMETRY` sur `True` (par exemple, en définissant la variable d'environnement `GRAMPSWEB_DISABLE_TELEMETRY` sur `true` &ndash; consultez la [documentation de configuration](configuration.md) pour plus de détails).
+Pour ce faire, il vous suffit de définir l'option de configuration `DISABLE_TELEMETRY` sur `true` (par exemple, en définissant la variable d'environnement `GRAMPSWEB_DISABLE_TELEMETRY` sur `true` &ndash; consultez la [documentation de configuration](configuration.md) pour plus de détails).

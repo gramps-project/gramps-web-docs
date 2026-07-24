@@ -18,7 +18,7 @@ Cela rendra tous les arbres dans le répertoire de la base de données Gramps du
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-De plus, vous devez définir l'option de configuration `MEDIA_PREFIX_TREE` sur `True` pour garantir que les fichiers multimédias sont stockés dans des sous-dossiers séparés. Sinon, les utilisateurs peuvent accéder à des fichiers multimédias qui appartiennent à un arbre pour lequel ils n'ont pas de permission !
+De plus, vous devez définir l'option de configuration `MEDIA_PREFIX_TREE` sur `true` pour garantir que les fichiers multimédias sont stockés dans des sous-dossiers séparés. Sinon, les utilisateurs peuvent accéder à des fichiers multimédias qui appartiennent à un arbre pour lequel ils n'ont pas de permission !
 
 ## Ajouter un compte utilisateur à un arbre spécifique
 

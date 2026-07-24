@@ -18,7 +18,7 @@ Dies macht alle Bäume im Gramps-Datenbankverzeichnis des Servers zugänglich (v
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Darüber hinaus sollten Sie die Konfigurationsoption `MEDIA_PREFIX_TREE` auf `True` setzen, um sicherzustellen, dass Mediendateien in separaten Unterordnern gespeichert werden. Andernfalls können Benutzer auf Mediendateien zugreifen, die zu einem Baum gehören, für den sie keine Berechtigung haben!
+Darüber hinaus sollten Sie die Konfigurationsoption `MEDIA_PREFIX_TREE` auf `true` setzen, um sicherzustellen, dass Mediendateien in separaten Unterordnern gespeichert werden. Andernfalls können Benutzer auf Mediendateien zugreifen, die zu einem Baum gehören, für den sie keine Berechtigung haben!
 
 ## Benutzerkonto zu einem bestimmten Baum hinzufügen
 

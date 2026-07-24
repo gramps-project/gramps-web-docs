@@ -55,9 +55,9 @@
 `EMAIL_PORT` | SMTPサーバーポート。デフォルトは465です。
 `EMAIL_HOST_USER` | SMTPサーバーユーザー名。
 `EMAIL_HOST_PASSWORD` | SMTPサーバーパスワード。
-`EMAIL_USE_TLS` | **非推奨**（代わりに`EMAIL_USE_SSL`または`EMAIL_USE_STARTTLS`を使用してください）。ブール値、メール送信にTLSを使用するかどうか。デフォルトは`True`です。STARTTLSを使用する場合は、これを`False`に設定し、ポート25とは異なるポートを使用してください。
-`EMAIL_USE_SSL` | ブール値、SMTP用に暗黙的なSSL/TLSを使用するかどうか（v3.6.0+）。`EMAIL_USE_TLS`が明示的に設定されていない場合はデフォルトで`True`です。通常はポート465で使用されます。
-`EMAIL_USE_STARTTLS` | ブール値、SMTP用に明示的なSTARTTLSを使用するかどうか（v3.6.0+）。デフォルトは`False`です。通常はポート587または25で使用されます。
+`EMAIL_USE_TLS` | **非推奨**（代わりに`EMAIL_USE_SSL`または`EMAIL_USE_STARTTLS`を使用してください）。ブール値、メール送信にTLSを使用するかどうか。デフォルトは`true`です。STARTTLSを使用する場合は、これを`false`に設定し、ポート25とは異なるポートを使用してください。
+`EMAIL_USE_SSL` | ブール値、SMTP用に暗黙的なSSL/TLSを使用するかどうか（v3.6.0+）。`EMAIL_USE_TLS`が明示的に設定されていない場合はデフォルトで`true`です。通常はポート465で使用されます。
+`EMAIL_USE_STARTTLS` | ブール値、SMTP用に明示的なSTARTTLSを使用するかどうか（v3.6.0+）。デフォルトは`false`です。通常はポート587または25で使用されます。
 `DEFAULT_FROM_EMAIL` | 自動メールの「From」アドレス。
 `THUMBNAIL_CACHE_CONFIG` | サムネイルキャッシュの設定を含む辞書。可能な設定については[Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)を参照してください。
 `REQUEST_CACHE_CONFIG` | リクエストキャッシュの設定を含む辞書。可能な設定については[Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)を参照してください。
@@ -65,8 +65,8 @@
 `CELERY_CONFIG` | Celeryバックグラウンドタスクキューの設定。可能な設定については[Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html)を参照してください。
 `REPORT_DIR` | Grampsレポートの出力が保存される一時ディレクトリ。
 `EXPORT_DIR` | Grampsデータベースのエクスポート出力が保存される一時ディレクトリ。
-`REGISTRATION_DISABLED` | `True`の場合、新しいユーザー登録を禁止します（デフォルトは`False`）。
-`DISABLE_TELEMETRY` | `True`の場合、統計テレメトリを無効にします（デフォルトは`False`）。詳細については[telemetry](telemetry.md)を参照してください。
+`REGISTRATION_DISABLED` | `true`の場合、新しいユーザー登録を禁止します（デフォルトは`false`）。
+`DISABLE_TELEMETRY` | `true`の場合、統計テレメトリを無効にします（デフォルトは`false`）。詳細については[telemetry](telemetry.md)を参照してください。
 `PILLOW_MAX_IMAGE_PIXELS` | 処理された画像が含むことができるピクセル数を示すPIL.Image.MAX_IMAGE_PIXELSパラメータを設定します。詳細については[docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS)を参照してください。
 `MAX_THUMBNAIL_FILE_BYTES` | サムネイルの最大ファイルサイズを設定します。デフォルトは`50 * 1024 * 1024`（50 MB）です。これを上げると、メモリ使用量が大幅に増加し、大きなファイルがメモリ内で解凍されると、メモリ不足のクラッシュやデータ損失が発生する可能性があります。
 
@@ -90,7 +90,7 @@
 
 キー | 説明
 ----|-------------
-`MEDIA_PREFIX_TREE` | 各ツリーのメディアファイル用に別のサブフォルダーを使用するかどうかのブール値。デフォルトは`False`ですが、マルチツリーセットアップでは`True`を使用することを強く推奨します。
+`MEDIA_PREFIX_TREE` | 各ツリーのメディアファイル用に別のサブフォルダーを使用するかどうかのブール値。デフォルトは`false`ですが、マルチツリーセットアップでは`true`を使用することを強く推奨します。
 `NEW_DB_BACKEND` | 新しく作成されたファミリーツリーに使用するデータベースバックエンド。`sqlite`、`postgresql`、または`sharedpostgresql`のいずれかでなければなりません。デフォルトは`sqlite`です。
 `POSTGRES_HOST` | SharedPostgreSQLバックエンドを使用したマルチツリーセットアップで新しいツリーを作成するために使用されるPostgreSQLサーバーのホスト名。
 `POSTGRES_PORT` | SharedPostgreSQLバックエンドを使用したマルチツリーセットアップで新しいツリーを作成するために使用されるPostgreSQLサーバーのポート。
@@ -102,7 +102,7 @@
 
 キー | 説明
 ----|-------------
-`OIDC_ENABLED` | OIDC認証を有効にするかどうかのブール値。デフォルトは`False`です。
+`OIDC_ENABLED` | OIDC認証を有効にするかどうかのブール値。デフォルトは`false`です。
 `OIDC_ISSUER` | OIDCプロバイダーの発行者URL（カスタムOIDCプロバイダー用）。
 `OIDC_CLIENT_ID` | OAuthクライアントID（カスタムOIDCプロバイダー用）。
 `OIDC_CLIENT_SECRET` | OAuthクライアントシークレット（カスタムOIDCプロバイダー用）。
@@ -110,8 +110,8 @@
 `OIDC_SCOPES` | OAuthスコープ。デフォルトは「openid email profile」です。
 `OIDC_USERNAME_CLAIM` | ユーザー名に使用するクレーム。デフォルトは「preferred_username」です。
 `OIDC_OPENID_CONFIG_URL` | オプション：OpenID Connect設定エンドポイントへのURL（標準の`/.well-known/openid-configuration`を使用しない場合）。
-`OIDC_DISABLE_LOCAL_AUTH` | ローカルのユーザー名/パスワード認証を無効にするかどうかのブール値。デフォルトは`False`です。
-`OIDC_AUTO_REDIRECT` | プロバイダーが1つだけ設定されている場合に自動的にOIDCにリダイレクトするかどうかのブール値。デフォルトは`False`です。
+`OIDC_DISABLE_LOCAL_AUTH` | ローカルのユーザー名/パスワード認証を無効にするかどうかのブール値。デフォルトは`false`です。
+`OIDC_AUTO_REDIRECT` | プロバイダーが1つだけ設定されている場合に自動的にOIDCにリダイレクトするかどうかのブール値。デフォルトは`false`です。
 
 #### 内蔵OIDCプロバイダー
 

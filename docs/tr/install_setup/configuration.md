@@ -55,9 +55,9 @@ Anahtar | Açıklama
 `EMAIL_PORT` | SMTP sunucu portu. Varsayılan olarak 465'tir.
 `EMAIL_HOST_USER` | SMTP sunucu kullanıcı adı.
 `EMAIL_HOST_PASSWORD` | SMTP sunucu şifresi.
-`EMAIL_USE_TLS` | **Kullanımdan kaldırıldı** (bunun yerine `EMAIL_USE_SSL` veya `EMAIL_USE_STARTTLS` kullanın). E-postaları göndermek için TLS kullanılıp kullanılmayacağını belirten Boolean. Varsayılan olarak `True`'dur. STARTTLS kullanırken, bunu `False` olarak ayarlayın ve 25'ten farklı bir port kullanın.
-`EMAIL_USE_SSL` | SMTP için örtük SSL/TLS kullanılıp kullanılmayacağını belirten Boolean (v3.6.0+). `EMAIL_USE_TLS` açıkça ayarlanmamışsa varsayılan olarak `True`'dur. Genellikle 465 portu ile kullanılır.
-`EMAIL_USE_STARTTLS` | SMTP için açık STARTTLS kullanılıp kullanılmayacağını belirten Boolean (v3.6.0+). Varsayılan olarak `False`'dur. Genellikle 587 veya 25 portu ile kullanılır.
+`EMAIL_USE_TLS` | **Kullanımdan kaldırıldı** (bunun yerine `EMAIL_USE_SSL` veya `EMAIL_USE_STARTTLS` kullanın). E-postaları göndermek için TLS kullanılıp kullanılmayacağını belirten Boolean. Varsayılan olarak `true`'dur. STARTTLS kullanırken, bunu `false` olarak ayarlayın ve 25'ten farklı bir port kullanın.
+`EMAIL_USE_SSL` | SMTP için örtük SSL/TLS kullanılıp kullanılmayacağını belirten Boolean (v3.6.0+). `EMAIL_USE_TLS` açıkça ayarlanmamışsa varsayılan olarak `true`'dur. Genellikle 465 portu ile kullanılır.
+`EMAIL_USE_STARTTLS` | SMTP için açık STARTTLS kullanılıp kullanılmayacağını belirten Boolean (v3.6.0+). Varsayılan olarak `false`'dur. Genellikle 587 veya 25 portu ile kullanılır.
 `DEFAULT_FROM_EMAIL` | Otomatik e-postalar için "From" adresi.
 `THUMBNAIL_CACHE_CONFIG` | Küçük resim önbelleği için ayarları içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
 `REQUEST_CACHE_CONFIG` | İstek önbelleği için ayarları içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
@@ -65,8 +65,8 @@ Anahtar | Açıklama
 `CELERY_CONFIG` | Celery arka plan görev kuyruğu için ayarlar. Olası ayarlar için [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) sayfasına bakın.
 `REPORT_DIR` | Gramps raporlarının çıktısının depolanacağı geçici dizin.
 `EXPORT_DIR` | Gramps veritabanasının dışa aktarım çıktısının depolanacağı geçici dizin.
-`REGISTRATION_DISABLED` | Eğer `True` ise, yeni kullanıcı kaydını engeller (varsayılan `False`).
-`DISABLE_TELEMETRY` | Eğer `True` ise, istatistik telemetrisini devre dışı bırakır (varsayılan `False`). Detaylar için [telemetri](telemetry.md) sayfasına bakın.
+`REGISTRATION_DISABLED` | Eğer `true` ise, yeni kullanıcı kaydını engeller (varsayılan `false`).
+`DISABLE_TELEMETRY` | Eğer `true` ise, istatistik telemetrisini devre dışı bırakır (varsayılan `false`). Detaylar için [telemetri](telemetry.md) sayfasına bakın.
 `PILLOW_MAX_IMAGE_PIXELS` | İşlenen görüntünün içerebileceği piksel sayısını belirten PIL.Image.MAX_IMAGE_PIXELS parametresini ayarlar. Detaylar için [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) sayfasına bakın.
 `MAX_THUMBNAIL_FILE_BYTES` | Küçük resimler için katı maksimum dosya boyutunu ayarlar. Varsayılan olarak `50 * 1024 * 1024` (50 MB) olarak ayarlanmıştır. Bunu artırmak, bellek kullanımını büyük ölçüde artırabilir ve büyük dosyalar bellekte açıldığında bellek yetersizliği hatalarına veya veri kaybına neden olabilir.
 
@@ -91,7 +91,7 @@ Anahtar | Açıklama
 
 Anahtar | Açıklama
 ----|-------------
-`MEDIA_PREFIX_TREE` | Her ağacın medya dosyaları için ayrı bir alt klasör kullanılıp kullanılmayacağını belirten Boolean. Varsayılan olarak `False`'dur, ancak çoklu ağaç kurulumunda `True` kullanılması şiddetle önerilir.
+`MEDIA_PREFIX_TREE` | Her ağacın medya dosyaları için ayrı bir alt klasör kullanılıp kullanılmayacağını belirten Boolean. Varsayılan olarak `false`'dur, ancak çoklu ağaç kurulumunda `true` kullanılması şiddetle önerilir.
 `NEW_DB_BACKEND` | Yeni oluşturulan aile ağaçları için kullanılacak veritabanı arka ucu. `sqlite`, `postgresql` veya `sharedpostgresql`'dan biri olmalıdır. Varsayılan olarak `sqlite`'dır.
 `POSTGRES_HOST` | SharedPostgreSQL arka ucu ile çoklu ağaç kurulumunda yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun ana bilgisayar adı.
 `POSTGRES_PORT` | SharedPostgreSQL arka ucu ile çoklu ağaç kurulumunda yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun portu.
@@ -103,7 +103,7 @@ Bu ayarlar, dış sağlayıcılarla OpenID Connect (OIDC) kimlik doğrulaması k
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğini belirten Boolean. Varsayılan olarak `False`'dur.
+`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğini belirten Boolean. Varsayılan olarak `false`'dur.
 `OIDC_ISSUER` | OIDC sağlayıcı yayımlayıcı URL'si (özel OIDC sağlayıcıları için).
 `OIDC_CLIENT_ID` | OAuth istemci kimliği (özel OIDC sağlayıcıları için).
 `OIDC_CLIENT_SECRET` | OAuth istemci sırrı (özel OIDC sağlayıcıları için).
@@ -111,8 +111,8 @@ Anahtar | Açıklama
 `OIDC_SCOPES` | OAuth kapsamları. Varsayılan olarak "openid email profile"dır.
 `OIDC_USERNAME_CLAIM` | Kullanıcı adı için kullanılacak talep. Varsayılan olarak "preferred_username"dır.
 `OIDC_OPENID_CONFIG_URL` | Opsiyonel: OpenID Connect yapılandırma uç noktasına URL (standart `/.well-known/openid-configuration` kullanılmıyorsa).
-`OIDC_DISABLE_LOCAL_AUTH` | Yerel kullanıcı adı/şifre kimlik doğrulamasını devre dışı bırakıp bırakmayacağını belirten Boolean. Varsayılan olarak `False`'dur.
-`OIDC_AUTO_REDIRECT` | Sadece bir sağlayıcı yapılandırıldığında otomatik olarak OIDC'ye yönlendirilip yönlendirilmeyeceğini belirten Boolean. Varsayılan olarak `False`'dur.
+`OIDC_DISABLE_LOCAL_AUTH` | Yerel kullanıcı adı/şifre kimlik doğrulamasını devre dışı bırakıp bırakmayacağını belirten Boolean. Varsayılan olarak `false`'dur.
+`OIDC_AUTO_REDIRECT` | Sadece bir sağlayıcı yapılandırıldığında otomatik olarak OIDC'ye yönlendirilip yönlendirilmeyeceğini belirten Boolean. Varsayılan olarak `false`'dur.
 
 #### Yerleşik OIDC sağlayıcıları
 

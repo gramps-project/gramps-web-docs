@@ -18,7 +18,7 @@ TREE = "*"
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-此外，您应该将 `MEDIA_PREFIX_TREE` 配置选项设置为 `True`，以确保媒体文件存储在单独的子文件夹中。否则，用户将能够访问他们没有权限的树所属于的媒体文件！
+此外，您应该将 `MEDIA_PREFIX_TREE` 配置选项设置为 `true`，以确保媒体文件存储在单独的子文件夹中。否则，用户将能够访问他们没有权限的树所属于的媒体文件！
 
 ## 将用户帐户添加到特定树
 

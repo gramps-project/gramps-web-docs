@@ -35,7 +35,7 @@ Gramps Web は一般的なアイデンティティプロバイダーのサポー
 
 | キー | 説明 |
 |----|-------------|
-| `OIDC_ENABLED` | OIDC 認証を有効にするかどうかのブール値。`True` に設定します。 |
+| `OIDC_ENABLED` | OIDC 認証を有効にするかどうかのブール値。`true` に設定します。 |
 | `OIDC_ISSUER` | プロバイダーの発行者 URL |
 | `OIDC_CLIENT_ID` | OIDC プロバイダーのクライアント ID |
 | `OIDC_CLIENT_SECRET` | OIDC プロバイダーのクライアントシークレット |

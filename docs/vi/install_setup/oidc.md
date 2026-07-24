@@ -35,7 +35,7 @@ Bạn có thể cấu hình nhiều nhà cung cấp đồng thời. Hệ thống
 
 Key | Mô tả
 ----|-------------
-`OIDC_ENABLED` | Boolean, có kích hoạt xác thực OIDC hay không. Đặt thành `True`.
+`OIDC_ENABLED` | Boolean, có kích hoạt xác thực OIDC hay không. Đặt thành `true`.
 `OIDC_ISSUER` | URL nhà cung cấp của bạn
 `OIDC_CLIENT_ID` | ID khách hàng cho nhà cung cấp OIDC của bạn
 `OIDC_CLIENT_SECRET` | Bí mật khách hàng cho nhà cung cấp OIDC của bạn

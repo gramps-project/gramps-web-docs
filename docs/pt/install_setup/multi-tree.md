@@ -18,7 +18,7 @@ Isso tornará todas as árvores no diretório do banco de dados Gramps do servid
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Além disso, você deve definir a opção de configuração `MEDIA_PREFIX_TREE` como `True` para garantir que os arquivos de mídia sejam armazenados em subpastas separadas. Caso contrário, os usuários poderão acessar arquivos de mídia que pertencem a uma árvore para a qual não têm permissão!
+Além disso, você deve definir a opção de configuração `MEDIA_PREFIX_TREE` como `true` para garantir que os arquivos de mídia sejam armazenados em subpastas separadas. Caso contrário, os usuários poderão acessar arquivos de mídia que pertencem a uma árvore para a qual não têm permissão!
 
 ## Adicionar uma conta de usuário a uma árvore específica
 
