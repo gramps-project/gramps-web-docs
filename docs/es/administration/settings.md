@@ -1,8 +1,8 @@
 # Configuración de Administración
 
-La página de **Configuración > Administración** es accesible a través del ícono de usuario en la barra superior de la aplicación. Solo está disponible para usuarios con el rol de Propietario o Administrador y proporciona herramientas para gestionar la base de datos del árbol genealógico.
+La página **Configuración > Administración** es accesible a través del ícono de usuario en la barra superior de la aplicación. Solo está disponible para usuarios con el rol de Propietario o Administrador y proporciona herramientas para gestionar la base de datos del árbol genealógico.
 
-La página está organizada en secciones colapsables. Haz clic en el encabezado de una sección para expandirla.
+La página está organizada en secciones colapsables. Haz clic en un encabezado de sección para expandirlo.
 
 ## Datos
 
@@ -12,8 +12,8 @@ Cubre cuotas de uso, importación de datos y gestión de archivos multimedia.
 
 La parte superior de la sección muestra el uso actual en relación con cualquier límite configurado:
 
-- **Personas** – el número de objetos de persona en el árbol frente al máximo configurado (∞ si es ilimitado)
-- **Almacenamiento multimedia** – tamaño total de los archivos multimedia subidos frente a la cuota de almacenamiento configurada (∞ si es ilimitado)
+- **Personas** – el número de objetos de persona en el árbol en comparación con el máximo configurado (∞ si es ilimitado)
+- **Almacenamiento multimedia** – tamaño total de los archivos multimedia subidos en comparación con la cuota de almacenamiento configurada (∞ si es ilimitado)
 
 Las cuotas son establecidas por el administrador del servidor; consulta [Configuración del servidor](../install_setup/configuration.md) para más detalles.
 
@@ -21,14 +21,14 @@ Las cuotas son establecidas por el administrador del servidor; consulta [Configu
 
 La sección de importación te permite subir un archivo de árbol genealógico o un archivo de medios. Consulta [Importar datos](import.md) para obtener instrucciones completas.
 
-### Estado de archivos multimedia
+### Estado de los archivos multimedia
 
 Esta sección muestra:
 
-- El número total de objetos multimedia en el árbol y si alguno carece de un checksum
+- El número total de objetos multimedia en el árbol y si alguno carece de una suma de verificación
 - El número de objetos multimedia cuyo archivo asociado falta en el servidor
 
-Una marca de verificación verde indica que todo está en orden. Si se detectan problemas, se muestran enlaces a los objetos afectados. Los checksums faltantes suelen ocurrir cuando los datos se importaron desde un formato como GEDCOM que incluye referencias a medios pero no los archivos reales. Los archivos faltantes se pueden subir a través de la función de importar archivo multimedia.
+Una marca de verificación verde indica que todo está en orden. Si se detectan problemas, se muestran enlaces a los objetos afectados. Las sumas de verificación faltantes ocurren típicamente cuando los datos se importaron desde un formato como GEDCOM que incluye referencias multimedia pero no los archivos reales. Los archivos faltantes se pueden subir a través de la función de importación de archivo multimedia.
 
 ### Importar archivo multimedia
 
@@ -38,38 +38,38 @@ Permite subir un archivo ZIP de archivos multimedia para completar los archivos 
 
 ### Gestionar índice de búsqueda
 
-Gramps Web mantiene un índice de búsqueda de texto completo que normalmente se actualiza automáticamente cada vez que cambian los datos. El indicador de estado muestra cuántos objetos están actualmente indexados frente al recuento total de objetos.
+Gramps Web mantiene un índice de búsqueda de texto completo que normalmente se actualiza automáticamente cada vez que cambian los datos. El indicador de estado muestra cuántos objetos están actualmente indexados en comparación con el recuento total de objetos.
 
-Haz clic en **Actualizar índice de búsqueda** para activar una reconstrucción completa. Se muestra un indicador de progreso mientras la tarea se ejecuta en segundo plano. Esto generalmente solo es necesario después de una actualización del servidor.
+Haz clic en **Actualizar índice de búsqueda** para activar una reconstrucción completa. Se muestra un indicador de progreso mientras la tarea se ejecuta en segundo plano. Esto normalmente solo es necesario después de una actualización del servidor.
 
 ### Índice de búsqueda semántica
 
 Si el servidor tiene [búsqueda semántica (potenciada por IA) habilitada](../install_setup/configuration.md), aparece una sección adicional con dos acciones:
 
 - **Regenerar índice de búsqueda semántica** – reconstruye todo el índice semántico desde cero. Esto es computacionalmente costoso y puede tardar mucho tiempo.
-- **Actualizar índice de búsqueda semántica** – realiza una actualización incremental, añadiendo solo objetos que aún no están indexados. Más rápido que una reconstrucción completa.
+- **Actualizar índice de búsqueda semántica** – realiza una actualización incremental, agregando solo objetos que aún no están indexados. Más rápido que una reconstrucción completa.
 
 ## Configuración del árbol
 
 ### Nombre del árbol genealógico
 
 !!! nota
-    Cambiar el nombre del árbol solo funciona en una [configuración de múltiples árboles](../install_setup/multi-tree.md) o cuando `TREE_ID` está explícitamente configurado en la [configuración del servidor](../install_setup/configuration.md). En una instalación predeterminada de un solo árbol sin `TREE_ID` configurado, esto generará un error.
+    Cambiar el nombre del árbol solo funciona en una [configuración de múltiples árboles](../install_setup/multi-tree.md) o cuando `TREE_ID` está configurado explícitamente en la [configuración del servidor](../install_setup/configuration.md). En una instalación predeterminada de un solo árbol sin `TREE_ID` configurado, esto generará un error.
 
 Esto permite cambiar el nombre de la base de datos del árbol genealógico de Gramps subyacente. Ingresa un nuevo nombre y haz clic en **Renombrar** para aplicar.
 
 !!! consejo
-    Si solo deseas cambiar el nombre que se muestra en la barra de la aplicación sin renombrar la base de datos, utiliza la configuración de [Título de la aplicación](#app-title) en su lugar.
+    Si solo deseas cambiar el nombre mostrado en la barra de la aplicación sin renombrar la base de datos, utiliza la configuración de [Título de la aplicación](#app-title) en su lugar.
 
 ### Información del investigador
 
-Establece el nombre, dirección y detalles de contacto del investigador principal. Esta información se incrusta en las exportaciones (por ejemplo, archivos GEDCOM).
+Establece el nombre, la dirección y los detalles de contacto del investigador principal. Esta información se incrusta en las exportaciones (por ejemplo, archivos GEDCOM).
 
 ## Personalización
 
 ### Colores del tema
 
-Establece un **color primario** y un **color de acento** personalizados para la interfaz de Gramps Web. Estos colores se aplican a todos los usuarios de este árbol y entran en vigor inmediatamente después de guardar.
+Establece un **color primario** y un **color de acento** personalizados para la interfaz de Gramps Web. Estos colores se aplican a todos los usuarios de este árbol y entran en efecto inmediatamente después de guardar.
 
 Utiliza los selectores de color para seleccionar colores, luego haz clic en **Guardar**. Haz clic en **Restablecer** para volver a los valores predeterminados.
 
@@ -81,13 +81,13 @@ Ingresa un título y haz clic en **Guardar**. Deja en blanco para usar el valor 
 
 ### Nota de la página de inicio
 
-Selecciona un objeto **Nota** de Gramps para mostrar en la página de inicio del panel de control. El contenido de la nota se renderiza debajo de las columnas principales del panel de control y es visible para todos los usuarios con acceso al árbol.
+Selecciona un objeto **Nota** de Gramps para mostrar en la página de inicio del panel de control. El contenido de la nota se renderiza debajo de las columnas principales del panel y es visible para todos los usuarios con acceso al árbol.
 
 Utiliza el selector de objetos para buscar y seleccionar una nota, luego guarda. Haz clic en **Eliminar** para borrar la nota actual de la página de inicio.
 
 ### Imagen de la página de inicio
 
-Selecciona un objeto **Media** de Gramps para mostrar como una imagen en la página de inicio del panel de control. Cuando se combina con una nota de la página de inicio, la imagen aparece junto al texto de la nota. Sin una nota, solo se muestra la imagen.
+Selecciona un objeto **Media** de Gramps para mostrar como imagen en la página de inicio del panel de control. Cuando se combina con una nota de la página de inicio, la imagen aparece junto al texto de la nota. Sin una nota, solo se muestra la imagen.
 
 Utiliza el selector de objetos para buscar y seleccionar un objeto multimedia, luego guarda. Haz clic en **Eliminar** para borrar la imagen actual de la página de inicio.
 
@@ -102,32 +102,32 @@ Las configuraciones a nivel de árbol (título de la aplicación, colores del te
 
 ### Comprobar y reparar la base de datos
 
-Esta herramienta verifica la base de datos de Gramps en busca de inconsistencias internas y corrige las que puede – análogo a la herramienta de [Comprobar y reparar la base de datos](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) en Gramps Desktop.
+Esta herramienta verifica la base de datos de Gramps en busca de inconsistencias internas y repara las que puede – análogo a la herramienta [Comprobar y reparar la base de datos](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) en Gramps Desktop.
 
 Haz clic en **Comprobar y reparar** y espera a que el indicador de progreso complete. El resultado se muestra debajo del botón:
 
 - Si no se encontraron errores, se muestra un mensaje de confirmación.
 - Si se encontraron errores, se muestra un resumen de las correcciones aplicadas.
 
-Ejecuta esta herramienta si encuentras errores o comportamientos inesperados que puedan ser causados por inconsistencias en la base de datos, como relaciones faltantes entre objetos.
+Ejecuta esta herramienta si encuentras errores inesperados o comportamientos que pueden ser causados por inconsistencias en la base de datos, como relaciones faltantes entre objetos.
 
 ## Etiquetas
 
 ### Gestionar etiquetas
 
-Crea, renombra, recolorea y elimina [etiquetas](../user-guide/tags.md) para el árbol genealógico. Las etiquetas se almacenan en la base de datos de Gramps, se comparten entre todos los usuarios y son completamente compatibles con Gramps Desktop.
+Crea, renombra, cambia el color y elimina [etiquetas](../user-guide/tags.md) para el árbol genealógico. Las etiquetas se almacenan en la base de datos de Gramps, se comparten entre todos los usuarios y son totalmente compatibles con Gramps Desktop.
 
 Haz clic en **Nueva etiqueta** para crear una etiqueta. Utiliza los controles junto a una etiqueta existente para renombrarla (ícono de lápiz), cambiar su color (selector de color) o eliminarla (ícono de eliminar).
 
 !!! nota
     Eliminar una etiqueta la quita de todos los objetos a los que se aplicó.
 
-Consulta [Etiquetas](../user-guide/tags.md) para ver cómo se utilizan las etiquetas en toda Gramps Web, incluyendo las etiquetas especiales `Blog` y `ToDo`.
+Consulta [Etiquetas](../user-guide/tags.md) para ver cómo se utilizan las etiquetas en todo Gramps Web, incluyendo las etiquetas especiales `Blog` y `ToDo`.
 
-## Zona de peligro
+## Zona de Peligro
 
 !!! peligro
-    Las acciones en la Zona de peligro son **irreversibles**. Haz una copia de seguridad antes de continuar.
+    Las acciones en la Zona de Peligro son **irreversibles**. Haz una copia de seguridad antes de proceder.
 
 ### Eliminar todos los objetos
 
@@ -143,3 +143,25 @@ Se te pedirá que te autentiques nuevamente (inicies sesión de nuevo) para conf
 
 !!! consejo
     Utiliza esto para empezar de nuevo antes de importar un nuevo árbol, o para eliminar tipos de objetos específicos que se importaron incorrectamente.
+
+### Restaurar desde una copia de seguridad
+
+Restablece el árbol para que coincida con un archivo de copia de seguridad de Gramps XML (`.gramps`) subido, agregando, actualizando y eliminando objetos según sea necesario para que el árbol termine idéntico a la copia de seguridad.
+
+!!! peligro
+    Este es un reemplazo destructivo, no una fusión. Cualquier objeto existente que no esté presente en la copia de seguridad subida se eliminará.
+
+Sube un archivo `.gramps`, luego haz clic en **Previsualizar restauración**. Se te pedirá que te autentiques nuevamente si tu sesión no es lo suficientemente reciente. Una vista previa se ejecuta como una tarea en segundo plano y, una vez completada, abre un diálogo que resume los cambios por tipo de objeto (personas, familias, eventos, lugares, citas, fuentes, repositorios, objetos multimedia, notas, etiquetas):
+
+- **Agregar** – objetos presentes en la copia de seguridad pero faltantes en el árbol actual
+- **Actualizar** – objetos presentes en ambos que difieren
+- **Eliminar** – objetos en el árbol actual que están ausentes en la copia de seguridad
+- **Sin cambios** – objetos idénticos en ambos
+
+Si se eliminarían objetos, el diálogo advierte cuántos. Revisa el resumen, luego haz clic en **Restaurar** para aplicar los cambios, o **Cancelar** para abortar.
+
+!!! nota
+    Solo se restauran los datos de los objetos y las referencias multimedia. Los archivos multimedia binarios en sí y los metadatos del árbol (persona predeterminada, marcadores, grupos de nombres) no se ven afectados. Restaura los archivos multimedia faltantes por separado a través de [Importar archivo multimedia](#import-media-archive) si es necesario.
+
+!!! consejo
+    Utiliza esto para retroceder un árbol a una copia de seguridad de Gramps XML conocida y buena, por ejemplo, después de una mala importación o una edición masiva no deseada.

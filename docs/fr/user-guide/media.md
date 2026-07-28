@@ -10,7 +10,7 @@ En option,
 
 - saisissez une description du fichier multimédia sous "titre"
 - saisissez une date
-- définissez le fichier multimédia comme privé (ce qui le rendra visible uniquement aux utilisateurs disposant de l'autorisation suffisante)
+- définissez le fichier multimédia comme privé (ce qui le rendra visible uniquement aux utilisateurs disposant d'une autorisation suffisante)
 
 Cliquez sur "ajouter" pour télécharger le fichier et créer l'objet multimédia.
 
@@ -18,6 +18,17 @@ Cliquez sur "ajouter" pour télécharger le fichier et créer l'objet multimédi
 
 Les types d'objets suivants dans Gramps peuvent avoir des objets multimédias attachés : personnes, familles, événements, lieux, sources et citations.
 
-Dans la vue détaillée de tout objet, cliquez sur le bouton bleu d'édition en bas à droite (si vous ne le voyez pas, votre utilisateur n'a pas les permissions d'édition). Cliquez sur l'onglet "galerie" et cliquez sur le bouton bleu +.
+Dans la vue détaillée de tout objet, cliquez sur le bouton bleu d'édition en bas à droite (si vous ne le voyez pas, votre utilisateur n'a pas les autorisations d'édition). Cliquez sur l'onglet "galerie" et cliquez sur le bouton bleu +.
 
-Une boîte de dialogue s'ouvrira, offrant les mêmes champs que ceux décrits dans la section précédente. Cliquez sur "enregistrer" pour télécharger le fichier, ajouter un nouvel objet multimédia et le lier à l'objet visualisé.
+Une boîte de dialogue s'ouvrira proposant les mêmes champs que ceux décrits dans la section précédente. Cliquez sur "enregistrer" pour télécharger le fichier, ajouter un nouvel objet multimédia et le lier à l'objet visualisé.
+
+## Reconnaissance de texte (OCR)
+
+Si l'administrateur du serveur a activé la prise en charge de l'OCR, un bouton "Reconnaissance de texte" apparaît sous l'image dans la vue détaillée d'un objet multimédia.
+
+Cliquez sur "Reconnaissance de texte", choisissez la langue du texte affiché dans l'image, puis cliquez sur "Exécuter". L'image est traitée avec [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) et le texte reconnu est affiché en dessous.
+
+Si votre utilisateur a des autorisations d'édition, cliquez sur "Enregistrer comme note" pour créer une nouvelle note (de type "Transcription") contenant le texte reconnu et la lier à l'objet multimédia.
+
+!!! astuce
+    La précision de l'OCR dépend fortement de la qualité de l'image et de la langue sélectionnée. Si le résultat semble incorrect, essayez une langue différente – par exemple, les documents historiques allemands nécessitent souvent la variante Fraktur plutôt que l'allemand standard.

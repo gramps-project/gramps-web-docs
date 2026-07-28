@@ -1,6 +1,6 @@
 # Paramètres d'administration
 
-La page **Paramètres > Administration** est accessible via l'icône utilisateur dans la barre d'application en haut. Elle n'est disponible que pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur et fournit des outils pour gérer la base de données de l'arbre généalogique.
+La page **Paramètres > Administration** est accessible via l'icône utilisateur dans la barre d'application en haut. Elle est uniquement disponible pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur et fournit des outils pour gérer la base de données de l'arbre généalogique.
 
 La page est organisée en sections repliables. Cliquez sur un en-tête de section pour l'agrandir.
 
@@ -12,7 +12,7 @@ Couvre les quotas d'utilisation, l'importation de données et la gestion des fic
 
 Le haut de la section montre l'utilisation actuelle par rapport à toutes les limites configurées :
 
-- **Personnes** – le nombre d'objets personne dans l'arbre par rapport au maximum configuré (∞ si illimité)
+- **Personnes** – le nombre d'objets personnes dans l'arbre par rapport au maximum configuré (∞ si illimité)
 - **Stockage multimédia** – taille totale des fichiers multimédias téléchargés par rapport au quota de stockage configuré (∞ si illimité)
 
 Les quotas sont définis par l'administrateur du serveur ; voir [Configuration du serveur](../install_setup/configuration.md) pour plus de détails.
@@ -21,7 +21,7 @@ Les quotas sont définis par l'administrateur du serveur ; voir [Configuration d
 
 La section d'importation vous permet de télécharger un fichier d'arbre généalogique ou une archive multimédia. Voir [Importer des données](import.md) pour des instructions complètes.
 
-### Statut des fichiers multimédias
+### État des fichiers multimédias
 
 Cette section montre :
 
@@ -46,8 +46,8 @@ Cliquez sur **Mettre à jour l'index de recherche** pour déclencher une reconst
 
 Si le serveur a [la recherche sémantique (alimentée par l'IA) activée](../install_setup/configuration.md), une section supplémentaire apparaît avec deux actions :
 
-- **Régénérer l'index de recherche sémantique** – reconstruit l'ensemble de l'index sémantique à partir de zéro. Cela est coûteux en ressources et peut prendre beaucoup de temps.
-- **Mettre à jour l'index de recherche sémantique** – effectue une mise à jour incrémentielle, ajoutant uniquement des objets non encore indexés. Plus rapide qu'une reconstruction complète.
+- **Régénérer l'index de recherche sémantique** – reconstruit l'ensemble de l'index sémantique à partir de zéro. Cela est coûteux en calcul et peut prendre beaucoup de temps.
+- **Mettre à jour l'index de recherche sémantique** – effectue une mise à jour incrémentielle, ajoutant uniquement des objets pas encore indexés. Plus rapide qu'une reconstruction complète.
 
 ## Paramètres de l'arbre
 
@@ -59,7 +59,7 @@ Si le serveur a [la recherche sémantique (alimentée par l'IA) activée](../ins
 Cela permet de changer le nom de la base de données d'arbre généalogique Gramps sous-jacente. Entrez un nouveau nom et cliquez sur **Renommer** pour appliquer.
 
 !!! tip
-    Si vous souhaitez seulement changer le nom affiché dans la barre d'application sans renommer la base de données, utilisez plutôt le paramètre [Titre de l'application](#app-title).
+    Si vous souhaitez uniquement changer le nom affiché dans la barre d'application sans renommer la base de données, utilisez plutôt le paramètre [Titre de l'application](#app-title).
 
 ### Informations sur le chercheur
 
@@ -69,7 +69,7 @@ Définissez le nom, l'adresse et les coordonnées du chercheur principal. Ces in
 
 ### Couleurs du thème
 
-Définissez une **couleur principale** et une **couleur d'accent** personnalisées pour l'interface Gramps Web. Ces couleurs sont appliquées à tous les utilisateurs de cet arbre et prennent effet immédiatement après l'enregistrement.
+Définissez une **couleur primaire** et une **couleur d'accent** personnalisées pour l'interface Gramps Web. Ces couleurs sont appliquées à tous les utilisateurs de cet arbre et prennent effet immédiatement après l'enregistrement.
 
 Utilisez les sélecteurs de couleurs pour choisir des couleurs, puis cliquez sur **Enregistrer**. Cliquez sur **Réinitialiser** pour revenir aux valeurs par défaut.
 
@@ -83,13 +83,13 @@ Entrez un titre et cliquez sur **Enregistrer**. Laissez vide pour utiliser la va
 
 Sélectionnez un objet **Note** Gramps à afficher sur la page d'accueil du tableau de bord. Le contenu de la note est rendu sous les colonnes principales du tableau de bord et est visible par tous les utilisateurs ayant accès à l'arbre.
 
-Utilisez le sélecteur d'objets pour rechercher et choisir une note, puis enregistrez. Cliquez sur **Supprimer** pour effacer la note actuelle de la page d'accueil.
+Utilisez le sélecteur d'objets pour rechercher et choisir une note, puis enregistrez. Cliquez sur **Supprimer** pour effacer la note de la page d'accueil actuelle.
 
 ### Image de la page d'accueil
 
-Sélectionnez un objet **Média** Gramps à afficher sous forme d'image sur la page d'accueil du tableau de bord. Lorsqu'il est combiné avec une note de page d'accueil, l'image apparaît à côté du texte de la note. Sans note, seule l'image est affichée.
+Sélectionnez un objet **Média** Gramps à afficher comme image sur la page d'accueil du tableau de bord. Lorsqu'il est combiné avec une note de page d'accueil, l'image apparaît à côté du texte de la note. Sans note, seule l'image est affichée.
 
-Utilisez le sélecteur d'objets pour rechercher et choisir un objet multimédia, puis enregistrez. Cliquez sur **Supprimer** pour effacer l'image actuelle de la page d'accueil.
+Utilisez le sélecteur d'objets pour rechercher et choisir un objet multimédia, puis enregistrez. Cliquez sur **Supprimer** pour effacer l'image de la page d'accueil actuelle.
 
 ### Paramètres d'exportation/importation
 
@@ -109,7 +109,7 @@ Cliquez sur **Vérifier et réparer** et attendez que l'indicateur de progressio
 - Si aucune erreur n'a été trouvée, un message de confirmation est affiché.
 - Si des erreurs ont été trouvées, un résumé des corrections appliquées est affiché.
 
-Exécutez cet outil si vous rencontrez des erreurs ou des comportements inattendus qui pourraient être causés par des incohérences dans la base de données, comme des relations manquantes entre les objets.
+Exécutez cet outil si vous rencontrez des erreurs ou des comportements inattendus qui pourraient être causés par des incohérences de la base de données, comme des relations manquantes entre des objets.
 
 ## Étiquettes
 
@@ -122,7 +122,7 @@ Cliquez sur **Nouvelle étiquette** pour créer une étiquette. Utilisez les con
 !!! note
     Supprimer une étiquette la retire de tous les objets auxquels elle a été appliquée.
 
-Voir [Étiquettes](../user-guide/tags.md) pour savoir comment les étiquettes sont utilisées dans tout Gramps Web, y compris les étiquettes spéciales `Blog` et `ToDo`.
+Voir [Étiquettes](../user-guide/tags.md) pour savoir comment les étiquettes sont utilisées dans Gramps Web, y compris les étiquettes spéciales `Blog` et `ToDo`.
 
 ## Zone de danger
 
@@ -136,10 +136,32 @@ Supprime les objets de l'arbre généalogique. Cliquer sur **Supprimer** ouvre u
 - **Tous les objets** – vide complètement l'arbre
 - **Types d'objets spécifiques** – par exemple, uniquement des événements ou uniquement des objets multimédias
 
-Vous serez invité à vous ré-authentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tant que tâche en arrière-plan et un indicateur de progression est affiché.
+Vous serez invité à vous réauthentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tant que tâche en arrière-plan et un indicateur de progression est affiché.
 
 !!! warning
-    Supprimer uniquement un sous-ensemble de types d'objets (plutôt que tous les objets à la fois) peut prendre beaucoup de temps pour de grands arbres, car le serveur doit vérifier et mettre à jour toutes les relations entre les objets.
+    Supprimer uniquement un sous-ensemble de types d'objets (plutôt que tous les objets en même temps) peut prendre beaucoup de temps pour de grands arbres, car le serveur doit vérifier et mettre à jour toutes les relations entre les objets.
 
 !!! tip
-    Utilisez cela pour repartir à zéro avant d'importer un nouvel arbre, ou pour supprimer des types d'objets spécifiques qui ont été importés incorrectement.
+    Utilisez ceci pour repartir à zéro avant d'importer un nouvel arbre, ou pour supprimer des types d'objets spécifiques qui ont été importés incorrectement.
+
+### Restaurer à partir d'une sauvegarde
+
+Réinitialise l'arbre pour correspondre à un fichier de sauvegarde Gramps XML (`.gramps`) téléchargé, ajoutant, mettant à jour et supprimant des objets au besoin pour que l'arbre soit identique à la sauvegarde.
+
+!!! danger
+    Ceci est un remplacement destructeur, pas une fusion. Tout objet existant non présent dans la sauvegarde téléchargée est supprimé.
+
+Téléchargez un fichier `.gramps`, puis cliquez sur **Aperçu de la restauration**. Vous serez invité à vous réauthentifier si votre session n'est pas assez récente. Un aperçu s'exécute en tant que tâche en arrière-plan et, une fois terminé, ouvre une boîte de dialogue résumant les changements par type d'objet (personnes, familles, événements, lieux, citations, sources, dépôts, objets multimédias, notes, étiquettes) :
+
+- **Ajouter** – objets présents dans la sauvegarde mais manquants dans l'arbre actuel
+- **Mettre à jour** – objets présents dans les deux qui diffèrent
+- **Supprimer** – objets dans l'arbre actuel qui sont absents de la sauvegarde
+- **Inchangé** – objets identiques dans les deux
+
+Si des objets doivent être supprimés, la boîte de dialogue avertit combien. Passez en revue le résumé, puis cliquez sur **Restaurer** pour appliquer les changements, ou **Annuler** pour abandonner.
+
+!!! note
+    Seules les données d'objet et les références multimédias sont restaurées. Les fichiers multimédias binaires eux-mêmes et les métadonnées de l'arbre (personne par défaut, signets, groupes de noms) ne sont pas affectés. Restaurez les fichiers multimédias manquants séparément via [Importer une archive multimédia](#import-media-archive) si nécessaire.
+
+!!! tip
+    Utilisez ceci pour revenir à une sauvegarde Gramps XML connue comme étant bonne, par exemple après un mauvais import ou une modification en masse indésirable.

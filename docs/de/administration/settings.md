@@ -1,8 +1,8 @@
 # Administrations-Einstellungen
 
-Die **Einstellungen > Administration**-Seite ist über das Benutzersymbol in der oberen App-Leiste zugänglich. Sie ist nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar und bietet Werkzeuge zur Verwaltung der Familienstammbaum-Datenbank.
+Die **Einstellungen > Verwaltung**-Seite ist über das Benutzersymbol in der oberen App-Leiste zugänglich. Sie ist nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar und bietet Werkzeuge zur Verwaltung der Familienstammbaum-Datenbank.
 
-Die Seite ist in zusammenklappbare Abschnitte organisiert. Klicken Sie auf einen Abschnittsheader, um ihn zu erweitern.
+Die Seite ist in zusammenklappbare Abschnitte organisiert. Klicken Sie auf einen Abschnittsüberschrift, um ihn zu erweitern.
 
 ## Daten
 
@@ -13,7 +13,7 @@ Behandelt Nutzungskontingente, Datenimport und Medienverwaltungsdateien.
 Oben im Abschnitt wird die aktuelle Nutzung im Verhältnis zu den konfigurierten Limits angezeigt:
 
 - **Personen** – die Anzahl der Personenobjekte im Baum im Vergleich zur konfigurierten maximalen Anzahl (∞, wenn unbegrenzt)
-- **Medien-Speicher** – die Gesamtgröße der hochgeladenen Mediendateien im Vergleich zum konfigurierten Speicherkontingent (∞, wenn unbegrenzt)
+- **Medien-Speicher** – die Gesamtgröße der hochgeladenen Mediendateien im Vergleich zum konfigurierten Speicherplatz (∞, wenn unbegrenzt)
 
 Kontingente werden vom Serveradministrator festgelegt; siehe [Serverkonfiguration](../install_setup/configuration.md) für Details.
 
@@ -38,27 +38,27 @@ Ermöglicht das Hochladen einer ZIP-Datei mit Mediendateien, um fehlende Dateien
 
 ### Suchindex verwalten
 
-Gramps Web pflegt einen Volltext-Suchindex, der normalerweise automatisch aktualisiert wird, wenn sich Daten ändern. Der Statusindikator zeigt, wie viele Objekte derzeit indiziert sind im Vergleich zur Gesamtanzahl der Objekte.
+Gramps Web pflegt einen Volltext-Suchindex, der normalerweise automatisch aktualisiert wird, wenn sich Daten ändern. Der Statusindikator zeigt, wie viele Objekte derzeit indiziert sind im Vergleich zur Gesamtzahl der Objekte.
 
 Klicken Sie auf **Suchindex aktualisieren**, um einen vollständigen Neuaufbau auszulösen. Ein Fortschrittsindikator wird angezeigt, während die Aufgabe im Hintergrund ausgeführt wird. Dies ist normalerweise nur nach einem Server-Upgrade erforderlich.
 
 ### Semantischer Suchindex
 
-Wenn der Server [semantische (KI-gestützte) Suche aktiviert hat](../install_setup/configuration.md), erscheint ein zusätzlicher Abschnitt mit zwei Aktionen:
+Wenn der Server die [semantische (KI-gestützte) Suche aktiviert hat](../install_setup/configuration.md), erscheint ein zusätzlicher Abschnitt mit zwei Aktionen:
 
 - **Semantischen Suchindex neu generieren** – baut den gesamten semantischen Index von Grund auf neu. Dies ist rechenintensiv und kann lange dauern.
-- **Semantischen Suchindex aktualisieren** – führt ein inkrementelles Update durch, bei dem nur Objekte hinzugefügt werden, die noch nicht indiziert sind. Schneller als ein vollständiger Neuaufbau.
+- **Semantischen Suchindex aktualisieren** – führt ein inkrementelles Update durch, das nur Objekte hinzufügt, die noch nicht indiziert sind. Schneller als ein vollständiger Neuaufbau.
 
 ## Baum-Einstellungen
 
 ### Name des Familienstammbaums
 
-!!! Hinweis
-    Das Umbenennen des Baums funktioniert nur in einer [Multi-Baum-Installation](../install_setup/multi-tree.md) oder wenn `TREE_ID` explizit in der [Serverkonfiguration](../install_setup/configuration.md) festgelegt ist. Bei einer Standardinstallation mit nur einem Baum, bei der `TREE_ID` nicht festgelegt ist, tritt ein Fehler auf.
+!!! note
+    Das Umbenennen des Baums funktioniert nur in einer [Multi-Baum-Installation](../install_setup/multi-tree.md) oder wenn `TREE_ID` explizit in der [Serverkonfiguration](../install_setup/configuration.md) festgelegt ist. Bei einer Standardinstallation mit nur einem Baum ohne festgelegtes `TREE_ID` wird ein Fehler angezeigt.
 
-Dies ermöglicht das Ändern des Namens der zugrunde liegenden Gramps-Familienstammbaum-Datenbank. Geben Sie einen neuen Namen ein und klicken Sie auf **Umbenennen**, um die Änderungen anzuwenden.
+Dies ermöglicht es, den Namen der zugrunde liegenden Gramps Familienstammbaum-Datenbank zu ändern. Geben Sie einen neuen Namen ein und klicken Sie auf **Umbenennen**, um die Änderung anzuwenden.
 
-!!! Tipp
+!!! tip
     Wenn Sie nur den Namen ändern möchten, der in der App-Leiste angezeigt wird, ohne die Datenbank umzubenennen, verwenden Sie stattdessen die Einstellung [App-Titel](#app-title).
 
 ### Forscherinformationen
@@ -69,9 +69,9 @@ Legen Sie den Namen, die Adresse und die Kontaktdaten des Hauptforschers fest. D
 
 ### Farbthemen
 
-Legen Sie eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps Web-Oberfläche fest. Diese Farben werden für alle Benutzer dieses Baums angewendet und treten sofort nach dem Speichern in Kraft.
+Legen Sie eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps Web-Oberfläche fest. Diese Farben werden auf alle Benutzer dieses Baums angewendet und treten sofort nach dem Speichern in Kraft.
 
-Verwenden Sie die Farbauswähler, um Farben auszuwählen, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Zurücksetzen**, um die Standardwerte wiederherzustellen.
+Verwenden Sie die Farbauswähler, um Farben auszuwählen, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Zurücksetzen**, um zu den Standardwerten zurückzukehren.
 
 ### App-Titel
 
@@ -93,7 +93,7 @@ Verwenden Sie den Objektauswähler, um nach einem Medienobjekt zu suchen und ein
 
 ### Export-/Import-Einstellungen
 
-Baum-Einstellungen (App-Titel, Farbthemen, Notiz/Bild auf der Startseite usw.) können als JSON-Datei für Backups oder zum Kopieren in eine andere Gramps Web-Instanz exportiert werden.
+Baum-Einstellungen (App-Titel, Farbthemen, Notiz/Bild auf der Startseite usw.) können als JSON-Datei zur Sicherung oder zum Kopieren in eine andere Gramps Web-Instanz exportiert werden.
 
 - Klicken Sie auf **Einstellungen exportieren**, um die aktuellen Einstellungen als JSON-Datei herunterzuladen.
 - Klicken Sie auf **Baumeinstellungen importieren**, um eine zuvor exportierte JSON-Datei hochzuladen und die Einstellungen anzuwenden.
@@ -107,7 +107,7 @@ Dieses Tool überprüft die Gramps-Datenbank auf interne Inkonsistenzen und behe
 Klicken Sie auf **Überprüfen und Reparieren** und warten Sie, bis der Fortschrittsindikator abgeschlossen ist. Das Ergebnis wird unter dem Button angezeigt:
 
 - Wenn keine Fehler gefunden wurden, wird eine Bestätigungsnachricht angezeigt.
-- Wenn Fehler gefunden wurden, wird eine Zusammenfassung der durchgeführten Korrekturen angezeigt.
+- Wenn Fehler gefunden wurden, wird eine Zusammenfassung der durchgeführten Reparaturen angezeigt.
 
 Führen Sie dieses Tool aus, wenn Sie unerwartete Fehler oder Verhaltensweisen feststellen, die durch Datenbankinkonsistenzen verursacht werden könnten, wie z. B. fehlende Beziehungen zwischen Objekten.
 
@@ -115,31 +115,53 @@ Führen Sie dieses Tool aus, wenn Sie unerwartete Fehler oder Verhaltensweisen f
 
 ### Etiketten verwalten
 
-Erstellen, umbenennen, umfärben und löschen Sie [Etiketten](../user-guide/tags.md) für den Familienstammbaum. Etiketten werden in der Gramps-Datenbank gespeichert, die von allen Benutzern geteilt wird, und sind vollständig mit Gramps Desktop kompatibel.
+Erstellen, umbenennen, umfärben und löschen Sie [Etiketten](../user-guide/tags.md) für den Familienstammbaum. Etiketten werden in der Gramps-Datenbank gespeichert, die von allen Benutzern geteilt wird, und sind vollständig kompatibel mit Gramps Desktop.
 
 Klicken Sie auf **Neues Etikett**, um ein Etikett zu erstellen. Verwenden Sie die Steuerelemente neben einem vorhandenen Etikett, um es umzubenennen (Bleistiftsymbol), seine Farbe zu ändern (Farbauswähler) oder es zu löschen (Löschsymbol).
 
-!!! Hinweis
+!!! note
     Das Löschen eines Etiketts entfernt es von allen Objekten, auf die es angewendet wurde.
 
 Siehe [Etiketten](../user-guide/tags.md) für Informationen, wie Etiketten in Gramps Web verwendet werden, einschließlich der speziellen Etiketten `Blog` und `ToDo`.
 
 ## Gefahrenzone
 
-!!! Gefahr
-    Aktionen in der Gefahrenzone sind **irreversibel**. Machen Sie ein Backup, bevor Sie fortfahren.
+!!! danger
+    Aktionen in der Gefahrenzone sind **irreversibel**. Machen Sie eine Sicherung, bevor Sie fortfahren.
 
 ### Alle Objekte löschen
 
-Entfernt Objekte aus dem Familienstammbaum. Durch Klicken auf **Löschen** wird ein Dialog geöffnet, in dem Sie auswählen können, ob Sie löschen möchten:
+Entfernt Objekte aus dem Familienstammbaum. Ein Klick auf **Löschen** öffnet einen Dialog, in dem Sie auswählen können, ob Sie löschen möchten:
 
-- **Alle Objekte** – löscht den Baum vollständig
-- **Spezifische Objekttypen** – zum Beispiel nur Ereignisse oder nur Medienobjekte
+- **Alle Objekte** – leert den Baum vollständig
+- **Bestimmte Objekttypen** – zum Beispiel nur Ereignisse oder nur Medienobjekte
 
 Sie werden aufgefordert, sich erneut zu authentifizieren (sich erneut anzumelden), um die Aktion zu bestätigen. Die Löschung wird als Hintergrundaufgabe ausgeführt, und ein Fortschrittsindikator wird angezeigt.
 
-!!! Warnung
+!!! warning
     Das Löschen nur einer Teilmenge von Objekttypen (anstatt aller Objekte auf einmal) kann für große Bäume sehr lange dauern, da der Server alle Beziehungen zwischen Objekten überprüfen und aktualisieren muss.
 
-!!! Tipp
+!!! tip
     Verwenden Sie dies, um frisch zu starten, bevor Sie einen neuen Baum importieren, oder um spezifische Objekttypen zu entfernen, die falsch importiert wurden.
+
+### Aus Sicherung wiederherstellen
+
+Setzt den Baum zurück, um mit einer hochgeladenen Gramps XML (`.gramps`) Sicherungsdatei übereinzustimmen, indem Objekte nach Bedarf hinzugefügt, aktualisiert und gelöscht werden, sodass der Baum identisch mit der Sicherung endet.
+
+!!! danger
+    Dies ist ein destruktiver Ersatz, kein Merge. Jedes vorhandene Objekt, das nicht in der hochgeladenen Sicherung vorhanden ist, wird gelöscht.
+
+Laden Sie eine `.gramps`-Datei hoch und klicken Sie dann auf **Wiederherstellungsvorschau**. Sie werden aufgefordert, sich erneut zu authentifizieren, wenn Ihre Sitzung nicht frisch genug ist. Eine Vorschau wird als Hintergrundaufgabe ausgeführt und öffnet, sobald sie abgeschlossen ist, einen Dialog, der die Änderungen pro Objekttyp (Personen, Familien, Ereignisse, Orte, Zitationen, Quellen, Archive, Medienobjekte, Notizen, Etiketten) zusammenfasst:
+
+- **Hinzufügen** – Objekte, die in der Sicherung vorhanden, aber im aktuellen Baum fehlen
+- **Aktualisieren** – Objekte, die in beiden vorhanden sind, aber unterschiedlich sind
+- **Löschen** – Objekte im aktuellen Baum, die in der Sicherung fehlen
+- **Unverändert** – Objekte, die in beiden identisch sind
+
+Wenn Objekte gelöscht werden würden, warnt der Dialog, wie viele. Überprüfen Sie die Zusammenfassung und klicken Sie dann auf **Wiederherstellen**, um die Änderungen anzuwenden, oder auf **Abbrechen**, um abzubrechen.
+
+!!! note
+    Nur Objektdaten und Medienreferenzen werden wiederhergestellt. Binäre Mediendateien selbst und Baum-Metadaten (Standardperson, Lesezeichen, Namensgruppen) sind nicht betroffen. Stellen Sie fehlende Mediendateien separat über [Medienarchiv importieren](#import-media-archive) wieder her, falls erforderlich.
+
+!!! tip
+    Verwenden Sie dies, um einen Baum auf eine bekannte gute Gramps XML-Sicherung zurückzusetzen, z. B. nach einem fehlerhaften Import oder einer unerwünschten Massenbearbeitung.

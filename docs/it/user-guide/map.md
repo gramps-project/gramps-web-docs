@@ -13,11 +13,11 @@ Ogni luogo con coordinate è mostrato come un marcatore. Cliccando su un marcato
 
 ## Ricerca
 
-La casella di ricerca nell'angolo in alto a sinistra della mappa ti consente di saltare a qualsiasi posizione nel mondo per nome. Questo non filtra i luoghi dell'albero – semplicemente sposta e zooma la mappa sulla posizione cercata.
+La casella di ricerca nell'angolo in alto a sinistra della mappa ti consente di saltare a qualsiasi posizione nel mondo per nome. Questo non filtra i luoghi dell'albero – semplicemente sposta e ingrandisce la mappa nella posizione cercata.
 
 ## Slider temporale
 
-Lo slider temporale in fondo alla pagina filtra quali marcatori di luogo vengono mostrati in base all'anno dei loro eventi associati:
+Lo slider temporale nella parte inferiore della pagina filtra quali marcatori di luogo vengono mostrati in base all'anno dei loro eventi associati:
 
 - Trascina il cursore per selezionare un anno.
 - Vengono mostrati solo i luoghi collegati a eventi che rientrano nella finestra temporale selezionata.
@@ -35,7 +35,26 @@ Il livello predefinito, alimentato da [OpenFreeMap](https://openfreemap.org) (st
 
 Cambia la mappa di base in [OpenHistoricalMap](https://www.openhistoricalmap.org) (OHM), un progetto guidato dalla comunità che mappa il mondo così com'era in diversi momenti nel tempo – pensala come un corrispondente storico di OpenStreetMap.
 
-Quando il livello della Mappa Storica è attivo, lo slider temporale filtra anche le tessere della mappa: OHM rende la mappa così come appariva nell'anno selezionato, quindi i confini storici, i nomi dei luoghi e le caratteristiche vengono mostrati al posto di quelli moderni. Questo rende possibile vedere sia la posizione dei tuoi antenati che il contesto geografico e politico contemporaneo in un'unica vista.
+Quando il livello della Mappa Storica è attivo, lo slider temporale filtra anche i riquadri della mappa: OHM rende la mappa così come appariva nell'anno selezionato, quindi vengono mostrati confini storici, nomi di luoghi e caratteristiche invece di quelli moderni. Questo rende possibile vedere sia la posizione dei tuoi antenati che il contesto geografico e politico contemporaneo in un'unica vista.
 
 !!! note
     La copertura di OpenHistoricalMap varia per regione e periodo. Aree o epoche con contributi scarsi possono mostrare dettagli storici limitati. Se noti dati storici mancanti o inaccurati, considera di [contribuire a OpenHistoricalMap](https://www.openhistoricalmap.org) – è un progetto comunitario aperto che chiunque può modificare.
+
+## Sovrapposizioni di mappa personalizzate
+
+In aggiunta ai livelli di base integrati, puoi trasformare qualsiasi immagine di mappa storica scansionata – memorizzata in Gramps come oggetto **Media** – in una sovrapposizione personalizzata posizionata sulla mappa dal vivo. Questo è utile per le scansioni di vecchi piani urbani, mappe parrocchiali o mappe di proprietà che desideri confrontare direttamente con la geografia moderna o storica.
+
+### Georeferenziare un'immagine
+
+1. Apri l'oggetto media per l'immagine della mappa scansionata e passa alla modalità di modifica.
+2. Apri la scheda "Mappa" e clicca su **Modifica coordinate**. Questo apre una finestra di dialogo di georeferenziazione con l'immagine accanto a una mappa.
+3. Clicca su **Seleziona un punto sulla mappa**, quindi clicca sulla posizione sulla mappa a cui un punto sull'immagine dovrebbe corrispondere. L'immagine viene posizionata sulla mappa per la prima volta non appena viene selezionato un punto.
+4. Usa il cursore **Scala** per ridimensionare l'immagine e il cursore **Opacità** per vedere la mappa di base attraverso di essa mentre la posizioni.
+5. Clicca su **Allinea l'immagine** e clicca di nuovo sulla mappa per spostare l'immagine in modo che il punto fissato si allinei precisamente.
+6. Ripeti i passaggi di scala, opacità e allineamento fino a quando l'immagine non corrisponde alla geografia sottostante, quindi salva.
+
+Dietro le quinte, questo memorizza le coordinate degli angoli dell'immagine in un attributo `map:bounds` sull'oggetto media.
+
+### Visualizzazione delle sovrapposizioni nella pagina Mappa
+
+Una volta che un oggetto media è stato georeferenziato in questo modo, diventa automaticamente disponibile come un livello attivabile sulla pagina Mappa. Apri il commutatore dei livelli (icona dei livelli impilati, in basso a sinistra) per mostrare o nascondere ciascuna sovrapposizione indipendentemente dalla mappa di base. Le sovrapposizioni sono elencate in base al titolo dell'oggetto media.

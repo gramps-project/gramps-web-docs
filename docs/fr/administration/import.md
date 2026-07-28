@@ -4,9 +4,9 @@ Si vous utilisez Gramps Desktop, il y a deux étapes pour préparer votre base d
 
 1. Vérifiez et réparez la base de données
     - Optionnel : créez une sauvegarde de la base de données en exportant au format Gramps XML
-    - Exécutez l'outil de [Vérification et réparation de la base de données](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Cela corrige certaines incohérences internes qui pourraient entraîner des problèmes dans Gramps Web.
+    - Exécutez l'[outil de vérification et de réparation de la base de données](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Cela corrige certaines incohérences internes qui pourraient entraîner des problèmes dans Gramps Web.
 2. Convertir les chemins des médias en relatifs
-    - Utilisez le Gestionnaire de médias Gramps pour [convertir tous les chemins des médias d'absolus en relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez qu même avec des chemins relatifs, tous les fichiers multimédias en dehors de votre répertoire de médias Gramps ne fonctionneront pas correctement lorsqu'ils seront synchronisés avec Gramps Web.
+    - Utilisez le Gestionnaire de Médias Gramps pour [convertir tous les chemins des médias d'absolus en relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez qu même avec des chemins relatifs, tout fichier multimédia en dehors de votre répertoire de médias Gramps ne fonctionnera pas correctement lorsqu'il sera synchronisé avec Gramps Web.
 
 ## Importer des données généalogiques
 
@@ -14,18 +14,25 @@ Pour importer un arbre généalogique existant, utilisez la page "Importer" et t
 
 Si vous utilisez déjà Gramps Desktop, il est fortement recommandé d'utiliser le format Gramps XML (`.gramps`) pour garantir que vos arbres en ligne et hors ligne utilisent les mêmes identifiants et peuvent être [synchronisés](sync.md).
 
-## Pourquoi pas de support pour le package Gramps XML ?
+Après avoir cliqué sur "Importer", le fichier est d'abord analysé et une boîte de dialogue "Confirmer l'importation" affiche un aperçu des objets que le fichier contient (personnes, familles, événements, lieux, etc.) avant que quoi que ce soit ne soit ajouté à votre arbre. Vérifiez les comptes, puis cliquez sur "Importer" dans la boîte de dialogue pour continuer, ou "Annuler" pour abandonner sans rien changer.
 
-Bien que Gramps XML (`.gramps`) soit le format préféré pour importer des données, le *package* Gramps XML (`.gpkg`) n'est pas pris en charge par Gramps Web. Cela est dû au fait que les routines d'importation et d'exportation pour les fichiers multimédias ne sont pas adaptées à une utilisation sur un serveur web.
+!!! avertissement
+    Une importation régulière est purement additive : elle crée toujours de nouveaux objets et ne met jamais à jour ou ne supprime les objets existants, même pour des objets qui existent déjà dans votre arbre sous le même ID Gramps ou identifiant. Importer le même fichier deux fois &ndash; ou importer un fichier qui chevauche des données déjà présentes dans l'arbre &ndash; dupliquera chaque objet correspondant plutôt que de le fusionner ou de le sauter.
 
-Pour importer les fichiers multimédias appartenant à un fichier `.gramps` importé, consultez la section suivante.
+    Si vous devez apporter des modifications effectuées ailleurs à un arbre qui a déjà été importé, utilisez [Restaurer à partir de la sauvegarde](settings.md#restore-from-backup) à la place, ce qui remplace l'arbre pour correspondre au fichier téléchargé plutôt que d'y ajouter.
+
+## Pourquoi pas de support pour le paquet Gramps XML ?
+
+Bien que Gramps XML (`.gramps`) soit le format préféré pour importer des données, le *paquet* Gramps XML (`.gpkg`) n'est pas pris en charge par Gramps Web. Cela est dû au fait que les routines d'importation et d'exportation pour les fichiers multimédias ne sont pas adaptées à une utilisation sur un serveur web.
+
+Pour importer les fichiers multimédias appartenant à un fichier `.gramps` importé, voir la section suivante.
 
 ## Importer des fichiers multimédias
 
 Si vous avez téléchargé un arbre généalogique et devez télécharger les fichiers multimédias correspondants, vous pouvez utiliser le bouton "importer l'archive multimédia" sur la page "Importer".
 
-Il attend un fichier ZIP contenant les fichiers multimédias manquants à l'intérieur. La structure des dossiers dans le fichier ZIP n'a pas besoin d'être la même que la structure des dossiers à l'intérieur du dossier multimédia Gramps, car les fichiers sont associés aux objets multimédias par leur somme de contrôle.
+Il attend un fichier ZIP contenant les fichiers multimédias manquants à l'intérieur. La structure des dossiers dans le fichier ZIP n'a pas besoin d'être la même que la structure des dossiers à l'intérieur du dossier de médias Gramps, car les fichiers sont associés aux objets multimédias par leur somme de contrôle.
 
-Notez que cette fonctionnalité ne fonctionne que pour les fichiers ayant la somme de contrôle correcte dans la base de données Gramps (ce qui devrait être assuré en exécutant l'outil de vérification et de réparation à la première étape).
+Notez que cette fonctionnalité ne fonctionne que pour les fichiers qui ont la somme de contrôle correcte dans la base de données Gramps (ce qui devrait être assuré en exécutant l'outil de vérification et de réparation à la première étape).
 
-Lors de la migration vers Gramps Web depuis un autre programme de généalogie incluant des fichiers multimédias, il est recommandé d'importer d'abord tout dans Gramps Desktop, qui offre plus d'options pour associer des fichiers multimédias existants avec un arbre importé.
+Lors du passage à Gramps Web depuis un autre programme de généalogie incluant des fichiers multimédias, il est recommandé d'importer d'abord tout dans Gramps Desktop, qui offre plus d'options pour associer des fichiers multimédias existants à un arbre importé.

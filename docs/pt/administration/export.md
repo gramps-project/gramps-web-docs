@@ -6,23 +6,25 @@ Clicar em "exportar" gerará o arquivo e iniciará o download assim que estiver 
 
 Observe que, se o seu usuário do Gramps Web não tiver permissão para visualizar registros privados, a exportação não será um backup completo, pois não conterá nenhum registro privado.
 
+Este arquivo Gramps XML pode ser usado posteriormente para restaurar a árvore para este estado exato via [Restaurar do Backup](settings.md#restore-from-backup).
+
 ## Compartilhe sua árvore genealógica com usuários de outros programas de genealogia
 
-Quando compartilhar dados genealógicos como Gramps XML não for uma opção, você também pode exportar um arquivo GEDCOM. Observe que isso não é adequado como um backup da sua árvore no Gramps Web.
+Quando compartilhar dados genealógicos como Gramps XML não é uma opção, você também pode exportar um arquivo GEDCOM. Observe que isso não é adequado como um backup da sua árvore do Gramps Web.
 
 ## Faça backup dos seus arquivos de mídia
 
 Para fazer backup dos seus arquivos de mídia, você pode criar e baixar um arquivo ZIP de todos os arquivos de mídia na página de Exportação.
 
-Observe que, especialmente para árvores grandes, isso pode ser uma operação cara para o servidor e deve ser feito apenas se absolutamente necessário.
+Observe que, especialmente para árvores grandes, isso pode ser uma operação custosa para o servidor e deve ser feito apenas se absolutamente necessário.
 
 Uma opção melhor para fazer backup dos seus arquivos de mídia regularmente é usar o [complemento Gramps Web Sync](sync.md) (que em si não é uma solução de backup) e criar backups incrementais no seu computador local.
 
-Em ambas as bases, se o seu usuário do Gramps Web não tiver permissão para visualizar registros privados, a exportação não conterá arquivos de objetos de mídia privados.
+Em ambas as situações, se o seu usuário do Gramps Web não tiver permissão para visualizar registros privados, a exportação não conterá arquivos de objetos de mídia privados.
 
 ## Mover para uma instância diferente do Gramps Web
 
-O Gramps Web não o prende a um provedor específico e você pode sempre se mover para uma instância diferente do Gramps Web sem perder dados e sem ter acesso direto a nenhum dos servidores.
+O Gramps Web não te prende a um provedor específico e você pode sempre se mudar para uma instância diferente do Gramps Web sem perder dados e sem ter acesso direto a nenhum dos servidores.
 
 Para realizar uma migração completa, siga estas etapas (supondo que você tenha permissões de proprietário da árvore):
 
@@ -33,4 +35,4 @@ Para realizar uma migração completa, siga estas etapas (supondo que você tenh
 5. Na página de Importação da nova instância do Gramps Web, faça o upload do arquivo de mídia (ZIP).
 6. Vá para Configurações > Administração > Gerenciar usuários da nova instância do Gramps Web. Clique no botão "Importar contas de usuário" e faça o upload do arquivo JSON baixado na etapa 3.
 
-Observe que, embora suas contas de usuário sejam migradas, todos os seus usuários precisarão definir novas senhas usando o link "esqueceu a senha", uma vez que as senhas são armazenadas em forma criptografada e não podem ser exportadas.
+Observe que, embora suas contas de usuário sejam migradas, todos os seus usuários precisarão definir novas senhas usando o link "esqueci a senha", uma vez que as senhas são armazenadas em forma criptografada e não podem ser exportadas.
