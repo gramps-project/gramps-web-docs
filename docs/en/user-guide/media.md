@@ -21,3 +21,14 @@ The following object types in Gramps can have media objects attached: people, fa
 In the detail view of any object, click the blue edit button in the bottom right (if you do not see it, your user does not have edit permissions). Click on the "gallery" tab and click the blue + button.
 
 A dialog will open that offers the same fields as described in the previous section. Click "save" to upload the file, add a new media object, and link it to the viewed object.
+
+## Text recognition (OCR)
+
+If the server administrator has enabled OCR support, a "Text Recognition" button appears below the image in a media object's detail view.
+
+Click "Text Recognition", choose the language of the text shown in the image, then click "Run". The image is processed with [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) and the recognized text is displayed below.
+
+If your user has edit permissions, click "Save as Note" to create a new note (of type "Transcript") containing the recognized text and link it to the media object.
+
+!!! tip
+    OCR accuracy depends heavily on image quality and the selected language. If the result looks wrong, try a different language – for example, historical German documents often need the Fraktur variant rather than plain German.

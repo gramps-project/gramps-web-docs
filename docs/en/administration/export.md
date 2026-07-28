@@ -6,6 +6,8 @@ Clicking on "export" will generate the file and start the download once it is re
 
 Note that if your Gramps Web user does not have permission to view private records, the export will not be a full backup, since it will not contain any private records.
 
+This Gramps XML file can later be used to restore the tree to this exact state via [Restore from Backup](settings.md#restore-from-backup).
+
 ## Share your family tree with users of other genealogy programs
 
 When sharing genealogical data as Gramps XML is not an option, you can also export a GEDCOM file. Note that this is not suited as a backup of your Gramps Web tree.

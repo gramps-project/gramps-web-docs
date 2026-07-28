@@ -143,3 +143,25 @@ You will be asked to re-authenticate (log in again) to confirm the action. The d
 
 !!! tip
     Use this to start fresh before importing a new tree, or to remove specific object types that were imported incorrectly.
+
+### Restore from Backup
+
+Resets the tree to match an uploaded Gramps XML (`.gramps`) backup file, adding, updating, and deleting objects as needed so the tree ends up identical to the backup.
+
+!!! danger
+    This is a destructive replace, not a merge. Any existing object not present in the uploaded backup is deleted.
+
+Upload a `.gramps` file, then click **Preview Restore**. You will be asked to re-authenticate if your session isn't fresh enough. A preview runs as a background task and, once complete, opens a dialog summarizing the changes per object type (people, families, events, places, citations, sources, repositories, media objects, notes, tags):
+
+- **Add** – objects present in the backup but missing from the current tree
+- **Update** – objects present in both that differ
+- **Delete** – objects in the current tree that are absent from the backup
+- **Unchanged** – objects identical in both
+
+If any objects would be deleted, the dialog warns how many. Review the summary, then click **Restore** to apply the changes, or **Cancel** to abort.
+
+!!! note
+    Only object data and media references are restored. Binary media files themselves and tree metadata (default person, bookmarks, name groups) are not affected. Restore missing media files separately via [Import media archive](#import-media-archive) if needed.
+
+!!! tip
+    Use this to roll back a tree to a known-good Gramps XML backup, for example after a bad import or an unwanted bulk edit.

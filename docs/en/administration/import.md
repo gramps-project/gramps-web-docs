@@ -16,6 +16,13 @@ To import an existing family tree, use the "Import" page and upload a file in an
 
 If you already use Gramps Desktop, it is strongly recommended to use the Gramps XML (`.gramps`) format to ensure your online and offline trees use the same identifiers and can be [synchronized](sync.md).
 
+After clicking "Import", the file is first parsed and a "Confirm Import" dialog shows a preview of the objects the file contains (people, families, events, places, and so on) before anything is added to your tree. Review the counts, then click "Import" in the dialog to proceed, or "Cancel" to abort without changing anything.
+
+!!! warning
+    A regular import is purely additive: it always creates new objects and never updates or deletes existing ones, even for objects that already exist in your tree under the same Gramps ID or handle. Importing the same file twice &ndash; or importing a file that overlaps with data already in the tree &ndash; will duplicate every matching object rather than merge or skip it.
+
+    If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](settings.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it.
+
 ## Why no support for Gramps XML package?
 
 While Gramps XML (`.gramps`) is the preferred format for importing data, Gramps XML *package* (`.gpkg`) is not supported by Gramps Web. This is because the import and export routines for media files are not suited for use on a web server.

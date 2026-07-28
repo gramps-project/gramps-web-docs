@@ -39,3 +39,22 @@ When the Historical Map layer is active, the time slider also filters the map ti
 
 !!! note
     OpenHistoricalMap coverage varies by region and period. Areas or eras with sparse contributions may show limited historical detail. If you notice missing or inaccurate historical data, consider [contributing to OpenHistoricalMap](https://www.openhistoricalmap.org) – it is an open community project that anyone can edit.
+
+## Custom map overlays
+
+In addition to the built-in base layers, you can turn any scanned historical map image – stored in Gramps as a **Media** object – into a custom overlay positioned on the live map. This is useful for scans of old city plans, parish maps, or property maps that you want to compare directly against modern or historical geography.
+
+### Georeferencing an image
+
+1. Open the media object for the scanned map image and switch to edit mode.
+2. Open the "Map" tab and click **Edit coordinates**. This opens a georeferencing dialog with the image alongside a map.
+3. Click **Select a point on the map**, then click the location on the map that a point on the image should correspond to. The image is placed on the map for the first time as soon as a point is selected.
+4. Use the **Scale** slider to resize the image and the **Opacity** slider to see the base map through it while positioning.
+5. Click **Align the image** and click on the map again to shift the image so that the pinned point lines up precisely.
+6. Repeat the scale, opacity, and align steps until the image matches the underlying geography, then save.
+
+Behind the scenes, this stores the image's corner coordinates in a `map:bounds` attribute on the media object.
+
+### Viewing overlays on the Map page
+
+Once a media object has been georeferenced this way, it automatically becomes available as a toggleable layer on the Map page. Open the layer switcher (stacked-layers icon, bottom-left) to show or hide each overlay independently of the base map. Overlays are listed by the media object's title.
