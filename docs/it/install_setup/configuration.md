@@ -18,7 +18,7 @@ dove `/path/to/config.cfg` è il percorso del file di configurazione nel file sy
 
 Quando utilizzi variabili d'ambiente,
 
-- anteponi ogni nome di impostazione con `GRAMPSWEB_` per ottenere il nome della variabile d'ambiente
+- prefissa ogni nome di impostazione con `GRAMPSWEB_` per ottenere il nome della variabile d'ambiente
 - Usa doppi underscore per le impostazioni dei dizionari annidati, ad esempio `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` imposterà il valore dell'opzione di configurazione `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
 
 Nota che le opzioni di configurazione impostate tramite l'ambiente hanno la precedenza su quelle nel file di configurazione. Se entrambe sono presenti, la variabile d'ambiente "vince".
@@ -30,7 +30,7 @@ Le seguenti opzioni di configurazione esistono.
 
 Chiave | Descrizione
 ----|-------------
-`TREE` | Il nome del database dell'albero genealogico da utilizzare. Mostra gli alberi disponibili con `gramps -l`. Se un albero con questo nome non esiste, ne verrà creato uno nuovo e vuoto.
+`TREE` | Il nome del database dell'albero genealogico da utilizzare. Mostra gli alberi disponibili con `gramps -l`. Se un albero con questo nome non esiste, ne verrà creato uno nuovo vuoto.
 `SECRET_KEY` | La chiave segreta per Flask. La chiave segreta non deve essere condivisa pubblicamente. Modificarla invaliderà tutti i token di accesso.
 `USER_DB_URI` | L'URL del database degli utenti. È consentito qualsiasi URL compatibile con SQLAlchemy.
 
@@ -45,8 +45,8 @@ Chiave | Descrizione
 
 Chiave | Descrizione
 ----|-------------
-`MEDIA_BASE_DIR` | Percorso da utilizzare come directory base per i file multimediali, sovrascrivendo la directory base dei media impostata in Gramps. Quando si utilizza [S3](s3.md), deve avere la forma `s3://<bucket_name>`
- `TREE_ID` | Il nome della directory del database dell'albero genealogico da utilizzare in modalità singolo albero (quando `TREE` non è impostato su `MULTI`). Quando impostato, il server identifica l'albero dal suo nome di directory piuttosto che dal suo nome visualizzato, il che è più robusto rispetto ai rinomini. Richiesto se desideri rinominare l'albero tramite l'API. Il nome della directory può essere trovato tramite `GET /api/trees/-` (il campo `id`).
+`MEDIA_BASE_DIR` | Percorso da utilizzare come directory base per i file multimediali, sovrascrivendo la directory base dei media impostata in Gramps. Quando utilizzi [S3](s3.md), deve avere la forma `s3://<bucket_name>`
+ `TREE_ID` | Il nome della directory del database dell'albero genealogico da utilizzare in modalità albero singolo (quando `TREE` non è impostato su `MULTI`). Quando impostato, il server identifica l'albero dal suo nome di directory piuttosto che dal suo nome visualizzato, il che è più robusto rispetto ai rinominamenti. Richiesto se desideri rinominare l'albero tramite l'API. Il nome della directory può essere trovato tramite `GET /api/trees/-` (il campo `id`).
 `SEARCH_INDEX_DB_URI` | URL del database per l'indice di ricerca. Solo `sqlite` o `postgresql` sono consentiti come backend. Predefinito a `sqlite:///indexdir/search_index.db`, creando un file SQLite nella cartella `indexdir` relativa al percorso in cui viene eseguito lo script.
 `STATIC_PATH` | Percorso da cui servire file statici (ad es. un frontend web statico).
 `BASE_URL` | URL base dove l'API può essere raggiunta (ad es. `https://mygramps.mydomain.com/`). Questo è necessario ad esempio per costruire collegamenti corretti per il ripristino della password.
@@ -55,29 +55,29 @@ Chiave | Descrizione
 `EMAIL_PORT` | Porta del server SMTP. predefinito a 465.
 `EMAIL_HOST_USER` | Nome utente del server SMTP.
 `EMAIL_HOST_PASSWORD` | Password del server SMTP.
-`EMAIL_USE_TLS` | **Deprecato** (utilizza `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` invece). Booleano, se utilizzare TLS per inviare e-mail. Predefinito a `True`. Quando si utilizza STARTTLS, impostalo su `False` e utilizza una porta diversa da 25.
+`EMAIL_USE_TLS` | **Deprecato** (usa `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` invece). Booleano, se utilizzare TLS per l'invio di e-mail. Predefinito a `True`. Quando utilizzi STARTTLS, impostalo su `False` e utilizza una porta diversa da 25.
 `EMAIL_USE_SSL` | Booleano, se utilizzare SSL/TLS implicito per SMTP (v3.6.0+). Predefinito a `True` se `EMAIL_USE_TLS` non è esplicitamente impostato. Tipicamente utilizzato con la porta 465.
 `EMAIL_USE_STARTTLS` | Booleano, se utilizzare STARTTLS esplicito per SMTP (v3.6.0+). Predefinito a `False`. Tipicamente utilizzato con la porta 587 o 25.
-`DEFAULT_FROM_EMAIL` | Indirizzo "Da" per e-mail automatiche.
-`THUMBNAIL_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle miniature. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le possibili impostazioni.
-`REQUEST_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle richieste. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le possibili impostazioni.
-`PERSISTENT_CACHE_CONFIG` | Dizionario con impostazioni per la cache persistente, utilizzata ad esempio per la telemetria. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le possibili impostazioni.
-`CELERY_CONFIG` | Impostazioni per la coda di attività in background Celery. Vedi [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) per le possibili impostazioni.
-`REPORT_DIR` | Directory temporanea in cui verrà memorizzato l'output dei report di Gramps.
+`DEFAULT_FROM_EMAIL` | Indirizzo "Da" per e-mail automatizzate.
+`THUMBNAIL_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle miniature. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le impostazioni possibili.
+`REQUEST_CACHE_CONFIG` | Dizionario con impostazioni per la cache delle richieste. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le impostazioni possibili.
+`PERSISTENT_CACHE_CONFIG` | Dizionario con impostazioni per la cache persistente, utilizzata ad esempio per la telemetria. Vedi [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) per le impostazioni possibili.
+`CELERY_CONFIG` | Impostazioni per la coda di attività in background Celery. Vedi [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) per le impostazioni possibili.
+`REPORT_DIR` | Directory temporanea in cui verrà memorizzato l'output dell'esecuzione dei report di Gramps.
 `EXPORT_DIR` | Directory temporanea in cui verrà memorizzato l'output dell'esportazione del database di Gramps.
 `REGISTRATION_DISABLED` | Se `True`, vieta la registrazione di nuovi utenti (predefinito `False`).
 `DISABLE_TELEMETRY` | Se `True`, disabilita la telemetria delle statistiche (predefinito `False`). Vedi [telemetria](telemetry.md) per dettagli.
 `PILLOW_MAX_IMAGE_PIXELS` | Imposta il parametro PIL.Image.MAX_IMAGE_PIXELS, che indica il numero di pixel che l'immagine elaborata può contenere. Vedi [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) per dettagli.
-`MAX_THUMBNAIL_FILE_BYTES` | Imposta una dimensione massima fissa per i file delle miniature. Predefinito a `50 * 1024 * 1024` (50 MB). Aumentarla può aumentare notevolmente l'uso della memoria e può portare a crash per esaurimento della memoria o perdita di dati se file di grandi dimensioni vengono decompressi in memoria.
+`MAX_THUMBNAIL_FILE_BYTES` | Imposta una dimensione massima fissa per i file delle miniature. Predefinito a `50 * 1024 * 1024` (50 MB). Aumentarla può aumentare notevolmente l'uso della memoria e potrebbe portare a crash per esaurimento della memoria o perdita di dati se file di grandi dimensioni vengono decompressi in memoria.
 
 
 !!! info
-    Quando si utilizzano variabili d'ambiente per la configurazione, le opzioni booleane come `EMAIL_USE_TLS` devono essere o la stringa `true` o `false` (case sensitive!).
+    Quando utilizzi variabili d'ambiente per la configurazione, le opzioni booleane come `EMAIL_USE_TLS` devono essere o la stringa `true` o `false` (case sensitive!).
 
 
-### Impostazioni solo per il database backend PostgreSQL
+### Impostazioni solo per database backend PostgreSQL
 
-Questo è richiesto se hai configurato il tuo database Gramps per funzionare con l'[addon PostgreSQL](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
+Questo è necessario se hai configurato il tuo database Gramps per funzionare con l'[addon PostgreSQL](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
 Chiave | Descrizione
 ----|-------------
@@ -92,15 +92,15 @@ Le seguenti impostazioni sono rilevanti quando [si ospitano più alberi](multi-t
 
 Chiave | Descrizione
 ----|-------------
-`MEDIA_PREFIX_TREE` | Booleano, se utilizzare o meno una sottocartella separata per i file multimediali di ciascun albero. Predefinito a `False`, ma si consiglia vivamente di utilizzare `True` in un'installazione multi-albero.
-`NEW_DB_BACKEND` | Il backend del database da utilizzare per i nuovi alberi genealogici creati. Deve essere uno di `sqlite`, `postgresql` o `sharedpostgresql`. Predefinito a `sqlite`.
-`POSTGRES_HOST` | Il nome host del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza un'installazione multi-albero con il backend SharedPostgreSQL.
-`POSTGRES_PORT` | La porta del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza un'installazione multi-albero con il backend SharedPostgreSQL.
+`MEDIA_PREFIX_TREE` | Booleano, se utilizzare o meno una sottocartella separata per i file multimediali di ciascun albero. Predefinito a `False`, ma si consiglia vivamente di utilizzare `True` in una configurazione multi-albero.
+`NEW_DB_BACKEND` | Il backend del database da utilizzare per i nuovi alberi genealogici creati. Deve essere uno tra `sqlite`, `postgresql` o `sharedpostgresql`. Predefinito a `sqlite`.
+`POSTGRES_HOST` | Il nome host del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza una configurazione multi-albero con il backend SharedPostgreSQL.
+`POSTGRES_PORT` | La porta del server PostgreSQL utilizzato per creare nuovi alberi quando si utilizza una configurazione multi-albero con il backend SharedPostgreSQL.
 
 
 ### Impostazioni per l'autenticazione OIDC
 
-Queste impostazioni sono necessarie se desideri utilizzare l'autenticazione OpenID Connect (OIDC) con fornitori esterni. Per istruzioni dettagliate sulla configurazione e esempi, vedere [Autenticazione OIDC](oidc.md).
+Queste impostazioni sono necessarie se desideri utilizzare l'autenticazione OpenID Connect (OIDC) con fornitori esterni. Per istruzioni dettagliate sulla configurazione e esempi, vedi [Autenticazione OIDC](oidc.md).
 
 Chiave | Descrizione
 ----|-------------
@@ -108,16 +108,16 @@ Chiave | Descrizione
 `OIDC_ISSUER` | URL dell'emittente del fornitore OIDC (per fornitori OIDC personalizzati).
 `OIDC_CLIENT_ID` | ID client OAuth (per fornitori OIDC personalizzati).
 `OIDC_CLIENT_SECRET` | Segreto client OAuth (per fornitori OIDC personalizzati).
-`OIDC_NAME` | Nome di visualizzazione personalizzato per il fornitore. Predefinito a "OIDC".
+`OIDC_NAME` | Nome visualizzato personalizzato per il fornitore. Predefinito a "OIDC".
 `OIDC_SCOPES` | Scopi OAuth. Predefinito a "openid email profile".
 `OIDC_USERNAME_CLAIM` | Il claim da utilizzare per il nome utente. Predefinito a "preferred_username".
-`OIDC_OPENID_CONFIG_URL` | Facoltativo: URL per l'endpoint di configurazione OpenID Connect (se non si utilizza il standard `/.well-known/openid-configuration`).
+`OIDC_OPENID_CONFIG_URL` | Facoltativo: URL per l'endpoint di configurazione OpenID Connect (se non si utilizza lo standard `/.well-known/openid-configuration`).
 `OIDC_DISABLE_LOCAL_AUTH` | Booleano, se disabilitare l'autenticazione locale con nome utente/password. Predefinito a `False`.
 `OIDC_AUTO_REDIRECT` | Booleano, se reindirizzare automaticamente a OIDC quando è configurato solo un fornitore. Predefinito a `False`.
 
 #### Fornitori OIDC integrati
 
-Per i fornitori integrati (Google, Microsoft, GitHub), utilizza queste impostazioni:
+Per i fornitori integrati (Google, Microsoft), utilizza queste impostazioni:
 
 Chiave | Descrizione
 ----|-------------
@@ -125,8 +125,6 @@ Chiave | Descrizione
 `OIDC_GOOGLE_CLIENT_SECRET` | Segreto client per Google OAuth.
 `OIDC_MICROSOFT_CLIENT_ID` | ID client per Microsoft OAuth.
 `OIDC_MICROSOFT_CLIENT_SECRET` | Segreto client per Microsoft OAuth.
-`OIDC_GITHUB_CLIENT_ID` | ID client per GitHub OAuth.
-`OIDC_GITHUB_CLIENT_SECRET` | Segreto client per GitHub OAuth.
 
 #### Mappatura dei Ruoli OIDC
 
@@ -135,23 +133,23 @@ Queste impostazioni ti consentono di mappare i gruppi/ruoli OIDC dal tuo fornito
 Chiave | Descrizione
 ----|-------------
 `OIDC_ROLE_CLAIM` | Il nome del claim nel token OIDC che contiene i gruppi/ruoli dell'utente. Predefinito a "groups".
-`OIDC_GROUP_ADMIN` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Admin" di Gramps.
-`OIDC_GROUP_OWNER` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Owner" di Gramps.
-`OIDC_GROUP_EDITOR` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Editor" di Gramps.
-`OIDC_GROUP_CONTRIBUTOR` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Contributor" di Gramps.
-`OIDC_GROUP_MEMBER` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Member" di Gramps.
-`OIDC_GROUP_GUEST` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che mappa al ruolo "Guest" di Gramps.
+`OIDC_GROUP_ADMIN` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Admin" di Gramps.
+`OIDC_GROUP_OWNER` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Owner" di Gramps.
+`OIDC_GROUP_EDITOR` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Editor" di Gramps.
+`OIDC_GROUP_CONTRIBUTOR` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Contributor" di Gramps.
+`OIDC_GROUP_MEMBER` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Member" di Gramps.
+`OIDC_GROUP_GUEST` | Il nome del gruppo/ruolo dal tuo fornitore OIDC che si mappa al ruolo "Guest" di Gramps.
 
 ### Impostazioni solo per funzionalità AI
 
-Queste impostazioni sono necessarie se desideri utilizzare funzionalità potenziate dall'IA come chat o ricerca semantica.
+Queste impostazioni sono necessarie se desideri utilizzare funzionalità potenziate dall'AI come chat o ricerca semantica.
 
 Chiave | Descrizione
 ----|-------------
 `LLM_BASE_URL` | URL base per l'API di chat compatibile con OpenAI. Predefinito a `None`, che utilizza l'API OpenAI.
 `LLM_MODEL` | Il modello da utilizzare per l'API di chat compatibile con OpenAI. Se non impostato (il predefinito), la chat è disabilitata. A partire dalla v3.6.0, l'assistente AI utilizza Pydantic AI con capacità di chiamata degli strumenti.
-`VECTOR_EMBEDDING_MODEL` | Il modello [Sentence Transformers](https://sbert.net/) da utilizzare per gli embedding vettoriali di ricerca semantica. Se non impostato (il predefinito), la ricerca semantica e la chat sono disabilitate.
-`LLM_MAX_CONTEXT_LENGTH` | Limite di caratteri per il contesto dell'albero genealogico fornito all'LLM. Predefinito a 50000.
+`VECTOR_EMBEDDING_MODEL` | Il modello [Sentence Transformers](https://sbert.net/) da utilizzare per le embedding vettoriali di ricerca semantica. Se non impostato (il predefinito), la ricerca semantica e la chat sono disabilitate.
+`LLM_MAX_CONTEXT_LENGTH` | Limite di caratteri per il contesto dell'albero genealogico fornito al LLM. Predefinito a 50000.
 `LLM_SYSTEM_PROMPT` | Prompt di sistema personalizzato per l'assistente chat LLM (v3.6.0+). Se non impostato, utilizza il prompt predefinito ottimizzato per la genealogia.
 
 
@@ -159,7 +157,7 @@ Chiave | Descrizione
 
 Un file di configurazione minimale per la produzione potrebbe apparire così:
 ```python
-TREE="Il Mio Albero Genealogico"
+TREE="Il Mio Albero Familiare"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # la tua chiave segreta
 USER_DB_URI="sqlite:////path/to/users.sqlite"

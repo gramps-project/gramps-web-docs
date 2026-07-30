@@ -1,6 +1,9 @@
 # OIDC 认证
 
-Gramps Web 支持 OpenID Connect (OIDC) 认证，允许用户使用外部身份提供者登录。这包括 Google、Microsoft 和 GitHub 等流行提供者，以及 Keycloak、Authentik 等自定义 OIDC 提供者。
+Gramps Web 支持 OpenID Connect (OIDC) 认证，允许用户使用外部身份提供者登录。这包括内置的 Google 和 Microsoft 提供者，以及像 Keycloak、Authentik 和 Authelia 这样的自定义 OIDC 提供者。
+
+!!! warning "GitHub 作为 OIDC 提供者不再受支持"
+    如果您在早期版本中设置了 `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET`，请将其删除——它们现在被忽略，之前通过 GitHub 登录的用户无法再以这种方式登录。GitHub 是 OAuth 2.0 提供者，而不是 OpenID Connect 提供者，并且从未返回 Gramps Web 依赖于身份的声明，因此从未完全可靠。
 
 ## 概述
 
@@ -14,7 +17,7 @@ OIDC 认证允许您：
 
 ## 配置
 
-要启用 OIDC 认证，您需要在 Gramps Web 配置文件或环境变量中配置适当的设置。有关可用 OIDC 设置的完整列表，请参见 [服务器配置](configuration.md#settings-for-oidc-authentication) 页面。
+要启用 OIDC 认证，您需要在 Gramps Web 配置文件或环境变量中配置适当的设置。请参阅 [服务器配置](configuration.md#settings-for-oidc-authentication) 页面以获取可用 OIDC 设置的完整列表。
 
 !!! info
     使用环境变量时，请记得在每个设置名称前加上 `GRAMPSWEB_` 前缀（例如，`GRAMPSWEB_OIDC_ENABLED`）。有关详细信息，请参见 [配置文件与环境变量](configuration.md#configuration-file-vs-environment-variables)。
@@ -25,22 +28,40 @@ Gramps Web 内置支持流行的身份提供者。要使用它们，您只需提
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` 和 `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` 和 `OIDC_MICROSOFT_CLIENT_SECRET`
-- **GitHub**: `OIDC_GITHUB_CLIENT_ID` 和 `OIDC_GITHUB_CLIENT_SECRET`
 
 您可以同时配置多个提供者。系统将根据配置值自动检测可用的提供者。
 
+!!! tip "Microsoft: 单租户部署"
+    内置的 Microsoft 提供者使用多租户 `/common` 端点，并按设计接受任何 Microsoft 帐户的登录。如果您只想允许来自自己租户的用户，请使用 [自定义 OIDC 提供者](#custom-oidc-providers) 并使用特定于您租户的发行者 URL，这样可以保持发行者验证有效，并限制登录到该租户。
+
 ### 自定义 OIDC 提供者
 
-对于自定义 OIDC 提供者（如 Keycloak、Authentik 或任何标准 OIDC 兼容提供者），请使用以下设置：
+对于自定义 OIDC 提供者（如 Keycloak、Authentik、Authelia 或单租户 Microsoft Entra 租户），使用以下设置：
 
-| Key                  | Description                                               |
-|----------------------|-----------------------------------------------------------|
-| `OIDC_ENABLED`       | 布尔值，是否启用 OIDC 认证。设置为 `True`。              |
-| `OIDC_ISSUER`       | 您提供者的发行者 URL                                     |
-| `OIDC_CLIENT_ID`    | 您的 OIDC 提供者的客户端 ID                              |
-| `OIDC_CLIENT_SECRET` | 您的 OIDC 提供者的客户端密钥                            |
-| `OIDC_NAME`         | 自定义显示名称（可选，默认为 "OIDC"）                    |
-| `OIDC_SCOPES`       | OAuth 范围（可选，默认为 "openid email profile"）        |
+| 键                  | 描述                                         |
+|---------------------|----------------------------------------------|
+| `OIDC_ENABLED`      | 布尔值，是否启用 OIDC 认证。设置为 `True`。 |
+| `OIDC_ISSUER`      | 您提供者的发行者 URL。发现信息从 `<issuer>/.well-known/openid-configuration` 获取。 |
+| `OIDC_CLIENT_ID`    | 您的 OIDC 提供者的客户端 ID                 |
+| `OIDC_CLIENT_SECRET` | 您的 OIDC 提供者的客户端密钥                 |
+| `OIDC_NAME`         | 自定义显示名称（可选，默认为 "OIDC"）      |
+| `OIDC_SCOPES`       | OAuth 范围（可选，默认为 "openid email profile"） |
+| `OIDC_USERNAME_CLAIM` | 用于生成用户名的声明（可选，默认为 "preferred_username"） |
+
+### 多树设置
+
+在多树服务器上，用户登录的树必须在 Gramps Web 重定向到身份提供者之前已知，因此登录以以下方式开始：
+
+```
+GET /api/oidc/login/?provider=<id>&tree=<tree_id>
+```
+
+在多树设置中，`tree` 是必需的；省略它或传递一个不存在的树的 ID 会导致登录失败。在单树服务器上，`tree` 是可选的，但如果提供，它必须与配置的 `TREE` 匹配。
+
+OIDC 身份绑定到确切的一个 Gramps Web 帐户，而该帐户又属于确切的一个树——针对不同树的登录会失败，而不是移动帐户。没有办法将提供者中的单一身份链接到多个树中的帐户；需要访问多个树的用户需要在提供者中拥有单独的身份（例如，独特的用户名或帐户）。
+
+!!! warning
+    没有关联树的站点管理员帐户（请参见 [创建管理员帐户](../administration/owner.md)）无法通过 OIDC 登录，因为 OIDC 登录始终需要树。此类帐户必须通过本地用户名/密码创建和验证。
 
 ## 必需的重定向 URI
 
@@ -51,81 +72,73 @@ Gramps Web 内置支持流行的身份提供者。要使用它们，您只需提
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
 其中 `*` 是正则表达式通配符。根据您提供者的正则表达式解释器，这也可以是 `.*` 或类似的。
-如果您的提供者需要，请确保启用正则表达式（例如，Authentik）。
+确保在您的提供者需要时启用正则表达式（例如，Authentik）。
 
 **对于不支持通配符的 OIDC 提供者：（例如，Authelia）**
 
 - `https://your-gramps-backend.com/api/oidc/callback/custom`
 
+树从不作为重定向 URI 的一部分，即使在多树服务器上——它在会话中单独传输，因为提供者要求重定向 URI 必须与注册的 URI 完全匹配。
+
 ## 角色映射
 
-Gramps Web 可以自动将来自您的身份提供者的 OIDC 组或角色映射到 Gramps Web 用户角色。这使您能够在身份提供者中集中管理用户权限。
+Gramps Web 可以自动将来自您的身份提供者的 OIDC 组或角色映射到 Gramps Web 用户角色。这使您能够在身份提供者中集中管理用户权限。角色映射对所有提供者（内置或自定义）都以相同的方式工作。
 
 ### 配置
 
 使用以下设置配置角色映射：
 
-| Key                   | Description                                               |
-|-----------------------|-----------------------------------------------------------|
-| `OIDC_ROLE_CLAIM`     | OIDC 令牌中包含用户组/角色的声明名称。默认为 "groups"    |
-| `OIDC_GROUP_ADMIN`    | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Admin" 角色 |
-| `OIDC_GROUP_OWNER`    | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Owner" 角色 |
-| `OIDC_GROUP_EDITOR`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Editor" 角色 |
+| 键                  | 描述                                         |
+|---------------------|----------------------------------------------|
+| `OIDC_ROLE_CLAIM`   | OIDC 令牌中包含用户组/角色的声明名称。默认为 "groups"。支持点路径，例如 `realm_access.roles`。 |
+| `OIDC_GROUP_ADMIN`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Admin" 角色 |
+| `OIDC_GROUP_OWNER`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Owner" 角色 |
+| `OIDC_GROUP_EDITOR`  | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Editor" 角色 |
 | `OIDC_GROUP_CONTRIBUTOR` | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Contributor" 角色 |
-| `OIDC_GROUP_MEMBER`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Member" 角色 |
-| `OIDC_GROUP_GUEST`    | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Guest" 角色 |
+| `OIDC_GROUP_MEMBER`  | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Member" 角色 |
+| `OIDC_GROUP_GUEST`   | 来自您的 OIDC 提供者的组/角色名称，映射到 Gramps 的 "Guest" 角色 |
 
 ### 角色映射行为
 
-- 如果未配置角色映射（未设置 `OIDC_GROUP_*` 变量），则保留现有用户角色
-- 根据用户的组成员资格，用户将被分配他们有权获得的最高角色
-- 默认情况下，角色映射区分大小写（取决于您的 OIDC 提供者）
+如果没有配置任何 `OIDC_GROUP_*` 设置，则角色映射关闭，角色在 Gramps Web 中手动管理；新 OIDC 帐户将被创建为禁用状态，并需要现有所有者或管理员的批准（请参见 [首次登录和引导](#first-login-and-bootstrapping)）。
+
+一旦配置了角色映射，在每次登录时：
+
+- 如果角色声明存在且用户属于映射的组，则他们将获得相应的角色。
+- 如果角色声明存在但用户不属于任何映射的组，则他们的角色将被设置为禁用。这是一个故障关闭的默认行为，而不是错误——Gramps Web 无法推断出它不识别的组的角色。
+- 如果令牌中完全缺少角色声明，则现有角色保持不变；新帐户仍默认为禁用。
+
+!!! warning "Google 不发送 groups 声明"
+    Google 的令牌从不包括 `groups` 声明，因此在启用角色映射时，Google 登录属于上述 "声明缺失"：现有用户保留其角色，但新 Google 用户被创建为禁用状态，需要手动批准。在仅为其他提供者启用角色映射之前，请记住这一点——它本身不会禁用现有的 Google 用户。
+
+Microsoft Entra 仅在 ID 令牌中返回应用角色和组成员资格，而不是从用户信息端点。Gramps Web 将 ID 令牌的声明合并到用户信息响应中，以便 `OIDC_ROLE_CLAIM` 的工作方式与其他提供者相同；如果两者都包含声明，则用户信息值优先。
+
+## 首次登录和引导
+
+通过 OIDC 创建的新帐户默认处于禁用状态，除非角色映射为其分配了角色（见上文）。在全新的实例中，没有人可以批准禁用帐户，并且如果 `OIDC_DISABLE_LOCAL_AUTH` 也启用，则也没有密码登录可以回退。
+
+!!! warning "在首次登录之前配置所有者/管理员组"
+    在任何人首次通过 OIDC 登录之前，请设置 `OIDC_GROUP_OWNER`（或 `OIDC_GROUP_ADMIN`），并确保第一个用户在提供者中属于该组。否则，该实例根本无法通过 OIDC 引导。
+
+## 帐户和用户名
+
+通过 OIDC 创建的帐户获得一个生成的用户名，该用户名在帐户创建时分配，并在后续登录时从不更改：
+
+- 内置提供者：`<provider>_<claim value>`，例如 `microsoft_alice@contoso.com`
+- 自定义提供者：裸声明值，例如 `alice`
+
+在冲突时会附加数字后缀。之后没有办法重命名 OIDC 创建的帐户的用户名；相反，全名和电子邮件地址在每次登录时都会刷新。
+
+OIDC 登录从不附加到恰好共享其电子邮件地址的现有本地帐户——这是故意的，因为通过电子邮件链接帐户是一个帐户接管的向量。已经拥有本地帐户的用户在首次通过 OIDC 登录时会获得第二个、独立的帐户。
+
+来自提供者的电子邮件地址仅在提供者标记其为已验证（或完全省略 `email_verified` 声明）且地址未被其他帐户使用的情况下存储；否则，登录将继续而不存储电子邮件地址。
 
 ## OIDC 注销
 
-Gramps Web 支持 OIDC 提供者的单点注销 (SSO 注销)。当用户在通过 OIDC 认证后从 Gramps Web 注销时，如果提供者支持 `end_session_endpoint`，他们将自动重定向到身份提供者的注销页面。
+Gramps Web 支持 OIDC 提供者的单点注销 (SSO 注销)。`GET /api/oidc/logout/` 查找提供者的 `end_session_endpoint` 并将其作为 `logout_url` 返回；实际上结束身份提供者会话的是 Gramps Web 前端，它会导航浏览器到那里。 当提供者没有 `end_session_endpoint` 时，`logout_url` 为 `null`。
 
-### 后台注销
-
-Gramps Web 实现了 OpenID Connect 后台注销规范。这允许身份提供者在用户从另一个应用程序或身份提供者本身注销时通知 Gramps Web。
-
-#### 配置
-
-要与您的身份提供者配置后台注销：
-
-1. **在您的身份提供者的客户端配置中注册后台注销端点**：
-   ```
-   https://your-gramps-backend.com/api/oidc/backchannel-logout/
-   ```
-
-2. **配置您的提供者** 以发送注销通知。具体步骤取决于您的提供者：
-
-   **Keycloak：**
-
-   - 在您的客户端配置中，导航到 "设置"
-   - 将 "后台注销 URL" 设置为 `https://your-gramps-backend.com/api/oidc/backchannel-logout/`
-   - 如果您希望基于会话的注销，请启用 "后台注销会话必需"
-
-   **Authentik：**
-
-   - 在您的提供者配置中，添加后台注销 URL
-   - 确保提供者配置为发送注销令牌
-
-!!! warning "令牌过期"
-    由于 JWT 令牌的无状态特性，后台注销目前记录注销事件，但无法立即撤销已发出的 JWT 令牌。令牌将保持有效，直到过期（默认：访问令牌 15 分钟）。
-
-    为了增强安全性，请考虑：
-
-    - 减少 JWT 令牌过期时间 (`JWT_ACCESS_TOKEN_EXPIRES`)
-    - 教育用户在从身份提供者注销时手动从 Gramps Web 注销
-
-!!! tip "工作原理"
-    当用户从您的身份提供者或其他应用程序注销时：
-
-    1. 提供者向 Gramps Web 的后台注销端点发送 `logout_token` JWT
-    2. Gramps Web 验证令牌并记录注销事件
-    3. 注销令牌的 JTI 被添加到黑名单，以防止重放攻击
-    4. 一旦令牌过期，任何带有用户 JWT 的新 API 请求将被拒绝
+!!! warning "注销时令牌不会被撤销"
+    注销仅结束浏览器会话；目前没有办法撤销已经发出的 Gramps Web 令牌。令牌保持有效，直到过期（`JWT_ACCESS_TOKEN_EXPIRES`，默认 15 分钟用于访问令牌），无论用户是否已在 Gramps Web 或身份提供者处注销。
 
 ## 示例配置
 
@@ -147,7 +160,7 @@ OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # 可选：自动重定向到 SSO 登录
 OIDC_DISABLE_LOCAL_AUTH=True  # 可选：禁用用户名/密码登录
 
-# 可选：从 OIDC 组到 Gramps 角色的映射
+# 可选：将 OIDC 组映射到 Gramps 角色
 OIDC_ROLE_CLAIM="groups"  # 或 "roles"，具体取决于您的提供者
 OIDC_GROUP_ADMIN="gramps-admins"
 OIDC_GROUP_EDITOR="gramps-editors"
@@ -195,9 +208,9 @@ OIDC_NAME="Company SSO"
 OIDC_GOOGLE_CLIENT_ID="your-google-client-id"
 OIDC_GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
-# GitHub OAuth
-OIDC_GITHUB_CLIENT_ID="your-github-client-id"
-OIDC_GITHUB_CLIENT_SECRET="your-github-client-secret"
+# Microsoft OAuth
+OIDC_MICROSOFT_CLIENT_ID="your-microsoft-client-id"
+OIDC_MICROSOFT_CLIENT_SECRET="your-microsoft-client-secret"
 ```
 
 ### Authelia
@@ -206,11 +219,11 @@ Gramps Web 的社区 OIDC 设置指南可在 [官方 Authelia 文档网站](http
 
 ### Keycloak
 
-Keycloak 的大部分配置可以保持默认设置（*客户端 → 创建客户端 → 客户端认证开启*）。
+Keycloak 的大部分配置可以保持默认值（*客户端 → 创建客户端 → 启用客户端认证*）。
 有几个例外：
 
-1. **OpenID 范围** – 在所有 Keycloak 版本中，`openid` 范围并不默认包含。为避免问题，请手动添加：*客户端 → [Gramps 客户端] → 客户端范围 → 添加范围 → 名称: `openid` → 设置为默认。*
+1. **OpenID 范围** – `openid` 范围在所有 Keycloak 版本中默认不包括。为避免问题，请手动添加：*客户端 → [Gramps 客户端] → 客户端范围 → 添加范围 → 名称：`openid` → 设置为默认。*
 2. **角色** – 角色可以在客户端级别或每个领域全局分配。
 
     * 如果您使用客户端角色，请将 `OIDC_ROLE_CLAIM` 配置选项设置为：`resource_access.[gramps-client-name].roles`
-    * 要使角色对 Gramps 可见，请导航到 *客户端范围*（顶级部分，而不是特定客户端下），然后：*角色 → 映射器 → 客户端角色 → 添加到用户信息 → 开启。*
+    * 要使角色对 Gramps 可见，请导航到 *客户端范围*（顶级部分，而不是特定客户端下），然后：*角色 → 映射器 → 客户端角色 → 添加到用户信息 → 开。*
