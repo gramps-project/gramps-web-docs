@@ -117,7 +117,7 @@ Key | Description
 
 #### Built-in OIDC providers
 
-For built-in providers (Google, Microsoft, GitHub), use these settings:
+For built-in providers (Google, Microsoft), use these settings:
 
 Key | Description
 ----|-------------
@@ -125,8 +125,6 @@ Key | Description
 `OIDC_GOOGLE_CLIENT_SECRET` | Client secret for Google OAuth
 `OIDC_MICROSOFT_CLIENT_ID` | Client ID for Microsoft OAuth
 `OIDC_MICROSOFT_CLIENT_SECRET` | Client secret for Microsoft OAuth
-`OIDC_GITHUB_CLIENT_ID` | Client ID for GitHub OAuth
-`OIDC_GITHUB_CLIENT_SECRET` | Client secret for GitHub OAuth
 
 #### OIDC Role Mapping
 
