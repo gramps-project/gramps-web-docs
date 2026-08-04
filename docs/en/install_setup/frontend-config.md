@@ -17,7 +17,6 @@ Key |Type | Description
 `hideDNALink` | boolean | If true, hide the DNA link on the navigation bar.
 `hideRegisterLink` | boolean | If true, hide the registration link on the login page. This should be used for multi-tree deployments.
 `loginRedirect` | string | URL to redirect to when not logged in and navigating to any page other than "login" or "register"
-`leafletTileUrl` | string | Custom tile URL for Leaflet maps
-`leafletTileSize` | number | Custom tile size for Leaflet maps
-`leafletZoomOffset` | number | Custom zoom offset for Leaflet maps
-`leafletTileAttribution` | string | Custom attribution for Leaflet maps
+`mapBaseStyleLight` | string | MapLibre style URL for the base map in light theme (default: `https://tiles.openfreemap.org/styles/liberty`)
+`mapBaseStyleDark` | string | MapLibre style URL for the base map in dark theme (default: `https://tiles.openfreemap.org/styles/dark`)
+`mapOhmStyle` | string | MapLibre style URL for the OpenHistoricalMap overlay (default: `https://www.openhistoricalmap.org/map-styles/main/main.json`)
