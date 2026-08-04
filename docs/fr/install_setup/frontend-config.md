@@ -1,6 +1,6 @@
-# Personnalisation de l'interface utilisateur
+# Personnalisation de l'interface
 
-L'interface utilisateur Web de Gramps est une application Javascript déployée sous forme d'un ensemble de fichiers HTML, CSS et Javascript statiques. Normalement, aucune configuration spéciale n'est nécessaire pour l'interface. Cependant, certains comportements peuvent être modifiés en définissant des options appropriées dans le fichier `config.js` à la racine de la distribution.
+L'interface Web de Gramps est une application Javascript déployée sous forme d'un ensemble de fichiers HTML, CSS et Javascript statiques. Normalement, aucune configuration spéciale n'est nécessaire pour l'interface. Cependant, certains comportements peuvent être modifiés en définissant des options appropriées dans le fichier `config.js` à la racine de la distribution.
 
 Le fichier doit avoir la structure suivante :
 
@@ -10,14 +10,13 @@ window.grampsjsConfig = {
 }
 ```
 
-Les clés d'option suivantes existent.
+Les clés d'options suivantes existent.
 
 Clé | Type | Description 
 ----|-----|-----------
-`hideDNALink` | boolean | Si vrai, cacher le lien ADN dans la barre de navigation.
-`hideRegisterLink` | boolean | Si vrai, cacher le lien d'inscription sur la page de connexion. Cela doit être utilisé pour les déploiements multi-arbres.
-`loginRedirect` | string | URL vers laquelle rediriger lorsqu'on n'est pas connecté et qu'on navigue vers une page autre que "login" ou "register"
-`leafletTileUrl` | string | URL de tuile personnalisée pour les cartes Leaflet
-`leafletTileSize` | number | Taille de tuile personnalisée pour les cartes Leaflet
-`leafletZoomOffset` | number | Décalage de zoom personnalisé pour les cartes Leaflet
-`leafletTileAttribution` | string | Attribution personnalisée pour les cartes Leaflet
+`hideDNALink` | boolean | Si vrai, masque le lien ADN dans la barre de navigation.
+`hideRegisterLink` | boolean | Si vrai, masque le lien d'inscription sur la page de connexion. Cela doit être utilisé pour les déploiements multi-arbres.
+`loginRedirect` | string | URL vers laquelle rediriger lorsque l'utilisateur n'est pas connecté et navigue vers une page autre que "login" ou "register"
+`mapBaseStyleLight` | string | URL de style MapLibre pour la carte de base en thème clair (par défaut : `https://tiles.openfreemap.org/styles/liberty`)
+`mapBaseStyleDark` | string | URL de style MapLibre pour la carte de base en thème sombre (par défaut : `https://tiles.openfreemap.org/styles/dark`)
+`mapOhmStyle` | string | URL de style MapLibre pour la superposition OpenHistoricalMap (par défaut : `https://www.openhistoricalmap.org/map-styles/main/main.json`)
