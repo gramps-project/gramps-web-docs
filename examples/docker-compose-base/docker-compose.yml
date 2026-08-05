@@ -29,6 +29,9 @@ services:
       - grampsweb
       - grampsweb_redis
     command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
+    # If using Traefik as a reverse proxy, uncomment the labels line.  This prevents carrying over the grampsweb container labels into the celery container
+    # causing a load balancer issue between the main grampsweb container and the celery container:
+  # labels: []
 
   grampsweb_redis:
     image: docker.io/valkey/valkey:8-alpine
