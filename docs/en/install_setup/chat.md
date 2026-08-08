@@ -57,6 +57,73 @@ Please share learnings about different models with the community!
 !!! info
     The sentence transformers library consumes a significant amount of memory, which might cause worker processes being killed. As a rule of thumb, with semantic search enabled, each Gunicorn worker consumes around 200 MB of memory and each celery worker around 500 MB of memory even when idle, and up to 1 GB when computing embeddings. See [Limit CPU and memory usage](cpu-limited.md) for settings that limit memory usage. In addition, it is advisable to provision a sufficiently large swap partition to prevent OOM errors due to transient memory usage spikes.
 
+## Using a remote embedding API
+
+As an alternative to running a local Sentence Transformers model, you can use a remote OpenAI-compatible embedding API for semantic search. This is useful if you want to offload embedding computation to a separate service (e.g. [Ollama](https://ollama.com/)), use a cloud embedding provider (e.g. OpenAI), or avoid installing the Sentence Transformers and PyTorch dependencies.
+
+The remote API must be compatible with the [OpenAI embeddings endpoint](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
+
+To use a remote embedding API, set the following configuration options (see [Server Configuration](configuration.md)):
+
+Key | Description
+----|-------------
+`VECTOR_EMBEDDING_MODEL` | The model name to pass to the remote provider
+`VECTOR_EMBEDDING_BASE_URL` | Base URL of the remote API
+`VECTOR_EMBEDDING_API_KEY` | API key (only needed if the provider requires authentication)
+
+### Using Ollama for embeddings
+
+When deploying Gramps Web with Docker Compose, you can add an Ollama service and use it for both embeddings and (optionally) the LLM:
+
+```yaml
+services:
+  grampsweb: &grampsweb
+    # ... existing config ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  grampsweb_celery: &grampsweb_celery
+    # ... existing config ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
+```
+
+After starting the services, pull the embedding model into Ollama:
+
+```bash
+docker compose exec ollama ollama pull nomic-embed-text
+```
+
+!!! info
+    When using Ollama for embeddings, the Sentence Transformers and PyTorch libraries are not required, which significantly reduces memory usage of the Gramps Web API workers.
+
+### Using OpenAI for embeddings
+
+To use the OpenAI embeddings API, set the base URL to the OpenAI API and provide your API key:
+
+```yaml
+environment:
+  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: text-embedding-3-small
+  GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: https://api.openai.com
+  GRAMPSWEB_VECTOR_EMBEDDING_API_KEY: sk-...
+```
+
+!!! warning
+    Changing the embedding model requires reindexing all records for your tree (or all trees in a multi-tree setup), since different models produce vectors with different dimensions.
+
 ## Setting up an LLM provider
 
 Communication with the LLM uses the Pydantic AI framework, which supports OpenAI-compatible APIs. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or hosted APIs like OpenAI, Anthropic, or Hugging Face TGI (Text Generation Inference). The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
