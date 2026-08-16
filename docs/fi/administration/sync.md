@@ -1,146 +1,216 @@
 # Synkronoi Gramps Web ja Gramps Desktop
 
-*Gramps Web Sync* on lisäosa Grampsille, joka mahdollistaa Gramps-tietokannan synkronoinnin työpöytätietokoneellasi Gramps Webin kanssa, mukaan lukien mediafilet.
+*Gramps Web Sync* on Grampsin lisäosa, joka mahdollistaa Gramps-tietokannan synkronoinnin työpöytätietokoneellasi Gramps Webin kanssa, mukaan lukien mediatiedostot.
 
 !!! warning
-    Kuten minkä tahansa synkronointityökalun kanssa, älä pidä tätä varmuuskopiointityökaluna. Satunnainen poistaminen yhdellä puolella leviää toiselle puolelle. Varmista, että luot säännöllisiä varmuuskopioita (Gramps XML -muodossa) perheipuustasi.
+    Kuten minkä tahansa synkronointityökalun kanssa, älä pidä tätä varmuuskopiointityökaluna. Satunnainen poistaminen yhdellä puolella leviää toiselle puolelle. Varmista, että luot säännöllisesti varmuuskopioita (Gramps XML -muodossa) perhepuustasi.
 
 !!! info
-    Dokumentaatio viittaa Gramps Web Sync -lisäosan uusimpaan versioon. Käytä Grampsin lisäosahallintaa päivittääksesi lisäosan uusimpaan versioon tarvittaessa.
+    Dokumentaatio viittaa Gramps Web Sync -lisäosan uuteen versioon. Käytä Gramps-lisäosahallintaa päivittääksesi lisäosan uusimpaan versioon tarvittaessa.
+
+!!! note "Mitä muutoksia versiossa 1.5"
+    Lisäosan käyttöliittymä kirjoitettiin uudelleen versiossa 1.5. Askel askeleelta -ohjelma on poistettu, ja sen sijaan on yksi ikkuna, ja mediakuvat vahvistetaan nyt yhdessä objektimuutosten kanssa erillisen sivun sijaan. Jos etsit synkronointitilan valitsinta, se sijaitsee nyt **ylhäällä** muutosten luettelon sijaan sen alla. **Yhdistä**-synkronointitila on poistettu; katso [Synkronointitila](#sync-mode) alla.
 
 ## Asennus
 
-Lisäosa vaatii Gramps 6.0:n, joka toimii Python 3.10:ssä tai uudempana.
-Se on saatavilla Gramps Desktopissa ja se voidaan asentaa [tavallisella tavalla](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps).
+Lisäosa vaatii Gramps 6.0:n, joka toimii Python 3.10:ssä tai uudemmassa.
+Se on saatavilla Gramps Desktopissa ja voidaan asentaa [tavallisella tavalla](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps).
 
-!!! warn
-    Varmista, että käytät samaa Gramps-versiota työpöydälläsi kuin palvelimellasi. Katso [Get Help](../help/help.md) -osio saadaksesi selville, mikä Gramps-versio palvelimellasi on. Gramps-version muoto on `MAJOR.MINOR.PATCH`, ja `MAJOR` ja `MINOR` on oltava samat verkkosivustolla ja työpöydällä.
+!!! warning
+    Varmista, että käytät samaa Gramps-versiota työpöydälläsi kuin palvelimellasi. Katso [Hanki apua](../help/help.md) -osio, jotta voit selvittää, mikä Gramps-versio palvelimellasi on. Gramps-version muoto on `MAJOR.MINOR.PATCH`, ja `MAJOR` ja `MINOR` on oltava samat verkkosivulla ja työpöydällä.
+
+### Palvelinvaatimukset
+
+Lisäosa tarkistaa kaksi asiaa palvelimeltasi heti yhteyden muodostamisen jälkeen ja kieltäytyy jatkamasta, jos kumpikaan ei täyty. Molemmat tarkistukset tapahtuvat ennen kuin mitään ladataan.
+
+- **Gramps Web API versio 3.x.** Tämä lisäosan versio, Gramps 6.0:lle, toimii Gramps Web API 3:n kanssa. Vanhempi palvelin tarvitsee päivityksen; palvelin, joka käyttää *uudemman* API-pääversion, tarvitsee uudemman version Grampsista, ei uutta lisäosaa, koska jokainen Gramps-julkaisulinja parittaa yhden API-version kanssa. Voit löytää palvelimesi version kohdasta *Asetukset ▸ Versiotiedot* Gramps Webissä.
+- **Taustatehtäväjono.** Synkronointi lähettää muutoksensa taustatehtävänä. Palvelimella, jolla ei ole määritetty tehtäväjonoa, muutosten soveltaminen tapahtuisi synkronisesti ja aikakatkaistaisiin minkä tahansa todellisen perhepuun kohdalla, joten lisäosa kieltäytyy aloittamasta sen sijaan, että se epäonnistuisi kesken kaiken.
+
+Tarvitset myös tilin, jolla on vähintään muokkausoikeudet, voidaksesi soveltaa muutoksia etädatabaselle.
 
 Valinnainen vaihe:
 
-??? note inline end "Gnome keyring bug"
-    Tällä hetkellä on olemassa [bugi python keyringissä](https://github.com/jaraco/keyring/issues/496), joka vaikuttaa moniin Gnome-työpöytäkonfiguraatioihin. Saatat joutua luomaan konfiguraatiotiedoston `~/.config/python_keyring/keyringrc.cfg` ja muokkaamaan sitä näyttämään tältä:
+??? note inline end "Gnome keyring -bugi"
+    Tällä hetkellä on [bugi python keyringissä](https://github.com/jaraco/keyring/issues/496), joka vaikuttaa moniin Gnome-työpöytäkonfiguraatioihin. Saatat joutua luomaan konfigurointitiedoston `~/.config/python_keyring/keyringrc.cfg` ja muokkaamaan sitä näyttämään tältä:
 
         [backend]
         default-keyring=keyring.backends.SecretService.Keyring
 
-- Asenna `keyring` (esim. `sudo apt install python3-keyring` tai `sudo dnf install python3-keyring`) voidaksesi tallentaa API-salasanan turvallisesti järjestelmäsi salasanojen hallintaan.
+- Asenna `keyring` (esim. `sudo apt install python3-keyring` tai `sudo dnf install python3-keyring`), jotta voit tallentaa API-salasanan turvallisesti järjestelmäsi salasanojen hallintaan.
+
+Jos keyringia ei voida käyttää, lisäosa ilmoittaa siitä ja jatkaa ilman sitä — sinulta kysytään vain salasana joka kerta. Gramps **Snap** -paketissa järjestelmän keyring on estetty rajoitusten vuoksi, kunnes yhdistät käyttöliittymän kerran:
+
+```bash
+snap connect gramps:password-manager-service
+```
+
+Lisäosa näyttää tämän tarkan komennon, kun se havaitsee tilanteen.
 
 ## Käyttö
 
-Kun lisäosa on asennettu, se on saatavilla Grampsissa kohdassa *Työkalut > Perhepuun käsittely > Gramps&nbsp;Web&nbsp;Sync*. Kun se on käynnistetty ja vahvistat dialogin, että kumoamishistoria hylätään, taikuri ohjaa sinut synkronointivaiheiden läpi. Huomaa, että paikalliseen puuhun tai palvelimelle ei tehdä muutoksia ennen kuin vahvistat ne nimenomaisesti.
+Kun lisäosa on asennettu, se on saatavilla Grampsissa kohdassa *Työkalut ▸ Perhepuun käsittely ▸ Gramps&nbsp;Web&nbsp;Sync*. Kun vahvistat dialogin varoituksen, että kumoamishistoria hylätään, synkronointisivu avautuu.
 
-### Vaihe 1: syötä palvelimen tunnistetiedot
+**Muutoksia ei sovelleta paikalliseen puuhusi tai palvelimelle ennen kuin vahvistat ne nimenomaisesti.**
 
-Työkalu kysyy sinulta Gramps Web -instanssisi perus-URL-osoitetta (esim. `https://mygrampsweb.com/`), käyttäjänimeäsi ja salasanaasi. Tarvitset tilin, jossa on vähintään muokkausoikeudet, jotta voit synkronoida muutoksia takaisin etä-tietokantaasi. Käyttäjänimi ja URL tallennetaan selkokielisenä Gramps-käyttäjähakemistoosi, salasana tallennetaan vain, jos `keyring` on asennettu (katso yllä).
+Ikkunassa on yläreunassa nauha, joka nimeää perhepuun, jonka kanssa synkronoidaan, tilin ja osoitteen, johon se kuuluu, sekä milloin se on viimeksi synkronoitu. Alhaalla näytetään lisäosan ja palvelimen Web API:n versio — hyödyllinen ongelman raportoinnissa.
 
-### Vaihe 2: tarkista muutokset
+### Yhdistäminen
 
-Kun olet vahvistanut tunnistetietosi, työkalu vertaa paikallisia ja etä-tietokantoja ja arvioi, onko eroja. Jos eroja on, se näyttää luettelon objektimuutoksista (missä objekti voi olla henkilö, perhe, tapahtuma, paikka jne.), jotka kuuluvat johonkin seuraavista kategorioista:
+Jos olet synkronoinut tätä perhepuuta aiemmin ja salasanasi on tallennettu, lisäosa yhdistää heti avautuessaan ja siirtyy suoraan vertailuun. Muuten se kysyy Gramps Web -instanssisi perus-URL-osoitetta (esimerkki: `https://mygrampsweb.com/`), käyttäjänimeäsi ja salasanaasi.
 
-- lisätty paikallisesti
-- poistettu paikallisesti
-- muokattu paikallisesti
-- lisätty etäisesti
-- poistettu etäisesti
-- muokattu etäisesti
-- muokattu samanaikaisesti (eli molemmilla puolilla)
+URL-osoite ja käyttäjänimi tallennetaan selkokielisinä Gramps-käyttäjähakemistossasi. Salasana tallennetaan järjestelmän salasanojen hallintaan vain, jos jätät **Muista salasana** -valinnan rastituksi; rastin poistaminen poistaa kaikki tallennetut salasanat kyseiselle palvelimelle.
 
-Työkalu käyttää aikaleimoja arvioidakseen, mikä puoli on uudempi jokaiselle objektille (katso "Tausta" alla, jos olet kiinnostunut yksityiskohdista).
+!!! tip "Useita perhepuuta, useita palvelimia"
+    Jokainen palvelin, jonka kanssa synkronoidaan, tallennetaan erikseen, yhdessä oman tietueensa kanssa siitä, milloin se on viimeksi synkronoitu. Kahden palvelimen välillä vaihteleminen ei enää häiritse kumpaakaan.
 
-Jos muutokset näyttävät odotetuilta, voit napsauttaa "Käytä" soveltaaksesi tarvittavat muutokset paikallisiin ja etä-tietokantoihin.
+    Jokainen merkintä tallentaa myös **mikä paikallinen perhepuu** se on viimeksi synkronoitu. Lisäosa yhdistää vain itsenäisesti, kun se vastaa avointa puuta; muuten se näyttää yhteystiedot ja odottaa, että painat *Yhdistä*, varoituksella, jos tallennetut tunnistetiedot kuuluvat eri puulle. Tämä on tärkeää, koska puun synkronointi palvelimen kanssa, joka pitää *eri* puuta, ehdottaa molempien sisältöjen poistamista.
 
-!!! tip "Edistynyt: Synkronointitila"
-    Muutosten luettelon alapuolella voit valita synkronointitilan.
-    
-    Oletus, **kaksisuuntainen synkronointi**, tarkoittaa, että se soveltaa muutoksia molemmille puolille (paikallinen ja etäinen) toistamalla havaitut muutokset (paikallisesti lisätyt objektit lisätään etäpuolelle jne.). Molemmilla puolilla muokatut objektit yhdistetään ja päivitetään myös molemmille puolille.
+Kaksi toimintoa on saatavilla, kun mitään ei kirjoiteta:
 
-    Vaihtoehto **nollaa etä paikalliseksi** varmistaa sen sijaan, että etäinen Gramps-tietokanta näyttää täsmälleen samalta kuin paikallinen. Kaikki objektit, jotka on havaittu "lisätty etäisesti", poistetaan jälleen, objektit, jotka on havaittu "poistettu etäisesti", lisätään jälleen jne. *Muutoksia ei sovelleta paikalliseen Gramps-tietokantaan.*
+- **Vaihda palvelinta…**, yläreunassa, palaa yhteystietoihin, jotta voit osoittaa tämän puun eri palvelimelle. Se keskeyttää käynnissä olevan vertailun sen sijaan, että sinun pitäisi odottaa sen valmistumista.
+- **Unohda tämä palvelin**, yhteyspaneelissa, poistaa tallennetun osoitteen, käyttäjänimen ja salasanan, yhdessä tietueen kanssa siitä, milloin tämä puu viimeksi synkronoitiin. Seuraava synkronointi vertaa sitten kahta puuta alusta alkaen.
 
-    Vaihtoehto **nollaa paikallinen etäiseksi** toimii päinvastoin ja asettaa paikallisen tilan etä-tietokannan tilaksi. *Muutoksia ei sovelleta etä-tietokantaan.*
+Jos syöt osoitteen, joka alkaa `http://` sen sijaan, että se alkaisi `https://`, varoitus ilmestyy kirjoittaessasi. Salasana lähetettäisiin selkokielisenä, joten käytä sitä vain paikalliseen testaukseen.
 
-    Lopuksi, vaihtoehto **yhdistä** on samanlainen kuin kaksisuuntainen synkronointi siinä, että se muokkaa molempia tietokantoja, mutta se *ei poista mitään objekteja*, vaan palauttaa kaikki vain yhdeltä puolelta poistettavat objektit.
+### Muutosten tarkastelu
 
-### Vaihe 3: synkronoi mediafilet
+Lisäosa vertaa paikallisia ja etädatabaaseja ja näyttää, mitä se ehdottaa tehtäväksi. Toisin kuin aikaisemmissa versioissa, jotka listasivat raakoja eroja kahden puun välillä, luettelo näyttää nyt **toiminnot**, jotka toteutetaan, ryhmiteltynä sen mukaan, mikä tietokanta niitä muuttaa:
 
-*Sen jälkeen*, kun tietokannat on synkronoitu, työkalu tarkistaa, onko uusia tai päivitettyjä mediafilejä. Jos se löytää sellaisia, se näyttää luettelon ja kysyy vahvistusta tarvittavien tiedostojen lataamiseen.
+```
+▾ Muutetaan tässä tietokoneessa (7 objektia)
+    ▾ Lisää 3 objektia
+        Henkilö   John Smith        I0123
+    ▾ Päivitä 4 objektia
+        …
+▾ Muutetaan palvelimella (5 objektia)
+    …
+```
 
-Huomaa seuraavat rajoitukset mediafilejen synkronoinnissa:
+Jokaisessa rivissä nimetään objekti, joten voit kertoa, kuka tai mikä on vaikuttanut, sen sijaan että näkisit vain Gramps ID:n.
 
-- Jos paikallisella tiedostolla on eri tarkistusluku kuin Gramps-tietokannassa tallennetulla tiedostolla (tämä voi tapahtua esim. Word-tiedostoille, kun niitä muokataan sen jälkeen, kun ne on lisätty Grampsiin), lataus epäonnistuu virheilmoituksella.
-- Työkalu ei tarkista kaikkien paikallisten tiedostojen eheyttä, joten jos paikallinen tiedosto löytyy polulta, joka on tallennettu mediaobjektille, mutta tiedosto on erilainen kuin palvelimella oleva tiedosto, työkalu ei havaitse sitä. Käytä Media Verify -lisäosaa havaitaksesi tiedostot, joilla on virheelliset tarkistusluvut.
+Jos jotain aiotaan poistaa, luettelon yläpuolella oleva varoitus kertoo, kuinka monta objektia ja kummalla puolella. Tämä ilmestyy aina, kun poistaminen on mukana, mukaan lukien tavallisessa kaksisuuntaisessa synkronoinnissa, joka levittää itse tekemäsi poistamisen.
+
+Paina **Sovella** toteuttaaksesi sen, mitä luettelo kuvaa.
+
+!!! warning "Älä muokkaa tarkastellessasi"
+    Synkronointisivu ei estä muuta Grampsia, joten voit jatkaa työskentelyä, kun luettelo on avoinna. Jos muokkaat vaikuttavaa objektia, lisäosa havaitsee sen, kun painat Sovella, pysähtyy ilman muutoksia ja pyytää sinua vertailemaan uudelleen. Mikään ei katoa, mutta vertailu on toistettava.
+
+#### Synkronointitila
+
+Synkronointitila valitaan **ylhäällä** muutosten luettelon. Sen muuttaminen rakentaa luettelon uudelleen, koska tila päättää, mitä kukin ero oikeasti tulee.
+
+- **Kaksisuuntainen synkronointi** (oletusarvo) — muutokset molemmilta puolilta yhdistetään. Molemmissa paikoissa muokatut objektit yhdistetään.
+- **Nollaa palvelin vastaamaan tätä tietokonetta** — palvelin tehdään vastaamaan tätä tietokonetta. Palvelimella vain muutettu kaikki hylätään.
+- **Nollaa tämä tietokone vastaamaan palvelinta** — tämä tietokone tehdään vastaamaan palvelinta. Täällä vain muutettu kaikki hylätään.
+
+!!! note
+    **Yhdistä**-tila, joka oli saatavilla aikaisemmissa versioissa, on poistettu. Se erosi kaksisuuntaisesta synkronoinnista vain palauttamalla objektit, jotka oli poistettu yhdeltä puolelta sen sijaan, että se levittäisi poistamisen, mikä ei ollut erottelu, jota käyttöliittymä voisi selittää hyödyllisesti. Jos olet luottanut siihen, käytä kaksisuuntaista synkronointia ja palauta kaikki, mitä haluat säilyttää varmuuskopiosta.
+
+### Mediakuvat
+
+Mediakuvia käsitellään osana samaa vahvistusta, ei erillisenä vaiheena. Jos tiedostoja on siirrettävä, luettelon alapuolella oleva valintaruutu tarjoaa niiden siirtämistä:
+
+```
+[x] Siirrä myös 12 mediakuvaa (4 ladattavaa, 8 ladattavaa)
+```
+
+Poista valinta synkronoimalla objektimuutokset ilman tiedostojen koskemista.
+
+Tiedostot, joita ei ole *molemmilla* puolilla, luetellaan erikseen, koska niille ei voida tehdä mitään:
+
+```
+2 mediakuvaa puuttuu molemmilta puolilta eikä niitä voida siirtää.
+```
+
+Huomaa seuraavat rajoitukset mediakuvien synkronoinnissa:
+
+- Jos paikallisella tiedostolla on eri tarkistussumma kuin Gramps-tietokannassa tallennettu (tämä voi tapahtua esimerkiksi Word-tiedostoille, kun niitä muokataan Grampsiin lisäämisen jälkeen), lataus epäonnistuu virheilmoituksella.
+- Työkalu ei tarkista kaikkien paikallisten tiedostojen eheyttä, joten jos paikallinen tiedosto on olemassa polulla, joka on tallennettu mediakohteelle, mutta tiedosto on erilainen kuin palvelimella oleva tiedosto, työkalu ei havaitse sitä. Käytä Media Verify -lisäosaa havaitaksesi tiedostot, joilla on virheelliset tarkistussummat.
+
+### Kun jokin menee pieleen
+
+Jos synkronointi epäonnistuu kesken kaiken — esimerkiksi katkennut yhteys — lisäosa raportoi, mitä se oli jo soveltanut ja tarjoaa **Yritä uudelleen**, joka jatkaa epäonnistuneesta vaiheesta sen sijaan, että aloittaisi alusta. Lataettu kopio etäpuusta pidetään, joten uudelleen yrittäminen ei lataa ja vertaa sitä toista kertaa.
+
+Epäonnistumisen tekniset tiedot ovat saatavilla *Yksityiskohdat* laajennuksen takana, ja niissä on painike niiden kopioimiseen virheraporttia varten.
 
 ## Vianetsintä
 
 ### Virheenkorjauslokitus
 
-Jos kohtaat ongelmia Sync-lisäosan kanssa, käynnistä Gramps virheenkorjauslokitus päällä [käynnistämällä Gramps komentoriviltä](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Command_Line) seuraavalla vaihtoehdolla:
+Jos kohtaat ongelmia Sync-lisäosan kanssa, käynnistä Gramps debug-lokitus päällä [käynnistämällä Gramps komentoriviltä](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Command_Line) seuraavalla vaihtoehdolla:
 
 ```bash
 gramps --debug grampswebsync
 ```
 
-Tämä tulostaa monia hyödyllisiä lokiviestejä komentoriville, jotka auttavat sinua tunnistamaan ongelman syyn.
+Tämä tulostaa monia hyödyllisiä lokituslauseita komentoriville, jotka auttavat sinua tunnistamaan ongelman syyn.
 
 ### Palvelimen tunnistetiedot
 
-Jos ensimmäinen vaihe epäonnistuu, tarkista palvelimen URL-osoite, käyttäjänimesi ja salasanasi.
+Jos yhdistäminen epäonnistuu, tarkista palvelimen URL-osoite, käyttäjänimesi ja salasanasi.
+
+### Lisäosa kieltäytyy yhdistämästä
+
+Jos lisäosa ilmoittaa, että palvelimen Gramps Web API -versio on liian vanha tai liian uusi, tai että taustatehtäväjonoa ei ole määritetty, katso [Palvelinvaatimukset](#server-requirements) yllä. Nämä tarkistetaan ennen mitään muuta, joten viesti nimeää ongelman suoraan.
 
 ### Oikeusongelmat
 
-Jos kohtaat virheen, joka liittyy oikeuksiin, tarkista Gramps Web -käyttäjätilisi käyttäjärooli. Voit soveltaa muutoksia etä-tietokantaan vain, jos olet käyttäjä, jolla on muokkaaja-, omistaja- tai ylläpitäjärooli.
+Jos kohtaat virheen, joka liittyy oikeuksiin, tarkista Gramps Web -käyttäjätilisi käyttäjärooli. Voit soveltaa muutoksia etädatabaselle vain, jos olet käyttäjä, jolla on muokkaaja-, omistaja- tai ylläpitäjärooli.
 
 ### Odottamattomat tietokannan muutokset
 
-Jos synkronointityökalu havaitsee muutoksia, joita et usko tapahtuneen, voi olla, että jossakin tietokannassa on epäjohdonmukaisuuksia, jotka johtavat Grampsin havaitsemaan eron, tai että kellot ovat epäsynkronoituneita paikallisen tietokoneesi ja palvelimesi välillä.
+Jos synkronointityökalu havaitsee muutoksia, joita et usko tapahtuneen, voi olla, että jossakin tietokannassa on epäjohdonmukaisuuksia, jotka hämäävät Grampsia havaitsemaan eron, tai että aika on epäsynkronoitu paikallisen tietokoneesi ja palvelimesi välillä.
 
-Varmista, että molempien koneiden kellot on asetettu oikein (huomaa, että aikavyöhykkeellä ei ole merkitystä, koska työkalu käyttää Unix-aikaleimoja, jotka ovat aikavyöhykkeestä riippumattomia).
+Tarkista, että molempien koneiden kellot ovat oikein asetettuja (huomaa, aikavyöhyke ei vaikuta, koska työkalu käyttää Unix-aikaleimoja, jotka ovat aikavyöhykkeestä riippumattomia).
 
 Voit myös suorittaa tarkistus- ja korjaustyökalun paikalliselle tietokannallesi ja katsoa, auttaako tämä.
 
-Brute-force, mutta tehokas menetelmä varmistaa, että paikallisen tietokannan epäjohdonmukaisuudet eivät aiheuta väärien positiivisten tulosten syntymistä, on viedä tietokanta Gramps XML:ään ja tuoda se takaisin uuteen, tyhjään tietokantaan. Tämä on häviötön operaatio, mutta varmistaa, että kaikki tiedot tuodaan johdonmukaisesti.
+Brutaali mutta tehokas menetelmä varmistaa, että paikallisen tietokannan epäjohdonmukaisuudet eivät aiheuta väärien positiivisten tulosten syntymistä, on viedä tietokanta Gramps XML:ään ja tuoda se takaisin uuteen, tyhjään tietokantaan. Tämä on häviötön operaatio, mutta varmistaa, että kaikki tiedot tuodaan johdonmukaisesti.
+
+!!! tip
+    Jos lisäosa ehdottaa hälyttävän suurta määrää poistamisia, tarkista ensin yläreuna: se nimeää palvelimella olevan perhepuun, johon olet kirjoittamassa. Synkronoiminen palvelimen kanssa, joka pitää *eri* puuta, tuottaa juuri tämän oireen.
 
 ### Aikakatkaisuvirheet
 
-Jos kohtaat aikakatkaisuvirheitä (esim. HTTP-tilatunnus 408 -virhe tai muu virheilmoitus, joka sisältää sanan "timeout"), se johtuu todennäköisesti suuresta määrästä muutoksia, jotka on synkronoitava etäpuolelle yhdistettynä palvelimesi asetuksiin.
+Synkronointi palvelimelle käsitellään taustatyöntekijän avulla, joten pitkään kestävät synkronoinnit eivät saisi aikakatkaista. Palvelin, jolla ei ole määritetty tehtäväjonoa, hylätään yhteyden muodostamisen aikana tästä syystä — katso [Palvelinvaatimukset](#server-requirements).
 
-Synkronointilisäosan versioissa, jotka ovat aikaisempia kuin v1.2.0, ja Gramps Web API -versioissa, jotka ovat aikaisempia kuin v2.7.0 (katso version tietotabista Gramps Webissä), palvelinpuolen synkronointi käsiteltiin yhdessä pyynnössä, joka aikakatkaisi, riippuen palvelimen kokoonpanosta, minuutista korkeintaan muutamaan minuuttiin. Suurissa synkronoinneissa (kuten tuhansien objektien tuominen paikalliseen tietokantaan tai yrittäminen synkronoida koko paikallinen tietokanta tyhjään palvelinpuolen tietokantaan) tämä voi olla liian lyhyt.
+Lisäosan pyynnöt palvelimelle aikakatkaistaan 60 sekunnin kuluttua ilman vastausta, joten saavuttamaton palvelin raportoi yhteysvirheen sen sijaan, että se joutuisi odottamaan loputtomasti.
 
-Jos käytät synkronointilisäosaa v1.2.0 tai uudempi ja Gramps Web API:ta v2.7.0 tai uudempi, palvelinpuolen synkronointi käsitellään taustatyöntekijän toimesta ja voi kestää hyvin pitkään (edistymispalkki näytetään) ja aikakatkaisuvirheitä ei pitäisi esiintyä.
+### Odottamattomat mediakuvavirheet
 
-### Odottamattomat mediafilevirheet
-
-Jos mediafilejen lataaminen epäonnistuu, se johtuu usein siitä, että tiedoston tarkistusluku levyllä ei vastaa paikallisessa Gramps-tietokannassa olevaa tarkistuslukua. Tämä tapahtuu usein muokattavissa tiedostoissa, kuten toimistodokumenteissa, joita on muokattu Grampsin ulkopuolella. Käytä Gramps Media Verify -lisäosaa korjataksesi kaikkien mediafilejen tarkistusluvut.
+Jos mediakuvan lataaminen epäonnistuu, se johtuu usein siitä, että tiedoston tarkistussumma levyllä ei vastaa paikallisessa Gramps-tietokannassa olevaa tarkistussummaa. Tämä tapahtuu usein muokattavien tiedostojen, kuten toimistodokumenttien, kohdalla, joita on muokattu Grampsin ulkopuolella. Käytä Gramps Media Verify -lisäosaa korjataksesi kaikkien mediakuvien tarkistussummat.
 
 ### Pyydä apua
 
-Jos mikään yllä olevista ei auta, voit pyytää yhteisöltä apua julkaisemalla [Gramps Web -kategorian Gramps-foorumissa](https://gramps.discourse.group/c/gramps-web/28). Varmista, että annat:
+Jos mikään yllä olevista ei auta, voit pyytää yhteisöltä apua julkaisemalla [Gramps-foorumin Gramps Web -kategoriassa](https://gramps.discourse.group/c/gramps-web/28). Varmista, että toimitat:
 
-- Gramps Web Sync -lisäosan version (ja käytä viimeisintä julkaistua versiota, kiitos)
-- Käyttämäsi Gramps Desktopin version
+- Gramps Web Sync -lisäosan version (ja käytä viimeisintä julkaistua versiota, kiitos) — se näkyy synkronointisivun alareunassa, palvelimen Web API -version vieressä
+- käyttämäsi Gramps Desktop -version
 - Grampsin virheenkorjauslokituksen tulosteen, joka on otettu käyttöön yllä kuvatulla tavalla
-- Gramps Webin version tiedot (löydät sen kohdasta Asetukset/Versiotiedot)
-- Kaikki tiedot, joita voit antaa Gramps Web -asennuksestasi (itse isännöity, Grampshub, ...)
+- Gramps Webin versiotiedot (löydät sen Asetukset/Versiotiedot -kohdasta)
+- kaikki tiedot, jotka voit antaa Gramps Web -asennuksestasi (itse isännöity, Grampshub, ...)
 - Gramps Web -palvelinlokiesi tulosteet, jos sinulla on pääsy niihin (dockerin käytön yhteydessä: `docker compose logs --tail 100 grampsweb` ja `docker compose logs --tail 100 grampsweb-celery`)
 
-## Tausta: miten lisäosa toimii
+## Taustatietoja: miten lisäosa toimii
 
-Jos olet utelias siitä, miten lisäosa todella toimii, voit löytää lisää yksityiskohtia tästä osiosta.
+Jos olet utelias siitä, miten lisäosa todella toimii, löydät lisää yksityiskohtia tästä osasta.
 
-Lisäosa on tarkoitettu pitämään paikallinen Gramps-tietokanta synkronoituna etä-Gramps Web -tietokannan kanssa, jotta sekä paikalliset että etäiset muutokset (yhteistyömuokkaus) ovat mahdollisia.
+Lisäosan tarkoitus on pitää paikallinen Gramps-tietokanta synkronoituna etä-Gramps Web -tietokannan kanssa, jotta sekä paikalliset että etämuutokset (yhteistyömuokkaus) ovat mahdollisia.
 
-Se **ei sovellu**
+Se ei **sovi**
 
-- Synkronoimaan tietokannan kanssa, joka ei ole suora johdannainen (alkaen tietokannan kopioista tai Gramps XML -vienti/tuonti) paikallisesta tietokannasta
-- Yhdistämään kahta tietokantaa, joissa on suuri määrä muutoksia molemmilla puolilla, jotka vaativat manuaalista huomiota yhdistämiseen. Käytä tätä tarkoitusta varten erinomaista [Tuontiyhdistämistyökalua](https://www.gramps-project.org/wiki/index.php/Import_Merge_Tool).
+- Synkronointiin tietokannan kanssa, joka ei ole suora johdannainen (alkaen tietokannan kopiosta tai Gramps XML -vienti/tuonti) paikallisesta tietokannasta
+- Kahden tietokannan yhdistämiseen, joilla on suuri määrä muutoksia molemmilla puolilla, jotka tarvitsevat manuaalista huomiota yhdistämistä varten. Käytä tähän erinomaisia [Tuontiyhdistämistyökaluja](https://www.gramps-project.org/wiki/index.php/Import_Merge_Tool).
 
-Työkalun toimintaperiaatteet ovat hyvin yksinkertaiset:
+Työkalun toimintaperiaatteet ovat hyvin yksinkertaisia:
 
-- Se vertaa paikallisia ja etä-tietokantoja
-- Jos eroja on, se tarkistaa viimeisimmän identtisen objektin aikaleiman, kutsutaan sitä **t**:ksi
-- Jos objekti on muuttunut viimeisimmän **t**:n jälkeen yhdessä tietokannassa mutta ei toisessa, se synkronoidaan molempiin (olettaen, että uusi objekti)
-- Jos objekti on muuttunut viimeksi ennen **t**:tä ja se puuttuu yhdestä tietokannasta, se poistetaan molemmista (olettaen, että poistettu objekti)
-- Jos objekti on erilainen mutta muuttunut **t**:n jälkeen vain yhdessä tietokannassa, synkronoidaan toiseen (olettaen, että muokattu objekti)
-- Jos objekti on erilainen mutta muuttunut **t**:n jälkeen molemmissa tietokannoissa, ne yhdistetään (olettaen, että ristiriitainen muokkaus)
+- Se vertaa paikallisia ja etädatabaaseja
+- Jos eroja on, se tarkistaa viimeisen identtisen objektin aikaleiman, kutsutaan sitä **t**:ksi
+- Jos objekti, joka on muuttunut viimeksi **t**:n jälkeen, on olemassa yhdessä tietokannassa, mutta ei toisessa, se synkronoidaan molempiin (olettaen uusi objekti)
+- Jos objekti, joka on muuttunut viimeksi ennen **t**:tä, puuttuu yhdestä tietokannasta, se poistetaan molemmista (olettaen poistettu objekti)
+- Jos objekti on erilainen, mutta muuttunut vain yhdessä tietokannassa **t**:n jälkeen, synkronoidaan toiseen (olettaen muokattu objekti)
+- Jos objekti on erilainen, mutta muuttunut molemmissa tietokannoissa **t**:n jälkeen, ne yhdistetään (olettaen ristiriitainen muokkaus)
+
+Viimeisen onnistuneen synkronoinnin aikaleima tallennetaan myös erikseen jokaiselle palvelimelle, ja sitä käytetään **t**:nä, kun se on uudempi kuin uusin identtinen objekti.
 
 Tämä algoritmi on yksinkertainen ja kestävä, koska se ei vaadi synkronointihistorian seuraamista. Se toimii kuitenkin parhaiten, kun *synkronoidaan usein*.
