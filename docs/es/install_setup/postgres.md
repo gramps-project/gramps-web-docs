@@ -8,7 +8,7 @@ Si deseas configurar una nueva base de datos para usar con el Complemento Postgr
 
 Alternativamente, también puedes usar Docker Compose para ejecutar el servidor PostgreSQL en un contenedor en el mismo host de Docker que Gramps Web.
 
-Usar un PostgreSQL dockerizado con Gramps solo se complica por el hecho de que las imágenes predeterminadas de PostgreSQL no tienen locales instalados, que son necesarios para la colación localizada de objetos por parte de Gramps. La opción más fácil es usar la imagen `gramps-postgres` publicada en [este repositorio](https://github.com/DavidMStraub/gramps-postgres-docker/). Para usarla, agrega la siguiente sección a tu `docker-compose.yml`:
+Usar un PostgreSQL en contenedor con Gramps solo se complica por el hecho de que las imágenes predeterminadas de PostgreSQL no tienen locales instalados, que son necesarios para la colación localizada de objetos en Gramps. La opción más fácil es usar la imagen `gramps-postgres` publicada en [este repositorio](https://github.com/DavidMStraub/gramps-postgres-docker/). Para usarla, agrega la siguiente sección a tu `docker-compose.yml`:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -39,35 +39,35 @@ docker compose run --entrypoint "" grampsweb \
     --username=gramps --password=postgres_password_gramps
 ```
 
-## Configurando la API Web para su uso con la base de datos
+## Configurando la API Web para usar con la base de datos
 
-Para configurar la API Web para su uso con la base de datos PostgreSQL, agrega lo siguiente bajo la clave `environment:` del servicio `grampsweb` en `docker-compose.yml`:
+Para configurar la API Web para usar con la base de datos PostgreSQL, agrega lo siguiente bajo la clave `environment:` del servicio `grampsweb` en `docker-compose.yml`:
 
 ```yaml
       # el complemento de PostgreSQL asume que el nombre del árbol es
-      # igual al nombre de la base de datos y aquí se utiliza el nombre
-      # de base de datos predeterminado de la imagen de PostgreSQL
-      TREE: postgres
+      # igual al nombre de la base de datos y aquí se usa el nombre de
+      # base de datos predeterminado de la imagen de PostgreSQL
+      GRAMPSWEB_TREE: postgres
       # Las credenciales deben coincidir con las utilizadas para
       # el contenedor de PostgreSQL
-      POSTGRES_USER: gramps
-      POSTGRES_PASSWORD: postgres_password_gramps
+      GRAMPSWEB_POSTGRES_USER: gramps
+      GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-## Uso de una base de datos PostgreSQL compartida en una instalación de múltiples árboles
+## Usando una base de datos PostgreSQL compartida en una instalación de múltiples árboles
 
-Al usar una [configuración de múltiples árboles](multi-tree.md), el complemento SharedPostgreSQL es una opción conveniente para alojar todos los árboles, también los recién creados a través de la API, en una sola base de datos PostgreSQL sin comprometer la privacidad o la seguridad.
+Al usar una [configuración de múltiples árboles](multi-tree.md), el complemento SharedPostgreSQL es una opción conveniente para alojar todos los árboles, incluidos los recién creados a través de la API, en una sola base de datos PostgreSQL sin comprometer la privacidad o la seguridad.
 
-Para lograr esto, configura un contenedor basado en la imagen `gramps-postgres` como se describió anteriormente y simplemente establece la opción de configuración `NEW_DB_BACKEND` a `sharedpostgresql`, por ejemplo, a través de la variable de entorno `GRAMPSWEB_NEW_DB_BACKEND`.
+Para lograr esto, configura un contenedor basado en la imagen `gramps-postgres` como se describió anteriormente y simplemente establece la opción de configuración `NEW_DB_BACKEND` en `sharedpostgresql`, por ejemplo, a través de la variable de entorno `GRAMPSWEB_NEW_DB_BACKEND`.
 
-## Uso de una base de datos PostgreSQL para la base de datos de usuarios
+## Usando una base de datos PostgreSQL para la base de datos de usuarios
 
-Independientemente de qué backend de base de datos se utilice para los datos genealógicos, la base de datos de usuarios puede ser alojada en una base de datos PostgreSQL proporcionando una URL de base de datos apropiada. La imagen de Docker `gramps-postgres` mencionada anteriormente contiene una base de datos separada `grampswebuser` que se puede usar para este propósito. En ese caso, el valor apropiado para la opción de configuración `USER_DB_URI` sería
+Independientemente de qué backend de base de datos se use para los datos genealógicos, la base de datos de usuarios puede ser alojada en una base de datos PostgreSQL proporcionando una URL de base de datos apropiada. La imagen de Docker `gramps-postgres` mencionada anteriormente contiene una base de datos separada `grampswebuser` que se puede usar para este propósito. En ese caso, el valor apropiado para la opción de configuración `USER_DB_URI` sería
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
-## Uso de una base de datos PostgreSQL para el índice de búsqueda
+## Usando una base de datos PostgreSQL para el índice de búsqueda
 
 Desde la versión 2.4.0 de la API de Gramps Web, el índice de búsqueda se aloja ya sea en una base de datos SQLite (la predeterminada) o en una base de datos PostgreSQL. También para este propósito, se puede usar la imagen `gramps-postgres`. Para el índice de búsqueda, podemos usar la base de datos `gramps` proporcionada por la imagen, independientemente de si estamos alojando nuestros datos genealógicos en PostgreSQL o no (el índice de búsqueda y los datos genealógicos pueden coexistir en la misma base de datos). Esto se puede lograr, en el ejemplo anterior, configurando la opción de configuración `SEARCH_INDEX_DB_URI` a
 ```
@@ -83,4 +83,4 @@ docker compose logs grampsweb
 docker compose logs postgres_grampsweb
 ```
 
-Si sospechas que hay un problema con Gramps Web (o la documentación), por favor informa un problema [en Github](https://github.com/gramps-project/gramps-web-api/issues).
+Si sospechas que hay un problema con Gramps Web (o la documentación), por favor reporta un problema [en Github](https://github.com/gramps-project/gramps-web-api/issues).

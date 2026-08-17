@@ -2,7 +2,7 @@
 
 Mit dem Standard-Docker-Image kann die gesamte erforderliche Konfiguration über den Browser vorgenommen werden. Je nach Bereitstellung kann es jedoch notwendig sein, die Serverkonfiguration anzupassen.
 
-Diese Seite listet alle Methoden zur Änderung der Konfiguration und alle vorhandenen Konfigurationsoptionen auf.
+Diese Seite listet alle Methoden auf, um die Konfiguration zu ändern, sowie alle vorhandenen Konfigurationsoptionen.
 
 
 ## Konfigurationsdatei vs. Umgebungsvariablen
@@ -19,20 +19,25 @@ wobei `/path/to/config.cfg` der Pfad zur Konfigurationsdatei im Dateisystem Ihre
 Bei der Verwendung von Umgebungsvariablen,
 
 - prefixen Sie jeden Einstellungsnamen mit `GRAMPSWEB_`, um den Namen der Umgebungsvariablen zu erhalten
-- Verwenden Sie doppelte Unterstriche für verschachtelte Dictionary-Einstellungen, z. B. wird `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` den Wert der Konfigurationsoption `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` setzen
+- Verwenden Sie doppelte Unterstriche für geschachtelte Dictionary-Einstellungen, z. B. wird `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` den Wert der Konfigurationsoption `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` setzen
 
 Beachten Sie, dass Konfigurationsoptionen, die über die Umgebung festgelegt werden, Vorrang vor denen in der Konfigurationsdatei haben. Wenn beide vorhanden sind, "gewinnt" die Umgebungsvariable.
 
+!!! warning "Nicht präfixierte Umgebungsvariablen sind veraltet"
+    Aus historischen Gründen können eine Handvoll von Einstellungen – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL` und `STATIC_PATH` – weiterhin über eine Umgebungsvariable *ohne* das Präfix `GRAMPSWEB_` festgelegt werden. Dies ist veraltet, protokolliert eine Warnung beim Start und wird in einer zukünftigen Version nicht mehr funktionieren. Verwenden Sie immer die präfixierte Form, z. B. `GRAMPSWEB_TREE` anstelle von `TREE`.
+
+    Beachten Sie, dass dies nur Umgebungsvariablen betrifft. In einer Konfigurationsdatei werden die Einstellungsnamen immer unpräfixiert verwendet.
+
 ## Vorhandene Konfigurationseinstellungen
-Die folgenden Konfigurationsoptionen sind vorhanden.
+Die folgenden Konfigurationsoptionen existieren.
 
 ### Erforderliche Einstellungen
 
 Schlüssel | Beschreibung
 ----|-------------
-`TREE` | Der Name der zu verwendenden Familienstammbaum-Datenbank. Verfügbare Bäume anzeigen mit `gramps -l`. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer Baum erstellt.
+`TREE` | Der Name der zu verwendenden Familienstammbaum-Datenbank. Zeigen Sie verfügbare Bäume mit `gramps -l` an. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer Baum erstellt.
 `SECRET_KEY` | Der geheime Schlüssel für Flask. Der Schlüssel darf nicht öffentlich geteilt werden. Eine Änderung macht alle Zugriffstoken ungültig.
-`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist erlaubt.
+`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist zulässig.
 
 !!! info
     Sie können einen sicheren geheimen Schlüssel z. B. mit dem Befehl generieren
@@ -45,33 +50,35 @@ Schlüssel | Beschreibung
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet werden soll, überschreibt das in Gramps festgelegte Medienbasisverzeichnis. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
-`TREE_ID` | Der Verzeichnisname der Familienstammbaum-Datenbank, die im Einzelbaum-Modus verwendet werden soll (wenn `TREE` nicht auf `MULTI` gesetzt ist). Wenn gesetzt, identifiziert der Server den Baum anhand seines Verzeichnisnamens und nicht anhand seines Anzeigenamens, was robuster gegenüber Umbenennungen ist. Erforderlich, wenn Sie den Baum über die API umbenennen möchten. Der Verzeichnisname kann über `GET /api/trees/-` (das Feld `id`) gefunden werden.
+`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet wird und das in Gramps festgelegte Medienbasisverzeichnis überschreibt. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
+`TREE_ID` | Der Verzeichnisname der Familienstammbaum-Datenbank, die im Einzelbaum-Modus verwendet werden soll (wenn `TREE` nicht auf `*` gesetzt ist). Wenn festgelegt, identifiziert der Server den Baum anhand seines Verzeichnisnamens anstelle seines Anzeigenamens, was robuster gegenüber Umbenennungen ist. Erforderlich, wenn Sie den Baum über die API umbenennen möchten. Der Verzeichnisname kann über `GET /api/trees/-` (das Feld `id`) gefunden werden.
 `SEARCH_INDEX_DB_URI` | Datenbank-URL für den Suchindex. Nur `sqlite` oder `postgresql` sind als Backends erlaubt. Standardmäßig `sqlite:///indexdir/search_index.db`, wodurch eine SQLite-Datei im Ordner `indexdir` relativ zu dem Pfad erstellt wird, von dem das Skript ausgeführt wird.
-`STATIC_PATH` | Pfad, um statische Dateien bereitzustellen (z. B. ein statisches Web-Frontend).
-`BASE_URL` | Basis-URL, unter der die API erreichbar ist (z. B. `https://mygramps.mydomain.com/`). Dies ist notwendig, um z. B. korrekte Links zum Zurücksetzen des Passworts zu erstellen.
-`CORS_ORIGINS` | Ursprünge, von denen CORS-Anfragen erlaubt sind. Standardmäßig sind alle nicht erlaubt. Verwenden Sie `"*"`, um Anfragen von jeder Domain zuzulassen.
-`EMAIL_HOST` | SMTP-Server-Host (z. B. zum Versenden von E-Mails zum Zurücksetzen des Passworts).
-`EMAIL_PORT` | SMTP-Server-Port. Standardmäßig 465.
-`EMAIL_HOST_USER` | SMTP-Server-Benutzername.
-`EMAIL_HOST_PASSWORD` | SMTP-Server-Passwort.
+`SEARCH_INDEX_DIR` | **Veraltet** (verwenden Sie stattdessen `SEARCH_INDEX_DB_URI`). Verzeichnis, das den Suchindex enthält. Wenn festgelegt, während `SEARCH_INDEX_DB_URI` nicht gesetzt ist, wird die Suchindex-URL als `sqlite:///<SEARCH_INDEX_DIR>/search_index.db` abgeleitet.
+`STATIC_PATH` | Pfad, von dem aus statische Dateien bereitgestellt werden (z. B. ein statisches Web-Frontend)
+`BASE_URL` | Basis-URL, unter der die API erreichbar ist (z. B. `https://mygramps.mydomain.com/`). Dies ist notwendig, um z. B. korrekte Links zum Zurücksetzen von Passwörtern zu erstellen.
+`CORS_ORIGINS` | Ursprünge, von denen CORS-Anfragen erlaubt sind. Standardmäßig sind alle nicht erlaubt. Verwenden Sie `"*"` um Anfragen von jeder Domain zuzulassen.
+`EMAIL_HOST` | SMTP-Server-Host (z. B. zum Versenden von E-Mails zum Zurücksetzen von Passwörtern)
+`EMAIL_PORT` | SMTP-Server-Port. Standardmäßig 465
+`EMAIL_HOST_USER` | SMTP-Server-Benutzername
+`EMAIL_HOST_PASSWORD` | SMTP-Server-Passwort
 `EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Versenden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden Sie einen anderen Port als 25.
-`EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `True`, wenn `EMAIL_USE_TLS` nicht ausdrücklich gesetzt ist. Wird typischerweise mit Port 465 verwendet.
+`EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `True`, wenn `EMAIL_USE_TLS` nicht ausdrücklich festgelegt ist. Wird typischerweise mit Port 465 verwendet.
 `EMAIL_USE_STARTTLS` | Boolean, ob explizites STARTTLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `False`. Wird typischerweise mit Port 587 oder 25 verwendet.
-`DEFAULT_FROM_EMAIL` | "Von"-Adresse für automatisierte E-Mails.
+`DEFAULT_FROM_EMAIL` | "Von"-Adresse für automatisierte E-Mails
 `THUMBNAIL_CACHE_CONFIG` | Dictionary mit Einstellungen für den Thumbnail-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
 `REQUEST_CACHE_CONFIG` | Dictionary mit Einstellungen für den Anfrage-Cache. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
 `PERSISTENT_CACHE_CONFIG` | Dictionary mit Einstellungen für den persistenten Cache, der z. B. für Telemetrie verwendet wird. Siehe [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) für mögliche Einstellungen.
 `CELERY_CONFIG` | Einstellungen für die Celery-Hintergrundaufgabenwarteschlange. Siehe [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) für mögliche Einstellungen.
-`REPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben von ausgeführten Gramps-Berichten gespeichert werden.
-`EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben des Exports der Gramps-Datenbank gespeichert werden.
-`REGISTRATION_DISABLED` | Wenn `True`, neue Benutzerregistrierungen nicht zulassen (Standard `False`).
-`DISABLE_TELEMETRY` | Wenn `True`, Statistiktelemetrie deaktivieren (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
+`REPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben von ausgeführten Gramps-Berichten gespeichert werden
+`EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgaben des Exports der Gramps-Datenbank gespeichert werden
+`REGISTRATION_DISABLED` | Wenn `True`, wird die Registrierung neuer Benutzer nicht erlaubt (Standard `False`)
+`DISABLE_TELEMETRY` | Wenn `True`, wird die Telemetriedatenstatistik deaktiviert (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
 `PILLOW_MAX_IMAGE_PIXELS` | Setzt den Parameter PIL.Image.MAX_IMAGE_PIXELS, der die Anzahl der Pixel angibt, die das verarbeitete Bild enthalten kann. Siehe [Docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) für Details.
 `MAX_THUMBNAIL_FILE_BYTES` | Setzt eine harte maximale Dateigröße für Thumbnails. Standardmäßig `50 * 1024 * 1024` (50 MB). Eine Erhöhung kann den Speicherverbrauch erheblich steigern und zu Speicherüberläufen oder Datenverlust führen, wenn große Dateien im Speicher dekomprimiert werden.
 
+
 !!! info
-    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_TLS` entweder die Zeichenfolge `true` oder `false` sein (groß- und kleinschreibungssensitiv!).
+    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_SSL` entweder der String `true` oder `false` (groß-/kleinschreibungssensitiv!) sein.
 
 
 ### Einstellungen nur für PostgreSQL-Backend-Datenbank
@@ -80,17 +87,18 @@ Dies ist erforderlich, wenn Sie Ihre Gramps-Datenbank so konfiguriert haben, das
 
 Schlüssel | Beschreibung
 ----|-------------
-`POSTGRES_USER` | Der Benutzername für die Datenbankverbindung.
-`POSTGRES_PASSWORD` | Das Passwort für den Datenbankbenutzer.
+`POSTGRES_USER` | Der Benutzername für die Datenbankverbindung
+`POSTGRES_PASSWORD` | Das Passwort für den Datenbankbenutzer
 
 
 ### Einstellungen, die für das Hosting mehrerer Bäume relevant sind
 
-Die folgenden Einstellungen sind relevant, wenn [mehrere Bäume gehostet werden](multi-tree.md).
+Die folgenden Einstellungen sind relevant, wenn Sie [mehrere Bäume hosten](multi-tree.md).
+
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baumes verwendet werden soll. Standardmäßig `False`, aber es wird dringend empfohlen, `True` in einem Multi-Baum-Setup zu verwenden.
+`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baumes verwendet werden soll oder nicht. Standardmäßig `False`, aber es wird dringend empfohlen, `True` in einem Multi-Baum-Setup zu verwenden.
 `NEW_DB_BACKEND` | Das Datenbank-Backend, das für neu erstellte Familienstammbäume verwendet werden soll. Muss eines von `sqlite`, `postgresql` oder `sharedpostgresql` sein. Standardmäßig `sqlite`.
 `POSTGRES_HOST` | Der Hostname des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 `POSTGRES_PORT` | Der Port des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
@@ -98,20 +106,20 @@ Schlüssel | Beschreibung
 
 ### Einstellungen für OIDC-Authentifizierung
 
-Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC)-Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Installationsanleitungen und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
+Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC) Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Einrichtungsanleitungen und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
 
 Schlüssel | Beschreibung
 ----|-------------
 `OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Standardmäßig `False`.
-`OIDC_ISSUER` | OIDC-Anbieter-Issuer-URL (für benutzerdefinierte OIDC-Anbieter).
-`OIDC_CLIENT_ID` | OAuth-Client-ID (für benutzerdefinierte OIDC-Anbieter).
-`OIDC_CLIENT_SECRET` | OAuth-Client-Geheimnis (für benutzerdefinierte OIDC-Anbieter).
-`OIDC_NAME` | Benutzerdefinierter Anzeigename für den Anbieter. Standardmäßig "OIDC".
-`OIDC_SCOPES` | OAuth-Scopes. Standardmäßig "openid email profile".
-`OIDC_USERNAME_CLAIM` | Der Anspruch, der für den Benutzernamen verwendet werden soll. Standardmäßig "preferred_username".
-`OIDC_OPENID_CONFIG_URL` | Optional: URL zum OpenID Connect-Konfigurationsendpunkt (wenn nicht der Standard `/.well-known/openid-configuration` verwendet wird).
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, ob die lokale Benutzername/Passwort-Authentifizierung deaktiviert werden soll. Standardmäßig `False`.
-`OIDC_AUTO_REDIRECT` | Boolean, ob automatisch zu OIDC umgeleitet werden soll, wenn nur ein Anbieter konfiguriert ist. Standardmäßig `False`.
+`OIDC_ISSUER` | OIDC-Anbieter-Issuer-URL (für benutzerdefinierte OIDC-Anbieter)
+`OIDC_CLIENT_ID` | OAuth-Client-ID (für benutzerdefinierte OIDC-Anbieter)
+`OIDC_CLIENT_SECRET` | OAuth-Client-Geheimnis (für benutzerdefinierte OIDC-Anbieter)
+`OIDC_NAME` | Benutzerdefinierter Anzeigename für den Anbieter. Standardmäßig "OIDC"
+`OIDC_SCOPES` | OAuth-Scopes. Standardmäßig "openid email profile"
+`OIDC_USERNAME_CLAIM` | Der Anspruch, der für den Benutzernamen verwendet werden soll. Standardmäßig "preferred_username"
+`OIDC_OPENID_CONFIG_URL` | Optional: URL zum OpenID Connect-Konfigurationsendpunkt (wenn nicht der Standard `/.well-known/openid-configuration` verwendet wird)
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, ob die lokale Benutzername/Passwort-Authentifizierung deaktiviert werden soll. Standardmäßig `False`
+`OIDC_AUTO_REDIRECT` | Boolean, ob automatisch zu OIDC umgeleitet werden soll, wenn nur ein Anbieter konfiguriert ist. Standardmäßig `False`
 
 #### Eingebaute OIDC-Anbieter
 
@@ -119,24 +127,24 @@ Für integrierte Anbieter (Google, Microsoft) verwenden Sie diese Einstellungen:
 
 Schlüssel | Beschreibung
 ----|-------------
-`OIDC_GOOGLE_CLIENT_ID` | Client-ID für Google OAuth.
-`OIDC_GOOGLE_CLIENT_SECRET` | Client-Geheimnis für Google OAuth.
-`OIDC_MICROSOFT_CLIENT_ID` | Client-ID für Microsoft OAuth.
-`OIDC_MICROSOFT_CLIENT_SECRET` | Client-Geheimnis für Microsoft OAuth.
+`OIDC_GOOGLE_CLIENT_ID` | Client-ID für Google OAuth
+`OIDC_GOOGLE_CLIENT_SECRET` | Client-Geheimnis für Google OAuth
+`OIDC_MICROSOFT_CLIENT_ID` | Client-ID für Microsoft OAuth
+`OIDC_MICROSOFT_CLIENT_SECRET` | Client-Geheimnis für Microsoft OAuth
 
-#### OIDC-Rollenabbildung
+#### OIDC-Rollen-Zuordnung
 
-Diese Einstellungen ermöglichen es Ihnen, OIDC-Gruppen/Rollen von Ihrem Identitätsanbieter auf Gramps Web-Benutzerrollen abzubilden:
+Diese Einstellungen ermöglichen es Ihnen, OIDC-Gruppen/Rollen von Ihrem Identitätsanbieter den Gramps-Webbenutzerrollen zuzuordnen:
 
 Schlüssel | Beschreibung
 ----|-------------
-`OIDC_ROLE_CLAIM` | Der Anspruchsname im OIDC-Token, der die Gruppen/Rollen des Benutzers enthält. Standardmäßig "groups".
-`OIDC_GROUP_ADMIN` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Admin"-Rolle zugeordnet ist.
-`OIDC_GROUP_OWNER` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Owner"-Rolle zugeordnet ist.
-`OIDC_GROUP_EDITOR` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Editor"-Rolle zugeordnet ist.
-`OIDC_GROUP_CONTRIBUTOR` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Contributor"-Rolle zugeordnet ist.
-`OIDC_GROUP_MEMBER` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Member"-Rolle zugeordnet ist.
-`OIDC_GROUP_GUEST` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Guest"-Rolle zugeordnet ist.
+`OIDC_ROLE_CLAIM` | Der Anspruchsname im OIDC-Token, der die Gruppen/Rollen des Benutzers enthält. Standardmäßig "groups"
+`OIDC_GROUP_ADMIN` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Admin"-Rolle zugeordnet ist
+`OIDC_GROUP_OWNER` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Owner"-Rolle zugeordnet ist
+`OIDC_GROUP_EDITOR` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Editor"-Rolle zugeordnet ist
+`OIDC_GROUP_CONTRIBUTOR` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Contributor"-Rolle zugeordnet ist
+`OIDC_GROUP_MEMBER` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Member"-Rolle zugeordnet ist
+`OIDC_GROUP_GUEST` | Der Gruppen-/Rollename von Ihrem OIDC-Anbieter, der der Gramps-"Guest"-Rolle zugeordnet ist
 
 ### Einstellungen nur für KI-Funktionen
 
@@ -145,10 +153,10 @@ Diese Einstellungen sind erforderlich, wenn Sie KI-gestützte Funktionen wie Cha
 Schlüssel | Beschreibung
 ----|-------------
 `LLM_BASE_URL` | Basis-URL für die OpenAI-kompatible Chat-API. Standardmäßig `None`, was die OpenAI-API verwendet.
-`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht gesetzt (Standard), ist der Chat deaktiviert. Ab v3.6.0 verwendet der KI-Assistent Pydantic AI mit Werkzeugaufrufmöglichkeiten.
-`VECTOR_EMBEDDING_MODEL` | Das [Sentence Transformers](https://sbert.net/) Modell, das für semantische Suchvektor-Einbettungen verwendet werden soll. Wenn nicht gesetzt (Standard), sind semantische Suche und Chat deaktiviert.
+`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht festgelegt (Standard), ist der Chat deaktiviert. Ab v3.6.0 verwendet der KI-Assistent Pydantic AI mit Tool-Calling-Funktionen.
+`VECTOR_EMBEDDING_MODEL` | Das [Sentence Transformers](https://sbert.net/) Modell, das für semantische Suchvektor-Einbettungen verwendet werden soll. Wenn nicht festgelegt (Standard), sind die semantische Suche und der Chat deaktiviert.
 `LLM_MAX_CONTEXT_LENGTH` | Zeichenlimit für den Familienstammbaumkontext, der dem LLM bereitgestellt wird. Standardmäßig 50000.
-`LLM_SYSTEM_PROMPT` | Benutzerdefinierter System-Prompt für den LLM-Chat-Assistenten (v3.6.0+). Wenn nicht gesetzt, wird der Standard-Prompt, der für Genealogie optimiert ist, verwendet.
+`LLM_SYSTEM_PROMPT` | Benutzerdefinierter System-Prompt für den LLM-Chat-Assistenten (v3.6.0+). Wenn nicht festgelegt, wird der standardmäßige genealogie-optimierte Prompt verwendet.
 
 
 ## Beispielkonfigurationsdatei
