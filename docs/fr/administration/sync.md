@@ -1,80 +1,63 @@
 # Synchroniser Gramps Web et Gramps Desktop
 
-*Gramps Web Sync* est un addon pour Gramps qui permet de synchroniser votre base de données Gramps sur votre ordinateur de bureau avec Gramps Web, y compris les fichiers multimédias.
+*Gramps Web Sync* est un addon pour Gramps qui synchronise la base de données Gramps sur votre ordinateur de bureau avec Gramps Web, y compris les fichiers multimédias. Les modifications apportées de chaque côté sont transférées à l'autre, vous permettant de travailler localement et sur le web sur le même arbre généalogique.
 
-!!! warning
-    Comme avec tout outil de synchronisation, veuillez ne pas considérer cela comme un outil de sauvegarde. Une suppression accidentelle d'un côté sera propagée à l'autre côté. Assurez-vous de créer des sauvegardes régulières (au format XML de Gramps) de votre arbre généalogique.
-
-!!! info
-    La documentation fait référence à la dernière version de l'addon Gramps Web Sync. Veuillez utiliser le gestionnaire d'addons Gramps pour mettre à jour l'addon vers la dernière version si nécessaire.
-
-!!! note "Qu'est-ce qui a changé dans la version 1.5"
-    L'interface de l'addon a été réécrite dans la version 1.5. L'assistant étape par étape a disparu, remplacé par une seule fenêtre, et les fichiers multimédias sont maintenant confirmés avec les changements d'objet au lieu d'une page séparée par la suite. Si vous cherchez le sélecteur de mode de synchronisation, il se trouve maintenant **au-dessus** de la liste des changements plutôt qu'en dessous. Le mode de synchronisation **fusion** a été supprimé ; voir [Mode de synchronisation](#sync-mode) ci-dessous.
+Comme tout outil de synchronisation, ce n'est pas une sauvegarde : si vous supprimez quelque chose d'un côté, cela sera également supprimé de l'autre côté. Gardez des sauvegardes régulières de votre arbre généalogique au format XML de Gramps.
 
 ## Installation
 
-L'addon nécessite Gramps 6.0 fonctionnant sur Python 3.10 ou une version plus récente.
-Il est disponible dans Gramps Desktop et peut être installé [de la manière habituelle](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps).
+L'addon nécessite Gramps 6.0 fonctionnant sur Python 3.10 ou version ultérieure. Il est disponible dans Gramps Desktop et peut être installé [de la manière habituelle](https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps). Cette documentation décrit la dernière version de l'addon ; utilisez le gestionnaire d'addons de Gramps pour le mettre à jour si nécessaire.
 
-!!! warning
-    Veuillez vous assurer d'utiliser la même version de Gramps sur votre bureau que celle qui fonctionne sur votre serveur. Consultez la section [Obtenir de l'aide](../help/help.md) pour savoir comment trouver la version de Gramps que votre serveur utilise. La version de Gramps a la forme `MAJOR.MINOR.PATCH`, et `MAJOR` et `MINOR` doivent être les mêmes sur le web et le bureau.
+Votre ordinateur de bureau et votre serveur doivent exécuter la même version de Gramps. La version a la forme `MAJOR.MINOR.PATCH`, et `MAJOR` et `MINOR` doivent correspondre. Consultez [Obtenir de l'aide](../help/help.md) pour savoir quelle version de Gramps votre serveur utilise.
 
 ### Exigences du serveur
 
-L'addon vérifie deux choses concernant votre serveur dès qu'il se connecte, et refuse de continuer si l'une d'elles n'est pas remplie. Les deux vérifications se font avant que quoi que ce soit soit téléchargé.
+L'addon vérifie deux choses sur votre serveur dès qu'il se connecte, avant que quoi que ce soit ne soit téléchargé, et s'arrête avec un message si l'une d'elles n'est pas remplie :
 
-- **Version de l'API Gramps Web 3.x.** Cette version de l'addon, pour Gramps 6.0, fonctionne avec l'API Gramps Web 3. Un serveur plus ancien doit être mis à jour ; un serveur fonctionnant avec une version majeure de l'API *plus récente* nécessite une version plus récente de Gramps, pas un addon plus récent, car chaque ligne de version de Gramps est associée à une version d'API. Vous pouvez trouver la version de votre serveur sous *Paramètres ▸ Informations sur la version* dans Gramps Web.
-- **Une file d'attente de tâches en arrière-plan.** La synchronisation soumet ses changements en tant que tâche en arrière-plan. Sur un serveur sans file d'attente de tâches configurée, l'application des changements s'exécuterait de manière synchrone et se bloquerait sur un arbre généalogique réel, donc l'addon refuse de démarrer plutôt que d'échouer en cours de route.
+- **Version de l'API Gramps Web 3.x.** Cette version de l'addon, pour Gramps 6.0, fonctionne avec l'API Gramps Web 3. Un serveur plus ancien doit être mis à jour ; un serveur exécutant une version majeure de l'API *plus récente* nécessite une version plus récente de Gramps, pas un addon plus récent, car chaque ligne de version de Gramps est associée à une version d'API. Vous pouvez trouver la version de votre serveur sous *Paramètres ▸ Informations sur la version* dans Gramps Web.
+- **Une file d'attente de tâches en arrière-plan.** Les modifications sont appliquées sur le serveur en tant que tâche en arrière-plan. Sans file d'attente de tâches, cela s'exécuterait de manière synchrone et se bloquerait sur tout vrai arbre généalogique.
 
-Vous avez également besoin d'un compte avec au moins des privilèges d'éditeur pour appliquer des changements à la base de données distante.
+Pour appliquer des modifications à la base de données distante, vous avez besoin d'un compte avec le rôle d'éditeur, de propriétaire ou d'administrateur.
 
-Étape optionnelle :
+### Stockage de votre mot de passe (optionnel)
 
-??? note inline end "Bug du trousseau de clés Gnome"
-    Il y a actuellement un [bug dans python keyring](https://github.com/jaraco/keyring/issues/496) qui affecte de nombreuses configurations de bureau Gnome. Vous devrez peut-être créer le fichier de configuration `~/.config/python_keyring/keyringrc.cfg` et le modifier pour qu'il ressemble à ceci :
+Installez `keyring` (par exemple, `sudo apt install python3-keyring` ou `sudo dnf install python3-keyring`) pour stocker le mot de passe de l'API dans le gestionnaire de mots de passe de votre système. Si le keyring ne peut pas être utilisé, l'addon le signale et continue sans lui – vous serez simplement invité à entrer votre mot de passe à chaque fois.
 
-        [backend]
-        default-keyring=keyring.backends.SecretService.Keyring
-
-- Installez `keyring` (par exemple `sudo apt install python3-keyring` ou `sudo dnf install python3-keyring`) pour permettre le stockage du mot de passe API en toute sécurité dans le gestionnaire de mots de passe de votre système.
-
-Si le trousseau de clés ne peut pas être utilisé, l'addon le signale et continue sans lui — vous serez simplement invité à entrer votre mot de passe à chaque fois. Sur le paquet **Snap** de Gramps, le trousseau de clés système est bloqué par confinement jusqu'à ce que vous connectiez l'interface une fois :
+Sur le paquet **Snap** de Gramps, le keyring système est bloqué par confinement jusqu'à ce que vous connectiez l'interface une fois. L'addon affiche cette commande lorsqu'il détecte la situation :
 
 ```bash
 snap connect gramps:password-manager-service
 ```
 
-L'addon affiche cette commande exacte lorsqu'il détecte la situation.
+Sur de nombreuses configurations de bureau Gnome, un [bug dans python keyring](https://github.com/jaraco/keyring/issues/496) signifie que vous devez créer le fichier de configuration `~/.config/python_keyring/keyringrc.cfg` avec le contenu suivant :
+
+```ini
+[backend]
+default-keyring=keyring.backends.SecretService.Keyring
+```
 
 ## Utilisation
 
-Une fois installé, l'addon est disponible dans Gramps sous *Outils ▸ Traitement de l'arbre généalogique ▸ Gramps&nbsp;Web&nbsp;Sync*. Après avoir confirmé le message d'avertissement indiquant que l'historique des annulations sera supprimé, la fenêtre de synchronisation s'ouvre.
+L'addon est disponible dans Gramps sous *Outils ▸ Traitement de l'arbre généalogique ▸ Gramps&nbsp;Web&nbsp;Sync*. Après avoir confirmé la boîte de dialogue avertissant que l'historique des annulations sera supprimé, la fenêtre de synchronisation s'ouvre. Aucune modification n'est appliquée à votre arbre local ou au serveur tant que vous ne les confirmez pas explicitement.
 
-**Aucun changement n'est appliqué à votre arbre local ou au serveur tant que vous ne les confirmez pas explicitement.**
-
-La fenêtre a une bande en haut nommant l'arbre généalogique avec lequel vous synchronisez, le compte et l'adresse auxquels il appartient, et la dernière fois qu'il a été synchronisé. En bas, la version de l'addon et de l'API Web du serveur sont affichées — utiles lors du signalement d'un problème.
+Une bande le long du haut de la fenêtre nomme l'arbre généalogique avec lequel vous vous synchronisez, le compte et l'adresse auxquels il appartient, et quand il a été synchronisé pour la dernière fois. En bas, la version de l'addon et de l'API Web du serveur sont affichées, ce qui est utile lors du signalement d'un problème.
 
 ### Connexion
 
-Si vous avez déjà synchronisé cet arbre généalogique auparavant et que votre mot de passe est stocké, l'addon se connecte dès son ouverture et passe directement à la comparaison. Sinon, il demande l'URL de base de votre instance Gramps Web (exemple : `https://mygrampsweb.com/`), votre nom d'utilisateur et votre mot de passe.
+Si vous avez déjà synchronisé cet arbre généalogique auparavant et que votre mot de passe est stocké, l'addon se connecte dès son ouverture et passe directement à la comparaison. Sinon, il vous demande l'URL de base de votre instance Gramps Web (exemple : `https://mygrampsweb.com/`), votre nom d'utilisateur et votre mot de passe.
 
-L'URL et le nom d'utilisateur sont stockés en texte clair dans votre répertoire utilisateur Gramps. Le mot de passe est stocké dans le gestionnaire de mots de passe de votre système uniquement si vous laissez **Se souvenir du mot de passe** coché ; le décocher supprime tout mot de passe déjà stocké pour ce serveur.
+L'URL et le nom d'utilisateur sont stockés en texte clair dans votre répertoire utilisateur Gramps. Le mot de passe est stocké dans le gestionnaire de mots de passe de votre système uniquement si vous laissez **Se souvenir du mot de passe** coché ; le décocher supprime tout mot de passe déjà stocké pour ce serveur. Si vous entrez une adresse commençant par `http://` plutôt que `https://`, l'addon vous avertit pendant que vous tapez, car votre mot de passe serait envoyé en texte clair.
 
-!!! tip "Plusieurs arbres généalogiques, plusieurs serveurs"
-    Chaque serveur avec lequel vous synchronisez est stocké séparément, avec son propre enregistrement de la dernière synchronisation. Alterner entre deux serveurs ne perturbe plus aucun d'eux.
-
-    Chaque entrée enregistre également **quel arbre généalogique local** il a été synchronisé pour la dernière fois. L'addon ne se connecte de lui-même que lorsque cela correspond à l'arbre que vous avez ouvert ; sinon, il affiche les détails de connexion et attend que vous appuyiez sur *Connecter*, avec un avertissement si les identifiants stockés appartiennent à un arbre différent. Cela est important car synchroniser un arbre contre un serveur contenant un arbre *différent* proposerait de supprimer le contenu des deux.
+Chaque serveur avec lequel vous vous synchronisez est stocké séparément, avec son propre enregistrement de la dernière synchronisation, vous permettant d'alterner entre deux serveurs sans perturber l'un ou l'autre. Chaque entrée enregistre également quel arbre généalogique local il a été synchronisé pour la dernière fois. L'addon ne se connecte de lui-même que lorsque cela correspond à l'arbre que vous avez ouvert ; sinon, il affiche les détails de connexion et attend que vous appuyiez sur *Connecter*.
 
 Deux actions sont disponibles tant que rien n'est écrit :
 
-- **Changer de serveur…**, sur la bande supérieure, retourne aux détails de connexion afin que vous puissiez pointer cet arbre vers un autre serveur. Cela interrompt une comparaison en cours plutôt que de vous faire attendre qu'elle se termine.
-- **Oublier ce serveur**, sur le panneau de connexion, supprime l'adresse, le nom d'utilisateur et le mot de passe stockés, ainsi que l'enregistrement de la dernière synchronisation de cet arbre. La prochaine synchronisation compare alors les deux arbres à partir de zéro.
+- **Changer de serveur…**, sur la bande supérieure, retourne aux détails de connexion afin que vous puissiez pointer cet arbre vers un autre serveur. Cela interrompt une comparaison en cours au lieu de vous faire attendre qu'elle se termine.
+- **Oublier ce serveur**, sur le panneau de connexion, supprime l'adresse, le nom d'utilisateur et le mot de passe stockés, ainsi que l'enregistrement de la dernière synchronisation de cet arbre. La prochaine synchronisation compare alors les deux arbres depuis le début.
 
-Si vous entrez une adresse commençant par `http://` plutôt que `https://`, un avertissement apparaît au fur et à mesure que vous tapez. Votre mot de passe serait envoyé en texte clair, donc utilisez-le uniquement pour des tests locaux.
+### Révision des modifications
 
-### Révision des changements
-
-L'addon compare les bases de données locales et distantes et montre ce qu'il propose de faire. Contrairement aux versions précédentes, qui énuméraient les différences brutes entre les deux arbres, la liste montre maintenant les **actions** qui seront effectuées, regroupées par quelle base de données elles changent :
+L'addon compare les bases de données locales et distantes et montre les actions qu'il propose d'effectuer, regroupées par quelle base de données elles changent :
 
 ```
 ▾ Changera sur cet ordinateur (7 objets)
@@ -86,35 +69,31 @@ L'addon compare les bases de données locales et distantes et montre ce qu'il pr
     …
 ```
 
-Chaque ligne nomme l'objet, vous pouvez donc savoir qui ou quoi est affecté plutôt que de voir uniquement un ID Gramps.
-
-Si quoi que ce soit doit être supprimé, un avertissement au-dessus de la liste indique combien d'objets et de quel côté. Cela apparaît chaque fois que des suppressions sont impliquées, y compris lors d'une synchronisation bidirectionnelle ordinaire qui propage une suppression que vous avez effectuée vous-même.
+Chaque ligne nomme l'objet, vous permettant de savoir qui ou quoi est affecté plutôt que de voir uniquement un ID Gramps. Si quelque chose doit être supprimé, une note au-dessus de la liste indique combien d'objets et de quel côté.
 
 Appuyez sur **Appliquer** pour effectuer ce que la liste décrit.
 
-!!! warning "Ne pas éditer pendant la révision"
-    La fenêtre de synchronisation ne bloque pas le reste de Gramps, donc vous pouvez continuer à travailler pendant que la liste est ouverte. Si vous éditez un objet affecté, l'addon le détecte lorsque vous appuyez sur Appliquer, s'arrête sans rien changer et vous demande de comparer à nouveau. Rien n'est perdu, mais la comparaison doit être répétée.
+La fenêtre de synchronisation ne bloque pas le reste de Gramps, vous pouvez donc continuer à travailler pendant que la liste est ouverte. Si vous modifiez un objet affecté entre-temps, l'addon le remarque lorsque vous appuyez sur Appliquer, s'arrête sans rien changer et vous demande de comparer à nouveau.
 
 #### Mode de synchronisation
 
-Le mode de synchronisation est sélectionné **au-dessus** de la liste des changements. Le changement reconstruit la liste, car le mode décide de ce que chaque différence devient réellement.
+Le mode de synchronisation est sélectionné au-dessus de la liste des modifications. Le changer reconstruit la liste, car le mode détermine ce que chaque différence devient.
 
-- **Synchronisation bidirectionnelle** (par défaut) — les changements des deux côtés sont combinés. Les objets modifiés aux deux endroits sont fusionnés.
-- **Réinitialiser le serveur pour correspondre à cet ordinateur** — le serveur est fait pour correspondre à cet ordinateur. Tout ce qui a été changé uniquement sur le serveur est supprimé.
-- **Réinitialiser cet ordinateur pour correspondre au serveur** — cet ordinateur est fait pour correspondre au serveur. Tout ce qui a été changé uniquement ici est supprimé.
+- **Synchronisation bidirectionnelle** (par défaut) – les modifications des deux côtés sont combinées. Les objets modifiés aux deux endroits sont fusionnés.
+- **Réinitialiser le serveur pour correspondre à cet ordinateur** – le serveur est fait pour correspondre à cet ordinateur. Tout ce qui a été modifié uniquement sur le serveur est supprimé.
+- **Réinitialiser cet ordinateur pour correspondre au serveur** – cet ordinateur est fait pour correspondre au serveur. Tout ce qui a été modifié uniquement ici est supprimé.
 
-!!! note
-    Le mode **fusion** disponible dans les versions précédentes a été supprimé. Il différait de la synchronisation bidirectionnelle uniquement en restaurant des objets supprimés d'un côté au lieu de propager la suppression, ce qui n'était pas une distinction que l'interface pouvait expliquer utilement. Si vous comptiez dessus, utilisez la synchronisation bidirectionnelle et restaurez tout ce que vous souhaitez conserver à partir d'une sauvegarde.
+Le mode **fusion** disponible dans les versions précédant 1.5 a été supprimé. Il différait de la synchronisation bidirectionnelle uniquement en restaurant les objets supprimés d'un côté au lieu de propager la suppression. Si vous comptiez dessus, utilisez la synchronisation bidirectionnelle et restaurez tout ce que vous souhaitez conserver à partir d'une sauvegarde.
 
 ### Fichiers multimédias
 
-Les fichiers multimédias sont traités dans le cadre de la même confirmation, pas comme une étape séparée. Si des fichiers doivent être transférés, une case à cocher en dessous de la liste propose de les déplacer :
+Les fichiers multimédias sont traités dans le cadre de la même confirmation, pas comme une étape séparée. Si des fichiers doivent être transférés, une case à cocher sous la liste propose de les déplacer :
 
 ```
 [x] Transférer également 12 fichiers multimédias (4 à télécharger, 8 à télécharger)
 ```
 
-Décochez-la pour synchroniser les changements d'objet sans toucher aux fichiers.
+Décochez-la pour synchroniser les modifications d'objet sans toucher aux fichiers.
 
 Les fichiers manquants sur *les deux* côtés sont listés séparément, car rien ne peut être fait à leur sujet :
 
@@ -122,95 +101,61 @@ Les fichiers manquants sur *les deux* côtés sont listés séparément, car rie
 2 fichiers multimédias sont manquants des deux côtés et ne peuvent pas être transférés.
 ```
 
-Notez les limitations suivantes de la synchronisation des fichiers multimédias :
+La synchronisation des fichiers multimédias a deux limitations :
 
-- Si un fichier local a un checksum différent de celui stocké dans la base de données Gramps (cela peut arriver par exemple pour des fichiers Word lorsqu'ils sont modifiés après avoir été ajoutés à Gramps), le téléchargement échouera avec un message d'erreur.
-- L'outil ne vérifie pas l'intégrité de tous les fichiers locaux, donc si un fichier local existe sous le chemin stocké pour l'objet multimédia, mais que le fichier est différent de celui sur le serveur, l'outil ne le détectera pas. Utilisez l'addon Media Verify pour détecter les fichiers avec des checksums incorrects.
+- Si un fichier local a un checksum différent de celui stocké dans la base de données Gramps (cela peut se produire par exemple pour des fichiers Word modifiés après avoir été ajoutés à Gramps), le téléchargement échouera avec un message d'erreur.
+- L'outil ne vérifie pas l'intégrité de tous les fichiers locaux. Si un fichier existe sous le chemin stocké pour l'objet multimédia mais diffère du fichier sur le serveur, l'outil ne le détectera pas. Utilisez l'addon Media Verify pour trouver des fichiers avec des checksums incorrects.
 
-### Quand quelque chose ne va pas
+### Si une synchronisation échoue
 
-Si une synchronisation échoue en cours de route — une connexion interrompue, par exemple — l'addon signale ce qu'il avait déjà appliqué et propose **Réessayer**, ce qui reprend à l'étape qui a échoué plutôt que de recommencer. La copie téléchargée de l'arbre distant est conservée, donc réessayer ne télécharge pas et ne compare pas une seconde fois.
+Si une synchronisation échoue en cours de route – une connexion interrompue, par exemple – l'addon signale ce qu'il avait déjà appliqué et propose **Réessayer**, ce qui reprend à l'étape qui a échoué plutôt que de recommencer. La copie téléchargée de l'arbre distant est conservée, donc réessayer ne le télécharge pas et ne le compare pas une seconde fois.
 
-Les détails techniques de l'échec sont disponibles derrière un *Détails* extensible, avec un bouton pour les copier pour un rapport de bug.
+Les détails techniques de l'échec sont disponibles derrière un expandeur *Détails*, avec un bouton pour les copier pour un rapport de bogue.
 
 ## Dépannage
 
-### Journalisation de débogage
+**Modifications inattendues.** Si l'addon propose un nombre alarmant de suppressions, vérifiez d'abord la bande supérieure : elle nomme l'arbre généalogique sur le serveur sur lequel vous êtes sur le point d'écrire. Synchroniser un arbre contre un serveur contenant un arbre *différent* produit exactement ce symptôme.
 
-Si vous rencontrez des problèmes avec l'addon Sync, veuillez démarrer Gramps avec la journalisation de débogage activée en [démarrant Gramps depuis la ligne de commande](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Command_Line) avec l'option suivante :
+Sinon, des différences que vous n'attendiez pas peuvent provenir d'incohérences dans l'une des bases de données, ou d'horloges qui ne sont pas synchronisées entre votre ordinateur et votre serveur. Vérifiez que les deux horloges sont correctement réglées (le fuseau horaire n'a pas d'importance, car l'outil utilise des timestamps Unix) et exécutez l'outil de vérification et de réparation sur votre base de données locale. En dernier recours, exportez votre base de données locale au format XML de Gramps et réimportez-la dans une nouvelle base de données vide. C'est une opération sans perte, mais cela garantit que toutes les données sont stockées de manière cohérente.
+
+**Erreurs de fichiers multimédias.** Un téléchargement échoué est souvent causé par un décalage entre le checksum du fichier sur le disque et le checksum dans la base de données Gramps locale, ce qui se produit avec des fichiers modifiables tels que des documents bureautiques modifiés en dehors de Gramps. Utilisez l'addon Gramps Media Verify pour corriger les checksums.
+
+**Erreurs de permission.** Vérifiez le rôle de votre compte utilisateur Gramps Web : seuls les éditeurs, propriétaires et administrateurs peuvent appliquer des modifications à la base de données distante.
+
+### Demander de l'aide
+
+Si rien de ce qui précède n'aide, demandez de l'aide à la communauté en postant dans la [catégorie Gramps Web du forum Gramps](https://gramps.discourse.group/c/gramps-web/28). Veuillez fournir :
+
+- la version de l'addon Gramps Web Sync, affichée en bas de la fenêtre de synchronisation à côté de la version de l'API Web du serveur (et veuillez utiliser la dernière version publiée)
+- la version de Gramps Desktop que vous utilisez
+- les informations de version de Gramps Web, trouvées sous *Paramètres ▸ Informations sur la version*
+- tout détail concernant votre installation Gramps Web (auto-hébergé, Grampshub, ...)
+- la sortie des journaux de votre serveur Gramps Web, si vous y avez accès (lors de l'utilisation de Docker : `docker compose logs --tail 100 grampsweb` et `docker compose logs --tail 100 grampsweb-celery`)
+
+Si on vous demande un journal de débogage, démarrez Gramps [depuis la ligne de commande](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Command_Line) avec la journalisation de débogage activée et reproduisez le problème :
 
 ```bash
 gramps --debug grampswebsync
 ```
 
-Cela imprimera de nombreuses déclarations de journalisation utiles dans la ligne de commande qui vous aideront à identifier la cause du problème.
-
-### Identifiants du serveur
-
-Si la connexion échoue, veuillez vérifier à nouveau l'URL du serveur, votre nom d'utilisateur et votre mot de passe.
-
-### L'addon refuse de se connecter
-
-Si l'addon signale que la version de l'API Gramps Web du serveur est trop ancienne ou trop récente, ou qu'aucune file d'attente de tâches en arrière-plan n'est configurée, consultez [Exigences du serveur](#server-requirements) ci-dessus. Ces vérifications sont effectuées avant toute autre chose, donc le message nomme directement le problème.
-
-### Problèmes de permissions
-
-Si vous rencontrez une erreur impliquant des permissions, veuillez vérifier le rôle utilisateur de votre compte utilisateur Gramps Web. Vous ne pouvez appliquer des changements à la base de données distante que si vous êtes un utilisateur avec le rôle d'éditeur, de propriétaire ou d'administrateur.
-
-### Changements inattendus dans la base de données
-
-Si l'outil de synchronisation détecte des changements que vous pensez ne pas avoir eu lieu, il se peut qu'il y ait des incohérences dans l'une des bases de données qui trompent Gramps en détectant une différence, ou que l'heure ne soit pas synchronisée entre votre ordinateur local et votre serveur.
-
-Veuillez vérifier que les horloges des deux machines sont correctement réglées (notez que le fuseau horaire n'a pas d'importance car l'outil utilise des timestamps Unix, qui sont indépendants du fuseau horaire).
-
-Vous pouvez également exécuter l'outil de vérification et de réparation sur votre base de données locale et voir si cela aide.
-
-Une méthode brute mais efficace pour s'assurer que les incohérences dans votre base de données locale ne causent pas de faux positifs est d'exporter votre base de données au format XML de Gramps et de la réimporter dans une nouvelle base de données vide. C'est une opération sans perte mais qui garantit que toutes les données sont importées de manière cohérente.
-
-!!! tip
-    Si l'addon propose un nombre alarmant de suppressions, vérifiez d'abord la bande supérieure : elle nomme l'arbre généalogique sur le serveur vers lequel vous vous apprêtez à écrire. Synchroniser contre un serveur qui contient un arbre *différent* produit exactement ce symptôme.
-
-### Erreurs de délai d'attente
-
-La synchronisation vers le serveur est traitée par un travailleur en arrière-plan, donc les synchronisations longues ne devraient pas expirer. Un serveur sans file d'attente de tâches configurée est refusé au moment de la connexion pour cette raison — voir [Exigences du serveur](#server-requirements).
-
-Les demandes de l'addon au serveur expirent après 60 secondes sans réponse, donc un serveur inaccessible signale une erreur de connexion au lieu de rester bloqué indéfiniment.
-
-### Erreurs inattendues de fichiers multimédias
-
-Si le téléchargement d'un fichier multimédia échoue, cela est souvent causé par un décalage dans le checksum du fichier réel sur le disque et le checksum dans la base de données Gramps locale. Cela se produit souvent avec des fichiers modifiables, comme des documents de bureau, modifiés en dehors de Gramps. Veuillez utiliser l'addon Gramps Media Verify pour corriger les checksums de tous les fichiers multimédias.
-
-### Demander de l'aide
-
-Si tout ce qui précède ne vous aide pas, vous pouvez demander de l'aide à la communauté en postant dans la [catégorie Gramps Web du forum Gramps](https://gramps.discourse.group/c/gramps-web/28). Veuillez vous assurer de fournir :
-
-- la version de l'addon Gramps Web Sync (et utilisez la dernière version publiée s'il vous plaît) — elle est affichée en bas de la fenêtre de synchronisation, à côté de la version de l'API Web du serveur
-- la version de Gramps Desktop que vous utilisez
-- la sortie de la journalisation de débogage de Gramps, activée comme décrit ci-dessus
-- les informations de version de Gramps Web (vous pouvez les trouver sous Paramètres/Informations sur la version)
-- tous les détails que vous pouvez fournir sur votre installation Gramps Web (auto-hébergée, Grampshub, ...)
-- la sortie des journaux de votre serveur Gramps Web, si vous y avez accès (lors de l'utilisation de docker : `docker compose logs --tail 100 grampsweb` et `docker compose logs --tail 100 grampsweb-celery`)
-
 ## Contexte : comment fonctionne l'addon
 
-Si vous êtes curieux de savoir comment l'addon fonctionne réellement, vous pouvez trouver plus de détails dans cette section.
+L'addon est conçu pour maintenir une base de données Gramps locale synchronisée avec une base de données Gramps Web distante, permettant à la fois des modifications locales et distantes (édition collaborative).
 
-L'addon est conçu pour garder une base de données Gramps locale synchronisée avec une base de données Gramps Web distante, permettant à la fois des modifications locales et distantes (édition collaborative).
+Il **n'est pas adapté**
 
-Il n'est **pas adapté**
+- pour synchroniser avec une base de données qui n'est pas un dérivé direct (à partir d'une copie de base de données ou d'une exportation/importation XML de Gramps) de la base de données locale,
+- pour fusionner deux bases de données avec un grand nombre de modifications des deux côtés nécessitant une attention manuelle pour la fusion. Utilisez l'excellent [Outil de fusion d'importation](https://www.gramps-project.org/wiki/index.php/Import_Merge_Tool) à cette fin.
 
-- Pour synchroniser avec une base de données qui n'est pas un dérivé direct (commençant par une copie de base de données ou une exportation/importation XML de Gramps) de la base de données locale
-- Pour fusionner deux bases de données avec un grand nombre de changements des deux côtés nécessitant une attention manuelle pour la fusion. Utilisez l'excellent [Import Merge Tool](https://www.gramps-project.org/wiki/index.php/Import_Merge_Tool) à cet effet.
+Les principes de fonctionnement sont simples :
 
-Les principes de fonctionnement de l'outil sont très simples :
-
-- Il compare les bases de données locales et distantes
-- S'il y a des différences, il vérifie le timestamp du dernier objet identique, appelons-le **t**
-- Si un objet a changé plus récemment que **t** existe dans une base de données mais pas dans l'autre, il est synchronisé vers les deux (supposons un nouvel objet)
-- Si un objet a changé la dernière fois avant **t** est absent dans une base de données, il est supprimé dans les deux (supposons un objet supprimé)
-- Si un objet est différent mais a changé après **t** uniquement dans une base de données, synchronisez-le avec l'autre (supposons un objet modifié)
-- Si un objet est différent mais a changé après **t** dans les deux bases de données, fusionnez-les (supposons une modification conflictuelle)
+- Il compare les bases de données locales et distantes.
+- S'il y a des différences, il vérifie l'horodatage du dernier objet identique, appelons-le **t**.
+- Si un objet a changé plus récemment que **t** existe dans une base de données mais pas dans l'autre, il est synchronisé vers les deux (supposons un nouvel objet).
+- Si un objet a changé la dernière fois avant **t** est absent dans une base de données, il est supprimé dans les deux (supposons un objet supprimé).
+- Si un objet est différent mais a changé après **t** uniquement dans une base de données, synchronisez-le avec l'autre (supposons un objet modifié).
+- Si un objet est différent mais a changé après **t** dans les deux bases de données, fusionnez-les (supposons une modification conflictuelle).
 
 Le temps de la dernière synchronisation réussie est également enregistré, séparément pour chaque serveur, et utilisé comme **t** lorsqu'il est plus récent que le nouvel objet identique.
 
-Cet algorithme est simple et robuste car il ne nécessite pas de suivre l'historique de synchronisation. Cependant, il fonctionne mieux lorsque vous *synchronisez souvent*.
+Cet algorithme est simple et robuste car il ne nécessite pas de suivi de l'historique de synchronisation. Cependant, il fonctionne mieux lorsque vous *synchronisez souvent*.
