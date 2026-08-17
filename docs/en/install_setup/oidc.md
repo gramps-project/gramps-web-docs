@@ -168,7 +168,7 @@ OIDC_GROUP_MEMBER="gramps-members"
 
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
-EMAIL_USE_TLS=True
+EMAIL_USE_SSL=True  # Use implicit SSL for port 465
 EMAIL_HOST_USER="gramps@example.com"
 EMAIL_HOST_PASSWORD="..." # your SMTP password
 DEFAULT_FROM_EMAIL="gramps@example.com"

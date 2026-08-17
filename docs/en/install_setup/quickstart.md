@@ -1,7 +1,7 @@
 To try out Gramps Web on your local computer (Linux, Mac, or Windows) without interfering with your Gramps Desktop installation, you can use Docker with the following command:
 
 ```bash
-docker run -p "5055:5000" -e TREE=new ghcr.io/gramps-project/grampsweb:latest
+docker run -p "5055:5000" -e GRAMPSWEB_TREE=new ghcr.io/gramps-project/grampsweb:latest
 ```
 
 This will make a new, empty Gramps Web instance accessible at [http://localhost:5055](http://localhost:5055), where you can create an admin user and import a Gramps XML file.
@@ -13,7 +13,7 @@ This will make a new, empty Gramps Web instance accessible at [http://localhost:
 To use media files from your computer you can mount the Gramps media folder into the container with
 
 ```bash
-docker run -p "5055:5000" -e TREE=new \
+docker run -p "5055:5000" -e GRAMPSWEB_TREE=new \
   -v /path/to/my/gramps_media_folder:/app/media \
   ghcr.io/gramps-project/grampsweb:latest
 ```

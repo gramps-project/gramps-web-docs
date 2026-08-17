@@ -47,11 +47,11 @@ To configure Web API for use with the PostgreSQL database, add the following und
       # the PostgreSQL addon assumes the tree name to be
       # equal to the database name and here the default
       # database name of the PostgreSQL image is used
-      TREE: postgres
+      GRAMPSWEB_TREE: postgres
       # The credentials must agree with the ones used for
       # the PostgreSQL container
-      POSTGRES_USER: gramps
-      POSTGRES_PASSWORD: postgres_password_gramps
+      GRAMPSWEB_POSTGRES_USER: gramps
+      GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
 ## Using a shared PostgreSQL database in a multi-tree installation

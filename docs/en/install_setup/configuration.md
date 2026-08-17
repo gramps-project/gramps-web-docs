@@ -23,6 +23,11 @@ When using environment variables,
 
 Note that configuration options set via the environment take precedence over the ones in the configuration file. If both are present, the environment variable "wins".
 
+!!! warning "Unprefixed environment variables are deprecated"
+    For historical reasons, a handful of settings – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, and `STATIC_PATH` – can still be set via an environment variable *without* the `GRAMPSWEB_` prefix. This is deprecated, logs a warning on startup, and will stop working in a future release. Always use the prefixed form, e.g. `GRAMPSWEB_TREE` instead of `TREE`.
+
+    Note that this only concerns environment variables. In a configuration file, the setting names are always used unprefixed.
+
 ## Existing configuration settings
 The following configuration options exist.
 
@@ -46,8 +51,9 @@ Key | Description
 Key | Description
 ----|-------------
 `MEDIA_BASE_DIR` | Path to use as base directory for media files, overriding the media base directory set in Gramps. When using [S3](s3.md), must have the form `s3://<bucket_name>`
- `TREE_ID` | The directory name of the family tree database to use in single-tree mode (when `TREE` is not set to `MULTI`). When set, the server identifies the tree by its directory name rather than its display name, which is more robust to renames. Required if you want to rename the tree via the API. The directory name can be found via `GET /api/trees/-` (the `id` field).
+`TREE_ID` | The directory name of the family tree database to use in single-tree mode (when `TREE` is not set to `*`). When set, the server identifies the tree by its directory name rather than its display name, which is more robust to renames. Required if you want to rename the tree via the API. The directory name can be found via `GET /api/trees/-` (the `id` field).
 `SEARCH_INDEX_DB_URI` | Database URL for the search index. Only `sqlite` or `postgresql` are allowed as backends. Defaults to `sqlite:///indexdir/search_index.db`, creating an SQLite file in the folder `indexdir` relative to the path where the script is run
+`SEARCH_INDEX_DIR` | **Deprecated** (use `SEARCH_INDEX_DB_URI` instead). Directory containing the search index. If set while `SEARCH_INDEX_DB_URI` is unset, the search index URL is derived as `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Path to serve static files from (e.g. a static web frontend)
 `BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct password reset links
 `CORS_ORIGINS` | Origins where CORS requests are allowed from. By default, all are disallowed. Use `"*"` to allow requests from any domain.
@@ -72,7 +78,7 @@ Key | Description
 
 
 !!! info
-    When using environment variables for configuration, boolean options like `EMAIL_USE_TLS` must be either the string `true` or `false` (case sensitive!).
+    When using environment variables for configuration, boolean options like `EMAIL_USE_SSL` must be either the string `true` or `false` (case sensitive!).
 
 
 ### Settings only for PostgreSQL backend database
