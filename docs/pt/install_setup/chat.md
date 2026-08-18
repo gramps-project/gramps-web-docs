@@ -3,7 +3,7 @@
 !!! info
     O chat de IA requer a versão 2.5.0 ou superior da Gramps Web API. A versão 3.6.0 introduziu capacidades de chamada de ferramentas para interações mais inteligentes.
 
-A Gramps Web API suporta a formulação de perguntas sobre o banco de dados genealógico usando modelos de linguagem grandes (LLM) por meio de uma técnica chamada geração aumentada por recuperação (RAG) combinada com chamadas de ferramentas.
+A Gramps Web API suporta fazer perguntas sobre o banco de dados genealógico usando modelos de linguagem grandes (LLM) por meio de uma técnica chamada geração aumentada por recuperação (RAG) combinada com chamadas de ferramentas.
 
 ## Como funciona
 
@@ -11,7 +11,7 @@ O assistente de IA utiliza duas abordagens complementares:
 
 **Geração Aumentada por Recuperação (RAG)**: Um *modelo de incorporação vetorial* cria um índice de todos os objetos no banco de dados Gramps na forma de vetores numéricos que codificam o significado dos objetos. Quando um usuário faz uma pergunta, essa pergunta também é convertida em um vetor e comparada aos objetos no banco de dados. Essa *busca semântica* retorna objetos que são semanticamente mais semelhantes à pergunta.
 
-**Chamada de Ferramentas (v3.6.0+)**: O assistente de IA agora pode usar ferramentas especializadas para consultar seus dados genealógicos diretamente. Essas ferramentas permitem que o assistente pesquise no banco de dados, filtre pessoas/eventos/famílias/lugares por critérios específicos, calcule relacionamentos entre indivíduos e recupere informações detalhadas sobre os objetos. Isso torna o assistente muito mais capaz de responder a perguntas genealógicas complexas com precisão.
+**Chamada de Ferramentas (v3.6.0+)**: O assistente de IA agora pode usar ferramentas especializadas para consultar seus dados genealógicos diretamente. Essas ferramentas permitem que o assistente busque no banco de dados, filtre pessoas/eventos/famílias/lugares por critérios específicos, calcule relacionamentos entre indivíduos e recupere informações detalhadas sobre objetos. Isso torna o assistente muito mais capaz de responder perguntas genealógicas complexas com precisão.
 
 Para habilitar o endpoint de chat na Gramps Web API, três etapas são necessárias:
 
@@ -25,9 +25,9 @@ As três etapas são descritas abaixo, uma a uma. Finalmente, um proprietário o
 
 O chat de IA requer que as bibliotecas Sentence Transformers e PyTorch sejam instaladas.
 
-As imagens padrão do docker para Gramps Web já as têm pré-instaladas para as arquiteturas `amd64` (por exemplo, PC desktop de 64 bits) e `arm64` (por exemplo, Raspberry Pi de 64 bits). Infelizmente, o chat de IA não é suportado na arquitetura `armv7` (por exemplo, Raspberry Pi de 32 bits) devido à falta de suporte do PyTorch.
+As imagens padrão do Docker para Gramps Web já as têm pré-instaladas para as arquiteturas `amd64` (por exemplo, PC desktop de 64 bits) e `arm64` (por exemplo, Raspberry Pi de 64 bits). Infelizmente, o chat de IA não é suportado na arquitetura `armv7` (por exemplo, Raspberry Pi de 32 bits) devido à falta de suporte do PyTorch.
 
-Ao instalar a Gramps Web API via `pip` (isso não é necessário ao usar as imagens Docker), as dependências necessárias são instaladas com
+Ao instalar a Gramps Web API via `pip` (isso não é necessário ao usar as imagens do Docker), as dependências necessárias são instaladas com
 
 ```bash
 pip install gramps_webapi[ai]
@@ -38,24 +38,24 @@ pip install gramps_webapi[ai]
 Se as dependências necessárias estiverem instaladas, habilitar a busca semântica pode ser tão simples quanto definir a opção de configuração `VECTOR_EMBEDDING_MODEL` (por exemplo, definindo a variável de ambiente `GRAMPSWEB_VECTOR_EMBEDDING_MODEL`), veja [Configuração do Servidor](configuration.md). Isso pode ser qualquer string de um modelo suportado pela biblioteca [Sentence Transformers](https://sbert.net/). Consulte a documentação deste projeto para detalhes e os modelos disponíveis.
 
 !!! warning
-    Observe que as imagens padrão do docker não incluem uma versão do PyTorch com suporte a GPU. Se você tiver acesso a uma GPU (o que acelerará significativamente a indexação semântica), instale uma versão do PyTorch habilitada para GPU.
+    Observe que as imagens padrão do Docker não incluem uma versão do PyTorch com suporte a GPU. Se você tiver acesso a uma GPU (o que acelerará significativamente a indexação semântica), instale uma versão do PyTorch habilitada para GPU.
 
 Há várias considerações a serem feitas ao escolher um modelo.
 
-- Quando você altera o modelo, deve recriar manualmente o índice de busca semântica para sua árvore (ou todas as árvores em uma configuração de múltiplas árvores), caso contrário, você encontrará erros ou resultados sem sentido. A Gramps Web detecta quando o modelo de incorporação configurado não corresponde mais ao índice existente e mostra um aviso persistente para os administradores, solicitando que eles acionem uma reindexação completa a partir das [Configurações de Administração](../administration/settings.md#semantic-search-index).
-- Os modelos são um compromisso entre precisão/generalidade, por um lado, e tempo de computação/espaco de armazenamento, por outro. Se você não estiver executando a Gramps Web API em um sistema que tenha acesso a uma GPU poderosa, modelos maiores geralmente são muito lentos na prática.
-- A menos que todo o seu banco de dados esteja em inglês e todos os seus usuários sejam esperados para fazer perguntas no chat apenas em inglês, você precisará de um modelo de incorporação multilíngue, que é mais raro do que modelos puramente em inglês.
+- Quando você muda o modelo, precisa recriar manualmente o índice de busca semântica para sua árvore (ou todas as árvores em uma configuração de múltiplas árvores), caso contrário, você encontrará erros ou resultados sem sentido. O Gramps Web detecta quando o modelo de incorporação configurado não corresponde mais ao índice existente e mostra um aviso persistente para administradores, solicitando que eles acionem uma reindexação completa nas [Configurações de Administração](../administration/settings.md#semantic-search-index).
+- Os modelos são um compromisso entre precisão/generalidade, por um lado, e tempo computacional/espaco de armazenamento, por outro. Se você não estiver executando a Gramps Web API em um sistema que tenha acesso a uma GPU poderosa, modelos maiores geralmente são muito lentos na prática.
+- A menos que todo o seu banco de dados esteja em inglês e todos os seus usuários sejam esperados para fazer perguntas de chat apenas em inglês, você precisará de um modelo de incorporação multilíngue, que é mais raro do que modelos puramente em inglês.
 
-Se o modelo não estiver presente no cache local, ele será baixado quando a Gramps Web API for iniciada pela primeira vez com a nova configuração. O modelo `sentence-transformers/distiluse-base-multilingual-cased-v2` já está disponível localmente ao usar as imagens padrão do docker. Este modelo é um bom ponto de partida e suporta entrada multilíngue.
+Se o modelo não estiver presente no cache local, ele será baixado quando a Gramps Web API for iniciada pela primeira vez com a nova configuração. O modelo `sentence-transformers/distiluse-base-multilingual-cased-v2` já está disponível localmente ao usar as imagens padrão do Docker. Este modelo é um bom ponto de partida e suporta entrada multilíngue.
 
 Por favor, compartilhe aprendizados sobre diferentes modelos com a comunidade!
 
 !!! info
-    A biblioteca sentence transformers consome uma quantidade significativa de memória, o que pode causar a morte de processos de trabalho. Como regra geral, com a busca semântica habilitada, cada trabalhador do Gunicorn consome cerca de 200 MB de memória e cada trabalhador do celery cerca de 500 MB de memória, mesmo quando ocioso, e até 1 GB ao computar incorporações. Consulte [Limitar uso de CPU e memória](cpu-limited.md) para configurações que limitam o uso de memória. Além disso, é aconselhável provisionar uma partição de swap suficientemente grande para evitar erros OOM devido a picos transitórios de uso de memória.
+    A biblioteca sentence transformers consome uma quantidade significativa de memória, o que pode causar a morte de processos de trabalho. Como regra geral, com a busca semântica habilitada, cada trabalhador do Gunicorn consome cerca de 200 MB de memória e cada trabalhador do celery cerca de 500 MB de memória mesmo quando inativo, e até 1 GB ao computar incorporações. Veja [Limitar uso de CPU e memória](cpu-limited.md) para configurações que limitam o uso de memória. Além disso, é aconselhável provisionar uma partição de swap suficientemente grande para evitar erros OOM devido a picos transitórios de uso de memória.
 
 ## Usando uma API de incorporação remota
 
-Como alternativa a executar um modelo local de Sentence Transformers, você pode usar uma API de incorporação remota compatível com OpenAI para busca semântica. Isso é útil se você quiser descarregar a computação de incorporações para um serviço separado (por exemplo, [Ollama](https://ollama.com/)), usar um provedor de incorporação em nuvem (por exemplo, OpenAI) ou evitar instalar as dependências de Sentence Transformers e PyTorch.
+Como alternativa a executar um modelo local de Sentence Transformers, você pode usar uma API de incorporação remota compatível com OpenAI para busca semântica. Isso é útil se você quiser descarregar a computação de incorporações para um serviço separado (por exemplo, [Ollama](https://ollama.com/)), usar um provedor de incorporação em nuvem (por exemplo, OpenAI) ou evitar carregar as bibliotecas Sentence Transformers e PyTorch na memória.
 
 A API remota deve ser compatível com o [endpoint de incorporações da OpenAI](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
 
@@ -118,32 +118,32 @@ environment:
 ```
 
 !!! warning
-    Alterar o modelo de incorporação requer reindexar todos os registros da sua árvore (ou todas as árvores em uma configuração de múltiplas árvores), uma vez que diferentes modelos produzem vetores com dimensões diferentes.
+    Mudar o modelo de incorporação requer reindexar todos os registros para sua árvore (ou todas as árvores em uma configuração de múltiplas árvores), uma vez que diferentes modelos produzem vetores com dimensões diferentes.
 
 ## Configurando um provedor de LLM
 
 A comunicação com o LLM usa o framework Pydantic AI, que suporta APIs compatíveis com OpenAI. Isso permite usar um LLM implantado localmente via Ollama (veja [Compatibilidade do Ollama com OpenAI](https://ollama.com/blog/openai-compatibility)) ou APIs hospedadas como OpenAI, Anthropic ou Hugging Face TGI (Text Generation Inference). O LLM é configurado por meio dos parâmetros de configuração `LLM_MODEL` e `LLM_BASE_URL`.
 
-### Usando um LLM hospedado via API da OpenAI
+### Usando um LLM hospedado via a API da OpenAI
 
-Ao usar a API da OpenAI, `LLM_BASE_URL` pode ser deixado não definido, enquanto `LLM_MODEL` deve ser definido como um dos modelos da OpenAI, por exemplo, `gpt-4o-mini`. O LLM utiliza tanto RAG quanto chamadas de ferramentas para responder perguntas: ele seleciona informações relevantes dos resultados da busca semântica e pode consultar diretamente o banco de dados usando ferramentas especializadas. Ele não requer conhecimento genealógico ou histórico profundo. Portanto, você pode tentar se um modelo pequeno/barato é suficiente.
+Ao usar a API da OpenAI, `LLM_BASE_URL` pode ser deixado não definido, enquanto `LLM_MODEL` deve ser definido como um dos modelos da OpenAI, por exemplo, `gpt-4o-mini`. O LLM usa tanto RAG quanto chamadas de ferramentas para responder perguntas: ele seleciona informações relevantes dos resultados da busca semântica e pode consultar diretamente o banco de dados usando ferramentas especializadas. Não requer conhecimento genealógico ou histórico profundo. Portanto, você pode tentar se um modelo pequeno/barato é suficiente.
 
 Você também precisará se inscrever para uma conta, obter uma chave da API e armazená-la na variável de ambiente `OPENAI_API_KEY`.
 
 !!! info
-    `LLM_MODEL` é um parâmetro de configuração; se você quiser defini-lo por meio de uma variável de ambiente, use `GRAMPSWEB_LLM_MODEL` (veja [Configuração](configuration.md)). `OPENAI_API_KEY` não é um parâmetro de configuração, mas uma variável de ambiente usada diretamente pela biblioteca Pydantic AI, portanto, não deve ser prefixada.
+    `LLM_MODEL` é um parâmetro de configuração; se você quiser defini-lo via uma variável de ambiente, use `GRAMPSWEB_LLM_MODEL` (veja [Configuração](configuration.md)). `OPENAI_API_KEY` não é um parâmetro de configuração, mas uma variável de ambiente usada diretamente pela biblioteca Pydantic AI, portanto, não deve ser prefixada.
 
 ### Usando Mistral AI
 
 Para usar os modelos hospedados da Mistral AI, prefixe o nome do modelo com `mistral:` ao definir `LLM_MODEL`.
 
-Você precisará se inscrever para uma conta da Mistral AI, obter uma chave da API e armazená-la na variável de ambiente `MISTRAL_API_KEY`. Não é necessário definir `LLM_BASE_URL`, pois o Pydantic AI usará automaticamente o endpoint correto da API da Mistral.
+Você precisará se inscrever para uma conta da Mistral AI, obter uma chave da API e armazená-la na variável de ambiente `MISTRAL_API_KEY`. Não é necessário definir `LLM_BASE_URL`, pois o Pydantic AI usará automaticamente o endpoint correto da API Mistral.
 
 Exemplo de configuração ao usar docker compose com variáveis de ambiente:
 ```yaml
 environment:
   GRAMPSWEB_LLM_MODEL: mistral:mistral-large-latest
-  MISTRAL_API_KEY: sua-chave-da-api-mistral-aqui
+  MISTRAL_API_KEY: sua-chave-api-mistral-aqui
   GRAMPSWEB_VECTOR_EMBEDDING_MODEL: sentence-transformers/distiluse-base-multilingual-cased-v2
 ```
 
@@ -167,7 +167,7 @@ volumes:
     ollama_data:
 ```
 
-e então definir o parâmetro de configuração `LLM_BASE_URL` para `http://ollama:11434/v1`. Defina `LLM_MODEL` para um modelo suportado pelo Ollama e faça o download em seu contêiner com `ollama pull <model>`. Finalmente, defina `OPENAI_API_KEY` como `ollama`.
+e então definir o parâmetro de configuração `LLM_BASE_URL` para `http://ollama:11434/v1`. Defina `LLM_MODEL` para um modelo suportado pelo Ollama e puxe-o para o seu contêiner com `ollama pull <model>`. Finalmente, defina `OPENAI_API_KEY` como `ollama`.
 
 Para solucionar problemas com o Ollama, você pode habilitar o registro de depuração definindo a variável de ambiente `OLLAMA_DEBUG=1` no ambiente do serviço Ollama.
 
