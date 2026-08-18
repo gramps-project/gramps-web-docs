@@ -59,7 +59,7 @@ Please share learnings about different models with the community!
 
 ## Using a remote embedding API
 
-As an alternative to running a local Sentence Transformers model, you can use a remote OpenAI-compatible embedding API for semantic search. This is useful if you want to offload embedding computation to a separate service (e.g. [Ollama](https://ollama.com/)), use a cloud embedding provider (e.g. OpenAI), or avoid installing the Sentence Transformers and PyTorch dependencies.
+As an alternative to running a local Sentence Transformers model, you can use a remote OpenAI-compatible embedding API for semantic search. This is useful if you want to offload embedding computation to a separate service (e.g. [Ollama](https://ollama.com/)), use a cloud embedding provider (e.g. OpenAI), or avoid loading the Sentence Transformers and PyTorch libraries into memory.
 
 The remote API must be compatible with the [OpenAI embeddings endpoint](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
 
