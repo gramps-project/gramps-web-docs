@@ -1,15 +1,15 @@
-# Einrichtung des KI-Chat
+# Einrichtung des KI-Dialogs
 
 !!! info
-    Der KI-Chat erfordert die Gramps Web API Version 2.5.0 oder höher. Die Version 3.6.0 führte Funktionen zum Aufrufen von Werkzeugen für intelligentere Interaktionen ein.
+    Der KI-Dialog erfordert die Gramps Web API Version 2.5.0 oder höher. Die Version 3.6.0 führte Funktionen zum Aufrufen von Werkzeugen für intelligentere Interaktionen ein.
 
 Die Gramps Web API unterstützt das Stellen von Fragen zur genealogischen Datenbank mithilfe von großen Sprachmodellen (LLM) über eine Technik namens retrieval-augmented generation (RAG) in Kombination mit dem Aufrufen von Werkzeugen.
 
-## Funktionsweise
+## So funktioniert es
 
 Der KI-Assistent verwendet zwei komplementäre Ansätze:
 
-**Retrieval-Augmented Generation (RAG)**: Ein *Vektor-Einbettungsmodell* erstellt einen Index aller Objekte in der Gramps-Datenbank in Form von numerischen Vektoren, die die Bedeutung der Objekte kodieren. Wenn ein Benutzer eine Frage stellt, wird diese Frage ebenfalls in einen Vektor umgewandelt und mit den Objekten in der Datenbank verglichen. Diese *semantische Suche* gibt Objekte zurück, die der Frage semantisch am ähnlichsten sind.
+**Retrieval-Augmented Generation (RAG)**: Ein *Vektor-Einbettungsmodell* erstellt einen Index aller Objekte in der Gramps-Datenbank in Form von numerischen Vektoren, die die Bedeutung der Objekte kodieren. Wenn ein Benutzer eine Frage stellt, wird auch diese Frage in einen Vektor umgewandelt und mit den Objekten in der Datenbank verglichen. Diese *semantische Suche* gibt Objekte zurück, die der Frage semantisch am ähnlichsten sind.
 
 **Tool Calling (v3.6.0+)**: Der KI-Assistent kann jetzt spezialisierte Werkzeuge verwenden, um direkt auf Ihre genealogischen Daten zuzugreifen. Diese Werkzeuge ermöglichen es dem Assistenten, die Datenbank zu durchsuchen, Personen/Ereignisse/Familien/Orte nach bestimmten Kriterien zu filtern, Beziehungen zwischen Individuen zu berechnen und detaillierte Objektinformationen abzurufen. Dies macht den Assistenten viel fähiger, komplexe genealogische Fragen genau zu beantworten.
 
@@ -23,11 +23,11 @@ Die drei Schritte werden im Folgenden nacheinander beschrieben. Schließlich mus
 
 ## Installation der erforderlichen Abhängigkeiten
 
-Der KI-Chat erfordert die Installation der Bibliotheken Sentence Transformers und PyTorch.
+Der KI-Dialog erfordert die Installation der Bibliotheken Sentence Transformers und PyTorch.
 
-Die Standard-Docker-Images für Gramps Web haben diese bereits für die Architekturen `amd64` (z. B. 64-Bit-Desktop-PC) und `arm64` (z. B. 64-Bit-Raspberry Pi) vorinstalliert. Leider wird der KI-Chat auf der Architektur `armv7` (z. B. 32-Bit-Raspberry Pi) aufgrund fehlender PyTorch-Unterstützung nicht unterstützt.
+Die Standard-Docker-Images für Gramps Web haben diese bereits für die Architekturen `amd64` (z. B. 64-Bit-Desktop-PC) und `arm64` (z. B. 64-Bit-Raspberry Pi) vorinstalliert. Leider wird der KI-Dialog auf der Architektur `armv7` (z. B. 32-Bit-Raspberry Pi) aufgrund fehlender PyTorch-Unterstützung nicht unterstützt.
 
-Bei der Installation der Gramps Web API über `pip` (dies ist bei Verwendung der Docker-Images nicht erforderlich) werden die erforderlichen Abhängigkeiten mit
+Bei der Installation der Gramps Web API über `pip` (dies ist bei der Verwendung der Docker-Images nicht erforderlich) werden die notwendigen Abhängigkeiten mit
 
 ```bash
 pip install gramps_webapi[ai]
@@ -44,8 +44,8 @@ Wenn die erforderlichen Abhängigkeiten installiert sind, kann die Aktivierung d
 
 Es gibt mehrere Überlegungen, die bei der Auswahl eines Modells zu beachten sind.
 
-- Wenn Sie das Modell ändern, müssen Sie den semantischen Suchindex für Ihren Baum (oder alle Bäume in einer Multi-Baum-Konfiguration) manuell neu erstellen, andernfalls treten Fehler oder sinnlose Ergebnisse auf. Gramps Web erkennt, wenn das konfigurierte Einbettungsmodell nicht mehr mit dem vorhandenen Index übereinstimmt, und zeigt eine dauerhafte Benachrichtigung an Administratoren an, die sie auffordert, eine vollständige Neuindizierung über die [Verwaltungseinstellungen](../administration/settings.md#semantic-search-index) auszulösen.
-- Die Modelle sind ein Kompromiss zwischen Genauigkeit/Allgemeinheit einerseits und Rechenzeit/Speicherplatz andererseits. Wenn Sie die Gramps Web API nicht auf einem System ausführen, das Zugriff auf eine leistungsstarke GPU hat, sind größere Modelle in der Praxis normalerweise zu langsam.
+- Wenn Sie das Modell ändern, müssen Sie den semantischen Suchindex für Ihren Baum (oder alle Bäume in einer Multi-Baum-Konfiguration) manuell neu erstellen, andernfalls treten Fehler oder sinnlose Ergebnisse auf. Gramps Web erkennt, wenn das konfigurierte Einbettungsmodell nicht mehr mit dem vorhandenen Index übereinstimmt, und zeigt eine dauerhafte Benachrichtigung an die Administratoren an, die sie auffordert, eine vollständige Neuinindexierung über die [Verwaltungseinstellungen](../administration/settings.md#semantic-search-index) auszulösen.
+- Die Modelle sind ein Kompromiss zwischen Genauigkeit/Allgemeinheit einerseits und Rechenzeit/Speicherplatz andererseits. Wenn Sie Gramps Web API nicht auf einem System ausführen, das Zugriff auf eine leistungsstarke GPU hat, sind größere Modelle in der Praxis normalerweise zu langsam.
 - Es sei denn, Ihre gesamte Datenbank ist auf Englisch und alle Ihre Benutzer werden nur erwartet, Fragen im Chat auf Englisch zu stellen, benötigen Sie ein mehrsprachiges Einbettungsmodell, das seltener ist als reine englische Modelle.
 
 Wenn das Modell nicht im lokalen Cache vorhanden ist, wird es heruntergeladen, wenn die Gramps Web API zum ersten Mal mit der neuen Konfiguration gestartet wird. Das Modell `sentence-transformers/distiluse-base-multilingual-cased-v2` ist bereits lokal verfügbar, wenn die Standard-Docker-Images verwendet werden. Dieses Modell ist ein guter Ausgangspunkt und unterstützt mehrsprachige Eingaben.
@@ -53,15 +53,82 @@ Wenn das Modell nicht im lokalen Cache vorhanden ist, wird es heruntergeladen, w
 Bitte teilen Sie Erkenntnisse über verschiedene Modelle mit der Community!
 
 !!! info
-    Die Sentence Transformers-Bibliothek verbraucht eine erhebliche Menge an Speicher, was dazu führen kann, dass Arbeitsprozesse beendet werden. Als Faustregel gilt, dass bei aktivierter semantischer Suche jeder Gunicorn-Arbeiter etwa 200 MB Speicher und jeder Celery-Arbeiter etwa 500 MB Speicher selbst im Leerlauf verbraucht, und bis zu 1 GB, wenn Einbettungen berechnet werden. Siehe [CPU- und Speichernutzung begrenzen](cpu-limited.md) für Einstellungen, die die Speichernutzung begrenzen. Darüber hinaus ist es ratsam, eine ausreichend große Swap-Partition bereitzustellen, um OOM-Fehler aufgrund vorübergehender Speicherverbrauchsspitzen zu vermeiden.
+    Die Bibliothek Sentence Transformers verbraucht eine erhebliche Menge an Speicher, was dazu führen kann, dass Arbeitsprozesse beendet werden. Als Faustregel gilt, dass bei aktivierter semantischer Suche jeder Gunicorn-Arbeiter etwa 200 MB Speicher und jeder Celery-Arbeiter etwa 500 MB Speicher auch im Leerlauf verbraucht, und bis zu 1 GB, wenn Einbettungen berechnet werden. Siehe [CPU- und Speichernutzung begrenzen](cpu-limited.md) für Einstellungen, die die Speichernutzung begrenzen. Darüber hinaus ist es ratsam, eine ausreichend große Swap-Partition bereitzustellen, um OOM-Fehler aufgrund vorübergehender Speicherverbrauchsspitzen zu vermeiden.
+
+## Verwendung einer Remote-Einbettungs-API
+
+Als Alternative zur Ausführung eines lokalen Sentence Transformers-Modells können Sie eine Remote-API für Einbettungen, die mit OpenAI kompatibel ist, für die semantische Suche verwenden. Dies ist nützlich, wenn Sie die Berechnung von Einbettungen an einen separaten Dienst (z. B. [Ollama](https://ollama.com/)) auslagern, einen Cloud-Einbettungsanbieter (z. B. OpenAI) verwenden oder die Installation der Abhängigkeiten Sentence Transformers und PyTorch vermeiden möchten.
+
+Die Remote-API muss mit dem [OpenAI-Einbettungsendpunkt](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`) kompatibel sein.
+
+Um eine Remote-Einbettungs-API zu verwenden, setzen Sie die folgenden Konfigurationsoptionen (siehe [Serverkonfiguration](configuration.md)):
+
+Key | Beschreibung
+----|-------------
+`VECTOR_EMBEDDING_MODEL` | Der Modellname, der an den Remote-Anbieter übergeben wird
+`VECTOR_EMBEDDING_BASE_URL` | Basis-URL der Remote-API
+`VECTOR_EMBEDDING_API_KEY` | API-Schlüssel (nur erforderlich, wenn der Anbieter eine Authentifizierung erfordert)
+
+### Verwendung von Ollama für Einbettungen
+
+Bei der Bereitstellung von Gramps Web mit Docker Compose können Sie einen Ollama-Dienst hinzufügen und ihn sowohl für Einbettungen als auch (optional) für das LLM verwenden:
+
+```yaml
+services:
+  grampsweb: &grampsweb
+    # ... vorhandene Konfiguration ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  grampsweb_celery: &grampsweb_celery
+    # ... vorhandene Konfiguration ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
+```
+
+Nachdem Sie die Dienste gestartet haben, ziehen Sie das Einbettungsmodell in Ollama:
+
+```bash
+docker compose exec ollama ollama pull nomic-embed-text
+```
+
+!!! info
+    Bei der Verwendung von Ollama für Einbettungen sind die Bibliotheken Sentence Transformers und PyTorch nicht erforderlich, was den Speicherverbrauch der Gramps Web API-Arbeiter erheblich reduziert.
+
+### Verwendung von OpenAI für Einbettungen
+
+Um die OpenAI-Einbettungs-API zu verwenden, setzen Sie die Basis-URL auf die OpenAI-API und geben Sie Ihren API-Schlüssel an:
+
+```yaml
+environment:
+  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: text-embedding-3-small
+  GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: https://api.openai.com
+  GRAMPSWEB_VECTOR_EMBEDDING_API_KEY: sk-...
+```
+
+!!! warning
+    Das Ändern des Einbettungsmodells erfordert eine Neuinindexierung aller Datensätze für Ihren Baum (oder alle Bäume in einer Multi-Baum-Konfiguration), da verschiedene Modelle Vektoren mit unterschiedlichen Dimensionen erzeugen.
 
 ## Einrichtung eines LLM-Anbieters
 
 Die Kommunikation mit dem LLM verwendet das Pydantic AI-Framework, das OpenAI-kompatible APIs unterstützt. Dies ermöglicht die Verwendung eines lokal bereitgestellten LLM über Ollama (siehe [Ollama OpenAI-Kompatibilität](https://ollama.com/blog/openai-compatibility)) oder gehostete APIs wie OpenAI, Anthropic oder Hugging Face TGI (Text Generation Inference). Das LLM wird über die Konfigurationsparameter `LLM_MODEL` und `LLM_BASE_URL` konfiguriert.
 
-### Verwendung eines gehosteten LLM über die OpenAI API
+### Verwendung eines gehosteten LLM über die OpenAI-API
 
-Bei der Verwendung der OpenAI API kann `LLM_BASE_URL` ungesetzt bleiben, während `LLM_MODEL` auf eines der OpenAI-Modelle, z. B. `gpt-4o-mini`, gesetzt werden muss. Das LLM verwendet sowohl RAG als auch Tool Calling, um Fragen zu beantworten: Es wählt relevante Informationen aus den Ergebnissen der semantischen Suche aus und kann die Datenbank direkt mit spezialisierten Werkzeugen abfragen. Es erfordert kein tiefes genealogisches oder historisches Wissen. Daher können Sie ausprobieren, ob ein kleines/günstiges Modell ausreicht.
+Bei der Verwendung der OpenAI-API kann `LLM_BASE_URL` ungesetzt bleiben, während `LLM_MODEL` auf eines der OpenAI-Modelle, z. B. `gpt-4o-mini`, gesetzt werden muss. Das LLM verwendet sowohl RAG als auch das Aufrufen von Werkzeugen, um Fragen zu beantworten: Es wählt relevante Informationen aus den Ergebnissen der semantischen Suche aus und kann direkt die Datenbank mit spezialisierten Werkzeugen abfragen. Es erfordert kein tiefes genealogisches oder historisches Wissen. Daher können Sie ausprobieren, ob ein kleines/günstiges Modell ausreicht.
 
 Sie müssen sich auch für ein Konto anmelden, einen API-Schlüssel erhalten und ihn in der Umgebungsvariable `OPENAI_API_KEY` speichern.
 
@@ -70,9 +137,9 @@ Sie müssen sich auch für ein Konto anmelden, einen API-Schlüssel erhalten und
 
 ### Verwendung von Mistral AI
 
-Um die gehosteten Modelle von Mistral AI zu verwenden, setzen Sie den Modellnamen beim Setzen von `LLM_MODEL` mit `mistral:` voraus.
+Um die gehosteten Modelle von Mistral AI zu verwenden, setzen Sie den Modellnamen beim Festlegen von `LLM_MODEL` mit `mistral:` voran.
 
-Sie müssen sich für ein Mistral AI-Konto anmelden, einen API-Schlüssel erhalten und ihn in der Umgebungsvariable `MISTRAL_API_KEY` speichern. Es ist nicht erforderlich, `LLM_BASE_URL` zu setzen, da Pydantic AI automatisch den richtigen Mistral API-Endpunkt verwendet.
+Sie müssen sich für ein Mistral AI-Konto anmelden, einen API-Schlüssel erhalten und ihn in der Umgebungsvariable `MISTRAL_API_KEY` speichern. Es ist nicht erforderlich, `LLM_BASE_URL` festzulegen, da Pydantic AI automatisch den richtigen Mistral API-Endpunkt verwendet.
 
 Beispielkonfiguration bei Verwendung von Docker Compose mit Umgebungsvariablen:
 ```yaml
@@ -84,9 +151,9 @@ environment:
 
 ### Verwendung eines lokalen LLM über Ollama
 
-[Ollama](https://ollama.com/) ist eine bequeme Möglichkeit, LLMs lokal auszuführen. Bitte konsultieren Sie die Ollama-Dokumentation für Details. Bitte beachten Sie, dass LLMs erhebliche Rechenressourcen benötigen und alle bis auf die kleinsten Modelle wahrscheinlich zu langsam sein werden, wenn keine GPU-Unterstützung vorhanden ist. Sie können ausprobieren, ob [`tinyllama`](https://ollama.com/library/tinyllama) Ihren Anforderungen entspricht. Wenn nicht, probieren Sie eines der größeren Modelle aus. Bitte teilen Sie Ihre Erfahrungen mit der Community!
+[Ollama](https://ollama.com/) ist eine bequeme Möglichkeit, LLMs lokal auszuführen. Bitte konsultieren Sie die Ollama-Dokumentation für Details. Bitte beachten Sie, dass LLMs erhebliche Rechenressourcen erfordern und fast alle bis auf die kleinsten Modelle wahrscheinlich zu langsam sein werden, wenn keine GPU-Unterstützung vorhanden ist. Sie können ausprobieren, ob [`tinyllama`](https://ollama.com/library/tinyllama) Ihren Anforderungen entspricht. Wenn nicht, probieren Sie eines der größeren Modelle aus. Bitte teilen Sie Ihre Erfahrungen mit der Community!
 
-Beim Bereitstellen von Gramps Web mit Docker Compose können Sie einen Ollama-Dienst hinzufügen
+Bei der Bereitstellung von Gramps Web mit Docker Compose können Sie einen Ollama-Dienst hinzufügen
 
 ```yaml
 services:
@@ -107,7 +174,7 @@ und dann den Konfigurationsparameter `LLM_BASE_URL` auf `http://ollama:11434/v1`
 Um Probleme mit Ollama zu beheben, können Sie das Debug-Logging aktivieren, indem Sie die Umgebungsvariable `OLLAMA_DEBUG=1` in der Umgebung des Ollama-Dienstes setzen.
 
 !!! info
-    Wenn Sie Ollama für den Gramps Web KI-Chat verwenden, unterstützen Sie bitte die Community, indem Sie diese Dokumentation mit fehlenden Details vervollständigen.
+    Wenn Sie Ollama für den Gramps Web KI-Dialog verwenden, unterstützen Sie bitte die Community, indem Sie diese Dokumentation mit allen fehlenden Details vervollständigen.
 
 ### Verwendung anderer Anbieter
 

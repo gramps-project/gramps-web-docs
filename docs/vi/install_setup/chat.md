@@ -9,9 +9,9 @@ Gramps Web API hỗ trợ việc đặt câu hỏi về cơ sở dữ liệu gia
 
 Trợ lý AI sử dụng hai phương pháp bổ sung:
 
-**Tạo ra tăng cường truy xuất (RAG)**: Một *mô hình nhúng vector* tạo ra một chỉ mục của tất cả các đối tượng trong cơ sở dữ liệu Gramps dưới dạng các vector số liệu mã hóa ý nghĩa của các đối tượng. Khi một người dùng đặt câu hỏi, câu hỏi đó cũng được chuyển đổi thành một vector và so sánh với các đối tượng trong cơ sở dữ liệu. Tìm kiếm *ngữ nghĩa* này trả về các đối tượng có ý nghĩa tương tự nhất với câu hỏi.
+**Tạo ra tăng cường truy xuất (RAG)**: Một *mô hình nhúng vector* tạo ra một chỉ mục của tất cả các đối tượng trong cơ sở dữ liệu Gramps dưới dạng các vector số mã hóa ý nghĩa của các đối tượng. Khi người dùng đặt câu hỏi, câu hỏi đó cũng được chuyển đổi thành một vector và so sánh với các đối tượng trong cơ sở dữ liệu. Tìm kiếm *ngữ nghĩa* này trả về các đối tượng có ý nghĩa tương tự nhất với câu hỏi.
 
-**Gọi công cụ (v3.6.0+)**: Trợ lý AI hiện có thể sử dụng các công cụ chuyên biệt để truy vấn dữ liệu gia phả của bạn trực tiếp. Những công cụ này cho phép trợ lý tìm kiếm cơ sở dữ liệu, lọc người/sự kiện/gia đình/nơi chốn theo các tiêu chí cụ thể, tính toán mối quan hệ giữa các cá nhân và truy xuất thông tin chi tiết về đối tượng. Điều này làm cho trợ lý có khả năng trả lời các câu hỏi gia phả phức tạp một cách chính xác hơn.
+**Gọi công cụ (v3.6.0+)**: Trợ lý AI giờ đây có thể sử dụng các công cụ chuyên biệt để truy vấn dữ liệu gia phả của bạn trực tiếp. Những công cụ này cho phép trợ lý tìm kiếm cơ sở dữ liệu, lọc người/sự kiện/gia đình/nơi chốn theo các tiêu chí cụ thể, tính toán mối quan hệ giữa các cá nhân và lấy thông tin chi tiết về đối tượng. Điều này khiến trợ lý có khả năng trả lời các câu hỏi gia phả phức tạp một cách chính xác hơn.
 
 Để kích hoạt điểm cuối trò chuyện trong Gramps Web API, cần thực hiện ba bước:
 
@@ -19,13 +19,13 @@ Trợ lý AI sử dụng hai phương pháp bổ sung:
 2. Kích hoạt tìm kiếm ngữ nghĩa,
 3. Thiết lập nhà cung cấp LLM.
 
-Ba bước này được mô tả dưới đây lần lượt. Cuối cùng, một chủ sở hữu hoặc quản trị viên phải [cấu hình ai có thể truy cập tính năng trò chuyện](users.md#configuring-who-can-use-ai-chat) trong cài đặt Quản lý Người dùng.
+Ba bước này được mô tả dưới đây. Cuối cùng, một chủ sở hữu hoặc quản trị viên phải [cấu hình ai có thể truy cập tính năng trò chuyện](users.md#configuring-who-can-use-ai-chat) trong cài đặt Quản lý Người dùng.
 
 ## Cài đặt các phụ thuộc cần thiết
 
 Trò chuyện AI yêu cầu các thư viện Sentence Transformers và PyTorch được cài đặt.
 
-Các hình ảnh docker tiêu chuẩn cho Gramps Web đã có sẵn các thư viện này được cài đặt sẵn cho kiến trúc `amd64` (ví dụ: PC để bàn 64-bit) và `arm64` (ví dụ: Raspberry Pi 64-bit). Thật không may, trò chuyện AI không được hỗ trợ trên kiến trúc `armv7` (ví dụ: Raspberry Pi 32-bit) do thiếu hỗ trợ PyTorch.
+Các hình ảnh docker tiêu chuẩn cho Gramps Web đã có sẵn chúng được cài đặt trước cho các kiến trúc `amd64` (ví dụ: máy tính để bàn 64-bit) và `arm64` (ví dụ: Raspberry Pi 64-bit). Thật không may, trò chuyện AI không được hỗ trợ trên kiến trúc `armv7` (ví dụ: Raspberry Pi 32-bit) do thiếu hỗ trợ PyTorch.
 
 Khi cài đặt Gramps Web API qua `pip` (điều này không cần thiết khi sử dụng các hình ảnh Docker), các phụ thuộc cần thiết được cài đặt với
 
@@ -38,28 +38,95 @@ pip install gramps_webapi[ai]
 Nếu các phụ thuộc cần thiết đã được cài đặt, việc kích hoạt tìm kiếm ngữ nghĩa có thể đơn giản như việc thiết lập tùy chọn cấu hình `VECTOR_EMBEDDING_MODEL` (ví dụ: bằng cách thiết lập biến môi trường `GRAMPSWEB_VECTOR_EMBEDDING_MODEL`), xem [Cấu hình Máy chủ](configuration.md). Đây có thể là bất kỳ chuỗi nào của một mô hình được hỗ trợ bởi thư viện [Sentence Transformers](https://sbert.net/). Xem tài liệu của dự án này để biết chi tiết và các mô hình có sẵn.
 
 !!! warning
-    Lưu ý rằng các hình ảnh docker mặc định không bao gồm phiên bản PyTorch có hỗ trợ GPU. Nếu bạn có quyền truy cập vào GPU (điều này sẽ tăng tốc độ lập chỉ mục ngữ nghĩa đáng kể), vui lòng cài đặt phiên bản PyTorch có hỗ trợ GPU.
+    Lưu ý rằng các hình ảnh docker mặc định không bao gồm phiên bản PyTorch với hỗ trợ GPU. Nếu bạn có quyền truy cập vào GPU (sẽ tăng tốc độ lập chỉ mục ngữ nghĩa đáng kể), vui lòng cài đặt phiên bản PyTorch có hỗ trợ GPU.
 
-Có một số điều cần xem xét khi chọn mô hình.
+Có một số điều cần cân nhắc khi chọn mô hình.
 
-- Khi bạn thay đổi mô hình, bạn phải tự tay tái tạo chỉ mục tìm kiếm ngữ nghĩa cho cây của bạn (hoặc tất cả các cây trong một thiết lập đa cây), nếu không bạn sẽ gặp lỗi hoặc kết quả vô nghĩa. Gramps Web phát hiện khi mô hình nhúng được cấu hình không còn khớp với chỉ mục hiện có và hiển thị một thông báo liên tục cho các quản trị viên yêu cầu họ kích hoạt một lần tái lập chỉ mục đầy đủ từ [Cài đặt Quản trị](../administration/settings.md#semantic-search-index).
+- Khi bạn thay đổi mô hình, bạn phải tự tay tái tạo chỉ mục tìm kiếm ngữ nghĩa cho cây của bạn (hoặc tất cả các cây trong một cấu hình nhiều cây), nếu không bạn sẽ gặp phải lỗi hoặc kết quả vô nghĩa. Gramps Web phát hiện khi mô hình nhúng được cấu hình không còn khớp với chỉ mục hiện có và hiển thị thông báo liên tục cho các quản trị viên nhắc họ kích hoạt một lần tái lập chỉ mục hoàn toàn từ [Cài đặt Quản trị](../administration/settings.md#semantic-search-index).
 - Các mô hình là một sự đánh đổi giữa độ chính xác/tính tổng quát ở một bên và thời gian tính toán/kho lưu trữ ở bên kia. Nếu bạn không chạy Gramps Web API trên một hệ thống có quyền truy cập vào một GPU mạnh mẽ, các mô hình lớn hơn thường quá chậm trong thực tế.
-- Trừ khi toàn bộ cơ sở dữ liệu của bạn bằng tiếng Anh và tất cả người dùng của bạn chỉ được mong đợi đặt câu hỏi trò chuyện bằng tiếng Anh, bạn sẽ cần một mô hình nhúng đa ngôn ngữ, mà hiếm hơn so với các mô hình tiếng Anh thuần túy.
+- Trừ khi toàn bộ cơ sở dữ liệu của bạn bằng tiếng Anh và tất cả người dùng của bạn chỉ được mong đợi hỏi các câu hỏi trò chuyện bằng tiếng Anh, bạn sẽ cần một mô hình nhúng đa ngôn ngữ, mà thường hiếm hơn các mô hình tiếng Anh thuần túy.
 
 Nếu mô hình không có trong bộ nhớ cache cục bộ, nó sẽ được tải xuống khi Gramps Web API được khởi động lần đầu tiên với cấu hình mới. Mô hình `sentence-transformers/distiluse-base-multilingual-cased-v2` đã có sẵn cục bộ khi sử dụng các hình ảnh docker tiêu chuẩn. Mô hình này là một điểm khởi đầu tốt và hỗ trợ đầu vào đa ngôn ngữ.
 
-Vui lòng chia sẻ những hiểu biết về các mô hình khác nhau với cộng đồng!
+Hãy chia sẻ những hiểu biết về các mô hình khác nhau với cộng đồng!
 
 !!! info
-    Thư viện sentence transformers tiêu tốn một lượng lớn bộ nhớ, điều này có thể khiến các quy trình làm việc bị giết. Như một quy tắc chung, với tìm kiếm ngữ nghĩa được kích hoạt, mỗi quy trình Gunicorn tiêu tốn khoảng 200 MB bộ nhớ và mỗi quy trình celery khoảng 500 MB bộ nhớ ngay cả khi không hoạt động, và lên tới 1 GB khi tính toán nhúng. Xem [Giới hạn CPU và sử dụng bộ nhớ](cpu-limited.md) để biết các cài đặt giới hạn việc sử dụng bộ nhớ. Ngoài ra, nên cung cấp một phân vùng hoán đổi đủ lớn để ngăn ngừa lỗi OOM do các đỉnh sử dụng bộ nhớ tạm thời.
+    Thư viện sentence transformers tiêu tốn một lượng lớn bộ nhớ, điều này có thể khiến các quy trình làm việc bị giết. Như một quy tắc chung, với tìm kiếm ngữ nghĩa được kích hoạt, mỗi quy trình Gunicorn tiêu tốn khoảng 200 MB bộ nhớ và mỗi quy trình celery khoảng 500 MB bộ nhớ ngay cả khi không hoạt động, và lên tới 1 GB khi tính toán nhúng. Xem [Giới hạn CPU và sử dụng bộ nhớ](cpu-limited.md) để biết các cài đặt giới hạn sử dụng bộ nhớ. Ngoài ra, nên cung cấp một phân vùng hoán đổi đủ lớn để ngăn chặn lỗi OOM do các đỉnh sử dụng bộ nhớ tạm thời.
+
+## Sử dụng API nhúng từ xa
+
+Như một lựa chọn thay thế cho việc chạy một mô hình Sentence Transformers cục bộ, bạn có thể sử dụng một API nhúng tương thích với OpenAI từ xa cho tìm kiếm ngữ nghĩa. Điều này hữu ích nếu bạn muốn chuyển giao tính toán nhúng cho một dịch vụ riêng biệt (ví dụ: [Ollama](https://ollama.com/)), sử dụng nhà cung cấp nhúng đám mây (ví dụ: OpenAI), hoặc tránh cài đặt các phụ thuộc Sentence Transformers và PyTorch.
+
+API từ xa phải tương thích với [điểm cuối nhúng OpenAI](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
+
+Để sử dụng API nhúng từ xa, hãy thiết lập các tùy chọn cấu hình sau (xem [Cấu hình Máy chủ](configuration.md)):
+
+Key | Mô tả
+----|-------------
+`VECTOR_EMBEDDING_MODEL` | Tên mô hình để gửi đến nhà cung cấp từ xa
+`VECTOR_EMBEDDING_BASE_URL` | URL cơ sở của API từ xa
+`VECTOR_EMBEDDING_API_KEY` | Khóa API (chỉ cần nếu nhà cung cấp yêu cầu xác thực)
+
+### Sử dụng Ollama cho nhúng
+
+Khi triển khai Gramps Web với Docker Compose, bạn có thể thêm một dịch vụ Ollama và sử dụng nó cho cả nhúng và (tùy chọn) LLM:
+
+```yaml
+services:
+  grampsweb: &grampsweb
+    # ... cấu hình hiện có ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  grampsweb_celery: &grampsweb_celery
+    # ... cấu hình hiện có ...
+    environment:
+      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
+      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
+```
+
+Sau khi khởi động các dịch vụ, kéo mô hình nhúng vào Ollama:
+
+```bash
+docker compose exec ollama ollama pull nomic-embed-text
+```
+
+!!! info
+    Khi sử dụng Ollama cho nhúng, các thư viện Sentence Transformers và PyTorch không cần thiết, điều này giảm đáng kể việc sử dụng bộ nhớ của các quy trình Gramps Web API.
+
+### Sử dụng OpenAI cho nhúng
+
+Để sử dụng API nhúng OpenAI, hãy thiết lập URL cơ sở thành API OpenAI và cung cấp khóa API của bạn:
+
+```yaml
+environment:
+  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: text-embedding-3-small
+  GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: https://api.openai.com
+  GRAMPSWEB_VECTOR_EMBEDDING_API_KEY: sk-...
+```
+
+!!! warning
+    Thay đổi mô hình nhúng yêu cầu tái lập chỉ mục tất cả các bản ghi cho cây của bạn (hoặc tất cả các cây trong một cấu hình nhiều cây), vì các mô hình khác nhau tạo ra các vector với các kích thước khác nhau.
 
 ## Thiết lập nhà cung cấp LLM
 
-Giao tiếp với LLM sử dụng framework Pydantic AI, hỗ trợ các API tương thích với OpenAI. Điều này cho phép sử dụng một LLM được triển khai cục bộ qua Ollama (xem [Tương thích OpenAI của Ollama](https://ollama.com/blog/openai-compatibility)) hoặc các API được lưu trữ như OpenAI, Anthropic hoặc Hugging Face TGI (Text Generation Inference). LLM được cấu hình thông qua các tham số cấu hình `LLM_MODEL` và `LLM_BASE_URL`.
+Giao tiếp với LLM sử dụng khung AI Pydantic, hỗ trợ các API tương thích với OpenAI. Điều này cho phép sử dụng một LLM được triển khai cục bộ qua Ollama (xem [Tính tương thích OpenAI của Ollama](https://ollama.com/blog/openai-compatibility)) hoặc các API được lưu trữ như OpenAI, Anthropic hoặc Hugging Face TGI (Text Generation Inference). LLM được cấu hình qua các tham số cấu hình `LLM_MODEL` và `LLM_BASE_URL`.
 
 ### Sử dụng LLM được lưu trữ qua API OpenAI
 
-Khi sử dụng API OpenAI, `LLM_BASE_URL` có thể để trống, trong khi `LLM_MODEL` phải được thiết lập thành một trong các mô hình OpenAI, ví dụ: `gpt-4o-mini`. LLM sử dụng cả RAG và gọi công cụ để trả lời câu hỏi: nó chọn thông tin liên quan từ kết quả tìm kiếm ngữ nghĩa và có thể truy vấn trực tiếp cơ sở dữ liệu bằng cách sử dụng các công cụ chuyên biệt. Nó không yêu cầu kiến thức sâu về gia phả hoặc lịch sử. Do đó, bạn có thể thử xem một mô hình nhỏ/rẻ có đủ đáp ứng nhu cầu của bạn không.
+Khi sử dụng API OpenAI, `LLM_BASE_URL` có thể để trống, trong khi `LLM_MODEL` phải được thiết lập thành một trong các mô hình OpenAI, ví dụ: `gpt-4o-mini`. LLM sử dụng cả RAG và gọi công cụ để trả lời câu hỏi: nó chọn thông tin liên quan từ các kết quả tìm kiếm ngữ nghĩa và có thể truy vấn trực tiếp cơ sở dữ liệu bằng cách sử dụng các công cụ chuyên biệt. Nó không yêu cầu kiến thức sâu về gia phả hoặc lịch sử. Do đó, bạn có thể thử xem một mô hình nhỏ/rẻ có đủ đáp ứng nhu cầu của bạn không.
 
 Bạn cũng sẽ cần đăng ký một tài khoản, lấy một khóa API và lưu trữ nó trong biến môi trường `OPENAI_API_KEY`.
 
@@ -82,7 +149,7 @@ environment:
 
 ### Sử dụng LLM cục bộ qua Ollama
 
-[Ollama](https://ollama.com/) là một cách thuận tiện để chạy LLM cục bộ. Vui lòng tham khảo tài liệu của Ollama để biết chi tiết. Xin lưu ý rằng LLM yêu cầu tài nguyên tính toán đáng kể và tất cả các mô hình ngoại trừ các mô hình nhỏ nhất có thể sẽ quá chậm mà không có hỗ trợ GPU. Bạn có thể thử xem [`tinyllama`](https://ollama.com/library/tinyllama) có đáp ứng nhu cầu của bạn không. Nếu không, hãy thử một trong các mô hình lớn hơn. Vui lòng chia sẻ bất kỳ kinh nghiệm nào với cộng đồng!
+[Ollama](https://ollama.com/) là một cách tiện lợi để chạy LLM cục bộ. Vui lòng tham khảo tài liệu của Ollama để biết chi tiết. Xin lưu ý rằng LLM yêu cầu tài nguyên tính toán đáng kể và tất cả các mô hình lớn hơn sẽ có thể quá chậm nếu không có hỗ trợ GPU. Bạn có thể thử xem liệu [`tinyllama`](https://ollama.com/library/tinyllama) có đáp ứng nhu cầu của bạn không. Nếu không, hãy thử một trong các mô hình lớn hơn. Hãy chia sẻ bất kỳ kinh nghiệm nào với cộng đồng!
 
 Khi triển khai Gramps Web với Docker Compose, bạn có thể thêm một dịch vụ Ollama
 
@@ -100,12 +167,12 @@ volumes:
     ollama_data:
 ```
 
-và sau đó thiết lập tham số cấu hình `LLM_BASE_URL` thành `http://ollama:11434/v1`. Thiết lập `LLM_MODEL` thành một mô hình được Ollama hỗ trợ, và tải nó xuống trong container của bạn với `ollama pull <model>`. Cuối cùng, thiết lập `OPENAI_API_KEY` thành `ollama`.
+và sau đó thiết lập tham số cấu hình `LLM_BASE_URL` thành `http://ollama:11434/v1`. Thiết lập `LLM_MODEL` thành một mô hình được Ollama hỗ trợ, và kéo nó xuống trong container của bạn với `ollama pull <model>`. Cuối cùng, thiết lập `OPENAI_API_KEY` thành `ollama`.
 
 Để khắc phục sự cố với Ollama, bạn có thể kích hoạt ghi nhật ký gỡ lỗi bằng cách thiết lập biến môi trường `OLLAMA_DEBUG=1` trong môi trường dịch vụ Ollama.
 
 !!! info
-    Nếu bạn đang sử dụng Ollama cho trò chuyện AI Gramps Web, vui lòng hỗ trợ cộng đồng bằng cách hoàn thiện tài liệu này với bất kỳ chi tiết nào còn thiếu.
+    Nếu bạn đang sử dụng Ollama cho trò chuyện AI Gramps Web, hãy hỗ trợ cộng đồng bằng cách hoàn thiện tài liệu này với bất kỳ chi tiết nào còn thiếu.
 
 ### Sử dụng các nhà cung cấp khác
 

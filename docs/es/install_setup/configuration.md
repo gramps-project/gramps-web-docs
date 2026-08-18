@@ -1,42 +1,42 @@
 # Configuración del Servidor
 
-Usando la imagen predeterminada de Docker, toda la configuración necesaria se puede realizar desde el navegador. Sin embargo, dependiendo del despliegue, puede ser necesario personalizar la configuración del servidor.
+Usando la imagen de Docker por defecto, toda la configuración necesaria se puede realizar desde el navegador. Sin embargo, dependiendo del despliegue, puede ser necesario personalizar la configuración del servidor.
 
 Esta página enumera todos los métodos para cambiar la configuración y todas las opciones de configuración existentes.
 
 
 ## Archivo de configuración vs. variables de entorno
 
-Para la configuración, puedes usar un archivo de configuración o variables de entorno.
+Para los ajustes, puedes usar un archivo de configuración o variables de entorno.
 
-Cuando usas la [configuración basada en Docker Compose](deployment.md), puedes incluir un archivo de configuración agregando el siguiente elemento a la lista bajo la clave `volumes:` en el bloque `grampsweb:`:
+Cuando usas la [configuración basada en Docker Compose](deployment.md), puedes incluir un archivo de configuración agregando el siguiente elemento de lista bajo la clave `volumes:` en el bloque `grampsweb:`:
 
 ```yaml
-      - /ruta/al/config.cfg:/app/config/config.cfg
+      - /path/to/config.cfg:/app/config/config.cfg
 ```
-donde `/ruta/al/config.cfg` es la ruta al archivo de configuración en el sistema de archivos de tu servidor (el lado derecho se refiere a la ruta en el contenedor y no debe cambiarse).
+donde `/path/to/config.cfg` es la ruta al archivo de configuración en el sistema de archivos de tu servidor (el lado derecho se refiere a la ruta en el contenedor y no debe ser cambiado).
 
 Al usar variables de entorno,
 
-- prefija cada nombre de configuración con `GRAMPSWEB_` para obtener el nombre de la variable de entorno
-- Usa dobles guiones bajos para configuraciones de diccionario anidadas, por ejemplo, `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` establecerá el valor de la opción de configuración `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
+- prefija cada nombre de ajuste con `GRAMPSWEB_` para obtener el nombre de la variable de entorno
+- Usa dobles guiones bajos para los ajustes de diccionario anidados, por ejemplo, `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` establecerá el valor de la opción de configuración `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
 
 Ten en cuenta que las opciones de configuración establecidas a través del entorno tienen prioridad sobre las que están en el archivo de configuración. Si ambas están presentes, la variable de entorno "gana".
 
 !!! warning "Las variables de entorno sin prefijo están en desuso"
-    Por razones históricas, un puñado de configuraciones – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, y `STATIC_PATH` – aún pueden establecerse a través de una variable de entorno *sin* el prefijo `GRAMPSWEB_`. Esto está en desuso, genera una advertencia al iniciar y dejará de funcionar en una futura versión. Siempre usa la forma con prefijo, por ejemplo, `GRAMPSWEB_TREE` en lugar de `TREE`.
+    Por razones históricas, un puñado de ajustes – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, y `STATIC_PATH` – aún pueden ser establecidos a través de una variable de entorno *sin* el prefijo `GRAMPSWEB_`. Esto está en desuso, genera una advertencia al iniciar, y dejará de funcionar en una futura versión. Siempre usa la forma con prefijo, por ejemplo, `GRAMPSWEB_TREE` en lugar de `TREE`.
 
-    Ten en cuenta que esto solo concierne a las variables de entorno. En un archivo de configuración, los nombres de las configuraciones siempre se usan sin prefijo.
+    Ten en cuenta que esto solo concierne a las variables de entorno. En un archivo de configuración, los nombres de los ajustes siempre se utilizan sin prefijo.
 
-## Configuraciones de configuración existentes
+## Ajustes de configuración existentes
 Las siguientes opciones de configuración existen.
 
-### Configuraciones requeridas
+### Ajustes requeridos
 
 Clave | Descripción
 ----|-------------
-`TREE` | El nombre de la base de datos del árbol genealógico a usar. Muestra los árboles disponibles con `gramps -l`. Si no existe un árbol con este nombre, se creará uno nuevo vacío.
-`SECRET_KEY` | La clave secreta para flask. La clave no debe compartirse públicamente. Cambiarla invalidará todos los tokens de acceso.
+`TREE` | El nombre de la base de datos del árbol genealógico a utilizar. Muestra los árboles disponibles con `gramps -l`. Si no existe un árbol con este nombre, se creará uno nuevo vacío.
+`SECRET_KEY` | La clave secreta para Flask. La clave secreta no debe ser compartida públicamente. Cambiarla invalidará todos los tokens de acceso.
 `USER_DB_URI` | La URL de la base de datos de usuarios. Se permite cualquier URL compatible con SQLAlchemy.
 
 !!! info
@@ -46,54 +46,54 @@ Clave | Descripción
     python3 -c "import secrets;print(secrets.token_urlsafe(32))"
     ```
 
-### Configuraciones opcionales
+### Ajustes opcionales
 
 Clave | Descripción
 ----|-------------
 `MEDIA_BASE_DIR` | Ruta a usar como directorio base para archivos multimedia, sobrescribiendo el directorio base de medios establecido en Gramps. Al usar [S3](s3.md), debe tener la forma `s3://<bucket_name>`
-`TREE_ID` | El nombre del directorio de la base de datos del árbol genealógico a usar en modo de un solo árbol (cuando `TREE` no está configurado como `*`). Cuando se establece, el servidor identifica el árbol por su nombre de directorio en lugar de su nombre de visualización, lo que es más robusto ante cambios de nombre. Requerido si deseas renombrar el árbol a través de la API. El nombre del directorio se puede encontrar a través de `GET /api/trees/-` (el campo `id`).
+`TREE_ID` | El nombre del directorio de la base de datos del árbol genealógico a utilizar en modo de un solo árbol (cuando `TREE` no está establecido en `*`). Cuando se establece, el servidor identifica el árbol por su nombre de directorio en lugar de su nombre de visualización, lo que es más robusto ante cambios de nombre. Requerido si deseas renombrar el árbol a través de la API. El nombre del directorio se puede encontrar a través de `GET /api/trees/-` (el campo `id`).
 `SEARCH_INDEX_DB_URI` | URL de la base de datos para el índice de búsqueda. Solo se permiten `sqlite` o `postgresql` como backends. Por defecto es `sqlite:///indexdir/search_index.db`, creando un archivo SQLite en la carpeta `indexdir` relativa a la ruta donde se ejecuta el script.
-`SEARCH_INDEX_DIR` | **En desuso** (usa `SEARCH_INDEX_DB_URI` en su lugar). Directorio que contiene el índice de búsqueda. Si se establece mientras `SEARCH_INDEX_DB_URI` no está configurado, la URL del índice de búsqueda se deriva como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
-`STATIC_PATH` | Ruta para servir archivos estáticos (por ejemplo, un frontend web estático)
-`BASE_URL` | URL base donde se puede alcanzar la API (por ejemplo, `https://mygramps.mydomain.com/`). Esto es necesario, por ejemplo, para construir enlaces correctos de restablecimiento de contraseña.
-`CORS_ORIGINS` | Orígenes desde los cuales se permiten solicitudes CORS. Por defecto, todas están deshabilitadas. Usa `"*"` para permitir solicitudes desde cualquier dominio.
-`EMAIL_HOST` | Host del servidor SMTP (por ejemplo, para enviar correos electrónicos de restablecimiento de contraseña)
-`EMAIL_PORT` | Puerto del servidor SMTP. por defecto es 465
-`EMAIL_HOST_USER` | Nombre de usuario del servidor SMTP
-`EMAIL_HOST_PASSWORD` | Contraseña del servidor SMTP
+`SEARCH_INDEX_DIR` | **En desuso** (usa `SEARCH_INDEX_DB_URI` en su lugar). Directorio que contiene el índice de búsqueda. Si se establece mientras `SEARCH_INDEX_DB_URI` está sin establecer, la URL del índice de búsqueda se deriva como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
+`STATIC_PATH` | Ruta para servir archivos estáticos (por ejemplo, un frontend web estático).
+`BASE_URL` | URL base donde se puede alcanzar la API (por ejemplo, `https://mygramps.mydomain.com/`). Esto es necesario, por ejemplo, para construir enlaces correctos para restablecer contraseñas.
+`CORS_ORIGINS` | Orígenes desde donde se permiten solicitudes CORS. Por defecto, todas están deshabilitadas. Usa `"*"` para permitir solicitudes desde cualquier dominio.
+`EMAIL_HOST` | Host del servidor SMTP (por ejemplo, para enviar correos electrónicos de restablecimiento de contraseña).
+`EMAIL_PORT` | Puerto del servidor SMTP. Por defecto es 465.
+`EMAIL_HOST_USER` | Nombre de usuario del servidor SMTP.
+`EMAIL_HOST_PASSWORD` | Contraseña del servidor SMTP.
 `EMAIL_USE_TLS` | **En desuso** (usa `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` en su lugar). Booleano, si se debe usar TLS para enviar correos electrónicos. Por defecto es `True`. Al usar STARTTLS, establece esto en `False` y usa un puerto diferente de 25.
-`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto es `True` si `EMAIL_USE_TLS` no se establece explícitamente. Típicamente usado con el puerto 465.
-`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto es `False`. Típicamente usado con el puerto 587 o 25.
-`DEFAULT_FROM_EMAIL` | Dirección "De" para correos electrónicos automatizados
-`THUMBNAIL_CACHE_CONFIG` | Diccionario con configuraciones para la caché de miniaturas. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
-`REQUEST_CACHE_CONFIG` | Diccionario con configuraciones para la caché de solicitudes. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
-`PERSISTENT_CACHE_CONFIG` | Diccionario con configuraciones para la caché persistente, utilizada por ejemplo para telemetría. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
-`CELERY_CONFIG` | Configuraciones para la cola de tareas en segundo plano de Celery. Consulta [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para posibles configuraciones.
-`REPORT_DIR` | Directorio temporal donde se almacenará la salida de los informes de Gramps
-`EXPORT_DIR` | Directorio temporal donde se almacenará la salida de la exportación de la base de datos de Gramps
-`REGISTRATION_DISABLED` | Si `True`, se deshabilita el registro de nuevos usuarios (por defecto `False`)
-`DISABLE_TELEMETRY` | Si `True`, se deshabilita la telemetría de estadísticas (por defecto `False`). Consulta [telemetría](telemetry.md) para más detalles.
-`PILLOW_MAX_IMAGE_PIXELS` | Establece el parámetro PIL.Image.MAX_IMAGE_PIXELS, que indica el número de píxeles que puede contener la imagen procesada. Consulta [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) para más detalles.
-`MAX_THUMBNAIL_FILE_BYTES` | Establece un tamaño máximo de archivo para miniaturas. Por defecto es `50 * 1024 * 1024` (50 MB). Aumentarlo puede incrementar considerablemente el uso de memoria y puede llevar a fallos por falta de memoria o pérdida de datos si se descomprimen archivos grandes en memoria.
+`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto es `True` si `EMAIL_USE_TLS` no está establecido explícitamente. Típicamente se usa con el puerto 465.
+`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto es `False`. Típicamente se usa con el puerto 587 o 25.
+`DEFAULT_FROM_EMAIL` | Dirección "De" para correos electrónicos automatizados.
+`THUMBNAIL_CACHE_CONFIG` | Diccionario con ajustes para la caché de miniaturas. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles ajustes.
+`REQUEST_CACHE_CONFIG` | Diccionario con ajustes para la caché de solicitudes. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles ajustes.
+`PERSISTENT_CACHE_CONFIG` | Diccionario con ajustes para la caché persistente, utilizada por ejemplo para telemetría. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles ajustes.
+`CELERY_CONFIG` | Ajustes para la cola de tareas en segundo plano de Celery. Consulta [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para posibles ajustes.
+`REPORT_DIR` | Directorio temporal donde se almacenará la salida de la ejecución de informes de Gramps.
+`EXPORT_DIR` | Directorio temporal donde se almacenará la salida de la exportación de la base de datos de Gramps.
+`REGISTRATION_DISABLED` | Si `True`, deshabilita el registro de nuevos usuarios (por defecto `False`).
+`DISABLE_TELEMETRY` | Si `True`, deshabilita la telemetría de estadísticas (por defecto `False`). Consulta [telemetría](telemetry.md) para más detalles.
+`PILLOW_MAX_IMAGE_PIXELS` | Establece el parámetro PIL.Image.MAX_IMAGE_PIXELS, que indica el número de píxeles que la imagen procesada puede contener. Consulta [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) para más detalles.
+`MAX_THUMBNAIL_FILE_BYTES` | Establece un tamaño máximo de archivo duro para miniaturas. Por defecto es `50 * 1024 * 1024` (50 MB). Aumentarlo puede incrementar significativamente el uso de memoria y puede llevar a fallos por falta de memoria o pérdida de datos si se descomprimen archivos grandes en memoria.
 
 
 !!! info
-    Al usar variables de entorno para la configuración, las opciones booleanas como `EMAIL_USE_SSL` deben ser la cadena `true` o `false` (¡sensible a mayúsculas!).
+    Al usar variables de entorno para la configuración, las opciones booleanas como `EMAIL_USE_SSL` deben ser ya sea la cadena `true` o `false` (¡sensible a mayúsculas!).
 
 
-### Configuraciones solo para la base de datos backend de PostgreSQL
+### Ajustes solo para la base de datos backend de PostgreSQL
 
-Esto es requerido si has configurado tu base de datos de Gramps para trabajar con el [complemento de PostgreSQL](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
+Esto es requerido si has configurado tu base de datos Gramps para trabajar con el [complemento de PostgreSQL](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
 
 Clave | Descripción
 ----|-------------
-`POSTGRES_USER` | El nombre de usuario para la conexión a la base de datos
-`POSTGRES_PASSWORD` | La contraseña para el usuario de la base de datos
+`POSTGRES_USER` | El nombre de usuario para la conexión a la base de datos.
+`POSTGRES_PASSWORD` | La contraseña para el usuario de la base de datos.
 
 
-### Configuraciones relevantes para alojar múltiples árboles
+### Ajustes relevantes para alojar múltiples árboles
 
-Las siguientes configuraciones son relevantes al [alojar múltiples árboles](multi-tree.md).
+Los siguientes ajustes son relevantes al [alojar múltiples árboles](multi-tree.md).
 
 
 Clave | Descripción
@@ -104,59 +104,61 @@ Clave | Descripción
 `POSTGRES_PORT` | El puerto del servidor PostgreSQL utilizado para crear nuevos árboles cuando se usa una configuración de múltiples árboles con el backend SharedPostgreSQL.
 
 
-### Configuraciones para autenticación OIDC
+### Ajustes para autenticación OIDC
 
-Estas configuraciones son necesarias si deseas usar autenticación OpenID Connect (OIDC) con proveedores externos. Para instrucciones detalladas de configuración y ejemplos, consulta [Autenticación OIDC](oidc.md).
+Estos ajustes son necesarios si deseas usar autenticación OpenID Connect (OIDC) con proveedores externos. Para instrucciones de configuración detalladas y ejemplos, consulta [Autenticación OIDC](oidc.md).
 
 Clave | Descripción
 ----|-------------
 `OIDC_ENABLED` | Booleano, si se debe habilitar la autenticación OIDC. Por defecto es `False`.
-`OIDC_ISSUER` | URL del emisor del proveedor OIDC (para proveedores OIDC personalizados)
-`OIDC_CLIENT_ID` | ID de cliente OAuth (para proveedores OIDC personalizados)
-`OIDC_CLIENT_SECRET` | Secreto de cliente OAuth (para proveedores OIDC personalizados)
-`OIDC_NAME` | Nombre de visualización personalizado para el proveedor. Por defecto es "OIDC"
-`OIDC_SCOPES` | Alcances de OAuth. Por defecto es "openid email profile"
-`OIDC_USERNAME_CLAIM` | La reclamación a usar para el nombre de usuario. Por defecto es "preferred_username"
-`OIDC_OPENID_CONFIG_URL` | Opcional: URL al endpoint de configuración de OpenID Connect (si no se usa el estándar `/.well-known/openid-configuration`)
-`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe deshabilitar la autenticación local de nombre de usuario/contraseña. Por defecto es `False`
-`OIDC_AUTO_REDIRECT` | Booleano, si se debe redirigir automáticamente a OIDC cuando solo se configura un proveedor. Por defecto es `False`
+`OIDC_ISSUER` | URL del emisor del proveedor OIDC (para proveedores OIDC personalizados).
+`OIDC_CLIENT_ID` | ID de cliente OAuth (para proveedores OIDC personalizados).
+`OIDC_CLIENT_SECRET` | Secreto de cliente OAuth (para proveedores OIDC personalizados).
+`OIDC_NAME` | Nombre de visualización personalizado para el proveedor. Por defecto es "OIDC".
+`OIDC_SCOPES` | Alcances de OAuth. Por defecto es "openid email profile".
+`OIDC_USERNAME_CLAIM` | La reclamación a usar para el nombre de usuario. Por defecto es "preferred_username".
+`OIDC_OPENID_CONFIG_URL` | Opcional: URL al endpoint de configuración de OpenID Connect (si no se usa el estándar `/.well-known/openid-configuration`).
+`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe deshabilitar la autenticación local de nombre de usuario/contraseña. Por defecto es `False`.
+`OIDC_AUTO_REDIRECT` | Booleano, si se debe redirigir automáticamente a OIDC cuando solo se configura un proveedor. Por defecto es `False`.
 
 #### Proveedores OIDC integrados
 
-Para proveedores integrados (Google, Microsoft), usa estas configuraciones:
+Para proveedores integrados (Google, Microsoft), usa estos ajustes:
 
 Clave | Descripción
 ----|-------------
-`OIDC_GOOGLE_CLIENT_ID` | ID de cliente para Google OAuth
-`OIDC_GOOGLE_CLIENT_SECRET` | Secreto de cliente para Google OAuth
-`OIDC_MICROSOFT_CLIENT_ID` | ID de cliente para Microsoft OAuth
-`OIDC_MICROSOFT_CLIENT_SECRET` | Secreto de cliente para Microsoft OAuth
+`OIDC_GOOGLE_CLIENT_ID` | ID de cliente para Google OAuth.
+`OIDC_GOOGLE_CLIENT_SECRET` | Secreto de cliente para Google OAuth.
+`OIDC_MICROSOFT_CLIENT_ID` | ID de cliente para Microsoft OAuth.
+`OIDC_MICROSOFT_CLIENT_SECRET` | Secreto de cliente para Microsoft OAuth.
 
 #### Mapeo de Roles OIDC
 
-Estas configuraciones te permiten mapear grupos/roles OIDC de tu proveedor de identidad a roles de usuario de Gramps Web:
+Estos ajustes te permiten mapear grupos/roles OIDC de tu proveedor de identidad a roles de usuario de Gramps Web:
 
 Clave | Descripción
 ----|-------------
-`OIDC_ROLE_CLAIM` | El nombre de la reclamación en el token OIDC que contiene los grupos/roles del usuario. Por defecto es "groups"
-`OIDC_GROUP_ADMIN` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Admin" de Gramps
-`OIDC_GROUP_OWNER` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Owner" de Gramps
-`OIDC_GROUP_EDITOR` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Editor" de Gramps
-`OIDC_GROUP_CONTRIBUTOR` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Contributor" de Gramps
-`OIDC_GROUP_MEMBER` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Member" de Gramps
-`OIDC_GROUP_GUEST` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Guest" de Gramps
+`OIDC_ROLE_CLAIM` | El nombre de la reclamación en el token OIDC que contiene los grupos/roles del usuario. Por defecto es "groups".
+`OIDC_GROUP_ADMIN` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Admin" de Gramps.
+`OIDC_GROUP_OWNER` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Owner" de Gramps.
+`OIDC_GROUP_EDITOR` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Editor" de Gramps.
+`OIDC_GROUP_CONTRIBUTOR` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Contributor" de Gramps.
+`OIDC_GROUP_MEMBER` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Member" de Gramps.
+`OIDC_GROUP_GUEST` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Guest" de Gramps.
 
-### Configuraciones solo para características de IA
+### Ajustes solo para características de IA
 
-Estas configuraciones son necesarias si deseas usar características impulsadas por IA como chat o búsqueda semántica.
+Estos ajustes son necesarios si deseas usar características impulsadas por IA como chat o búsqueda semántica.
 
 Clave | Descripción
 ----|-------------
 `LLM_BASE_URL` | URL base para la API de chat compatible con OpenAI. Por defecto es `None`, que utiliza la API de OpenAI.
-`LLM_MODEL` | El modelo a usar para la API de chat compatible con OpenAI. Si no se establece (el valor por defecto), el chat está deshabilitado. A partir de v3.6.0, el asistente de IA utiliza Pydantic AI con capacidades de llamada a herramientas.
-`VECTOR_EMBEDDING_MODEL` | El modelo de [Sentence Transformers](https://sbert.net/) a usar para incrustaciones de vectores de búsqueda semántica. Si no se establece (el valor por defecto), la búsqueda semántica y el chat están deshabilitados.
+`LLM_MODEL` | El modelo a usar para la API de chat compatible con OpenAI. Si no se establece (el valor por defecto), el chat está deshabilitado. A partir de la v3.6.0, el asistente de IA utiliza Pydantic AI con capacidades de llamada a herramientas.
+`VECTOR_EMBEDDING_MODEL` | El modelo a usar para las incrustaciones vectoriales de búsqueda semántica. Al usar un modelo local, este debe ser un nombre de modelo de [Sentence Transformers](https://sbert.net/). Al usar una API remota (consulta `VECTOR_EMBEDDING_BASE_URL`), este es el nombre del modelo pasado al proveedor remoto. Si no se establece (el valor por defecto), la búsqueda semántica y el chat están deshabilitados.
+`VECTOR_EMBEDDING_BASE_URL` | URL base para una API de incrustación compatible con OpenAI remota (por ejemplo, Ollama, OpenAI, LiteLLM). Si no se establece (el valor por defecto), se utiliza un modelo local de Sentence Transformers. Consulta [Usando una API de incrustación remota](chat.md#using-a-remote-embedding-api) para más detalles.
+`VECTOR_EMBEDDING_API_KEY` | Clave API para proveedores de incrustación remota autenticados. Solo es necesaria cuando `VECTOR_EMBEDDING_BASE_URL` está establecido y el proveedor requiere autenticación.
 `LLM_MAX_CONTEXT_LENGTH` | Límite de caracteres para el contexto del árbol genealógico proporcionado al LLM. Por defecto es 50000.
-`LLM_SYSTEM_PROMPT` | Aviso del sistema personalizado para el asistente de chat LLM (v3.6.0+). Si no se establece, utiliza el aviso optimizado para genealogía por defecto.
+`LLM_SYSTEM_PROMPT` | Prompt de sistema personalizado para el asistente de chat LLM (v3.6.0+). Si no se establece, utiliza el prompt optimizado para genealogía por defecto.
 
 
 ## Ejemplo de archivo de configuración
@@ -164,12 +166,12 @@ Clave | Descripción
 Un archivo de configuración mínimo para producción podría verse así:
 ```python
 TREE="Mi Árbol Genealógico"
-BASE_URL="https://mitree.ejemplo.com"
+BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # tu clave secreta
-USER_DB_URI="sqlite:////ruta/a/usuarios.sqlite"
-EMAIL_HOST="mail.ejemplo.com"
+USER_DB_URI="sqlite:////path/to/users.sqlite"
+EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
 EMAIL_USE_SSL=True  # Usar SSL implícito para el puerto 465
-EMAIL_HOST_USER="gramps@ejemplo.com"
+EMAIL_HOST_USER="gramps@example.com"
 EMAIL_HOST_PASSWORD="..." # tu contraseña SMTP
-DEFAULT_FROM_EMAIL="gramps@ejemplo.com"
+DEFAULT_FROM_EMAIL="gramps@example.com"
