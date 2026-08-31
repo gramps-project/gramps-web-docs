@@ -9,11 +9,11 @@ hide:
 
 ![Kuvan otsikko](screenshots/sync.png){ align=left width="300"}
 
-## Täysi integraatio Gramps Desktopin kanssa
+## Täydellinen integraatio Gramps Desktopin kanssa
 
-Gramps Web käyttää samaa **Mallia / Tietokantaa** kuin [Gramps Desktop](https://gramps-project.org/) sukututkimustietojen tallentamiseen. Voit selata kaikkia samoja [Tietue Tyyppisiä](https://gramps-project.org/wiki/index.php/Gramps_Data_Model), joita käytät Gramps Desktopissa: ***ihmiset, perheet, tapahtumat, paikat, arkistot, lähteet, viittaukset, mediaobjektit ja muistiinpanot.***
+Gramps Web käyttää samaa **Malli / Tietokanta** -rakennetta, jota [Gramps Desktop](https://gramps-project.org/) käyttää sukututkimustietojen tallentamiseen. Voit selata kaikkia samoja [Tietotyyppien](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) tietoja, joita käytät Gramps Desktopissa: ***ihmiset, perheet, tapahtumat, paikat, arkistot, lähteet, viittaukset, mediaobjektit ja muistiinpanot.***
 
-Käyttämällä [Gramps Web Sync -lisäosaa](../administration/sync.md) Gramps Desktopille, tiedot voidaan synkronoida kaksisuuntaisesti Gramps Webin ja Gramps Desktopin välillä! Mene eteenpäin ja muokkaa tietojasi Gramps Webissä tai Gramps Desktop -sovelluksessa, jota tunnet ja rakastat – ne toimivat yhdessä saumattomasti!
+Käyttämällä [Gramps Web Sync -lisäosaa](../administration/sync.md) Gramps Desktopille, tietoja voidaan synkronoida kaksisuuntaisesti Gramps Webin ja Gramps Desktopin välillä! Voit muokata tietojasi Gramps Webissä tai Gramps Desktop -sovelluksessa, jota tunnet ja rakastat – ne toimivat yhdessä saumattomasti!
 
 <div style="clear:both;"></div>
 
@@ -21,11 +21,11 @@ Käyttämällä [Gramps Web Sync -lisäosaa](../administration/sync.md) Gramps D
 
 ![Kuvan otsikko](screenshots/fan.png){ align=right width="400"}
 
-## Interaktiiviset sukupuu-kaaviot
+## Interaktiiviset sukupuupädiagrammit
 
-Selaa sukupuusi esi-isäpuuna, jälkeläispuuna, tiimalasikaaviona, sukulaisuuskäyränä tai fanikaaviona, korkealaatuisilla interaktiivisilla grafiikoilla ja säädettävällä sukupolvien määrällä.
+Selaa sukupuuta esi-isäpuuna, jälkeläispuuna, tiimalasikaaviona, sukulaiskaaviona tai fani-diagrammina, korkealaatuisilla interaktiivisilla grafiikoilla ja konfiguroitavalla sukupolvien määrällä.
 
-Vie hiiri minkä tahansa henkilön päälle nähdäksesi esikatselukortin heidän keskeisistä tiedoistaan, ja hyppää suoraan kaaviosta täydelle yksityiskohtasivulle.
+Vie hiiri minkä tahansa henkilön päälle nähdäksesi esikatselukortin heidän keskeisistä tiedoistaan ja siirry suoraan kaaviosta täydelle yksityiskohtasivulle.
 
 <div style="clear:both;"></div>
 
@@ -35,7 +35,7 @@ Vie hiiri minkä tahansa henkilön päälle nähdäksesi esikatselukortin heidä
 
 ## Rakenna puusi suoraan kaaviossa
 
-Vaihda puunäkymä muokkaustilaan ja kasvata sukupuusi ilman, että poistut kaaviosta. Jokaisessa henkilökortissa on **+** -painike isän, äidin, lapsen tai puolison lisäämiseksi – joko linkittämällä joku, joka on jo tietokannassasi tai luomalla täysin uusi henkilö paikan päällä. Jokainen muutos tallennetaan heti.
+Vaihda puunäkymä muokkaustilaan ja kasvata sukupuusi ilman, että poistut kaaviosta. Jokaisessa henkilökortissa on **+** -painike isän, äidin, lapsen tai puolison lisäämiseksi – joko linkittämällä joku, joka on jo tietokannassasi, tai luomalla täysin uusi henkilö paikan päällä. Jokainen muutos tallennetaan heti.
 
 Katso [Sukupuun muokkaaminen](../user-guide/tree-edit.md).
 
@@ -47,7 +47,7 @@ Katso [Sukupuun muokkaaminen](../user-guide/tree-edit.md).
 
 ## Kronologinen aikajana
 
-Näe jokainen tapahtuma sukupuussasi esitettynä vaakasuoralla, zoomattavalla aikajanalla. Selaa ja zoomaa vuosisatojen läpi, sitten suodata yhteen henkilöön – tai kaikkiin heidän esi-isihinsä tai jälkeläisiinsä – tai kaikkeen, mitä tapahtui yhdessä paikassa.
+Näe jokainen tapahtuma sukupuussasi esitettynä vaakasuoralla, zoomattavalla aikajanalla. Selaa ja zoomaa vuosisatojen läpi, suodata sitten yhteen henkilöön – tai kaikkiin heidän esi-isihinsä tai jälkeläisiinsä – tai kaikkeen, mitä tapahtui yhdessä paikassa.
 
 Katso [Aikajana](../user-guide/timeline.md).
 
@@ -71,7 +71,7 @@ Näytä kaikki paikat puussasi interaktiivisella, haettavalla kartalla. Etsi uus
 
 Muunna historiallinen kartta, joka on tallennettu mediaobjektina Grampsissa, mukautetuksi karttateemaksi.
 
-Lisäksi [OpenHistoricalMap](https://www.openhistoricalmap.org/) -projektin luomat historialliset vektorikartat ovat täydellinen lisä sukututkimuskartoitukseen. Käytä aikajohdinta selataksesi sukusi historian paikkojen kehitystä ja näyttäksesi paikat, joissa esi-isät asuivat tai tapahtumat tapahtuivat.
+Lisäksi [OpenHistoricalMap](https://www.openhistoricalmap.org/) -projektin luomat historialliset vektorikartat ovat täydellinen lisä sukututkimuskartoitukseen. Käytä aikaliukusäädintä selataksesi sukusi historian paikkojen kehitystä ja näyttääksesi paikat, joissa esi-isät asuivat tai tapahtumat tapahtuivat.
 
 <div style="clear:both;"></div>
 
@@ -83,7 +83,7 @@ Lisäksi [OpenHistoricalMap](https://www.openhistoricalmap.org/) -projektin luom
 
 Koko tekstin hakukone kattaa kaikki Gramps-objekti tyypit, mukaan lukien tekstimuistiinpanojen sisällön, ja tukee jokerimerkkejä ja loogisia operaattoreita.
 
-Jos palvelimellasi on se käytössä, **semanttinen haku** vastaa luonnolliskielisiin kysymyksiin, kuten "maajussi Baijerissa 1800-luvulla", merkityksen mukaan eikä tarkkojen sanojen mukaan. Tarkkoja kyselyitä varten objektin luettelo näkymät tarjoavat edistyneen suodatin tilan [Gramps Query Language](../user-guide/gql.md) -kielellä, nopeiden suodattimien lisäksi tekstin, tunnisteen ja yksityisyyden mukaan.
+Jos palvelimellasi on se käytössä, **semanttinen haku** vastaa luonnolliskielisiin kyselyihin, kuten "viljelijä Baijerissa 1800-luvulla", merkityksen mukaan eikä tarkkojen sanojen mukaan. Tarkkoja kyselyjä varten objektin listanäkymät tarjoavat edistyneen suodatinmoodin, joka perustuu [Grampsin kyselykieleen](../user-guide/gql.md), sekä nopeita suodattimia tekstin, tunnisteen ja yksityisyyden mukaan.
 
 Minkä tahansa henkilön sivulta, [Ulkoiset haut](../user-guide/external-search.md) avaa esitäytetyn haun FamilySearchissa, Ancestryssä, CompGenissä ja muilla sivustoilla – ja voit lisätä omasi.
 
@@ -97,7 +97,7 @@ Minkä tahansa henkilön sivulta, [Ulkoiset haut](../user-guide/external-search.
 
 AI:n voimin Gramps Web mahdollistaa keskustelun sukupuusi kanssa – omalla äidinkielelläsi!
 
-Avustaja ei vain hae: se kysyy suoraan tietokannastasi työkalujen avulla, suodattaen ihmisiä, tapahtumia, perheitä ja paikkoja sekä laskettaessa suhteita yksilöiden välillä. Voit seurata, mitä työkaluja se käyttää vastauksen rakentamisessa, ja pidemmät kysymykset toimivat taustatehtävinä, jotta voit navigoida muualle ja palata takaisin.
+Avustaja ei vain hae: se kysyy suoraan tietokannastasi työkalusarjalla, suodattaen ihmisiä, tapahtumia, perheitä ja paikkoja sekä laskee suhteita yksilöiden välillä. Voit seurata, mitä työkaluja se käyttää vastauksen rakentamisessa, ja pidemmät kysymykset suoritetaan taustatehtävinä, jotta voit navigoida muualle ja palata takaisin.
 
 <div style="clear:both;"></div>
 
@@ -107,9 +107,9 @@ Avustaja ei vain hae: se kysyy suoraan tietokannastasi työkalujen avulla, suoda
 
 ## DNA-ottelut, kromosomiselain & Y-DNA
 
-Jos sinulla on DNA-ottelutietoja yhdeltä DNA-sukututkimuspalveluntarjoajalta, lataa se ja tallenna se tulevaisuuden varalle ja tarkastele otteluitasi interaktiivisessa kromosomiselain.
+Jos sinulla on DNA-ottelutietoja yhdeltä DNA-sukututkimuspalveluntarjoajalta, lataa ne ja tallenna ne tulevaisuuden varalle ja tarkastele ottelujasi interaktiivisessa kromosomiselain.
 
-Raaka Y-kromosomi SNP -dataa voidaan käyttää henkilön todennäköisimmän [Y-DNA haplogruppeja](../user-guide/y-dna.md) määrittämiseen ja näyttää heidän isälinjansa esi-isät ihmisen Y-kromosomipuussa aikaraja-arvioiden kanssa. Analyysi tapahtuu täysin omalla palvelimellasi – mitään tietoja ei lähetetä kolmansille osapuolille.
+Raaka Y-kromosomi SNP -dataa voidaan käyttää henkilön todennäköisimmän [Y-DNA haplogrupi](../user-guide/y-dna.md) määrittämiseen ja heidän patrilineaaristen esi-isiensä näyttämiseen ihmisen Y-kromosomipuussa aikarajoituksilla. Analyysi tapahtuu täysin omalla palvelimellasi – mitään tietoja ei lähetetä kolmannelle osapuolelle.
 
 <div style="clear:both;"></div>
 
@@ -117,7 +117,7 @@ Raaka Y-kromosomi SNP -dataa voidaan käyttää henkilön todennäköisimmän [Y
 
 ![Kuvan otsikko](screenshots/tag.png){ align=right width="400"}
 
-## Merkitse ihmiset valokuvissa automaattisella kasvojentunnistuksella
+## Merkitse ihmisiä valokuvissa automaattisella kasvojentunnistuksella
 
 Yhteistyö sukulaistesi kanssa esi-isien tunnistamiseksi vanhoissa perhevalokuvissa. Kiitos automaattisen kasvojentunnistuksen, ihmisten merkitseminen on vain kahden klikkauksen päässä.
 
@@ -127,9 +127,9 @@ Yhteistyö sukulaistesi kanssa esi-isien tunnistamiseksi vanhoissa perhevalokuvi
 
 ![Kuvan otsikko](screenshots/revisions.png){ align=left width="400"}
 
-## Täysi muutoshistoria – kumoa
+## Täydellinen muutoshistoria – kumoa
 
-Jokainen muokkaus sukupuussasi tallennetaan. Selaa koko historiaa ryhmiteltynä tapahtumittain, syvenny mihin tahansa yksittäiseen muutokseen nähdäksesi tarkalleen, mitkä kentät on lisätty, poistettu tai muutettu, ja kumoa tapahtuma, jos se osoittautuu virheeksi.
+Jokainen muokkaus sukupuussasi tallennetaan. Selaa täydellistä historiaa ryhmiteltynä tapahtumittain, syvenny mihin tahansa yksittäiseen muutokseen nähdäksesi tarkalleen, mitkä kentät on lisätty, poistettu tai muutettu, ja kumoa tapahtuma, jos se osoittautuu virheeksi.
 
 Katso [Muutoshistoria](../user-guide/revisions.md).
 
@@ -141,9 +141,9 @@ Katso [Muutoshistoria](../user-guide/revisions.md).
 
 ## Yksityisyystasot & käyttäjäoikeudet
 
-Monet haluavat pitää joitakin tietoja yksityisinä, ja kunnioitamme sitä! Voit merkitä tietueet yksityisiksi ja hallita, mitkä käyttäjät saavat nähdä yksityiset tietueet. Yksityiset tietueet suodatetaan tietokannan tasolla maksimaalisen turvallisuuden takaamiseksi. Lisäksi voit hallita, mitä käyttäjät voivat lisätä ja muokata.
+Monet ihmiset haluavat pitää jotkut tiedot yksityisinä, ja kunnioitamme sitä! Voit merkitä tietueet yksityisiksi ja hallita, mitkä käyttäjät saavat nähdä yksityiset tietueet. Yksityiset tietueet suodatetaan tietokannan tasolla maksimaalisen turvallisuuden takaamiseksi. Lisäksi voit hallita, mitä käyttäjät voivat lisätä ja muokata.
 
-Käyttäjät voivat kirjautua sisään salasanalla tai ulkoisen identiteettipalveluntarjoajan kautta käyttäen [OpenID Connect](../install_setup/oidc.md) – Google ja Microsoft valmiina, sekä mukautetut tarjoajat, kuten Keycloak, Authentik ja Authelia.
+Käyttäjät voivat kirjautua sisään salasanalla tai ulkoisen identiteettipalveluntarjoajan kautta käyttäen [OpenID Connect](../install_setup/oidc.md) – Google ja Microsoft valmiina, sekä mukautetut palveluntarjoajat, kuten Keycloak, Authentik ja Authelia.
 
 <div style="clear:both;"></div>
 
@@ -153,7 +153,7 @@ Käyttäjät voivat kirjautua sisään salasanalla tai ulkoisen identiteettipalv
 
 ## Sukututkimusblogi mukana
 
-Tiivistä tutkimuksesi blogitarinoiden muodossa kuvien kanssa ja jaa niitä sukulaistesi kanssa. Omistettu editori tekee uuden postauksen kirjoittamisesta suoraviivaista. Kaikki tiedot tallennetaan Gramps-tietokantaan.
+Tiivistä tutkimuksesi blogitarinoiden muodossa kuvien kanssa ja jaa ne sukulaistesi kanssa. Omistettu editori tekee uuden postauksen kirjoittamisesta yksinkertaista. Kaikki tiedot tallennetaan Gramps-tietokantaan.
 
 <div style="clear:both;"></div>
 
@@ -163,9 +163,9 @@ Tiivistä tutkimuksesi blogitarinoiden muodossa kuvien kanssa ja jaa niitä suku
 
 ## Integroitu tehtävienhallintasovellus
 
-Gramps Web sisältää integroidun tehtävienhallintasovelluksen sukututkimustesi järjestämiseen ja suunnitteluun. Anna jokaiselle tehtävälle tila, prioriteetti ja tunnisteet, dokumentoi edistymisesi rikkaassa tekstikuvauksessa ja liitä mukaan keräämäsi media.
+Gramps Webissä on integroitu tehtävienhallintasovellus sukututkimuksesi järjestämiseen ja suunnitteluun. Anna jokaiselle tehtävälle tila, prioriteetti ja tunnisteet, dokumentoi edistymisesi rikkaassa tekstikuvauksessa ja liitä mukaan keräämäsi media.
 
-Tehtävät tallennetaan lähteinä Gramps-tietokantaan, joten ne ovat osa sukututkimustietojasi ja niitä voidaan käyttää ja muokata myös Gramps Desktopissa.
+Tehtävät tallennetaan lähteiksi Gramps-tietokannassa, joten ne ovat osa sukututkimustietojasi ja niitä voidaan käyttää ja muokata myös Gramps Desktopissa.
 
 <div style="clear:both;"></div>
 
@@ -173,9 +173,9 @@ Tehtävät tallennetaan lähteinä Gramps-tietokantaan, joten ne ovat osa sukutu
 
 ![Kuvan otsikko](screenshots/report.png){ align=left width="400"}
 
-## Luo tulostettavia raportteja
+## Generoi tulostettavat raportit
 
-Koska se on rakennettu suoraan Gramps Desktopia ohjaavan ytimen päälle, voit luoda lähes kaikki [raportit](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports), joita työpöytäsovellus tukee suoraan selaimesta, mukaan lukien sukulaiskaaviot tai kirjaraportit PDF-muodossa.
+Koska se on rakennettu suoraan Gramps Desktopia tukevan ytimen päälle, voit luoda lähes kaikki [raportit](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports), joita työpöytäsovellus tukee suoraan selaimesta, mukaan lukien sukulaiskaaviot tai kirjaraportit PDF-muodossa.
 
 <div style="clear:both;"></div>
 
@@ -185,9 +185,9 @@ Koska se on rakennettu suoraan Gramps Desktopia ohjaavan ytimen päälle, voit l
 
 ## Ei lukitusta – tietojen tuonti ja vienti
 
-Sen lisäksi, että voit tuoda tietoja eri muodoissa, mukaan lukien Gramps XML ja GEDCOM, Gramps Web helpottaa käyttäjien ladata kaikki tietonsa (sukutietoja, mediafilejä, käyttäjätilit) milloin tahansa, varmuuskopiointitarkoituksiin tai siirtyä toiseen palvelimeen. Tietosi ovat vain sinun!
+Sen lisäksi, että voit tuoda tietoja eri muodoissa, mukaan lukien Gramps XML ja GEDCOM, Gramps Web tekee käyttäjille helpoksi ladata kaikki tietonsa (sukutietoja, mediafilejä, käyttäjätilit) milloin tahansa, varmuuskopiointitarkoituksiin tai siirtyä toiseen palvelimeen. Tietosi ovat vain sinun!
 
-Tuonti voidaan esikatsella kuivaharjoituksena ennen kuin mitään kirjoitetaan, ja täydellinen varmuuskopio voidaan palauttaa takaisin puuhun.
+Tuonnit voidaan esikatsella kuivaharjoituksena ennen kuin mitään kirjoitetaan, ja täydellinen varmuuskopio voidaan palauttaa takaisin puuhun.
 
 <div style="clear:both;"></div>
 
@@ -197,7 +197,7 @@ Tuonti voidaan esikatsella kuivaharjoituksena ennen kuin mitään kirjoitetaan, 
 
 ## Toimii kaikilla laitteilla
 
-Pääsy Gramps Webiin mistä tahansa verkkoyhteydellä varustetusta laitteesta. Voit ladata valokuvia, luoda tai muokata tietueita, näyttää sukupuusi muille tai etsiä niitä perheenjäsenten nimiä, joita et muista seuraavassa perhekokouksessasi!
+Pääset Gramps Webiin mistä tahansa verkkoyhteyden omaavasta laitteesta. Voit ladata valokuvia, luoda tai muokata tietueita, näyttää sukupuusi muille tai etsiä niitä perheenjäsenten nimiä, joita et muista seuraavassa perhekokouksessasi!
 
 Gramps Web on edistyksellinen verkkosovellus: asenna se aloitusnäyttöösi tai työpöydällesi, ja se käyttäytyy kuin natiivisovellus. Työpöydällä [näppäinoikotiet](../user-guide/shortcuts.md) vievät sinut minne tahansa muutamalla näppäinpainalluksella – paina `?` nähdäksesi kaikki.
 
@@ -207,9 +207,9 @@ Gramps Web on edistyksellinen verkkosovellus: asenna se aloitusnäyttöösi tai 
 
 ![Kuvan otsikko](screenshots/lang.png){ align=right width="300"}
 
-## Täysin kansainvälistetty
+## Täysin kansainvälinen
 
-Vaihda käyttöliittymän kieli yli 50 kielen välillä, jotka on käännetty Gramps-yhteisön toimesta.
+Vaihda käyttöliittymän kieli yli 50 kielen välillä, jotka Gramps-yhteisö on kääntänyt.
 
 <div style="clear:both;"></div>
 
@@ -217,20 +217,19 @@ Vaihda käyttöliittymän kieli yli 50 kielen välillä, jotka on käännetty Gr
 
 ## Ja lisää
 
-- **Ilmoitukset ja taustatehtävät** – tuonnit, viennit, raportit ja indeksin uudelleenrakennukset toimivat taustalla, ja edistymistä ja virheitä kerätään yhteen paikkaan
-- **Merkkipäivät kalenterissasi** – tilaa perheesi syntymäpäivät ja merkkipäivät mistä tahansa kalenterisovelluksesta
-- **Tunnisteet, kirjanmerkit ja historia** – järjestä objekteja värikoodatuilla tunnisteilla ja palaa siihen, mitä olit tekemässä
-- **Massamuokkaus** – valitse useita objekteja luettelo näkymistä poistaaksesi ne kerralla tai yhdistääksesi päällekkäiset objektit
-- **Mukautettavat luettelonäkymät** – valitse, mitkä sarakkeet näytetään, ja suodata tekstin, tunnisteen tai yksityisyyden mukaan
-- **Tekstintunnistus (OCR)** – pura tekstiä skannatuista asiakirjoista media-galleriassasi
+- **Ilmoitukset ja taustatehtävät** – tuonnit, viennit, raportit ja indeksin uudelleenrakennukset suoritetaan taustalla, ja edistymistä ja virheitä kerätään yhteen paikkaan
+- **Tunnisteet, kirjanmerkit ja historia** – järjestä objekteja väriin perustuvilla tunnisteilla ja palaa siihen, mitä olit tekemässä
+- **Massamuokkaus** – valitse useita objekteja listanäkymistä poistaaksesi ne kerralla tai yhdistääksesi duplikaattiobjekteja
+- **Mukautettavat listanäkymät** – valitse, mitkä sarakkeet näytetään, ja suodata tekstin, tunnisteen tai yksityisyyden mukaan
+- **Tekstin tunnistus (OCR)** – poimi tekstiä skannatuista asiakirjoista media-galleriassasi
 - **Tietojen tarkistus** – tarkista puusi epäuskottavien päivämäärien ja muiden tietoproblemien varalta
-- **Tee siitä oma** – anna sivustollesi oma nimi, teeman värit ja etusivun teksti ja kuva
+- **Tee siitä oma** – anna sivustollesi oma nimi, teeman värit sekä etusivun teksti ja kuva
 
 <p>&nbsp;</p>
 
 ## Demo
 
-Kirjautuaksesi Demoon, käytä mitä tahansa seuraavista ***KÄYTTÄJÄ / SALASANA*** kirjautumistiedoista. Jokainen edustaa käyttäjätyyppiä, johon Gramps Web -käyttäjä voi olla määritetty.
+Kirjautuaksesi demoon, käytä mitä tahansa seuraavista ***KÄYTTÄJÄ / SALASANA*** kirjautumistiedoista. Jokainen edustaa käyttäjätyyppiä, johon Gramps Web -käyttäjä voi olla liitetty.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -238,7 +237,7 @@ Kirjautuaksesi Demoon, käytä mitä tahansa seuraavista ***KÄYTTÄJÄ / SALASA
 `member / member`
 
 
-[Mene Demoon kirjautumiseen](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
+[Mene demon kirjautumiseen](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 
 ### Kiitos

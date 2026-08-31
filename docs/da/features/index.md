@@ -21,11 +21,11 @@ Ved at bruge [Gramps Web Sync Add-on](../administration/sync.md) til Gramps Desk
 
 ![Billede titel](screenshots/fan.png){ align=right width="400"}
 
-## Interaktive slægtstræ grafer
+## Interaktive familie trædiagrammer
 
-Naviger i dit slægtstræ som et forfædretræ, efterkommertræ, timeglasgraf, relationsgraf eller fankort, med interaktive grafik af høj kvalitet og et konfigurerbart antal generationer.
+Naviger i dit familie træ som et forfædretræ, efterkommertræ, timeglasdiagram, relationsdiagram eller fanekort, med interaktive grafik af høj kvalitet og et konfigurerbart antal generationer.
 
-Hold musen over enhver person for at se et forhåndsvisningskort med deres nøglefakta, og hop direkte fra grafen til den fulde detaljeside.
+Hold musen over en hvilken som helst person for at se et forhåndsvisningskort med deres nøglefakta, og spring direkte fra diagrammet til den fulde detaljeside.
 
 <div style="clear:both;"></div>
 
@@ -33,11 +33,11 @@ Hold musen over enhver person for at se et forhåndsvisningskort med deres nøgl
 
 ![Billede titel](screenshots/tree-edit.png){ align=left width="400"}
 
-## Byg dit træ direkte i grafen
+## Byg dit træ direkte i diagrammet
 
-Skift trævisningen til redigeringstilstand og udvid dit slægtstræ uden at forlade grafen. Hvert personkort får en **+** knap til at tilføje en far, mor, barn eller ægtefælle – enten ved at linke til nogen, der allerede er i din database, eller ved at oprette en helt ny person på stedet. Hver ændring gemmes straks.
+Skift trævisningen til redigeringstilstand og udvid dit familie træ uden at forlade diagrammet. Hvert personkort får en **+** knap til at tilføje en far, mor, barn eller ægtefælle – enten ved at linke til nogen, der allerede er i din database, eller ved at oprette en helt ny person på stedet. Hver ændring gemmes straks.
 
-Se [Redigering af Slægtstræet](../user-guide/tree-edit.md).
+Se [Redigering af Familie Træ](../user-guide/tree-edit.md).
 
 <div style="clear:both;"></div>
 
@@ -47,7 +47,7 @@ Se [Redigering af Slægtstræet](../user-guide/tree-edit.md).
 
 ## Kronologisk tidslinje
 
-Se hver begivenhed i dit slægtstræ præsenteret på en horisontal, zoombar tidslinje. Rul og zoom gennem århundrederne, og filtrer derefter ned til en enkelt person – eller til alle deres forfædre eller efterkommere – eller til alt, der skete på ét sted.
+Se hver begivenhed i dit familie træ præsenteret på en vandret, zoombar tidslinje. Rul og zoom gennem århundrederne, og filtrer derefter ned til en enkelt person – eller til alle deres forfædre eller efterkommere – eller til alt, hvad der skete et bestemt sted.
 
 Se [Tidslinje](../user-guide/timeline.md).
 
@@ -59,7 +59,7 @@ Se [Tidslinje](../user-guide/timeline.md).
 
 ## Kraftfuldt kort
 
-Vis alle steder i dit træ på et interaktivt, søgbart kort. Søg efter nye steder direkte på OpenStreetMap, når du opretter et sted, plot personerne i din database geografisk, og spor en enkelt persons liv ved at forbinde deres begivenheder med linjer på kortet.
+Vis alle steder i dit træ på et interaktivt, søgbart kort. Søg efter nye steder direkte på OpenStreetMap, når du opretter et sted, plot de personer, der er i din database geografisk, og spor en enkelt persons liv ved at forbinde deres begivenheder med linjer på kortet.
 
 <div style="clear:both;"></div>
 
@@ -71,7 +71,7 @@ Vis alle steder i dit træ på et interaktivt, søgbart kort. Søg efter nye ste
 
 Forvandl et historisk kort gemt som et medieobjekt i Gramps til et tilpasset kortoverlay.
 
-Derudover er de historiske vektorkort, der er oprettet af [OpenHistoricalMap](https://www.openhistoricalmap.org/) projektet, den perfekte komplement til genealogisk kortlægning. Brug tidsglideren til at rulle gennem udviklingen af stederne i din familiehistorie og vis de steder, hvor forfædre boede, eller hvor begivenheder fandt sted.
+Derudover er de historiske vektorkort, der er oprettet af [OpenHistoricalMap](https://www.openhistoricalmap.org/) projektet, den perfekte komplement til genealogisk kortlægning. Brug tidsglideren til at rulle gennem udviklingen af stederne i din familiehistorie og vis de steder, hvor forfædre boede eller begivenheder fandt sted.
 
 <div style="clear:both;"></div>
 
@@ -81,9 +81,9 @@ Derudover er de historiske vektorkort, der er oprettet af [OpenHistoricalMap](ht
 
 ## Find alt
 
-Søgemaskinen til fuld tekst dækker alle Gramps objekt typer, inklusive indholdet af tekstnoter, og understøtter jokertegn og logiske operatorer.
+Søgemaskinen dækker alle Gramps objekt typer, inklusive indholdet af tekstnoter, og understøtter jokertegn og logiske operatorer.
 
-Hvis din server har det aktiveret, svarer **semantisk søgning** på naturlige sprogspørgsmål som "landmand i Bayern i det 19. århundrede" efter betydning snarere end ved præcise ord. For præcise forespørgsler tilbyder objektlistevisninger en avanceret filtertilstand baseret på [Gramps Query Language](../user-guide/gql.md), sammen med hurtige filtre efter tekst, tag og privatliv.
+Hvis din server har det aktiveret, svarer **semantisk søgning** på naturlige sprogspørgsmål som "landmand i Bayern i det 19. århundrede" efter betydning snarere end ved nøjagtige ord. For præcise forespørgsler tilbyder objektlistevisninger en avanceret filtertilstand baseret på [Gramps Query Language](../user-guide/gql.md), sammen med hurtige filtre efter tekst, tag og privatliv.
 
 Fra enhver persons side åbner [Ekstern Søgning](../user-guide/external-search.md) en forudfyldt søgning på FamilySearch, Ancestry, CompGen og andre sider – og du kan tilføje dine egne.
 
@@ -95,9 +95,9 @@ Fra enhver persons side åbner [Ekstern Søgning](../user-guide/external-search.
 
 ## Integreret AI-assistent
 
-Drevet af AI, giver Gramps Web dig mulighed for at chatte med dit slægtstræ – på dit modersmål!
+Drevet af AI giver Gramps Web dig mulighed for at chatte med dit familie træ – på dit modersmål!
 
-Assistenten søger ikke bare: den forespørger direkte i din database med et sæt værktøjer, filtrerer personer, begivenheder, familier og steder og beregner relationer mellem individer. Du kan se, hvilke værktøjer den bruger, mens den bygger et svar, og længere spørgsmål kører som baggrundsopgaver, så du kan navigere væk og komme tilbage.
+Assistenten søger ikke bare: den forespørger direkte i din database med et sæt værktøjer, filtrerer personer, begivenheder, familier og steder, og beregner relationer mellem individer. Du kan se, hvilke værktøjer den bruger, mens den bygger et svar, og længere spørgsmål kører som baggrundsopgaver, så du kan navigere væk og komme tilbage.
 
 <div style="clear:both;"></div>
 
@@ -109,7 +109,7 @@ Assistenten søger ikke bare: den forespørger direkte i din database med et sæ
 
 Hvis du har DNA-matchdata fra en af DNA-genealogileverandørerne, kan du uploade det og gemme det på en fremtidssikret måde og se dine matcher i en interaktiv kromosombrowser.
 
-Rå Y-kromosom SNP-data kan bruges til at bestemme en persons mest sandsynlige [Y-DNA haplogruppe](../user-guide/y-dna.md) og vise deres patrilineære forfædre i det menneskelige Y-kromosomtræ, med tidsestimater. Analysen kører helt på din egen server – ingen data sendes til nogen tredjepart.
+Rå Y-kromosom SNP-data kan bruges til at bestemme en persons mest sandsynlige [Y-DNA haplogruppe](../user-guide/y-dna.md) og vise deres patrilineære forfædre i det menneskelige Y-kromosomtræ med tidsestimater. Analysen kører helt på din egen server – ingen data sendes til nogen tredjepart.
 
 <div style="clear:both;"></div>
 
@@ -129,7 +129,7 @@ Samarbejd med dine slægtninge for at identificere forfædre i gamle familie fot
 
 ## Fuld revisionshistorik – med fortryd
 
-Hver redigering af dit slægtstræ bliver registreret. Gennemse den komplette historie grupperet efter transaktion, dyk ned i enhver individuel ændring for at se præcist, hvilke felter der blev tilføjet, fjernet eller ændret, og fortryd en transaktion, hvis det viser sig at være en fejl.
+Hver redigering af dit familie træ bliver registreret. Gennemse den komplette historie grupperet efter transaktion, dyk ned i enhver individuel ændring for at se præcist, hvilke felter der blev tilføjet, fjernet eller ændret, og fortryd en transaktion, hvis det viser sig at være en fejl.
 
 Se [Revisionshistorik](../user-guide/revisions.md).
 
@@ -141,7 +141,7 @@ Se [Revisionshistorik](../user-guide/revisions.md).
 
 ## Privatlivsniveauer & brugeradgang
 
-Mange ønsker at holde nogle detaljer private, og det respekterer vi! Du kan markere optegnelser som private og kontrollere, hvilke brugere der har lov til at se private optegnelser. Private optegnelser filtreres ud på databaseniveau for maksimal sikkerhed. Derudover kan du kontrollere, hvad brugere kan tilføje og redigere.
+Mange ønsker at holde nogle detaljer private, og det respekterer vi! Du kan markere optegnelser som private og kontrollere, hvilke brugere der har tilladelse til at se private optegnelser. Private optegnelser filtreres ud på databaselaget for maksimal sikkerhed. Derudover kan du kontrollere, hvad brugere kan tilføje og redigere.
 
 Brugere kan logge ind med en adgangskode eller gennem en ekstern identitetsudbyder ved hjælp af [OpenID Connect](../install_setup/oidc.md) – Google og Microsoft fra starten, plus tilpassede udbydere som Keycloak, Authentik og Authelia.
 
@@ -153,7 +153,7 @@ Brugere kan logge ind med en adgangskode eller gennem en ekstern identitetsudbyd
 
 ## Genealogiblog inkluderet
 
-Sammenfat din forskning i form af bloghistorier med billeder, og del dem med dine slægtninge. En dedikeret editor gør det enkelt at skrive et nyt indlæg. Alle data gemmes i Gramps-databasen.
+Opsummer din forskning i form af bloghistorier med billeder, og del dem med dine slægtninge. En dedikeret editor gør det enkelt at skrive et nyt indlæg. Alle data gemmes i Gramps-databasen.
 
 <div style="clear:both;"></div>
 
@@ -163,9 +163,9 @@ Sammenfat din forskning i form af bloghistorier med billeder, og del dem med din
 
 ## Integreret opgavestyringsapp
 
-Gramps Web leveres med en integreret opgavestyringsapp til at organisere og planlægge din genealogiske forskning. Giv hver opgave en status, en prioritet og tags, dokumenter din fremgang i en rigt tekstbeskrivelse, og vedhæft de medier, du har samlet undervejs.
+Gramps Web leveres med en integreret opgavestyringsapp til at organisere og planlægge din genealogiske forskning. Giv hver opgave en status, en prioritet og tags, dokumentér din fremgang i en rigt tekstbeskrivelse, og vedhæft de medier, du har indsamlet undervejs.
 
-Opgaverne gemmes som kilder i Gramps-databasen, så de udgør en del af dine genealogiske data og kan tilgås og redigeres i Gramps Desktop også.
+Opgaverne gemmes som kilder i Gramps-databasen, så de bliver en del af dine genealogiske data og kan tilgås og redigeres i Gramps Desktop også.
 
 <div style="clear:both;"></div>
 
@@ -175,7 +175,7 @@ Opgaverne gemmes som kilder i Gramps-databasen, så de udgør en del af dine gen
 
 ## Generer udskrivbare rapporter
 
-Da det er bygget direkte på kernen, der driver Gramps Desktop, kan du generere næsten alle de [rapporter](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports), som desktopappen understøtter direkte fra browseren, inklusive relationsgrafer eller bograpporter som PDF.
+Da det er bygget direkte på kernen, der driver Gramps Desktop, kan du generere næsten alle de [rapporter](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports), som desktopappen understøtter, direkte fra browseren, inklusive relationsdiagrammer eller bograpporter som PDF.
 
 <div style="clear:both;"></div>
 
@@ -183,11 +183,11 @@ Da det er bygget direkte på kernen, der driver Gramps Desktop, kan du generere 
 
 ![Billede titel](screenshots/export.png){ align=right width="300"}
 
-## Ingen låsning – dataimport og -eksport
+## Ingen lås-in – dataimport og eksport
 
-Udover at kunne importere data i forskellige formater, herunder Gramps XML og GEDCOM, gør Gramps Web det nemt for brugere at downloade alle deres data (slægtstrædata, mediefiler, brugerkonti) når som helst, til backupformål eller for at flytte til en anden server. Dine data tilhører kun dig!
+Udover at kunne importere data i forskellige formater, herunder Gramps XML og GEDCOM, gør Gramps Web det nemt for brugere at downloade alle deres data (familietrædata, mediefiler, brugerkonti) når som helst, til backupformål eller for at flytte til en anden server. Dine data er kun dine!
 
-Import kan forhåndsvises som en tørkørsel, før noget skrives, og en komplet backup kan gendannes tilbage til træet.
+Importer kan forhåndsvises som et tørt løb, før noget skrives, og en komplet backup kan gendannes tilbage til træet.
 
 <div style="clear:both;"></div>
 
@@ -197,9 +197,9 @@ Import kan forhåndsvises som en tørkørsel, før noget skrives, og en komplet 
 
 ## Fungerer på enhver enhed
 
-Få adgang til Gramps Web fra enhver webaktiveret enhed. Du kan uploade fotos, oprette eller redigere optegnelser, vise dit slægtstræ for andre, eller finde de familiemedlemmer, hvis navne du ikke kan huske ved din næste familiegensyn!
+Adgang til Gramps Web fra enhver webaktiveret enhed. Du kan uploade fotos, oprette eller redigere optegnelser, vise dit familie træ for andre, eller finde de familiemedlemmers navne, du ikke kan huske ved din næste familiegeneralforsamling!
 
-Gramps Web er en progressiv webapp: installer den på din startskærm eller desktop, og den opfører sig som en native app. På desktop giver [tastaturgenveje](../user-guide/shortcuts.md) dig adgang til alt med et par tastetryk – tryk `?` for at se dem alle.
+Gramps Web er en progressiv webapp: installer den på din startskærm eller desktop, og den opfører sig som en native app. På desktop får [tastaturgenveje](../user-guide/shortcuts.md) dig hvor som helst på et par tastetryk – tryk `?` for at se dem alle.
 
 <div style="clear:both;"></div>
 
@@ -209,7 +209,7 @@ Gramps Web er en progressiv webapp: installer den på din startskærm eller desk
 
 ## Fuldstændig internationaliseret
 
-Skift sproget i grænsefladen mellem mere end 50 sprog oversat af Gramps-fællesskabet.
+Skift sproget i grænsefladen mellem et hvilket som helst af over 50 sprog oversat af Gramps-fællesskabet.
 
 <div style="clear:both;"></div>
 
@@ -218,10 +218,9 @@ Skift sproget i grænsefladen mellem mere end 50 sprog oversat af Gramps-fælles
 ## Og mere
 
 - **Notifikationer og baggrundsopgaver** – importer, eksporter, rapporter og indeksopbygninger kører i baggrunden, med fremskridt og fejl samlet ét sted
-- **Årsdage i din kalender** – abonner på din families fødselsdage og årsager fra enhver kalenderapp
-- **Tags, bogmærker og historie** – organiser objekter med farvekodede tags og kom tilbage til det, du arbejdede på
-- **Bulkredigering** – vælg flere objekter i listevisningerne for at slette dem på én gang, eller slå dubletter sammen
-- **Tilpasselige listevisninger** – vælg, hvilke kolonner der skal vises, og filtrer efter tekst, tag eller privatliv
+- **Tags, bogmærker og historik** – organiser objekter med farvekodede tags og kom tilbage til det, du arbejdede på
+- **Bulkredigering** – vælg flere objekter i listevisninger for at slette dem på én gang, eller sammenlæg duplikerede objekter
+- **Tilpassede listevisninger** – vælg, hvilke kolonner der skal vises, og filtrer efter tekst, tag eller privatliv
 - **Tekstgenkendelse (OCR)** – udtræk tekst fra scannede dokumenter i dit mediegalleri
 - **Datavalidering** – tjek dit træ for usandsynlige datoer og andre dataproblemer
 - **Gør det til dit eget** – giv dit site sit eget navn, tema farver og tekst og billede til startsiden
@@ -243,6 +242,6 @@ For at logge ind på demoen, brug en af følgende ***BRUGER / PASS*** loginoplys
 
 ### Tak
 
-Demoen er venligt støttet af DigitalOcean.
+Demoen støttes venligt af DigitalOcean.
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>

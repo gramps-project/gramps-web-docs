@@ -11,7 +11,7 @@ hide:
 
 ## Vollständige Integration mit Gramps Desktop
 
-Gramps Web verwendet die gleiche **Modell- / Datenbank**-Struktur, die [Gramps Desktop](https://gramps-project.org/) für die Speicherung genealogischer Daten nutzt. Sie können alle gleichen [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen, die Sie in Gramps Desktop haben: ***Personen, Familien, Ereignisse, Orte, Archive, Quellen, Zitationen, Medienobjekte und Notizen.***
+Gramps Web verwendet die gleiche **Modell- / Datenbank**-Struktur, die [Gramps Desktop](https://gramps-project.org/) zum Speichern genealogischer Daten verwendet. Sie können alle gleichen [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen, die Sie auch in Gramps Desktop finden: ***Personen, Familien, Ereignisse, Orte, Archive, Quellen, Zitationen, Medienobjekte und Notizen.***
 
 Mit dem [Gramps Web Sync Add-on](../administration/sync.md) für Gramps Desktop können Daten bidirektional zwischen Gramps Web und Gramps Desktop synchronisiert werden! Bearbeiten Sie Ihre Daten mit Gramps Web oder der Gramps Desktop-App, die Sie kennen und lieben – sie arbeiten nahtlos zusammen!
 
@@ -25,7 +25,7 @@ Mit dem [Gramps Web Sync Add-on](../administration/sync.md) für Gramps Desktop 
 
 Navigieren Sie durch Ihren Familienstammbaum als Ahnenbaum, Nachkommenbaum, Sanduhr-Diagramm, Beziehungsgrafik oder Fächerdiagramm, mit hochwertigen interaktiven Grafiken und einer konfigurierbaren Anzahl von Generationen.
 
-Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren Schlüsseldaten zu sehen, und springen Sie direkt vom Diagramm zur vollständigen Detailseite.
+Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren Schlüsselfakten zu sehen, und springen Sie direkt vom Diagramm zur vollständigen Detailseite.
 
 <div style="clear:both;"></div>
 
@@ -35,7 +35,7 @@ Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren Schl�
 
 ## Bauen Sie Ihren Baum direkt im Diagramm
 
-Schalten Sie die Baumansicht in den Bearbeitungsmodus und erweitern Sie Ihren Familienstammbaum, ohne das Diagramm zu verlassen. Jede Personenkarten erhält einen **+**-Button, um einen Vater, eine Mutter, ein Kind oder einen Ehepartner hinzuzufügen – entweder durch Verlinkung einer bereits in Ihrer Datenbank vorhandenen Person oder durch Erstellung einer brandneuen Person vor Ort. Jede Änderung wird sofort gespeichert.
+Schalten Sie die Baumansicht in den Bearbeitungsmodus und erweitern Sie Ihren Familienstammbaum, ohne das Diagramm zu verlassen. Jede Personenkarte erhält einen **+**-Button, um einen Vater, eine Mutter, ein Kind oder einen Ehepartner hinzuzufügen – entweder durch Verlinkung einer bereits in Ihrer Datenbank vorhandenen Person oder durch Erstellung einer brandneuen Person vor Ort. Jede Änderung wird sofort gespeichert.
 
 Siehe [Familienstammbaum bearbeiten](../user-guide/tree-edit.md).
 
@@ -47,7 +47,7 @@ Siehe [Familienstammbaum bearbeiten](../user-guide/tree-edit.md).
 
 ## Chronologische Zeitleiste
 
-Sehen Sie jedes Ereignis in Ihrem Familienstammbaum auf einer horizontalen, zoombaren Zeitleiste. Scrollen und zoomen Sie durch die Jahrhunderte, filtern Sie dann nach einer einzelnen Person – oder nach allen ihren Vorfahren oder Nachkommen – oder nach allem, was an einem bestimmten Ort passiert ist.
+Sehen Sie jedes Ereignis in Ihrem Familienstammbaum auf einer horizontalen, zoombaren Zeitleiste. Scrollen und zoomen Sie durch die Jahrhunderte, filtern Sie dann auf eine einzelne Person – oder auf alle ihre Vorfahren oder Nachkommen – oder auf alles, was an einem Ort passiert ist.
 
 Siehe [Zeitleiste](../user-guide/timeline.md).
 
@@ -83,9 +83,9 @@ Darüber hinaus sind die historischen Vektorkarten, die vom [OpenHistoricalMap](
 
 Die Volltextsuchmaschine deckt alle Gramps-Objekttypen ab, einschließlich des Inhalts von Textnotizen, und unterstützt Platzhalter und logische Operatoren.
 
-Wenn Ihr Server dies aktiviert hat, beantwortet die **semantische Suche** natürliche Sprachabfragen wie "Bauer in Bayern im 19. Jahrhundert" nach Bedeutung und nicht nach genauen Wörtern. Für präzise Abfragen bieten die Objektlistenansichten einen erweiterten Filtermodus basierend auf der [Gramps-Abfragesprache](../user-guide/gql.md), neben schnellen Filtern nach Text, Etikett und Datenschutz.
+Wenn Ihr Server es aktiviert hat, beantwortet die **semantische Suche** natürliche Sprachabfragen wie "Bauer in Bayern im 19. Jahrhundert" nach Bedeutung und nicht nach genauen Wörtern. Für präzise Abfragen bieten die Objektlistenansichten einen erweiterten Filtermodus basierend auf der [Gramps-Abfragesprache](../user-guide/gql.md), neben schnellen Filtern nach Text, Etikett und Datenschutz.
 
-Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-search.md) eine vorausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Seiten – und Sie können Ihre eigene hinzufügen.
+Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-search.md) eine vorausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Seiten – und Sie können Ihre eigenen hinzufügen.
 
 <div style="clear:both;"></div>
 
@@ -97,7 +97,7 @@ Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-se
 
 Angetrieben von KI ermöglicht Gramps Web Ihnen, mit Ihrem Familienstammbaum zu chatten – in Ihrer Muttersprache!
 
-Der Assistent sucht nicht nur: Er fragt direkt Ihre Datenbank mit einer Reihe von Werkzeugen ab, filtert Personen, Ereignisse, Familien und Orte und berechnet Beziehungen zwischen Individuen. Sie können beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt, und längere Fragen werden als Hintergrundaufgaben ausgeführt, sodass Sie weg navigieren und zurückkommen können.
+Der Assistent sucht nicht nur: Er fragt Ihre Datenbank direkt mit einer Reihe von Werkzeugen ab, filtert Personen, Ereignisse, Familien und Orte und berechnet Beziehungen zwischen Individuen. Sie können beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt, und längere Fragen laufen als Hintergrundaufgaben, sodass Sie weg navigieren und zurückkommen können.
 
 <div style="clear:both;"></div>
 
@@ -107,9 +107,9 @@ Der Assistent sucht nicht nur: Er fragt direkt Ihre Datenbank mit einer Reihe vo
 
 ## DNA-Übereinstimmungen, Chromosomenbrowser & Y-DNA
 
-Wenn Sie DNA-Übereinstimmungsdaten von einem der DNA-Genealogie-Anbieter haben, laden Sie sie hoch und speichern Sie sie zukunftssicher und sehen Sie sich Ihre Übereinstimmungen in einem interaktiven Chromosomenbrowser an.
+Wenn Sie DNA-Übereinstimmungsdaten von einem der DNA-Genealogie-Anbieter haben, laden Sie diese hoch und speichern Sie sie zukunftssicher und sehen Sie Ihre Übereinstimmungen in einem interaktiven Chromosomenbrowser.
 
-Rohdaten zu Y-Chromosomen-SNPs können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre patrilinearen Vorfahren im menschlichen Y-Chromosomenbaum anzuzeigen, mit Zeitabschätzungen. Die Analyse erfolgt vollständig auf Ihrem eigenen Server – keine Daten werden an Dritte gesendet.
+Rohe Y-Chromosomen-SNP-Daten können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre patrilinearen Vorfahren im menschlichen Y-Chromosomenbaum anzuzeigen, mit Zeitabschätzungen. Die Analyse erfolgt vollständig auf Ihrem eigenen Server – keine Daten werden an Dritte gesendet.
 
 <div style="clear:both;"></div>
 
@@ -119,7 +119,7 @@ Rohdaten zu Y-Chromosomen-SNPs können verwendet werden, um die wahrscheinlichst
 
 ## Personen in Fotos mit automatischer Gesichtserkennung kennzeichnen
 
-Arbeiten Sie mit Ihren Verwandten zusammen, um Vorfahren in alten Familienfotos zu identifizieren. Dank automatischer Gesichtserkennung ist das Kennzeichnen von Personen nur zwei Klicks entfernt.
+Arbeiten Sie mit Ihren Verwandten zusammen, um Vorfahren in alten Familienfotos zu identifizieren. Dank der automatischen Gesichtserkennung ist das Kennzeichnen von Personen nur zwei Klicks entfernt.
 
 <div style="clear:both;"></div>
 
@@ -143,7 +143,7 @@ Siehe [Versionshistorie](../user-guide/revisions.md).
 
 Viele Menschen möchten einige Details privat halten, und das respektieren wir! Sie können Datensätze als privat kennzeichnen und steuern, welche Benutzer private Datensätze einsehen dürfen. Private Datensätze werden auf der Datenbankebene für maximale Sicherheit herausgefiltert. Darüber hinaus können Sie steuern, was Benutzer hinzufügen und bearbeiten dürfen.
 
-Benutzer können sich mit einem Passwort oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) anmelden – Google und Microsoft sofort einsatzbereit, plus benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
+Benutzer können sich mit einem Passwort oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) anmelden – Google und Microsoft sofort einsatzbereit, sowie benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
 
 <div style="clear:both;"></div>
 
@@ -163,7 +163,7 @@ Fassen Sie Ihre Forschung in Form von Bloggeschichten mit Bildern zusammen und t
 
 ## Integrierte Aufgabenverwaltungs-App
 
-Gramps Web kommt mit einer integrierten Aufgabenverwaltungs-App, um Ihre genealogische Forschung zu organisieren und zu planen. Geben Sie jeder Aufgabe einen Status, eine Priorität und Etiketten, dokumentieren Sie Ihren Fortschritt in einer reichhaltigen Textbeschreibung und fügen Sie die Medien hinzu, die Sie unterwegs gesammelt haben.
+Gramps Web kommt mit einer integrierten Aufgabenverwaltungs-App, um Ihre genealogische Forschung zu organisieren und zu planen. Geben Sie jeder Aufgabe einen Status, eine Priorität und Etiketten, dokumentieren Sie Ihren Fortschritt in einer Rich-Text-Beschreibung und fügen Sie die Medien hinzu, die Sie unterwegs gesammelt haben.
 
 Die Aufgaben werden als Quellen in der Gramps-Datenbank gespeichert, sodass sie Teil Ihrer genealogischen Daten sind und auch in Gramps Desktop zugegriffen und bearbeitet werden können.
 
@@ -185,7 +185,7 @@ Da es direkt auf dem Kern basiert, der Gramps Desktop antreibt, können Sie fast
 
 ## Kein Lock-in – Datenimport und -export
 
-Neben der Möglichkeit, Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, zu importieren, ermöglicht Gramps Web den Benutzern, jederzeit alle ihre Daten (Familienstammdaten, Mediendateien, Benutzerkonten) herunterzuladen, zu Sicherungszwecken oder um zu einem anderen Server zu wechseln. Ihre Daten gehören nur Ihnen!
+Neben der Möglichkeit, Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, zu importieren, erleichtert Gramps Web den Benutzern, jederzeit alle ihre Daten (Familienstammdaten, Mediendateien, Benutzerkonten) herunterzuladen, sei es für Sicherungszwecke oder um auf einen anderen Server zu wechseln. Ihre Daten gehören nur Ihnen!
 
 Importe können als Trockenlauf angezeigt werden, bevor etwas geschrieben wird, und ein vollständiges Backup kann wieder in den Baum zurückgestellt werden.
 
@@ -197,9 +197,9 @@ Importe können als Trockenlauf angezeigt werden, bevor etwas geschrieben wird, 
 
 ## Funktioniert auf jedem Gerät
 
-Greifen Sie von jedem webfähigen Gerät auf Gramps Web zu. Sie können Fotos hochladen, Datensätze erstellen oder bearbeiten, Ihren Familienstammbaum anderen zeigen oder sich bei Ihrem nächsten Familientreffen an die Namen von Familienmitgliedern erinnern, die Sie vergessen haben!
+Greifen Sie von jedem webfähigen Gerät auf Gramps Web zu. Sie können Fotos hochladen, Datensätze erstellen oder bearbeiten, Ihren Familienstammbaum anderen zeigen oder die Namen von Familienmitgliedern nachschlagen, die Sie sich bei Ihrem nächsten Familientreffen nicht erinnern können!
 
-Gramps Web ist eine progressive Web-App: Installieren Sie es auf Ihrem Startbildschirm oder Desktop, und es verhält sich wie eine native App. Auf dem Desktop bringen Sie mit [Tastenkombinationen](../user-guide/shortcuts.md) alles in ein paar Tastenanschlägen – drücken Sie `?`, um sie alle zu sehen.
+Gramps Web ist eine progressive Web-App: Installieren Sie es auf Ihrem Startbildschirm oder Desktop, und es verhält sich wie eine native App. Auf dem Desktop bringen Sie [Tastenkombinationen](../user-guide/shortcuts.md) in wenigen Tastenanschlägen überall hin – drücken Sie `?`, um sie alle zu sehen.
 
 <div style="clear:both;"></div>
 
@@ -217,20 +217,19 @@ Wechseln Sie die Sprache der Benutzeroberfläche zwischen über 50 Sprachen, die
 
 ## Und mehr
 
-- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Index-Neubauten laufen im Hintergrund, mit Fortschritt und Fehlern an einem Ort gesammelt
-- **Jubiläen in Ihrem Kalender** – Abonnieren Sie die Geburtstage und Jubiläen Ihrer Familie aus jeder Kalender-App
+- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Index-Neuerstellungen laufen im Hintergrund, mit Fortschritt und Fehlern an einem Ort gesammelt
 - **Etiketten, Lesezeichen und Verlauf** – Organisieren Sie Objekte mit farbcodierten Etiketten und kehren Sie zu dem zurück, woran Sie gearbeitet haben
 - **Massenbearbeitung** – Wählen Sie mehrere Objekte in den Listenansichten aus, um sie auf einmal zu löschen oder doppelte Objekte zusammenzuführen
-- **Anpassbare Listenansichten** – Wählen Sie aus, welche Spalten angezeigt werden sollen, und filtern Sie nach Text, Etikett oder Datenschutz
-- **Texterkennung (OCR)** – Extrahieren Sie Text aus gescannten Dokumenten in Ihrer Mediathek
-- **Datenüberprüfung** – Überprüfen Sie Ihren Baum auf unplausible Daten und andere Datenprobleme
-- **Machen Sie es zu Ihrem eigenen** – Geben Sie Ihrer Website einen eigenen Namen, Themenfarben und Text und Bild für die Startseite
+- **Anpassbare Listenansichten** – Wählen Sie, welche Spalten angezeigt werden sollen, und filtern Sie nach Text, Etikett oder Datenschutz
+- **Texterkennung (OCR)** – Extrahieren Sie Text aus gescannten Dokumenten in Ihrer Mediengalerie
+- **Datenverifizierung** – Überprüfen Sie Ihren Baum auf unplausible Daten und andere Datenprobleme
+- **Machen Sie es zu Ihrem eigenen** – Geben Sie Ihrer Seite einen eigenen Namen, Themenfarben sowie Text und Bild für die Startseite
 
 <p>&nbsp;</p>
 
 ## Demo
 
-Um sich in die Demo einzuloggen, verwenden Sie eines der folgenden ***BENUTZER / PASS*** Anmeldeinformationen. Jedes repräsentiert einen Benutzertyp, dem ein Gramps Web-Benutzer zugewiesen werden kann.
+Um sich bei der Demo anzumelden, verwenden Sie eines der folgenden ***BENUTZER / PASS*** Anmeldeinformationen. Jedes repräsentiert einen Benutzertyp, dem ein Gramps Web-Benutzer zugewiesen werden kann.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -238,7 +237,7 @@ Um sich in die Demo einzuloggen, verwenden Sie eines der folgenden ***BENUTZER /
 `member / member`
 
 
-[Gehe zu Demo-Anmeldung](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
+[Gehe zur Demo-Anmeldung](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 
 ### Danke

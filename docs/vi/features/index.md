@@ -9,11 +9,11 @@ hide:
 
 ![Hình ảnh tiêu đề](screenshots/sync.png){ align=left width="300"}
 
-## Tích hợp đầy đủ với Gramps Desktop
+## Tích hợp hoàn toàn với Gramps Desktop
 
 Gramps Web sử dụng cùng một **Mô hình / Cấu trúc Cơ sở dữ liệu** mà [Gramps Desktop](https://gramps-project.org/) sử dụng để lưu trữ dữ liệu gia phả. Bạn có thể duyệt tất cả các [Loại Hồ sơ](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) giống như trong Gramps Desktop: ***người, gia đình, sự kiện, địa điểm, kho lưu trữ, nguồn, trích dẫn, đối tượng truyền thông và ghi chú.***
 
-Sử dụng [Tiện ích đồng bộ Gramps Web](../administration/sync.md) cho Gramps Desktop, dữ liệu có thể được đồng bộ hóa hai chiều giữa Gramps Web và Gramps Desktop! Hãy thoải mái chỉnh sửa dữ liệu của bạn với Gramps Web hoặc ứng dụng Gramps Desktop mà bạn yêu thích – chúng hoạt động cùng nhau một cách liền mạch!
+Bằng cách sử dụng [Tiện ích mở rộng Đồng bộ hóa Gramps Web](../administration/sync.md) cho Gramps Desktop, dữ liệu có thể được đồng bộ hóa hai chiều giữa Gramps Web và Gramps Desktop! Hãy thoải mái chỉnh sửa dữ liệu của bạn với Gramps Web hoặc ứng dụng Gramps Desktop mà bạn đã biết và yêu thích – chúng hoạt động cùng nhau một cách liền mạch!
 
 <div style="clear:both;"></div>
 
@@ -23,7 +23,7 @@ Sử dụng [Tiện ích đồng bộ Gramps Web](../administration/sync.md) cho
 
 ## Biểu đồ cây gia đình tương tác
 
-Duyệt cây gia đình của bạn dưới dạng cây tổ tiên, cây con cháu, biểu đồ đồng hồ cát, biểu đồ quan hệ hoặc biểu đồ quạt, với đồ họa tương tác chất lượng cao và số thế hệ có thể cấu hình.
+Duyệt cây gia đình của bạn dưới dạng cây tổ tiên, cây con cháu, biểu đồ đồng hồ cát, biểu đồ mối quan hệ hoặc biểu đồ quạt, với đồ họa tương tác chất lượng cao và số thế hệ có thể cấu hình.
 
 Di chuột qua bất kỳ người nào để xem thẻ xem trước với các thông tin chính của họ, và nhảy thẳng từ biểu đồ đến trang chi tiết đầy đủ.
 
@@ -35,7 +35,7 @@ Di chuột qua bất kỳ người nào để xem thẻ xem trước với các 
 
 ## Xây dựng cây của bạn ngay trong biểu đồ
 
-Chuyển chế độ xem cây sang chế độ chỉnh sửa và phát triển cây gia đình của bạn mà không cần rời khỏi biểu đồ. Mỗi thẻ người đều có nút **+** để thêm cha, mẹ, con hoặc vợ/chồng – liên kết với ai đó đã có trong cơ sở dữ liệu của bạn hoặc tạo một người hoàn toàn mới ngay tại chỗ. Mỗi thay đổi được lưu ngay lập tức.
+Chuyển chế độ xem cây sang chế độ chỉnh sửa và phát triển cây gia đình của bạn mà không cần rời khỏi biểu đồ. Mỗi thẻ người đều có nút **+** để thêm cha, mẹ, con hoặc vợ/chồng – liên kết với một người đã có trong cơ sở dữ liệu của bạn hoặc tạo một người hoàn toàn mới ngay tại chỗ. Mỗi thay đổi được lưu ngay lập tức.
 
 Xem [Chỉnh sửa Cây Gia đình](../user-guide/tree-edit.md).
 
@@ -59,7 +59,7 @@ Xem [Dòng thời gian](../user-guide/timeline.md).
 
 ## Bản đồ mạnh mẽ
 
-Hiển thị tất cả các địa điểm trong cây của bạn trên một bản đồ tương tác, có thể tìm kiếm. Tìm kiếm các địa điểm mới trực tiếp trên OpenStreetMap khi tạo một địa điểm, vẽ các người trong cơ sở dữ liệu của bạn theo vị trí địa lý, và theo dõi cuộc sống của một người bằng cách kết nối các sự kiện của họ bằng các đường trên bản đồ.
+Hiển thị tất cả các địa điểm trong cây của bạn trên một bản đồ tương tác, có thể tìm kiếm. Tìm kiếm các địa điểm mới trực tiếp trên OpenStreetMap khi tạo một địa điểm, vẽ các người trong cơ sở dữ liệu của bạn theo vị trí địa lý, và theo dõi cuộc đời của một người bằng cách kết nối các sự kiện của họ bằng các đường trên bản đồ.
 
 <div style="clear:both;"></div>
 
@@ -71,7 +71,7 @@ Hiển thị tất cả các địa điểm trong cây của bạn trên một b
 
 Biến một bản đồ lịch sử được lưu trữ dưới dạng đối tượng truyền thông trong Gramps thành một lớp bản đồ tùy chỉnh.
 
-Ngoài ra, các bản đồ vector lịch sử được tạo ra bởi dự án [OpenHistoricalMap](https://www.openhistoricalmap.org/) là sự bổ sung hoàn hảo cho việc lập bản đồ gia phả. Sử dụng thanh trượt thời gian để cuộn qua sự phát triển của các địa điểm trong lịch sử gia đình của bạn và hiển thị các địa điểm nơi tổ tiên đã sống hoặc các sự kiện đã xảy ra.
+Ngoài ra, các bản đồ vector lịch sử được tạo bởi dự án [OpenHistoricalMap](https://www.openhistoricalmap.org/) là sự bổ sung hoàn hảo cho việc lập bản đồ gia phả. Sử dụng thanh trượt thời gian để cuộn qua sự phát triển của các địa điểm trong lịch sử gia đình của bạn và hiển thị các địa điểm nơi tổ tiên đã sống hoặc các sự kiện đã xảy ra.
 
 <div style="clear:both;"></div>
 
@@ -81,11 +81,11 @@ Ngoài ra, các bản đồ vector lịch sử được tạo ra bởi dự án 
 
 ## Tìm bất cứ điều gì
 
-Công cụ tìm kiếm toàn văn bao phủ tất cả các loại đối tượng Gramps, bao gồm nội dung của các ghi chú văn bản, và hỗ trợ ký tự đại diện và các toán tử logic.
+Công cụ tìm kiếm toàn văn bao phủ tất cả các loại đối tượng Gramps, bao gồm nội dung của các ghi chú văn bản, và hỗ trợ ký tự đại diện và toán tử logic.
 
-Nếu máy chủ của bạn đã bật tính năng này, **tìm kiếm ngữ nghĩa** trả lời các truy vấn ngôn ngữ tự nhiên như "nông dân ở Bavaria vào thế kỷ 19" theo nghĩa thay vì theo từ chính xác. Đối với các truy vấn chính xác, các chế độ xem danh sách đối tượng cung cấp chế độ lọc nâng cao dựa trên [Ngôn ngữ Truy vấn Gramps](../user-guide/gql.md), bên cạnh các bộ lọc nhanh theo văn bản, thẻ và quyền riêng tư.
+Nếu máy chủ của bạn đã bật tính năng này, **tìm kiếm ngữ nghĩa** trả lời các truy vấn ngôn ngữ tự nhiên như "nông dân ở Bavaria vào thế kỷ 19" bằng ý nghĩa thay vì bằng từ chính xác. Đối với các truy vấn chính xác, chế độ xem danh sách đối tượng cung cấp một chế độ lọc nâng cao dựa trên [Ngôn ngữ Truy vấn Gramps](../user-guide/gql.md), cùng với các bộ lọc nhanh theo văn bản, thẻ và quyền riêng tư.
 
-Từ trang của bất kỳ người nào, [Tìm kiếm Ngoài](../user-guide/external-search.md) mở một tìm kiếm đã được điền sẵn trên FamilySearch, Ancestry, CompGen và các trang khác – và bạn có thể thêm của riêng bạn.
+Từ trang của bất kỳ người nào, [Tìm kiếm Ngoài](../user-guide/external-search.md) mở một tìm kiếm đã được điền trước trên FamilySearch, Ancestry, CompGen và các trang khác – và bạn có thể thêm của riêng mình.
 
 <div style="clear:both;"></div>
 
@@ -97,7 +97,7 @@ Từ trang của bất kỳ người nào, [Tìm kiếm Ngoài](../user-guide/ex
 
 Được hỗ trợ bởi AI, Gramps Web cho phép bạn trò chuyện với cây gia đình của bạn – bằng ngôn ngữ mẹ đẻ của bạn!
 
-Trợ lý không chỉ tìm kiếm: nó truy vấn trực tiếp cơ sở dữ liệu của bạn với một bộ công cụ, lọc người, sự kiện, gia đình và địa điểm, và tính toán các mối quan hệ giữa các cá nhân. Bạn có thể theo dõi các công cụ mà nó đang sử dụng khi xây dựng câu trả lời, và các câu hỏi dài hơn chạy như các tác vụ nền để bạn có thể điều hướng đi nơi khác và quay lại.
+Trợ lý không chỉ tìm kiếm: nó truy vấn trực tiếp cơ sở dữ liệu của bạn với một bộ công cụ, lọc người, sự kiện, gia đình và địa điểm, và tính toán các mối quan hệ giữa các cá nhân. Bạn có thể xem các công cụ mà nó đang sử dụng khi nó xây dựng một câu trả lời, và các câu hỏi dài hơn chạy như các tác vụ nền để bạn có thể điều hướng đi nơi khác và quay lại.
 
 <div style="clear:both;"></div>
 
@@ -105,11 +105,11 @@ Trợ lý không chỉ tìm kiếm: nó truy vấn trực tiếp cơ sở dữ l
 
 ![Hình ảnh tiêu đề](screenshots/dna.png){ align=left width="400"}
 
-## Kết quả DNA, trình duyệt nhiễm sắc thể & Y-DNA
+## Trận DNA, trình duyệt nhiễm sắc thể & Y-DNA
 
-Nếu bạn có dữ liệu kết quả DNA từ một trong các nhà cung cấp gia phả DNA, hãy tải lên và lưu trữ nó theo cách bền vững và xem các kết quả của bạn trong một trình duyệt nhiễm sắc thể tương tác.
+Nếu bạn có dữ liệu trận DNA từ một trong các nhà cung cấp gia phả DNA, hãy tải lên và lưu trữ nó theo cách bảo đảm cho tương lai và xem các trận của bạn trong một trình duyệt nhiễm sắc thể tương tác.
 
-Dữ liệu SNP nhiễm sắc thể Y thô có thể được sử dụng để xác định [nhánh Y-DNA](../user-guide/y-dna.md) có khả năng nhất của một người và hiển thị tổ tiên theo dòng cha của họ trong cây nhiễm sắc thể Y của con người, với ước lượng thời gian. Phân tích hoàn toàn chạy trên máy chủ của bạn – không có dữ liệu nào được gửi đến bên thứ ba.
+Dữ liệu SNP nhiễm sắc thể Y thô có thể được sử dụng để xác định [nhóm haplogroup Y-DNA](../user-guide/y-dna.md) có khả năng nhất của một người và hiển thị tổ tiên theo dòng cha của họ trong cây nhiễm sắc thể Y của con người, với các ước lượng thời gian. Phân tích hoàn toàn chạy trên máy chủ của bạn – không có dữ liệu nào được gửi đến bên thứ ba.
 
 <div style="clear:both;"></div>
 
@@ -119,7 +119,7 @@ Dữ liệu SNP nhiễm sắc thể Y thô có thể được sử dụng để 
 
 ## Gán thẻ cho người trong ảnh với phát hiện khuôn mặt tự động
 
-Hợp tác với người thân của bạn để xác định tổ tiên trong những bức ảnh gia đình cũ. Nhờ phát hiện khuôn mặt tự động, việc gán thẻ cho mọi người chỉ cách hai cú nhấp chuột.
+Hợp tác với người thân của bạn để xác định tổ tiên trong những bức ảnh gia đình cũ. Nhờ vào phát hiện khuôn mặt tự động, việc gán thẻ cho người chỉ cách hai cú nhấp chuột.
 
 <div style="clear:both;"></div>
 
@@ -127,9 +127,9 @@ Hợp tác với người thân của bạn để xác định tổ tiên trong 
 
 ![Hình ảnh tiêu đề](screenshots/revisions.png){ align=left width="400"}
 
-## Lịch sử sửa đổi đầy đủ – có thể hoàn tác
+## Lịch sử sửa đổi đầy đủ – với chức năng hoàn tác
 
-Mọi chỉnh sửa trong cây gia đình của bạn đều được ghi lại. Duyệt qua toàn bộ lịch sử được nhóm theo giao dịch, đi sâu vào bất kỳ thay đổi cá nhân nào để xem chính xác các trường nào đã được thêm, xóa hoặc sửa đổi, và hoàn tác một giao dịch nếu đó là một sai lầm.
+Mọi chỉnh sửa trong cây gia đình của bạn đều được ghi lại. Duyệt qua toàn bộ lịch sử được nhóm theo giao dịch, đi sâu vào bất kỳ thay đổi cá nhân nào để xem chính xác các trường nào đã được thêm, xóa hoặc sửa đổi, và hoàn tác một giao dịch nếu nó hóa ra là một sai lầm.
 
 Xem [Lịch sử Sửa đổi](../user-guide/revisions.md).
 
@@ -139,9 +139,9 @@ Xem [Lịch sử Sửa đổi](../user-guide/revisions.md).
 
 ![Hình ảnh tiêu đề](screenshots/list.png){ align=right width="400"}
 
-## Mức độ quyền riêng tư & quyền truy cập người dùng
+## Mức độ quyền riêng tư & quyền truy cập của người dùng
 
-Nhiều người muốn giữ một số chi tiết riêng tư và chúng tôi tôn trọng điều đó! Bạn có thể đánh dấu hồ sơ là riêng tư và kiểm soát người dùng nào được phép xem hồ sơ riêng tư. Các hồ sơ riêng tư sẽ bị lọc ra ở tầng cơ sở dữ liệu để đảm bảo an toàn tối đa. Ngoài ra, bạn có thể kiểm soát những gì người dùng có thể thêm và chỉnh sửa.
+Nhiều người muốn giữ một số chi tiết riêng tư và chúng tôi tôn trọng điều đó! Bạn có thể đánh dấu hồ sơ là riêng tư và kiểm soát người dùng nào được phép xem hồ sơ riêng tư. Các hồ sơ riêng tư được lọc ra ở lớp cơ sở dữ liệu để đảm bảo an toàn tối đa. Ngoài ra, bạn có thể kiểm soát những gì người dùng có thể thêm và chỉnh sửa.
 
 Người dùng có thể đăng nhập bằng mật khẩu, hoặc thông qua một nhà cung cấp danh tính bên ngoài sử dụng [OpenID Connect](../install_setup/oidc.md) – Google và Microsoft ngay lập tức, cùng với các nhà cung cấp tùy chỉnh như Keycloak, Authentik và Authelia.
 
@@ -161,11 +161,11 @@ Tóm tắt nghiên cứu của bạn dưới dạng các câu chuyện blog vớ
 
 ![Hình ảnh tiêu đề](screenshots/tasks.png){ align=right width="400"}
 
-## Ứng dụng quản lý tác vụ tích hợp
+## Ứng dụng quản lý nhiệm vụ tích hợp
 
-Gramps Web đi kèm với một ứng dụng quản lý tác vụ tích hợp để tổ chức và lập kế hoạch nghiên cứu gia phả của bạn. Đặt trạng thái, độ ưu tiên và thẻ cho mỗi tác vụ, ghi lại tiến trình của bạn trong một mô tả văn bản phong phú, và đính kèm các phương tiện mà bạn đã thu thập trên đường đi.
+Gramps Web đi kèm với một ứng dụng quản lý nhiệm vụ tích hợp để tổ chức và lập kế hoạch nghiên cứu gia phả của bạn. Gán mỗi nhiệm vụ một trạng thái, một mức độ ưu tiên và thẻ, ghi lại tiến trình của bạn trong một mô tả văn bản phong phú, và đính kèm các phương tiện mà bạn đã thu thập trong quá trình.
 
-Các tác vụ được lưu trữ dưới dạng nguồn trong cơ sở dữ liệu Gramps, vì vậy chúng trở thành một phần của dữ liệu gia phả của bạn và có thể được truy cập và chỉnh sửa trong Gramps Desktop cũng như vậy.
+Các nhiệm vụ được lưu trữ dưới dạng nguồn trong cơ sở dữ liệu Gramps, vì vậy chúng trở thành một phần của dữ liệu gia phả của bạn và có thể được truy cập và chỉnh sửa trong Gramps Desktop.
 
 <div style="clear:both;"></div>
 
@@ -175,7 +175,7 @@ Các tác vụ được lưu trữ dưới dạng nguồn trong cơ sở dữ li
 
 ## Tạo báo cáo có thể in
 
-Vì nó được xây dựng trực tiếp trên lõi hỗ trợ Gramps Desktop, bạn có thể tạo hầu hết tất cả các [báo cáo](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) mà ứng dụng desktop hỗ trợ ngay từ trình duyệt, bao gồm các biểu đồ quan hệ hoặc báo cáo sách dưới dạng PDF.
+Vì nó được xây dựng trực tiếp trên lõi của Gramps Desktop, bạn có thể tạo hầu hết tất cả các [báo cáo](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) mà ứng dụng desktop hỗ trợ ngay từ trình duyệt, bao gồm các biểu đồ mối quan hệ hoặc báo cáo sách dưới dạng PDF.
 
 <div style="clear:both;"></div>
 
@@ -187,7 +187,7 @@ Vì nó được xây dựng trực tiếp trên lõi hỗ trợ Gramps Desktop,
 
 Ngoài việc có thể nhập dữ liệu ở nhiều định dạng khác nhau bao gồm Gramps XML và GEDCOM, Gramps Web giúp người dùng dễ dàng tải xuống tất cả dữ liệu của họ (dữ liệu cây gia đình, tệp phương tiện, tài khoản người dùng) bất cứ lúc nào, để sao lưu hoặc chuyển sang máy chủ khác. Dữ liệu của bạn là của riêng bạn!
 
-Các lần nhập có thể được xem trước như một lần chạy thử trước khi bất kỳ điều gì được ghi, và một bản sao lưu hoàn chỉnh có thể được khôi phục lại vào cây.
+Các lần nhập có thể được xem trước như một lần chạy thử trước khi bất kỳ điều gì được ghi lại, và một bản sao lưu hoàn chỉnh có thể được khôi phục lại vào cây.
 
 <div style="clear:both;"></div>
 
@@ -197,7 +197,7 @@ Các lần nhập có thể được xem trước như một lần chạy thử 
 
 ## Hoạt động trên mọi thiết bị
 
-Truy cập Gramps Web từ bất kỳ thiết bị có kết nối web nào. Bạn có thể tải lên ảnh, tạo hoặc chỉnh sửa hồ sơ, cho người khác xem cây gia đình của bạn, hoặc tìm kiếm những cái tên thành viên gia đình mà bạn không thể nhớ tại buổi họp mặt gia đình tiếp theo của bạn!
+Truy cập Gramps Web từ bất kỳ thiết bị có khả năng kết nối web nào. Bạn có thể tải lên ảnh, tạo hoặc chỉnh sửa hồ sơ, cho người khác xem cây gia đình của bạn, hoặc tra cứu những tên thành viên gia đình mà bạn không thể nhớ tại buổi họp mặt gia đình tiếp theo của bạn!
 
 Gramps Web là một ứng dụng web tiến bộ: cài đặt nó vào màn hình chính hoặc máy tính để bàn của bạn và nó hoạt động như một ứng dụng gốc. Trên máy tính để bàn, [phím tắt](../user-guide/shortcuts.md) giúp bạn đến bất kỳ đâu chỉ trong vài phím bấm – nhấn `?` để xem tất cả.
 
@@ -207,22 +207,21 @@ Gramps Web là một ứng dụng web tiến bộ: cài đặt nó vào màn hì
 
 ![Hình ảnh tiêu đề](screenshots/lang.png){ align=right width="300"}
 
-## Được quốc tế hóa hoàn toàn
+## Hoàn toàn quốc tế hóa
 
-Chuyển đổi ngôn ngữ của giao diện giữa bất kỳ hơn 50 ngôn ngữ đã được cộng đồng Gramps dịch.
+Chuyển đổi ngôn ngữ của giao diện giữa bất kỳ ngôn ngữ nào trong hơn 50 ngôn ngữ được cộng đồng Gramps dịch.
 
 <div style="clear:both;"></div>
 
 ---
 
-## Và còn nhiều hơn nữa
+## Và nhiều hơn nữa
 
-- **Thông báo và tác vụ nền** – nhập, xuất, báo cáo và xây dựng lại chỉ mục chạy trong nền, với tiến trình và lỗi được thu thập ở một nơi
-- **Ngày kỷ niệm trong lịch của bạn** – đăng ký sinh nhật và ngày kỷ niệm của gia đình bạn từ bất kỳ ứng dụng lịch nào
-- **Thẻ, đánh dấu và lịch sử** – tổ chức các đối tượng bằng thẻ mã màu và quay lại những gì bạn đang làm
-- **Chỉnh sửa hàng loạt** – chọn nhiều đối tượng trong các chế độ xem danh sách để xóa chúng cùng một lúc, hoặc hợp nhất các đối tượng trùng lặp
-- **Chế độ xem danh sách có thể tùy chỉnh** – chọn các cột để hiển thị, và lọc theo văn bản, thẻ hoặc quyền riêng tư
-- **Nhận diện văn bản (OCR)** – trích xuất văn bản từ các tài liệu quét trong thư viện phương tiện của bạn
+- **Thông báo và tác vụ nền** – nhập, xuất, báo cáo và tái xây dựng chỉ mục chạy trong nền, với tiến trình và lỗi được thu thập ở một nơi
+- **Thẻ, đánh dấu và lịch sử** – tổ chức các đối tượng với thẻ mã màu và quay lại những gì bạn đang làm
+- **Chỉnh sửa hàng loạt** – chọn nhiều đối tượng trong chế độ xem danh sách để xóa chúng cùng một lúc, hoặc hợp nhất các đối tượng trùng lặp
+- **Chế độ xem danh sách tùy chỉnh** – chọn các cột để hiển thị, và lọc theo văn bản, thẻ hoặc quyền riêng tư
+- **Nhận dạng văn bản (OCR)** – trích xuất văn bản từ các tài liệu quét trong thư viện phương tiện của bạn
 - **Xác minh dữ liệu** – kiểm tra cây của bạn để phát hiện các ngày không hợp lý và các vấn đề dữ liệu khác
 - **Biến nó thành của riêng bạn** – đặt tên cho trang web của bạn, màu sắc chủ đề, và văn bản và hình ảnh trang chủ
 
