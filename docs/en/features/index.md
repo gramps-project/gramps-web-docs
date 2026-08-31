@@ -218,7 +218,6 @@ Switch the language of the interface between any of over 50 languages translated
 ## And more
 
 - **Notifications and background tasks** – imports, exports, reports and index rebuilds run in the background, with progress and errors collected in one place
-- **Anniversaries in your calendar** – subscribe to your family's birthdays and anniversaries from any calendar app
 - **Tags, bookmarks and history** – organize objects with colour-coded tags and get back to what you were working on
 - **Bulk editing** – select multiple objects in the list views to delete them at once, or merge duplicate objects
 - **Customizable list views** – choose which columns to show, and filter by text, tag, or privacy
