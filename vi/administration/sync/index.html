@@ -1,0 +1,4012 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open Source Genealogy">
+      
+      
+      
+        <link rel="canonical" href="https://www.grampsweb.org/vi/administration/sync/">
+      
+      
+        <link rel="prev" href="../settings/">
+      
+      
+        <link rel="next" href="../../user-guide/">
+      
+      
+        
+          <link rel="alternate" href="../../../administration/sync/" hreflang="en">
+        
+          <link rel="alternate" href="../../../de/administration/sync/" hreflang="de">
+        
+          <link rel="alternate" href="../../../fr/administration/sync/" hreflang="fr">
+        
+          <link rel="alternate" href="../../../es/administration/sync/" hreflang="es">
+        
+          <link rel="alternate" href="../../../zh/administration/sync/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="vi">
+        
+          <link rel="alternate" href="../../../tr/administration/sync/" hreflang="tr">
+        
+          <link rel="alternate" href="../../../ru/administration/sync/" hreflang="ru">
+        
+          <link rel="alternate" href="../../../pt/administration/sync/" hreflang="pt">
+        
+          <link rel="alternate" href="../../../ja/administration/sync/" hreflang="ja">
+        
+          <link rel="alternate" href="../../../da/administration/sync/" hreflang="da">
+        
+          <link rel="alternate" href="../../../fi/administration/sync/" hreflang="fi">
+        
+          <link rel="alternate" href="../../../it/administration/sync/" hreflang="it">
+        
+          <link rel="alternate" href="../../../uk/administration/sync/" hreflang="uk">
+        
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Đồng bộ với Gramps - Gramps Web</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+<style>
+  .banner {
+    height: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    display: none;  /* set to flex to show banner */
+    align-items: center;
+    justify-content: center;
+    background-color: #66BB6A;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: Inter;
+}
+
+.banner a:link, .banner a:visited, .banner a:hover, .banner a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.banner a:hover {
+    font-weight: 600;
+}
+
+  .md-header {
+      top: 0px;   /* set to 24px when banner is visible */
+  }
+
+</style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ong-bo-hoa-gramps-web-va-gramps-desktop" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+<div class="banner">
+    <span></span>
+</div>
+
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../" title="Gramps Web" class="md-header__button md-logo" aria-label="Gramps Web" data-md-component="logo">
+      
+  <img src="../../../logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gramps Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Đồng bộ với Gramps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Chọn ngôn ngữ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../administration/sync/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../de/administration/sync/" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../fr/administration/sync/" hreflang="fr" class="md-select__link">
+              Français
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../es/administration/sync/" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../zh/administration/sync/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="vi" class="md-select__link">
+              Tiếng Việt
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../tr/administration/sync/" hreflang="tr" class="md-select__link">
+              Türkçe
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ru/administration/sync/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../pt/administration/sync/" hreflang="pt" class="md-select__link">
+              Português
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ja/administration/sync/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../da/administration/sync/" hreflang="da" class="md-select__link">
+              Dansk
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../fi/administration/sync/" hreflang="fi" class="md-select__link">
+              Suomi
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../it/administration/sync/" hreflang="it" class="md-select__link">
+              Italiano
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../uk/administration/sync/" hreflang="uk" class="md-select__link">
+              Українська
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gramps-project/gramps-web" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Trang chủ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/" class="md-tabs__link">
+          
+  
+  
+  Tính năng
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../install_setup/setup/" class="md-tabs__link">
+          
+  
+  
+  Cài đặt/Thiết lập
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../admin/" class="md-tabs__link">
+          
+  
+  
+  Quản trị
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/" class="md-tabs__link">
+          
+  
+  
+  Hướng dẫn sử dụng
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/dev/" class="md-tabs__link">
+          
+  
+  
+  Nhà phát triển
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contribute/contribute/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Đóng góp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../help/help/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Nhận trợ giúp
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="Gramps Web" class="md-nav__button md-logo" aria-label="Gramps Web" data-md-component="logo">
+      
+  <img src="../../../logo.svg" alt="logo">
+
+    </a>
+    Gramps Web
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gramps-project/gramps-web" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trang chủ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tính năng
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tính năng
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tính năng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt/Thiết lập
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cài đặt/Thiết lập
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bắt đầu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dùng thử cục bộ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt và Triển khai
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cài đặt và Triển khai
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triển khai với Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/lets_encrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker với Let's Encrypt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/digital_ocean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DigitalOcean
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/truenas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrueNAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản trị máy chủ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quản trị máy chủ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hệ thống người dùng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu hình máy chủ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/oidc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xác thực OIDC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thiết lập trò chuyện AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/multi-tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thiết lập đa cây
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/frontend-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tùy chỉnh giao diện
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cập nhật
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/postgres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sử dụng PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/s3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lưu trữ phương tiện trên S3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/cpu-limited/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới hạn sử dụng CPU &amp; bộ nhớ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đo từ xa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hướng dẫn nâng cấp Gramps 5.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install_setup/v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hướng dẫn nâng cấp Gramps 6.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản trị
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quản trị
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../owner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tạo tài khoản chủ sở hữu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nhập dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xuất dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý người dùng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt quản trị
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ với Gramps
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ với Gramps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#cai-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cài đặt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-may-chu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu máy chủ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-mat-khau-cua-ban-tuy-chon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lưu mật khẩu của bạn (tùy chọn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sử dụng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sử dụng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết nối
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-xet-cac-thay-oi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem xét các thay đổi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xem xét các thay đổi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#che-o-ong-bo-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chế độ đồng bộ hóa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tep-phuong-tien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tệp phương tiện
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neu-mot-lan-ong-bo-hoa-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nếu một lần đồng bộ hóa thất bại
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-phuc-su-co" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khắc phục sự cố
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Khắc phục sự cố">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-tro-giup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu trợ giúp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boi-canh-cach-addon-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bối cảnh: cách addon hoạt động
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hướng dẫn sử dụng
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hướng dẫn sử dụng
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các bước đầu tiên
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Các bước đầu tiên
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đăng ký
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/first-login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đăng nhập lần đầu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Duyệt cây gia phả
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Duyệt cây gia phả
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tìm kiếm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Danh sách
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cây gia phả
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/timeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dòng thời gian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bản đồ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chỉnh sửa dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chỉnh sửa dữ liệu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thêm tệp phương tiện
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tagging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gắn thẻ người trong ảnh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sử dụng blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý nhiệm vụ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thẻ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tree-edit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chỉnh sửa trong cây
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DNA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dna-matches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khớp DNA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/chromosome-browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trình duyệt nhiễm sắc thể
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/y-dna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Y-DNA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6">
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Công cụ nghiên cứu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Công cụ nghiên cứu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Báo cáo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/bookmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dấu trang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/recent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lịch sử
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/revisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lịch sử sửa đổi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7">
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nâng cao
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nâng cao
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/gql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bộ lọc GQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trợ lý AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/external-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tìm kiếm bên ngoài
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8">
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài khoản &amp; tùy chọn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tài khoản &amp; tùy chọn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cài đặt người dùng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phím tắt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thông báo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nhà phát triển
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nhà phát triển
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/backend/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thiết lập phát triển
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/backend/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đặc tả API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/backend/queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Truy vấn thủ công
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3">
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/frontend/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thiết lập phát triển
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/frontend/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiến trúc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/frontend/translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dịch thuật
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đóng góp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nhận trợ giúp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#cai-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cài đặt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-may-chu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu máy chủ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-mat-khau-cua-ban-tuy-chon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lưu mật khẩu của bạn (tùy chọn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sử dụng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sử dụng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết nối
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-xet-cac-thay-oi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem xét các thay đổi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xem xét các thay đổi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#che-o-ong-bo-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chế độ đồng bộ hóa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tep-phuong-tien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tệp phương tiện
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neu-mot-lan-ong-bo-hoa-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nếu một lần đồng bộ hóa thất bại
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-phuc-su-co" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khắc phục sự cố
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Khắc phục sự cố">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-tro-giup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yêu cầu trợ giúp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boi-canh-cach-addon-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bối cảnh: cách addon hoạt động
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/gramps-project/gramps-web-docs/blob/main/docs/en/administration/sync.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="ong-bo-hoa-gramps-web-va-gramps-desktop">Đồng bộ hóa Gramps Web và Gramps Desktop<a class="headerlink" href="#ong-bo-hoa-gramps-web-va-gramps-desktop" title="Permanent link">¶</a></h1>
+<p><em>Gramps Web Sync</em> là một addon cho Gramps giúp đồng bộ hóa cơ sở dữ liệu Gramps trên máy tính để bàn của bạn với Gramps Web, bao gồm cả các tệp phương tiện. Những thay đổi được thực hiện ở bất kỳ bên nào sẽ được chuyển sang bên kia, vì vậy bạn có thể làm việc cả ở chế độ cục bộ và trên web với cùng một cây gia đình.</p>
+<p>Giống như bất kỳ công cụ đồng bộ hóa nào, đây không phải là một bản sao lưu: nếu bạn xóa một cái gì đó ở một bên, nó cũng sẽ bị xóa ở bên kia. Hãy giữ bản sao lưu thường xuyên cho cây gia đình của bạn ở định dạng Gramps XML.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">¶</a></h2>
+<p>Addon yêu cầu Gramps 6.0 chạy trên Python 3.10 hoặc phiên bản mới hơn. Nó có sẵn trong Gramps Desktop và có thể được cài đặt <a href="https://www.gramps-project.org/wiki/index.php/5.2_Addons#Installing_Addons_in_Gramps">theo cách thông thường</a>. Tài liệu này mô tả phiên bản mới nhất của addon; hãy sử dụng trình quản lý addon Gramps để cập nhật nếu cần.</p>
+<p>Máy tính để bàn của bạn và máy chủ của bạn phải chạy cùng một phiên bản Gramps. Phiên bản có dạng <code>MAJOR.MINOR.PATCH</code>, và <code>MAJOR</code> và <code>MINOR</code> phải khớp nhau. Xem <a href="../../help/help/">Nhận trợ giúp</a> để biết cách tìm ra phiên bản Gramps mà máy chủ của bạn đang chạy.</p>
+<h3 id="yeu-cau-may-chu">Yêu cầu máy chủ<a class="headerlink" href="#yeu-cau-may-chu" title="Permanent link">¶</a></h3>
+<p>Addon kiểm tra hai điều về máy chủ của bạn ngay khi nó kết nối, trước khi bất kỳ điều gì được tải xuống, và dừng lại với một thông báo nếu bất kỳ điều nào không được đáp ứng:</p>
+<ul>
+<li><strong>Phiên bản Gramps Web API 3.x.</strong> Phiên bản này của addon, dành cho Gramps 6.0, hoạt động với Gramps Web API 3. Một máy chủ cũ cần được cập nhật; một máy chủ chạy phiên bản API chính <em>mới hơn</em> cần một phiên bản Gramps mới hơn, không phải một addon mới hơn, vì mỗi dòng phát hành Gramps được ghép cặp với một phiên bản API. Bạn có thể tìm phiên bản của máy chủ của mình dưới <em>Cài đặt ▸ Thông tin phiên bản</em> trong Gramps Web.</li>
+<li><strong>Một hàng đợi tác vụ nền.</strong> Các thay đổi được áp dụng trên máy chủ như một tác vụ nền. Nếu không có hàng đợi tác vụ, điều này sẽ chạy đồng bộ và hết thời gian trên bất kỳ cây gia đình thực nào.</li>
+</ul>
+<p>Để áp dụng các thay đổi vào cơ sở dữ liệu từ xa, bạn cần một tài khoản với vai trò biên tập viên, chủ sở hữu hoặc quản trị viên.</p>
+<h3 id="luu-mat-khau-cua-ban-tuy-chon">Lưu mật khẩu của bạn (tùy chọn)<a class="headerlink" href="#luu-mat-khau-cua-ban-tuy-chon" title="Permanent link">¶</a></h3>
+<p>Cài đặt <code>keyring</code> (ví dụ: <code>sudo apt install python3-keyring</code> hoặc <code>sudo dnf install python3-keyring</code>) để lưu mật khẩu API trong trình quản lý mật khẩu của hệ thống bạn. Nếu không thể sử dụng keyring, addon sẽ thông báo và tiếp tục mà không có nó – bạn sẽ đơn giản được yêu cầu nhập mật khẩu mỗi lần.</p>
+<p>Trên gói <strong>Snap</strong> của Gramps, keyring hệ thống bị chặn bởi confinement cho đến khi bạn kết nối giao diện một lần. Addon hiển thị lệnh này khi nó phát hiện tình huống:</p>
+<div class="highlight"><pre><span></span><code>snap<span class="w"> </span>connect<span class="w"> </span>gramps:password-manager-service
+</code></pre></div>
+<p>Trên nhiều cấu hình desktop Gnome, một <a href="https://github.com/jaraco/keyring/issues/496">lỗi trong python keyring</a> có nghĩa là bạn phải tạo tệp cấu hình <code>~/.config/python_keyring/keyringrc.cfg</code> với nội dung sau:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[backend]</span>
+<span class="na">default-keyring</span><span class="o">=</span><span class="s">keyring.backends.SecretService.Keyring</span>
+</code></pre></div>
+<h2 id="su-dung">Sử dụng<a class="headerlink" href="#su-dung" title="Permanent link">¶</a></h2>
+<p>Addon có sẵn trong Gramps dưới <em>Công cụ ▸ Xử lý Cây Gia Đình ▸ Gramps&nbsp;Web&nbsp;Sync</em>. Sau khi xác nhận hộp thoại cảnh báo rằng lịch sử hoàn tác sẽ bị bỏ qua, cửa sổ đồng bộ hóa sẽ mở. Không có thay đổi nào được áp dụng cho cây cục bộ của bạn hoặc cho máy chủ cho đến khi bạn xác nhận chúng một cách rõ ràng.</p>
+<p>Một dải ở phía trên của cửa sổ cho biết tên cây gia đình mà bạn đang đồng bộ hóa, tài khoản và địa chỉ mà nó thuộc về, và khi nào nó được đồng bộ hóa lần cuối. Ở dưới cùng, phiên bản của addon và của Web API của máy chủ được hiển thị, điều này hữu ích khi báo cáo một vấn đề.</p>
+<h3 id="ket-noi">Kết nối<a class="headerlink" href="#ket-noi" title="Permanent link">¶</a></h3>
+<p>Nếu bạn đã đồng bộ hóa cây gia đình này trước đó và mật khẩu của bạn đã được lưu, addon sẽ kết nối ngay khi nó mở và đi thẳng đến so sánh. Nếu không, nó sẽ yêu cầu URL cơ sở của phiên bản Gramps Web của bạn (ví dụ: <code>https://mygrampsweb.com/</code>), tên người dùng của bạn và mật khẩu của bạn.</p>
+<p>URL và tên người dùng được lưu dưới dạng văn bản thuần túy trong thư mục người dùng Gramps của bạn. Mật khẩu chỉ được lưu trong trình quản lý mật khẩu của hệ thống nếu bạn để <strong>Nhớ mật khẩu</strong> được đánh dấu; bỏ đánh dấu nó sẽ xóa bất kỳ mật khẩu nào đã được lưu cho máy chủ đó. Nếu bạn nhập một địa chỉ bắt đầu bằng <code>http://</code> thay vì <code>https://</code>, addon sẽ cảnh báo bạn khi bạn gõ, vì mật khẩu của bạn sẽ được gửi dưới dạng văn bản rõ ràng.</p>
+<p>Mỗi máy chủ mà bạn đồng bộ hóa được lưu riêng biệt, cùng với bản ghi của riêng nó về khi nó được đồng bộ hóa lần cuối, vì vậy bạn có thể chuyển đổi giữa hai máy chủ mà không làm gián đoạn bất kỳ máy chủ nào. Mỗi mục cũng ghi lại cây gia đình cục bộ nào mà nó đã được đồng bộ hóa lần cuối. Addon chỉ kết nối tự động khi điều đó khớp với cây mà bạn đang mở; nếu không, nó sẽ hiển thị chi tiết kết nối và chờ bạn nhấn <em>Kết nối</em>.</p>
+<p>Hai hành động có sẵn trong khi không có gì được ghi:</p>
+<ul>
+<li><strong>Thay đổi máy chủ…</strong>, trên dải trên cùng, quay lại chi tiết kết nối để bạn có thể chỉ định cây này đến một máy chủ khác. Nó sẽ ngắt quãng một so sánh đang diễn ra thay vì khiến bạn phải chờ nó hoàn thành.</li>
+<li><strong>Quên máy chủ này</strong>, trên bảng kết nối, xóa địa chỉ, tên người dùng và mật khẩu đã lưu, cùng với bản ghi về khi cây này được đồng bộ hóa lần cuối. Đồng bộ hóa tiếp theo sẽ so sánh hai cây từ đầu.</li>
+</ul>
+<h3 id="xem-xet-cac-thay-oi">Xem xét các thay đổi<a class="headerlink" href="#xem-xet-cac-thay-oi" title="Permanent link">¶</a></h3>
+<p>Addon so sánh cơ sở dữ liệu cục bộ và từ xa và hiển thị các hành động mà nó đề xuất thực hiện, được nhóm theo cơ sở dữ liệu nào mà chúng thay đổi:</p>
+<div class="highlight"><pre><span></span><code>▾ Sẽ thay đổi trên máy tính này (7 đối tượng)
+    ▾ Thêm 3 đối tượng
+        Người   John Smith        I0123
+    ▾ Cập nhật 4 đối tượng
+        …
+▾ Sẽ thay đổi trên máy chủ (5 đối tượng)
+    …
+</code></pre></div>
+<p>Mỗi hàng tên đối tượng, vì vậy bạn có thể biết ai hoặc cái gì bị ảnh hưởng thay vì chỉ thấy một ID Gramps. Nếu bất kỳ điều gì sẽ bị xóa, một ghi chú ở trên cùng danh sách cho biết có bao nhiêu đối tượng và ở bên nào.</p>
+<p>Nhấn <strong>Áp dụng</strong> để thực hiện những gì danh sách mô tả.</p>
+<p>Cửa sổ đồng bộ hóa không chặn phần còn lại của Gramps, vì vậy bạn có thể tiếp tục làm việc trong khi danh sách đang mở. Nếu bạn chỉnh sửa một đối tượng bị ảnh hưởng trong thời gian đó, addon sẽ nhận thấy khi bạn nhấn Áp dụng, dừng lại mà không thay đổi gì và yêu cầu bạn so sánh lại.</p>
+<h4 id="che-o-ong-bo-hoa">Chế độ đồng bộ hóa<a class="headerlink" href="#che-o-ong-bo-hoa" title="Permanent link">¶</a></h4>
+<p>Chế độ đồng bộ hóa được chọn ở trên danh sách các thay đổi. Thay đổi nó sẽ xây dựng lại danh sách, vì chế độ quyết định mỗi sự khác biệt trở thành gì.</p>
+<ul>
+<li><strong>Đồng bộ hóa hai chiều</strong> (mặc định) – các thay đổi từ cả hai bên được kết hợp. Các đối tượng được chỉnh sửa ở cả hai nơi sẽ được hợp nhất.</li>
+<li><strong>Đặt lại máy chủ để khớp với máy tính này</strong> – máy chủ sẽ được làm cho khớp với máy tính này. Bất kỳ điều gì chỉ thay đổi trên máy chủ sẽ bị bỏ qua.</li>
+<li><strong>Đặt lại máy tính này để khớp với máy chủ</strong> – máy tính này sẽ được làm cho khớp với máy chủ. Bất kỳ điều gì chỉ thay đổi ở đây sẽ bị bỏ qua.</li>
+</ul>
+<p>Chế độ <strong>hợp nhất</strong> có sẵn trong các phiên bản trước 1.5 đã bị xóa. Nó khác với đồng bộ hóa hai chiều chỉ ở việc khôi phục các đối tượng bị xóa ở một bên thay vì phát tán việc xóa. Nếu bạn đã dựa vào nó, hãy sử dụng đồng bộ hóa hai chiều và khôi phục bất kỳ điều gì bạn muốn giữ từ một bản sao lưu.</p>
+<h3 id="tep-phuong-tien">Tệp phương tiện<a class="headerlink" href="#tep-phuong-tien" title="Permanent link">¶</a></h3>
+<p>Các tệp phương tiện được xử lý như một phần của cùng một xác nhận, không phải là một bước riêng biệt. Nếu bất kỳ tệp nào cần chuyển, một hộp kiểm bên dưới danh sách đề nghị di chuyển chúng:</p>
+<div class="highlight"><pre><span></span><code>[x] Cũng chuyển 12 tệp phương tiện (4 để tải xuống, 8 để tải lên)
+</code></pre></div>
+<p>Bỏ chọn nó để đồng bộ hóa các thay đổi đối tượng mà không chạm vào các tệp.</p>
+<p>Các tệp bị thiếu ở <em>cả hai</em> bên được liệt kê riêng biệt, vì không thể làm gì về chúng:</p>
+<div class="highlight"><pre><span></span><code>2 tệp phương tiện bị thiếu ở cả hai bên và không thể được chuyển.
+</code></pre></div>
+<p>Việc đồng bộ hóa tệp phương tiện có hai hạn chế:</p>
+<ul>
+<li>Nếu một tệp cục bộ có một checksum khác với tệp được lưu trong cơ sở dữ liệu Gramps (điều này có thể xảy ra ví dụ như đối với các tệp Word được chỉnh sửa sau khi được thêm vào Gramps), việc tải lên sẽ thất bại với một thông báo lỗi.</li>
+<li>Công cụ không xác minh tính toàn vẹn của tất cả các tệp cục bộ. Nếu một tệp tồn tại dưới đường dẫn được lưu cho đối tượng phương tiện nhưng khác với tệp trên máy chủ, công cụ sẽ không phát hiện ra điều đó. Sử dụng Addon Xác minh Phương tiện để tìm các tệp có checksum không chính xác.</li>
+</ul>
+<h3 id="neu-mot-lan-ong-bo-hoa-that-bai">Nếu một lần đồng bộ hóa thất bại<a class="headerlink" href="#neu-mot-lan-ong-bo-hoa-that-bai" title="Permanent link">¶</a></h3>
+<p>Nếu một lần đồng bộ hóa thất bại giữa chừng – chẳng hạn như một kết nối bị mất – addon sẽ báo cáo những gì nó đã áp dụng và cung cấp <strong>Thử lại</strong>, điều này sẽ tiếp tục từ bước đã thất bại thay vì bắt đầu lại. Bản sao tải xuống của cây từ xa sẽ được giữ lại, vì vậy việc thử lại sẽ không tải xuống và so sánh nó lần thứ hai.</p>
+<p>Chi tiết kỹ thuật của sự cố có sẵn trong một phần mở rộng <em>Chi tiết</em>, với một nút để sao chép chúng cho một báo cáo lỗi.</p>
+<h2 id="khac-phuc-su-co">Khắc phục sự cố<a class="headerlink" href="#khac-phuc-su-co" title="Permanent link">¶</a></h2>
+<p><strong>Những thay đổi bất ngờ.</strong> Nếu addon đề xuất một số lượng lớn các xóa đáng báo động, hãy kiểm tra dải trên cùng trước: nó cho biết cây gia đình trên máy chủ mà bạn sắp ghi vào. Đồng bộ hóa một cây với một máy chủ chứa một cây <em>khác</em> sẽ tạo ra chính triệu chứng này.</p>
+<p>Nếu không, những sự khác biệt mà bạn không mong đợi có thể đến từ sự không nhất quán trong một trong các cơ sở dữ liệu, hoặc từ đồng hồ không đồng bộ giữa máy tính của bạn và máy chủ của bạn. Kiểm tra xem cả hai đồng hồ có được đặt đúng không (múi giờ không quan trọng, vì công cụ sử dụng dấu thời gian Unix) và chạy công cụ kiểm tra &amp; sửa chữa trên cơ sở dữ liệu cục bộ của bạn. Như một biện pháp cuối cùng, xuất cơ sở dữ liệu cục bộ của bạn sang Gramps XML và nhập lại vào một cơ sở dữ liệu mới, trống. Đây là một thao tác không mất dữ liệu, nhưng đảm bảo tất cả dữ liệu được lưu trữ một cách nhất quán.</p>
+<p><strong>Lỗi tệp phương tiện.</strong> Một lần tải lên thất bại thường do sự không khớp giữa checksum của tệp trên đĩa và checksum trong cơ sở dữ liệu Gramps cục bộ, điều này xảy ra với các tệp có thể chỉnh sửa như tài liệu văn phòng được chỉnh sửa bên ngoài Gramps. Sử dụng Addon Xác minh Phương tiện của Gramps để sửa chữa các checksum.</p>
+<p><strong>Lỗi quyền.</strong> Kiểm tra vai trò của tài khoản người dùng Gramps Web của bạn: chỉ có biên tập viên, chủ sở hữu và quản trị viên mới có thể áp dụng các thay đổi vào cơ sở dữ liệu từ xa.</p>
+<h3 id="yeu-cau-tro-giup">Yêu cầu trợ giúp<a class="headerlink" href="#yeu-cau-tro-giup" title="Permanent link">¶</a></h3>
+<p>Nếu không có gì ở trên giúp ích, hãy hỏi cộng đồng bằng cách đăng bài trong <a href="https://gramps.discourse.group/c/gramps-web/28">danh mục Gramps Web của diễn đàn Gramps</a>. Vui lòng cung cấp:</p>
+<ul>
+<li>phiên bản của addon Gramps Web Sync, được hiển thị ở dưới cùng của cửa sổ đồng bộ hóa bên cạnh phiên bản Web API của máy chủ (và vui lòng sử dụng phiên bản phát hành mới nhất)</li>
+<li>phiên bản Gramps desktop mà bạn đang sử dụng</li>
+<li>thông tin phiên bản của Gramps Web, tìm thấy dưới <em>Cài đặt ▸ Thông tin phiên bản</em></li>
+<li>bất kỳ chi tiết nào về cài đặt Gramps Web của bạn (tự lưu trữ, Grampshub, ...)</li>
+<li>đầu ra của nhật ký máy chủ Gramps Web của bạn, nếu bạn có quyền truy cập vào chúng (khi sử dụng Docker: <code>docker compose logs --tail 100 grampsweb</code> và <code>docker compose logs --tail 100 grampsweb-celery</code>)</li>
+</ul>
+<p>Nếu bạn được yêu cầu cung cấp nhật ký gỡ lỗi, hãy khởi động Gramps <a href="https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Command_Line">từ dòng lệnh</a> với ghi nhật ký gỡ lỗi được bật và tái tạo vấn đề:</p>
+<div class="highlight"><pre><span></span><code>gramps<span class="w"> </span>--debug<span class="w"> </span>grampswebsync
+</code></pre></div>
+<h2 id="boi-canh-cach-addon-hoat-ong">Bối cảnh: cách addon hoạt động<a class="headerlink" href="#boi-canh-cach-addon-hoat-ong" title="Permanent link">¶</a></h2>
+<p>Addon được thiết kế để giữ cho cơ sở dữ liệu Gramps cục bộ đồng bộ với cơ sở dữ liệu Gramps Web từ xa, cho phép cả thay đổi cục bộ và từ xa (chỉnh sửa hợp tác).</p>
+<p>Nó <strong>không phù hợp</strong></p>
+<ul>
+<li>để đồng bộ hóa với một cơ sở dữ liệu không phải là một biến thể trực tiếp (bắt đầu từ một bản sao cơ sở dữ liệu hoặc xuất/nhập Gramps XML) của cơ sở dữ liệu cục bộ,</li>
+<li>để hợp nhất hai cơ sở dữ liệu với một số lượng lớn các thay đổi ở cả hai bên cần sự chú ý thủ công để hợp nhất. Sử dụng <a href="https://www.gramps-project.org/wiki/index.php/Import_Merge_Tool">Công cụ Nhập Hợp Nhất</a> tuyệt vời cho mục đích này.</li>
+</ul>
+<p>Các nguyên tắc hoạt động rất đơn giản:</p>
+<ul>
+<li>Nó so sánh cơ sở dữ liệu cục bộ và từ xa.</li>
+<li>Nếu có bất kỳ sự khác biệt nào, nó kiểm tra dấu thời gian của đối tượng giống hệt cuối cùng, hãy gọi nó là <strong>t</strong>.</li>
+<li>Nếu một đối tượng thay đổi gần đây hơn <strong>t</strong> tồn tại trong một cơ sở dữ liệu nhưng không có trong cơ sở dữ liệu kia, nó sẽ được đồng bộ hóa đến cả hai (giả sử là đối tượng mới).</li>
+<li>Nếu một đối tượng thay đổi lần cuối trước <strong>t</strong> vắng mặt trong một cơ sở dữ liệu, nó sẽ bị xóa trong cả hai (giả sử là đối tượng đã bị xóa).</li>
+<li>Nếu một đối tượng khác nhau nhưng chỉ thay đổi sau <strong>t</strong> trong một cơ sở dữ liệu, hãy đồng bộ hóa nó với cơ sở dữ liệu kia (giả sử là đối tượng đã chỉnh sửa).</li>
+<li>Nếu một đối tượng khác nhau nhưng thay đổi sau <strong>t</strong> trong cả hai cơ sở dữ liệu, hãy hợp nhất chúng (giả sử là sửa đổi xung đột).</li>
+</ul>
+<p>Thời gian của lần đồng bộ hóa thành công cuối cùng cũng được ghi lại, riêng biệt cho mỗi máy chủ, và được sử dụng làm <strong>t</strong> khi nó gần đây hơn đối tượng giống hệt mới nhất.</p>
+<p>Thuật toán này đơn giản và mạnh mẽ vì nó không yêu cầu theo dõi lịch sử đồng bộ hóa. Tuy nhiên, nó hoạt động tốt nhất khi bạn <em>đồng bộ hóa thường xuyên</em>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../settings/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Cài đặt quản trị">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Cài đặt quản trị
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../user-guide/" class="md-footer__link md-footer__link--next" aria-label="Sau: Giới thiệu">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Giới thiệu
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.expand", "navigation.footer", "content.action.edit", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
