@@ -6,7 +6,21 @@ In the Gramps database, blog posts are represented as sources with a note attach
 
 ## Add a blog post
 
-To add a blog post, you can use Gramps Web or Gramps Desktop ([synchronized](../administration/sync.md) with Gramps Web), the steps are the same in both cases:
+The quickest way to write a post is the dedicated **New Blog Post** form in Gramps Web. Open it either from the blue **+** button on the Blog page, or from the **Add** menu (plus icon) in the top app bar by choosing **Blog Post**.
+
+The form has fields for:
+
+- **Title** – the title of the post (required)
+- **Author** – who wrote it
+- **Content** – a rich-text editor for the post itself
+- **Media** – one or more media objects. The first one becomes the preview picture shown above the text; all of them appear as a gallery below it.
+- **Tags** and a **private** switch, as for any other object
+
+Saving the form creates the underlying source, note, and `Blog` tag for you, as described [below](#relation-between-blog-and-sources).
+
+### Adding a post manually
+
+You can also create a post by building the underlying objects yourself. This is the only way to do it in Gramps Desktop ([synchronized](../administration/sync.md) with Gramps Web), and the steps are the same in both applications:
 
 - Add a new source. The title of the source will be the title of your blog post, the author of the source will be the author of the post.
 - Optionally, associate the source with a repository corresponding to your Gramps Web blog

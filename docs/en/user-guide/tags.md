@@ -21,7 +21,7 @@ Tags can be applied to or removed from an object on its detail page when in edit
 
 ## Filtering by tag
 
-All object list pages (People, Families, Events, Places, Sources, Citations, Repositories, Notes, Media) include a tag filter. Use it to show only objects that have a specific tag applied.
+All [object list pages](lists.md) (People, Families, Events, Places, Sources, Citations, Repositories, Notes, Media) include a tag filter. Use it to show only objects that have a specific tag applied.
 
 ## Special tags
 

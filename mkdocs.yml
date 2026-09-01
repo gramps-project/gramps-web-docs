@@ -43,6 +43,7 @@ nav:
           - First login: user-guide/first-login.md
       - Browsing your tree:
           - Search: user-guide/search.md
+          - Lists: user-guide/lists.md
           - Family Tree: user-guide/tree.md
           - Timeline: user-guide/timeline.md
           - Map: user-guide/map.md
@@ -187,6 +188,7 @@ plugins:
             DNA matches: DNA-Übereinstimmungen
             Chromosome browser: Chromosomen-Browser
             Y-DNA: Y-DNA
+            Lists: Listen
             Family Tree: Stammbaum
             Timeline: Zeitleiste
             Reports: Berichte
@@ -267,6 +269,7 @@ plugins:
             DNA matches: Correspondances ADN
             Chromosome browser: Navigateur de chromosomes
             Y-DNA: ADN-Y
+            Lists: Listes
             Family Tree: Arbre généalogique
             Timeline: Chronologie
             Reports: Rapports
@@ -347,6 +350,7 @@ plugins:
             DNA matches: Coincidencias de ADN
             Chromosome browser: Navegador de cromosomas
             Y-DNA: ADN-Y
+            Lists: Listas
             Family Tree: Árbol genealógico
             Timeline: Cronología
             Reports: Informes
@@ -427,6 +431,7 @@ plugins:
             DNA matches: DNA 匹配
             Chromosome browser: 染色体浏览器
             Y-DNA: Y-DNA
+            Lists: 列表
             Family Tree: 家谱树
             Timeline: 时间线
             Reports: 报告
@@ -507,6 +512,7 @@ plugins:
             DNA matches: Khớp DNA
             Chromosome browser: Trình duyệt nhiễm sắc thể
             Y-DNA: Y-DNA
+            Lists: Danh sách
             Family Tree: Cây gia phả
             Timeline: Dòng thời gian
             Reports: Báo cáo
@@ -587,6 +593,7 @@ plugins:
             DNA matches: DNA eşleşmeleri
             Chromosome browser: Kromozom tarayıcısı
             Y-DNA: Y-DNA
+            Lists: Listeler
             Family Tree: Soy ağacı
             Timeline: Zaman Çizelgesi
             Reports: Raporlar
@@ -667,6 +674,7 @@ plugins:
             DNA matches: Совпадения ДНК
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
+            Lists: Списки
             Family Tree: Генеалогическое дерево
             Timeline: Хронология
             Reports: Отчёты
@@ -747,6 +755,7 @@ plugins:
             DNA matches: Correspondências de DNA
             Chromosome browser: Navegador de cromossomos
             Y-DNA: DNA-Y
+            Lists: Listas
             Family Tree: Árvore genealógica
             Timeline: Linha do tempo
             Reports: Relatórios
@@ -827,6 +836,7 @@ plugins:
             DNA matches: DNA マッチ
             Chromosome browser: 染色体ブラウザ
             Y-DNA: Y-DNA
+            Lists: リスト
             Family Tree: 家系図
             Timeline: タイムライン
             Reports: レポート
@@ -907,6 +917,7 @@ plugins:
             DNA matches: DNA-matches
             Chromosome browser: Kromosombrowser
             Y-DNA: Y-DNA
+            Lists: Lister
             Family Tree: Stamtræ
             Timeline: Tidslinje
             Reports: Rapporter
@@ -987,6 +998,7 @@ plugins:
             DNA matches: DNA-osumat
             Chromosome browser: Kromosomiselain
             Y-DNA: Y-DNA
+            Lists: Luettelot
             Family Tree: Sukupuu
             Timeline: Aikajana
             Reports: Raportit
@@ -1067,6 +1079,7 @@ plugins:
             DNA matches: Corrispondenze DNA
             Chromosome browser: Browser dei cromosomi
             Y-DNA: DNA-Y
+            Lists: Elenchi
             Family Tree: Albero genealogico
             Timeline: Linea temporale
             Reports: Rapporti
@@ -1147,6 +1160,7 @@ plugins:
             DNA matches: Збіги ДНК
             Chromosome browser: Браузер хромосом
             Y-DNA: Y-ДНК
+            Lists: Списки
             Family Tree: Родовід
             Timeline: Хронологія
             Reports: Звіти

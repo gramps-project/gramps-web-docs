@@ -63,3 +63,19 @@ If the tree administrator has configured a **home page note** and/or a **home pa
 
 !!! tip
     If the tree is empty and you have edit permissions, the dashboard shows a "Get started" prompt with buttons to add your first person or import a family tree file.
+
+## Installing Gramps Web as an app
+
+Gramps Web is a progressive web app (PWA), which means your browser can install it alongside your other applications instead of keeping it in a browser tab. It then gets its own icon and opens in its own window, without the address bar and browser toolbars.
+
+How you install it depends on your browser:
+
+- **Android (Chrome)** – open the menu and choose "Install app" or "Add to Home screen".
+- **iOS/iPadOS (Safari)** – tap the share button and choose "Add to Home Screen".
+- **Desktop (Chrome, Edge)** – click the install icon at the right-hand end of the address bar, or use the browser menu's "Install" entry.
+- **Desktop (Firefox, Safari)** – installing is not supported; use a normal browser tab or window.
+
+Nothing changes about how Gramps Web works, and no data is stored differently – it is the same application, just presented as a standalone app.
+
+!!! note
+    Gramps Web still needs to reach your server to show your data, so an installed app does not let you browse your family tree offline.

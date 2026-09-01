@@ -13,7 +13,19 @@ Each place with coordinates is shown as a marker. Clicking a marker opens a summ
 
 ## Search
 
-The search box in the top-left corner of the map lets you jump to any location in the world by name. This does not filter the tree's places – it simply pans and zooms the map to the searched location.
+The search box in the top-left corner of the map searches as you type and groups the results under three headings:
+
+- **Places** – places in your family tree. Selecting one pans the map to it and highlights its marker.
+- **People** – people in your family tree. Selecting one switches the map into the person view described [below](#following-a-person-across-the-map).
+- **External** – locations from [OpenStreetMap](https://www.openstreetmap.org/), for anywhere in the world. Selecting one simply pans and zooms the map to that location; it does not filter or change your tree's places.
+
+The external results are also useful when adding coordinates to a place: you can look the location up here to see where it is before entering its latitude and longitude.
+
+## Following a person across the map
+
+Selecting a person – from the map's search box, or with the **Open in map** button on a person's detail page – shows the places connected to that person's events, joined by lines in chronological order. Small arrows along each line indicate the direction of travel, so you can follow a person's life from birth through to death across the map.
+
+Places on a place detail page have an **Open in map** button as well, which opens the map centred on that place.
 
 ## Time slider
 

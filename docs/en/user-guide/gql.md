@@ -1,6 +1,6 @@
 # Filter using the Gramps Query Language
 
-The object list views (people, families, events, ...) have an optional advanced filter mode based on the [Gramps Query Language](https://github.com/DavidMStraub/gramps-ql) (GQL).
+The [object list views](lists.md) (people, families, events, ...) have an optional advanced filter mode based on the [Gramps Query Language](https://github.com/DavidMStraub/gramps-ql) (GQL).
 
 To use it, type a query in GQL syntax and press enter (or hit the "apply" button). The view will be filtered by the query. If the query is invalid, the input field's frame turns red.
 
