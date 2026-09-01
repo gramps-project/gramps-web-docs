@@ -1,10 +1,11 @@
 # Étiquettes
 
-Les étiquettes sont des labels qui peuvent être appliqués à tout objet dans la base de données Gramps – personnes, familles, événements, lieux, sources, citations, dépôts, notes et médias. Elles sont utiles pour regrouper et filtrer des objets. Les étiquettes sont stockées dans la base de données de l'arbre généalogique Gramps et sont partagées entre tous les utilisateurs ; elles sont également entièrement compatibles avec les étiquettes créées dans Gramps Desktop.
+Les étiquettes sont des labels qui peuvent être appliqués à tout objet dans la base de données Gramps – personnes, familles, événements, lieux, sources, citations, dépôts, notes et médias. Elles sont utiles pour regrouper et filtrer les objets. Les étiquettes sont stockées dans la base de données de l'arbre généalogique Gramps et sont partagées entre tous les utilisateurs ; elles sont également entièrement compatibles avec les étiquettes créées dans Gramps Desktop.
+
 
 ## Gestion des étiquettes
 
-Les étiquettes sont gérées depuis la section **Étiquettes** des [Paramètres d'administration](../administration/settings.md#tags), qui est uniquement disponible pour les utilisateurs ayant le rôle de Propriétaire ou d'Administrateur. Elle affiche toutes les étiquettes existantes et vous permet de :
+Les étiquettes sont gérées à partir de la section **Étiquettes** des [Paramètres d'administration](../administration/settings.md#tags), qui n'est accessible qu'aux utilisateurs ayant le rôle de Propriétaire ou d'Administrateur. Elle affiche toutes les étiquettes existantes et vous permet de :
 
 - **Créer** une nouvelle étiquette en utilisant le bouton **Nouvelle Étiquette**
 - **Renommer** une étiquette en utilisant l'icône d'édition (crayon)
@@ -20,7 +21,7 @@ Les étiquettes peuvent être appliquées ou retirées d'un objet sur sa page de
 
 ## Filtrage par étiquette
 
-Toutes les pages de liste d'objets (Personnes, Familles, Événements, Lieux, Sources, Citations, Dépôts, Notes, Médias) incluent un filtre par étiquette. Utilisez-le pour afficher uniquement les objets ayant une étiquette spécifique appliquée.
+Toutes les [pages de liste d'objets](lists.md) (Personnes, Familles, Événements, Lieux, Sources, Citations, Dépôts, Notes, Médias) incluent un filtre par étiquette. Utilisez-le pour afficher uniquement les objets ayant une étiquette spécifique appliquée.
 
 ## Étiquettes spéciales
 

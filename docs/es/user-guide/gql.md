@@ -1,6 +1,6 @@
-# Filtrar usando el Lenguaje de Consulta de Gramps
+# Filtrar usando el Lenguaje de Consultas de Gramps
 
-Las vistas de listas de objetos (personas, familias, eventos, ...) tienen un modo de filtro avanzado opcional basado en el [Lenguaje de Consulta de Gramps](https://github.com/DavidMStraub/gramps-ql) (GQL).
+Las [vistas de lista de objetos](lists.md) (personas, familias, eventos, ...) tienen un modo de filtro avanzado opcional basado en el [Lenguaje de Consultas de Gramps](https://github.com/DavidMStraub/gramps-ql) (GQL).
 
 Para usarlo, escribe una consulta en sintaxis GQL y presiona enter (o haz clic en el botón "aplicar"). La vista se filtrará según la consulta. Si la consulta es inválida, el marco del campo de entrada se vuelve rojo.
 
@@ -8,7 +8,7 @@ La sintaxis de GQL se describe a continuación, copiada de la documentación de 
 
 ## Sintaxis
 
-Una consulta GQL es una cadena compuesta de declaraciones de la forma `propiedad operador valor`, combinadas opcionalmente con las palabras clave `and` y `or`, así como paréntesis.
+Una consulta GQL es una cadena compuesta por declaraciones de la forma `propiedad operador valor`, combinadas opcionalmente con las palabras clave `and` y `or`, así como paréntesis.
 
 ### Propiedades
 
@@ -22,7 +22,7 @@ GQL admite la consulta de propiedades anidadas de los objetos de Gramps, por eje
 
 #### Elementos de lista por índice
 
-Los elementos individuales en propiedades similares a listas se pueden acceder por índice posicional en corchetes. Esto se puede combinar con propiedades anidadas, por ejemplo, `primary_name.surname_list[0].surname`.
+Los elementos individuales en propiedades similares a listas pueden ser accedidos por índice posicional entre corchetes. Esto se puede combinar con propiedades anidadas, por ejemplo, `primary_name.surname_list[0].surname`.
 
 #### `length`
 
@@ -34,11 +34,11 @@ Dos propiedades especiales más para propiedades de Gramps similares a arreglos.
 
 #### Índice de arreglo
 
-Se puede usar un índice numérico de arreglo para acceder a elementos específicos de una lista, por ejemplo, `child_ref_list[0]` para el primer hijo.
+Se puede usar un índice de arreglo numérico para acceder a elementos específicos de una lista, por ejemplo, `child_ref_list[0]` para el primer hijo.
 
 #### `get_person`, etc.
 
-Mientras que todas las propiedades anteriores se refieren a un solo objeto de Gramps, también es posible filtrar en diferentes objetos referidos por el objeto inicial. Por ejemplo, un evento tiene un manejador de lugar en su propiedad `place`. Usando la pseudo-propiedad `get_place`, GQL cambia a las propiedades de ese objeto. Por ejemplo, es posible buscar `class = event and place.get_place.name.value ~ York`. Esto también se puede combinar con `any` o `all`, por ejemplo, `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
+Mientras que todas las propiedades anteriores se refieren a un solo objeto de Gramps, también es posible filtrar sobre diferentes objetos referidos por el objeto inicial. Por ejemplo, un evento tiene un manejador de lugar en su propiedad `place`. Usando la pseudo-propiedad `get_place`, GQL cambia a las propiedades de ese objeto. Por ejemplo, es posible buscar `class = event and place.get_place.name.value ~ York`. Esto también se puede combinar con `any` o `all`, por ejemplo, `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
 
 ### Operadores
 
@@ -48,7 +48,7 @@ Igualdad o desigualdad. Ejemplos: `class = person`, `class != family`
 
 #### `>`, `>=`, `<`, `<=`
 
-Comparación. Funciona para cadenas así como para números. Ejemplos: `confidence <= 1`, `change > 1712477760`, `gramps_id > "I2015"`
+Comparación. Funciona para cadenas así como para números. Ejemplos: `confidence <= 1`, `change > 1712477760 `, `gramps_id > "I2015"`
 
 #### `~`, `!~`
 
@@ -56,12 +56,11 @@ Contiene o no contiene. Funciona para listas así como para cadenas. Ejemplos: `
 
 #### Sin operador/valor
 
-Si no se proporciona un operador y un valor, el valor se interpreta como un booleano (verdadero o falso). Esto funciona para
-todos los tipos de propiedades y se aplican las reglas de Python para convertir a verdadero/falso. Por ejemplo, la consulta `private` devuelve objetos privados; `confidence` devuelve objetos donde la confianza es mayor que 0; `media_list` devuelve objetos con al menos una referencia de medios.
+Si no se proporciona un operador y un valor, el valor se interpreta como un booleano (verdadero o falso). Esto funciona para todos los tipos de propiedades y se aplican las reglas de Python para convertir a verdadero/falso. Por ejemplo, la consulta `private` devuelve objetos privados; `confidence` devuelve objetos donde la confianza es mayor que 0; `media_list` devuelve objetos con al menos una referencia de medios.
 
 ### Valores
 
-Los valores pueden ser números o cadenas. Si los números deben interpretarse como cadenas o si se involucran caracteres especiales como =, encierra el valor entre comillas. Ejemplos: `gramps_id = F0001`, pero `gramps_id = "0001"`.
+Los valores pueden ser números o cadenas. Si los números deben ser interpretados como cadenas o si se involucran caracteres especiales como =, encierra el valor entre comillas. Ejemplos: `gramps_id = F0001`, pero `gramps_id = "0001"`.
 
 ## Ejemplos comentados
 
@@ -70,6 +69,7 @@ class = note and private and text.string ~ David
 ```
 
 Todas las notas privadas que contienen la cadena "David" en su texto
+
 
 ```sql
 media_list.length >= 10
@@ -101,11 +101,13 @@ note_list.any.get_note.text.string ~ "David"
 
 Todos los objetos con al menos una nota que contiene la cadena "David" en su texto.
 
+
 ```sql
 class = family and child_ref_list.all.ref.get_person.gender = 0 and child_ref_list.length = 3
 ```
 
 Todas las familias con tres hijas.
+
 
 ## Lista completa de Propiedades de Gramps
 

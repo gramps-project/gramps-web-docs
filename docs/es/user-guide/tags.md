@@ -4,7 +4,7 @@ Las etiquetas son etiquetas que se pueden aplicar a cualquier objeto en la base 
 
 ## Gestión de etiquetas
 
-Las etiquetas se gestionan desde la sección **Etiquetas** de [Configuración de Administración](../administration/settings.md#tags), que solo está disponible para usuarios con el rol de Propietario o Administrador. Muestra todas las etiquetas existentes y te permite:
+Las etiquetas se gestionan desde la sección de **Etiquetas** de [Configuración de Administración](../administration/settings.md#tags), que solo está disponible para usuarios con el rol de Propietario o Administrador. Muestra todas las etiquetas existentes y te permite:
 
 - **Crear** una nueva etiqueta usando el botón **Nueva Etiqueta**
 - **Renombrar** una etiqueta usando el ícono de editar (lápiz)
@@ -16,11 +16,11 @@ Las etiquetas se gestionan desde la sección **Etiquetas** de [Configuración de
 
 ## Aplicando etiquetas a objetos
 
-Las etiquetas se pueden aplicar o eliminar de un objeto en su página de detalles cuando está en modo de edición.
+Las etiquetas se pueden aplicar o quitar de un objeto en su página de detalles cuando está en modo de edición.
 
 ## Filtrando por etiqueta
 
-Todas las páginas de lista de objetos (Personas, Familias, Eventos, Lugares, Fuentes, Citas, Repositorios, Notas, Medios) incluyen un filtro de etiquetas. Úsalo para mostrar solo los objetos que tienen una etiqueta específica aplicada.
+Todas las [páginas de lista de objetos](lists.md) (Personas, Familias, Eventos, Lugares, Fuentes, Citas, Repositorios, Notas, Medios) incluyen un filtro de etiquetas. Úsalo para mostrar solo los objetos que tienen una etiqueta específica aplicada.
 
 ## Etiquetas especiales
 

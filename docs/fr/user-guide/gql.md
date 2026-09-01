@@ -1,6 +1,6 @@
 # Filtrer en utilisant le Langage de Requête Gramps
 
-Les vues de liste d'objets (personnes, familles, événements, ...) ont un mode de filtre avancé optionnel basé sur le [Langage de Requête Gramps](https://github.com/DavidMStraub/gramps-ql) (GQL).
+Les [vues de liste d'objets](lists.md) (personnes, familles, événements, ...) ont un mode de filtre avancé optionnel basé sur le [Langage de Requête Gramps](https://github.com/DavidMStraub/gramps-ql) (GQL).
 
 Pour l'utiliser, tapez une requête en syntaxe GQL et appuyez sur entrée (ou cliquez sur le bouton "appliquer"). La vue sera filtrée par la requête. Si la requête est invalide, le cadre du champ de saisie devient rouge.
 
@@ -8,17 +8,17 @@ La syntaxe GQL est décrite ci-dessous, copiée de la documentation GQL.
 
 ## Syntaxe
 
-Une requête GQL est une chaîne composée d'instructions de la forme `propriété opérateur valeur`, éventuellement combinées avec les mots-clés `et` et `ou` ainsi que des parenthèses.
+Une requête GQL est une chaîne composée d'instructions de la forme `propriété opérateur valeur`, éventuellement combinées avec les mots-clés `et` et `ou`, ainsi que des parenthèses.
 
 ### Propriétés
 
 #### `class`
 
-Filtre pour la classe d'objet Gramps et peut être l'un de `person`, `family`, `event`, `place`, `citation`, `source`, `repository`, `media`, ou `note`.
+Filtre pour la classe d'objet Gramps et peut être l'une des suivantes : `person`, `family`, `event`, `place`, `citation`, `source`, `repository`, `media`, ou `note`.
 
 #### Propriétés d'objet
 
-GQL prend en charge la requête de propriétés imbriquées des objets Gramps, par exemple `primary_name.date.calendar`. Voir ci-dessous pour une liste complète des propriétés – voir aussi [Modèle de Données Gramps](https://gramps-project.org/wiki/index.php/Gramps_Data_Model).
+GQL prend en charge la requête des propriétés imbriquées des objets Gramps, par exemple `primary_name.date.calendar`. Voir ci-dessous pour une liste complète des propriétés – voir aussi [Modèle de Données Gramps](https://gramps-project.org/wiki/index.php/Gramps_Data_Model).
 
 #### Éléments de liste par index
 
@@ -26,7 +26,7 @@ Les éléments individuels dans des propriétés de type liste peuvent être acc
 
 #### `length`
 
-C'est une propriété spéciale qui retourne la longueur d'une propriété Gramps de type tableau, par exemple `media_list.length > 0` pour obtenir des objets avec des références médias.
+C'est une propriété spéciale qui renvoie la longueur d'une propriété Gramps de type tableau, par exemple `media_list.length > 0` pour obtenir des objets avec des références médias.
 
 #### `all`, `any`
 
@@ -38,7 +38,7 @@ Un index numérique de tableau peut être utilisé pour accéder à des élémen
 
 #### `get_person`, etc.
 
-Alors que toutes les propriétés précédentes se réfèrent à un seul objet Gramps, il est également possible de filtrer sur différents objets référencés par l'objet initial. Par exemple, un événement a un gestionnaire de lieu dans sa propriété `place`. En utilisant la pseudo-propriété `get_place`, GQL passe aux propriétés de cet objet. Par exemple, il est possible de rechercher `class = event and place.get_place.name.value ~ York`. Cela peut également être combiné avec `any` ou `all`, par exemple `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
+Bien que toutes les propriétés précédentes se réfèrent à un seul objet Gramps, il est également possible de filtrer sur différents objets référencés par l'objet initial. Par exemple, un événement a un handle de lieu dans sa propriété `place`. En utilisant la pseudo-propriété `get_place`, GQL passe aux propriétés de cet objet. Par exemple, il est possible de rechercher `class = event and place.get_place.name.value ~ York`. Cela peut également être combiné avec `any` ou `all`, par exemple `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
 
 ### Opérateurs
 
@@ -48,11 +48,11 @@ Alors que toutes les propriétés précédentes se réfèrent à un seul objet G
 
 #### `>`, `>=`, `<`, `<=`
 
-Comparaison. Fonctionne pour les chaînes ainsi que pour les nombres. Exemples : `confidence <= 1`, `change > 1712477760 `, `gramps_id > "I2015"`
+Comparaison. Fonctionne pour les chaînes de caractères ainsi que pour les nombres. Exemples : `confidence <= 1`, `change > 1712477760 `, `gramps_id > "I2015"`
 
 #### `~`, `!~`
 
-Contient ou ne contient pas. Fonctionne pour les listes ainsi que pour les chaînes. Exemples : `gramps_id !~ F00`, `author ~ David`, `family_list ~ "3a16680f7d226e3ac3eefc8b57a"`
+Contient ou ne contient pas. Fonctionne pour les listes ainsi que pour les chaînes de caractères. Exemples : `gramps_id !~ F00`, `author ~ David`, `family_list ~ "3a16680f7d226e3ac3eefc8b57a"`
 
 #### Pas d'opérateur/valeur
 
@@ -60,7 +60,7 @@ Si aucun opérateur et valeur n'est donné, la valeur est interprétée comme un
 
 ### Valeurs
 
-Les valeurs peuvent être des nombres ou des chaînes. Si les nombres doivent être interprétés comme des chaînes ou si des caractères spéciaux comme = sont impliqués, entourez la valeur de guillemets. Exemples : `gramps_id = F0001`, mais `gramps_id = "0001"`.
+Les valeurs peuvent être des nombres ou des chaînes de caractères. Si des nombres doivent être interprétés comme des chaînes ou si des caractères spéciaux comme = sont impliqués, entourez la valeur de guillemets. Exemples : `gramps_id = F0001`, mais `gramps_id = "0001"`.
 
 ## Exemples commentés
 
@@ -81,7 +81,7 @@ Tous les objets (de n'importe quelle classe) avec 10 références médias ou plu
 class != person and media_list.any.rect
 ```
 
-Tous les objets qui ne sont *pas* une personne mais ont une référence média qui fait partie d'une image. Ici, `media_list.any.rect` signifie que pour chacun des éléments de la liste des médias, il est vérifié si la propriété `rect` (rectangle) a une valeur véridique, ce qui signifie qu'il s'agit d'une liste non vide. (`media_list.any.rect.length > 0` aurait le même effet.)
+Tous les objets qui *ne sont pas* une personne mais ont une référence média qui fait partie d'une image. Ici, `media_list.any.rect` signifie que pour chacun des éléments de la liste des médias, il est vérifié si la propriété `rect` (rectangle) a une valeur véridique, ce qui signifie qu'il s'agit d'une liste non vide. (`media_list.any.rect.length > 0` aurait le même effet.)
 
 ```sql
 class = family and child_ref_list.length > 10

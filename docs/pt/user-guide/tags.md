@@ -4,15 +4,15 @@ Tags são rótulos que podem ser aplicados a qualquer objeto no banco de dados d
 
 ## Gerenciando tags
 
-As tags são gerenciadas a partir da seção **Tags** das [Configurações de Administração](../administration/settings.md#tags), que está disponível apenas para usuários com o papel de Proprietário ou Administrador. Ela mostra todas as tags existentes e permite que você:
+As tags são gerenciadas na seção **Tags** das [Configurações de Administração](../administration/settings.md#tags), que está disponível apenas para usuários com o papel de Proprietário ou Administrador. Ela mostra todas as tags existentes e permite que você:
 
 - **Crie** uma nova tag usando o botão **Nova Tag**
-- **Renomeie** uma tag usando o ícone de editar (lápis)
+- **Renomeie** uma tag usando o ícone de edição (lápis)
 - **Mude a cor** de uma tag usando o seletor de cores
-- **Exclua** uma tag usando o ícone de excluir
+- **Exclua** uma tag usando o ícone de exclusão
 
 !!! note
-    Excluir uma tag a remove de todos os objetos a que foi aplicada.
+    Excluir uma tag a remove de todos os objetos aos quais foi aplicada.
 
 ## Aplicando tags a objetos
 
@@ -20,7 +20,7 @@ As tags podem ser aplicadas ou removidas de um objeto na sua página de detalhes
 
 ## Filtrando por tag
 
-Todas as páginas de lista de objetos (Pessoas, Famílias, Eventos, Lugares, Fontes, Citações, Repositórios, Notas, Mídia) incluem um filtro de tags. Use-o para mostrar apenas objetos que têm uma tag específica aplicada.
+Todas as [páginas de lista de objetos](lists.md) (Pessoas, Famílias, Eventos, Lugares, Fontes, Citações, Repositórios, Notas, Mídia) incluem um filtro de tag. Use-o para mostrar apenas objetos que têm uma tag específica aplicada.
 
 ## Tags especiais
 

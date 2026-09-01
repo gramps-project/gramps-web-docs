@@ -6,11 +6,11 @@ La pagina è organizzata in sezioni espandibili. Clicca sull'intestazione di una
 
 ## Dati
 
-Copre le quote di utilizzo, l'importazione dei dati e la gestione dei file multimediali.
+Tratta delle quote di utilizzo, dell'importazione dei dati e della gestione dei file multimediali.
 
 ### Quote di utilizzo
 
-La parte superiore della sezione mostra l'utilizzo attuale rispetto a eventuali limiti configurati:
+La parte superiore della sezione mostra l'uso attuale rispetto a eventuali limiti configurati:
 
 - **Persone** – il numero di oggetti persona nell'albero rispetto al massimo configurato (∞ se illimitato)
 - **Archiviazione multimediale** – dimensione totale dei file multimediali caricati rispetto alla quota di archiviazione configurata (∞ se illimitato)
@@ -40,11 +40,11 @@ Consente di caricare un file ZIP di file multimediali per riempire i file mancan
 
 Gramps Web mantiene un indice di ricerca a testo completo che viene normalmente aggiornato automaticamente ogni volta che i dati cambiano. L'indicatore di stato mostra quanti oggetti sono attualmente indicizzati rispetto al conteggio totale degli oggetti.
 
-Clicca su **Aggiorna indice di ricerca** per attivare una ricostruzione completa. Viene mostrato un indicatore di progresso mentre il compito viene eseguito in background. Questo è solitamente necessario solo dopo un aggiornamento del server.
+Clicca su **Aggiorna indice di ricerca** per avviare una ricostruzione completa. Viene mostrato un indicatore di progresso mentre il compito viene eseguito in background. Questo è solitamente necessario solo dopo un aggiornamento del server.
 
 ### Indice di ricerca semantica
 
-Se il server ha [la ricerca semantica (potenziata da AI) abilitata](../install_setup/configuration.md), appare una sezione aggiuntiva con due azioni:
+Se il server ha [la ricerca semantica (potenziata dall'IA) abilitata](../install_setup/configuration.md), appare una sezione aggiuntiva con due azioni:
 
 - **Rigenera indice di ricerca semantica** – ricostruisce l'intero indice semantico da zero. Questo è computazionalmente costoso e può richiedere molto tempo.
 - **Aggiorna indice di ricerca semantica** – esegue un aggiornamento incrementale, aggiungendo solo oggetti non ancora indicizzati. Più veloce di una ricostruzione completa.
@@ -61,7 +61,7 @@ Questo consente di cambiare il nome del database dell'albero genealogico di Gram
 !!! tip
     Se desideri solo cambiare il nome mostrato nella barra dell'app senza rinominare il database, utilizza invece l'impostazione [Titolo dell'app](#app-title).
 
-### Informazioni sul ricercatore
+### Informazioni sul Ricercatore
 
 Imposta il nome, l'indirizzo e i dettagli di contatto del ricercatore principale. Queste informazioni sono incorporate nelle esportazioni (ad es. file GEDCOM).
 
@@ -79,37 +79,48 @@ Imposta un titolo personalizzato per l'applicazione. Se impostato, questo sovras
 
 Inserisci un titolo e clicca su **Salva**. Lascia vuoto per utilizzare il predefinito (il nome dell'albero genealogico).
 
-### Nota della home page
+### Nota della pagina principale
 
-Seleziona un oggetto **Nota** di Gramps da visualizzare nella home page del dashboard. Il contenuto della nota è reso sotto le colonne principali del dashboard ed è visibile a tutti gli utenti con accesso all'albero.
+Seleziona un oggetto **Nota** di Gramps da visualizzare nella pagina principale del dashboard. Il contenuto della nota viene visualizzato sotto le colonne principali del dashboard ed è visibile a tutti gli utenti con accesso all'albero.
 
-Utilizza il selettore di oggetti per cercare e scegliere una nota, quindi salva. Clicca su **Rimuovi** per cancellare la nota attuale della home page.
+Utilizza il selettore di oggetti per cercare e scegliere una nota, quindi salva. Clicca su **Rimuovi** per cancellare la nota attuale della pagina principale.
 
-### Immagine della home page
+### Immagine della pagina principale
 
-Seleziona un oggetto **Media** di Gramps da visualizzare come immagine sulla home page del dashboard. Quando combinato con una nota della home page, l'immagine appare accanto al testo della nota. Senza una nota, viene mostrata solo l'immagine.
+Seleziona un oggetto **Media** di Gramps da visualizzare come immagine nella pagina principale del dashboard. Quando combinata con una nota della pagina principale, l'immagine appare accanto al testo della nota. Senza una nota, viene mostrata solo l'immagine.
 
-Utilizza il selettore di oggetti per cercare e scegliere un oggetto multimediale, quindi salva. Clicca su **Rimuovi** per cancellare l'immagine attuale della home page.
+Utilizza il selettore di oggetti per cercare e scegliere un oggetto multimediale, quindi salva. Clicca su **Rimuovi** per cancellare l'immagine attuale della pagina principale.
 
 ### Impostazioni di esportazione/importazione
 
-Le impostazioni a livello di albero (titolo dell'app, colori del tema, nota/imagine della home page, ecc.) possono essere esportate come file JSON per backup o per copiare in un'altra istanza di Gramps Web.
+Le impostazioni a livello di albero (titolo dell'app, colori del tema, nota/imagine della pagina principale, ecc.) possono essere esportate come file JSON per il backup o per copiarle in un'altra istanza di Gramps Web.
 
-- Clicca su **Esporta impostazioni** per scaricare le impostazioni correnti come file JSON.
+- Clicca su **Esporta impostazioni** per scaricare le impostazioni attuali come file JSON.
 - Clicca su **Importa impostazioni dell'albero** per caricare un file JSON precedentemente esportato e applicare le impostazioni.
 
-## Elaborazione dell'albero genealogico
+## Elaborazione dell'Albero Genealogico
 
-### Controlla e ripara il database
+### Controlla e Ripara il Database
 
-Questo strumento controlla il database di Gramps per incoerenze interne e ripara quelle che può – analogo allo strumento [Controlla e ripara il database](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) in Gramps Desktop.
+Questo strumento controlla il database di Gramps per incoerenze interne e ripara quelle che può – analogo allo strumento [Controlla e Ripara Database](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) in Gramps Desktop.
 
-Clicca su **Controlla e ripara** e attendi che l'indicatore di progresso completi. Il risultato è mostrato sotto il pulsante:
+Clicca su **Controlla e Ripara** e attendi che l'indicatore di progresso completi. Il risultato è mostrato sotto il pulsante:
 
 - Se non sono stati trovati errori, viene visualizzato un messaggio di conferma.
-- Se sono stati trovati errori, viene mostrato un riepilogo delle correzioni applicate.
+- Se sono stati trovati errori, viene mostrato un riepilogo delle riparazioni applicate.
 
-Esegui questo strumento se incontri errori o comportamenti imprevisti che potrebbero essere causati da incoerenze del database, come relazioni mancanti tra oggetti.
+Esegui questo strumento se incontri errori o comportamenti imprevisti che potrebbero essere causati da incoerenze nel database, come relazioni mancanti tra oggetti.
+
+### Verifica i Dati
+
+Mentre [Controlla e Ripara Database](#check-and-repair-database) cerca incoerenze *tecniche*, questo strumento cerca dati *inverosimili* – analogo allo strumento [Verifica i Dati](https://gramps-project.org/wiki/index.php/Gramps_5.0_Wiki_Manual_-_Tools#Verify_the_Data) in Gramps Desktop. Riporta cose che non sono impossibili ma sono abbastanza improbabili da meritare un secondo sguardo, come una madre di 12 anni o una persona che è vissuta fino a 130 anni.
+
+Sotto **Opzioni** puoi regolare le soglie utilizzate dai test – età massima, età minima e massima per sposarsi o avere figli, numero massimo di figli, e così via – così come se stimare date mancanti o imprecise e se segnalare date non valide come il 31 febbraio.
+
+Clicca su **Verifica i Dati** per iniziare. Il controllo viene eseguito come un'attività in background e i risultati vengono quindi elencati sotto **Risultati della Verifica dei Dati**. Questo strumento non modifica nulla: riporta solo ciò che trova.
+
+!!! note
+    Un risultato non è prova di un errore. Vite lunghe e grandi differenze di età si verificano, quindi tratta i risultati come un elenco di cose da controllare piuttosto che un elenco di cose da correggere.
 
 ## Tag
 
@@ -120,14 +131,14 @@ Crea, rinomina, cambia colore ed elimina [tag](../user-guide/tags.md) per l'albe
 Clicca su **Nuovo Tag** per creare un tag. Utilizza i controlli accanto a un tag esistente per rinominarlo (icona della matita), cambiare il suo colore (selettore di colore) o eliminarlo (icona di eliminazione).
 
 !!! note
-    Eliminare un tag lo rimuove da tutti gli oggetti a cui era stato applicato.
+    Eliminare un tag lo rimuove da tutti gli oggetti a cui è stato applicato.
 
 Vedi [Tag](../user-guide/tags.md) per come i tag vengono utilizzati in tutto Gramps Web, inclusi i tag speciali `Blog` e `ToDo`.
 
-## Zona di pericolo
+## Zona di Pericolo
 
 !!! danger
-    Le azioni nella Zona di pericolo sono **irreversibili**. Fai un backup prima di procedere.
+    Le azioni nella Zona di Pericolo sono **irreversibili**. Fai un backup prima di procedere.
 
 ### Elimina tutti gli oggetti
 
@@ -139,29 +150,29 @@ Rimuove oggetti dall'albero genealogico. Cliccando su **Elimina** si apre una fi
 Ti verrà chiesto di riautenticarti (accedere di nuovo) per confermare l'azione. L'eliminazione viene eseguita come un'attività in background e viene mostrato un indicatore di progresso.
 
 !!! warning
-    Eliminare solo un sottoinsieme di tipi di oggetti (anziché tutti gli oggetti in una volta) può richiedere molto tempo per alberi di grandi dimensioni, poiché il server deve controllare e aggiornare tutte le relazioni tra gli oggetti.
+    Eliminare solo un sottoinsieme di tipi di oggetti (anziché tutti gli oggetti in una volta) può richiedere molto tempo per alberi grandi, poiché il server deve controllare e aggiornare tutte le relazioni tra gli oggetti.
 
 !!! tip
-    Utilizza questo per partire da zero prima di importare un nuovo albero, o per rimuovere tipi di oggetti specifici che sono stati importati in modo errato.
+    Usa questo per ricominciare da capo prima di importare un nuovo albero, o per rimuovere tipi di oggetti specifici che sono stati importati in modo errato.
 
 ### Ripristina da Backup
 
-Ripristina l'albero per corrispondere a un file di backup XML di Gramps (`.gramps`) caricato, aggiungendo, aggiornando ed eliminando oggetti secondo necessità affinché l'albero risulti identico al backup.
+Ripristina l'albero per corrispondere a un file di backup Gramps XML (`.gramps`) caricato, aggiungendo, aggiornando ed eliminando oggetti secondo necessità affinché l'albero risulti identico al backup.
 
 !!! danger
-    Questo è un sostituzione distruttiva, non una fusione. Qualsiasi oggetto esistente non presente nel backup caricato viene eliminato.
+    Questo è un sostituzione distruttiva, non una fusione. Qualsiasi oggetto esistente non presente nel backup caricato verrà eliminato.
 
-Carica un file `.gramps`, quindi clicca su **Anteprima Ripristino**. Ti verrà chiesto di riautenticarti se la tua sessione non è abbastanza fresca. Un'anteprima viene eseguita come un'attività in background e, una volta completata, apre una finestra di dialogo che riassume le modifiche per tipo di oggetto (persone, famiglie, eventi, luoghi, citazioni, fonti, archivi, oggetti multimediali, note, tag):
+Carica un file `.gramps`, quindi clicca su **Anteprima Ripristino**. Ti verrà chiesto di riautenticarti se la tua sessione non è sufficientemente fresca. Un'anteprima viene eseguita come un'attività in background e, una volta completata, apre una finestra di dialogo che riassume le modifiche per tipo di oggetto (persone, famiglie, eventi, luoghi, citazioni, fonti, repository, oggetti multimediali, note, tag):
 
-- **Aggiungi** – oggetti presenti nel backup ma mancanti dall'albero attuale
+- **Aggiungi** – oggetti presenti nel backup ma mancanti nell'albero attuale
 - **Aggiorna** – oggetti presenti in entrambi che differiscono
 - **Elimina** – oggetti nell'albero attuale che sono assenti dal backup
 - **Invariato** – oggetti identici in entrambi
 
-Se alcuni oggetti verrebbero eliminati, la finestra di dialogo avvisa quanti. Rivedi il riepilogo, quindi clicca su **Ripristina** per applicare le modifiche, o **Annulla** per abortire.
+Se ci sono oggetti che verrebbero eliminati, la finestra di dialogo avvisa quanti. Rivedi il riepilogo, quindi clicca su **Ripristina** per applicare le modifiche, o **Annulla** per abortire.
 
 !!! note
     Solo i dati degli oggetti e i riferimenti multimediali vengono ripristinati. I file multimediali binari stessi e i metadati dell'albero (persona predefinita, segnalibri, gruppi di nomi) non sono interessati. Ripristina i file multimediali mancanti separatamente tramite [Importa archivio multimediale](#import-media-archive) se necessario.
 
 !!! tip
-    Utilizza questo per ripristinare un albero a un backup XML di Gramps noto e buono, ad esempio dopo un'importazione errata o una modifica di massa indesiderata.
+    Usa questo per ripristinare un albero a un backup Gramps XML noto e valido, ad esempio dopo un'importazione errata o una modifica di massa indesiderata.

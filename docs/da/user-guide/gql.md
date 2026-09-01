@@ -1,8 +1,8 @@
-# Filtrer ved hjælp af Gramps Query Language
+# Filtrering ved hjælp af Gramps Query Language
 
-Objektlistevisningerne (personer, familier, begivenheder, ...) har en valgfri avanceret filtertilstand baseret på [Gramps Query Language](https://github.com/DavidMStraub/gramps-ql) (GQL).
+De [objektlistevisninger](lists.md) (personer, familier, begivenheder, ...) har en valgfri avanceret filtreringsmetode baseret på [Gramps Query Language](https://github.com/DavidMStraub/gramps-ql) (GQL).
 
-For at bruge det skal du skrive en forespørgsel i GQL-syntaks og trykke på enter (eller klikke på "anvend" knappen). Visningen vil blive filtreret efter forespørgslen. Hvis forespørgslen er ugyldig, bliver inputfeltets ramme rød.
+For at bruge det, skriv en forespørgsel i GQL-syntaks og tryk på enter (eller klik på "anvend" knappen). Visningen vil blive filtreret efter forespørgslen. Hvis forespørgslen er ugyldig, bliver inputfeltets ramme rød.
 
 GQL-syntaksen er beskrevet nedenfor, kopieret fra GQL-dokumentationen.
 
@@ -18,7 +18,7 @@ Filtrerer for Gramps objektklasse og kan være en af `person`, `family`, `event`
 
 #### Objekt egenskaber
 
-GQL understøtter forespørgsler på indlejrede egenskaber af Gramps objekter, f.eks. `primary_name.date.calendar`. Se nedenfor for en fuld liste over egenskaber – se også [Gramps Data Model](https://gramps-project.org/wiki/index.php/Gramps_Data_Model).
+GQL understøtter forespørgsler på indlejrede egenskaber af Gramps-objekter, f.eks. `primary_name.date.calendar`. Se nedenfor for en fuld liste over egenskaber – se også [Gramps Data Model](https://gramps-project.org/wiki/index.php/Gramps_Data_Model).
 
 #### Listeelementer efter indeks
 
@@ -26,19 +26,19 @@ Individuelle elementer i liste-lignende egenskaber kan tilgås ved positionsinde
 
 #### `length`
 
-Dette er en særlig egenskab, der returnerer længden af en array-lignende Gramps egenskab, f.eks. `media_list.length > 0` for at få objekter med mediereferencer.
+Dette er en særlig egenskab, der returnerer længden af en array-lignende Gramps-egenskab, f.eks. `media_list.length > 0` for at få objekter med mediereferencer.
 
 #### `all`, `any`
 
-To flere særlige egenskaber for array-lignende Gramps egenskaber. `all` kræver, at en betingelse gælder for alle elementer i listen, `any` kræver, at den gælder for mindst ét element. Begge egenskaber kan kombineres med andre egenskaber før og efter. Eksempler: `media_list.any.citation_list.length > 0` for at returnere objekter med mediereferencer, der har citater; `media_list.all.citation_list.length = 0` for at returnere objekter, hvor alle medieobjekter ikke har citater.
+To yderligere særlige egenskaber for array-lignende Gramps-egenskaber. `all` kræver, at en betingelse gælder for alle elementer i listen, `any` kræver, at den gælder for mindst ét element. Begge egenskaber kan kombineres med andre egenskaber før og efter. Eksempler: `media_list.any.citation_list.length > 0` for at returnere objekter med mediereferencer, der har citater; `media_list.all.citation_list.length = 0` for at returnere objekter, hvor alle medieobjekter ikke har citater.
 
 #### Array indeks
 
-Et numerisk array indeks kan bruges til at tilgå specifikke elementer i en liste, f.eks. `child_ref_list[0]` for det første barn.
+Et numerisk array-indeks kan bruges til at tilgå specifikke elementer i en liste, f.eks. `child_ref_list[0]` for det første barn.
 
 #### `get_person`, osv.
 
-Mens alle de foregående egenskaber refererer til et enkelt Gramps objekt, er det også muligt at filtrere på forskellige objekter, der refereres til af det oprindelige objekt. For eksempel har en begivenhed et sted-håndtag i sin `place` egenskab. Ved at bruge den pseudo-egenskab `get_place` skifter GQL til egenskaberne for det objekt. For eksempel er det muligt at søge efter `class = event and place.get_place.name.value ~ York`. Dette kan også kombineres med `any` eller `all`, f.eks. `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
+Mens alle de foregående egenskaber refererer til et enkelt Gramps-objekt, er det også muligt at filtrere på forskellige objekter, der refereres til af det oprindelige objekt. For eksempel har en begivenhed et stedshåndtag i sin `place`-egenskab. Ved at bruge den pseudo-egenskab `get_place` skifter GQL til egenskaberne for det objekt. For eksempel er det muligt at søge efter `class = event and place.get_place.name.value ~ York`. Dette kan også kombineres med `any` eller `all`, f.eks. `class = person and event_ref_list.any.ref.get_event.description ~ farmer`.
 
 ### Operatører
 
@@ -48,7 +48,7 @@ Lighed eller ulighed. Eksempler: `class = person`, `class != family`
 
 #### `>`, `>=`, `<`, `<=`
 
-Sammenligning. Fungerer for strenge såvel som tal. Eksempler: `confidence <= 1`, `change > 1712477760 `, `gramps_id > "I2015"`
+Sammenligning. Fungerer for strenge såvel som tal. Eksempler: `confidence <= 1`, `change > 1712477760`, `gramps_id > "I2015"`
 
 #### `~`, `!~`
 
@@ -56,7 +56,7 @@ Indeholder eller indeholder ikke. Fungerer for lister såvel som strenge. Eksemp
 
 #### Ingen operator/værdi
 
-Hvis ingen operator og værdi gives, tolkes værdien som en boolesk (true eller false). Dette fungerer for alle typer egenskaber, og Python-regler for casting til true/false anvendes. For eksempel returnerer forespørgslen `private` private objekter; `confidence` returnerer objekter, hvor tilliden er større end 0; `media_list` returnerer objekter med mindst én mediereference.
+Hvis ingen operator og værdi er givet, tolkes værdien som en boolesk (true eller false). Dette fungerer for alle typer egenskaber, og Python-regler for casting til true/false anvendes. For eksempel returnerer forespørgslen `private` private objekter; `confidence` returnerer objekter, hvor tillid er større end 0; `media_list` returnerer objekter med mindst én mediereference.
 
 ### Værdier
 
@@ -69,7 +69,6 @@ class = note and private and text.string ~ David
 ```
 
 Alle private noter, der indeholder strengen "David" i deres tekst
-
 
 ```sql
 media_list.length >= 10
@@ -101,14 +100,12 @@ note_list.any.get_note.text.string ~ "David"
 
 Alle objekter med mindst én note, der indeholder strengen "David" i deres tekst.
 
-
 ```sql
 class = family and child_ref_list.all.ref.get_person.gender = 0 and child_ref_list.length = 3
 ```
 
 Alle familier med tre døtre.
 
-
 ## Fuld liste over Gramps Egenskaber
 
-For en fuld liste over Gramps egenskaber, se [GQL dokumentationen](https://github.com/DavidMStraub/gramps-ql#full-list-of-gramps-properties).
+For en fuld liste over Gramps-egenskaber, se [GQL-dokumentationen](https://github.com/DavidMStraub/gramps-ql#full-list-of-gramps-properties).

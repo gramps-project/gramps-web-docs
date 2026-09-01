@@ -1,11 +1,11 @@
 # Thẻ
 
-Thẻ là nhãn có thể được áp dụng cho bất kỳ đối tượng nào trong cơ sở dữ liệu Gramps – người, gia đình, sự kiện, địa điểm, nguồn, trích dẫn, kho, ghi chú và phương tiện. Chúng hữu ích cho việc nhóm và lọc các đối tượng. Thẻ được lưu trữ trong cơ sở dữ liệu cây gia đình Gramps và được chia sẻ giữa tất cả người dùng; chúng cũng hoàn toàn tương thích với các thẻ được tạo trong Gramps Desktop.
+Thẻ là các nhãn có thể được áp dụng cho bất kỳ đối tượng nào trong cơ sở dữ liệu Gramps – người, gia đình, sự kiện, địa điểm, nguồn, trích dẫn, kho lưu trữ, ghi chú và phương tiện. Chúng hữu ích cho việc nhóm và lọc các đối tượng. Thẻ được lưu trữ trong cơ sở dữ liệu cây gia đình Gramps và được chia sẻ giữa tất cả người dùng; chúng cũng hoàn toàn tương thích với các thẻ được tạo ra trong Gramps Desktop.
 
 
 ## Quản lý thẻ
 
-Thẻ được quản lý từ phần **Thẻ** của [Cài đặt Quản trị](../administration/settings.md#tags), chỉ có sẵn cho người dùng có vai trò Chủ sở hữu hoặc Quản trị viên. Nó hiển thị tất cả các thẻ hiện có và cho phép bạn:
+Thẻ được quản lý từ phần **Thẻ** trong [Cài đặt Quản trị](../administration/settings.md#tags), chỉ có sẵn cho người dùng có vai trò Chủ sở hữu hoặc Quản trị viên. Nó hiển thị tất cả các thẻ hiện có và cho phép bạn:
 
 - **Tạo** một thẻ mới bằng cách sử dụng nút **Thẻ Mới**
 - **Đổi tên** một thẻ bằng cách sử dụng biểu tượng chỉnh sửa (bút chì)
@@ -13,15 +13,15 @@ Thẻ được quản lý từ phần **Thẻ** của [Cài đặt Quản trị]
 - **Xóa** một thẻ bằng cách sử dụng biểu tượng xóa
 
 !!! note
-    Việc xóa một thẻ sẽ loại bỏ nó khỏi tất cả các đối tượng mà nó đã được áp dụng.
+    Xóa một thẻ sẽ loại bỏ nó khỏi tất cả các đối tượng mà nó đã được áp dụng.
 
 ## Áp dụng thẻ cho đối tượng
 
-Thẻ có thể được áp dụng hoặc gỡ bỏ khỏi một đối tượng trên trang chi tiết của nó khi ở chế độ chỉnh sửa.
+Thẻ có thể được áp dụng hoặc xóa khỏi một đối tượng trên trang chi tiết của nó khi ở chế độ chỉnh sửa.
 
 ## Lọc theo thẻ
 
-Tất cả các trang danh sách đối tượng (Người, Gia đình, Sự kiện, Địa điểm, Nguồn, Trích dẫn, Kho, Ghi chú, Phương tiện) đều bao gồm một bộ lọc thẻ. Sử dụng nó để chỉ hiển thị các đối tượng có thẻ cụ thể được áp dụng.
+Tất cả các [trang danh sách đối tượng](lists.md) (Người, Gia đình, Sự kiện, Địa điểm, Nguồn, Trích dẫn, Kho lưu trữ, Ghi chú, Phương tiện) đều bao gồm một bộ lọc thẻ. Sử dụng nó để chỉ hiển thị các đối tượng có thẻ cụ thể được áp dụng.
 
 ## Thẻ đặc biệt
 
@@ -30,4 +30,4 @@ Hai thẻ có ý nghĩa đặc biệt trong Gramps Web:
 - **`Blog`** – bất kỳ nguồn nào được gán thẻ `Blog` sẽ được coi là một bài viết blog và xuất hiện trong chế độ xem [Blog](blog.md)
 - **`ToDo`** – bất kỳ ghi chú nào được gán thẻ `ToDo` sẽ được coi là một nhiệm vụ nghiên cứu và xuất hiện trong chế độ xem [Nhiệm vụ](tasks.md)
 
-Các thẻ này được tạo tự động khi bạn lần đầu tiên sử dụng các tính năng Blog hoặc Nhiệm vụ. Việc đổi tên hoặc xóa chúng sẽ làm hỏng tính năng tương ứng.
+Các thẻ này được tạo tự động khi bạn lần đầu tiên sử dụng các tính năng Blog hoặc Nhiệm vụ. Đổi tên hoặc xóa chúng sẽ làm hỏng tính năng tương ứng.
