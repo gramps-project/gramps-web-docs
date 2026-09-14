@@ -55,6 +55,7 @@ The chart now shows you with your parents. Try the other chart types in the tabs
 
 ## Next steps
 
+- **Understand the structure.** See [How Gramps organizes data](data-model.md) for how people, families, events, places, and sources fit together.
 - **Add more details.** Open a person's page – for example with the **Person Details** button in the chart toolbar – to add further events, notes, sources, and more. See [Editing in the tree view](tree-edit.md) for what can be done directly in the chart.
 - **Add photos and documents.** See [Add media files](media.md).
 - **Invite your family.** Relatives need their own account on your tree; see [Manage users](../administration/users.md) and [Registration](registration.md).
