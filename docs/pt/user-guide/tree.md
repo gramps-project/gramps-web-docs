@@ -1,18 +1,18 @@
 # Árvore Genealógica
 
-A página da Árvore Genealógica é acessível a partir da barra lateral e exibe gráficos interativos centrados em uma pessoa selecionada. Cinco tipos de gráficos estão disponíveis através de abas na parte superior da página.
+A página da Árvore Genealógica é acessível pela barra lateral e exibe gráficos interativos centrados em uma pessoa selecionada. Cinco tipos de gráficos estão disponíveis através de abas na parte superior da página.
 
 ## Selecionando a pessoa inicial
 
 Todos os gráficos começam a partir da pessoa atualmente selecionada na árvore (mostrada na barra de ferramentas). A pessoa atualmente centrada é destacada com uma sombra. Use o botão **Pessoa Inicial** para voltar à sua pessoa inicial, ou o botão **Voltar** para retornar à pessoa visualizada anteriormente. Clicar no cartão de uma pessoa em qualquer gráfico recentra o gráfico nessa pessoa.
 
-Se nenhuma pessoa inicial tiver sido definida, a página solicitará que você vá para a página inicial e defina uma.
+Se nenhuma pessoa inicial tiver sido definida, a página oferece um botão **Definir Pessoa Inicial** para pesquisar e selecionar uma diretamente. Se a árvore ainda não contiver nenhuma pessoa, usuários com o papel de Editor ou superior verão um botão **Nova Pessoa** – a primeira pessoa criada em uma árvore vazia automaticamente se torna sua pessoa inicial, então o gráfico é exibido imediatamente.
 
 ## Tipos de gráficos
 
-### Árvore de Antecessores
+### Árvore de Antepassados
 
-Um gráfico de pedigree mostrando os antecessores da pessoa selecionada. Os pais aparecem à esquerda (ou à direita, dependendo do layout), avós mais afastados, e assim por diante.
+Um gráfico de pedigree mostrando os antepassados da pessoa selecionada. Os pais aparecem à esquerda (ou à direita, dependendo do layout), os avós mais afastados, e assim por diante.
 
 ### Árvore de Descendentes
 
@@ -20,18 +20,18 @@ Mostra os descendentes da pessoa selecionada – filhos, netos, e assim por dian
 
 ### Gráfico de Ampulheta
 
-Combina antecessores acima e descendentes abaixo da pessoa selecionada em uma única visão.
+Combina antepassados acima e descendentes abaixo da pessoa selecionada em uma única visão.
 
 ### Gráfico de Relacionamento
 
-Mostra o caminho de relacionamento entre duas pessoas. A pessoa selecionada é uma extremidade; clique em qualquer outra pessoa no gráfico para definir a segunda extremidade e exibir o caminho de relacionamento mais curto entre elas.
+Mostra o caminho de relacionamento entre duas pessoas. A pessoa selecionada é um ponto final; clique em qualquer outra pessoa no gráfico para definir o segundo ponto final e exibir o caminho de relacionamento mais curto entre elas.
 
-!!! note
+!!! nota
     A mesma pessoa pode aparecer mais de uma vez no gráfico – por exemplo, quando alguém foi casado várias vezes e aparece em várias unidades familiares ao longo do caminho. Isso é intencional, não um erro.
 
 ### Gráfico em Leque
 
-Um gráfico de pedigree circular. Os antecessores irradiam para fora da pessoa selecionada no centro.
+Um gráfico de pedigree circular. Os antepassados irradiam para fora a partir da pessoa selecionada no centro.
 
 ## Controles de navegação
 
@@ -39,7 +39,7 @@ Todos os tipos de gráficos compartilham uma barra de ferramentas com os seguint
 
 - **Pessoa Inicial** – volte para sua pessoa inicial
 - **Voltar** – volte para a pessoa que estava centrada anteriormente
-- **Detalhes da Pessoa** – abra a página de perfil completa da pessoa atualmente centrada
+- **Detalhes da Pessoa** – abra a página de perfil completo da pessoa atualmente centrada
 - **Preferências** – abra um diálogo para ajustar opções de exibição específicas do gráfico (veja abaixo)
 
 Todos os gráficos suportam **pan** (clique e arraste) e **zoom** (rolagem ou pinça).
@@ -48,15 +48,15 @@ Todos os gráficos suportam **pan** (clique e arraste) e **zoom** (rolagem ou pi
 
 O diálogo de **Preferências** (ícone de engrenagem na barra de ferramentas) permite que você ajuste as seguintes opções, dependendo do tipo de gráfico:
 
-- **Máx. Gerações de Antecessores** – quantas gerações de antecessores exibir
+- **Máx. Gerações de Antepassados** – quantas gerações de antepassados exibir
 - **Máx. Gerações de Descendentes** – quantas gerações de descendentes exibir
 - **Máx. Grau de Separação** – para o Gráfico de Relacionamento, o comprimento máximo do caminho a ser pesquisado
 - **Máx. Número de Imagens exibidas** – limita as fotos de perfil mostradas no gráfico para desempenho
-- **Formato de Exibição do Nome** – controla como os nomes são mostrados nos cartões das pessoas
+- **Formato de Exibição do Nome** – controla como os nomes são exibidos nos cartões das pessoas
 
-Clique em **Redefinir** para restaurar os padrões ou **Fechar** para aplicar suas alterações.
+Clique em **Redefinir** para restaurar os padrões, ou **Fechar** para aplicar suas alterações.
 
-As configurações de preferências do gráfico são armazenadas no armazenamento local do navegador, portanto, persistem entre as sessões no mesmo dispositivo.
+As configurações de preferências do gráfico são armazenadas no armazenamento local do navegador, portanto, persistem entre sessões no mesmo dispositivo.
 
 ## Tipo de gráfico padrão
 
@@ -64,4 +64,4 @@ O tipo de gráfico exibido quando você abre pela primeira vez a página da Árv
 
 ## Editando a árvore
 
-Usuários com o papel de Editor ou superior podem adicionar e vincular pessoas diretamente da Árvore de Antecessores. Veja [Editando a árvore genealógica](tree-edit.md) para mais detalhes.
+Usuários com o papel de Editor ou superior podem adicionar e vincular pessoas diretamente da Árvore de Antepassados. Consulte [Editando a árvore genealógica](tree-edit.md) para mais detalhes.

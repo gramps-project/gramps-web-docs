@@ -26,7 +26,7 @@ L'API web **doit** être servie au public sur Internet via HTTPS. Il existe plus
 
 Voir [Docker avec Let's Encrypt](lets_encrypt.md) pour savoir comment configurer la première option.
 
-Si vous prévoyez d'utiliser Gramps Web uniquement sur votre réseau local, vous pouvez ignorer cette étape.
+Si vous prévoyez d'utiliser Gramps Web uniquement sur votre réseau local, vous pouvez sauter cette étape.
 
 ## Étape 3 : Démarrer le serveur
 
@@ -38,9 +38,9 @@ docker compose up -d
 
 Lors de la première exécution, l'application affichera un assistant de première exécution qui vous permettra de
 
-- Créer un compte pour l'utilisateur propriétaire (admin)
+- Créer un compte pour l'utilisateur propriétaire (administrateur)
 - Définir certaines options de configuration nécessaires
-- Importer un arbre généalogique au format XML Gramps (`.gramps`)
+- Importer un arbre généalogique au format Gramps XML (`.gramps`)
 
 ## Étape 4 : Télécharger des fichiers multimédias
 

@@ -2,11 +2,11 @@
 
 La página del Árbol Genealógico es accesible desde la barra lateral y muestra gráficos interactivos centrados en una persona seleccionada. Hay cinco tipos de gráficos disponibles a través de pestañas en la parte superior de la página.
 
-## Seleccionando la persona de inicio
+## Seleccionando la persona inicial
 
-Todos los gráficos comienzan desde la persona actualmente seleccionada en el árbol (mostrada en la barra de herramientas). La persona actualmente centrada está resaltada con una sombra. Usa el botón **Persona de Inicio** para volver a tu persona de inicio, o el botón **Atrás** para regresar a la persona vista anteriormente. Hacer clic en la tarjeta de una persona en cualquier gráfico recentra el gráfico en esa persona.
+Todos los gráficos comienzan desde la persona actualmente seleccionada en el árbol (mostrada en la barra de herramientas). La persona actualmente centrada se resalta con una sombra. Usa el botón **Persona Principal** para volver a tu persona principal, o el botón **Atrás** para regresar a la persona vista anteriormente. Hacer clic en la tarjeta de una persona en cualquier gráfico recentra el gráfico en esa persona.
 
-Si no se ha establecido una persona de inicio, la página te pedirá que vayas a la página de inicio y establezcas una.
+Si no se ha establecido ninguna persona principal, la página ofrece un botón **Establecer Persona Principal** para buscar y seleccionar una directamente. Si el árbol aún no contiene ninguna persona, los usuarios con el rol de Editor o superior verán en su lugar un botón **Nueva Persona**; la primera persona creada en un árbol vacío se convierte automáticamente en tu persona principal, por lo que el gráfico se muestra de inmediato.
 
 ## Tipos de gráficos
 
@@ -20,14 +20,14 @@ Muestra los descendientes de la persona seleccionada: hijos, nietos, y así suce
 
 ### Gráfico de Reloj de Arena
 
-Combina ancestros por encima y descendientes por debajo de la persona seleccionada en una única vista.
+Combina ancestros arriba y descendientes abajo de la persona seleccionada en una sola vista.
 
 ### Gráfico de Relaciones
 
-Muestra el camino de relación entre dos personas. La persona seleccionada es un extremo; haz clic en cualquier otra persona en el gráfico para establecer el segundo extremo y mostrar el camino de relación más corto entre ellos.
+Muestra el camino de relación entre dos personas. La persona seleccionada es un extremo; haz clic en cualquier otra persona en el gráfico para establecer el segundo extremo y mostrar el camino de relación más corto entre ellas.
 
 !!! nota
-    La misma persona puede aparecer más de una vez en el gráfico, por ejemplo, cuando alguien se ha casado varias veces y aparece en varias unidades familiares a lo largo del camino. Esto es intencional, no un error.
+    La misma persona puede aparecer más de una vez en el gráfico, por ejemplo, cuando alguien ha estado casado varias veces y aparece en varias unidades familiares a lo largo del camino. Esto es intencional, no un error.
 
 ### Gráfico de Ventilador
 
@@ -37,12 +37,12 @@ Un gráfico de pedigrí circular. Los ancestros irradian hacia afuera desde la p
 
 Todos los tipos de gráficos comparten una barra de herramientas con los siguientes botones:
 
-- **Persona de Inicio** – volver a tu persona de inicio
+- **Persona Principal** – volver a tu persona principal
 - **Atrás** – regresar a la persona centrada anteriormente
-- **Detalles de la Persona** – abrir la página de perfil completa de la persona actualmente centrada
+- **Detalles de la Persona** – abrir la página de perfil completo de la persona actualmente centrada
 - **Preferencias** – abrir un diálogo para ajustar las opciones de visualización específicas del gráfico (ver más abajo)
 
-Todos los gráficos soportan **pan** (clic y arrastrar) y **zoom** (rueda de desplazamiento o pellizcar).
+Todos los gráficos soportan **desplazamiento** (clic y arrastre) y **zoom** (rueda de desplazamiento o pellizcar).
 
 ## Preferencias del gráfico
 
@@ -60,7 +60,7 @@ Las configuraciones de preferencias del gráfico se almacenan en el almacenamien
 
 ## Tipo de gráfico predeterminado
 
-El tipo de gráfico mostrado cuando abres por primera vez la página del Árbol Genealógico se puede configurar en [Configuraciones del Usuario](settings.md). Tu predeterminado elegido se aplica en todos tus dispositivos.
+El tipo de gráfico que se muestra cuando abres por primera vez la página del Árbol Genealógico se puede configurar en [Configuración del Usuario](settings.md). Tu predeterminado elegido se aplica en todos tus dispositivos.
 
 ## Editando el árbol
 

@@ -2,11 +2,11 @@
 
 La pagina dell'Albero Genealogico è accessibile dalla barra laterale e visualizza grafici interattivi incentrati su una persona selezionata. Cinque tipi di grafico sono disponibili tramite schede nella parte superiore della pagina.
 
-## Selezionare la persona di partenza
+## Selezionare la persona iniziale
 
-Tutti i grafici partono dalla persona attualmente selezionata nell'albero (mostrata nella barra degli strumenti). La persona attualmente centrata è evidenziata con un'ombra. Usa il pulsante **Persona Principale** per tornare alla tua persona principale, o il pulsante **Indietro** per tornare alla persona visualizzata in precedenza. Cliccando sulla scheda di una persona in qualsiasi grafico, il grafico si ricentra su quella persona.
+Tutti i grafici partono dalla persona attualmente selezionata nell'albero (mostrata nella barra degli strumenti). La persona attualmente centrata è evidenziata con un'ombra. Usa il pulsante **Persona Principale** per tornare alla tua persona principale, o il pulsante **Indietro** per tornare alla persona visualizzata in precedenza. Cliccando sulla scheda di una persona in qualsiasi grafico si ricentra il grafico su quella persona.
 
-Se non è stata impostata alcuna persona principale, la pagina ti inviterà ad andare alla pagina principale e impostarne una.
+Se non è stata impostata alcuna persona principale, la pagina offre un pulsante **Imposta Persona Principale** per cercarne e selezionarne una direttamente. Se l'albero non contiene ancora persone, gli utenti con il ruolo di Editor o superiore vedranno invece un pulsante **Nuova Persona** – la prima persona creata in un albero vuoto diventa automaticamente la tua persona principale, quindi il grafico viene mostrato immediatamente.
 
 ## Tipi di grafico
 
@@ -24,7 +24,7 @@ Combina gli antenati sopra e i discendenti sotto la persona selezionata in un'un
 
 ### Grafico delle Relazioni
 
-Mostra il percorso di relazione tra due persone. La persona selezionata è un'estremità; clicca su qualsiasi altra persona nel grafico per impostare la seconda estremità e visualizzare il percorso di relazione più breve tra di loro.
+Mostra il percorso di relazione tra due persone. La persona selezionata è un'estremità; clicca su qualsiasi altra persona nel grafico per impostare il secondo punto finale e visualizzare il percorso di relazione più breve tra di loro.
 
 !!! nota
     La stessa persona può apparire più di una volta nel grafico – ad esempio quando qualcuno è stato sposato più volte e appare in diverse unità familiari lungo il percorso. Questo è intenzionale, non un bug.
@@ -52,15 +52,15 @@ La finestra di dialogo **Preferenze** (icona dell'ingranaggio nella barra degli 
 - **Generazioni Massime di Discendenti** – quante generazioni di discendenti visualizzare
 - **Massimo Grado di Separazione** – per il Grafico delle Relazioni, la lunghezza massima del percorso da cercare
 - **Numero Massimo di Immagini visualizzate** – limita le foto del profilo mostrate nel grafico per prestazioni
-- **Formato di Visualizzazione del Nome** – controlla come vengono mostrati i nomi sulle schede delle persone
+- **Formato di Visualizzazione del Nome** – controlla come i nomi sono mostrati sulle schede delle persone
 
-Clicca su **Ripristina** per ripristinare le impostazioni predefinite, o su **Chiudi** per applicare le tue modifiche.
+Clicca su **Ripristina** per ripristinare le impostazioni predefinite, o **Chiudi** per applicare le tue modifiche.
 
-Le impostazioni delle preferenze del grafico sono memorizzate nella memoria locale del browser, quindi persistono tra le sessioni sullo stesso dispositivo.
+Le impostazioni delle preferenze del grafico sono memorizzate nello storage locale del browser, quindi persistono tra le sessioni sullo stesso dispositivo.
 
 ## Tipo di grafico predefinito
 
-Il tipo di grafico mostrato quando apri per la prima volta la pagina dell'Albero Genealogico può essere configurato in [Impostazioni Utente](settings.md). Il tuo predefinito scelto si applica a tutti i tuoi dispositivi.
+Il tipo di grafico mostrato quando apri per la prima volta la pagina dell'Albero Genealogico può essere configurato nelle [Impostazioni Utente](settings.md). Il tuo predefinito scelto si applica a tutti i tuoi dispositivi.
 
 ## Modifica dell'albero
 

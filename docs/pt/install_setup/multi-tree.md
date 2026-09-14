@@ -22,13 +22,13 @@ Além disso, você deve definir a opção de configuração `MEDIA_PREFIX_TREE` 
 
 ## Adicionar uma conta de usuário a uma árvore específica
 
-Para adicionar um usuário a uma árvore específica, basta adicionar a opção de linha de comando `--tree TREEID` ao comando de adicionar usuário. Você também pode fazer um POST para o endpoint `/users/` com a propriedade `tree` definida na carga útil JSON.
+Para adicionar um usuário a uma árvore específica, basta adicionar a opção de linha de comando `--tree TREEID` ao comando de adicionar usuário. Você também pode fazer um POST para o endpoint `/users/` com a propriedade `tree` definida no payload JSON.
 
-Os nomes de usuário e endereços de e-mail devem ser exclusivos em *todas* as árvores.
+Os nomes de usuário devem ser exclusivos em *todas* as árvores. Os endereços de e-mail não precisam ser únicos (desde a API Gramps Web 3.22), então a mesma pessoa pode, por exemplo, ter contas em várias árvores usando um único endereço de e-mail.
 
 ## Criar uma nova árvore
 
-Para criar uma nova árvore, é recomendável fazer um POST para o endpoint `/trees/` em vez de usar o CLI do Gramps. Isso usará um UUIDv4 como ID da árvore, o que leva a uma segurança adicional, pois o nome não pode ser adivinhado. Atualmente, apenas SQLite é suportado para árvores recém-criadas.
+Para criar uma nova árvore, é recomendado fazer um POST para o endpoint `/trees/` em vez de usar o CLI do Gramps. Isso usará um UUIDv4 como ID da árvore, o que leva a uma segurança adicional, pois o nome não pode ser adivinhado. Atualmente, apenas SQLite é suportado para árvores recém-criadas.
 
 ## Autorizar
 
@@ -36,7 +36,7 @@ Para autorizar (buscar um token), apenas o nome de usuário e a senha são neces
 
 ## Migrar arquivos de mídia existentes
 
-Se você deseja migrar uma instância existente do Gramps Web para suporte a múltiplas árvores e está usando arquivos de mídia locais, pode simplesmente movê-los para uma subpasta da localização original com o ID da árvore como nome.
+Se você deseja migrar uma instância existente do Gramps Web para suporte a múltiplas árvores e está usando arquivos de mídia locais, você pode simplesmente movê-los para uma subpasta da localização original com o ID da árvore como nome.
 
 Se você estiver usando arquivos de mídia hospedados no S3, pode usar o script fornecido no diretório `scripts` do repositório `gramps-web-api`:
 
@@ -48,7 +48,7 @@ Isso assume que as chaves de acesso relevantes já estão definidas como variáv
 
 ## Migrar banco de dados de usuários existentes
 
-Se você deseja habilitar o suporte a múltiplas árvores e reutilizar usuários existentes, precisa atribuí-los a uma árvore específica. Você pode usar o seguinte comando fornecido para esse fim,
+Se você deseja habilitar o suporte a múltiplas árvores e reutilizar usuários existentes, precisará atribuí-los a uma árvore específica. Você pode usar o seguinte comando fornecido para esse fim,
 
 ```bash
 python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID

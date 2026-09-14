@@ -14,7 +14,7 @@ La page de gestion des utilisateurs affiche un tableau de tous les comptes d'uti
 - **Nom complet** – le nom affiché
 - **E-mail** – l'adresse e-mail de l'utilisateur
 - **Rôle** – le rôle attribué (Invité, Membre, Contributeur, Éditeur, Propriétaire ou Administrateur)
-- **Source du compte** – soit "Mot de passe" (compte local) soit le nom d'un fournisseur d'identité externe (par exemple, lors de l'utilisation de l'OIDC)
+- **Source du compte** – soit "Mot de passe" (compte local) soit le nom d'un fournisseur d'identité externe (par exemple, lors de l'utilisation d'OIDC)
 
 Utilisez le champ de recherche et le menu déroulant des rôles en haut du tableau pour filtrer la liste. Cliquez sur le bouton de réinitialisation des filtres pour réinitialiser tous les filtres.
 
@@ -26,7 +26,9 @@ Cliquez sur l'icône de modification (crayon) sur n'importe quelle ligne pour ou
 - L'adresse e-mail
 - Le rôle
 
-C'est le moyen principal pour **activer un nouvel utilisateur auto-enregistré** : changez son rôle de *désactivé* à tout rôle actif (par exemple, Membre ou Éditeur).
+C'est le moyen principal pour **activer un nouvel utilisateur auto-enregistré** : changez son rôle de *désactivé* à un rôle actif (par exemple, Membre ou Éditeur).
+
+Les adresses e-mail n'ont pas besoin d'être uniques (depuis Gramps Web API 3.22), donc plusieurs comptes peuvent partager la même adresse.
 
 ## Ajouter un utilisateur manuellement
 
@@ -34,13 +36,16 @@ Cliquez sur l'icône **ajouter un utilisateur** (personne-ajouter) au-dessus du 
 
 ## Supprimer un utilisateur
 
-Cliquez sur l'icône de suppression (corbeille) sur n'importe quelle ligne et confirmez la boîte de dialogue. Cette action ne peut pas être annulée.
+Cliquez sur l'icône de suppression (corbeille) sur n'importe quelle ligne et confirmez dans la boîte de dialogue. Cette action ne peut pas être annulée.
+
+!!! note
+    Pour éviter qu'un arbre ne soit laissé sans personne pouvant l'administrer, vous ne pouvez pas abaisser votre propre rôle en dessous de Propriétaire ou supprimer votre propre compte si vous êtes le seul Propriétaire ou Administrateur de l'arbre. Promouvez d'abord un autre utilisateur au rôle de Propriétaire. Un administrateur peut toujours changer ou retirer le dernier propriétaire de l'arbre d'un autre utilisateur, car il peut en nommer un nouveau.
 
 ## Exporter et importer des comptes utilisateurs
 
 Ces boutons sont utiles lors de [la migration vers une autre instance de Gramps Web](export.md).
 
-- **Exporter les détails des utilisateurs** (icône de téléchargement) – télécharge un fichier JSON contenant tous les comptes d'utilisateur (sans mots de passe, puisque les mots de passe sont stockés sous forme cryptée).
+- **Exporter les détails des utilisateurs** (icône de téléchargement) – télécharge un fichier JSON contenant tous les comptes utilisateurs (sans mots de passe, puisque les mots de passe sont stockés sous forme cryptée).
 - **Importer des comptes utilisateurs** (icône de groupe-ajouter) – télécharge un fichier JSON précédemment exporté pour créer des comptes utilisateurs en masse. Tous les utilisateurs importés devront définir un nouveau mot de passe via le lien "Mot de passe oublié", car les mots de passe ne peuvent pas être transférés.
 
 ## Lien d'inscription (configuration multi-arbres uniquement)
@@ -52,11 +57,11 @@ Dans une configuration multi-arbres, le lien d'inscription pour les nouveaux uti
 
 ## Permissions de chat AI
 
-Si le chat AI a été activé sur le serveur, un menu déroulant en haut de la page vous permet de contrôler quels rôles d'utilisateur sont autorisés à utiliser la fonctionnalité de chat :
+Si le chat AI a été activé sur le serveur, un menu déroulant en haut de la page vous permet de contrôler quels rôles d'utilisateur sont autorisés à utiliser la fonction de chat :
 
 - Tout le monde (y compris les invités)
-- Membre et au-dessus
-- Contributeur et au-dessus
-- Éditeur et au-dessus
+- Membre et plus
+- Contributeur et plus
+- Éditeur et plus
 - Propriétaires et administrateurs uniquement
 - Personne (désactiver le chat pour tous les utilisateurs)

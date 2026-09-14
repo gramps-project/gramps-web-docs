@@ -8,7 +8,7 @@ hide:
 Cette section documente les fonctionnalités disponibles pour les utilisateurs de Gramps Web.
 
 !!! note "Vous ne voyez pas toutes les fonctionnalités ?"
-    Gramps Web utilise un système de permissions basé sur les rôles. Certaines fonctionnalités – telles que l'édition de données, la gestion des étiquettes ou la consultation de dossiers privés – ne sont disponibles que pour les utilisateurs ayant des permissions suffisantes. Vous pouvez vérifier votre rôle actuel dans [Paramètres de l'utilisateur](settings.md). Si vous avez besoin de plus d'accès, contactez le propriétaire de votre arbre ou l'administrateur. Consultez [Système d'utilisateur](../install_setup/users.md) pour une description de tous les rôles.
+    Gramps Web utilise un système de permissions basé sur les rôles. Certaines fonctionnalités – telles que l'édition de données, la gestion des étiquettes ou la consultation de dossiers privés – ne sont disponibles que pour les utilisateurs disposant de permissions suffisantes. Vous pouvez vérifier votre rôle actuel dans [Paramètres de l'utilisateur](settings.md). Si vous avez besoin de plus d'accès, contactez le propriétaire de votre arbre ou l'administrateur. Consultez [Système utilisateur](../install_setup/users.md) pour une description de tous les rôles.
 
 ## Navigation dans l'interface
 
@@ -17,9 +17,9 @@ Cette section documente les fonctionnalités disponibles pour les utilisateurs d
 La barre latérale (ou le menu hamburger sur mobile) est le principal moyen de naviguer entre les sections :
 
 - **Accueil** – le tableau de bord (voir ci-dessous)
-- **Blog** – histoires de généalogie rédigées sous forme de billets de blog
-- **Arbre généalogique** – graphiques d'arbre interactifs
-- **Chronologie** – vue chronologique des événements dans l'arbre (nécessite une version suffisamment récente de l'API Gramps Web)
+- **Blog** – histoires de généalogie écrites sous forme de billets de blog
+- **Arbre généalogique** – graphiques d'arbres interactifs
+- **Chronologie** – vue chronologique des événements à travers l'arbre (nécessite une version suffisamment récente de l'API Gramps Web)
 - **Carte** – vue géographique des lieux dans l'arbre
 - **ADN** – outils d'analyse de correspondance ADN
 - **Listes** – parcourir tous les objets de chaque type : Personnes, Familles, Événements, Lieux, Sources, Citations, Dépôts, Notes
@@ -46,7 +46,7 @@ La barre en haut de chaque page contient :
 
 ## La page d'accueil (tableau de bord)
 
-Le tableau de bord s'affiche lorsque vous vous connectez pour la première fois. Il comporte deux colonnes :
+Le tableau de bord s'affiche lorsque vous vous connectez pour la première fois. Il a deux colonnes :
 
 **Colonne de gauche :**
 
@@ -59,7 +59,9 @@ Le tableau de bord s'affiche lorsque vous vous connectez pour la première fois.
 - **Articles de blog récents** – les dernières entrées du [blog](blog.md), s'il y en a.
 - **Statistiques** – un résumé des comptes d'objets dans l'arbre (nombre de personnes, familles, événements, etc.).
 
-Si l'administrateur de l'arbre a configuré une **note de page d'accueil** et/ou une **image de page d'accueil**, celles-ci sont affichées de manière proéminente au-dessus des colonnes principales. L'image apparaît à côté du texte de la note lorsque les deux sont définis. Consultez [Paramètres d'administration](../administration/settings.md#customization) pour savoir comment configurer cela.
+Tant que l'arbre est encore vide, le tableau de bord cache les panneaux qui n'auraient rien à montrer et affiche plutôt une carte **Commencer** pour les utilisateurs ayant des permissions d'édition : elle propose d'abord de créer une personne ou d'importer un fichier d'arbre généalogique, et une fois que des personnes existent, de les connecter en créant une famille. La carte disparaît dès que l'arbre contient une famille.
+
+Si l'administrateur de l'arbre a configuré une **note de page d'accueil** et/ou une **image de page d'accueil**, celles-ci sont affichées en évidence au-dessus des colonnes principales. L'image apparaît à côté du texte de la note lorsque les deux sont définis. Consultez [Paramètres d'administration](../administration/settings.md#customization) pour savoir comment configurer cela.
 
 !!! tip
     Si l'arbre est vide et que vous avez des permissions d'édition, le tableau de bord affiche une invite "Commencer" avec des boutons pour ajouter votre première personne ou importer un fichier d'arbre généalogique.
@@ -68,14 +70,14 @@ Si l'administrateur de l'arbre a configuré une **note de page d'accueil** et/ou
 
 Gramps Web est une application web progressive (PWA), ce qui signifie que votre navigateur peut l'installer aux côtés de vos autres applications au lieu de la garder dans un onglet de navigateur. Elle obtient alors sa propre icône et s'ouvre dans sa propre fenêtre, sans la barre d'adresse ni les barres d'outils du navigateur.
 
-Comment vous l'installez dépend de votre navigateur :
+La façon dont vous l'installez dépend de votre navigateur :
 
 - **Android (Chrome)** – ouvrez le menu et choisissez "Installer l'application" ou "Ajouter à l'écran d'accueil".
 - **iOS/iPadOS (Safari)** – appuyez sur le bouton de partage et choisissez "Ajouter à l'écran d'accueil".
-- **Bureau (Chrome, Edge)** – cliquez sur l'icône d'installation à l'extrémité droite de la barre d'adresse, ou utilisez l'entrée "Installer" dans le menu du navigateur.
-- **Bureau (Firefox, Safari)** – l'installation n'est pas prise en charge ; utilisez un onglet ou une fenêtre de navigateur normal.
+- **Bureau (Chrome, Edge)** – cliquez sur l'icône d'installation à l'extrémité droite de la barre d'adresse, ou utilisez l'entrée "Installer" du menu du navigateur.
+- **Bureau (Firefox, Safari)** – l'installation n'est pas supportée ; utilisez un onglet ou une fenêtre de navigateur normal.
 
-Rien ne change quant au fonctionnement de Gramps Web, et aucune donnée n'est stockée différemment – c'est la même application, simplement présentée comme une application autonome.
+Rien ne change quant à la façon dont Gramps Web fonctionne, et aucune donnée n'est stockée différemment – c'est la même application, simplement présentée comme une application autonome.
 
 !!! note
     Gramps Web doit toujours atteindre votre serveur pour afficher vos données, donc une application installée ne vous permet pas de naviguer dans votre arbre généalogique hors ligne.

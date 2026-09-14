@@ -1,38 +1,38 @@
 # OIDC Kimlik Doğrulama
 
-Gramps Web, kullanıcıların harici kimlik sağlayıcıları kullanarak giriş yapmalarına olanak tanıyan OpenID Connect (OIDC) kimlik doğrulamasını destekler. Bu, yerleşik sağlayıcılar olan Google ve Microsoft'un yanı sıra Keycloak, Authentik ve Authelia gibi özel OIDC sağlayıcılarını da içerir.
+Gramps Web, kullanıcıların harici kimlik sağlayıcıları kullanarak oturum açmalarına olanak tanıyan OpenID Connect (OIDC) kimlik doğrulamasını destekler. Bu, yerleşik sağlayıcılar olan Google ve Microsoft'un yanı sıra Keycloak, Authentik ve Authelia gibi özel OIDC sağlayıcılarını da içerir.
 
-!!! warning "GitHub, OIDC sağlayıcısı olarak artık desteklenmiyor"
-    Eğer daha önceki bir sürümden `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET` ayarlarını yaptıysanız, bunları kaldırın – artık göz ardı ediliyorlar ve daha önce GitHub üzerinden giriş yapan kullanıcılar bu şekilde giriş yapamazlar. GitHub bir OAuth 2.0 sağlayıcısıdır, OpenID Connect sağlayıcısı değildir ve Gramps Web'in kimlik için güvendiği talebi asla döndürmediği için tam olarak güvenilir olmamıştır.
+!!! warning "GitHub bir OIDC sağlayıcısı olarak artık desteklenmiyor"
+    Eğer daha önceki bir versiyondan `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET` ayarını yaptıysanız, bunları kaldırın – artık göz ardı ediliyor ve daha önce GitHub üzerinden oturum açan kullanıcılar bu şekilde oturum açamaz. GitHub bir OAuth 2.0 sağlayıcısıdır, OpenID Connect sağlayıcısı değildir ve Gramps Web'in kimlik için güvendiği talebi asla döndürmediği için tam olarak güvenilir olmamıştır.
 
 ## Genel Bakış
 
-OIDC kimlik doğrulaması, şunları yapmanıza olanak tanır:
+OIDC kimlik doğrulaması ile şunları yapabilirsiniz:
 
-- Kullanıcı kimlik doğrulaması için harici kimlik sağlayıcıları kullanma
-- Aynı anda birden fazla kimlik doğrulama sağlayıcısını destekleme
-- OIDC gruplarını/rollerini Gramps Web kullanıcı rollerine eşleme
-- Tek Oturum Açma (SSO) ve Tek Oturum Kapatma uygulama
-- İsteğe bağlı olarak yerel kullanıcı adı/şifre kimlik doğrulamasını devre dışı bırakma
+- Kullanıcı kimlik doğrulaması için harici kimlik sağlayıcıları kullanın
+- Aynı anda birden fazla kimlik doğrulama sağlayıcısını destekleyin
+- OIDC gruplarını/rollerini Gramps Web kullanıcı rollerine eşleyin
+- Tek Oturum Açma (SSO) ve Tek Oturum Kapatma uygulayın
+- İsteğe bağlı olarak yerel kullanıcı adı/parola kimlik doğrulamasını devre dışı bırakın
 
 ## Yapılandırma
 
-OIDC kimlik doğrulamasını etkinleştirmek için Gramps Web yapılandırma dosyanızda veya ortam değişkenlerinizde uygun ayarları yapılandırmanız gerekir. Mevcut OIDC ayarlarının tam listesi için [Sunucu Yapılandırması](configuration.md#settings-for-oidc-authentication) sayfasına bakın.
+OIDC kimlik doğrulamasını etkinleştirmek için Gramps Web yapılandırma dosyanızda veya ortam değişkenlerinde uygun ayarları yapılandırmanız gerekir. Mevcut OIDC ayarlarının tam listesi için [Sunucu Yapılandırması](configuration.md#settings-for-oidc-authentication) sayfasına bakın.
 
 !!! info
-    Ortam değişkenlerini kullanırken, her ayar adını `GRAMPSWEB_` ile ön eklemeyi unutmayın (örneğin, `GRAMPSWEB_OIDC_ENABLED`). Ayrıntılar için [Yapılandırma dosyası vs. ortam değişkenleri](configuration.md#configuration-file-vs-environment-variables) sayfasına bakın.
+    Ortam değişkenleri kullanırken, her ayar adını `GRAMPSWEB_` ile ön eklemeyi unutmayın (örneğin, `GRAMPSWEB_OIDC_ENABLED`). Ayrıntılar için [Yapılandırma dosyası vs. ortam değişkenleri](configuration.md#configuration-file-vs-environment-variables) sayfasına bakın.
 
 ### Yerleşik Sağlayıcılar
 
-Gramps Web, popüler kimlik sağlayıcıları için yerleşik destek sunar. Bunları kullanmak için yalnızca istemci kimliği ve istemci sırrını sağlamanız yeterlidir:
+Gramps Web, popüler kimlik sağlayıcıları için yerleşik destek sunar. Bunları kullanmak için yalnızca istemci kimliğini ve istemci sırrını sağlamanız yeterlidir:
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` ve `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` ve `OIDC_MICROSOFT_CLIENT_SECRET`
 
-Birden fazla sağlayıcıyı aynı anda yapılandırabilirsiniz. Sistem, yapılandırma değerlerine dayanarak hangi sağlayıcıların mevcut olduğunu otomatik olarak algılayacaktır.
+Birden fazla sağlayıcıyı aynı anda yapılandırabilirsiniz. Sistem, yapılandırma değerlerine göre hangi sağlayıcıların mevcut olduğunu otomatik olarak algılayacaktır.
 
 !!! tip "Microsoft: tek kiracı dağıtımları"
-    Yerleşik Microsoft sağlayıcısı, çoklu kiracı `/common` uç noktasını kullanır ve tasarım gereği herhangi bir Microsoft hesabından girişleri kabul eder. Sadece kendi kiracınızdaki kullanıcıların giriş yapmasına izin vermek istiyorsanız, bunun yerine kiracıya özel verici URL'si ile [özel OIDC sağlayıcısını](#custom-oidc-providers) kullanın; bu, verici doğrulamasını aktif tutar ve girişleri o kiracı ile sınırlar.
+    Yerleşik Microsoft sağlayıcısı, çok kiracılı `/common` uç noktasını kullanır ve tasarımı gereği herhangi bir Microsoft hesabından oturum açmayı kabul eder. Sadece kendi kiracınızdaki kullanıcıların oturum açmasına izin vermek istiyorsanız, bunun yerine kiracıya özel verici URL'si ile [özel OIDC sağlayıcısını](#custom-oidc-providers) kullanın; bu, verici doğrulamasını aktif tutar ve oturum açmayı o kiracı ile kısıtlar.
 
 ### Özel OIDC Sağlayıcıları
 
@@ -40,44 +40,44 @@ Birden fazla sağlayıcıyı aynı anda yapılandırabilirsiniz. Sistem, yapıla
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirmek için Boolean. `True` olarak ayarlayın.
+`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğinizi belirten Boolean. `True` olarak ayarlayın.
 `OIDC_ISSUER` | Sağlayıcınızın verici URL'si. Keşif `<issuer>/.well-known/openid-configuration` adresinden alınır.
 `OIDC_CLIENT_ID` | OIDC sağlayıcınız için istemci kimliği
 `OIDC_CLIENT_SECRET` | OIDC sağlayıcınız için istemci sırrı
-`OIDC_NAME` | Özel görüntü adı (isteğe bağlı, varsayılan "OIDC"dır)
-`OIDC_SCOPES` | OAuth kapsamları (isteğe bağlı, varsayılan "openid email profile"dır)
-`OIDC_USERNAME_CLAIM` | Kullanıcı adını oluşturmak için kullanılan talep (isteğe bağlı, varsayılan "preferred_username"dır)
+`OIDC_NAME` | Özel görüntü adı (isteğe bağlı, varsayılan "OIDC")
+`OIDC_SCOPES` | OAuth kapsamları (isteğe bağlı, varsayılan "openid email profile")
+`OIDC_USERNAME_CLAIM` | Kullanıcı adını oluşturmak için kullanılan talep (isteğe bağlı, varsayılan "preferred_username")
 
-### Çoklu Ağaç Kurulumları
+### Çok Ağaçlı Kurulumlar
 
-Çoklu ağaç sunucusunda, kullanıcının giriş yaptığı ağacın bilinmesi gerekir; bu nedenle Gramps Web, kimlik sağlayıcısına yönlendirmeden önce giriş şu şekilde başlar:
+Çok ağaçlı bir sunucuda, kullanıcının oturum açtığı ağacın, Gramps Web'in kimlik sağlayıcısına yönlendirmeden önce bilinmesi gerekir, bu nedenle oturum açma şu şekilde başlar:
 
 ```
 GET /api/oidc/login/?provider=<id>&tree=<tree_id>
 ```
 
-`tree`, çoklu ağaç kurulumlarında gereklidir; bunu atlamak veya mevcut olmayan bir ağacın kimliğini vermek, girişi başarısız kılar. Tek ağaç sunucusunda `tree` isteğe bağlıdır, ancak verilirse yapılandırılmış `TREE` ile eşleşmelidir.
+`tree`, çok ağaçlı kurulumlarda gereklidir; bunu atlamak veya mevcut olmayan bir ağacın kimliğini vermek, oturum açmayı başarısız kılar. Tek ağaçlı bir sunucuda `tree` isteğe bağlıdır, ancak verilirse yapılandırılmış `TREE` ile eşleşmelidir.
 
-Bir OIDC kimliği tam olarak bir Gramps Web hesabına bağlıdır ve bu hesap da tam olarak bir ağaca aittir – farklı bir ağaçta giriş yapmak, hesabı taşımak yerine başarısız olur. Sağlayıcıda tek bir kimliği birden fazla ağaçtaki hesaplarla bağlamanın bir yolu yoktur; birden fazla ağaca erişim ihtiyacı olan kullanıcıların sağlayıcıda ayrı kimliklere sahip olmaları gerekir (örneğin, farklı kullanıcı adları veya hesaplar).
+Bir OIDC kimliği tam olarak bir Gramps Web hesabına bağlıdır ve bu hesap da tam olarak bir ağaca aittir – farklı bir ağaçta oturum açmak, hesabı taşımak yerine başarısız olur. Sağlayıcıda tek bir kimliği birden fazla ağaçtaki hesaplarla ilişkilendirmenin bir yolu yoktur; birden fazla ağaca erişim ihtiyacı olan kullanıcıların sağlayıcıda ayrı kimliklere sahip olmaları gerekir (örneğin, farklı kullanıcı adları veya hesaplar).
 
 !!! warning
-    İlişkili bir ağaç olmayan bir site yöneticisi hesabı (bkz. [bir yönetici hesabı oluşturma](../administration/owner.md)) OIDC üzerinden giriş yapamaz, çünkü OIDC girişi her zaman bir ağaç gerektirir. Bu tür hesaplar, bunun yerine yerel kullanıcı adı/şifre ile oluşturulmalı ve kimlik doğrulaması yapılmalıdır.
+    İlişkili bir ağaç olmayan bir site yöneticisi hesabı (bkz. [bir yönetici hesabı oluşturma](../administration/owner.md)) OIDC üzerinden oturum açamaz, çünkü OIDC oturumu her zaman bir ağaç gerektirir. Bu tür hesaplar, bunun yerine yerel kullanıcı adı/parola ile oluşturulmalı ve kimlik doğrulaması yapılmalıdır.
 
 ## Gerekli Yönlendirme URI'leri
 
-OIDC sağlayıcınızı yapılandırırken, aşağıdaki yönlendirme URI'sını kaydetmelisiniz:
+OIDC sağlayıcınızı yapılandırırken, aşağıdaki yönlendirme URI'sini kaydetmelisiniz:
 
 **Wildcard'ları destekleyen OIDC sağlayıcıları için: (örneğin, Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
-Burada `*` bir regex wildcard'dır. Sağlayıcınızın regex yorumlayıcısına bağlı olarak bu aynı zamanda `.*` veya benzeri bir şey de olabilir. Sağlayıcınız bunu gerektiriyorsa regex'in etkin olduğundan emin olun (örneğin, Authentik).
+Burada `*` bir regex wildcard'dır. Sağlayıcınızın regex yorumlayıcısına bağlı olarak bu aynı zamanda `.*` veya benzeri de olabilir. Sağlayıcınız bunu gerektiriyorsa regex'in etkin olduğundan emin olun (örneğin, Authentik).
 
 **Wildcard'ları desteklemeyen OIDC sağlayıcıları için: (örneğin, Authelia)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/custom`
 
-Ağaç, yönlendirme URI'sının bir parçası değildir; çoklu ağaç sunucularında bile, oturumda ayrı olarak taşınır, çünkü sağlayıcılar yönlendirme URI'sının kaydedilen ile tam olarak eşleşmesini gerektirir.
+Ağaç, yönlendirme URI'sinin bir parçası değildir, hatta çok ağaçlı sunucularda bile – oturum açma, yönlendirme URI'sinin kaydedilen ile tam olarak eşleşmesini gerektirdiğinden, ayrı olarak oturumda taşınır.
 
 ## Rol Eşleme
 
@@ -89,7 +89,7 @@ Rol eşlemesini yapılandırmak için bu ayarları kullanın:
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ROLE_CLAIM` | Kullanıcının gruplarını/rollerini içeren OIDC token'ındaki talep adı. Varsayılan "groups"tır. Noktalı yollar desteklenir, örneğin `realm_access.roles`.
+`OIDC_ROLE_CLAIM` | Kullanıcının gruplarını/rollerini içeren OIDC jetonundaki talep adı. Varsayılan "groups" olarak ayarlanmıştır. Noktalı yollar desteklenir, örneğin `realm_access.roles`.
 `OIDC_GROUP_ADMIN` | Gramps "Admin" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
 `OIDC_GROUP_OWNER` | Gramps "Owner" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
 `OIDC_GROUP_EDITOR` | Gramps "Editor" rolüne eşlenen OIDC sağlayıcınızdaki grup/rol adı
@@ -99,45 +99,45 @@ Anahtar | Açıklama
 
 ### Rol Eşleme Davranışı
 
-Eğer hiç `OIDC_GROUP_*` ayarı yapılandırılmamışsa, rol eşleme kapalıdır ve roller Gramps Web'de manuel olarak yönetilir; yeni OIDC hesapları devre dışı olarak oluşturulur ve mevcut bir sahibi veya yöneticisi tarafından onaylanması gerekir (aşağıdaki [İlk Giriş ve Başlatma](#first-login-and-bootstrapping) bölümüne bakın).
+Hiçbir `OIDC_GROUP_*` ayarı yapılandırılmadığında, rol eşleme kapalıdır ve roller Gramps Web'de manuel olarak yönetilir; yeni OIDC hesapları devre dışı olarak oluşturulur ve mevcut bir sahip veya yönetici tarafından onaylanması gerekir (aşağıdaki [İlk Oturum Açma ve Başlatma](#first-login-and-bootstrapping) bölümüne bakın).
 
-Rol eşleme yapılandırıldıktan sonra, her girişte:
+Rol eşleme yapılandırıldıktan sonra, her oturum açmada:
 
 - Eğer rol talebi mevcutsa ve kullanıcı eşlenmiş bir gruba ait ise, ilgili rolü alır.
 - Eğer rol talebi mevcutsa ancak kullanıcı eşlenmiş bir gruba ait değilse, rolü devre dışı olarak ayarlanır. Bu, bir hata değil, kapalı bir varsayılandır – Gramps Web, tanımadığı bir grup için bir rol çıkaramaz.
-- Eğer rol talebi tamamen token'dan yoksa, mevcut rol değiştirilmez; yeni bir hesap yine de varsayılan olarak devre dışı kalır.
+- Eğer rol talebi tamamen jetondan yoksa, mevcut rol değişmeden kalır; yeni bir hesap yine de devre dışı olarak varsayılan ayara sahiptir.
 
-!!! warning "Google, bir gruplar talebi göndermez"
-    Google'ın token'ları asla `groups` talebini içermez, bu nedenle rol eşleme etkinleştirildiğinde, Google girişleri yukarıdaki "talep yok" durumuna girer: mevcut kullanıcılar rollerini korur, ancak yeni Google kullanıcıları devre dışı olarak oluşturulur ve manuel onay gerektirir. Bu durumu, yalnızca başka bir sağlayıcı için rol eşlemeyi etkinleştirmeden önce göz önünde bulundurun – bu, mevcut Google kullanıcılarını otomatik olarak devre dışı bırakmaz.
+!!! warning "Google bir gruplar talebi göndermez"
+    Google'ın jetonları asla `groups` talebini içermez, bu nedenle rol eşleme etkinleştirildiğinde, Google oturum açmaları yukarıdaki "talep yok" durumuna girer: mevcut kullanıcılar rollerini korur, ancak yeni Google kullanıcıları devre dışı olarak oluşturulur ve manuel onay gerektirir. Başka bir sağlayıcı için rol eşlemeyi yalnızca etkinleştirmeden önce bunu aklınızda bulundurun – bu, mevcut Google kullanıcılarını devre dışı bırakmaz.
 
-Microsoft Entra, uygulama rollerini ve grup üyeliklerini yalnızca ID token'ında döndürür, kullanıcı bilgileri uç noktasından değil. Gramps Web, ID token'ının taleplerini kullanıcı bilgileri yanıtına birleştirir, böylece `OIDC_ROLE_CLAIM` diğer sağlayıcılarla aynı şekilde çalışır; her ikisi de bir talep içeriyorsa, kullanıcı bilgileri değeri öncelik alır.
+Microsoft Entra, uygulama rollerini ve grup üyeliklerini yalnızca ID jetonunda döndürür, kullanıcı bilgileri uç noktasından değil. Gramps Web, ID jetonunun taleplerini kullanıcı bilgisi yanıtına birleştirir, böylece `OIDC_ROLE_CLAIM` diğer sağlayıcılar için olduğu gibi çalışır; her iki yerde de bir talep varsa, kullanıcı bilgisi değeri önceliklidir.
 
-## İlk Giriş ve Başlatma
+## İlk Oturum Açma ve Başlatma
 
-OIDC üzerinden oluşturulan yeni hesaplar, rol eşleme onlara bir rol atamadıkça devre dışı olarak başlar (yukarıya bakın). Yepyeni bir örnekte kimse devre dışı bir hesabı onaylayamaz ve eğer `OIDC_DISABLE_LOCAL_AUTH` da etkinse, geri dönmek için bir şifre girişi de yoktur.
+OIDC aracılığıyla oluşturulan yeni hesaplar, rol eşleme bir rol atamadıkça devre dışı olarak başlar (yukarıya bakın). Yepyeni bir örnekte kimse devre dışı bir hesabı onaylayamaz ve eğer `OIDC_DISABLE_LOCAL_AUTH` da etkinse, geri dönmek için bir parola oturumu da yoktur.
 
-!!! warning "İlk girişten önce bir sahibi/yönetici grubu yapılandırın"
-    OIDC üzerinden ilk kez giriş yapmadan önce, `OIDC_GROUP_OWNER` (veya `OIDC_GROUP_ADMIN`) ayarını yapın ve ilk kullanıcının sağlayıcıda bu gruba ait olduğundan emin olun. Aksi takdirde, örnek OIDC üzerinden başlatılamaz.
+!!! warning "İlk oturum açmadan önce bir sahip/yönetici grubunu yapılandırın"
+    Kimse OIDC üzerinden ilk kez oturum açmadan önce, `OIDC_GROUP_OWNER` (veya `OIDC_GROUP_ADMIN`) ayarını yapın ve ilk kullanıcının sağlayıcıda bu gruba ait olduğundan emin olun. Aksi takdirde, örnek OIDC üzerinden başlatılamaz.
 
 ## Hesaplar ve Kullanıcı Adları
 
-OIDC üzerinden oluşturulan hesaplar, hesap oluşturma sırasında bir kez atanan ve sonraki girişlerde asla değiştirilmeyen bir kullanıcı adı alır:
+OIDC aracılığıyla oluşturulan hesaplar, hesap oluşturma sırasında bir kez atanan ve sonraki oturum açmalarda asla değiştirilmeyen bir kullanıcı adı alır:
 
 - Yerleşik sağlayıcılar: `<provider>_<claim value>`, örneğin `microsoft_alice@contoso.com`
-- Özel sağlayıcı: çıplak talep değeri, örneğin `alice`
+- Özel sağlayıcı: sade talep değeri, örneğin `alice`
 
-Bir çakışma durumunda sayısal bir ek eklenir. OIDC ile oluşturulan bir hesabın kullanıcı adını sonradan değiştirmek mümkün değildir; buna karşın, tam ad ve e-posta adresi her girişte yenilenir.
+Çakışma durumunda sayısal bir ek eklenir. OIDC ile oluşturulan bir hesabın kullanıcı adını sonradan yeniden adlandırmanın bir yolu yoktur; aksine, tam ad ve e-posta adresi her oturum açmada yenilenir.
 
-Bir OIDC girişi, e-posta adresini paylaşan mevcut bir yerel hesaba bağlanmaz – bu kasıtlıdır, çünkü hesapları e-posta ile bağlamak bir hesap ele geçirme vektörüdür. Zaten yerel bir hesabı olan bir kullanıcı, OIDC üzerinden ilk kez giriş yaptığında ikinci, ayrı bir hesap alır.
+Bir OIDC oturumu, e-posta adresini paylaşan mevcut bir yerel hesaba asla eklenmez – bu kasıtlıdır, çünkü hesapları e-posta ile bağlamak bir hesap ele geçirme vektörüdür. Zaten bir yerel hesabı olan bir kullanıcı, OIDC üzerinden ilk kez oturum açtığında ikinci, ayrı bir hesap alır.
 
-Sağlayıcıdan gelen e-posta adresleri yalnızca sağlayıcı bunları doğrulanmış olarak işaretlerse (veya `email_verified` talebini tamamen atlarlarsa) ve adres başka bir hesap tarafından kullanılmıyorsa saklanır; aksi takdirde giriş, e-posta adresini saklamadan devam eder.
+Sağlayıcıdan gelen e-posta adresleri yalnızca sağlayıcı bunları doğrulanmış olarak işaretlerse (veya `email_verified` talebini tamamen atlayarak) saklanır; aksi takdirde oturum açma, e-posta adresini saklamadan devam eder. E-posta adreslerinin benzersiz olması gerekmediğinden (Gramps Web API 3.22'den itibaren), başka bir hesap zaten kullanıyorsa bile bir adres saklanır.
 
 ## OIDC Çıkışı
 
-Gramps Web, OIDC sağlayıcıları için Tek Oturum Kapatma (SSO çıkışı) destekler. `GET /api/oidc/logout/` sağlayıcının `end_session_endpoint`'ini arar ve yanıt olarak `logout_url` olarak döndürür; tarayıcıyı oraya yönlendiren Gramps Web ön yüzüdür, böylece kimlik sağlayıcısında oturum gerçekten sonlandırılır. `logout_url`, sağlayıcının `end_session_endpoint`'i yoksa `null` olur.
+Gramps Web, OIDC sağlayıcıları için Tek Oturum Kapatma (SSO çıkışı) desteği sunar. `GET /api/oidc/logout/` sağlayıcının `end_session_endpoint`'ini arar ve yanıt olarak `logout_url` olarak döndürür; oturumu gerçekten sonlandırmak için tarayıcıyı oraya yönlendiren Gramps Web ön yüzüdür. Sağlayıcının `end_session_endpoint`'i yoksa `logout_url` `null` olur.
 
-!!! warning "Çıkışta token'lar iptal edilmez"
-    Çıkış yapmak yalnızca tarayıcı oturumunu sonlandırır; şu anda daha önce verilmiş bir Gramps Web token'ını iptal etmenin bir yolu yoktur. Token'lar, süresi dolana kadar geçerli kalır (`JWT_ACCESS_TOKEN_EXPIRES`, varsayılan 15 dakika erişim token'ları için), kullanıcı Gramps Web'de veya kimlik sağlayıcısında çıkış yapmış olsa bile.
+!!! warning "Çıkışta jetonlar iptal edilmez"
+    Çıkış yapmak yalnızca tarayıcı oturumunu sonlandırır; şu anda daha önce verilmiş bir Gramps Web jetonunu iptal etmenin bir yolu yoktur. Jetonlar, süresi dolana kadar geçerli kalır (`JWT_ACCESS_TOKEN_EXPIRES`, erişim jetonları için varsayılan 15 dakika), kullanıcı Gramps Web'de veya kimlik sağlayıcısında çıkış yapmış olsa bile.
 
 ## Örnek Yapılandırmalar
 
@@ -156,8 +156,8 @@ OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="your-client-secret"
 OIDC_NAME="Aile SSO"
 OIDC_SCOPES="openid email profile"
-OIDC_AUTO_REDIRECT=True  # İsteğe bağlı: SSO girişine otomatik yönlendirme
-OIDC_DISABLE_LOCAL_AUTH=True  # İsteğe bağlı: kullanıcı adı/şifre girişini devre dışı bırak
+OIDC_AUTO_REDIRECT=True  # İsteğe bağlı: SSO oturum açma için otomatik yönlendirme
+OIDC_DISABLE_LOCAL_AUTH=True  # İsteğe bağlı: kullanıcı adı/parola oturum açmayı devre dışı bırak
 
 # İsteğe bağlı: OIDC gruplarından Gramps rollerine rol eşleme
 OIDC_ROLE_CLAIM="groups"  # veya sağlayıcınıza bağlı olarak "roles"
@@ -169,7 +169,7 @@ EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
 EMAIL_USE_SSL=True  # 465 numaralı port için örtük SSL kullan
 EMAIL_HOST_USER="gramps@example.com"
-EMAIL_HOST_PASSWORD="..." # SMTP şifreniz
+EMAIL_HOST_PASSWORD="..." # SMTP parolanız
 DEFAULT_FROM_EMAIL="gramps@example.com"
 ```
 
@@ -214,7 +214,7 @@ OIDC_MICROSOFT_CLIENT_SECRET="your-microsoft-client-secret"
 
 ### Authelia
 
-Gramps Web için topluluk tarafından yapılmış bir OIDC kurulum kılavuzu, [resmi Authelia belgeleri web sitesinde](https://www.authelia.com/integration/openid-connect/clients/gramps/) mevcuttur.
+Gramps Web için topluluk tarafından yapılmış bir OIDC kurulum kılavuzu [resmi Authelia belgeleri web sitesinde](https://www.authelia.com/integration/openid-connect/clients/gramps/) mevcuttur.
 
 ### Keycloak
 
@@ -224,5 +224,5 @@ Birkaç istisna vardır:
 1. **OpenID kapsamı** – `openid` kapsamı, tüm Keycloak sürümlerinde varsayılan olarak dahil edilmez. Sorun yaşamamak için bunu manuel olarak ekleyin: *Client → [Gramps client] → Client scopes → Add scope → Name: `openid` → Set as default.*
 2. **Roller** – Roller, ya istemci düzeyinde ya da realm başına küresel olarak atanabilir.
 
-    * Eğer istemci rollerini kullanıyorsanız, `OIDC_ROLE_CLAIM` yapılandırma seçeneğini şu şekilde ayarlayın: `resource_access.[gramps-client-name].roles`
-    * Roller Gramps'a görünür hale getirmek için *Client Scopes* (belirli istemci altında değil, üst düzey bölüm) bölümüne gidin, ardından: *Roles → Mappers → client roles → Add to userinfo → ON.*
+    * İstemci rollerini kullanıyorsanız, `OIDC_ROLE_CLAIM` yapılandırma seçeneğini şu şekilde ayarlayın: `resource_access.[gramps-client-name].roles`
+    * Roller Gramps'a görünür hale getirmek için *Client Scopes* bölümüne gidin (belirli istemci altında değil, üst düzey bölüm), ardından: *Roles → Mappers → client roles → Add to userinfo → ON.*

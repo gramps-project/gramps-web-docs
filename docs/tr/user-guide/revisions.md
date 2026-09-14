@@ -2,18 +2,27 @@
 
 Revizyon geçmişi görünümü, aile ağacında yapılan tüm düzenlemeleri gösterir.
 
-Liste görünümü, düzenlemeleri "işlemler" tarafından gruplandırılmış olarak gösterir. Bir işlem, Gramps nesnelerine yapılan bir veya daha fazla ekleme, silme veya değişiklik grubudur. Örneğin, iki mevcut kişi (baba ve anne) ile yeni bir aile eklemek, bir eklenmiş aile nesnesi ve iki değiştirilmiş kişi nesnesi ile bir işlem oluşturur (çünkü bunlar yeni aile nesnesine bağlantıyı içerir).
+Liste görünümü, düzenlemeleri "işlemler" olarak gruplandırılmış şekilde gösterir. Bir işlem, Gramps nesnelerine yapılan bir veya daha fazla ekleme, silme veya değişiklik grubudur. Örneğin, iki mevcut kişinin baba ve anne olarak yer aldığı yeni bir ailenin eklenmesi, bir eklenen aile nesnesi ve iki değiştirilen kişi nesnesi ile bir işlem oluşturur (çünkü bu nesneler yeni aile nesnesine bağlantıyı içerir).
 
 Bir işleme tıkladığınızda, işlem detay görünümü açılır. Bu görünüm, Gramps nesnesine göre bireysel eklemelerin, silmelerin ve güncellemelerin listesini içerir.
 
-Bireysel bir değişikliği seçmek, eklemeler ve silmelerin sırasıyla yeşil ve kırmızı renkte vurgulandığı Gramps nesnesinin ham JSON temsilinin bir görünümünü açar.
+Bireysel bir değişikliği seçmek, eklemelerin yeşil ve silmelerin kırmızı ile vurgulandığı Gramps nesnesinin ham JSON temsilinin bir görünümünü açar. Farklılıkların üzerinde bulunan bir düğme, sizi doğrudan nesnenin kendi sayfasına götürür.
+
+## Tek bir nesnenin revizyonları
+
+Belirli bir kişi, aile, olay veya diğer nesnelerin geçmişini görmek için, sayfasını açın ve **Revizyonlar** sekmesine geçin. Bu sekme, o nesneye yapılan her değişikliği, en yenisi en üstte olacak şekilde, değişiklik türü (eklenmiş, güncellenmiş veya silinmiş), değişikliği yapan kullanıcı ve zaman bilgisi ile listeler. Bir girişe tıkladığınızda, ait olduğu işlemi açar; burada farkı inceleyebilir veya geri alabilirsiniz.
+
+Eski girişleri yüklemek için **Daha fazla göster** butonuna tıklayın; çok uzun bir geçmişe sahip nesneler için yalnızca en son revizyonlar gösterilir. Revizyon geçmişinin kaydedilmesinden önce son değişikliği yapılan nesneler için, sekme yalnızca son değişiklik zamanını gösterir.
+
+!!! not
+    Revizyonlar sekmesi, üyeler ve üstü için görünürdür ve Gramps Web API sürümü 3.22 veya daha yenisini gerektirir.
 
 ## Bir revizyonu geri alma
 
-İşlem detay sayfasında, bir **Geri Al** butonu, o işlemi geri almanıza olanak tanır. Üzerine tıkladığınızda, geri almanın temiz bir şekilde yapılıp yapılamayacağını kontrol eder.
+İşlem detay sayfasında, bir işlemi geri almanıza olanak tanıyan bir **Geri Al** düğmesi bulunur. Bu düğmeye tıkladığınızda, geri almanın temiz bir şekilde yapılıp yapılamayacağı kontrol edilir.
 
-**Temiz geri alma** – eğer işlemden etkilenen nesnelerden hiçbiri o zamandan beri değiştirilmemişse, geri alma riske girmeden devam edebilir. Bir onay penceresi gösterilir ve **Geri Al** butonuna tıklamak işlemi geri alır.
+**Temiz geri alma** – eğer işlemden etkilenen nesnelerden hiçbiri o zamandan beri değiştirilmemişse, geri alma risksiz bir şekilde devam edebilir. Bir onay penceresi gösterilir ve **Geri Al** butonuna tıklamak işlemi geri alır.
 
-**Zorunlu güç** – eğer bir veya daha fazla etkilenen nesne, sonraki bir işlem tarafından değiştirilmişse, temiz bir geri alma mümkün değildir. Pencere, geri almanın zorlanmasının veri tutarsızlıklarına yol açabileceğini uyarır, çünkü söz konusu nesnelere bağlı sonraki değişiklikler olduğu gibi korunacak, oysa temel nesneler geri alınacaktır. Bu durumda ya iptal edebilir ya da yine de devam etmek için **Zorla geri al** butonuna tıklayabilirsiniz.
+**Zorunlu geri alma** – eğer bir veya daha fazla etkilenen nesne sonraki bir işlemle değiştirilmişse, temiz bir geri alma mümkün değildir. Pencere, geri almanın zorlanmasının veri tutarsızlıklarına yol açabileceği konusunda uyarır; çünkü söz konusu nesnelere bağlı sonraki değişiklikler, temel nesneler geri alınsa bile olduğu gibi korunacaktır. Bu durumda, geri almayı iptal edebilir veya yine de devam etmek için **Zorla geri al** butonuna tıklayabilirsiniz.
 
-Her iki durumda da geri alma arka planda bir görev olarak çalışır ve bir ilerleme göstergesi gösterilir.
+Her iki durumda da geri alma, bir arka plan görevi olarak çalışır ve bir ilerleme göstergesi gösterilir.

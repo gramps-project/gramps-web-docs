@@ -13,7 +13,7 @@ hide:
 
 Gramps Web utiliza la misma estructura de **Modelo / Base de Datos** que [Gramps Desktop](https://gramps-project.org/) utiliza para almacenar datos genealógicos. Puedes explorar todos los mismos [Tipos de Registro](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) que en Gramps Desktop: ***personas, familias, eventos, lugares, repositorios, fuentes, citas, objetos multimedia y notas.***
 
-Usando el [Complemento de Sincronización de Gramps Web](../administration/sync.md) para Gramps Desktop, los datos pueden ser sincronizados en ambas direcciones entre Gramps Web y Gramps Desktop. ¡Adelante, edita tus datos con Gramps Web o la aplicación de Gramps Desktop que conoces y amas – funcionan juntos sin problemas!
+Usando el [Complemento de Sincronización de Gramps Web](../administration/sync.md) para Gramps Desktop, los datos pueden sincronizarse bidireccionalmente entre Gramps Web y Gramps Desktop. ¡Adelante, edita tus datos con Gramps Web o la aplicación de Gramps Desktop que conoces y amas: funcionan juntos sin problemas!
 
 <div style="clear:both;"></div>
 
@@ -21,7 +21,7 @@ Usando el [Complemento de Sincronización de Gramps Web](../administration/sync.
 
 ![Título de la imagen](screenshots/fan.png){ align=right width="400"}
 
-## Gráficas interactivas del árbol familiar
+## Gráficas interactivas de árboles familiares
 
 Navega por tu árbol familiar como un árbol de ancestros, árbol de descendientes, gráfico de reloj de arena, gráfico de relaciones o gráfico de abanico, con gráficos interactivos de alta calidad y un número configurable de generaciones.
 
@@ -35,7 +35,7 @@ Pasa el cursor sobre cualquier persona para ver una tarjeta de vista previa con 
 
 ## Construye tu árbol directamente en el gráfico
 
-Cambia la vista del árbol a modo de edición y haz crecer tu árbol familiar sin salir del gráfico. Cada tarjeta de persona tiene un botón **+** para agregar un padre, madre, hijo o cónyuge – ya sea vinculando a alguien que ya está en tu base de datos o creando una persona completamente nueva en el acto. Cada cambio se guarda de inmediato.
+Cambia la vista del árbol a modo de edición y haz crecer tu árbol familiar sin salir del gráfico. Cada tarjeta de persona tiene un botón **+** para agregar un padre, madre, hijo o cónyuge, ya sea vinculando a alguien que ya está en tu base de datos o creando una persona completamente nueva en el acto. Cada cambio se guarda inmediatamente.
 
 Consulta [Editando el Árbol Familiar](../user-guide/tree-edit.md).
 
@@ -47,7 +47,7 @@ Consulta [Editando el Árbol Familiar](../user-guide/tree-edit.md).
 
 ## Línea de tiempo cronológica
 
-Ve cada evento en tu árbol familiar dispuesto en una línea de tiempo horizontal y ampliable. Desplázate y haz zoom a través de los siglos, luego filtra hasta una sola persona – o a todos sus ancestros o descendientes – o a todo lo que ocurrió en un lugar.
+Ve cada evento en tu árbol familiar dispuesto en una línea de tiempo horizontal y ampliable. Desplázate y haz zoom a través de los siglos, luego filtra hasta una sola persona, o a todos sus ancestros o descendientes, o a todo lo que sucedió en un lugar.
 
 Consulta [Línea de Tiempo](../user-guide/timeline.md).
 
@@ -59,7 +59,7 @@ Consulta [Línea de Tiempo](../user-guide/timeline.md).
 
 ## Mapa potente
 
-Muestra todos los lugares en tu árbol en un mapa interactivo y buscable. Busca nuevos lugares directamente en OpenStreetMap al crear un lugar, traza a las personas en tu base de datos geográficamente y sigue la vida de una sola persona conectando sus eventos con líneas en el mapa.
+Muestra todos los lugares en tu árbol en un mapa interactivo y buscable. Busca nuevos lugares directamente en OpenStreetMap al crear un lugar, traza a las personas en tu base de datos geográficamente, y sigue la vida de una sola persona conectando sus eventos con líneas en el mapa.
 
 <div style="clear:both;"></div>
 
@@ -81,11 +81,11 @@ Además, los mapas vectoriales históricos creados por el proyecto [OpenHistoric
 
 ## Encuentra cualquier cosa
 
-El motor de búsqueda de texto completo cubre todos los tipos de objetos de Gramps, incluyendo el contenido de notas de texto, y soporta comodines y operadores lógicos.
+El motor de búsqueda de texto completo cubre todos los tipos de objetos de Gramps, incluyendo el contenido de notas de texto, y admite comodines y operadores lógicos.
 
 Si tu servidor lo tiene habilitado, la **búsqueda semántica** responde a consultas en lenguaje natural como "agricultor en Baviera en el siglo XIX" por significado en lugar de por palabras exactas. Para consultas precisas, las vistas de lista de objetos ofrecen un modo de filtro avanzado basado en el [Lenguaje de Consulta de Gramps](../user-guide/gql.md), junto con filtros rápidos por texto, etiqueta y privacidad.
 
-Desde la página de cualquier persona, [Búsqueda Externa](../user-guide/external-search.md) abre una búsqueda pre-rellenada en FamilySearch, Ancestry, CompGen y otros sitios – y puedes agregar los tuyos.
+Desde la página de cualquier persona, [Búsqueda Externa](../user-guide/external-search.md) abre una búsqueda pre-llenada en FamilySearch, Ancestry, CompGen y otros sitios, y puedes agregar los tuyos.
 
 <div style="clear:both;"></div>
 
@@ -95,9 +95,9 @@ Desde la página de cualquier persona, [Búsqueda Externa](../user-guide/externa
 
 ## Asistente de IA integrado
 
-Impulsado por IA, Gramps Web te permite chatear con tu árbol familiar – ¡en tu idioma nativo!
+Impulsado por IA, Gramps Web te permite chatear con tu árbol familiar, ¡en tu idioma nativo!
 
-El asistente no solo busca: consulta tu base de datos directamente con un conjunto de herramientas, filtrando personas, eventos, familias y lugares, y calculando relaciones entre individuos. Puedes ver qué herramientas está utilizando mientras construye una respuesta, y las preguntas más largas se ejecutan como tareas en segundo plano para que puedas navegar y volver.
+El asistente no solo busca: consulta directamente tu base de datos con un conjunto de herramientas, filtrando personas, eventos, familias y lugares, y calculando relaciones entre individuos. Puedes ver qué herramientas está utilizando mientras construye una respuesta, y las preguntas más largas se ejecutan como tareas en segundo plano para que puedas navegar y volver.
 
 <div style="clear:both;"></div>
 
@@ -109,7 +109,7 @@ El asistente no solo busca: consulta tu base de datos directamente con un conjun
 
 Si tienes datos de coincidencias de ADN de uno de los proveedores de genealogía de ADN, súbelos y guárdalos de una manera a prueba de futuro y visualiza tus coincidencias en un navegador de cromosomas interactivo.
 
-Los datos crudos de SNP del cromosoma Y pueden usarse para determinar el [haplogrupo Y-DNA](../user-guide/y-dna.md) más probable de una persona y mostrar sus ancestros patrilineales en el árbol del cromosoma Y humano, con estimaciones de tiempo. El análisis se realiza completamente en tu propio servidor – no se envían datos a ningún tercero.
+Los datos crudos de SNP del cromosoma Y pueden usarse para determinar el [haplogrupo Y-DNA](../user-guide/y-dna.md) más probable de una persona y mostrar sus ancestros patrilineales en el árbol del cromosoma Y humano, con estimaciones de tiempo. El análisis se realiza completamente en tu propio servidor: no se envían datos a terceros.
 
 <div style="clear:both;"></div>
 
@@ -129,7 +129,7 @@ Colabora con tus familiares para identificar a los ancestros en viejas fotos fam
 
 ## Historial de revisiones completo – con deshacer
 
-Cada edición de tu árbol familiar se registra. Navega por el historial completo agrupado por transacción, profundiza en cualquier cambio individual para ver exactamente qué campos fueron añadidos, eliminados o modificados, y deshaz una transacción si resulta ser un error.
+Cada edición de tu árbol familiar se registra. Navega por el historial completo agrupado por transacción, profundiza en cualquier cambio individual para ver exactamente qué campos fueron añadidos, eliminados o modificados, y deshaz una transacción si resulta ser un error. La página de cada objeto también tiene su propia pestaña de revisiones que muestra quién lo cambió y cuándo.
 
 Consulta [Historial de Revisiones](../user-guide/revisions.md).
 
@@ -143,7 +143,7 @@ Consulta [Historial de Revisiones](../user-guide/revisions.md).
 
 Muchas personas quieren mantener algunos detalles en privado y ¡respetamos eso! Puedes marcar registros como privados y controlar qué usuarios pueden ver registros privados. Los registros privados se filtran en la capa de base de datos para máxima seguridad. Además, puedes controlar lo que los usuarios pueden agregar y editar.
 
-Los usuarios pueden iniciar sesión con una contraseña, o a través de un proveedor de identidad externo usando [OpenID Connect](../install_setup/oidc.md) – Google y Microsoft de forma predeterminada, además de proveedores personalizados como Keycloak, Authentik y Authelia.
+Los usuarios pueden iniciar sesión con una contraseña, o a través de un proveedor de identidad externo usando [OpenID Connect](../install_setup/oidc.md): Google y Microsoft de forma predeterminada, además de proveedores personalizados como Keycloak, Authentik y Authelia.
 
 <div style="clear:both;"></div>
 
@@ -153,7 +153,7 @@ Los usuarios pueden iniciar sesión con una contraseña, o a través de un prove
 
 ## Blog de genealogía incluido
 
-Resume tu investigación en forma de historias de blog con imágenes, y compártelas con tus familiares. Un editor dedicado hace que escribir una nueva publicación sea sencillo. Todos los datos se almacenan en la base de datos de Gramps.
+Resume tu investigación en forma de historias de blog con imágenes y compártelas con tus familiares. Un editor dedicado hace que escribir una nueva publicación sea sencillo. Todos los datos se almacenan en la base de datos de Gramps.
 
 <div style="clear:both;"></div>
 
@@ -163,9 +163,9 @@ Resume tu investigación en forma de historias de blog con imágenes, y compárt
 
 ## Aplicación de gestión de tareas integrada
 
-Gramps Web viene con una aplicación de gestión de tareas integrada para organizar y planificar tu investigación genealógica. Asigna a cada tarea un estado, una prioridad y etiquetas, documenta tu progreso en una descripción en texto enriquecido, y adjunta los medios que recopilaste en el camino.
+Gramps Web viene con una aplicación de gestión de tareas integrada para organizar y planificar tu investigación genealógica. Asigna a cada tarea un estado, una prioridad y etiquetas, documenta tu progreso en una descripción de texto enriquecido y adjunta los medios que recopilaste en el camino.
 
-Las tareas se almacenan como fuentes en la base de datos de Gramps, por lo que forman parte de tus datos genealógicos y pueden ser accedidas y editadas también en Gramps Desktop.
+Las tareas se almacenan como fuentes en la base de datos de Gramps, por lo que forman parte de tus datos genealógicos y pueden ser accedidas y editadas en Gramps Desktop también.
 
 <div style="clear:both;"></div>
 
@@ -173,9 +173,9 @@ Las tareas se almacenan como fuentes en la base de datos de Gramps, por lo que f
 
 ![Título de la imagen](screenshots/report.png){ align=left width="400"}
 
-## Genera informes imprimibles
+## Generar informes imprimibles
 
-Dado que está construido directamente sobre el núcleo que impulsa Gramps Desktop, puedes generar casi todos los [informes](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) que la aplicación de escritorio soporta directamente desde el navegador, incluyendo gráficos de relaciones o informes en libro en PDF.
+Dado que está construido directamente sobre el núcleo que impulsa Gramps Desktop, puedes generar casi todos los [informes](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) que la aplicación de escritorio admite directamente desde el navegador, incluyendo gráficos de relaciones o informes de libros en PDF.
 
 <div style="clear:both;"></div>
 
@@ -185,9 +185,9 @@ Dado que está construido directamente sobre el núcleo que impulsa Gramps Deskt
 
 ## Sin bloqueo – importación y exportación de datos
 
-Además de poder importar datos en varios formatos incluyendo Gramps XML y GEDCOM, Gramps Web facilita a los usuarios descargar todos sus datos (datos del árbol familiar, archivos multimedia, cuentas de usuario) en cualquier momento, para propósitos de respaldo o para trasladarse a otro servidor. ¡Tus datos son solo tuyos!
+Además de poder importar datos en varios formatos, incluyendo Gramps XML y GEDCOM, Gramps Web facilita a los usuarios descargar todos sus datos (datos del árbol familiar, archivos multimedia, cuentas de usuario) en cualquier momento, para fines de respaldo o para trasladarse a otro servidor. ¡Tus datos son solo tuyos!
 
-Las importaciones pueden ser vistas como una prueba antes de que se escriba algo, y una copia de seguridad completa puede ser restaurada de nuevo en el árbol.
+Las importaciones pueden ser vistas como una prueba previa antes de que se escriba nada, y una copia de seguridad completa puede ser restaurada de nuevo en el árbol.
 
 <div style="clear:both;"></div>
 
@@ -199,7 +199,7 @@ Las importaciones pueden ser vistas como una prueba antes de que se escriba algo
 
 Accede a Gramps Web desde cualquier dispositivo habilitado para la web. Puedes subir fotos, crear o editar registros, mostrar tu árbol familiar a otros, o buscar esos nombres de familiares que no puedes recordar en tu próxima reunión familiar.
 
-Gramps Web es una aplicación web progresiva: instálala en tu pantalla de inicio o escritorio y se comporta como una aplicación nativa. En el escritorio, los [atajos de teclado](../user-guide/shortcuts.md) te llevan a cualquier lugar en un par de pulsaciones – presiona `?` para verlos todos.
+Gramps Web es una aplicación web progresiva: instálala en tu pantalla de inicio o escritorio y se comporta como una aplicación nativa. En el escritorio, los [accesos directos de teclado](../user-guide/shortcuts.md) te llevan a cualquier lugar en un par de pulsaciones de teclas: presiona `?` para verlos todos.
 
 <div style="clear:both;"></div>
 
@@ -217,19 +217,20 @@ Cambia el idioma de la interfaz entre cualquiera de más de 50 idiomas traducido
 
 ## Y más
 
-- **Notificaciones y tareas en segundo plano** – importaciones, exportaciones, informes y reconstrucciones de índices se ejecutan en segundo plano, con progreso y errores recopilados en un solo lugar
-- **Etiquetas, marcadores e historial** – organiza objetos con etiquetas codificadas por colores y vuelve a lo que estabas trabajando
+- **Notificaciones y tareas en segundo plano** – importaciones, exportaciones, informes y reconstrucciones de índice se ejecutan en segundo plano, con progreso y errores recopilados en un solo lugar
+- **Etiquetas, marcadores e historial** – organiza objetos con etiquetas codificadas por colores y regresa a lo que estabas trabajando
 - **Edición masiva** – selecciona múltiples objetos en las vistas de lista para eliminarlos a la vez, o fusionar objetos duplicados
-- **Vistas de lista personalizables** – elige qué columnas mostrar, y filtra por texto, etiqueta o privacidad
+- **Vistas de lista personalizables** – elige qué columnas mostrar y filtra por texto, etiqueta o privacidad
 - **Reconocimiento de texto (OCR)** – extrae texto de documentos escaneados en tu galería multimedia
-- **Verificación de datos** – revisa tu árbol en busca de fechas implausibles y otros problemas de datos
+- **Verificación de datos** – verifica tu árbol en busca de fechas implausibles y otros problemas de datos
+- **Calendarios** – ingresa fechas en el calendario gregoriano, juliano, hebreo, republicano francés, persa, islámico o sueco
 - **Hazlo tuyo** – dale a tu sitio su propio nombre, colores de tema y texto e imagen de la página de inicio
 
 <p>&nbsp;</p>
 
 ## Demostración
 
-Para iniciar sesión en la Demostración, utiliza cualquiera de las siguientes credenciales de inicio de sesión ***USUARIO / CONTRASEÑA***. Cada una representa un tipo de usuario al que un usuario de Gramps Web puede ser asignado.
+Para iniciar sesión en la demostración, utiliza cualquiera de las siguientes credenciales de inicio de sesión ***USUARIO / CONTRASEÑA***. Cada una representa un tipo de usuario al que se puede asignar a un usuario de Gramps Web.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -237,7 +238,7 @@ Para iniciar sesión en la Demostración, utiliza cualquiera de las siguientes c
 `member / member`
 
 
-[Ir a la Demostración de Inicio de Sesión](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
+[Ir a la demostración de inicio de sesión](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 
 ### Gracias

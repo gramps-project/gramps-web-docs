@@ -4,17 +4,17 @@ Slægtstræets side er tilgængelig fra sidepanelet og viser interaktive diagram
 
 ## Valg af startperson
 
-Alle diagrammer starter fra den person, der aktuelt er valgt i træet (vist i værktøjslinjen). Den aktuelt centrerede person er fremhævet med en skygge. Brug knappen **Hjem Person** for at hoppe tilbage til din hjemperson, eller knappen **Tilbage** for at vende tilbage til den tidligere viste person. Klik på en persons kort i ethvert diagram for at recenterere diagrammet på den person.
+Alle diagrammer starter fra den person, der aktuelt er valgt i træet (vist i værktøjslinjen). Den aktuelt centrerede person er fremhævet med en skygge. Brug knappen **Hjem Person** for at hoppe tilbage til din hjemperson, eller knappen **Tilbage** for at vende tilbage til den tidligere viste person. Klik på en persons kort i ethvert diagram for at re-centre diagrammet på den person.
 
-Hvis der ikke er sat nogen hjemperson, vil siden bede dig om at gå til startsiden og sætte en.
+Hvis der ikke er indstillet nogen hjemperson, tilbyder siden en knap **Indstil Hjem Person** for at søge efter og vælge en direkte. Hvis træet endnu ikke indeholder nogen personer, ser brugere med Editor-rollen eller højere i stedet en knap **Ny Person** – den første person, der oprettes i et tomt træ, bliver automatisk din hjemperson, så diagrammet vises med det samme.
 
 ## Diagramtyper
 
-### Forfædretræ
+### Forfædret træ
 
 Et stamtavlediagram, der viser forfædrene til den valgte person. Forældre vises til venstre (eller højre, afhængigt af layoutet), bedsteforældre længere ude, og så videre.
 
-### Efterkommertræ
+### Efterkommer træ
 
 Viser efterkommerne til den valgte person – børn, børnebørn og så videre.
 
@@ -24,7 +24,7 @@ Kombinerer forfædre ovenfor og efterkommere nedenfor den valgte person i en enk
 
 ### Forholdsdiagram
 
-Viser forholdsvejen mellem to personer. Den valgte person er den ene ende; klik på en anden person i diagrammet for at sætte den anden ende og vise den korteste forholdsvej mellem dem.
+Viser forholdsvejen mellem to personer. Den valgte person er den ene ende; klik på en hvilken som helst anden person i diagrammet for at indstille den anden ende og vise den korteste forholdsvej mellem dem.
 
 !!! note
     Den samme person kan optræde mere end én gang i diagrammet – for eksempel når nogen har været gift flere gange og optræder i flere familieenheder langs vejen. Dette er intentionelt, ikke en fejl.
@@ -42,26 +42,26 @@ Alle diagramtyper deler en værktøjslinje med følgende knapper:
 - **Person Detaljer** – åbn den fulde profilside for den aktuelt centrerede person
 - **Præferencer** – åbn en dialog for at justere diagram-specifikke visningsmuligheder (se nedenfor)
 
-Alle diagrammer understøtter **pan** (klik og træk) og **zoom** (scrollhjul eller klem).
+Alle diagrammer understøtter **pan** (klik og træk) og **zoom** (scrollhjul eller pinch).
 
 ## Diagrampræferencer
 
 Dialogen **Præferencer** (gearikon i værktøjslinjen) lader dig justere følgende muligheder, afhængigt af diagramtypen:
 
-- **Maks Forfader Generationer** – hvor mange generationer af forfædre der skal vises
+- **Maks Forfædre Generationer** – hvor mange generationer af forfædre der skal vises
 - **Maks Efterkommer Generationer** – hvor mange generationer af efterkommere der skal vises
-- **Maks Grad af Separation** – for Forholdsdiagrammet, den maksimale længde af stien der skal søges
+- **Maks Grad af Adskillelse** – for Forholdsdiagrammet, den maksimale længde af stien, der skal søges
 - **Maks Antal Billeder vist** – begrænser profilbilleder vist i diagrammet for ydeevne
-- **Navn Visningsformat** – styrer hvordan navne vises på personkort
+- **Navn Visningsformat** – kontrollerer hvordan navne vises på personkort
 
 Klik på **Nulstil** for at gendanne standardindstillingerne, eller **Luk** for at anvende dine ændringer.
 
-Indstillinger for diagrampræferencer gemmes i browserens lokale lager, så de forbliver på tværs af sessioner på den samme enhed.
+Indstillinger for diagrampræferencer gemmes i browserens lokale lager, så de forbliver på plads på tværs af sessioner på den samme enhed.
 
 ## Standard diagramtype
 
-Den diagramtype, der vises, når du først åbner Slægtstræets side, kan konfigureres i [Brugerindstillinger](settings.md). Din valgte standard gælder på alle dine enheder.
+Den diagramtype, der vises, når du først åbner Slægtstræets side, kan konfigureres i [Brugerindstillinger](settings.md). Din valgte standard gælder for alle dine enheder.
 
 ## Redigering af træet
 
-Brugere med redaktørrolle eller højere kan tilføje og linke personer direkte fra Forfædretræet. Se [Redigering af slægtstræet](tree-edit.md) for detaljer.
+Brugere med Editor-rollen eller højere kan tilføje og linke personer direkte fra Forfædret træ. Se [Redigering af slægtstræet](tree-edit.md) for detaljer.

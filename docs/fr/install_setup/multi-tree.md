@@ -1,8 +1,8 @@
 # Configuration pour l'hébergement de plusieurs arbres
 
-Par défaut, Gramps Web ne permet d'accéder qu'à une seule base de données d'arbres familiaux (« arbre »), spécifiée dans le fichier de configuration.
+Par défaut, Gramps Web permet uniquement d'accéder à une seule base de données d'arbres familiaux (« arbre »), spécifiée dans le fichier de configuration.
 
-Cependant, à partir de la version 0.7.0 de l'API backend de Gramps Web, il est également possible de servir plusieurs arbres à partir d'une seule installation. Cependant, chaque utilisateur est (actuellement) lié à un seul arbre, donc cette configuration n'est pas adaptée au partage d'arbres entre utilisateurs, mais à l'hébergement de plusieurs instances isolées de Gramps Web.
+Cependant, à partir de la version 0.7.0 de l'API backend Gramps Web, il est également possible de servir plusieurs arbres à partir d'une seule installation. Cependant, chaque utilisateur est (actuellement) lié à un seul arbre, donc cette configuration n'est pas adaptée au partage d'arbres entre utilisateurs, mais à l'hébergement de plusieurs instances Gramps Web isolées.
 
 ## Activer le support multi-arbres
 
@@ -22,17 +22,17 @@ De plus, vous devez définir l'option de configuration `MEDIA_PREFIX_TREE` sur `
 
 ## Ajouter un compte utilisateur à un arbre spécifique
 
-Pour ajouter un utilisateur à un arbre spécifique, il suffit d'ajouter l'option de ligne de commande `--tree TREEID` à la commande d'ajout d'utilisateur. Vous pouvez également faire un POST sur le point de terminaison `/users/` avec la propriété `tree` définie dans la charge utile JSON.
+Pour ajouter un utilisateur à un arbre spécifique, il suffit d'ajouter l'option de ligne de commande `--tree TREEID` à la commande d'ajout d'utilisateur. Vous pouvez également faire un POST à l'endpoint `/users/` avec la propriété `tree` définie dans la charge utile JSON.
 
-Les noms d'utilisateur et les adresses e-mail doivent être uniques à travers *tous* les arbres.
+Les noms d'utilisateur doivent être uniques à travers *tous* les arbres. Les adresses e-mail n'ont pas besoin d'être uniques (depuis Gramps Web API 3.22), donc la même personne peut, par exemple, avoir des comptes dans plusieurs arbres en utilisant une seule adresse e-mail.
 
 ## Créer un nouvel arbre
 
-Pour créer un nouvel arbre, il est recommandé de faire un POST sur le point de terminaison `/trees/` plutôt que d'utiliser l'interface de ligne de commande Gramps. Cela utilisera un UUIDv4 comme ID d'arbre, ce qui entraîne une sécurité supplémentaire car le nom ne peut pas être deviné. Actuellement, seul SQLite est pris en charge pour les arbres nouvellement créés.
+Pour créer un nouvel arbre, il est recommandé de faire un POST à l'endpoint `/trees/` plutôt que d'utiliser le CLI Gramps. Cela utilisera un UUIDv4 comme ID d'arbre, ce qui entraîne une sécurité supplémentaire car le nom ne peut pas être deviné. Actuellement, seul SQLite est pris en charge pour les arbres nouvellement créés.
 
 ## Autoriser
 
-Pour autoriser (récupérer un jeton), seuls le nom d'utilisateur et le mot de passe sont nécessaires, comme en mode à arbre unique, puisque l'ID de l'arbre est connu pour chaque utilisateur, il n'est donc pas nécessaire de le fournir.
+Pour autoriser (récupérer un token), seuls le nom d'utilisateur et le mot de passe sont nécessaires, comme en mode à arbre unique, puisque l'ID de l'arbre est connu pour chaque utilisateur, donc il n'est pas nécessaire de le fournir.
 
 ## Migrer les fichiers multimédias existants
 
