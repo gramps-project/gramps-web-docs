@@ -1,11 +1,11 @@
 # Aloita uusi sukupuu
 
-Tämä sivu opastaa sinua ensimmäisissä vaiheissa tyhjällä sukupuulla: itsesi lisäämisessä, vanhempiesi lisäämisessä ja tuloksen näkemisessä sukupuun kaaviossa. Tämä vie noin 15 minuuttia.
+Tällä sivulla käydään läpi ensimmäiset askeleet tyhjällä sukupuulla: itsesi lisääminen, vanhempiesi lisääminen ja tuloksen näkeminen sukupuu-kaaviossa. Tämä vie noin 15 minuuttia.
 
-Jos sinulla on jo sukupuu toisessa sukututkimusohjelmassa tai Gramps Desktopissa, sinun ei tarvitse syöttää sitä uudelleen käsin – katso sen sijaan [Tuo tietoja](../administration/import.md).
+Jos sinulla on jo sukupuu jossain muussa sukututkimusohjelmassa tai Gramps Desktopissa, sinun ei tarvitse syöttää sitä uudelleen käsin – katso sen sijaan [Tietojen tuonti](../administration/import.md).
 
 !!! note
-    Henkilöiden lisääminen vaatii Editor-roolin tai korkeamman. Puun omistajalla on aina tämä rooli. Katso [Käyttäjäjärjestelmä](../install_setup/users.md) kaikista rooleista.
+    Henkilöiden lisääminen vaatii Editor-roolin tai korkeamman. Puun omistajalla on aina se. Katso [Käyttäjäjärjestelmä](../install_setup/users.md) kaikista rooleista.
 
 ## 1. Luo paikka
 
@@ -26,35 +26,36 @@ Palaa etusivulle. Kun puu on tyhjillään, se näyttää **Aloita**-kortin. Naps
 
 - **Nimi** – etunimesi ja sukunimesi
 - **Sukupuoli**
-- **Syntymäpäivä** – katso [Päivämäärien syöttäminen](#entering-dates) alla
+- **Syntymäaika** – katso [Päivämäärien syöttäminen](#entering-dates) alla
 - **Syntymäpaikka** – napsauta **Valitse olemassa oleva paikka** ja etsi luomasi paikka
 
 Jätä kuoleman kentät tyhjiksi ja napsauta **Lisää**. Uuden henkilön sivu avautuu.
 
-Ensimmäinen henkilö, joka luodaan tyhjään puuhun, tulee automaattisesti olemaan sinun **Kotihenkilösi**: henkilö, josta sukupuun kaavio alkaa. Voit valita toisen Kotihenkilön milloin tahansa etusivulla.
+Ensimmäinen henkilö, joka luodaan tyhjään puuhun, tulee automaattisesti olemaan **Koti-henkilösi**: henkilö, josta sukupuu-kaavio alkaa. Voit valita toisen Koti-henkilön milloin tahansa etusivulla.
 
 ### Päivämäärien syöttäminen
 
-Päivämäärä syötetään erillisinä vuosi-, kuukausi- ja päiväkenttinä. Jos tiedät vain vuoden, täytä vain vuosi. Epävarmoille päivämäärille voit muuttaa päivämäärän tyyppiä – esimerkiksi "noin" tai "ennen" – sen sijaan, että arvaisit tarkkaa päivää.
+Päivämäärä syötetään erillisinä vuosina, kuukausina ja päivinä. Jos tiedät vain vuoden, täytä vain vuosi. Epävarmoille päivämäärille, muuta päivämäärän tyyppiä – esimerkiksi "noin" tai "ennen" – sen sijaan, että arvaisit tarkkaa päivää.
 
 ## 3. Lisää vanhempasi
 
-1. Napsauta **Sukupuu** sivupalkissa. Kaavio näyttää sinut Kotihenkilönä.
+1. Napsauta **Sukupuu** sivupalkissa. Kaavio näyttää sinut Koti-henkilönä.
 2. Napsauta kynäpainiketta oikeassa alakulmassa kytkeäksesi muokkaustilan päälle.
 3. Napsauta pientä **+**-painiketta kortissasi. **Lisää perheenjäsen** -dialogi avautuu.
-4. Napsauta **Isä**-kohdan vieressä **+**-ikonia luodaksesi uuden henkilön, täytä lomake kuten aiemmin ja tallenna. Isäsi näkyy kaaviossa, jo yhteydessä sinuun.
+4. **Isä**-kohdan vieressä napsauta **+**-ikonia luodaksesi uuden henkilön, täytä lomake kuten ennenkin ja tallenna. Isäsi näkyy kaaviossa, jo linkitettynä sinuun.
 5. Toista **Äiti**-kohdassa.
 
-**Linkki**-ikoni kunkin suhteen vieressä yhdistää jo olemassa olevan henkilön puussasi sen sijaan, että luot uuden.
+**Linkki**-ikoni jokaisen suhteen vieressä yhdistää henkilön, joka jo on olemassa puussasi, sen sijaan että luot uuden.
 
-Samaan tapaan napsauta **+**-painiketta minkä tahansa kortin kohdalla kaaviossa lisätäksesi kyseisen henkilön vanhemmat, lapset tai puolisot. Jokainen muutos tallennetaan heti. Poistu muokkaustilasta napsauttamalla sulkemispainiketta ylävalikossa.
+Samaan tapaan napsauta **+** mitä tahansa korttia kaaviossa lisätäksesi kyseisen henkilön vanhemmat, lapset tai puolison. Jokainen muutos tallennetaan heti. Poistu muokkaustilasta napsauttamalla sulkemispainiketta ylävalikossa.
 
 ## 4. Katso tulos
 
-Kaavio näyttää nyt sinut vanhempiesi kanssa. Kokeile muita kaaviotyyppejä sivun yläreunan välilehdissä – esimerkiksi Fan Chart – ja napsauta minkä tahansa henkilön korttia keskittyäksesi kaavioon heistä. Katso [Sukupuu](tree.md) kaikista kaavioista ja vaihtoehdoista.
+Kaavio näyttää nyt sinut vanhempiesi kanssa. Kokeile muita kaaviotyyppejä sivun yläosassa olevista välilehdistä – esimerkiksi Fan Chart – ja napsauta kenen tahansa henkilön korttia keskittääksesi kaavion heihin. Katso [Sukupuu](tree.md) kaikista kaavioista ja vaihtoehdoista.
 
-## Seuraavat vaiheet
+## Seuraavat askeleet
 
-- **Lisää lisää tietoja.** Avaa henkilön sivu – esimerkiksi **Henkilötiedot**-painikkeella kaaviotyökalupalkissa – lisätäksesi lisää tapahtumia, muistiinpanoja, lähteitä ja muuta. Katso [Muokkaaminen puunäkymässä](tree-edit.md) siitä, mitä voidaan tehdä suoraan kaaviossa.
-- **Lisää valokuvia ja asiakirjoja.** Katso [Lisää mediatiedostoja](media.md).
+- **Ymmärrä rakenne.** Katso [Kuinka Gramps järjestää tietoa](data-model.md) siitä, miten ihmiset, perheet, tapahtumat, paikat ja lähteet liittyvät toisiinsa.
+- **Lisää lisää yksityiskohtia.** Avaa henkilön sivu – esimerkiksi **Henkilötiedot**-painikkeella kaavio työkalupalkissa – lisätäksesi lisää tapahtumia, muistiinpanoja, lähteitä ja muuta. Katso [Muokkaaminen puunäkymässä](tree-edit.md) siitä, mitä voidaan tehdä suoraan kaaviossa.
+- **Lisää valokuvia ja asiakirjoja.** Katso [Lisää mediasisältöjä](media.md).
 - **Kutsu perheesi.** Sukulaisilla on oltava oma tili puussasi; katso [Hallitse käyttäjiä](../administration/users.md) ja [Rekisteröinti](registration.md).
