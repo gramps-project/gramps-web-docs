@@ -4,6 +4,6 @@ The Home Person for a user of a Gramps Web website does not have to be the same 
 
 To select a person as Home Person, start typing a Given or Family Name in the text field and a drop-down list with matches will appear.
 
-If the tree is still empty, there is nobody to choose yet. In this case, the home page shows a **Get started** card that guides editors through the first steps: first adding a person (or importing a family tree file), then connecting people by adding a family. The first person you create in an empty tree automatically becomes your Home Person.
+If the tree is still empty, there is nobody to choose yet. In this case, the home page shows a **Get started** card that guides editors through the first steps: first adding a person (or importing a family tree file), then connecting people by adding a family. The first person you create in an empty tree automatically becomes your Home Person. See [Start a new tree](start-tree.md) for a step-by-step walkthrough.
 
 The language and Home Person settings are stored in the browser's local storage, so they will persist on a given device.

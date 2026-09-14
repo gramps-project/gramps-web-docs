@@ -41,6 +41,7 @@ nav:
       - Getting started:
           - Registration: user-guide/registration.md
           - First login: user-guide/first-login.md
+          - Start a new tree: user-guide/start-tree.md
       - Browsing your tree:
           - Search: user-guide/search.md
           - Lists: user-guide/lists.md
@@ -176,6 +177,7 @@ plugins:
             Account & preferences: Konto & Einstellungen
             Registration: Registrierung
             First login: Erste Anmeldung
+            Start a new tree: Einen neuen Stammbaum beginnen
             Edit data: Daten bearbeiten
             Add media files: Mediendateien hinzufügen
             Tag people in photos: Personen auf Fotos markieren
@@ -257,6 +259,7 @@ plugins:
             Account & preferences: Compte & préférences
             Registration: Inscription
             First login: Première connexion
+            Start a new tree: Commencer un nouvel arbre
             Edit data: Modifier les données
             Add media files: Ajouter des fichiers média
             Tag people in photos: Identifier des personnes sur les photos
@@ -338,6 +341,7 @@ plugins:
             Account & preferences: Cuenta y preferencias
             Registration: Registro
             First login: Primer inicio de sesión
+            Start a new tree: Empezar un árbol nuevo
             Edit data: Editar datos
             Add media files: Agregar archivos multimedia
             Tag people in photos: Etiquetar personas en fotos
@@ -419,6 +423,7 @@ plugins:
             Account & preferences: 账户与偏好设置
             Registration: 注册
             First login: 首次登录
+            Start a new tree: 创建新的家谱
             Edit data: 编辑数据
             Add media files: 添加媒体文件
             Tag people in photos: 在照片中标记人物
@@ -500,6 +505,7 @@ plugins:
             Account & preferences: Tài khoản & tùy chọn
             Registration: Đăng ký
             First login: Đăng nhập lần đầu
+            Start a new tree: Bắt đầu cây gia phả mới
             Edit data: Chỉnh sửa dữ liệu
             Add media files: Thêm tệp phương tiện
             Tag people in photos: Gắn thẻ người trong ảnh
@@ -581,6 +587,7 @@ plugins:
             Account & preferences: Hesap ve tercihler
             Registration: Kayıt
             First login: İlk giriş
+            Start a new tree: Yeni bir soy ağacı başlatma
             Edit data: Veri düzenle
             Add media files: Medya dosyaları ekle
             Tag people in photos: Fotoğraflarda kişileri etiketle
@@ -662,6 +669,7 @@ plugins:
             Account & preferences: Аккаунт и настройки
             Registration: Регистрация
             First login: Первый вход
+            Start a new tree: Начать новое древо
             Edit data: Редактирование данных
             Add media files: Добавление медиафайлов
             Tag people in photos: Отметка людей на фото
@@ -743,6 +751,7 @@ plugins:
             Account & preferences: Conta e preferências
             Registration: Registro
             First login: Primeiro login
+            Start a new tree: Começar uma nova árvore
             Edit data: Editar dados
             Add media files: Adicionar arquivos de mídia
             Tag people in photos: Marcar pessoas em fotos
@@ -824,6 +833,7 @@ plugins:
             Account & preferences: アカウントと設定
             Registration: 登録
             First login: 初回ログイン
+            Start a new tree: 新しい家系図を始める
             Edit data: データの編集
             Add media files: メディアファイルの追加
             Tag people in photos: 写真の人物タグ付け
@@ -905,6 +915,7 @@ plugins:
             Account & preferences: Konto og indstillinger
             Registration: Registrering
             First login: Første login
+            Start a new tree: Start et nyt stamtræ
             Edit data: Redigér data
             Add media files: Tilføj mediefiler
             Tag people in photos: Tag personer i billeder
@@ -986,6 +997,7 @@ plugins:
             Account & preferences: Tili ja asetukset
             Registration: Rekisteröityminen
             First login: Ensimmäinen kirjautuminen
+            Start a new tree: Aloita uusi sukupuu
             Edit data: Muokkaa tietoja
             Add media files: Lisää mediatiedostoja
             Tag people in photos: Merkitse henkilöt kuviin
@@ -1067,6 +1079,7 @@ plugins:
             Account & preferences: Account e preferenze
             Registration: Registrazione
             First login: Primo accesso
+            Start a new tree: Iniziare un nuovo albero
             Edit data: Modifica dati
             Add media files: Aggiungi file multimediali
             Tag people in photos: Tagga persone nelle foto
@@ -1148,6 +1161,7 @@ plugins:
             Account & preferences: Обліковий запис і налаштування
             Registration: Реєстрація
             First login: Перший вхід
+            Start a new tree: Почати нове дерево
             Edit data: Редагування даних
             Add media files: Додати медіафайли
             Tag people in photos: Позначити людей на фото
