@@ -28,6 +28,8 @@ Click the edit (pencil) icon on any row to open the edit dialog. You can change 
 
 This is the primary way to **enable a newly self-registered user**: change their role from *disabled* to any active role (e.g. Member or Editor).
 
+E-mail addresses do not have to be unique (since Gramps Web API 3.22), so several accounts can share the same address.
+
 ## Add a user manually
 
 Click the **add user** (person-add) icon above the table to create a new user account directly without requiring self-registration. Fill in the username, full name, e-mail address, password, and role in the dialog and click **Save**.
@@ -35,6 +37,9 @@ Click the **add user** (person-add) icon above the table to create a new user ac
 ## Delete a user
 
 Click the delete (trash) icon on any row and confirm the dialog. This action cannot be undone.
+
+!!! note
+    To prevent a tree from being left without anybody who can administer it, you cannot lower your own role below Owner or delete your own account if you are the only Owner or Administrator of the tree. Promote another user to Owner first. An administrator can still change or remove the last owner of another user's tree, since they can appoint a new one.
 
 ## Export and import user accounts
 

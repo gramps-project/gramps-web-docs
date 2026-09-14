@@ -129,7 +129,7 @@ Collaborate with your relatives to identify ancestors in old family photos. Than
 
 ## Full revision history – with undo
 
-Every edit to your family tree is recorded. Browse the complete history grouped by transaction, drill down into any individual change to see exactly which fields were added, removed or modified, and undo a transaction if it turns out to be a mistake.
+Every edit to your family tree is recorded. Browse the complete history grouped by transaction, drill down into any individual change to see exactly which fields were added, removed or modified, and undo a transaction if it turns out to be a mistake. Every object's page also has its own revision tab showing who changed it and when.
 
 See [Revision History](../user-guide/revisions.md).
 
@@ -223,6 +223,7 @@ Switch the language of the interface between any of over 50 languages translated
 - **Customizable list views** – choose which columns to show, and filter by text, tag, or privacy
 - **Text recognition (OCR)** – extract text from scanned documents in your media gallery
 - **Data verification** – check your tree for implausible dates and other data problems
+- **Calendars** – enter dates in the Gregorian, Julian, Hebrew, French Republican, Persian, Islamic, or Swedish calendar
 - **Make it your own** – give your site its own name, theme colours, and home page text and image
 
 <p>&nbsp;</p>

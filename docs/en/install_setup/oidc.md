@@ -131,7 +131,7 @@ A numeric suffix is appended on collision. There is no way to rename an OIDC-cre
 
 An OIDC login never attaches itself to an existing local account that happens to share its e-mail address – this is deliberate, since linking accounts by e-mail is an account-takeover vector. A user who already has a local account gets a second, separate account the first time they log in via OIDC.
 
-E-mail addresses from the provider are only stored if the provider marks them verified (or omits the `email_verified` claim entirely) and if the address isn't already used by another account; otherwise the login proceeds without storing an e-mail address.
+E-mail addresses from the provider are only stored if the provider marks them verified (or omits the `email_verified` claim entirely); otherwise the login proceeds without storing an e-mail address. Since e-mail addresses do not have to be unique (since Gramps Web API 3.22), an address is stored even if another account already uses it.
 
 ## OIDC Logout
 

@@ -6,7 +6,16 @@ The list view shows the edits grouped by "transactions". A transaction is a grou
 
 Clicking on a transaction opens the transaction detail view. It contains the list of individual additions, deletions, and updates by Gramps object.
 
-Selecting an indivdial change opens a view of the raw JSON representation of the Gramps object with additions and deletions highlighted in green and red, respectively.
+Selecting an individual change opens a view of the raw JSON representation of the Gramps object with additions and deletions highlighted in green and red, respectively. A button above the diff takes you straight to the object's own page.
+
+## Revisions of a single object
+
+To see the history of one particular person, family, event, or other object, open its page and switch to the **Revisions** tab. It lists every change made to that object, newest first, with the type of change (added, updated, or deleted), the user who made it, and when. Clicking an entry opens the transaction it belongs to, where you can inspect the diff or undo it.
+
+Click **Show more** to load older entries; for objects with a very long history, only the most recent revisions are shown. For objects last changed before the revision history was recorded, the tab only shows the time of the last change.
+
+!!! note
+    The Revisions tab is visible to members and above and requires Gramps Web API version 3.22 or later.
 
 ## Undoing a revision
 

@@ -6,7 +6,7 @@ The Family Tree page is accessible from the sidebar and displays interactive cha
 
 All charts start from the person currently selected in the tree (shown in the toolbar). The currently centred person is highlighted with a drop shadow. Use the **Home Person** button to jump back to your home person, or the **Back** button to return to the previously viewed person. Clicking a person's card in any chart re-centres the chart on that person.
 
-If no home person has been set, the page will prompt you to go to the home page and set one.
+If no home person has been set, the page offers a **Set Home Person** button to search for and select one directly. If the tree does not contain any people yet, users with the Editor role or above instead see a **New Person** button – the first person created in an empty tree automatically becomes your home person, so the chart is shown straight away.
 
 ## Chart types
 

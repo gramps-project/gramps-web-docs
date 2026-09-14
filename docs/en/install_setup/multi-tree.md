@@ -25,7 +25,7 @@ In addition, you should set the `MEDIA_PREFIX_TREE` configuration option to `Tru
 
 To add a user to a specific tree, simply add the `--tree TREEID` command line option to the add user command. You can also POST to the `/users/` endpoint with the `tree` property set in the JSON payload.
 
-User names and e-mail addresses are required to be unique across *all* trees.
+User names are required to be unique across *all* trees. E-mail addresses do not have to be unique (since Gramps Web API 3.22), so the same person can, for example, have accounts in several trees using a single e-mail address.
 
 ## Create a new tree
 

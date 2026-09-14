@@ -59,6 +59,8 @@ The dashboard is shown when you first log in. It has two columns:
 - **Recent blog posts** – the latest entries from the [blog](blog.md), if any exist.
 - **Statistics** – a summary of object counts in the tree (number of people, families, events, etc.).
 
+While the tree is still empty, the dashboard hides the panels that would have nothing to show and instead displays a **Get started** card for users with edit permissions: it first offers to create a person or import a family tree file, and once people exist, to connect them by creating a family. The card disappears as soon as the tree contains a family.
+
 If the tree administrator has configured a **home page note** and/or a **home page image**, these are displayed prominently above the main columns. The image appears beside the note text when both are set. See [Administration Settings](../administration/settings.md#customization) for how to configure these.
 
 !!! tip

@@ -40,7 +40,7 @@ docker compose up -d
 
 On first run, the app will display a first-run wizard that will allow you to
 
-- Create and account for the owner (admin) user
+- Create an account for the owner (admin) user
 - Set some necessary configuration options
 - Import a family tree in Gramps XML (`.gramps`) format
 

@@ -28,6 +28,9 @@ Note that configuration options set via the environment take precedence over the
 
     Note that this only concerns environment variables. In a configuration file, the setting names are always used unprefixed.
 
+!!! tip "Checking for deprecated options"
+    Deprecated configuration options that your server still relies on – such as unprefixed environment variables, `SEARCH_INDEX_DIR`, or `EMAIL_USE_TLS` – are logged as warnings on startup. Since Gramps Web API 3.22, they are also listed, together with their replacement and the version in which support will be removed, at the top of the **System Information** page (accessible via the user icon in the top app bar) when you are logged in as an administrator.
+
 ## Existing configuration settings
 The following configuration options exist.
 
