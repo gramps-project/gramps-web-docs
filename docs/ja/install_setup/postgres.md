@@ -1,17 +1,17 @@
 # PostgreSQLデータベースの使用
 
-デフォルトでは、Grampsは家系図を保存するためにファイルベースのSQLiteデータベースを使用します。これはGramps Webにとって完全に機能し、ほとんどのユーザーに推奨されます。しかし、Gramps Web APIバージョン0.3.0以降、[Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL)によって、データベースごとに単一の家系図を持つPostgreSQLサーバーもサポートされています。[バージョン1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0)以降、複数の家系図を単一のデータベースにホストできるSharedPostgreSQL Addonもサポートされており、これはGramps Web APIの[multi-tree support](multi-tree.md)と一緒に使用する際に特に便利です。
+デフォルトでは、Gramps Webは各家系図を独自のSQLiteデータベースファイルに保存します。これには追加のサービスは必要なく、バックアップはファイルをコピーするだけで簡単であり、ほとんどのインストールにおいてうまく機能します。複数の家系図を[ホスティングする](multi-tree.md)場合も含まれます。
 
-!!! warning "PostgreSQLバックエンドの非推奨"
-    PostgreSQLバックエンド（データベースごとに1つの家系図）のサポートは、複数のツリーをホストすることと互換性がないため、将来のGramps Web APIのバージョンで削除されます。SharedPostgreSQLおよびSQLiteバックエンドは引き続き完全にサポートされます。新しいインストールには、SharedPostgreSQLを使用してください。
+代わりに、家系図はSharedPostgreSQLアドオンを使用してPostgreSQLサーバー上にホストすることができ、すべての家系図を単一のデータベースに保持します。これは、すでにPostgreSQLサーバーを運用していて、そこでバックアップや監視を管理したい場合や、多くのユーザーが同時に編集することを期待する場合に意味があります。PostgreSQLは、家系図が保存されている場所に関係なく、[ユーザーデータベース](#using-a-postgresql-database-for-the-user-database)や[検索インデックス](#using-a-postgresql-database-for-the-search-index)もホストできます。
+
+!!! warning "PostgreSQLアドオンの非推奨"
+    単一の家系図をデータベースごとに保存する古いPostgreSQLアドオンは非推奨であり、今後のGramps Web APIのバージョンではサポートされなくなります。これを使用している場合は、[PostgreSQLアドオンからSharedPostgreSQLへの移行](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql)を参照してください。
 
 ## PostgreSQLサーバーの設定
 
-PostgreSQLAddonで使用する新しいデータベースを設定したい場合は、[Gramps Wikiの指示](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL)に従ってサーバーを設定できます。
+最も簡単なオプションは、Docker Composeを使用してGramps Webと同じDockerホスト上のコンテナでPostgreSQLサーバーを実行することです。
 
-また、Docker Composeを使用して、Gramps Webと同じdockerホスト上でコンテナ内にPostgreSQLサーバーを実行することもできます。
-
-Grampsでdocker化されたPostgreSQLを使用する際の唯一の複雑さは、デフォルトのPostgreSQLイメージにはロケールがインストールされていないため、Grampsがオブジェクトのローカライズされた照合に必要とすることです。最も簡単なオプションは、[このリポジトリ](https://github.com/DavidMStraub/gramps-postgres-docker/)でリリースされた`gramps-postgres`イメージを使用することです。これを使用するには、`docker-compose.yml`に次のセクションを追加します：
+Grampsは、異なる言語でオブジェクトを正しくソートするためにPostgreSQLサーバーにロケールがインストールされている必要があり、デフォルトのPostgreSQLイメージにはそれが含まれていません。[`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/)イメージはそれらを追加します。これを使用するには、`docker-compose.yml`に以下のセクションを追加します：
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -23,67 +23,74 @@ Grampsでdocker化されたPostgreSQLを使用する際の唯一の複雑さは�
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-また、このYAMLファイルの`volumes:`セクションの下に`postgres_data:`をキーとして追加します。このイメージには、Grampsの系譜データ用とGrampsユーザーデータベース用の別々のデータベースが含まれており、それぞれ異なるパスワードを持つことができます。
+また、このYAMLファイルの`volumes:`セクションの下に`postgres_data:`をキーとして追加します。このイメージには、各自のユーザーとパスワードを持つ2つのデータベースが含まれています：系譜データ用の`gramps`とGramps Webユーザーデータベース用の`grampswebuser`です。
 
-## Gramps家系図のインポート
+代わりに独自のPostgreSQLサーバーを使用する場合は、設定されたユーザーがテーブルを作成できる`gramps`という名前のデータベースを作成し、ユーザーが必要とするロケールがインストールされていることを確認してください。
 
-再度、PostgreSQLサーバーを自分で設定した場合は、[Gramps Wikiの指示](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL)に従ってデータベースに家系図をインポートできます。
+## Gramps Webの設定
 
-また、上記のDocker Composeの指示に従った場合は、dockerホスト上にあるGramps XMLファイルをインポートするために次のコマンドを使用できます：
-
-```bash
-docker compose run --entrypoint "" grampsweb \
-    gramps -C postgres \
-    -i /root/.gramps/grampsdb/my_tree.gramps \
-    --config=database.path:/root/.gramps/grampsdb \
-    --config=database.backend:postgresql \
-    --config=database.host:postgres_gramps \
-    --config=database.port:5432 \
-    --username=gramps --password=postgres_password_gramps
-```
-
-## データベース用にWeb APIを構成する
-
-PostgreSQLデータベース用にWeb APIを構成するには、`docker-compose.yml`の`grampsweb`サービスの`environment:`キーの下に次の内容を追加します：
+新しい家系図は、Gramps Webが[multi-treeモード](multi-tree.md)で実行され、`NEW_DB_BACKEND`設定オプションが`sharedpostgresql`に設定されているときにSharedPostgreSQLデータベースに作成されます。上記のDocker Composeセットアップを使用して、`docker-compose.yml`の`grampsweb`サービスの`environment:`キーの下に以下を追加します：
 
 ```yaml
-      # PostgreSQLアドオンはツリー名が
-      # データベース名と等しいと仮定しており、
-      # ここではPostgreSQLイメージのデフォルト
-      # データベース名が使用されます
-      GRAMPSWEB_TREE: postgres
+      # マルチツリー モードを有効にする
+      GRAMPSWEB_TREE: "*"
+      GRAMPSWEB_MEDIA_PREFIX_TREE: true
+      # SharedPostgreSQLデータベースに新しいツリーを作成する
+      GRAMPSWEB_NEW_DB_BACKEND: sharedpostgresql
+      # PostgreSQLサーバーのホストとポート。ホストは上記のPostgreSQLサービスの名前です
+      GRAMPSWEB_POSTGRES_HOST: postgres_gramps
+      GRAMPSWEB_POSTGRES_PORT: 5432
       # 認証情報はPostgreSQLコンテナで使用されるものと一致する必要があります
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-## マルチツリーインストールでの共有PostgreSQLデータベースの使用
+これらのオプションの説明については[設定](configuration.md)を参照してください。ホストとポートは、ツリーが作成されるときに各ツリーと共に保存されるため、後で変更しても新しいツリーにのみ影響します。
 
-[multi-tree setup](multi-tree.md)を使用する場合、SharedPostgreSQLアドオンは、APIを介して新しく作成されたものも含めて、すべてのツリーを単一のPostgreSQLデータベースにホストする便利なオプションです。プライバシーやセキュリティを損なうことなく。
+## ツリーの作成とデータのインポート
 
-これを実現するために、上記の説明に従って`gramps-postgres`イメージに基づくコンテナを設定し、単に`NEW_DB_BACKEND`の設定オプションを`sharedpostgresql`に設定します。例えば、`GRAMPSWEB_NEW_DB_BACKEND`環境変数を介して設定します。
+新しいツリーを作成するには、[複数のツリーをホスティングするためのセットアップ](multi-tree.md#create-a-new-tree)で説明されているように`/trees/`エンドポイントにPOSTします。レスポンスには新しいツリーのIDが含まれており、これが[ツリーオーナーアカウントの作成](../administration/owner.md#multi-tree-setup-create-tree-owner-account)に必要です。
+
+ツリーオーナーがログインすると、既存の家系図（例えば、Gramps DesktopからエクスポートされたGramps XMLファイル）をウェブインターフェースを介して[インポート](../administration/import.md)できます。
 
 ## ユーザーデータベース用のPostgreSQLデータベースの使用
 
-系譜データにどのデータベースバックエンドを使用するかに関係なく、適切なデータベースURLを提供することで、ユーザーデータベースをPostgreSQLデータベースにホストできます。上記の`gramps-postgres`dockerイメージには、この目的のために使用できる別のデータベース`grampswebuser`が含まれています。その場合、`USER_DB_URI`設定オプションの適切な値は次のようになります。
+ユーザーデータベースは通常、家系図がホスティングされている場所に関係なくSQLiteファイルです。代わりにPostgreSQLを使用するには、`USER_DB_URI`設定オプションをPostgreSQLデータベースのURLに設定します。上記の`gramps-postgres`イメージを使用する場合は、その`grampswebuser`データベースを使用します：
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
 ## 検索インデックス用のPostgreSQLデータベースの使用
 
-Gramps Web APIバージョン2.4.0以降、検索インデックスはSQLiteデータベース（デフォルト）またはPostgreSQLデータベースのいずれかにホストされます。この目的のためにも、`gramps-postgres`イメージを使用できます。検索インデックスには、系譜データをPostgreSQLでホストしているかどうかに関係なく、イメージによって提供される`gramps`データベースを使用できます（検索インデックスと系譜データは同じデータベース内に共存できます）。これは、上記の例で`SEARCH_INDEX_DB_URI`設定オプションを次のように設定することで実現できます。
+検索インデックスもデフォルトではSQLiteに保存されます。代わりにPostgreSQLを使用するには、`SEARCH_INDEX_DB_URI`設定オプションをPostgreSQLデータベースのURLに設定します。上記の`gramps-postgres`イメージを使用する場合、家系図がそこにホストされているかどうかに関係なく、その`gramps`データベースを使用できます：
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
+## PostgreSQLアドオンからSharedPostgreSQLへのツリーの移行
+
+古いインストールでは、単一のツリーをデータベースごとに保存するPostgreSQLアドオンを使用して家系図をホストしている場合があります。ツリーがどのアドオンを使用しているかを確認するには、Grampsデータベースディレクトリのツリーのサブディレクトリにある`database.txt`ファイルを見てください。そこには、非推奨のPostgreSQLアドオンの場合は`postgresql`、SharedPostgreSQLの場合は`sharedpostgresql`が含まれています。
+
+同じインストール内でPostgreSQLアドオンからSharedPostgreSQLにツリーを移行し、ユーザーアカウントとメディアファイルを保持するには：
+
+1. プライベートレコードを表示できるアカウントを使用して、Gramps XML（`.gramps`）ファイルとして[家系図をバックアップ](../administration/export.md#back-up-your-family-tree)します。
+2. [Gramps Webの設定](#configuring-gramps-web)で説明されているように構成を変更します。既存の`gramps-postgres`コンテナを引き続き使用できます。
+3. [新しいツリーを作成](multi-tree.md#create-a-new-tree)し、そのツリーIDをメモします。
+4. [既存のユーザーデータベースを移行](multi-tree.md#migrate-existing-user-database)で説明されているように、既存のユーザーアカウントを新しいツリーに割り当てます。
+5. [既存のメディアファイルを移行](multi-tree.md#migrate-existing-media-files)で説明されているように、メディアファイルを新しいツリーに期待される場所に移動します。
+6. ログインして、Gramps XMLファイルを新しいツリーに[インポート](../administration/import.md)します。
+
+新しいツリーが完全であることを確認するまで、Gramps XMLファイルを保持してください。
+
+別のGramps Webインストールに移行する場合は、[別のGramps Webインスタンスに移動](../administration/export.md#move-to-a-different-gramps-web-instance)の手順に従ってください。
+
 ## 問題
 
-問題が発生した場合は、Gramps WebとPostgreSQLサーバーのログ出力を監視してください。Dockerの場合、これは次のコマンドで実行できます。
+問題が発生した場合は、Gramps WebおよびPostgreSQLサーバーのログ出力を監視してください。Dockerの場合、これは次のコマンドで実行できます。
 
 ```
 docker compose logs grampsweb
 docker compose logs postgres_gramps
 ```
 
-Gramps Web（またはドキュメント）に問題があると思われる場合は、[Githubに問題を報告してください](https://github.com/gramps-project/gramps-web-api/issues)。
+Gramps Web（またはドキュメント）に問題があると思われる場合は、[Github](https://github.com/gramps-project/gramps-web-api/issues)に問題を報告してください。

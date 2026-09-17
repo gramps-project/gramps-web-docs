@@ -1,17 +1,17 @@
 # Використання бази даних PostgreSQL
 
-За замовчуванням Gramps використовує базу даних SQLite на основі файлів для зберігання сімейного дерева. Це працює цілком добре для Gramps Web і рекомендується для більшості користувачів. Однак, починаючи з версії 0.3.0 API Gramps Web, також підтримується сервер PostgreSQL з одним сімейним деревом на базу даних, що працює завдяки [додатку Gramps PostgreSQL](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Оскільки [версія 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0), також підтримується додаток SharedPostgreSQL, який дозволяє розміщувати кілька сімейних дерев в одній базі даних, що особливо корисно при використанні разом з підтримкою [багатодеревної структури](multi-tree.md) API Gramps Web.
+За замовчуванням Gramps Web зберігає кожне родинне дерево у власному файлі бази даних SQLite. Це не потребує додаткового сервісу, резервні копії так само прості, як копіювання файлів, і це добре працює для більшості установок, включаючи ті, що [хостять кілька дерев](multi-tree.md).
 
-!!! warning "Депрекація бекенду PostgreSQL"
-    Підтримка бекенду PostgreSQL (одне сімейне дерево на базу даних) буде видалена в майбутній версії API Gramps Web, оскільки вона не сумісна з розміщенням кількох дерев. Бекенди SharedPostgreSQL та SQLite залишаються повністю підтримуваними. Для нових установок використовуйте SharedPostgreSQL.
+Альтернативно, родинні дерева можуть бути розміщені на сервері PostgreSQL за допомогою аддона SharedPostgreSQL, який зберігає всі дерева в одній базі даних. Це може мати сенс, якщо ви вже запускаєте сервер PostgreSQL і хочете керувати резервними копіями та моніторингом там, або якщо ви очікуєте, що багато користувачів редагуватимуть одночасно. PostgreSQL також може хостити [базу даних користувачів](#using-a-postgresql-database-for-the-user-database) та [індекс пошуку](#using-a-postgresql-database-for-the-search-index), незалежно від того, де зберігаються родинні дерева.
+
+!!! warning "Аддон PostgreSQL застарів"
+    Старий аддон PostgreSQL, який зберігає одне родинне дерево на базу даних, застарів і більше не буде підтримуватися в майбутніх версіях Gramps Web API. Якщо ви його використовуєте, дивіться [Переміщення дерева з аддона PostgreSQL до SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Налаштування сервера PostgreSQL
 
-Якщо ви хочете налаштувати нову базу даних для використання з PostgreSQLAddon, ви можете слідувати [інструкціям у Вікі Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) для налаштування сервера.
+Найпростіший варіант — запустити сервер PostgreSQL у контейнері на тому ж хості Docker, що й Gramps Web, використовуючи Docker Compose.
 
-Альтернативно, ви також можете використовувати Docker Compose для запуску сервера PostgreSQL в контейнері на тому ж хості Docker, що й Gramps Web.
-
-Використання контейнеризованого PostgreSQL з Gramps ускладнюється тим, що стандартні образи PostgreSQL не мають встановлених локалей, які, однак, потрібні Gramps для локалізованої колекції об'єктів. Найпростіший варіант - використовувати образ `gramps-postgres`, випущений у [цьому репозиторії](https://github.com/DavidMStraub/gramps-postgres-docker/). Щоб його використовувати, додайте наступний розділ до вашого `docker-compose.yml`:
+Gramps потребує встановлених локалей на сервері PostgreSQL, щоб правильно сортувати об'єкти різними мовами, а стандартні образи PostgreSQL не включають жодної з них. Образ [`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/) додає їх. Щоб його використовувати, додайте наступний розділ до вашого `docker-compose.yml`:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -23,67 +23,76 @@
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-і також додайте `postgres_data:` як ключ під розділом `volumes:` цього YAML файлу. Цей образ містить окрему базу даних для генеалогічних даних Gramps та для бази даних користувачів Gramps; кожна з них може мати окремі паролі.
+а також додайте `postgres_data:` як ключ під секцією `volumes:` цього YAML файлу. Образ містить дві бази даних, кожна з власним користувачем і паролем: `gramps` для генеалогічних даних і `grampswebuser` для бази даних користувачів Gramps Web.
 
-## Імпорт сімейного дерева Gramps
+Якщо ви використовуєте свій власний сервер PostgreSQL, створіть базу даних з назвою `gramps`, в якій налаштований користувач може створювати таблиці, і переконайтеся, що встановлені локалі, які потрібні вашим користувачам.
 
-Знову ж таки, якщо ви самостійно налаштували сервер PostgreSQL, ви можете слідувати [інструкціям у Вікі Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) для імпорту сімейного дерева в базу даних.
+## Налаштування Gramps Web
 
-Альтернативно, якщо ви виконали інструкції Docker Compose вище, ви можете використовувати наступну команду для імпорту файлу XML Gramps, що знаходиться на вашому хості Docker:
-
-```bash
-docker compose run --entrypoint "" grampsweb \
-    gramps -C postgres \
-    -i /root/.gramps/grampsdb/my_tree.gramps \
-    --config=database.path:/root/.gramps/grampsdb \
-    --config=database.backend:postgresql \
-    --config=database.host:postgres_gramps \
-    --config=database.port:5432 \
-    --username=gramps --password=postgres_password_gramps
-```
-
-## Налаштування Web API для використання з базою даних
-
-Щоб налаштувати Web API для використання з базою даних PostgreSQL, додайте наступне під ключем `environment:` сервісу `grampsweb` у `docker-compose.yml`:
+Нові родинні дерева створюються в базі даних SharedPostgreSQL, коли Gramps Web працює в [режимі кількох дерев](multi-tree.md) і параметр конфігурації `NEW_DB_BACKEND` встановлений на `sharedpostgresql`. З налаштуванням Docker Compose вище, додайте наступне під ключем `environment:` сервісу `grampsweb` у `docker-compose.yml`:
 
 ```yaml
-      # додаток PostgreSQL вважає, що ім'я дерева
-      # дорівнює імені бази даних, і тут використовується
-      # ім'я бази даних за замовчуванням образу PostgreSQL
-      GRAMPSWEB_TREE: postgres
+      # увімкнути режим кількох дерев
+      GRAMPSWEB_TREE: "*"
+      GRAMPSWEB_MEDIA_PREFIX_TREE: true
+      # створити нові дерева в базі даних SharedPostgreSQL
+      GRAMPSWEB_NEW_DB_BACKEND: sharedpostgresql
+      # Хост і порт сервера PostgreSQL. 
+      # Хост — це назва сервісу PostgreSQL вище
+      GRAMPSWEB_POSTGRES_HOST: postgres_gramps
+      GRAMPSWEB_POSTGRES_PORT: 5432
       # Облікові дані повинні відповідати тим, що використовуються для
       # контейнера PostgreSQL
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-## Використання спільної бази даних PostgreSQL у багатодеревій установці
+Дивіться [Конфігурація](configuration.md) для опису всіх цих параметрів. Зверніть увагу, що хост і порт зберігаються з кожним деревом, коли воно створюється, тому зміна їх пізніше вплине лише на нові дерева.
 
-При використанні [багатодеревої установки](multi-tree.md) додаток SharedPostgreSQL є зручним варіантом для розміщення всіх дерев, також новостворених через API, в одній базі даних PostgreSQL без компромісів у конфіденційності або безпеці.
+## Створення дерева та імпорт даних
 
-Щоб досягти цього, налаштуйте контейнер на основі образу `gramps-postgres`, як описано вище, і просто встановіть параметр конфігурації `NEW_DB_BACKEND` на `sharedpostgresql`, наприклад, через змінну середовища `GRAMPSWEB_NEW_DB_BACKEND`.
+Щоб створити нове дерево, надішліть POST запит на кінцеву точку `/trees/`, як описано в [Налаштування для хостингу кількох дерев](multi-tree.md#create-a-new-tree). Відповідь містить ID нового дерева, який вам потрібно для [створення облікового запису власника дерева](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+
+Після того, як власник дерева увійде в систему, він може [імпортувати](../administration/import.md) існуюче родинне дерево, наприклад, файл Gramps XML, експортований з Gramps Desktop, через веб-інтерфейс.
 
 ## Використання бази даних PostgreSQL для бази даних користувачів
 
-Незалежно від того, який бекенд бази даних використовується для генеалогічних даних, база даних користувачів може бути розміщена в базі даних PostgreSQL, надавши відповідний URL бази даних. Docker-образ `gramps-postgres`, згаданий вище, містить окрему базу даних `grampswebuser`, яка може бути використана для цієї мети. У цьому випадку відповідне значення для параметра конфігурації `USER_DB_URI` буде
+База даних користувачів зазвичай є файлом SQLite, незалежно від того, де розміщуються родинні дерева. Щоб використовувати PostgreSQL замість цього, встановіть параметр конфігурації `USER_DB_URI` на URL бази даних PostgreSQL. З образом `gramps-postgres`, наведеним вище, використовуйте його базу даних `grampswebuser`:
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
 ## Використання бази даних PostgreSQL для індексу пошуку
 
-Починаючи з версії 2.4.0 API Gramps Web, індекс пошуку розміщується або в базі даних SQLite (за замовчуванням), або в базі даних PostgreSQL. Також для цієї мети можна використовувати образ `gramps-postgres`. Для індексу пошуку ми можемо використовувати базу даних `gramps`, надану образом, незалежно від того, чи розміщуємо ми свої генеалогічні дані в PostgreSQL чи ні (індекс пошуку та генеалогічні дані можуть співіснувати в одній базі даних). Це можна досягти, у наведеному вище прикладі, встановивши параметр конфігурації `SEARCH_INDEX_DB_URI` на
+Індекс пошуку також за замовчуванням зберігається в SQLite. Щоб використовувати PostgreSQL замість цього, встановіть параметр конфігурації `SEARCH_INDEX_DB_URI` на URL бази даних PostgreSQL. З образом `gramps-postgres`, наведеним вище, ви можете використовувати його базу даних `gramps`, незалежно від того, чи розміщуються ваші родинні дерева там:
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
+## Переміщення дерева з аддона PostgreSQL до SharedPostgreSQL
+
+Старі установки можуть хостити своє родинне дерево за допомогою аддона PostgreSQL, який зберігає одне дерево на базу даних і застарів. Щоб дізнатися, який аддон використовує дерево, подивіться на файл `database.txt` у підкаталозі дерева в каталозі бази даних Gramps: він містить `postgresql` для застарілого аддона PostgreSQL і `sharedpostgresql` для SharedPostgreSQL.
+
+Щоб перемістити дерево з аддона PostgreSQL до SharedPostgreSQL в межах однієї установки, зберігаючи ваші облікові записи користувачів і медіафайли:
+
+1. [Зробіть резервну копію вашого родинного дерева](../administration/export.md#back-up-your-family-tree) у вигляді файлу Gramps XML (`.gramps`), використовуючи обліковий запис, який може переглядати приватні записи.
+2. Змініть вашу конфігурацію, як описано в [Налаштуванні Gramps Web](#configuring-gramps-web). Ви можете продовжувати використовувати свій існуючий контейнер `gramps-postgres`.
+3. [Створіть нове дерево](multi-tree.md#create-a-new-tree) і запишіть його ID дерева.
+4. Призначте свої існуючі облікові записи користувачів новому дереву, як описано в [Міграція існуючої бази даних користувачів](multi-tree.md#migrate-existing-user-database).
+5. Перемістіть свої медіафайли до місця, яке очікується для нового дерева, як описано в [Міграція існуючих медіафайлів](multi-tree.md#migrate-existing-media-files).
+6. Увійдіть в систему та [імпортуйте](../administration/import.md) файл Gramps XML у нове дерево.
+
+Зберігайте файл Gramps XML, поки не перевірите, що нове дерево завершене.
+
+Якщо ви переміщаєтеся до окремої установки Gramps Web, дотримуйтесь кроків у [Переміщення до іншої інстанції Gramps Web](../administration/export.md#move-to-a-different-gramps-web-instance).
+
 ## Проблеми
 
-У разі проблем, будь ласка, стежте за виходом журналів Gramps Web та сервера PostgreSQL. У випадку Docker це досягається за допомогою
+У разі проблем, будь ласка, слідкуйте за виходом журналу Gramps Web та сервера PostgreSQL. У випадку з Docker це досягається за допомогою
 
 ```
 docker compose logs grampsweb
 docker compose logs postgres_gramps
 ```
 
-Якщо ви підозрюєте, що є проблема з Gramps Web (або документацією), будь ласка, подайте запитання [на Github](https://github.com/gramps-project/gramps-web-api/issues).
+Якщо ви підозрюєте, що є проблема з Gramps Web (або документацією), будь ласка, подайте проблему [на Github](https://github.com/gramps-project/gramps-web-api/issues).

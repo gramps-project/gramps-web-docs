@@ -1,17 +1,17 @@
 # PostgreSQL Veritabanı Kullanımı
 
-Varsayılan olarak, Gramps aile ağacını depolamak için dosya tabanlı bir SQLite veritabanı kullanır. Bu, Gramps Web için mükemmel bir şekilde çalışır ve çoğu kullanıcı için önerilir. Ancak, Gramps Web API sürüm 0.3.0'dan itibaren, her veritabanında tek bir aile ağacı bulunan bir PostgreSQL sunucusu da desteklenmektedir; bu, [Gramps PostgreSQL Eklentisi](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) ile sağlanmaktadır. [sürüm 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0) itibarıyla, birden fazla aile ağacını tek bir veritabanında barındırmaya olanak tanıyan SharedPostgreSQL Eklentisi de desteklenmektedir; bu, özellikle Gramps Web API [çoklu-ağaç desteği](multi-tree.md) ile birlikte kullanıldığında yararlıdır.
+Varsayılan olarak, Gramps Web her aile ağacını kendi SQLite veritabanı dosyasında saklar. Bu, ek bir hizmet gerektirmez, yedeklemeler dosyaları kopyalamaktan ibarettir ve çoğu kurulum için iyi çalışır, çoklu ağaçları [barındıran](multi-tree.md) kurulumlar da dahil.
 
-!!! warning "PostgreSQL arka uç desteği kaldırıldı"
-    PostgreSQL arka ucu (her veritabanında bir aile ağacı) desteği, birden fazla ağacı barındırma ile uyumlu olmadığı için Gramps Web API'nin gelecekteki bir sürümünde kaldırılacaktır. SharedPostgreSQL ve SQLite arka uçları tamamen desteklenmeye devam etmektedir. Yeni kurulumlar için SharedPostgreSQL kullanın.
+Alternatif olarak, aile ağaçları SharedPostgreSQL eklentisi kullanılarak bir PostgreSQL sunucusunda barındırılabilir; bu, tüm ağaçları tek bir veritabanında tutar. Eğer zaten bir PostgreSQL sunucusu çalıştırıyorsanız ve yedeklemeleri ve izlemeyi orada yönetmek istiyorsanız veya aynı anda birçok kullanıcının düzenleme yapmasını bekliyorsanız bu mantıklı olabilir. PostgreSQL ayrıca aile ağaçlarının nerede saklandığından bağımsız olarak [kullanıcı veritabanını](#using-a-postgresql-database-for-the-user-database) ve [arama dizinini](#using-a-postgresql-database-for-the-search-index) barındırabilir.
 
-## PostgreSQL Sunucusunu Kurma
+!!! warning "PostgreSQL eklentisi kullanımdan kaldırıldı"
+    Tek bir aile ağacını veritabanında saklayan eski PostgreSQL eklentisi kullanımdan kaldırılmıştır ve gelecekteki Gramps Web API sürümlerinde desteklenmeyecektir. Eğer bunu kullanıyorsanız, [PostgreSQL eklentisinden SharedPostgreSQL'e bir ağacı taşıma](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql) konusuna bakın.
 
-PostgreSQLAddon ile kullanılmak üzere yeni bir veritabanı kurmak istiyorsanız, sunucuyu kurmak için [Gramps Wiki'deki talimatları](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) takip edebilirsiniz.
+## PostgreSQL Sunucusunu Ayarlama
 
-Alternatif olarak, Gramps Web ile aynı docker ana bilgisayarında PostgreSQL sunucusunu bir konteynerde çalıştırmak için Docker Compose kullanabilirsiniz.
+En kolay seçenek, PostgreSQL sunucusunu Gramps Web ile aynı Docker ana bilgisayarında bir konteynerde çalıştırmaktır; bunun için Docker Compose kullanılır.
 
-Gramps ile dockerize edilmiş bir PostgreSQL kullanmak, varsayılan PostgreSQL görüntülerinin herhangi bir yerel ayar içermemesi nedeniyle biraz karmaşıktır; bu ayarlar Gramps tarafından nesnelerin yerelleştirilmiş sıralaması için gereklidir. En kolay seçenek, [bu depoda](https://github.com/DavidMStraub/gramps-postgres-docker/) yayımlanan `gramps-postgres` görüntüsünü kullanmaktır. Bunu kullanmak için, `docker-compose.yml` dosyanıza aşağıdaki bölümü ekleyin:
+Gramps, PostgreSQL sunucusunda nesneleri farklı dillerde doğru bir şekilde sıralamak için yerelleştirmelerin kurulu olmasını gerektirir ve varsayılan PostgreSQL görüntüleri bunları içermez. [`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/) görüntüsü bunları ekler. Bunu kullanmak için `docker-compose.yml` dosyanıza aşağıdaki bölümü ekleyin:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -23,69 +23,76 @@ Gramps ile dockerize edilmiş bir PostgreSQL kullanmak, varsayılan PostgreSQL g
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-ve ayrıca bu YAML dosyasının `volumes:` bölümüne `postgres_data:` anahtarını ekleyin. Bu görüntü, Gramps soybilim verileri için ayrı bir veritabanı ve Gramps kullanıcı veritabanı için ayrı bir veritabanı içerir; her biri ayrı parolalara sahip olabilir.
+Ayrıca bu YAML dosyasının `volumes:` bölümüne `postgres_data:` anahtarını ekleyin. Görüntü, her biri kendi kullanıcı ve şifresine sahip iki veritabanı içerir: `gramps` genealogik veriler için ve `grampswebuser` Gramps Web kullanıcı veritabanı için.
 
-## Gramps Aile Ağacını İçe Aktarma
+Eğer kendi PostgreSQL sunucunuzu kullanıyorsanız, yapılandırılmış kullanıcının tablolar oluşturabileceği `gramps` adında bir veritabanı oluşturun ve kullanıcılarınızın ihtiyaç duyduğu yerelleştirmelerin kurulu olduğundan emin olun.
 
-Yine, PostgreSQL sunucusunu kendiniz kurduysanız, bir aile ağacını veritabanına aktarmak için [Gramps Wiki'deki talimatları](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) takip edebilirsiniz.
+## Gramps Web'i Yapılandırma
 
-Alternatif olarak, yukarıdaki Docker Compose talimatlarını takip ettiyseniz, docker ana bilgisayarınızda bulunan bir Gramps XML dosyasını içe aktarmak için aşağıdaki komutu kullanabilirsiniz:
-
-```bash
-docker compose run --entrypoint "" grampsweb \
-    gramps -C postgres \
-    -i /root/.gramps/grampsdb/my_tree.gramps \
-    --config=database.path:/root/.gramps/grampsdb \
-    --config=database.backend:postgresql \
-    --config=database.host:postgres_gramps \
-    --config=database.port:5432 \
-    --username=gramps --password=postgres_password_gramps
-```
-
-## Veritabanı ile Kullanım için Web API'yi Yapılandırma
-
-Web API'yi PostgreSQL veritabanı ile kullanmak için, `docker-compose.yml` dosyasındaki `grampsweb` hizmetinin `environment:` anahtarının altına aşağıdakileri ekleyin:
+Yeni aile ağaçları, Gramps Web [çoklu ağaç modunda](multi-tree.md) çalıştığında ve `NEW_DB_BACKEND` yapılandırma seçeneği `sharedpostgresql` olarak ayarlandığında SharedPostgreSQL veritabanında oluşturulur. Yukarıdaki Docker Compose kurulumu ile `docker-compose.yml` dosyasındaki `grampsweb` hizmetinin `environment:` anahtarının altına aşağıdakileri ekleyin:
 
 ```yaml
-      # PostgreSQL eklentisi, ağaç adının
-      # veritabanı adıyla eşit olduğunu varsayar
-      # ve burada PostgreSQL görüntüsünün varsayılan
-      # veritabanı adı kullanılır
-      GRAMPSWEB_TREE: postgres
-      # Kimlik bilgileri, PostgreSQL konteyneri için
-      # kullanılanlarla uyuşmalıdır
+      # çoklu ağaç modunu etkinleştir
+      GRAMPSWEB_TREE: "*"
+      GRAMPSWEB_MEDIA_PREFIX_TREE: true
+      # SharedPostgreSQL veritabanında yeni ağaçlar oluştur
+      GRAMPSWEB_NEW_DB_BACKEND: sharedpostgresql
+      # PostgreSQL sunucusunun ana bilgisayarı ve portu. 
+      # ana bilgisayar yukarıdaki PostgreSQL hizmetinin adıdır
+      GRAMPSWEB_POSTGRES_HOST: postgres_gramps
+      GRAMPSWEB_POSTGRES_PORT: 5432
+      # Kimlik bilgileri, PostgreSQL konteyneri için kullanılanlarla
+      # uyuşmalıdır
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-## Çoklu Ağaç Kurulumunda Paylaşılan PostgreSQL Veritabanı Kullanımı
+Tüm bu seçeneklerin açıklaması için [Yapılandırma](configuration.md) sayfasına bakın. Ana bilgisayar ve port, her ağaç oluşturulduğunda kaydedilir, bu nedenle bunların değiştirilmesi yalnızca yeni ağaçları etkiler.
 
-Bir [çoklu-ağaç kurulumu](multi-tree.md) kullanırken, SharedPostgreSQL eklentisi, tüm ağaçları, API aracılığıyla yeni oluşturulanları da dahil olmak üzere, tek bir PostgreSQL veritabanında barındırmak için uygun bir seçenektir; bu, gizlilik veya güvenlikten ödün vermeden yapılabilir.
+## Bir Ağaç Oluşturma ve Veri İçe Aktarma
 
-Bunu başarmak için, yukarıda açıklandığı gibi `gramps-postgres` görüntüsüne dayalı bir konteyner kurun ve yapılandırma seçeneği `NEW_DB_BACKEND`'i `sharedpostgresql` olarak ayarlayın; örneğin, `GRAMPSWEB_NEW_DB_BACKEND` ortam değişkeni aracılığıyla.
+Yeni bir ağaç oluşturmak için, [Birden Fazla Ağaç Barındırma Kurulumu](multi-tree.md#create-a-new-tree) bölümünde açıklandığı gibi `/trees/` uç noktasına POST isteği gönderin. Yanıt, yeni ağacın kimliğini içerir; bu kimlik, [ağaç sahibi hesabını oluşturmak](../administration/owner.md#multi-tree-setup-create-tree-owner-account) için gereklidir.
 
-## Kullanıcı Veritabanı için PostgreSQL Veritabanı Kullanımı
+Ağaç sahibi giriş yaptıktan sonra, mevcut bir aile ağacını [içe aktarabilir](../administration/import.md); örneğin, Gramps Desktop'tan dışa aktarılan bir Gramps XML dosyasını web arayüzü aracılığıyla.
 
-Soybilim verileri için hangi veritabanı arka ucunun kullanıldığına bakılmaksızın, kullanıcı veritabanı uygun bir veritabanı URL'si sağlayarak PostgreSQL veritabanında barındırılabilir. Yukarıda bahsedilen `gramps-postgres` docker görüntüsü, bu amaç için kullanılabilecek ayrı bir `grampswebuser` veritabanı içerir. Bu durumda, `USER_DB_URI` yapılandırma seçeneği için uygun değer
+## Kullanıcı Veritabanı için PostgreSQL Veritabanı Kullanma
+
+Kullanıcı veritabanı genellikle aile ağaçlarının nerede barındırıldığına bakılmaksızın bir SQLite dosyasıdır. Bunun yerine PostgreSQL kullanmak için, `USER_DB_URI` yapılandırma seçeneğini bir PostgreSQL veritabanı URL'sine ayarlayın. Yukarıdaki `gramps-postgres` görüntüsü ile `grampswebuser` veritabanını kullanın:
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
-## Arama İndeksi için PostgreSQL Veritabanı Kullanımı
+## Arama İndeksi için PostgreSQL Veritabanı Kullanma
 
-Gramps Web API sürüm 2.4.0'dan itibaren, arama indeksi ya bir SQLite veritabanında (varsayılan) ya da bir PostgreSQL veritabanında barındırılmaktadır. Bu amaçla da `gramps-postgres` görüntüsü kullanılabilir. Arama indeksi için, soybilim verilerimizi PostgreSQL'de barındırıp barındırmadığımızdan bağımsız olarak, görüntü tarafından sağlanan `gramps` veritabanını kullanabiliriz (arama indeksi ve soybilim verileri aynı veritabanında bir arada bulunabilir). Bu, yukarıdaki örnekte `SEARCH_INDEX_DB_URI` yapılandırma seçeneğini
+Arama indeksi de varsayılan olarak SQLite'ta saklanır. Bunun yerine PostgreSQL kullanmak için, `SEARCH_INDEX_DB_URI` yapılandırma seçeneğini bir PostgreSQL veritabanı URL'sine ayarlayın. Yukarıdaki `gramps-postgres` görüntüsü ile, aile ağaçlarınız orada barındırılsın ya da barındırılmasın `gramps` veritabanını kullanabilirsiniz:
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
-olarak ayarlayarak gerçekleştirilebilir.
+
+## PostgreSQL Eklentisinden SharedPostgreSQL'e Ağaç Taşıma
+
+Eski kurulumlar, her veritabanında tek bir ağaç saklayan PostgreSQL eklentisi ile aile ağaçlarını barındırıyor olabilir ve bu eklenti kullanımdan kaldırılmıştır. Bir ağacın hangi eklentiyi kullandığını öğrenmek için, Gramps veritabanı dizininin ağacın alt dizinindeki `database.txt` dosyasına bakın: bu dosya, kullanımdan kaldırılan PostgreSQL eklentisi için `postgresql` ve SharedPostgreSQL için `sharedpostgresql` içerir.
+
+Kullanıcı hesaplarınızı ve medya dosyalarınızı koruyarak bir ağacı PostgreSQL eklentisinden SharedPostgreSQL'e taşımak için:
+
+1. [Aile ağacınızı yedekleyin](../administration/export.md#back-up-your-family-tree) ve özel kayıtları görüntüleyebilen bir hesap kullanarak bir Gramps XML (`.gramps`) dosyası oluşturun.
+2. [Gramps Web'i Yapılandırma](#configuring-gramps-web) bölümünde açıklandığı gibi yapılandırmanızı değiştirin. Mevcut `gramps-postgres` konteynerinizi kullanmaya devam edebilirsiniz.
+3. [Yeni bir ağaç oluşturun](multi-tree.md#create-a-new-tree) ve ağaç kimliğini not edin.
+4. Mevcut kullanıcı hesaplarınızı yeni ağaca atayın; bu [Mevcut Kullanıcı Veritabanını Taşıma](multi-tree.md#migrate-existing-user-database) bölümünde açıklanmıştır.
+5. Medya dosyalarınızı yeni ağaç için beklenen konuma taşıyın; bu [Mevcut Medya Dosyalarını Taşıma](multi-tree.md#migrate-existing-media-files) bölümünde açıklanmıştır.
+6. Giriş yapın ve Gramps XML dosyasını yeni ağaca [içe aktarın](../administration/import.md).
+
+Yeni ağacın tamamlandığını kontrol edene kadar Gramps XML dosyasını saklayın.
+
+Eğer ayrı bir Gramps Web kurulumuna taşıyorsanız, [Farklı Bir Gramps Web Örneğine Taşıma](../administration/export.md#move-to-a-different-gramps-web-instance) adımlarını izleyin.
 
 ## Sorunlar
 
-Herhangi bir sorun durumunda, Gramps Web ve PostgreSQL sunucusunun günlük çıktısını izleyin. Docker durumunda, bu şu şekilde yapılır:
+Sorunlarla karşılaşırsanız, lütfen Gramps Web ve PostgreSQL sunucusunun günlük çıktısını izleyin. Docker durumunda, bu aşağıdaki komutlarla gerçekleştirilir:
 
 ```
 docker compose logs grampsweb
 docker compose logs postgres_gramps
 ```
 
-Eğer Gramps Web (veya belgeler) ile ilgili bir sorun olduğunu düşünüyorsanız, lütfen [Github'da](https://github.com/gramps-project/gramps-web-api/issues) bir sorun bildirin.
+Eğer Gramps Web (veya belgeler) ile ilgili bir sorun olduğundan şüpheleniyorsanız, lütfen [Github'ta](https://github.com/gramps-project/gramps-web-api/issues) bir sorun bildirin.

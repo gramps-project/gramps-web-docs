@@ -1,17 +1,17 @@
 # Verwendung einer PostgreSQL-Datenbank
 
-Standardmäßig verwendet Gramps eine dateibasierte SQLite-Datenbank zur Speicherung des Stammbaums. Dies funktioniert für Gramps Web einwandfrei und wird für die meisten Benutzer empfohlen. Ab Gramps Web API Version 0.3.0 wird jedoch auch ein PostgreSQL-Server mit einem einzelnen Stammbaum pro Datenbank unterstützt, ermöglicht durch das [Gramps PostgreSQL Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Seit [Version 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0) wird auch das SharedPostgreSQL Addon unterstützt, das das Hosting mehrerer Stammbäume in einer einzigen Datenbank ermöglicht, was besonders nützlich ist, wenn es zusammen mit der [Multi-Tree-Unterstützung](multi-tree.md) von Gramps Web API verwendet wird.
+Standardmäßig speichert Gramps Web jeden Familienstammbaum in seiner eigenen SQLite-Datenbankdatei. Dies erfordert keinen zusätzlichen Dienst, Backups sind so einfach wie das Kopieren von Dateien, und es funktioniert gut für die meisten Installationen, einschließlich solcher, die [mehrere Bäume hosten](multi-tree.md).
 
-!!! warning "PostgreSQL-Backend veraltet"
-    Die Unterstützung für das PostgreSQL-Backend (ein Stammbaum pro Datenbank) wird in einer zukünftigen Version von Gramps Web API entfernt, da es nicht mit dem Hosting mehrerer Bäume kompatibel ist. Die Backends SharedPostgreSQL und SQLite bleiben vollständig unterstützt. Für neue Installationen verwenden Sie SharedPostgreSQL.
+Alternativ können Familienstammbäume auf einem PostgreSQL-Server mit dem SharedPostgreSQL-Addon gehostet werden, das alle Bäume in einer einzigen Datenbank speichert. Dies kann sinnvoll sein, wenn Sie bereits einen PostgreSQL-Server betreiben und Backups und Überwachung dort verwalten möchten, oder wenn Sie erwarten, dass viele Benutzer gleichzeitig bearbeiten. PostgreSQL kann auch die [Benutzerdatenbank](#using-a-postgresql-database-for-the-user-database) und den [Suchindex](#using-a-postgresql-database-for-the-search-index) hosten, unabhängig davon, wo die Familienstammbäume gespeichert sind.
 
-## Einrichten des PostgreSQL-Servers
+!!! warning "PostgreSQL-Addon veraltet"
+    Das ältere PostgreSQL-Addon, das einen einzelnen Familienstammbaum pro Datenbank speichert, ist veraltet und wird in einer zukünftigen Version der Gramps Web API nicht mehr unterstützt. Wenn Sie es verwenden, siehe [Verschieben eines Baums vom PostgreSQL-Addon zu SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
-Wenn Sie eine neue Datenbank für die Verwendung mit dem PostgreSQLAddon einrichten möchten, können Sie die [Anweisungen im Gramps Wiki](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) befolgen, um den Server einzurichten.
+## Einrichtung des PostgreSQL-Servers
 
-Alternativ können Sie auch Docker Compose verwenden, um den PostgreSQL-Server in einem Container auf demselben Docker-Host wie Gramps Web auszuführen.
+Die einfachste Option ist, den PostgreSQL-Server in einem Container auf demselben Docker-Host wie Gramps Web mit Docker Compose auszuführen.
 
-Die Verwendung eines dockerisierten PostgreSQL mit Gramps wird nur dadurch kompliziert, dass die Standard-PostgreSQL-Images keine Locales installiert haben, die jedoch von Gramps für die lokalisierte Sortierung von Objekten benötigt werden. Die einfachste Option ist die Verwendung des `gramps-postgres`-Images, das in [diesem Repository](https://github.com/DavidMStraub/gramps-postgres-docker/) veröffentlicht wurde. Um es zu verwenden, fügen Sie den folgenden Abschnitt zu Ihrer `docker-compose.yml` hinzu:
+Gramps benötigt installierte Locale auf dem PostgreSQL-Server, um Objekte in verschiedenen Sprachen korrekt zu sortieren, und die Standard-PostgreSQL-Images enthalten keine. Das [`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/) Image fügt diese hinzu. Um es zu verwenden, fügen Sie den folgenden Abschnitt zu Ihrer `docker-compose.yml` hinzu:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -23,64 +23,72 @@ Die Verwendung eines dockerisierten PostgreSQL mit Gramps wird nur dadurch kompl
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-und fügen Sie auch `postgres_data:` als Schlüssel unter dem Abschnitt `volumes:` dieser YAML-Datei hinzu. Dieses Image enthält eine separate Datenbank für Gramps genealogische Daten und für die Gramps-Benutzerdatenbank; jede kann separate Passwörter haben.
+Fügen Sie auch `postgres_data:` als Schlüssel unter dem Abschnitt `volumes:` dieser YAML-Datei hinzu. Das Image enthält zwei Datenbanken, jede mit ihrem eigenen Benutzer und Passwort: `gramps` für die genealogischen Daten und `grampswebuser` für die Gramps Web-Benutzerdatenbank.
 
-## Importieren eines Gramps-Stammbaums
+Wenn Sie stattdessen Ihren eigenen PostgreSQL-Server verwenden, erstellen Sie eine Datenbank mit dem Namen `gramps`, in der der konfigurierte Benutzer Tabellen erstellen kann, und stellen Sie sicher, dass die benötigten Locales Ihrer Benutzer installiert sind.
 
-Wenn Sie den PostgreSQL-Server selbst eingerichtet haben, können Sie die [Anweisungen im Gramps Wiki](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) befolgen, um einen Stammbaum in die Datenbank zu importieren.
+## Konfiguration von Gramps Web
 
-Alternativ, wenn Sie die oben genannten Docker Compose-Anweisungen befolgt haben, können Sie den folgenden Befehl verwenden, um eine Gramps XML-Datei zu importieren, die sich auf Ihrem Docker-Host befindet:
-
-```bash
-docker compose run --entrypoint "" grampsweb \
-    gramps -C postgres \
-    -i /root/.gramps/grampsdb/my_tree.gramps \
-    --config=database.path:/root/.gramps/grampsdb \
-    --config=database.backend:postgresql \
-    --config=database.host:postgres_gramps \
-    --config=database.port:5432 \
-    --username=gramps --password=postgres_password_gramps
-```
-
-## Konfigurieren der Web-API zur Verwendung mit der Datenbank
-
-Um die Web-API für die Verwendung mit der PostgreSQL-Datenbank zu konfigurieren, fügen Sie Folgendes unter dem Schlüssel `environment:` des `grampsweb`-Dienstes in `docker-compose.yml` hinzu:
+Neue Familienstammbäume werden in der SharedPostgreSQL-Datenbank erstellt, wenn Gramps Web im [Multi-Tree-Modus](multi-tree.md) läuft und die Konfigurationsoption `NEW_DB_BACKEND` auf `sharedpostgresql` gesetzt ist. Mit der oben beschriebenen Docker-Compose-Einrichtung fügen Sie Folgendes unter dem Schlüssel `environment:` des `grampsweb`-Dienstes in `docker-compose.yml` hinzu:
 
 ```yaml
-      # Das PostgreSQL-Addon geht davon aus, dass der Baumname
-      # dem Datenbanknamen entspricht, und hier wird der Standard-
-      # Datenbankname des PostgreSQL-Images verwendet
-      GRAMPSWEB_TREE: postgres
-      # Die Anmeldedaten müssen mit denen übereinstimmen, die für
-      # den PostgreSQL-Container verwendet werden
+      # Multi-Tree-Modus aktivieren
+      GRAMPSWEB_TREE: "*"
+      GRAMPSWEB_MEDIA_PREFIX_TREE: true
+      # Neue Bäume in der SharedPostgreSQL-Datenbank erstellen
+      GRAMPSWEB_NEW_DB_BACKEND: sharedpostgresql
+      # Der Host und Port des PostgreSQL-Servers. Der
+      # Host ist der Name des oben genannten PostgreSQL-Dienstes
+      GRAMPSWEB_POSTGRES_HOST: postgres_gramps
+      GRAMPSWEB_POSTGRES_PORT: 5432
+      # Die Anmeldeinformationen müssen mit denen übereinstimmen,
+      # die für den PostgreSQL-Container verwendet werden
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-## Verwendung einer gemeinsamen PostgreSQL-Datenbank in einer Multi-Tree-Installation
+Siehe [Konfiguration](configuration.md) für eine Beschreibung all dieser Optionen. Beachten Sie, dass Host und Port mit jedem Baum gespeichert werden, wenn er erstellt wird, sodass Änderungen später nur neue Bäume betreffen.
 
-Bei der Verwendung eines [Multi-Tree-Setups](multi-tree.md) ist das SharedPostgreSQL-Addon eine praktische Option, um alle Bäume, auch neu erstellte über die API, in einer einzigen PostgreSQL-Datenbank zu hosten, ohne die Privatsphäre oder Sicherheit zu gefährden.
+## Erstellen eines Baums und Importieren von Daten
 
-Um dies zu erreichen, richten Sie einen Container basierend auf dem `gramps-postgres`-Image wie oben beschrieben ein und setzen Sie einfach die Konfigurationsoption `NEW_DB_BACKEND` auf `sharedpostgresql`, z.B. über die Umgebungsvariable `GRAMPSWEB_NEW_DB_BACKEND`.
+Um einen neuen Baum zu erstellen, POSTen Sie an den Endpunkt `/trees/`, wie in [Einrichtung zum Hosten mehrerer Bäume](multi-tree.md#create-a-new-tree) beschrieben. Die Antwort enthält die ID des neuen Baums, die Sie benötigen, um [das Konto des Baum-Eigentümers zu erstellen](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+
+Sobald der Baum-Eigentümer sich angemeldet hat, kann er einen bestehenden Familienstammbaum [importieren](../administration/import.md), z.B. eine Gramps XML-Datei, die aus Gramps Desktop exportiert wurde, über die Weboberfläche.
 
 ## Verwendung einer PostgreSQL-Datenbank für die Benutzerdatenbank
 
-Unabhängig davon, welches Datenbank-Backend für die genealogischen Daten verwendet wird, kann die Benutzerdatenbank in einer PostgreSQL-Datenbank gehostet werden, indem eine entsprechende Datenbank-URL bereitgestellt wird. Das oben erwähnte `gramps-postgres`-Docker-Image enthält eine separate Datenbank `grampswebuser`, die für diesen Zweck verwendet werden kann. In diesem Fall wäre der entsprechende Wert für die Konfigurationsoption `USER_DB_URI`
+Die Benutzerdatenbank ist normalerweise eine SQLite-Datei, unabhängig davon, wo die Familienstammbäume gehostet werden. Um stattdessen PostgreSQL zu verwenden, setzen Sie die Konfigurationsoption `USER_DB_URI` auf eine PostgreSQL-Datenbank-URL. Mit dem oben genannten `gramps-postgres`-Image verwenden Sie dessen `grampswebuser`-Datenbank:
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
 ## Verwendung einer PostgreSQL-Datenbank für den Suchindex
 
-Seit Gramps Web API Version 2.4.0 wird der Suchindex entweder in einer SQLite-Datenbank (Standard) oder in einer PostgreSQL-Datenbank gehostet. Auch für diesen Zweck kann das `gramps-postgres`-Image verwendet werden. Für den Suchindex können wir die von dem Image bereitgestellte `gramps`-Datenbank verwenden, unabhängig davon, ob wir unsere genealogischen Daten in PostgreSQL hosten oder nicht (der Suchindex und die genealogischen Daten können in derselben Datenbank coexistieren). Dies kann im obigen Beispiel erreicht werden, indem die Konfigurationsoption `SEARCH_INDEX_DB_URI` auf
+Der Suchindex wird standardmäßig ebenfalls in SQLite gespeichert. Um stattdessen PostgreSQL zu verwenden, setzen Sie die Konfigurationsoption `SEARCH_INDEX_DB_URI` auf eine PostgreSQL-Datenbank-URL. Mit dem oben genannten `gramps-postgres`-Image können Sie dessen `gramps`-Datenbank verwenden, unabhängig davon, ob Ihre Familienstammbäume dort ebenfalls gehostet werden:
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
-gesetzt wird.
+
+## Verschieben eines Baums vom PostgreSQL-Addon zu SharedPostgreSQL
+
+Ältere Installationen können ihren Familienstammbaum mit dem PostgreSQL-Addon hosten, das einen einzelnen Baum pro Datenbank speichert und veraltet ist. Um herauszufinden, welches Addon ein Baum verwendet, schauen Sie sich die Datei `database.txt` im Unterverzeichnis des Baums im Gramps-Datenverzeichnis an: Sie enthält `postgresql` für das veraltete PostgreSQL-Addon und `sharedpostgresql` für SharedPostgreSQL.
+
+Um einen Baum vom PostgreSQL-Addon zu SharedPostgreSQL innerhalb derselben Installation zu verschieben, während Sie Ihre Benutzerkonten und Mediendateien beibehalten:
+
+1. [Sichern Sie Ihren Familienstammbaum](../administration/export.md#back-up-your-family-tree) als Gramps XML (`.gramps`) Datei, unter Verwendung eines Kontos, das private Datensätze anzeigen kann.
+2. Ändern Sie Ihre Konfiguration wie in [Konfiguration von Gramps Web](#configuring-gramps-web) beschrieben. Sie können Ihren vorhandenen `gramps-postgres`-Container weiterhin verwenden.
+3. [Erstellen Sie einen neuen Baum](multi-tree.md#create-a-new-tree) und notieren Sie sich die Baum-ID.
+4. Weisen Sie Ihre vorhandenen Benutzerkonten dem neuen Baum zu, wie in [Migration vorhandener Benutzerdatenbank](multi-tree.md#migrate-existing-user-database) beschrieben.
+5. Verschieben Sie Ihre Mediendateien an den für den neuen Baum erwarteten Speicherort, wie in [Migration vorhandener Mediendateien](multi-tree.md#migrate-existing-media-files) beschrieben.
+6. Melden Sie sich an und [importieren](../administration/import.md) Sie die Gramps XML-Datei in den neuen Baum.
+
+Bewahren Sie die Gramps XML-Datei auf, bis Sie überprüft haben, dass der neue Baum vollständig ist.
+
+Wenn Sie zu einer separaten Gramps Web-Installation wechseln, folgen Sie den Schritten in [Wechsel zu einer anderen Gramps Web-Instanz](../administration/export.md#move-to-a-different-gramps-web-instance).
 
 ## Probleme
 
-Bei Problemen überwachen Sie bitte die Protokollausgaben von Gramps Web und dem PostgreSQL-Server. Im Falle von Docker erreichen Sie dies mit
+Im Falle von Problemen überwachen Sie bitte die Protokollausgaben von Gramps Web und dem PostgreSQL-Server. Im Falle von Docker erreichen Sie dies mit
 
 ```
 docker compose logs grampsweb
