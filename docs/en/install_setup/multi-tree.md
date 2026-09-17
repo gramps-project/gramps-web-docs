@@ -29,7 +29,7 @@ User names are required to be unique across *all* trees. E-mail addresses do not
 
 ## Create a new tree
 
-To create a new tree, it is recommended to POST to the `/trees/` endpoint rather than using the Gramps CLI. This will use a UUIDv4 as tree ID, which leads to additional security as the name cannot be guessed. Currently, only SQLite is supported for newly created trees.
+To create a new tree, it is recommended to POST to the `/trees/` endpoint rather than using the Gramps CLI. This will use a UUIDv4 as tree ID, which leads to additional security as the name cannot be guessed. Newly created trees use the database backend set in the `NEW_DB_BACKEND` config option: SQLite (the default) or SharedPostgreSQL. See [Using a PostgreSQL database](postgres.md) for details.
 
 
 ## Authorize

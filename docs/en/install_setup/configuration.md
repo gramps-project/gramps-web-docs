@@ -84,9 +84,9 @@ Key | Description
     When using environment variables for configuration, boolean options like `EMAIL_USE_SSL` must be either the string `true` or `false` (case sensitive!).
 
 
-### Settings only for PostgreSQL backend database
+### Settings for PostgreSQL databases
 
-This is required if you've configured your Gramps database to work with the [PostgreSQL addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL).
+These settings are required if your family trees are hosted in a [PostgreSQL database](postgres.md) using the SharedPostgreSQL addon.
 
 Key | Description
 ----|-------------
@@ -102,7 +102,7 @@ The following settings are relevant when [hosting multiple trees](multi-tree.md)
 Key | Description
 ----|-------------
 `MEDIA_PREFIX_TREE` | Boolean, whether or not to use a separate subfolder for the media files of each tree. Defaults to `False`, but strongly recommend to use `True` in a multi-tree setup
-`NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite`, `postgresql`, or `sharedpostgresql`. Defaults to `sqlite`.
+`NEW_DB_BACKEND` | The database backend to use for newly created family trees. Must be one of `sqlite` or `sharedpostgresql`. Defaults to `sqlite`. The value `postgresql` is still accepted but deprecated, since the PostgreSQL backend will be removed in a future version.
 `POSTGRES_HOST` | The host name of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 `POSTGRES_PORT` | The port of the PostgreSQL server used for creating new trees when using a multi-tree setup with the SharedPostgreSQL backend
 
