@@ -1,15 +1,15 @@
 # Serverkonfiguration
 
-Mit dem Standard-Docker-Image kann die gesamte erforderliche Konfiguration über den Browser vorgenommen werden. Je nach Bereitstellung kann es jedoch notwendig sein, die Serverkonfiguration anzupassen.
+Mit dem standardmäßigen Docker-Image kann die gesamte erforderliche Konfiguration über den Browser vorgenommen werden. Je nach Bereitstellung kann es jedoch notwendig sein, die Serverkonfiguration anzupassen.
 
-Diese Seite listet alle Methoden auf, um die Konfiguration zu ändern, sowie alle vorhandenen Konfigurationsoptionen.
+Diese Seite listet alle Methoden zur Änderung der Konfiguration und alle vorhandenen Konfigurationsoptionen auf.
 
 
 ## Konfigurationsdatei vs. Umgebungsvariablen
 
 Für die Einstellungen können Sie entweder eine Konfigurationsdatei oder Umgebungsvariablen verwenden.
 
-Wenn Sie das [Docker Compose-basierte Setup](deployment.md) verwenden, können Sie eine Konfigurationsdatei einfügen, indem Sie den folgenden Listeneintrag unter dem Schlüssel `volumes:` im Block `grampsweb:` hinzufügen:
+Wenn Sie das [Docker Compose-basierte Setup](deployment.md) verwenden, können Sie eine Konfigurationsdatei einfügen, indem Sie den folgenden Listeneintrag unter dem `volumes:`-Schlüssel im `grampsweb:`-Block hinzufügen:
 
 ```yaml
       - /path/to/config.cfg:/app/config/config.cfg
@@ -21,26 +21,26 @@ Bei der Verwendung von Umgebungsvariablen,
 - prefixen Sie jeden Einstellungsnamen mit `GRAMPSWEB_`, um den Namen der Umgebungsvariablen zu erhalten
 - Verwenden Sie doppelte Unterstriche für verschachtelte Dictionary-Einstellungen, z.B. `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` setzt den Wert der Konfigurationsoption `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
 
-Beachten Sie, dass Konfigurationsoptionen, die über die Umgebung festgelegt werden, Vorrang vor denen in der Konfigurationsdatei haben. Wenn beide vorhanden sind, "gewinnt" die Umgebungsvariable.
+Bitte beachten Sie, dass Konfigurationsoptionen, die über die Umgebung festgelegt werden, Vorrang vor denen in der Konfigurationsdatei haben. Wenn beide vorhanden sind, "gewinnt" die Umgebungsvariable.
 
 !!! warning "Nicht präfixierte Umgebungsvariablen sind veraltet"
-    Aus historischen Gründen können eine Handvoll von Einstellungen – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL` und `STATIC_PATH` – weiterhin über eine Umgebungsvariable *ohne* das Präfix `GRAMPSWEB_` festgelegt werden. Dies ist veraltet, protokolliert eine Warnung beim Start und wird in einer zukünftigen Version nicht mehr funktionieren. Verwenden Sie immer die präfixierte Form, z.B. `GRAMPSWEB_TREE` anstelle von `TREE`.
+    Aus historischen Gründen können einige Einstellungen – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL` und `STATIC_PATH` – weiterhin über eine Umgebungsvariable *ohne* das Präfix `GRAMPSWEB_` festgelegt werden. Dies ist veraltet, protokolliert eine Warnung beim Start und wird in einer zukünftigen Version nicht mehr funktionieren. Verwenden Sie immer die präfixierte Form, z.B. `GRAMPSWEB_TREE` anstelle von `TREE`.
 
     Beachten Sie, dass dies nur Umgebungsvariablen betrifft. In einer Konfigurationsdatei werden die Einstellungsnamen immer unpräfixiert verwendet.
 
 !!! tip "Überprüfung auf veraltete Optionen"
-    Veraltete Konfigurationsoptionen, von denen Ihr Server weiterhin abhängt – wie nicht präfixierte Umgebungsvariablen, `SEARCH_INDEX_DIR` oder `EMAIL_USE_TLS` – werden beim Start als Warnungen protokolliert. Seit Gramps Web API 3.22 werden sie auch zusammen mit ihrem Ersatz und der Version, in der die Unterstützung entfernt wird, oben auf der **Systeminformationen**-Seite (erreichbar über das Benutzersymbol in der oberen App-Leiste), angezeigt, wenn Sie als Administrator angemeldet sind.
+    Veraltete Konfigurationsoptionen, von denen Ihr Server noch abhängt – wie nicht präfixierte Umgebungsvariablen, `SEARCH_INDEX_DIR` oder `EMAIL_USE_TLS` – werden beim Start als Warnungen protokolliert. Seit Gramps Web API 3.22 werden sie auch zusammen mit ihrem Ersatz und der Version, in der die Unterstützung entfernt wird, oben auf der **Systeminformationen**-Seite (erreichbar über das Benutzersymbol in der oberen App-Leiste), angezeigt, wenn Sie als Administrator angemeldet sind.
 
 ## Vorhandene Konfigurationseinstellungen
-Die folgenden Konfigurationsoptionen sind vorhanden.
+Die folgenden Konfigurationsoptionen existieren.
 
 ### Erforderliche Einstellungen
 
 Schlüssel | Beschreibung
 ----|-------------
-`TREE` | Der Name der zu verwendenden Familienstamm-Datenbank. Zeigen Sie verfügbare Bäume mit `gramps -l` an. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer Baum erstellt.
-`SECRET_KEY` | Der geheime Schlüssel für Flask. Der Schlüssel darf nicht öffentlich geteilt werden. Eine Änderung macht alle Zugriffstoken ungültig.
-`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist zulässig.
+`TREE` | Der Name der zu verwendenden Familienstammbaum-Datenbank. Zeigen Sie verfügbare Bäume mit `gramps -l` an. Wenn ein Baum mit diesem Namen nicht existiert, wird ein neuer leerer Baum erstellt.
+`SECRET_KEY` | Der geheime Schlüssel für Flask. Der Schlüssel darf nicht öffentlich geteilt werden. Eine Änderung macht alle Zugriffstokens ungültig.
+`USER_DB_URI` | Die Datenbank-URL der Benutzerdatenbank. Jede URL, die mit SQLAlchemy kompatibel ist, ist erlaubt.
 
 !!! info
     Sie können einen sicheren geheimen Schlüssel z.B. mit dem Befehl generieren
@@ -53,18 +53,18 @@ Schlüssel | Beschreibung
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet wird und das in Gramps festgelegte Medienbasisverzeichnis überschreibt. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
-`TREE_ID` | Der Verzeichnisname der Familienstamm-Datenbank, die im Einzelbaum-Modus verwendet werden soll (wenn `TREE` nicht auf `*` gesetzt ist). Wenn gesetzt, identifiziert der Server den Baum anhand seines Verzeichnisnamens anstelle seines Anzeigenamens, was robuster gegenüber Umbenennungen ist. Erforderlich, wenn Sie den Baum über die API umbenennen möchten. Der Verzeichnisname kann über `GET /api/trees/-` (das Feld `id`) gefunden werden.
-`SEARCH_INDEX_DB_URI` | Datenbank-URL für den Suchindex. Nur `sqlite` oder `postgresql` sind als Backends erlaubt. Standardmäßig `sqlite:///indexdir/search_index.db`, wodurch eine SQLite-Datei im Ordner `indexdir` relativ zu dem Pfad, von dem das Skript ausgeführt wird, erstellt wird.
-`SEARCH_INDEX_DIR` | **Veraltet** (verwenden Sie stattdessen `SEARCH_INDEX_DB_URI`). Verzeichnis, das den Suchindex enthält. Wenn es gesetzt ist, während `SEARCH_INDEX_DB_URI` nicht gesetzt ist, wird die URL des Suchindex als `sqlite:///<SEARCH_INDEX_DIR>/search_index.db` abgeleitet.
-`STATIC_PATH` | Pfad zum Bereitstellen von statischen Dateien (z.B. ein statisches Webfrontend)
+`MEDIA_BASE_DIR` | Pfad, der als Basisverzeichnis für Mediendateien verwendet wird, und das Basisverzeichnis für Medien in Gramps überschreibt. Bei Verwendung von [S3](s3.md) muss es die Form `s3://<bucket_name>` haben.
+`TREE_ID` | Der Verzeichnisname der zu verwendenden Familienstammbaum-Datenbank im Einzelbaum-Modus (wenn `TREE` nicht auf `*` gesetzt ist). Wenn gesetzt, identifiziert der Server den Baum anhand seines Verzeichnisnamens anstelle seines Anzeigenamens, was robuster gegenüber Umbenennungen ist. Erforderlich, wenn Sie den Baum über die API umbenennen möchten. Der Verzeichnisname kann über `GET /api/trees/-` (das `id`-Feld) gefunden werden.
+`SEARCH_INDEX_DB_URI` | Datenbank-URL für den Suchindex. Nur `sqlite` oder `postgresql` sind als Backends erlaubt. Standardmäßig `sqlite:///indexdir/search_index.db`, was eine SQLite-Datei im Ordner `indexdir` relativ zu dem Pfad erstellt, von dem das Skript ausgeführt wird.
+`SEARCH_INDEX_DIR` | **Veraltet** (verwenden Sie stattdessen `SEARCH_INDEX_DB_URI`). Verzeichnis, das den Suchindex enthält. Wenn gesetzt, während `SEARCH_INDEX_DB_URI` nicht gesetzt ist, wird die Suchindex-URL als `sqlite:///<SEARCH_INDEX_DIR>/search_index.db` abgeleitet.
+`STATIC_PATH` | Pfad, um statische Dateien bereitzustellen (z.B. ein statisches Web-Frontend)
 `BASE_URL` | Basis-URL, unter der die API erreichbar ist (z.B. `https://mygramps.mydomain.com/`). Dies ist notwendig, um z.B. korrekte Links zum Zurücksetzen von Passwörtern zu erstellen.
 `CORS_ORIGINS` | Ursprünge, von denen CORS-Anfragen erlaubt sind. Standardmäßig sind alle nicht erlaubt. Verwenden Sie `"*"`, um Anfragen von jeder Domain zuzulassen.
-`EMAIL_HOST` | SMTP-Server-Host (z.B. zum Versenden von E-Mails zum Zurücksetzen von Passwörtern)
+`EMAIL_HOST` | SMTP-Server-Host (z.B. zum Senden von E-Mails zum Zurücksetzen von Passwörtern)
 `EMAIL_PORT` | SMTP-Server-Port. Standardmäßig 465
 `EMAIL_HOST_USER` | SMTP-Server-Benutzername
 `EMAIL_HOST_PASSWORD` | SMTP-Server-Passwort
-`EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Versenden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden einen anderen Port als 25.
+`EMAIL_USE_TLS` | **Veraltet** (verwenden Sie stattdessen `EMAIL_USE_SSL` oder `EMAIL_USE_STARTTLS`). Boolean, ob TLS zum Senden von E-Mails verwendet werden soll. Standardmäßig `True`. Bei Verwendung von STARTTLS setzen Sie dies auf `False` und verwenden Sie einen anderen Port als 25.
 `EMAIL_USE_SSL` | Boolean, ob implizites SSL/TLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `True`, wenn `EMAIL_USE_TLS` nicht explizit gesetzt ist. Typischerweise mit Port 465 verwendet.
 `EMAIL_USE_STARTTLS` | Boolean, ob explizites STARTTLS für SMTP verwendet werden soll (v3.6.0+). Standardmäßig `False`. Typischerweise mit Port 587 oder 25 verwendet.
 `DEFAULT_FROM_EMAIL` | "Von"-Adresse für automatisierte E-Mails
@@ -76,17 +76,17 @@ Schlüssel | Beschreibung
 `EXPORT_DIR` | Temporäres Verzeichnis, in dem die Ausgabe des Exports der Gramps-Datenbank gespeichert wird
 `REGISTRATION_DISABLED` | Wenn `True`, wird die Registrierung neuer Benutzer nicht erlaubt (Standard `False`)
 `DISABLE_TELEMETRY` | Wenn `True`, wird die Statistiktelemetrie deaktiviert (Standard `False`). Siehe [Telemetrie](telemetry.md) für Details.
-`PILLOW_MAX_IMAGE_PIXELS` | Setzt den Parameter PIL.Image.MAX_IMAGE_PIXELS, der die Anzahl der Pixel angibt, die das verarbeitete Bild enthalten kann. Siehe [Dokumentation](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) für Details.
+`PILLOW_MAX_IMAGE_PIXELS` | Setzt den Parameter PIL.Image.MAX_IMAGE_PIXELS, der die Anzahl der Pixel angibt, die das verarbeitete Bild enthalten kann. Siehe [Docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) für Details.
 `MAX_THUMBNAIL_FILE_BYTES` | Setzt eine harte maximale Dateigröße für Thumbnails. Standardmäßig `50 * 1024 * 1024` (50 MB). Eine Erhöhung kann den Speicherverbrauch erheblich steigern und zu Speicherüberläufen oder Datenverlust führen, wenn große Dateien im Speicher dekomprimiert werden.
 
 
 !!! info
-    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_SSL` entweder der String `true` oder `false` (groß- und kleinschreibungssensitiv!) sein.
+    Bei der Verwendung von Umgebungsvariablen für die Konfiguration müssen boolesche Optionen wie `EMAIL_USE_SSL` entweder die Zeichenfolge `true` oder `false` (groß- und kleinschreibungssensitiv!) sein.
 
 
-### Einstellungen nur für PostgreSQL-Backend-Datenbank
+### Einstellungen für PostgreSQL-Datenbanken
 
-Dies ist erforderlich, wenn Sie Ihre Gramps-Datenbank so konfiguriert haben, dass sie mit dem [PostgreSQL-Addon](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) funktioniert.
+Diese Einstellungen sind erforderlich, wenn Ihre Familienstammbäume in einer [PostgreSQL-Datenbank](postgres.md) mit dem SharedPostgreSQL-Addon gehostet werden.
 
 Schlüssel | Beschreibung
 ----|-------------
@@ -96,20 +96,20 @@ Schlüssel | Beschreibung
 
 ### Einstellungen, die für das Hosting mehrerer Bäume relevant sind
 
-Die folgenden Einstellungen sind relevant, wenn Sie [mehrere Bäume hosten](multi-tree.md).
+Die folgenden Einstellungen sind relevant, wenn [mehrere Bäume gehostet werden](multi-tree.md).
 
 
 Schlüssel | Beschreibung
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baumes verwendet werden soll. Standardmäßig `False`, es wird jedoch dringend empfohlen, `True` in einem Multi-Baum-Setup zu verwenden.
-`NEW_DB_BACKEND` | Das zu verwendende Datenbank-Backend für neu erstellte Familienstämme. Muss eines von `sqlite`, `postgresql` oder `sharedpostgresql` sein. Standardmäßig `sqlite`.
+`MEDIA_PREFIX_TREE` | Boolean, ob ein separates Unterverzeichnis für die Mediendateien jedes Baums verwendet werden soll. Standardmäßig `False`, aber es wird dringend empfohlen, `True` in einem Multi-Baum-Setup zu verwenden.
+`NEW_DB_BACKEND` | Das Datenbank-Backend, das für neu erstellte Familienstammbäume verwendet werden soll. Muss eines von `sqlite` oder `sharedpostgresql` sein. Standardmäßig `sqlite`. Der Wert `postgresql` wird weiterhin akzeptiert, ist jedoch veraltet, da das PostgreSQL-Backend in einer zukünftigen Version entfernt wird.
 `POSTGRES_HOST` | Der Hostname des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 `POSTGRES_PORT` | Der Port des PostgreSQL-Servers, der zum Erstellen neuer Bäume verwendet wird, wenn ein Multi-Baum-Setup mit dem SharedPostgreSQL-Backend verwendet wird.
 
 
 ### Einstellungen für OIDC-Authentifizierung
 
-Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC) Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Installationsanleitungen und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
+Diese Einstellungen sind erforderlich, wenn Sie die OpenID Connect (OIDC) Authentifizierung mit externen Anbietern verwenden möchten. Für detaillierte Anweisungen zur Einrichtung und Beispiele siehe [OIDC-Authentifizierung](oidc.md).
 
 Schlüssel | Beschreibung
 ----|-------------
@@ -135,7 +135,7 @@ Schlüssel | Beschreibung
 `OIDC_MICROSOFT_CLIENT_ID` | Client-ID für Microsoft OAuth
 `OIDC_MICROSOFT_CLIENT_SECRET` | Client-Geheimnis für Microsoft OAuth
 
-#### OIDC Rollen-Mapping
+#### OIDC-Rollenabbildung
 
 Diese Einstellungen ermöglichen es Ihnen, OIDC-Gruppen/Rollen von Ihrem Identitätsanbieter auf Gramps Web-Benutzerrollen abzubilden:
 
@@ -156,19 +156,19 @@ Diese Einstellungen sind erforderlich, wenn Sie KI-gestützte Funktionen wie Cha
 Schlüssel | Beschreibung
 ----|-------------
 `LLM_BASE_URL` | Basis-URL für die OpenAI-kompatible Chat-API. Standardmäßig `None`, was die OpenAI-API verwendet.
-`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht gesetzt (Standard), ist der Chat deaktiviert. Ab v3.6.0 verwendet der KI-Assistent Pydantic AI mit Tool-Calling-Funktionen.
-`VECTOR_EMBEDDING_MODEL` | Das Modell, das für semantische Suchvektor-Einbettungen verwendet werden soll. Bei Verwendung eines lokalen Modells muss dies ein [Sentence Transformers](https://sbert.net/) Modellname sein. Bei Verwendung einer Remote-API (siehe `VECTOR_EMBEDDING_BASE_URL`) ist dies der Modellname, der dem Remote-Anbieter übergeben wird. Wenn nicht gesetzt (Standard), sind semantische Suche und Chat deaktiviert.
-`VECTOR_EMBEDDING_BASE_URL` | Basis-URL für eine Remote OpenAI-kompatible Einbettungs-API (z.B. Ollama, OpenAI, LiteLLM). Wenn nicht gesetzt (Standard), wird ein lokales Sentence Transformers-Modell verwendet. Siehe [Verwendung einer Remote-Einbettungs-API](chat.md#using-a-remote-embedding-api) für Details.
+`LLM_MODEL` | Das Modell, das für die OpenAI-kompatible Chat-API verwendet werden soll. Wenn nicht gesetzt (Standard), ist der Chat deaktiviert. Ab v3.6.0 verwendet der KI-Assistent Pydantic AI mit Tool-Calling-Fähigkeiten.
+`VECTOR_EMBEDDING_MODEL` | Das Modell, das für die semantische Suchvektor-Einbettung verwendet werden soll. Bei Verwendung eines lokalen Modells muss dies ein [Sentence Transformers](https://sbert.net/) Modellname sein. Bei Verwendung einer Remote-API (siehe `VECTOR_EMBEDDING_BASE_URL`) ist dies der Modellname, der an den Remote-Anbieter übergeben wird. Wenn nicht gesetzt (Standard), sind die semantische Suche und der Chat deaktiviert.
+`VECTOR_EMBEDDING_BASE_URL` | Basis-URL für eine Remote-OpenAI-kompatible Einbettungs-API (z.B. Ollama, OpenAI, LiteLLM). Wenn nicht gesetzt (Standard), wird ein lokales Sentence Transformers-Modell verwendet. Siehe [Verwendung einer Remote-Einbettungs-API](chat.md#using-a-remote-embedding-api) für Details.
 `VECTOR_EMBEDDING_API_KEY` | API-Schlüssel für authentifizierte Remote-Einbettungsanbieter. Nur erforderlich, wenn `VECTOR_EMBEDDING_BASE_URL` gesetzt ist und der Anbieter eine Authentifizierung erfordert.
-`LLM_MAX_CONTEXT_LENGTH` | Zeichenlimit für den Familienstammkontext, der dem LLM bereitgestellt wird. Standardmäßig 50000.
-`LLM_SYSTEM_PROMPT` | Benutzerdefinierter Systemprompt für den LLM-Chat-Assistenten (v3.6.0+). Wenn nicht gesetzt, wird der standardmäßige, genealogisch optimierte Prompt verwendet.
+`LLM_MAX_CONTEXT_LENGTH` | Zeichenlimit für den Familienstammbaumkontext, der dem LLM bereitgestellt wird. Standardmäßig 50000.
+`LLM_SYSTEM_PROMPT` | Benutzerdefinierte Systemaufforderung für den LLM-Chat-Assistenten (v3.6.0+). Wenn nicht gesetzt, wird die standardmäßige, genealogisch optimierte Aufforderung verwendet.
 
 
 ## Beispielkonfigurationsdatei
 
 Eine minimale Konfigurationsdatei für die Produktion könnte so aussehen:
 ```python
-TREE="Mein Familienstamm"
+TREE="Mein Familienstammbaum"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # Ihr geheimer Schlüssel
 USER_DB_URI="sqlite:////path/to/users.sqlite"

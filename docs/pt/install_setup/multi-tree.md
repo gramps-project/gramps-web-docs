@@ -1,6 +1,6 @@
 # Configuração para hospedar várias árvores
 
-Por padrão, o Gramps Web permite acessar apenas um único banco de dados de árvore genealógica (“árvore”), especificado no arquivo de configuração.
+Por padrão, o Gramps Web permite o acesso a um único banco de dados de árvore genealógica (“árvore”), especificado no arquivo de configuração.
 
 No entanto, a partir da versão 0.7.0 do backend da API Gramps Web, também é possível servir várias árvores a partir de uma única instalação. No entanto, cada usuário está (atualmente) vinculado a uma única árvore, portanto, essa configuração não é adequada para compartilhar árvores entre usuários, mas para hospedar várias instâncias isoladas do Gramps Web.
 
@@ -24,11 +24,11 @@ Além disso, você deve definir a opção de configuração `MEDIA_PREFIX_TREE` 
 
 Para adicionar um usuário a uma árvore específica, basta adicionar a opção de linha de comando `--tree TREEID` ao comando de adicionar usuário. Você também pode fazer um POST para o endpoint `/users/` com a propriedade `tree` definida no payload JSON.
 
-Os nomes de usuário devem ser exclusivos em *todas* as árvores. Os endereços de e-mail não precisam ser únicos (desde a API Gramps Web 3.22), então a mesma pessoa pode, por exemplo, ter contas em várias árvores usando um único endereço de e-mail.
+Os nomes de usuário devem ser exclusivos em *todas* as árvores. Os endereços de e-mail não precisam ser exclusivos (desde a API Gramps Web 3.22), portanto, a mesma pessoa pode, por exemplo, ter contas em várias árvores usando um único endereço de e-mail.
 
 ## Criar uma nova árvore
 
-Para criar uma nova árvore, é recomendado fazer um POST para o endpoint `/trees/` em vez de usar o CLI do Gramps. Isso usará um UUIDv4 como ID da árvore, o que leva a uma segurança adicional, pois o nome não pode ser adivinhado. Atualmente, apenas SQLite é suportado para árvores recém-criadas.
+Para criar uma nova árvore, é recomendado fazer um POST para o endpoint `/trees/` em vez de usar a CLI do Gramps. Isso usará um UUIDv4 como ID da árvore, o que leva a uma segurança adicional, pois o nome não pode ser adivinhado. Árvores recém-criadas usam o backend de banco de dados definido na opção de configuração `NEW_DB_BACKEND`: SQLite (o padrão) ou SharedPostgreSQL. Veja [Usando um banco de dados PostgreSQL](postgres.md) para mais detalhes.
 
 ## Autorizar
 
@@ -44,11 +44,11 @@ Se você estiver usando arquivos de mídia hospedados no S3, pode usar o script 
 python scripts/s3_rename.py BUCKET_NAME TREE_ID
 ```
 
-Isso assume que as chaves de acesso relevantes já estão definidas como variáveis de ambiente.
+Isso pressupõe que as chaves de acesso relevantes já estão definidas como variáveis de ambiente.
 
 ## Migrar banco de dados de usuários existentes
 
-Se você deseja habilitar o suporte a múltiplas árvores e reutilizar usuários existentes, precisará atribuí-los a uma árvore específica. Você pode usar o seguinte comando fornecido para esse fim,
+Se você deseja habilitar o suporte a múltiplas árvores e reutilizar usuários existentes, precisa atribuí-los a uma árvore específica. Você pode usar o seguinte comando fornecido para esse fim,
 
 ```bash
 python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID
@@ -56,4 +56,4 @@ python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID
 
 ## Personalizar o frontend
 
-A página de registro acessível a partir da página de login não funciona em uma configuração de múltiplas árvores, uma vez que uma árvore precisa ser especificada para o registro. Portanto, é aconselhável definir `hideRegisterLink` como `true` na [configuração do frontend](frontend-config.md).
+A página de registro acessível a partir da página de login não funciona em uma configuração de múltiplas árvores, uma vez que uma árvore precisa ser especificada para o registro. Assim, é aconselhável definir `hideRegisterLink` como `true` na [configuração do frontend](frontend-config.md).

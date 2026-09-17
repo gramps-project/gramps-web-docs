@@ -2,13 +2,16 @@
 
 Por defecto, Gramps utiliza una base de datos SQLite basada en archivos para almacenar el árbol genealógico. Esto funciona perfectamente bien para Gramps Web y se recomienda para la mayoría de los usuarios. Sin embargo, a partir de la versión 0.3.0 de la API de Gramps Web, también se admite un servidor PostgreSQL con un solo árbol genealógico por base de datos, impulsado por el [Complemento de PostgreSQL de Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL). Desde la [versión 1.0.0](https://github.com/gramps-project/gramps-web-api/releases/tag/v1.0.0), también se admite el Complemento SharedPostgreSQL, que permite alojar múltiples árboles genealógicos en una sola base de datos, lo cual es particularmente útil cuando se utiliza junto con el [soporte para múltiples árboles](multi-tree.md) de la API de Gramps Web.
 
+!!! warning "Backend de PostgreSQL obsoleto"
+    El soporte para el backend de PostgreSQL (un árbol genealógico por base de datos) se eliminará en una futura versión de la API de Gramps Web, ya que no es compatible con el alojamiento de múltiples árboles. Los backends SharedPostgreSQL y SQLite seguirán siendo totalmente compatibles. Para nuevas instalaciones, utilice SharedPostgreSQL.
+
 ## Configuración del servidor PostgreSQL
 
-Si deseas configurar una nueva base de datos para usar con el Complemento PostgreSQL, puedes seguir las [instrucciones en la Wiki de Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) para configurar el servidor.
+Si desea configurar una nueva base de datos para usar con el Complemento PostgreSQL, puede seguir las [instrucciones en la Wiki de Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) para configurar el servidor.
 
-Alternativamente, también puedes usar Docker Compose para ejecutar el servidor PostgreSQL en un contenedor en el mismo host de Docker que Gramps Web.
+Alternativamente, también puede usar Docker Compose para ejecutar el servidor PostgreSQL en un contenedor en el mismo host de Docker que Gramps Web.
 
-Usar un PostgreSQL en contenedor con Gramps solo se complica por el hecho de que las imágenes predeterminadas de PostgreSQL no tienen locales instalados, que son necesarios para la colación localizada de objetos en Gramps. La opción más fácil es usar la imagen `gramps-postgres` publicada en [este repositorio](https://github.com/DavidMStraub/gramps-postgres-docker/). Para usarla, agrega la siguiente sección a tu `docker-compose.yml`:
+Usar un PostgreSQL en contenedor con Gramps solo se complica por el hecho de que las imágenes de PostgreSQL predeterminadas no tienen locales instalados, que son necesarios para la colación localizada de objetos en Gramps. La opción más sencilla es usar la imagen `gramps-postgres` publicada en [este repositorio](https://github.com/DavidMStraub/gramps-postgres-docker/). Para usarla, agregue la siguiente sección a su `docker-compose.yml`:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -20,13 +23,13 @@ Usar un PostgreSQL en contenedor con Gramps solo se complica por el hecho de que
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-y también agrega `postgres_data:` como clave bajo la sección `volumes:` de este archivo YAML. Esta imagen contiene una base de datos separada para los datos genealógicos de Gramps y para la base de datos de usuarios de Gramps; cada una puede tener contraseñas separadas.
+y también agregue `postgres_data:` como clave bajo la sección `volumes:` de este archivo YAML. Esta imagen contiene una base de datos separada para los datos genealógicos de Gramps y para la base de datos de usuarios de Gramps; cada una puede tener contraseñas separadas.
 
 ## Importando un árbol genealógico de Gramps
 
-Nuevamente, si has configurado el servidor PostgreSQL tú mismo, puedes seguir las [instrucciones en la Wiki de Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) para importar un árbol genealógico en la base de datos.
+Nuevamente, si ha configurado el servidor PostgreSQL usted mismo, puede seguir las [instrucciones en la Wiki de Gramps](https://gramps-project.org/wiki/index.php/Addon:PostgreSQL) para importar un árbol genealógico en la base de datos.
 
-Alternativamente, si has seguido las instrucciones de Docker Compose anteriores, puedes usar el siguiente comando para importar un archivo XML de Gramps ubicado en tu host de Docker:
+Alternativamente, si ha seguido las instrucciones de Docker Compose anteriores, puede usar el siguiente comando para importar un archivo XML de Gramps ubicado en su host de Docker:
 
 ```bash
 docker compose run --entrypoint "" grampsweb \
@@ -39,13 +42,13 @@ docker compose run --entrypoint "" grampsweb \
     --username=gramps --password=postgres_password_gramps
 ```
 
-## Configurando la API Web para usar con la base de datos
+## Configurando la API Web para su uso con la base de datos
 
-Para configurar la API Web para usar con la base de datos PostgreSQL, agrega lo siguiente bajo la clave `environment:` del servicio `grampsweb` en `docker-compose.yml`:
+Para configurar la API Web para su uso con la base de datos PostgreSQL, agregue lo siguiente bajo la clave `environment:` del servicio `grampsweb` en `docker-compose.yml`:
 
 ```yaml
       # el complemento de PostgreSQL asume que el nombre del árbol es
-      # igual al nombre de la base de datos y aquí se usa el nombre de
+      # igual al nombre de la base de datos y aquí se utiliza el nombre de
       # base de datos predeterminado de la imagen de PostgreSQL
       GRAMPSWEB_TREE: postgres
       # Las credenciales deben coincidir con las utilizadas para
@@ -56,13 +59,13 @@ Para configurar la API Web para usar con la base de datos PostgreSQL, agrega lo 
 
 ## Usando una base de datos PostgreSQL compartida en una instalación de múltiples árboles
 
-Al usar una [configuración de múltiples árboles](multi-tree.md), el complemento SharedPostgreSQL es una opción conveniente para alojar todos los árboles, incluidos los recién creados a través de la API, en una sola base de datos PostgreSQL sin comprometer la privacidad o la seguridad.
+Al usar una [configuración de múltiples árboles](multi-tree.md), el complemento SharedPostgreSQL es una opción conveniente para alojar todos los árboles, también los recién creados a través de la API, en una sola base de datos PostgreSQL sin comprometer la privacidad o la seguridad.
 
-Para lograr esto, configura un contenedor basado en la imagen `gramps-postgres` como se describió anteriormente y simplemente establece la opción de configuración `NEW_DB_BACKEND` en `sharedpostgresql`, por ejemplo, a través de la variable de entorno `GRAMPSWEB_NEW_DB_BACKEND`.
+Para lograr esto, configure un contenedor basado en la imagen `gramps-postgres` como se describió anteriormente y simplemente establezca la opción de configuración `NEW_DB_BACKEND` en `sharedpostgresql`, por ejemplo, a través de la variable de entorno `GRAMPSWEB_NEW_DB_BACKEND`.
 
 ## Usando una base de datos PostgreSQL para la base de datos de usuarios
 
-Independientemente de qué backend de base de datos se use para los datos genealógicos, la base de datos de usuarios puede ser alojada en una base de datos PostgreSQL proporcionando una URL de base de datos apropiada. La imagen de Docker `gramps-postgres` mencionada anteriormente contiene una base de datos separada `grampswebuser` que se puede usar para este propósito. En ese caso, el valor apropiado para la opción de configuración `USER_DB_URI` sería
+Independientemente de qué backend de base de datos se utilice para los datos genealógicos, la base de datos de usuarios puede ser alojada en una base de datos PostgreSQL proporcionando una URL de base de datos apropiada. La imagen de Docker `gramps-postgres` mencionada anteriormente contiene una base de datos separada `grampswebuser` que se puede utilizar para este propósito. En ese caso, el valor apropiado para la opción de configuración `USER_DB_URI` sería
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
@@ -76,11 +79,11 @@ postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 
 ## Problemas
 
-En caso de problemas, por favor monitorea la salida de registro de Gramps Web y del servidor PostgreSQL. En el caso de Docker, esto se logra con
+En caso de problemas, por favor monitoree la salida de registro de Gramps Web y del servidor PostgreSQL. En el caso de Docker, esto se logra con
 
 ```
 docker compose logs grampsweb
-docker compose logs postgres_grampsweb
+docker compose logs postgres_gramps
 ```
 
-Si sospechas que hay un problema con Gramps Web (o la documentación), por favor reporta un problema [en Github](https://github.com/gramps-project/gramps-web-api/issues).
+Si sospecha que hay un problema con Gramps Web (o la documentación), por favor presente un problema [en Github](https://github.com/gramps-project/gramps-web-api/issues).

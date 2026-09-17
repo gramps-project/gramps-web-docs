@@ -1,8 +1,8 @@
 # Configuración para alojar múltiples árboles
 
-Por defecto, Gramps Web solo permite acceder a una única base de datos de árbol familiar (“árbol”), especificada en el archivo de configuración.
+Por defecto, Gramps Web solo permite acceder a una única base de datos de árbol genealógico (“árbol”), especificada en el archivo de configuración.
 
-Sin embargo, a partir de la versión 0.7.0 del backend de la API de Gramps Web, también es posible servir múltiples árboles desde una única instalación. No obstante, cada usuario está (actualmente) vinculado a un solo árbol, por lo que esta configuración no es adecuada para compartir árboles entre usuarios, sino para alojar múltiples instancias aisladas de Gramps Web.
+Sin embargo, a partir de la versión 0.7.0 del backend de la API de Gramps Web, también es posible servir múltiples árboles desde una única instalación. Sin embargo, cada usuario está (actualmente) vinculado a un solo árbol, por lo que esta configuración no es adecuada para compartir árboles entre usuarios, sino para alojar múltiples instancias aisladas de Gramps Web.
 
 ## Habilitar soporte para múltiples árboles
 
@@ -18,25 +18,25 @@ Esto hará que todos los árboles en el directorio de la base de datos de Gramps
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Además, debes establecer la opción de configuración `MEDIA_PREFIX_TREE` en `True` para asegurarte de que los archivos multimedia se almacenen en subcarpetas separadas. ¡De lo contrario, los usuarios podrán acceder a archivos multimedia que pertenecen a un árbol para el cual no tienen permiso!
+Además, debes establecer la opción de configuración `MEDIA_PREFIX_TREE` en `True` para asegurarte de que los archivos multimedia se almacenen en subcarpetas separadas. ¡De lo contrario, los usuarios pueden acceder a archivos multimedia que pertenecen a un árbol para el cual no tienen permiso!
 
 ## Agregar una cuenta de usuario a un árbol específico
 
-Para agregar un usuario a un árbol específico, simplemente añade la opción de línea de comando `--tree TREEID` al comando de agregar usuario. También puedes hacer un POST al endpoint `/users/` con la propiedad `tree` establecida en la carga útil JSON.
+Para agregar un usuario a un árbol específico, simplemente agrega la opción de línea de comandos `--tree TREEID` al comando de agregar usuario. También puedes hacer un POST al endpoint `/users/` con la propiedad `tree` establecida en la carga útil JSON.
 
 Los nombres de usuario deben ser únicos en *todos* los árboles. Las direcciones de correo electrónico no tienen que ser únicas (desde la API de Gramps Web 3.22), por lo que la misma persona puede, por ejemplo, tener cuentas en varios árboles utilizando una única dirección de correo electrónico.
 
 ## Crear un nuevo árbol
 
-Para crear un nuevo árbol, se recomienda hacer un POST al endpoint `/trees/` en lugar de usar la CLI de Gramps. Esto utilizará un UUIDv4 como ID de árbol, lo que proporciona una seguridad adicional ya que el nombre no puede ser adivinado. Actualmente, solo se admite SQLite para los árboles recién creados.
+Para crear un nuevo árbol, se recomienda hacer un POST al endpoint `/trees/` en lugar de usar la CLI de Gramps. Esto utilizará un UUIDv4 como ID de árbol, lo que proporciona una seguridad adicional ya que el nombre no puede ser adivinado. Los árboles recién creados utilizan el backend de base de datos establecido en la opción de configuración `NEW_DB_BACKEND`: SQLite (el predeterminado) o SharedPostgreSQL. Consulta [Usando una base de datos PostgreSQL](postgres.md) para más detalles.
 
 ## Autorizar
 
-Para autorizar (obtener un token), solo son necesarios el nombre de usuario y la contraseña, como en el modo de un solo árbol, ya que la ID del árbol es conocida para cada usuario, por lo que no es necesario proporcionarla.
+Para autorizar (obtener un token), solo se necesita el nombre de usuario y la contraseña, como en el modo de un solo árbol, ya que la ID del árbol es conocida para cada usuario, por lo que no es necesario proporcionarla.
 
 ## Migrar archivos multimedia existentes
 
-Si deseas migrar una instancia existente de Gramps Web a soporte para múltiples árboles y estás utilizando archivos multimedia locales, simplemente puedes moverlos a una subcarpeta de la ubicación original con la ID del árbol como nombre.
+Si deseas migrar una instancia existente de Gramps Web a soporte de múltiples árboles y estás utilizando archivos multimedia locales, simplemente puedes moverlos a una subcarpeta de la ubicación original con la ID del árbol como nombre.
 
 Si estás utilizando archivos multimedia alojados en S3, puedes usar el script proporcionado en el directorio `scripts` del repositorio `gramps-web-api`:
 
