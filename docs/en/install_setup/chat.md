@@ -156,12 +156,24 @@ environment:
 
 ### Using a local LLM via Ollama
 
-[Ollama](https://ollama.com/) is a convenient way to run LLMs locally. Please consult the Ollama documentation for details. Please note that LLMs require significant computational resources and all but the smallest models will probably be too slow without GPU support. You can try whether [`tinyllama`](https://ollama.com/library/tinyllama) meets you needs. If not, try one of the larger models. Please share any experience with the community!
+[Ollama](https://ollama.com/) is a convenient way to run LLMs locally. Please consult the Ollama documentation for details. Please note that LLMs require significant computational resources and all but the smallest models will probably be too slow without GPU support. Since the assistant relies on tool calling, choose a model that supports tools, such as [`qwen2.5`](https://ollama.com/library/qwen2.5). Start with a small variant like `qwen2.5:7b` and try a larger one if the answers are not good enough. Please share any experience with the community!
 
-When deploying Gramps Web with Docker Compose, you can add an Ollama service
+When deploying Gramps Web with Docker Compose, you can add an Ollama service and point Gramps Web to it:
 
 ```yaml
 services:
+  grampsweb: &grampsweb
+    # ... existing config ...
+    environment:
+      GRAMPSWEB_LLM_MODEL: ollama:qwen2.5:7b
+      GRAMPSWEB_LLM_BASE_URL: http://ollama:11434/v1/
+
+  grampsweb_celery: &grampsweb_celery
+    # ... existing config ...
+    environment:
+      GRAMPSWEB_LLM_MODEL: ollama:qwen2.5:7b
+      GRAMPSWEB_LLM_BASE_URL: http://ollama:11434/v1/
+
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -171,10 +183,21 @@ services:
       - ollama_data:/root/.ollama
 
 volumes:
-    ollama_data:
+  ollama_data:
 ```
 
-and then set the `LLM_BASE_URL` configuration parameter to `http://ollama:11434/v1`. Set `LLM_MODEL` to a model supported by Ollama, and pull it down in your container with `ollama pull <model>`.  Finally, set `OPENAI_API_KEY` to `ollama`.
+After starting the services, pull the model into Ollama:
+
+```bash
+docker compose exec ollama ollama pull qwen2.5:7b
+```
+
+A few things to note:
+
+- Set `LLM_MODEL` to the Ollama model name, including its tag (the part after the colon, e.g. `7b`), prefixed with `ollama:`. The prefix makes Pydantic AI use its Ollama-specific settings for the model, which is the recommended setup.
+- `LLM_BASE_URL` must end in `/v1/`, e.g. `http://ollama:11434/v1/`.
+- With the `ollama:` prefix, neither `OPENAI_API_KEY` nor the `OLLAMA_BASE_URL` environment variable is needed. If `LLM_BASE_URL` is not set, Gramps Web falls back to `OLLAMA_BASE_URL`.
+- Alternatively, you can leave out the prefix (e.g. `LLM_MODEL: qwen2.5:7b`) and use Ollama through its generic OpenAI-compatible API. In this case, you also have to set the `OPENAI_API_KEY` environment variable to `ollama` (any non-empty value works).
 
 To troubleshoot problems with Ollama, you can enable debug logging by setting environment variable `OLLAMA_DEBUG=1` in the Ollama service environment.
 
