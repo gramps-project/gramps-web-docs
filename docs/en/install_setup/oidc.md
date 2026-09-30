@@ -47,6 +47,23 @@ Key | Description
 `OIDC_NAME` | Custom display name (optional, defaults to "OIDC")
 `OIDC_SCOPES` | OAuth scopes (optional, defaults to "openid email profile")
 `OIDC_USERNAME_CLAIM` | Claim used to generate the username (optional, defaults to "preferred_username")
+`OIDC_PKCE` | Whether to use PKCE, see [PKCE](#pkce) (optional, enabled automatically if the provider supports it)
+
+### PKCE
+
+Gramps Web supports [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, `S256` method) for the authorization code flow. Some identity providers, such as Pocket ID, can be configured to *require* PKCE for a client, and refuse logins that don't use it.
+
+Whether PKCE is used is decided at login as follows:
+
+- If `OIDC_PKCE` is set to `True`, PKCE is used.
+- If `OIDC_PKCE` is set to `False`, PKCE is not used, even if the provider supports it.
+- If `OIDC_PKCE` is not set, PKCE is used if the provider's discovery document (`/.well-known/openid-configuration`) lists `S256` in `code_challenge_methods_supported`, and not used otherwise.
+
+For most setups you don't need to set anything. Set `OIDC_PKCE=True` if your provider requires PKCE but doesn't advertise `S256` in its discovery document, and `OIDC_PKCE=False` if your provider advertises `S256` but mishandles it.
+
+For the built-in providers, the corresponding options are `OIDC_GOOGLE_PKCE` and `OIDC_MICROSOFT_PKCE`.
+
+The PKCE code verifier is kept in the user's session between the redirect to the provider and the callback, so this requires no change to the redirect URIs.
 
 ### Multi-Tree Setups
 
@@ -140,6 +157,51 @@ Gramps Web supports Single Sign-Out (SSO logout) for OIDC providers. `GET /api/o
 !!! warning "Tokens are not revoked on logout"
     Logging out only ends the browser session; there is currently no way to revoke a Gramps Web token that has already been issued. Tokens stay valid until they expire (`JWT_ACCESS_TOKEN_EXPIRES`, default 15 minutes for access tokens), regardless of whether the user has since logged out at Gramps Web or at the identity provider.
 
+## Troubleshooting
+
+Start at the point where login stops and follow the branch. Gramps Web logs the reason for a failed callback (look for `OIDC callback error for provider` in the server log), which is usually more specific than the message shown in the browser.
+
+**1. Is the login button missing?**
+
+- Check `<BASE_URL>/api/oidc/config/`. If `enabled` is `false` or `providers` is empty, OIDC is not configured: `OIDC_ENABLED` must be `True`, and a custom provider needs both `OIDC_ISSUER` and `OIDC_CLIENT_ID`.
+- A built-in provider (Google, Microsoft) is only registered if both its client ID and its client secret are set.
+- Look in the server log at startup for `Could not load discovery document`. This means the server could not reach `<issuer>/.well-known/openid-configuration` (or `OIDC_OPENID_CONFIG_URL`). It retries on first use, but the Gramps Web container must be able to resolve and reach the issuer URL itself, not just your browser.
+
+**2. Does the browser get an error right after being sent to the provider?**
+
+The error is shown by the identity provider, before you log in.
+
+- *"redirect URI mismatch"* (or similar): the redirect URI registered at the provider must match exactly, including scheme, host, port and provider ID. See [Required Redirect URIs](#required-redirect-uris). Note that it is built from `BASE_URL`, so a wrong `BASE_URL` gives a wrong redirect URI.
+- *A PKCE error* (for example `invalid_request`, "code challenge required", or a missing `code_challenge` parameter): the provider requires PKCE but Gramps Web did not send it. Go to [the PKCE branch](#pkce-branch) below.
+
+**3. Does the provider accept the login but Gramps Web then shows an error?**
+
+- *`mismatching_state`, or the error mentions the session or state*: the browser did not send back the session cookie that Gramps Web set when the login started. This cookie also carries the PKCE code verifier. Make sure that the address in the browser matches `BASE_URL` (same scheme and host), that a reverse proxy passes cookies and the original host through, and that the login is started and completed in the same browser tab or window.
+- *`OIDC authentication failed for <provider>` (HTTP 401)*: check the server log for the underlying reason. Common causes are a wrong client secret, an issuer URL that does not match the `iss` claim of the tokens, and the provider returning an error to the callback (for example PKCE, see below).
+- *Too many attempts*: the login and callback endpoints are rate limited (5 requests per minute). Wait a minute and retry.
+
+**4. Does login succeed but you see "Account Under Review", or can't do anything?**
+
+New accounts are created disabled unless role mapping assigns a role. See [First Login and Bootstrapping](#first-login-and-bootstrapping) and [Role Mapping Behavior](#role-mapping-behavior). An administrator can also activate the account under Settings > Administration > Manage users.
+
+### PKCE branch
+
+Gramps Web decides whether to use PKCE when a login starts (see [PKCE](#pkce)). To find out what happened for your setup, work through these questions in order:
+
+1. **Is `OIDC_PKCE` set?** (For built-in providers, `OIDC_GOOGLE_PKCE` or `OIDC_MICROSOFT_PKCE`.)
+    - `True`: PKCE is used. Skip to question 3.
+    - `False`: PKCE is deliberately off, and the provider's discovery document is ignored. If your provider requires PKCE, remove the setting or set it to `True`.
+    - Not set: continue with question 2.
+2. **Does the discovery document list `S256`?** Open `<issuer>/.well-known/openid-configuration` and look for `S256` in `code_challenge_methods_supported`.
+    - Yes: PKCE is used automatically. Continue with question 3.
+    - No, or the field is missing: PKCE is **not** used. Set `OIDC_PKCE=True` if your provider requires it. Also check the server log for `Could not check the provider for PKCE support`, which means the discovery document could not be fetched and PKCE was therefore left off.
+3. **Was PKCE really sent?** Start a login and look at the address of the provider's login page (or the first redirect in your browser's network tab). It should contain `code_challenge=` and `code_challenge_method=S256`.
+    - Present, but the login still fails at the callback: the provider rejected the code verifier. The session cookie may have been lost between the redirect and the callback (see branch 3 above), or the provider does not support `S256`, in which case set `OIDC_PKCE=False` if the provider does not require PKCE.
+    - Absent: the settings above were not applied. Check that the environment variable has the right prefix (for example `GRAMPSWEB_OIDC_PKCE` in Docker), restart the server, and look at the configuration again.
+
+!!! note
+    With PKCE enabled at the provider as *optional*, or not enabled at all, logins work whether or not Gramps Web sends a challenge. Only providers (or clients) configured to *require* PKCE make this setting matter.
+
 ## Example Configurations
 
 ### Custom OIDC Provider (Keycloak)
@@ -211,6 +273,18 @@ OIDC_GOOGLE_CLIENT_SECRET="your-google-client-secret"
 # Microsoft OAuth
 OIDC_MICROSOFT_CLIENT_ID="your-microsoft-client-id"
 OIDC_MICROSOFT_CLIENT_SECRET="your-microsoft-client-secret"
+```
+
+### Pocket ID
+
+Create an OIDC client in Pocket ID with the redirect URI `<BASE_URL>/api/oidc/callback/custom` (see [Required Redirect URIs](#required-redirect-uris)). If you enable "Require PKCE" for the client, no additional Gramps Web configuration is needed, since Pocket ID advertises PKCE support in its discovery document. Then configure:
+
+```
+GRAMPSWEB_OIDC_ENABLED=True
+GRAMPSWEB_OIDC_ISSUER=https://id.example.com
+GRAMPSWEB_OIDC_CLIENT_ID=<client id>
+GRAMPSWEB_OIDC_CLIENT_SECRET=<client secret>
+GRAMPSWEB_OIDC_NAME=Pocket ID
 ```
 
 ### Authelia
