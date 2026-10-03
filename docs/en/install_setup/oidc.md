@@ -57,7 +57,7 @@ Whether PKCE is used is decided at login as follows:
 
 - If `OIDC_PKCE` is set to `True`, PKCE is used.
 - If `OIDC_PKCE` is set to `False`, PKCE is not used, even if the provider supports it.
-- If `OIDC_PKCE` is not set, PKCE is used if the provider's discovery document (`/.well-known/openid-configuration`) lists `S256` in `code_challenge_methods_supported`, and not used otherwise.
+- If `OIDC_PKCE` is not set, or set but empty, PKCE is used if the provider's discovery document (`/.well-known/openid-configuration`) lists `S256` in `code_challenge_methods_supported`, and not used otherwise.
 
 For most setups you don't need to set anything. Set `OIDC_PKCE` to `True` if your provider requires PKCE but doesn't advertise `S256` in its discovery document, and to `False` if your provider advertises `S256` but mishandles it. As environment variables, booleans must be lowercase (`GRAMPSWEB_OIDC_PKCE=true`), see [Configuration](configuration.md).
 
@@ -191,7 +191,7 @@ Gramps Web decides whether to use PKCE when a login starts (see [PKCE](#pkce)). 
 1. **Is `OIDC_PKCE` set?** (For built-in providers, `OIDC_GOOGLE_PKCE` or `OIDC_MICROSOFT_PKCE`.)
     - `True`: PKCE is used. Skip to question 3.
     - `False`: PKCE is deliberately off, and the provider's discovery document is ignored. If your provider requires PKCE, remove the setting or set it to `True`.
-    - Not set: continue with question 2.
+    - Not set, or empty: continue with question 2.
 2. **Does the discovery document list `S256`?** Open `<issuer>/.well-known/openid-configuration` and look for `S256` in `code_challenge_methods_supported`.
     - Yes: PKCE is used automatically. Continue with question 3.
     - No, or the field is missing: PKCE is **not** used. Set `OIDC_PKCE` to `True` if your provider requires it. Also check the server log for `Could not check the provider for PKCE support`, which means the discovery document could not be fetched and PKCE was therefore left off.
