@@ -121,6 +121,7 @@ Key | Description
 `OIDC_SCOPES` | OAuth scopes. Defaults to "openid email profile"
 `OIDC_USERNAME_CLAIM` | The claim to use for the username. Defaults to "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Optional: URL to the OpenID Connect configuration endpoint (if not using standard `/.well-known/openid-configuration`)
+`OIDC_PKCE` | Boolean, whether to use PKCE. If unset, PKCE is used when the provider's discovery document lists `S256`. See [PKCE](oidc.md#pkce)
 `OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
 `OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
 
@@ -134,6 +135,8 @@ Key | Description
 `OIDC_GOOGLE_CLIENT_SECRET` | Client secret for Google OAuth
 `OIDC_MICROSOFT_CLIENT_ID` | Client ID for Microsoft OAuth
 `OIDC_MICROSOFT_CLIENT_SECRET` | Client secret for Microsoft OAuth
+`OIDC_GOOGLE_PKCE` | Boolean, PKCE setting for Google, see [PKCE](oidc.md#pkce)
+`OIDC_MICROSOFT_PKCE` | Boolean, PKCE setting for Microsoft, see [PKCE](oidc.md#pkce)
 
 #### OIDC Role Mapping
 
