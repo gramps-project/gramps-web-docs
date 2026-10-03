@@ -59,7 +59,7 @@ Whether PKCE is used is decided at login as follows:
 - If `OIDC_PKCE` is set to `False`, PKCE is not used, even if the provider supports it.
 - If `OIDC_PKCE` is not set, PKCE is used if the provider's discovery document (`/.well-known/openid-configuration`) lists `S256` in `code_challenge_methods_supported`, and not used otherwise.
 
-For most setups you don't need to set anything. Set `OIDC_PKCE=True` if your provider requires PKCE but doesn't advertise `S256` in its discovery document, and `OIDC_PKCE=False` if your provider advertises `S256` but mishandles it.
+For most setups you don't need to set anything. Set `OIDC_PKCE` to `True` if your provider requires PKCE but doesn't advertise `S256` in its discovery document, and to `False` if your provider advertises `S256` but mishandles it. As environment variables, booleans must be lowercase (`GRAMPSWEB_OIDC_PKCE=true`), see [Configuration](configuration.md).
 
 For the built-in providers, the corresponding options are `OIDC_GOOGLE_PKCE` and `OIDC_MICROSOFT_PKCE`.
 
@@ -194,10 +194,10 @@ Gramps Web decides whether to use PKCE when a login starts (see [PKCE](#pkce)). 
     - Not set: continue with question 2.
 2. **Does the discovery document list `S256`?** Open `<issuer>/.well-known/openid-configuration` and look for `S256` in `code_challenge_methods_supported`.
     - Yes: PKCE is used automatically. Continue with question 3.
-    - No, or the field is missing: PKCE is **not** used. Set `OIDC_PKCE=True` if your provider requires it. Also check the server log for `Could not check the provider for PKCE support`, which means the discovery document could not be fetched and PKCE was therefore left off.
+    - No, or the field is missing: PKCE is **not** used. Set `OIDC_PKCE` to `True` if your provider requires it. Also check the server log for `Could not check the provider for PKCE support`, which means the discovery document could not be fetched and PKCE was therefore left off.
 3. **Was PKCE really sent?** Start a login and look at the address of the provider's login page (or the first redirect in your browser's network tab). It should contain `code_challenge=` and `code_challenge_method=S256`.
-    - Present, but the login still fails at the callback: the provider rejected the code verifier. The session cookie may have been lost between the redirect and the callback (see branch 3 above), or the provider does not support `S256`, in which case set `OIDC_PKCE=False` if the provider does not require PKCE.
-    - Absent: the settings above were not applied. Check that the environment variable has the right prefix (for example `GRAMPSWEB_OIDC_PKCE` in Docker), restart the server, and look at the configuration again.
+    - Present, but the login still fails at the callback: the provider rejected the code verifier. The session cookie may have been lost between the redirect and the callback (see branch 3 above), or the provider does not support `S256`, in which case set `OIDC_PKCE` to `False` if the provider does not require PKCE.
+    - Absent: the settings above were not applied. Check that the environment variable has the right prefix and a lowercase value (for example `GRAMPSWEB_OIDC_PKCE=true` in Docker; `True` is not read as a boolean), restart the server, and look at the configuration again.
 
 !!! note
     With PKCE enabled at the provider as *optional*, or not enabled at all, logins work whether or not Gramps Web sends a challenge. Only providers (or clients) configured to *require* PKCE make this setting matter.
