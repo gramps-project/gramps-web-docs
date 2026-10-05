@@ -51,7 +51,7 @@ Key | Description
 
 ### PKCE
 
-Gramps Web supports [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, `S256` method) for the authorization code flow. Some identity providers, such as Pocket ID, can be configured to *require* PKCE for a client, and refuse logins that don't use it.
+Since Gramps Web API 3.23, Gramps Web supports [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, `S256` method) for the authorization code flow. Some identity providers, such as Pocket ID, can be configured to *require* PKCE for a client, and refuse logins that don't use it. Older versions of Gramps Web API never use PKCE, so logins with such a client fail.
 
 Whether PKCE is used is decided at login as follows:
 
