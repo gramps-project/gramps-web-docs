@@ -31,6 +31,8 @@ Note that configuration options set via the environment take precedence over the
 !!! tip "Checking for deprecated options"
     Deprecated configuration options that your server still relies on – such as unprefixed environment variables, `SEARCH_INDEX_DIR`, or `EMAIL_USE_TLS` – are logged as warnings on startup. Since Gramps Web API 3.22, they are also listed, together with their replacement and the version in which support will be removed, at the top of the **System Information** page (accessible via the user icon in the top app bar) when you are logged in as an administrator.
 
+    The e-mail settings and the base URL that the first-run wizard of older versions stored in the database are listed there as well. Set them in your configuration to the stored values; the warning disappears once they match.
+
 ## Existing configuration settings
 The following configuration options exist.
 
