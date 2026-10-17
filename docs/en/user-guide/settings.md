@@ -21,6 +21,16 @@ Enter a new e-mail address and click **Submit** to update the address associated
 
 Enter your current password and a new password, then click **Submit**. If you have forgotten your current password, use the **Forgot password** link on the login page instead.
 
+### Linked sign-in methods
+
+If your server offers single sign-on (see [OIDC authentication](../install_setup/oidc.md)), you can link an account from a provider, such as Google or your organization's login, to your Gramps Web account. You can then sign in with that provider and land in your existing account, with your role and your edits. This section only appears when single sign-on is enabled and the server supports linking (Gramps Web API 3.24 and later).
+
+To link an account, click **Link with** and the provider's name, sign in at the provider, and you are taken back to your settings. If you haven't signed in recently, you are asked to sign in again first.
+
+A provider account can only be linked to one Gramps Web account. If you see "This sign-in is already linked to another account", it is linked elsewhere, for example to an account that was created when you first signed in with that provider. An administrator can delete that other account, after which you can link it to yours.
+
+To unlink an account, click **Unlink**. If it is your last linked sign-in method, you also need to enter your password, so that you can still sign in afterwards. If your account was created through single sign-on and you never set a password, use **Forgot password** on the login page to set one first (this needs the server to send e-mails). If the server only allows signing in through a provider, the last linked account can't be unlinked.
+
 ## Appearance
 
 Controls display preferences saved on your device.
