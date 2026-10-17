@@ -58,7 +58,7 @@ Key | Description
 `SEARCH_INDEX_DB_URI` | Database URL for the search index. Only `sqlite` or `postgresql` are allowed as backends. Defaults to `sqlite:///indexdir/search_index.db`, creating an SQLite file in the folder `indexdir` relative to the path where the script is run
 `SEARCH_INDEX_DIR` | **Deprecated** (use `SEARCH_INDEX_DB_URI` instead). Directory containing the search index. If set while `SEARCH_INDEX_DB_URI` is unset, the search index URL is derived as `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Path to serve static files from (e.g. a static web frontend)
-`BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct password reset links
+`BASE_URL` | Base URL where the API can be reached (e.g. `https://mygramps.mydomain.com/`). This is necessary e.g. to build correct password reset links. Web Push also requires a publicly reachable HTTPS URL; the default `http://localhost/` disables Web Push. When configuring this setting through the environment, use `GRAMPSWEB_BASE_URL`.
 `CORS_ORIGINS` | Origins where CORS requests are allowed from. By default, all are disallowed. Use `"*"` to allow requests from any domain.
 `EMAIL_HOST` | SMTP server host (e.g. for sending password reset e-mails)
 `EMAIL_PORT` | SMTP server port. defaults to 465
