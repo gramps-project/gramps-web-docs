@@ -16,6 +16,8 @@ Create a new file on the server named `docker-compose.yml` and insert the follow
 
 This will generate six named volumes to make sure that all relevant data will persist when restarting the container.
 
+Set `GRAMPSWEB_BASE_URL` to the address Gramps Web will be reached at, e.g. `https://gramps.mydomain.com`. It is used to build links in e-mails, such as password resets. To send e-mails, also add the e-mail settings described in the [configuration](configuration.md).
+
 !!! warning
     The above will make the API available on port 80 of the host machine **without SSL/TLS protection**. You can use this for local testing, but do not expose this directly to the internet, it is completely insecure!
 
