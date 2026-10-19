@@ -1,4 +1,4 @@
-There are two ways to add a new media file (an image, audio file, video file, or any other file):
+There are two ways to add a new media file (an image, audio file, video file, or any other file), and existing media files can be linked to new objects as they are created:
 
 ## Add a new standalone media file
 
@@ -21,6 +21,12 @@ The following object types in Gramps can have media objects attached: people, fa
 In the detail view of any object, click the blue edit button in the bottom right (if you do not see it, your user does not have edit permissions). Click on the "gallery" tab and click the blue + button.
 
 A dialog will open that offers the same fields as described in the previous section. Click "save" to upload the file, add a new media object, and link it to the viewed object.
+
+## Link existing media files when creating an object
+
+When you create a new person, family, event, place, source or citation, the form has a "Media" section. There you can select one or more existing media objects, which are linked to the new object when you save it.
+
+When you create a person together with their birth and death events, the selected media objects are linked to the person only, not to the events.
 
 ## Text recognition (OCR)
 

@@ -33,6 +33,12 @@ Shows the relationship path between two people. The selected person is one endpo
 
 A circular pedigree chart. Ancestors radiate outward from the selected person at the centre.
 
+## Moving to relatives and expanding branches
+
+In the Ancestor Tree and the Fan Chart, the selected person has a chevron button that opens a menu of their children. In the Descendant Tree, it opens a menu of their parents instead. Choosing a person from the menu centres the chart on them.
+
+In the Ancestor Tree, Descendant Tree and Hourglass Graph, people at the edge of the chart whose parents or children are not shown have a chevron on the side where their branch continues. Clicking it adds one more generation to that branch, while the selected person stays the same. This way, you can for example look at all grandparents and then follow just one line further back. Expanded branches are reset when you select another person or switch to a different chart.
+
 ## Navigation controls
 
 All chart types share a toolbar with the following buttons:
