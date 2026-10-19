@@ -34,13 +34,29 @@ You will need a domain name (or subdomain). If you own a domain, point it to the
 
 SSH into your droplet. You should be presented with the message "Welcome to the Gramps Web DigitalOcean 1-click app setup!". If this is not the case, wait a few minutes and try again (the installation is not yet finished).
 
-The setup script will ask you for the domain name (e.g. `mygrampswebinstance.duckdns.org`) and an e-mail address (needed for the Let's Encrypt certificate).
+The setup script will ask you for the domain name (e.g. `mygrampswebinstance.duckdns.org`) and an e-mail address (needed for the Let's Encrypt certificate). Optionally, it will also ask for the SMTP settings Gramps Web uses to send e-mails, e.g. for password resets; leave the SMTP host empty to skip this.
 
 When this is done, wait for the setup to be completed in the background
 
 ## Step 5: Launch Gramps Web
 
 Your Gramps Web instance should now be accessible at the root of your domain, with a valid SSL certificate, and it should be showing the first-run assistant.
+
+## Changing the configuration later
+
+The setup script stores the base URL and the e-mail settings in the file `/root/letsencrypt.env` as [configuration options](configuration.md) prefixed with `GRAMPSWEB_`, e.g.
+
+```
+GRAMPSWEB_EMAIL_HOST=smtp.example.com
+GRAMPSWEB_EMAIL_PORT=587
+GRAMPSWEB_EMAIL_USE_STARTTLS=true
+```
+
+To add or change settings, edit this file on the droplet and apply the change with
+
+```bash
+cd /opt/grampsweb && docker compose up -d
+```
 
 
 
