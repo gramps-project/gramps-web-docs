@@ -1,12 +1,12 @@
 # Sukupuu
 
-Sukupuu-sivu on saatavilla sivupalkista ja se näyttää interaktiivisia kaavioita valitun henkilön ympärillä. Viisi kaaviotyyppiä on saatavilla sivun yläosassa olevien välilehtien kautta.
+Sukupuu-sivu on saatavilla sivupalkista ja se näyttää interaktiivisia kaavioita valitun henkilön ympärillä. Viisi kaaviotyyppiä on saatavilla sivun yläreunassa olevien välilehtien kautta.
 
 ## Aloittavan henkilön valitseminen
 
-Kaikki kaaviot alkavat tällä hetkellä puussa valitusta henkilöstä (näkyy työkalupalkissa). Tällä hetkellä keskitetty henkilö on korostettu varjostuksella. Käytä **Aloitus henkilö** -painiketta palataksesi kotiin henkilöön tai **Takaisin** -painiketta palataksesi aiemmin katsottuun henkilöön. Napsauttamalla henkilön korttia missä tahansa kaaviossa keskitetään kaavio uudelleen kyseiseen henkilöön.
+Kaikki kaaviot alkavat puussa tällä hetkellä valitusta henkilöstä (näkyy työkalupalkissa). Tällä hetkellä keskitetty henkilö on korostettu varjoefektillä. Käytä **Koti henkilö** -painiketta palataksesi koti henkilöön, tai **Takaisin** -painiketta palataksesi aiemmin katsottuun henkilöön. Napsauttamalla henkilön korttia missä tahansa kaaviossa keskitetään kaavio uudelleen kyseiseen henkilöön.
 
-Jos koti henkilöä ei ole asetettu, sivu tarjoaa **Aseta koti henkilö** -painikkeen etsiäksesi ja valitaksesi yhden suoraan. Jos puussa ei vielä ole henkilöitä, Editor-roolin tai sitä korkeamman tason käyttäjät näkevät sen sijaan **Uusi henkilö** -painikkeen – ensimmäinen luotu henkilö tyhjään puuhun tulee automaattisesti koti henkilöksesi, joten kaavio näytetään heti.
+Jos koti henkilöä ei ole asetettu, sivu tarjoaa **Aseta koti henkilö** -painikkeen, jolla voit etsiä ja valita yhden suoraan. Jos puussa ei vielä ole yhtään henkilöä, käyttäjät, joilla on Toimittaja-rooli tai korkeampi, näkevät sen sijaan **Uusi henkilö** -painikkeen – ensimmäinen luotu henkilö tyhjään puuhun tulee automaattisesti koti henkilöksesi, joten kaavio näytetään heti.
 
 ## Kaaviotyypit
 
@@ -20,41 +20,47 @@ Näyttää valitun henkilön jälkeläiset – lapset, lapsenlapset ja niin edel
 
 ### Tiimalasikaavio
 
-Yhdistää esivanhemmat valitun henkilön ylle ja jälkeläiset alle yhteen näkymään.
+Yhdistää esivanhemmat ylhäällä ja jälkeläiset alhaalla valitun henkilön ympärille yhteen näkymään.
 
-### Suhteiden kaavio
+### Suhdekaavio
 
-Näyttää suhteiden polun kahden henkilön välillä. Valittu henkilö on yksi päätepiste; napsauta mitä tahansa muuta henkilöä kaaviossa asettaaksesi toisen päätepisteen ja näyttääksesi lyhyimmän suhteiden polun heidän välillään.
+Näyttää suhdepolun kahden henkilön välillä. Valittu henkilö on yksi päätepiste; napsauta mitä tahansa muuta henkilöä kaaviossa asettaaksesi toisen päätepisteen ja näyttääksesi lyhyimmän suhdepolun heidän välillään.
 
-!!! huomautus
-    Sama henkilö saattaa esiintyä useammin kuin kerran kaaviossa – esimerkiksi, kun joku on ollut naimisissa useita kertoja ja esiintyy useissa perhe-yksiköissä polun varrella. Tämä on tarkoituksellista, ei virhe.
+!!! note
+    Sama henkilö voi esiintyä useammin kuin kerran kaaviossa – esimerkiksi kun joku on ollut naimisissa useita kertoja ja esiintyy useissa perheyksiköissä polun varrella. Tämä on tarkoituksellista, ei virhe.
 
-### Tuulikaarikaavio
+### Tuulettimikaavio
 
 Pyöreä sukupuu-kaavio. Esivanhemmat säteilevät ulospäin valitun henkilön ympäriltä keskellä.
 
-## Navigointikontrollit
+## Siirtyminen sukulaisiin ja haarojen laajentaminen
 
-Kaikki kaaviotyypit jakavat työkalupalkin seuraavilla painikkeilla:
+Esivanhempien puussa ja tuulettimikaaviossa valitulla henkilöllä on nuolipainike, joka avaa heidän lastensa valikon. Jälkeläisten puussa se avaa sen sijaan heidän vanhempiensa valikon. Henkilön valitseminen valikosta keskittää kaavion heihin.
 
-- **Aloitus henkilö** – palaa kotiin henkilöön
+Esivanhempien puussa, jälkeläisten puussa ja tiimalasikaaviossa kaavion reunoilla olevilla henkilöillä, joiden vanhempia tai lapsia ei näytetä, on nuoli sivulla, josta heidän haaransa jatkuu. Napsauttamalla sitä lisätään yksi sukupolvi tuohon haaraan, samalla kun valittu henkilö pysyy samana. Tällä tavalla voit esimerkiksi tarkastella kaikkia isovanhempia ja sitten seurata vain yhtä linjaa pidemmälle taaksepäin. Laajennettuja haaroja palautetaan, kun valitset toisen henkilön tai vaihdat toiseen kaavioon.
+
+## Navigointiohjaimet
+
+Kaikki kaaviotyypit jakavat työkalupalkin, jossa on seuraavat painikkeet:
+
+- **Koti henkilö** – palaa koti henkilöön
 - **Takaisin** – palaa aiemmin keskitettyyn henkilöön
-- **Henkilön tiedot** – avaa nykyisen keskitetyn henkilön täydellinen profiilisivu
-- **Asetukset** – avaa dialogin kaaviokohtaisille näyttöasetuksille (katso alla)
+- **Henkilön tiedot** – avaa tällä hetkellä keskitetyn henkilön koko profiilisivun
+- **Asetukset** – avaa valintaikkunan kaaviokohtaisia näyttöasetuksia varten (katso alla)
 
 Kaikki kaaviot tukevat **pan** (napsauta ja vedä) ja **zoom** (vierityspyörä tai nipistys).
 
 ## Kaavioasetukset
 
-**Asetukset**-dialogi (rataskuvake työkalupalkissa) antaa sinun säätää seuraavia vaihtoehtoja kaaviotyypistä riippuen:
+**Asetukset**-valintaikkuna (rataskuvake työkalupalkissa) antaa sinun säätää seuraavia vaihtoehtoja kaaviotyypistä riippuen:
 
-- **Maksimi esivanhempien sukupuolet** – kuinka monta sukupolvea esivanhempia näytetään
-- **Maksimi jälkeläisten sukupuolet** – kuinka monta sukupolvea jälkeläisiä näytetään
-- **Maksimi erottelun aste** – Suhteiden kaaviolle, maksimi polun pituus, jota etsitään
-- **Maksimi näytettävien kuvien määrä** – rajoittaa kaaviossa näytettävien profiilikuvausten määrää suorituskyvyn vuoksi
-- **Nimen näyttömuoto** – ohjaa, miten nimet näkyvät henkilökorteissa
+- **Maksimi esivanhempien sukupolvet** – kuinka monta sukupolvea esivanhempia näytetään
+- **Maksimi jälkeläisten sukupolvet** – kuinka monta sukupolvea jälkeläisiä näytetään
+- **Maksimi erottelun aste** – Suhdekaaviolle, maksimipituus polulle, jota etsitään
+- **Maksimi näytettävien kuvien määrä** – rajoittaa kaaviossa näytettäviä profiilikuvia suorituskyvyn vuoksi
+- **Nimen näyttömuoto** – ohjaa, kuinka nimet näytetään henkilöiden korteissa
 
-Napsauta **Palauta** palauttaaksesi oletusasetukset tai **Sulje** soveltaaksesi muutoksiasi.
+Napsauta **Palauta** palauttaaksesi oletusasetukset tai **Sulje** soveltaaksesi muutoksia.
 
 Kaavioasetusten asetukset tallennetaan selaimen paikalliseen tallennustilaan, joten ne säilyvät istuntojen välillä samalla laitteella.
 
@@ -62,6 +68,6 @@ Kaavioasetusten asetukset tallennetaan selaimen paikalliseen tallennustilaan, jo
 
 Kaaviotyyppi, joka näytetään, kun avaat Sukupuu-sivun ensimmäisen kerran, voidaan määrittää [Käyttäjäasetuksissa](settings.md). Valitsemasi oletus koskee kaikkia laitteitasi.
 
-## Puun muokkaaminen
+## Puiden muokkaaminen
 
-Editor-roolin tai sitä korkeamman tason käyttäjät voivat lisätä ja linkittää henkilöitä suoraan Esivanhempien puusta. Katso [Sukupuun muokkaaminen](tree-edit.md) lisätietoja varten.
+Käyttäjät, joilla on Toimittaja-rooli tai korkeampi, voivat lisätä ja linkittää henkilöitä suoraan Esivanhempien puusta. Katso [Sukupuun muokkaaminen](tree-edit.md) lisätietoja varten.

@@ -1,4 +1,4 @@
-Ci sono due modi per aggiungere un nuovo file multimediale (un'immagine, un file audio, un file video o qualsiasi altro file):
+Ci sono due modi per aggiungere un nuovo file multimediale (un'immagine, un file audio, un file video o qualsiasi altro file), e i file multimediali esistenti possono essere collegati a nuovi oggetti man mano che vengono creati:
 
 ## Aggiungi un nuovo file multimediale autonomo
 
@@ -22,13 +22,19 @@ Nella vista dettagli di qualsiasi oggetto, fai clic sul pulsante blu di modifica
 
 Si aprirà una finestra di dialogo che offre gli stessi campi descritti nella sezione precedente. Fai clic su "salva" per caricare il file, aggiungere un nuovo oggetto multimediale e collegarlo all'oggetto visualizzato.
 
+## Collega file multimediali esistenti durante la creazione di un oggetto
+
+Quando crei una nuova persona, famiglia, evento, luogo, fonte o citazione, il modulo ha una sezione "Media". Lì puoi selezionare uno o più oggetti multimediali esistenti, che saranno collegati al nuovo oggetto quando lo salvi.
+
+Quando crei una persona insieme ai suoi eventi di nascita e morte, gli oggetti multimediali selezionati sono collegati solo alla persona, non agli eventi.
+
 ## Riconoscimento del testo (OCR)
 
-Se l'amministratore del server ha abilitato il supporto OCR, un pulsante "Riconoscimento del Testo" appare sotto l'immagine nella vista dettagli di un oggetto multimediale.
+Se l'amministratore del server ha abilitato il supporto OCR, appare un pulsante "Riconoscimento del Testo" sotto l'immagine nella vista dettagli di un oggetto multimediale.
 
-Fai clic su "Riconoscimento del Testo", scegli la lingua del testo mostrato nell'immagine, quindi fai clic su "Esegui". L'immagine viene elaborata con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e il testo riconosciuto viene visualizzato sotto.
+Fai clic su "Riconoscimento del Testo", scegli la lingua del testo mostrato nell'immagine, quindi fai clic su "Esegui". L'immagine viene elaborata con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e il testo riconosciuto viene visualizzato qui sotto.
 
 Se il tuo utente ha autorizzazioni di modifica, fai clic su "Salva come Nota" per creare una nuova nota (di tipo "Trascrizione") contenente il testo riconosciuto e collegarla all'oggetto multimediale.
 
-!!! consiglio
+!!! tip
     L'accuratezza dell'OCR dipende fortemente dalla qualità dell'immagine e dalla lingua selezionata. Se il risultato sembra errato, prova una lingua diversa – ad esempio, i documenti storici tedeschi spesso necessitano della variante Fraktur piuttosto che del tedesco standard.

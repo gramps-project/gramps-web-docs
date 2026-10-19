@@ -1,10 +1,10 @@
-Hay dos formas de agregar un nuevo archivo multimedia (una imagen, archivo de audio, archivo de video o cualquier otro archivo):
+Hay dos formas de agregar un nuevo archivo multimedia (una imagen, archivo de audio, archivo de video o cualquier otro archivo), y los archivos multimedia existentes se pueden vincular a nuevos objetos a medida que se crean:
 
 ## Agregar un nuevo archivo multimedia independiente
 
 Para agregar un archivo multimedia independiente, haz clic en el ícono + en la barra superior de la aplicación y selecciona "Objeto Multimedia".
 
-Haz clic en "seleccionar un archivo" para seleccionar un archivo de tu computadora. En un dispositivo móvil, al hacer clic en este botón se te dará la opción de tomar una foto directamente con la cámara de tu dispositivo.
+Haz clic en "seleccionar un archivo" para seleccionar un archivo de tu computadora. En un dispositivo móvil, al hacer clic en este botón, tendrás la opción de tomar una foto directamente con la cámara de tu dispositivo.
 
 Opcionalmente,
 
@@ -20,11 +20,17 @@ Los siguientes tipos de objetos en Gramps pueden tener objetos multimedia adjunt
 
 En la vista de detalles de cualquier objeto, haz clic en el botón azul de editar en la esquina inferior derecha (si no lo ves, tu usuario no tiene permisos de edición). Haz clic en la pestaña "galería" y haz clic en el botón azul +.
 
-Se abrirá un diálogo que ofrece los mismos campos que se describieron en la sección anterior. Haz clic en "guardar" para subir el archivo, agregar un nuevo objeto multimedia y vincularlo al objeto visualizado.
+Se abrirá un diálogo que ofrece los mismos campos que se describen en la sección anterior. Haz clic en "guardar" para subir el archivo, agregar un nuevo objeto multimedia y vincularlo al objeto visualizado.
+
+## Vincular archivos multimedia existentes al crear un objeto
+
+Cuando creas una nueva persona, familia, evento, lugar, fuente o cita, el formulario tiene una sección "Multimedia". Allí puedes seleccionar uno o más objetos multimedia existentes, que se vinculan al nuevo objeto cuando lo guardas.
+
+Cuando creas una persona junto con sus eventos de nacimiento y muerte, los objetos multimedia seleccionados se vinculan solo a la persona, no a los eventos.
 
 ## Reconocimiento de texto (OCR)
 
-Si el administrador del servidor ha habilitado el soporte de OCR, aparecerá un botón de "Reconocimiento de Texto" debajo de la imagen en la vista de detalles de un objeto multimedia.
+Si el administrador del servidor ha habilitado el soporte de OCR, aparecerá un botón "Reconocimiento de Texto" debajo de la imagen en la vista de detalles de un objeto multimedia.
 
 Haz clic en "Reconocimiento de Texto", elige el idioma del texto mostrado en la imagen y luego haz clic en "Ejecutar". La imagen se procesa con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) y el texto reconocido se muestra a continuación.
 
