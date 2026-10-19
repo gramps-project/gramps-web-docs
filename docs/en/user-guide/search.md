@@ -16,7 +16,10 @@ Below the search field, toggle buttons for each object type (People, Families, E
 
 ## Semantic search
 
-If the server administrator has enabled [semantic (AI-powered) search](../install_setup/configuration.md), a mode toggle appears in the top-right corner of the search page with two options:
+!!! warning "Deprecated"
+    Semantic search is deprecated and will be removed in Gramps Web API 3.25. The full-text search described above is not affected.
+
+If the server administrator has enabled [semantic (AI-powered) search](../install_setup/chat.md#semantic-search-deprecated), a mode toggle appears in the top-right corner of the search page with two options:
 
 - **Search** – standard full-text search (the default)
 - **Semantic** – AI-powered search that understands the meaning of your query rather than matching exact words

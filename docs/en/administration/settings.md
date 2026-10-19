@@ -44,7 +44,10 @@ Click **Update search index** to trigger a full rebuild. A progress indicator is
 
 ### Semantic search index
 
-If the server has [semantic (AI-powered) search enabled](../install_setup/configuration.md), an additional section appears with two actions:
+!!! warning "Deprecated"
+    Semantic search is deprecated and will be removed in Gramps Web API 3.25, together with this section. AI chat does not need it since Gramps Web API 3.24.
+
+If the server has [semantic (AI-powered) search enabled](../install_setup/chat.md#semantic-search-deprecated), an additional section appears with two actions:
 
 - **Regenerate semantic search index** – rebuilds the entire semantic index from scratch. This is computationally expensive and can take a long time.
 - **Update semantic search index** – performs an incremental update, adding only objects not yet indexed. Faster than a full rebuild.

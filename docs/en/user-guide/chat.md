@@ -15,11 +15,11 @@ The **Assistant** view in Gramps Web (if available in your installation, labelle
 To understand which types of question the assistant can answer, it is helpful to understand how it works below the hood:
 
 1. The user asks a question.
-2. The AI assistant can use multiple approaches to find answers:
-   - **Semantic Search**: Gramps Web identifies objects in your family tree that are most likely to contain relevant information. For instance, if you ask "What's the name of John Doe's children?", families with John Doe as father will be among the top results.
-   - **Tool Calling (Gramps Wev API v3.6.0+)**: The assistant can directly query your database using specialized tools to search, filter people/events/families/places by specific criteria, calculate relationships between individuals, and retrieve detailed information.
-3. Gramps Web feeds the question along with the retrieved information to a large language model to formulate an answer.
-4. The answer is displayed to you.
+2. The assistant queries your database directly using specialized tools: it searches the tree with the [full-text search](search.md), filters people/events/families/places by specific criteria, calculates relationships between individuals, and looks up complete records, including their notes.
+3. A large language model formulates an answer based on the records it has found.
+4. The answer is displayed to you, with links to the records it is based on.
+
+On servers running a Gramps Web API version older than 3.24, the assistant also relied on semantic search, which is being phased out.
 
 While the assistant is working, indicators show which tools it is currently using (e.g. searching people, looking up relationships) so you can follow along as it builds its answer. Longer-running questions are processed as background tasks – you can navigate away and come back, and progress is also reflected in [Notifications](notifications.md). Answers are formatted with Markdown (lists, emphasis, links, etc.) for easier reading.
 

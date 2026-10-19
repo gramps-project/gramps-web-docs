@@ -5,7 +5,7 @@ By default, Gramps Web stores each family tree in its own SQLite database file. 
 Alternatively, family trees can be hosted on a PostgreSQL server using the SharedPostgreSQL addon, which keeps all trees in a single database. This can make sense if you already run a PostgreSQL server and want to manage backups and monitoring there, or if you expect many users editing at the same time. PostgreSQL can also host the [user database](#using-a-postgresql-database-for-the-user-database) and the [search index](#using-a-postgresql-database-for-the-search-index), independently of where the family trees are stored.
 
 !!! warning "PostgreSQL addon deprecated"
-    The older PostgreSQL addon, which stores a single family tree per database, is deprecated and will no longer be supported in a future version of Gramps Web API. If you are using it, see [Moving a tree from the PostgreSQL addon to SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
+    The older PostgreSQL addon, which stores a single family tree per database, is deprecated since Gramps Web API 3.24 and will no longer be supported in Gramps Web API 4.0, because it is not compatible with hosting multiple trees, which becomes the default in that version. If you are using it, see [Moving a tree from the PostgreSQL addon to SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Setting up the PostgreSQL server
 

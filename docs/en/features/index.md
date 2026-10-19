@@ -83,7 +83,7 @@ On top of that, the historical vector maps created by the [OpenHistoricalMap](ht
 
 The full-text search engine covers all Gramps object types, including the content of text notes, and supports wildcards and logical operators.
 
-If your server has it enabled, **semantic search** answers natural-language queries like "farmer in Bavaria in the 19th century" by meaning rather than by exact words. For precise queries, the object list views offer an advanced filter mode based on the [Gramps Query Language](../user-guide/gql.md), alongside quick filters by text, tag, and privacy.
+For precise queries, the object list views offer an advanced filter mode based on the [Gramps Query Language](../user-guide/gql.md), alongside quick filters by text, tag, and privacy.
 
 From any person's page, [External Search](../user-guide/external-search.md) opens a pre-filled search on FamilySearch, Ancestry, CompGen and other sites – and you can add your own.
 
