@@ -15,24 +15,24 @@ O topo da seção mostra o uso atual em relação a quaisquer limites configurad
 - **Pessoas** – o número de objetos de pessoa na árvore em comparação com o máximo configurado (∞ se ilimitado)
 - **Armazenamento de mídia** – tamanho total dos arquivos de mídia carregados em comparação com a cota de armazenamento configurada (∞ se ilimitado)
 
-As cotas são definidas pelo administrador do servidor; consulte [Configuração do servidor](../install_setup/configuration.md) para mais detalhes.
+As cotas são definidas pelo administrador do servidor; veja [Configuração do servidor](../install_setup/configuration.md) para detalhes.
 
 ### Importar dados
 
-A seção de importação permite que você carregue um arquivo de árvore genealógica ou um arquivo de mídia. Consulte [Importar dados](import.md) para instruções completas.
+A seção de importação permite que você carregue um arquivo de árvore genealógica ou um arquivo de mídia. Veja [Importar dados](import.md) para instruções completas.
 
-### Status dos arquivos de mídia
+### Status do arquivo de mídia
 
 Esta seção mostra:
 
-- O número total de objetos de mídia na árvore e se algum está sem um checksum
+- O número total de objetos de mídia na árvore e se algum está sem uma soma de verificação
 - O número de objetos de mídia cujo arquivo associado está ausente do servidor
 
-Uma marca de verificação verde indica que tudo está em ordem. Se problemas forem detectados, links para os objetos afetados são exibidos. Checksums ausentes geralmente ocorrem quando os dados foram importados de um formato como GEDCOM que inclui referências de mídia, mas não os arquivos reais. Os arquivos ausentes podem ser carregados através do recurso de importação de arquivo de mídia.
+Um sinal verde indica que tudo está em ordem. Se problemas forem detectados, links para os objetos afetados são exibidos. Sombras de verificação ausentes normalmente ocorrem quando os dados foram importados de um formato como GEDCOM que inclui referências de mídia, mas não os arquivos reais. Os arquivos ausentes podem ser carregados através do recurso de importação de arquivo de mídia.
 
 ### Importar arquivo de mídia
 
-Permite o upload de um arquivo ZIP de arquivos de mídia para preencher arquivos ausentes. Consulte [Importar dados](import.md) para instruções completas.
+Permite o upload de um arquivo ZIP de arquivos de mídia para preencher arquivos ausentes. Veja [Importar dados](import.md) para instruções completas.
 
 ## Índice de pesquisa
 
@@ -44,52 +44,55 @@ Clique em **Atualizar índice de pesquisa** para acionar uma reconstrução comp
 
 ### Índice de pesquisa semântica
 
-Se o servidor tiver [pesquisa semântica (potencializada por IA) habilitada](../install_setup/configuration.md), uma seção adicional aparece com duas ações:
+!!! warning "Depreciado"
+    A pesquisa semântica está depreciada e será removida na API Gramps Web 3.25, juntamente com esta seção. O chat de IA não precisa dela, pois a API Gramps Web 3.24 já está disponível.
+
+Se o servidor tiver [pesquisa semântica (com IA) habilitada](../install_setup/chat.md#semantic-search-deprecated), uma seção adicional aparece com duas ações:
 
 - **Regenerar índice de pesquisa semântica** – reconstrói todo o índice semântico do zero. Isso é computacionalmente caro e pode levar muito tempo.
-- **Atualizar índice de pesquisa semântica** – realiza uma atualização incremental, adicionando apenas objetos ainda não indexados. Mais rápido do que uma reconstrução completa.
+- **Atualizar índice de pesquisa semântica** – realiza uma atualização incremental, adicionando apenas objetos que ainda não foram indexados. Mais rápido do que uma reconstrução completa.
 
-## Configurações da árvore
+## Configurações da Árvore
 
 ### Nome da Árvore Genealógica
 
 !!! note
-    Renomear a árvore só funciona em uma [configuração de múltiplas árvores](../install_setup/multi-tree.md) ou quando `TREE_ID` está explicitamente definido na [configuração do servidor](../install_setup/configuration.md). Em uma instalação padrão de árvore única sem `TREE_ID` definido, isso gerará um erro.
+    Renomear a árvore só funciona em uma [configuração de múltiplas árvores](../install_setup/multi-tree.md) ou quando `TREE_ID` é explicitamente definido na [configuração do servidor](../install_setup/configuration.md). Em uma instalação padrão de árvore única sem `TREE_ID` definido, isso gerará um erro.
 
-Isso permite alterar o nome do banco de dados subjacente da árvore genealógica Gramps. Insira um novo nome e clique em **Renomear** para aplicar.
+Isso permite alterar o nome do banco de dados da árvore genealógica Gramps subjacente. Digite um novo nome e clique em **Renomear** para aplicar.
 
 !!! tip
-    Se você só quiser mudar o nome exibido na barra do aplicativo sem renomear o banco de dados, use a configuração [Título do aplicativo](#app-title) em vez disso.
+    Se você apenas quiser mudar o nome exibido na barra do aplicativo sem renomear o banco de dados, use a configuração [Título do aplicativo](#app-title) em vez disso.
 
 ### Informações do Pesquisador
 
-Defina o nome, endereço e detalhes de contato do pesquisador principal. Essas informações estão embutidas nas exportações (por exemplo, arquivos GEDCOM).
+Defina o nome, endereço e detalhes de contato do pesquisador principal. Essas informações são incorporadas nas exportações (por exemplo, arquivos GEDCOM).
 
 ## Personalização
 
 ### Cores do tema
 
-Defina uma **cor primária** e uma **cor de destaque** personalizadas para a interface do Gramps Web. Essas cores são aplicadas a todos os usuários desta árvore e entram em vigor imediatamente após a gravação.
+Defina uma **cor primária** e uma **cor de destaque** personalizadas para a interface do Gramps Web. Essas cores são aplicadas a todos os usuários desta árvore e entram em vigor imediatamente após o salvamento.
 
-Use os seletores de cores para escolher cores, depois clique em **Salvar**. Clique em **Redefinir** para reverter aos padrões.
+Use os seletores de cores para escolher as cores, em seguida, clique em **Salvar**. Clique em **Redefinir** para voltar aos padrões.
 
 ### Título do aplicativo
 
-Defina um título personalizado para a aplicação. Se definido, isso substitui o nome da árvore genealógica na barra de título do navegador e na barra superior do aplicativo.
+Defina um título personalizado para o aplicativo. Se definido, isso substitui o nome da árvore genealógica na barra de título do navegador e na barra superior do aplicativo.
 
-Insira um título e clique em **Salvar**. Deixe em branco para usar o padrão (o nome da árvore genealógica).
+Digite um título e clique em **Salvar**. Deixe em branco para usar o padrão (o nome da árvore genealógica).
 
 ### Nota da página inicial
 
 Selecione um objeto **Nota** do Gramps para exibir na página inicial do painel. O conteúdo da nota é renderizado abaixo das colunas principais do painel e é visível para todos os usuários com acesso à árvore.
 
-Use o seletor de objetos para procurar e escolher uma nota, depois salve. Clique em **Remover** para limpar a nota atual da página inicial.
+Use o seletor de objetos para pesquisar e escolher uma nota, em seguida, salve. Clique em **Remover** para limpar a nota atual da página inicial.
 
 ### Imagem da página inicial
 
 Selecione um objeto **Mídia** do Gramps para exibir como uma imagem na página inicial do painel. Quando combinado com uma nota da página inicial, a imagem aparece ao lado do texto da nota. Sem uma nota, apenas a imagem é exibida.
 
-Use o seletor de objetos para procurar e escolher um objeto de mídia, depois salve. Clique em **Remover** para limpar a imagem atual da página inicial.
+Use o seletor de objetos para pesquisar e escolher um objeto de mídia, em seguida, salve. Clique em **Remover** para limpar a imagem atual da página inicial.
 
 ### Configurações de Exportação/Importação
 
@@ -102,25 +105,25 @@ As configurações em nível de árvore (título do aplicativo, cores do tema, n
 
 ### Verificar e Reparar Banco de Dados
 
-Esta ferramenta verifica o banco de dados do Gramps em busca de inconsistências internas e corrige as que pode – análogo à ferramenta [Verificar e Reparar Banco de Dados](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) no Gramps Desktop.
+Esta ferramenta verifica o banco de dados do Gramps em busca de inconsistências internas e corrige aquelas que pode – análogo à ferramenta [Verificar e Reparar Banco de Dados](https://www.gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database) no Gramps Desktop.
 
-Clique em **Verificar e Reparar** e aguarde o indicador de progresso completar. O resultado é exibido abaixo do botão:
+Clique em **Verificar e Reparar** e aguarde o indicador de progresso ser concluído. O resultado é exibido abaixo do botão:
 
 - Se nenhum erro for encontrado, uma mensagem de confirmação é exibida.
 - Se erros forem encontrados, um resumo das correções aplicadas é exibido.
 
-Execute esta ferramenta se você encontrar erros ou comportamentos inesperados que possam ser causados por inconsistências no banco de dados, como relacionamentos ausentes entre objetos.
+Execute esta ferramenta se você encontrar erros ou comportamentos inesperados que podem ser causados por inconsistências no banco de dados, como relacionamentos ausentes entre objetos.
 
 ### Verificar os Dados
 
-Enquanto a [Verificar e Reparar Banco de Dados](#check-and-repair-database) procura por inconsistências *técnicas*, esta ferramenta procura por dados *implausíveis* – análogo à ferramenta [Verificar os Dados](https://gramps-project.org/wiki/index.php/Gramps_5.0_Wiki_Manual_-_Tools#Verify_the_Data) no Gramps Desktop. Ela relata coisas que não são impossíveis, mas são improváveis o suficiente para merecer uma segunda olhada, como uma mãe com 12 anos ou uma pessoa que viveu até os 130.
+Enquanto [Verificar e Reparar Banco de Dados](#check-and-repair-database) procura por inconsistências *técnicas*, esta ferramenta procura por dados *implausíveis* – análogo à ferramenta [Verificar os Dados](https://gramps-project.org/wiki/index.php/Gramps_5.0_Wiki_Manual_-_Tools#Verify_the_Data) no Gramps Desktop. Ela relata coisas que não são impossíveis, mas são improváveis o suficiente para merecer uma segunda olhada, como uma mãe com 12 anos ou uma pessoa que viveu até 130 anos.
 
 Em **Opções**, você pode ajustar os limites que os testes usam – idade máxima, idade mínima e máxima para casar ou ter filhos, número máximo de filhos, e assim por diante – assim como se deve estimar datas ausentes ou imprecisas e se deve relatar datas inválidas, como 31 de fevereiro.
 
 Clique em **Verificar os Dados** para começar. A verificação é executada como uma tarefa em segundo plano, e os resultados são listados em **Resultados da Verificação de Dados**. Nada é alterado por esta ferramenta: ela apenas relata o que encontra.
 
 !!! note
-    Um achado não é prova de um erro. Vidas longas e grandes diferenças de idade realmente ocorrem, então trate os resultados como uma lista de coisas a serem verificadas, em vez de uma lista de coisas a serem corrigidas.
+    Uma descoberta não é prova de um erro. Vidas longas e grandes diferenças de idade realmente ocorrem, então trate os resultados como uma lista de coisas a verificar, em vez de uma lista de coisas a corrigir.
 
 ## Etiquetas
 
@@ -128,17 +131,17 @@ Clique em **Verificar os Dados** para começar. A verificação é executada com
 
 Crie, renomeie, mude a cor e exclua [etiquetas](../user-guide/tags.md) para a árvore genealógica. As etiquetas são armazenadas no banco de dados do Gramps, compartilhadas entre todos os usuários e totalmente compatíveis com o Gramps Desktop.
 
-Clique em **Nova Etiqueta** para criar uma etiqueta. Use os controles ao lado de uma etiqueta existente para renomeá-la (ícone de lápis), mudar sua cor (seletor de cores) ou excluí-la (ícone de exclusão).
+Clique em **Nova Etiqueta** para criar uma etiqueta. Use os controles ao lado de uma etiqueta existente para renomeá-la (ícone de lápis), mudar sua cor (seletor de cores) ou excluí-la (ícone de excluir).
 
 !!! note
     Excluir uma etiqueta a remove de todos os objetos a que foi aplicada.
 
-Consulte [Etiquetas](../user-guide/tags.md) para saber como as etiquetas são usadas em todo o Gramps Web, incluindo as etiquetas especiais `Blog` e `ToDo`.
+Veja [Etiquetas](../user-guide/tags.md) para saber como as etiquetas são usadas em todo o Gramps Web, incluindo as etiquetas especiais `Blog` e `ToDo`.
 
 ## Zona de Perigo
 
 !!! danger
-    Ações na Zona de Perigo são **irreversíveis**. Faça um backup antes de prosseguir.
+    As ações na Zona de Perigo são **irreversíveis**. Faça um backup antes de prosseguir.
 
 ### Excluir todos os objetos
 
@@ -147,32 +150,32 @@ Remove objetos da árvore genealógica. Clicar em **Excluir** abre um diálogo o
 - **Todos os objetos** – limpa completamente a árvore
 - **Tipos de objetos específicos** – por exemplo, apenas eventos ou apenas objetos de mídia
 
-Você será solicitado a reautenticar (fazer login novamente) para confirmar a ação. A exclusão é executada como uma tarefa em segundo plano e um indicador de progresso é exibido.
+Você será solicitado a re-autenticar (fazer login novamente) para confirmar a ação. A exclusão é executada como uma tarefa em segundo plano e um indicador de progresso é exibido.
 
 !!! warning
     Excluir apenas um subconjunto de tipos de objetos (em vez de todos os objetos de uma vez) pode levar muito tempo para árvores grandes, pois o servidor deve verificar e atualizar todos os relacionamentos entre objetos.
 
 !!! tip
-    Use isso para começar do zero antes de importar uma nova árvore, ou para remover tipos de objetos específicos que foram importados incorretamente.
+    Use isso para começar do zero antes de importar uma nova árvore ou para remover tipos de objetos específicos que foram importados incorretamente.
 
 ### Restaurar de Backup
 
-Redefine a árvore para corresponder a um arquivo de backup XML do Gramps (`.gramps`) carregado, adicionando, atualizando e excluindo objetos conforme necessário para que a árvore fique idêntica ao backup.
+Redefine a árvore para corresponder a um arquivo de backup XML do Gramps (`.gramps`) carregado, adicionando, atualizando e excluindo objetos conforme necessário para que a árvore termine idêntica ao backup.
 
 !!! danger
     Esta é uma substituição destrutiva, não uma mesclagem. Qualquer objeto existente que não esteja presente no backup carregado será excluído.
 
-Carregue um arquivo `.gramps`, depois clique em **Visualizar Restauração**. Você será solicitado a reautenticar se sua sessão não estiver fresca o suficiente. Uma pré-visualização é executada como uma tarefa em segundo plano e, uma vez concluída, abre um diálogo resumindo as mudanças por tipo de objeto (pessoas, famílias, eventos, lugares, citações, fontes, repositórios, objetos de mídia, notas, etiquetas):
+Carregue um arquivo `.gramps`, em seguida, clique em **Visualizar Restauração**. Você será solicitado a re-autenticar se sua sessão não estiver atualizada o suficiente. Uma pré-visualização é executada como uma tarefa em segundo plano e, uma vez concluída, abre um diálogo resumindo as mudanças por tipo de objeto (pessoas, famílias, eventos, lugares, citações, fontes, repositórios, objetos de mídia, notas, etiquetas):
 
 - **Adicionar** – objetos presentes no backup, mas ausentes na árvore atual
 - **Atualizar** – objetos presentes em ambos que diferem
 - **Excluir** – objetos na árvore atual que estão ausentes do backup
 - **Inalterado** – objetos idênticos em ambos
 
-Se algum objeto for excluído, o diálogo avisa quantos. Revise o resumo e clique em **Restaurar** para aplicar as mudanças, ou **Cancelar** para abortar.
+Se algum objeto for excluído, o diálogo avisa quantos. Revise o resumo e clique em **Restaurar** para aplicar as mudanças ou **Cancelar** para abortar.
 
 !!! note
-    Apenas dados de objetos e referências de mídia são restaurados. Arquivos de mídia binários em si e metadados da árvore (pessoa padrão, favoritos, grupos de nomes) não são afetados. Restaure arquivos de mídia ausentes separadamente via [Importar arquivo de mídia](#import-media-archive) se necessário.
+    Apenas dados de objetos e referências de mídia são restaurados. Arquivos de mídia binários em si e metadados da árvore (pessoa padrão, favoritos, grupos de nomes) não são afetados. Restaure arquivos de mídia ausentes separadamente através de [Importar arquivo de mídia](#import-media-archive) se necessário.
 
 !!! tip
     Use isso para reverter uma árvore para um backup XML do Gramps conhecido e bom, por exemplo, após uma importação ruim ou uma edição em massa indesejada.

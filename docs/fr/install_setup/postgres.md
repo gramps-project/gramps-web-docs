@@ -5,7 +5,7 @@ Par défaut, Gramps Web stocke chaque arbre généalogique dans son propre fichi
 Alternativement, les arbres généalogiques peuvent être hébergés sur un serveur PostgreSQL en utilisant l'addon SharedPostgreSQL, qui conserve tous les arbres dans une seule base de données. Cela peut avoir du sens si vous exécutez déjà un serveur PostgreSQL et souhaitez gérer les sauvegardes et la surveillance là-bas, ou si vous vous attendez à de nombreux utilisateurs modifiant en même temps. PostgreSQL peut également héberger la [base de données utilisateur](#using-a-postgresql-database-for-the-user-database) et l'[index de recherche](#using-a-postgresql-database-for-the-search-index), indépendamment de l'endroit où les arbres généalogiques sont stockés.
 
 !!! warning "Addon PostgreSQL obsolète"
-    L'ancien addon PostgreSQL, qui stocke un seul arbre généalogique par base de données, est obsolète et ne sera plus supporté dans une future version de l'API Gramps Web. Si vous l'utilisez, consultez [Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
+    L'ancien addon PostgreSQL, qui stocke un seul arbre généalogique par base de données, est obsolète depuis l'API Gramps Web 3.24 et ne sera plus supporté dans l'API Gramps Web 4.0, car il n'est pas compatible avec l'hébergement de plusieurs arbres, ce qui devient la norme dans cette version. Si vous l'utilisez, consultez [Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Configuration du serveur PostgreSQL
 
@@ -23,7 +23,7 @@ Gramps a besoin de locales installées sur le serveur PostgreSQL pour trier corr
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
-et ajoutez également `postgres_data:` en tant que clé sous la section `volumes:` de ce fichier YAML. L'image contient deux bases de données, chacune avec son propre utilisateur et mot de passe : `gramps` pour les données généalogiques et `grampswebuser` pour la base de données utilisateur de Gramps Web.
+et ajoutez également `postgres_data:` comme clé sous la section `volumes:` de ce fichier YAML. L'image contient deux bases de données, chacune avec son propre utilisateur et mot de passe : `gramps` pour les données généalogiques et `grampswebuser` pour la base de données utilisateur de Gramps Web.
 
 Si vous utilisez votre propre serveur PostgreSQL à la place, créez une base de données nommée `gramps` dans laquelle l'utilisateur configuré peut créer des tables, et assurez-vous que les locales dont vos utilisateurs ont besoin sont installées.
 
@@ -51,7 +51,7 @@ Consultez [Configuration](configuration.md) pour une description de toutes ces o
 
 ## Création d'un arbre et importation de données
 
-Pour créer un nouvel arbre, envoyez une requête POST à l'endpoint `/trees/` comme décrit dans [Configuration pour héberger plusieurs arbres](multi-tree.md#create-a-new-tree). La réponse contient l'ID du nouvel arbre, dont vous avez besoin pour [créer le compte propriétaire de l'arbre](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+Pour créer un nouvel arbre, POST vers le point de terminaison `/trees/` comme décrit dans [Configuration pour héberger plusieurs arbres](multi-tree.md#create-a-new-tree). La réponse contient l'ID du nouvel arbre, dont vous avez besoin pour [créer le compte propriétaire de l'arbre](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
 
 Une fois que le propriétaire de l'arbre s'est connecté, il peut [importer](../administration/import.md) un arbre généalogique existant, par exemple un fichier XML Gramps exporté depuis Gramps Desktop, via l'interface web.
 
@@ -71,7 +71,7 @@ postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 
 ## Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL
 
-Les installations plus anciennes peuvent héberger leur arbre généalogique avec l'addon PostgreSQL, qui stocke un seul arbre par base de données et est obsolète. Pour savoir quel addon un arbre utilise, regardez le fichier `database.txt` dans le sous-répertoire de l'arbre du répertoire de base de données Gramps : il contient `postgresql` pour l'addon PostgreSQL obsolète et `sharedpostgresql` pour SharedPostgreSQL.
+Les anciennes installations peuvent héberger leur arbre généalogique avec l'addon PostgreSQL, qui stocke un seul arbre par base de données et est obsolète. Pour savoir quel addon un arbre utilise, regardez le fichier `database.txt` dans le sous-répertoire de l'arbre dans le répertoire de la base de données Gramps : il contient `postgresql` pour l'addon PostgreSQL obsolète et `sharedpostgresql` pour SharedPostgreSQL.
 
 Pour déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL au sein de la même installation, en conservant vos comptes utilisateurs et fichiers multimédias :
 
@@ -84,7 +84,7 @@ Pour déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL au sein de l
 
 Conservez le fichier XML Gramps jusqu'à ce que vous ayez vérifié que le nouvel arbre est complet.
 
-Si vous passez à une installation Gramps Web distincte, suivez les étapes dans [Déplacer vers une autre instance Gramps Web](../administration/export.md#move-to-a-different-gramps-web-instance).
+Si vous vous déplacez vers une installation Gramps Web séparée, suivez les étapes dans [Déplacer vers une autre instance Gramps Web](../administration/export.md#move-to-a-different-gramps-web-instance).
 
 ## Problèmes
 

@@ -1,31 +1,27 @@
-# Opsætning af AI chat
+# Opsætning af AI-chat
 
 !!! info
-    AI chat kræver Gramps Web API version 2.5.0 eller højere. Version 3.6.0 introducerede værktøjsopkaldsfunktioner for mere intelligente interaktioner.
+    AI-chat kræver Gramps Web API version 2.5.0 eller højere. Version 3.6.0 introducerede værktøjsopkald for mere intelligente interaktioner.
 
-Gramps Web API understøtter at stille spørgsmål om den genealogiske database ved hjælp af store sprogmodeller (LLM) via en teknik kaldet retrieval-augmented generation (RAG) kombineret med værktøjsopkald.
+
+Gramps Web API understøtter at stille spørgsmål om den genealogiske database ved hjælp af store sprogmodeller (LLM) med værktøjsopkald.
 
 ## Sådan fungerer det
 
-AI-assistenten bruger to komplementære tilgange:
+AI-assistenten bruger specialiserede værktøjer til at forespørge dine slægtsdata direkte. Disse værktøjer giver assistenten mulighed for at søge i databasen med fuldtekst-søgning, filtrere personer/begivenheder/familier/steder efter specifikke kriterier, beregne relationer mellem individer og hente komplette optegnelser, inklusive noter. Assistenten svarer derefter baseret på de optegnelser, den har set op, og linker til dem i sit svar.
 
-**Retrieval-Augmented Generation (RAG)**: En *vektorindlejringsmodel* opretter et indeks over alle objekter i Gramps-databasen i form af numeriske vektorer, der koder objekternes betydning. Når en bruger stiller et spørgsmål, konverteres spørgsmålet også til en vektor og sammenlignes med objekterne i databasen. Denne *semantiske søgning* returnerer objekter, der er mest semantisk lig med spørgsmålet.
+Siden Gramps Web API 3.24 kræver AI-chat ikke længere en vektorindlejringsmodel. Tidligere versioner brugte også *semantisk søgning* (retrieval-augmented generation, RAG), som sammenligner betydningen af et spørgsmål med et indeks af numeriske vektorer beregnet for alle objekter i databasen. Semantisk søgning er forældet og vil blive fjernet i Gramps Web API 3.25, se [Semantisk søgning (forældet)](#semantic-search-deprecated) nedenfor.
 
-**Værktøjsopkald (v3.6.0+)**: AI-assistenten kan nu bruge specialiserede værktøjer til direkte at forespørge dine slægtsdata. Disse værktøjer giver assistenten mulighed for at søge i databasen, filtrere personer/begivenheder/familier/steder efter specifikke kriterier, beregne relationer mellem individer og hente detaljerede objektinformationer. Dette gør assistenten meget mere i stand til præcist at besvare komplekse genealogiske spørgsmål.
-
-For at aktivere chat-endepunktet i Gramps Web API er tre trin nødvendige:
+For at aktivere chat-endepunktet i Gramps Web API er der nødvendige to trin:
 
 1. Installation af nødvendige afhængigheder,
-2. Aktivering af semantisk søgning,
-3. Opsætning af en LLM-udbyder.
+2. Opsætning af en LLM-udbyder.
 
-De tre trin beskrives nedenfor i rækkefølge. Endelig skal en ejer eller administrator [konfigurere, hvilke brugere der kan få adgang til chatfunktionen](users.md#configuring-who-can-use-ai-chat) i indstillingerne for Administrer brugere.
+De to trin beskrives nedenfor i rækkefølge. Endelig skal en ejer eller administrator [konfigurere, hvilke brugere der kan få adgang til chat-funktionen](users.md#configuring-who-can-use-ai-chat) i indstillingerne for Administrer brugere.
 
 ## Installation af nødvendige afhængigheder
 
-AI chat kræver, at bibliotekerne Sentence Transformers og PyTorch er installeret.
-
-De standard docker-billeder for Gramps Web har allerede disse forudinstalleret til `amd64` (f.eks. 64-bit desktop PC) og `arm64` (f.eks. 64-bit Raspberry Pi) arkitekturer. Desværre understøttes AI chat ikke på `armv7` (f.eks. 32-bit Raspberry Pi) arkitekturen på grund af manglende PyTorch-understøttelse.
+De standard docker-billeder for Gramps Web har allerede alle afhængigheder, der er nødvendige for AI-chat, forudinstalleret.
 
 Når du installerer Gramps Web API via `pip` (dette er ikke nødvendigt, når du bruger Docker-billederne), installeres de nødvendige afhængigheder med
 
@@ -33,29 +29,34 @@ Når du installerer Gramps Web API via `pip` (dette er ikke nødvendigt, når du
 pip install gramps_webapi[ai]
 ```
 
-## Aktivering af semantisk søgning
+## Semantisk søgning (forældet)
 
-Hvis de nødvendige afhængigheder er installeret, kan aktivering af semantisk søgning være så enkel som at indstille konfigurationsmuligheden `VECTOR_EMBEDDING_MODEL` (f.eks. ved at indstille miljøvariablen `GRAMPSWEB_VECTOR_EMBEDDING_MODEL`), se [Serverkonfiguration](configuration.md). Dette kan være enhver streng af en model, der understøttes af [Sentence Transformers](https://sbert.net/) biblioteket. Se dokumentationen for dette projekt for detaljer og de tilgængelige modeller.
+!!! warning "Semantisk søgning er forældet"
+    Semantisk søgning er forældet siden Gramps Web API 3.24 og vil blive fjernet i version 3.25. AI-chat og [fuldtekst-søgning](../user-guide/search.md) har ikke brug for det. Efter fjernelsen accepteres indstillingen `VECTOR_EMBEDDING_MODEL` stadig, men ignoreres. Hvis du kun sætter den for at aktivere AI-chat, kan du fjerne den nu, sammen med de andre `VECTOR_EMBEDDING_*` indstillinger, hvilket også sparer den hukommelse, som indlejringsmodellen har brug for.
+
+Resten af dette afsnit beskriver semantisk søgning for servere, der stadig bruger det med Gramps Web API 3.24.
+
+Hvis de nødvendige afhængigheder er installeret, kan aktivering af semantisk søgning være så enkelt som at indstille konfigurationsmuligheden `VECTOR_EMBEDDING_MODEL` (f.eks. ved at indstille miljøvariablen `GRAMPSWEB_VECTOR_EMBEDDING_MODEL`), se [Serverkonfiguration](configuration.md). Dette kan være enhver streng af en model, der understøttes af [Sentence Transformers](https://sbert.net/) biblioteket. Se dokumentationen for dette projekt for detaljer og de tilgængelige modeller.
 
 !!! warning
     Bemærk, at de standard docker-billeder ikke inkluderer en PyTorch-version med GPU-understøttelse. Hvis du har adgang til en GPU (som vil fremskynde den semantiske indeksering betydeligt), skal du installere en GPU-aktiveret version af PyTorch.
 
-Der er flere overvejelser at gøre, når du vælger en model.
+Der er flere overvejelser at tage hensyn til, når du vælger en model.
 
-- Når du ændrer modellen, skal du manuelt genskabe den semantiske søgeindeks for dit træ (eller alle træer i en multi-træ opsætning), ellers vil du støde på fejl eller meningsløse resultater. Gramps Web registrerer, når den konfigurerede indlejringsmodel ikke længere matcher det eksisterende indeks og viser en vedholdende meddelelse til administratorer, der opfordrer dem til at udløse en fuld reindeksering fra [Administrationsindstillinger](../administration/settings.md#semantic-search-index).
+- Når du ændrer modellen, skal du manuelt genskabe den semantiske søgeindeks for dit træ (eller alle træer i en multi-træ opsætning), ellers vil du støde på fejl eller meningsløse resultater. Gramps Web registrerer, når den konfigurerede indlejringsmodel ikke længere matcher det eksisterende indeks og viser en vedholdende meddelelse til administratorer, der beder dem om at udløse en fuld reindeksering fra [Administrationsindstillinger](../administration/settings.md#semantic-search-index).
 - Modellerne er et kompromis mellem nøjagtighed/generelhed på den ene side og beregningstid/lagerplads på den anden. Hvis du ikke kører Gramps Web API på et system, der har adgang til en kraftfuld GPU, er større modeller normalt for langsomme i praksis.
-- Medmindre hele din database er på engelsk, og alle dine brugere kun forventes at stille chatspørgsmål på engelsk, vil du have brug for en flersproget indlejringsmodel, som er mere sjælden end rene engelske modeller.
+- Medmindre hele din database er på engelsk, og alle dine brugere kun forventes at stille chat-spørgsmål på engelsk, har du brug for en flersproget indlejringsmodel, som er mere sjælden end rene engelske modeller.
 
 Hvis modellen ikke er til stede i den lokale cache, vil den blive downloadet, når Gramps Web API startes for første gang med den nye konfiguration. Modellen `sentence-transformers/distiluse-base-multilingual-cased-v2` er allerede tilgængelig lokalt, når du bruger de standard docker-billeder. Denne model er et godt udgangspunkt og understøtter flersproget input.
 
 Del venligst erfaringer om forskellige modeller med fællesskabet!
 
 !!! info
-    Sentence transformers-biblioteket forbruger en betydelig mængde hukommelse, hvilket kan medføre, at arbejdsgange bliver dræbt. Som en tommelfingerregel, med semantisk søgning aktiveret, forbruger hver Gunicorn-arbejder omkring 200 MB hukommelse, og hver celery-arbejder omkring 500 MB hukommelse, selv når de er inaktive, og op til 1 GB, når de beregner indlejringer. Se [Begræns CPU- og hukommelsesforbrug](cpu-limited.md) for indstillinger, der begrænser hukommelsesforbruget. Derudover er det tilrådeligt at tilvejebringe en tilstrækkeligt stor swap-partition for at forhindre OOM-fejl på grund af midlertidige hukommelsesforbrugsstigninger.
+    Sentence transformers-biblioteket bruger en betydelig mængde hukommelse, hvilket kan medføre, at arbejdsprocesser bliver dræbt. Som en tommelfingerregel, med semantisk søgning aktiveret, bruger hver Gunicorn-arbejder omkring 200 MB hukommelse, og hver celery-arbejder omkring 500 MB hukommelse, selv når de er inaktive, og op til 1 GB, når de beregner indlejringer. Se [Begræns CPU- og hukommelsesforbrug](cpu-limited.md) for indstillinger, der begrænser hukommelsesforbruget. Derudover er det tilrådeligt at tilvejebringe en tilstrækkelig stor swap-partition for at forhindre OOM-fejl på grund af midlertidige hukommelsesforbrugstoppe.
 
-## Brug af en fjern indlejrings-API
+### Brug af en fjern indlejrings-API
 
-Som et alternativ til at køre en lokal Sentence Transformers-model kan du bruge en fjern OpenAI-kompatibel indlejrings-API til semantisk søgning. Dette er nyttigt, hvis du ønsker at overføre indlejringsberegning til en separat tjeneste (f.eks. [Ollama](https://ollama.com/)), bruge en cloud indlejringsudbyder (f.eks. OpenAI) eller undgå at indlæse Sentence Transformers og PyTorch-bibliotekerne i hukommelsen.
+Som et alternativ til at køre en lokal Sentence Transformers-model kan du bruge en fjern OpenAI-kompatibel indlejrings-API til semantisk søgning. Dette er nyttigt, hvis du ønsker at overføre indlejringsberegning til en separat tjeneste (f.eks. [Ollama](https://ollama.com/)), bruge en cloud-indlejringsudbyder (f.eks. OpenAI) eller undgå at indlæse Sentence Transformers- og PyTorch-bibliotekerne i hukommelsen.
 
 Den fjerne API skal være kompatibel med [OpenAI embeddings endpoint](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
 
@@ -63,11 +64,11 @@ For at bruge en fjern indlejrings-API skal du indstille følgende konfigurations
 
 Nøgle | Beskrivelse
 ----|-------------
-`VECTOR_EMBEDDING_MODEL` | Modelnavn, der skal sendes til den fjerne udbyder
+`VECTOR_EMBEDDING_MODEL` | Modellens navn, der skal sendes til den fjerne udbyder
 `VECTOR_EMBEDDING_BASE_URL` | Basis-URL for den fjerne API
 `VECTOR_EMBEDDING_API_KEY` | API-nøgle (kun nødvendig, hvis udbyderen kræver autentificering)
 
-### Brug af Ollama til indlejringer
+#### Brug af Ollama til indlejringer
 
 Når du implementerer Gramps Web med Docker Compose, kan du tilføje en Ollama-tjeneste og bruge den til både indlejringer og (valgfrit) LLM:
 
@@ -104,11 +105,11 @@ docker compose exec ollama ollama pull nomic-embed-text
 ```
 
 !!! info
-    Når du bruger Ollama til indlejringer, er Sentence Transformers og PyTorch-bibliotekerne ikke nødvendige, hvilket betydeligt reducerer hukommelsesforbruget af Gramps Web API-arbejderne.
+    Når du bruger Ollama til indlejringer, er Sentence Transformers- og PyTorch-bibliotekerne ikke nødvendige, hvilket betydeligt reducerer hukommelsesforbruget af Gramps Web API-arbejderne.
 
-### Brug af OpenAI til indlejringer
+#### Brug af OpenAI til indlejringer
 
-For at bruge OpenAI indlejrings-API'en skal du indstille basis-URL'en til OpenAI API'en og angive din API-nøgle:
+For at bruge OpenAI embeddings API skal du indstille basis-URL'en til OpenAI API og angive din API-nøgle:
 
 ```yaml
 environment:
@@ -118,7 +119,7 @@ environment:
 ```
 
 !!! warning
-    Ændring af indlejringsmodellen kræver reindeksering af alle poster for dit træ (eller alle træer i en multi-træ opsætning), da forskellige modeller producerer vektorer med forskellige dimensioner.
+    Ændring af indlejringsmodellen kræver reindeksering af alle optegnelser for dit træ (eller alle træer i en multi-træ opsætning), da forskellige modeller producerer vektorer med forskellige dimensioner.
 
 ## Opsætning af en LLM-udbyder
 
@@ -126,16 +127,16 @@ Kommunikationen med LLM bruger Pydantic AI-rammen, som understøtter OpenAI-komp
 
 ### Brug af en hostet LLM via OpenAI API
 
-Når du bruger OpenAI API'en, kan `LLM_BASE_URL` efterlades uindstillet, mens `LLM_MODEL` skal indstilles til en af OpenAI-modellerne, f.eks. `gpt-4o-mini`. LLM'en bruger både RAG og værktøjsopkald til at besvare spørgsmål: den vælger relevant information fra semantiske søgeresultater og kan direkte forespørge databasen ved hjælp af specialiserede værktøjer. Den kræver ikke dyb genealogisk eller historisk viden. Derfor kan du prøve, om en lille/billig model er tilstrækkelig.
+Når du bruger OpenAI API, kan `LLM_BASE_URL` efterlades uindstillet, mens `LLM_MODEL` skal indstilles til en af OpenAI-modellerne, f.eks. `gpt-4o-mini`. LLM'en bruger værktøjsopkald til at besvare spørgsmål: den forespørger databasen direkte ved hjælp af specialiserede værktøjer og svarer baseret på de optegnelser, den finder. Den kræver ikke dyb genealogisk eller historisk viden. Derfor kan du prøve, om en lille/billig model er tilstrækkelig.
 
 Du skal også tilmelde dig en konto, få en API-nøgle og gemme den i miljøvariablen `OPENAI_API_KEY`.
 
 !!! info
-    `LLM_MODEL` er en konfigurationsparameter; hvis du vil indstille den via en miljøvariabel, skal du bruge `GRAMPSWEB_LLM_MODEL` (se [Konfiguration](configuration.md)). `OPENAI_API_KEY` er ikke en konfigurationsparameter, men en miljøvariabel, der bruges direkte af Pydantic AI-biblioteket, så den bør ikke præfikses.
+    `LLM_MODEL` er en konfigurationsparameter; hvis du vil indstille den via en miljøvariabel, skal du bruge `GRAMPSWEB_LLM_MODEL` (se [Konfiguration](configuration.md)). `OPENAI_API_KEY` er ikke en konfigurationsparameter, men en miljøvariabel, der bruges direkte af Pydantic AI-biblioteket, så den bør ikke have et præfiks.
 
 ### Brug af Mistral AI
 
-For at bruge Mistral AIs hostede modeller skal du præfikse modelnavnet med `mistral:` når du indstiller `LLM_MODEL`.
+For at bruge Mistral AIs hostede modeller, skal du præfiksere modelnavnet med `mistral:` når du indstiller `LLM_MODEL`.
 
 Du skal tilmelde dig en Mistral AI-konto, få en API-nøgle og gemme den i miljøvariablen `MISTRAL_API_KEY`. Der er ikke behov for at indstille `LLM_BASE_URL`, da Pydantic AI automatisk vil bruge den korrekte Mistral API-endpoint.
 
@@ -144,7 +145,6 @@ Eksempelkonfiguration, når du bruger docker compose med miljøvariabler:
 environment:
   GRAMPSWEB_LLM_MODEL: mistral:mistral-large-latest
   MISTRAL_API_KEY: your-mistral-api-key-here
-  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: sentence-transformers/distiluse-base-multilingual-cased-v2
 ```
 
 ### Brug af en lokal LLM via Ollama
@@ -187,7 +187,7 @@ docker compose exec ollama ollama pull qwen2.5:7b
 
 Nogle ting at bemærke:
 
-- Indstil `LLM_MODEL` til Ollama-modelnavnet, inklusive dets tag (den del efter kolon, f.eks. `7b`), præfikset med `ollama:`. Præfikset får Pydantic AI til at bruge sine Ollama-specifikke indstillinger for modellen, hvilket er den anbefalede opsætning.
+- Indstil `LLM_MODEL` til Ollama-modelnavnet, inklusive dets tag (den del efter kolon, f.eks. `7b`), præfiks med `ollama:`. Præfikset får Pydantic AI til at bruge sine Ollama-specifikke indstillinger for modellen, hvilket er den anbefalede opsætning.
 - `LLM_BASE_URL` skal slutte med `/v1/`, f.eks. `http://ollama:11434/v1/`.
 - Med `ollama:` præfikset er hverken `OPENAI_API_KEY` eller miljøvariablen `OLLAMA_BASE_URL` nødvendig. Hvis `LLM_BASE_URL` ikke er indstillet, falder Gramps Web tilbage til `OLLAMA_BASE_URL`.
 - Alternativt kan du undlade præfikset (f.eks. `LLM_MODEL: qwen2.5:7b`) og bruge Ollama gennem sin generiske OpenAI-kompatible API. I dette tilfælde skal du også indstille miljøvariablen `OPENAI_API_KEY` til `ollama` (enhver ikke-tom værdi fungerer).
@@ -195,8 +195,8 @@ Nogle ting at bemærke:
 For at fejlfinde problemer med Ollama kan du aktivere debug-logning ved at indstille miljøvariablen `OLLAMA_DEBUG=1` i Ollama-tjenestens miljø.
 
 !!! info
-    Hvis du bruger Ollama til Gramps Web AI chat, bedes du støtte fællesskabet ved at fuldføre denne dokumentation med eventuelle manglende detaljer.
+    Hvis du bruger Ollama til Gramps Web AI-chat, bedes du støtte fællesskabet ved at fuldføre denne dokumentation med eventuelle manglende detaljer.
 
 ### Brug af andre udbydere
 
-Du er velkommen til at indsende dokumentation for andre udbydere og dele dine erfaringer med fællesskabet!
+Du er velkommen til at indsende dokumentation for andre udbydere og dele din erfaring med fællesskabet!

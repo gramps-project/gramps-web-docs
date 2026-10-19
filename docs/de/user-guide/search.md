@@ -1,6 +1,6 @@
 # Suche
 
-Die Suchseite ist über das Klicken auf das Lupe-Symbol in der oberen App-Leiste oder durch Drücken der `s` [Tastenkombination](shortcuts.md) zugänglich.
+Die Suchseite ist zugänglich, indem Sie auf das Lupe-Symbol in der oberen App-Leiste klicken oder die `s` [Tastenkombination](shortcuts.md) drücken.
 
 ## Volltextsuche
 
@@ -16,9 +16,12 @@ Unter dem Suchfeld ermöglichen Umschaltknöpfe für jeden Objekttyp (Personen, 
 
 ## Semantische Suche
 
-Wenn der Serveradministrator die [semantische (KI-gestützte) Suche](../install_setup/configuration.md) aktiviert hat, erscheint in der oberen rechten Ecke der Suchseite ein Modus-Umschalter mit zwei Optionen:
+!!! warning "Veraltet"
+    Die semantische Suche ist veraltet und wird in der Gramps Web API 3.25 entfernt. Die oben beschriebene Volltextsuche ist davon nicht betroffen.
 
-- **Suche** – standardmäßige Volltextsuche (die Voreinstellung)
-- **Semantisch** – KI-gestützte Suche, die die Bedeutung Ihrer Abfrage versteht, anstatt exakte Wörter zu vergleichen
+Wenn der Serveradministrator die [semantische (KI-gestützte) Suche](../install_setup/chat.md#semantic-search-deprecated) aktiviert hat, erscheint in der oberen rechten Ecke der Suchseite ein Modus-Umschalter mit zwei Optionen:
 
-Die semantische Suche ist nützlich für natürliche Sprachabfragen wie "Bauer in Bayern im 19. Jahrhundert". Es ist erforderlich, dass der Index für die semantische Suche gefüllt ist; siehe [Administrationseinstellungen](../administration/settings.md) für Informationen zum Erstellen oder Aktualisieren des Index.
+- **Suche** – standardmäßige Volltextsuche (die Standardoption)
+- **Semantisch** – KI-gestützte Suche, die die Bedeutung Ihrer Abfrage versteht, anstatt exakte Wörter zuzuordnen
+
+Die semantische Suche ist nützlich für Abfragen in natürlicher Sprache wie "Bauer in Bayern im 19. Jahrhundert". Sie erfordert, dass der Index für die semantische Suche gefüllt ist; siehe [Verwaltungseinstellungen](../administration/settings.md) für Informationen zum Erstellen oder Aktualisieren des Index.

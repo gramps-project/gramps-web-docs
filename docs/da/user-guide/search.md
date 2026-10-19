@@ -6,9 +6,9 @@ Søgesiden er tilgængelig ved at klikke på forstørrelsesglasikonet i den øve
 
 Skriv en hvilken som helst forespørgsel i søgefeltet og tryk på Enter (eller klik på søgeknappen). Gramps Web søger på tværs af alle objekttyper – personer, familier, begivenheder, steder, kilder, citater, arkiver, noter og medier – og returnerer matchende resultater rangeret efter relevans.
 
-Resultaterne viser objekttypen, navnet og et kort resumé. Klik på et hvilket som helst resultat for at åbne den tilsvarende detaljeside.
+Resultaterne viser objekttypen, navnet og et kort resumé. Klik på et resultat for at åbne den tilsvarende detaljeside.
 
-Et afsluttende `*` kan bruges som et wildcard, f.eks. `Mey*` matcher "Meyer", "Meyers", "Meyerhofer" osv.
+Et efterfølgende `*` kan bruges som et wildcard, f.eks. `Mey*` matcher "Meyer", "Meyers", "Meyerhofer" osv.
 
 ## Filtrering efter objekttype
 
@@ -16,9 +16,12 @@ Under søgefeltet giver toggle-knapper for hver objekttype (Personer, Familier, 
 
 ## Semantisk søgning
 
-Hvis serveradministratoren har aktiveret [semantisk (AI-drevet) søgning](../install_setup/configuration.md), vises en tilstandstoggle i øverste højre hjørne af søgesiden med to muligheder:
+!!! warning "Forældet"
+    Semantisk søgning er forældet og vil blive fjernet i Gramps Web API 3.25. Fuldtekst søgningen beskrevet ovenfor er ikke påvirket.
+
+Hvis serveradministratoren har aktiveret [semantisk (AI-drevet) søgning](../install_setup/chat.md#semantic-search-deprecated), vises en tilstandstoggle i øverste højre hjørne af søgesiden med to muligheder:
 
 - **Søg** – standard fuldtekst søgning (standard)
 - **Semantisk** – AI-drevet søgning, der forstår betydningen af din forespørgsel i stedet for at matche nøjagtige ord
 
-Semantisk søgning er nyttig til naturlige sprogforespørgsler som "landmand i Bayern i det 19. århundrede". Det kræver, at den semantiske søgeindeks er udfyldt; se [Administrationsindstillinger](../administration/settings.md) for hvordan man bygger eller opdaterer indekset.
+Semantisk søgning er nyttig til naturlige sprogforespørgsler som "landmand i Bayern i det 19. århundrede". Det kræver, at den semantiske søgeindeks er befolket; se [Administrationsindstillinger](../administration/settings.md) for hvordan man opbygger eller opdaterer indekset.

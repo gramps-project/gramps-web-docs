@@ -14,7 +14,7 @@ Quando você usa a [configuração baseada em Docker Compose](deployment.md), po
 ```yaml
       - /caminho/para/config.cfg:/app/config/config.cfg
 ```
-onde `/caminho/para/config.cfg` é o caminho para o arquivo de configuração no sistema de arquivos do seu servidor (o lado direito refere-se ao caminho no contêiner e não deve ser alterado).
+onde `/caminho/para/config.cfg` é o caminho para o arquivo de configuração no sistema de arquivos do seu servidor (o lado direito se refere ao caminho no contêiner e não deve ser alterado).
 
 Ao usar variáveis de ambiente,
 
@@ -24,12 +24,12 @@ Ao usar variáveis de ambiente,
 Observe que as opções de configuração definidas via ambiente têm precedência sobre as que estão no arquivo de configuração. Se ambas estiverem presentes, a variável de ambiente "vence".
 
 !!! warning "Variáveis de ambiente sem prefixo estão obsoletas"
-    Por razões históricas, um punhado de configurações – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, e `STATIC_PATH` – ainda podem ser definidas via uma variável de ambiente *sem* o prefixo `GRAMPSWEB_`. Isso está obsoleto, registra um aviso na inicialização e deixará de funcionar em uma versão futura. Sempre use a forma prefixada, por exemplo, `GRAMPSWEB_TREE` em vez de `TREE`.
+    Por razões históricas, um punhado de configurações – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, e `STATIC_PATH` – ainda podem ser definidas via uma variável de ambiente *sem* o prefixo `GRAMPSWEB_`. Isso está obsoleto, registra um aviso na inicialização e deixará de funcionar em uma versão futura. Sempre use a forma com prefixo, por exemplo, `GRAMPSWEB_TREE` em vez de `TREE`.
 
     Observe que isso diz respeito apenas a variáveis de ambiente. Em um arquivo de configuração, os nomes das configurações são sempre usados sem prefixo.
 
 !!! tip "Verificando opções obsoletas"
-    Opções de configuração obsoletas das quais seu servidor ainda depende – como variáveis de ambiente sem prefixo, `SEARCH_INDEX_DIR`, ou `EMAIL_USE_TLS` – são registradas como avisos na inicialização. Desde a Gramps Web API 3.22, elas também são listadas, juntamente com seu substituto e a versão na qual o suporte será removido, no topo da página **Informações do Sistema** (acessível via o ícone do usuário na barra superior do aplicativo) quando você estiver logado como administrador.
+    Opções de configuração obsoletas das quais seu servidor ainda depende – como variáveis de ambiente sem prefixo, `SEARCH_INDEX_DIR`, ou `EMAIL_USE_TLS` – são registradas como avisos na inicialização. Desde a Gramps Web API 3.22, elas também são listadas, juntamente com sua substituição e a versão na qual o suporte será removido, no topo da página **Informações do Sistema** (acessível através do ícone do usuário na barra de aplicativos superior) quando você estiver logado como administrador.
 
 ## Configurações de configuração existentes
 As seguintes opções de configuração existem.
@@ -54,9 +54,9 @@ Chave | Descrição
 Chave | Descrição
 ----|-------------
 `MEDIA_BASE_DIR` | Caminho a ser usado como diretório base para arquivos de mídia, substituindo o diretório base de mídia definido no Gramps. Ao usar [S3](s3.md), deve ter a forma `s3://<bucket_name>`
-`TREE_ID` | O nome do diretório do banco de dados da árvore genealógica a ser usado no modo de árvore única (quando `TREE` não está definido como `*`). Quando definido, o servidor identifica a árvore pelo nome do diretório em vez de seu nome de exibição, o que é mais robusto em relação a renomeações. Necessário se você quiser renomear a árvore via API. O nome do diretório pode ser encontrado via `GET /api/trees/-` (o campo `id`).
-`SEARCH_INDEX_DB_URI` | URL do banco de dados para o índice de busca. Apenas `sqlite` ou `postgresql` são permitidos como backends. O padrão é `sqlite:///indexdir/search_index.db`, criando um arquivo SQLite na pasta `indexdir` em relação ao caminho onde o script é executado.
-`SEARCH_INDEX_DIR` | **Obsoleto** (use `SEARCH_INDEX_DB_URI` em vez disso). Diretório contendo o índice de busca. Se definido enquanto `SEARCH_INDEX_DB_URI` estiver indefinido, a URL do índice de busca é derivada como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
+`TREE_ID` | O nome do diretório do banco de dados da árvore genealógica a ser usado no modo de árvore única (quando `TREE` não está definido como `*`). Quando definido, o servidor identifica a árvore pelo nome do diretório em vez do nome de exibição, o que é mais robusto em relação a renomeações. Necessário se você quiser renomear a árvore via API. O nome do diretório pode ser encontrado via `GET /api/trees/-` (o campo `id`).
+`SEARCH_INDEX_DB_URI` | URL do banco de dados para o índice de pesquisa. Apenas `sqlite` ou `postgresql` são permitidos como backends. O padrão é `sqlite:///indexdir/search_index.db`, criando um arquivo SQLite na pasta `indexdir` em relação ao caminho onde o script é executado.
+`SEARCH_INDEX_DIR` | **Obsoleto** (use `SEARCH_INDEX_DB_URI` em vez disso). Diretório contendo o índice de pesquisa. Se definido enquanto `SEARCH_INDEX_DB_URI` estiver indefinido, a URL do índice de pesquisa é derivada como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Caminho para servir arquivos estáticos (por exemplo, um frontend web estático)
 `BASE_URL` | URL base onde a API pode ser acessada (por exemplo, `https://mygramps.mydomain.com/`). Isso é necessário, por exemplo, para construir links corretos de redefinição de senha. O Web Push também requer uma URL HTTPS publicamente acessível; o padrão `http://localhost/` desabilita o Web Push. Ao configurar esta configuração através do ambiente, use `GRAMPSWEB_BASE_URL`.
 `CORS_ORIGINS` | Origens de onde solicitações CORS são permitidas. Por padrão, todas são desautorizadas. Use `"*"` para permitir solicitações de qualquer domínio.
@@ -65,24 +65,22 @@ Chave | Descrição
 `EMAIL_HOST_USER` | Nome de usuário do servidor SMTP
 `EMAIL_HOST_PASSWORD` | Senha do servidor SMTP
 `EMAIL_USE_TLS` | **Obsoleto** (use `EMAIL_USE_SSL` ou `EMAIL_USE_STARTTLS` em vez disso). Booleano, se deve usar TLS para enviar e-mails. O padrão é `True`. Ao usar STARTTLS, defina isso como `False` e use uma porta diferente de 25.
-`EMAIL_USE_SSL` | Booleano, se deve usar SSL/TLS implícito para SMTP (v3.6.0+). O padrão é `True` se `EMAIL_USE_TLS` não estiver definido explicitamente. Normalmente usado com a porta 465.
+`EMAIL_USE_SSL` | Booleano, se deve usar SSL/TLS implícito para SMTP (v3.6.0+). O padrão é `True` se `EMAIL_USE_TLS` não estiver explicitamente definido. Normalmente usado com a porta 465.
 `EMAIL_USE_STARTTLS` | Booleano, se deve usar STARTTLS explícito para SMTP (v3.6.0+). O padrão é `False`. Normalmente usado com a porta 587 ou 25.
 `DEFAULT_FROM_EMAIL` | Endereço "De" para e-mails automatizados
 `THUMBNAIL_CACHE_CONFIG` | Dicionário com configurações para o cache de miniaturas. Veja [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para possíveis configurações.
 `REQUEST_CACHE_CONFIG` | Dicionário com configurações para o cache de requisições. Veja [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para possíveis configurações.
-`PERSISTENT_CACHE_CONFIG` | Dicionário com configurações para o cache persistente, usado, por exemplo, para telemetria. Veja [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para possíveis configurações.
-`CELERY_CONFIG` | Configurações para a fila de tarefas em segundo plano do Celery. Veja [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para possíveis configurações.
-`REPORT_DIR` | Diretório temporário onde a saída da execução dos relatórios do Gramps será armazenada
+`PERSISTENT_CACHE_CONFIG` | Dicionário com configurações para o cache persistente, usado por exemplo para telemetria. Veja [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para possíveis configurações.
+`CELERY_CONFIG` | Configurações para a fila de tarefas em segundo plano Celery. Veja [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para possíveis configurações.
+`REPORT_DIR` | Diretório temporário onde a saída da execução de relatórios do Gramps será armazenada
 `EXPORT_DIR` | Diretório temporário onde a saída da exportação do banco de dados do Gramps será armazenada
 `REGISTRATION_DISABLED` | Se `True`, desabilita o registro de novos usuários (padrão `False`)
 `DISABLE_TELEMETRY` | Se `True`, desabilita a telemetria de estatísticas (padrão `False`). Veja [telemetria](telemetry.md) para detalhes.
 `PILLOW_MAX_IMAGE_PIXELS` | Define o parâmetro PIL.Image.MAX_IMAGE_PIXELS, que indica o número de pixels que a imagem processada pode conter. Veja [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) para detalhes.
 `MAX_THUMBNAIL_FILE_BYTES` | Define um tamanho máximo de arquivo rígido para miniaturas. O padrão é `50 * 1024 * 1024` (50 MB). Aumentá-lo pode aumentar muito o uso de memória e pode levar a falhas por falta de memória ou perda de dados se arquivos grandes forem descompactados na memória.
 
-
 !!! info
-    Ao usar variáveis de ambiente para configuração, opções booleanas como `EMAIL_USE_SSL` devem ser a string `true` ou `false` (sensível a maiúsculas!).
-
+    Ao usar variáveis de ambiente para configuração, opções booleanas como `EMAIL_USE_SSL` devem ser a string `true` ou `false` (sensível a maiúsculas e minúsculas!).
 
 ### Configurações para bancos de dados PostgreSQL
 
@@ -90,22 +88,19 @@ Essas configurações são necessárias se suas árvores genealógicas estiverem
 
 Chave | Descrição
 ----|-------------
-`POSTGRES_USER` | O nome de usuário para a conexão com o banco de dados
+`POSTGRES_USER` | O nome de usuário para a conexão do banco de dados
 `POSTGRES_PASSWORD` | A senha para o usuário do banco de dados
-
 
 ### Configurações relevantes para hospedagem de várias árvores
 
 As seguintes configurações são relevantes ao [hospedar várias árvores](multi-tree.md).
 
-
 Chave | Descrição
 ----|-------------
 `MEDIA_PREFIX_TREE` | Booleano, se deve ou não usar uma subpasta separada para os arquivos de mídia de cada árvore. O padrão é `False`, mas é fortemente recomendado usar `True` em uma configuração de várias árvores
-`NEW_DB_BACKEND` | O backend do banco de dados a ser usado para árvores genealógicas recém-criadas. Deve ser um dos `sqlite` ou `sharedpostgresql`. O padrão é `sqlite`. O valor `postgresql` ainda é aceito, mas está obsoleto, uma vez que o backend PostgreSQL será removido em uma versão futura.
+`NEW_DB_BACKEND` | O backend do banco de dados a ser usado para árvores genealógicas recém-criadas. Deve ser um dos `sqlite` ou `sharedpostgresql`. O padrão é `sqlite`. O valor `postgresql` ainda é aceito, mas está obsoleto, uma vez que o backend PostgreSQL será removido na Gramps Web API 4.0.
 `POSTGRES_HOST` | O nome do host do servidor PostgreSQL usado para criar novas árvores ao usar uma configuração de várias árvores com o backend SharedPostgreSQL
-`POSTGRES_PORT` | A porta do servidor PostgreSQL usada para criar novas árvores ao usar uma configuração de várias árvores com o backend SharedPostgreSQL
-
+`POSTGRES_PORT` | A porta do servidor PostgreSQL usado para criar novas árvores ao usar uma configuração de várias árvores com o backend SharedPostgreSQL
 
 ### Configurações para autenticação OIDC
 
@@ -121,7 +116,7 @@ Chave | Descrição
 `OIDC_SCOPES` | Escopos OAuth. O padrão é "openid email profile"
 `OIDC_USERNAME_CLAIM` | A reivindicação a ser usada para o nome de usuário. O padrão é "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Opcional: URL para o endpoint de configuração OpenID Connect (se não estiver usando o padrão `/.well-known/openid-configuration`)
-`OIDC_PKCE` | Booleano, se deve usar PKCE. Se indefinido, PKCE é usado quando o documento de descoberta do provedor lista `S256`. Veja [PKCE](oidc.md#pkce)
+`OIDC_PKCE` | Booleano, se deve usar PKCE. Se não definido, PKCE é usado quando o documento de descoberta do provedor lista `S256`. Veja [PKCE](oidc.md#pkce)
 `OIDC_DISABLE_LOCAL_AUTH` | Booleano, se deve desabilitar a autenticação local por nome de usuário/senha. O padrão é `False`
 `OIDC_AUTO_REDIRECT` | Booleano, se deve redirecionar automaticamente para OIDC quando apenas um provedor estiver configurado. O padrão é `False`
 
@@ -140,7 +135,7 @@ Chave | Descrição
 
 #### Mapeamento de Funções OIDC
 
-Essas configurações permitem mapear grupos/funções OIDC do seu provedor de identidade para funções de usuário do Gramps Web:
+Essas configurações permitem que você mapeie grupos/funções OIDC do seu provedor de identidade para funções de usuário do Gramps Web:
 
 Chave | Descrição
 ----|-------------
@@ -154,17 +149,20 @@ Chave | Descrição
 
 ### Configurações apenas para recursos de IA
 
-Essas configurações são necessárias se você quiser usar recursos impulsionados por IA, como chat ou busca semântica.
+Essas configurações são necessárias se você quiser usar recursos impulsionados por IA, como chat ou busca semântica. Veja [Configurando chat de IA](chat.md) para detalhes.
+
+!!! warning "Busca semântica está obsoleta"
+    A busca semântica, e com ela as configurações `VECTOR_EMBEDDING_*`, está obsoleta e será removida na Gramps Web API 3.25. Depois disso, `VECTOR_EMBEDDING_MODEL` ainda será aceito, mas ignorado. Desde a Gramps Web API 3.24, o chat de IA só precisa de `LLM_MODEL`.
 
 Chave | Descrição
 ----|-------------
 `LLM_BASE_URL` | URL base para a API de chat compatível com OpenAI. O padrão é `None`, que usa a API OpenAI.
-`LLM_MODEL` | O modelo a ser usado para a API de chat compatível com OpenAI. Se indefinido (o padrão), o chat é desabilitado. A partir da v3.6.0, o assistente de IA usa Pydantic AI com capacidades de chamada de ferramenta.
-`VECTOR_EMBEDDING_MODEL` | O modelo a ser usado para embeddings de vetor de busca semântica. Ao usar um modelo local, isso deve ser um nome de modelo [Sentence Transformers](https://sbert.net/). Ao usar uma API remota (veja `VECTOR_EMBEDDING_BASE_URL`), este é o nome do modelo passado para o provedor remoto. Se indefinido (o padrão), a busca semântica e o chat são desabilitados.
-`VECTOR_EMBEDDING_BASE_URL` | URL base para uma API de embedding compatível com OpenAI remota (por exemplo, Ollama, OpenAI, LiteLLM). Se indefinido (o padrão), um modelo local de Sentence Transformers é usado. Veja [Usando uma API de embedding remota](chat.md#using-a-remote-embedding-api) para detalhes.
-`VECTOR_EMBEDDING_API_KEY` | Chave da API para provedores de embedding remotos autenticados. Necessária apenas quando `VECTOR_EMBEDDING_BASE_URL` está definido e o provedor requer autenticação.
+`LLM_MODEL` | O modelo a ser usado para a API de chat compatível com OpenAI. Se não definido (o padrão), o chat é desabilitado. A partir da v3.6.0, o assistente de IA usa Pydantic AI com capacidades de chamada de ferramentas.
+`VECTOR_EMBEDDING_MODEL` | **Obsoleto**, será removido na 3.25. O modelo a ser usado para embeddings de vetor de busca semântica. Ao usar um modelo local, isso deve ser um nome de modelo [Sentence Transformers](https://sbert.net/). Ao usar uma API remota (veja `VECTOR_EMBEDDING_BASE_URL`), este é o nome do modelo passado para o provedor remoto. Se não definido (o padrão), a busca semântica é desabilitada. Antes da Gramps Web API 3.24, o chat também estava desabilitado.
+`VECTOR_EMBEDDING_BASE_URL` | **Obsoleto**, será removido na 3.25. URL base para uma API de embedding compatível com OpenAI remota (por exemplo, Ollama, OpenAI, LiteLLM). Se não definido (o padrão), um modelo local de Sentence Transformers é usado. Veja [Usando uma API de embedding remota](chat.md#using-a-remote-embedding-api) para detalhes.
+`VECTOR_EMBEDDING_API_KEY` | **Obsoleto**, será removido na 3.25. Chave de API para provedores de embedding remotos autenticados. Necessária apenas quando `VECTOR_EMBEDDING_BASE_URL` estiver definido e o provedor exigir autenticação.
 `LLM_MAX_CONTEXT_LENGTH` | Limite de caracteres para o contexto da árvore genealógica fornecido ao LLM. O padrão é 50000.
-`LLM_SYSTEM_PROMPT` | Prompt de sistema personalizado para o assistente de chat LLM (v3.6.0+). Se indefinido, usa o prompt otimizado para genealogia padrão.
+`LLM_SYSTEM_PROMPT` | Prompt de sistema personalizado para o assistente de chat LLM (v3.6.0+). Se não definido, usa o prompt otimizado para genealogia padrão.
 
 
 ## Exemplo de arquivo de configuração
@@ -172,12 +170,12 @@ Chave | Descrição
 Um arquivo de configuração mínimo para produção poderia ser assim:
 ```python
 TREE="Minha Árvore Genealógica"
-BASE_URL="https://minha.arvore.exemplo.com"
+BASE_URL="https://minhaarvore.exemplo.com"
 SECRET_KEY="..."  # sua chave secreta
-USER_DB_URI="sqlite:////caminho/para/users.sqlite"
+USER_DB_URI="sqlite:////caminho/para/usuarios.sqlite"
 EMAIL_HOST="mail.exemplo.com"
 EMAIL_PORT=465
-EMAIL_USE_SSL=True  # Use SSL implícito para a porta 465
+EMAIL_USE_SSL=True  # Usar SSL implícito para a porta 465
 EMAIL_HOST_USER="gramps@exemplo.com"
 EMAIL_HOST_PASSWORD="..." # sua senha SMTP
 DEFAULT_FROM_EMAIL="gramps@exemplo.com"
