@@ -31,7 +31,7 @@ When the import has finished, check the result: compare the number of people in 
 !!! warning
     A regular import is purely additive: it always creates new objects and never updates or deletes existing ones, even for objects that already exist in your tree under the same Gramps ID or handle. Importing the same file twice – or importing a file that overlaps with data already in the tree – will duplicate every matching object rather than merge or skip it.
 
-    If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](settings.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it. This requires a Gramps XML file.
+    If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](settings.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it. This requires a Gramps XML file or a Gramps Web backup.
 
 If a limit on the number of people has been set for your tree (see [Usage quotas](settings.md#usage-quotas)), an import that would exceed it is refused as a whole.
 

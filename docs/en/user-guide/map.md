@@ -37,7 +37,9 @@ The time slider at the bottom of the page filters which place markers are shown 
 
 ## Map layers
 
-A layer switcher button (stacked-layers icon, bottom-left) lets you choose between two base maps:
+A layer switcher button (stacked-layers icon, bottom-left) lets you choose between two base maps. Below them, it lists your own map layers under "Your maps" (see [Custom map overlays](#custom-map-overlays) and [Map files of places](#map-files-of-places)) and the [Wikidata buildings](#wikidata-buildings) layer under "External", each of which can be switched on and off.
+
+The labels of both base maps are shown in the language you selected in Gramps Web, where the map data has a name in that language, and in the local name otherwise.
 
 ### Base Map
 
@@ -70,3 +72,26 @@ Behind the scenes, this stores the image's corner coordinates in a `map:bounds` 
 ### Viewing overlays on the Map page
 
 Once a media object has been georeferenced this way, it automatically becomes available as a toggleable layer on the Map page. Open the layer switcher (stacked-layers icon, bottom-left) to show or hide each overlay independently of the base map. Overlays are listed by the media object's title.
+
+## Map files of places
+
+Places can have map files attached as media objects – for example the boundaries of a parish, a district, or an estate, or a route. Supported are KML (`.kml`), GeoJSON (`.geojson`), and GPX (`.gpx`) files.
+
+When you select a place on the map, its map files are drawn on top of the map, using the colours stored in the file where it has them. This also works for places without coordinates: the map then zooms to the area covered by the files. While the place is selected, its files are listed in the layer switcher under "Your maps", where you can switch each of them off.
+
+To add a map file to a place, add it to the place's gallery like any other [media file](media.md).
+
+## Wikidata buildings
+
+The "Wikidata buildings" layer shows buildings recorded in [Wikidata](https://www.wikidata.org/), such as churches, farms, or town houses. It is off by default and can be switched on in the layer switcher under "External". Buildings are only shown when the map is zoomed in far enough. When the time slider is active, only buildings that existed at the selected time are shown.
+
+Click a building to see its details from Wikidata, such as when it was built or demolished, its addresses, occupants, and owners.
+
+### Saving a building as a place
+
+Users who can add objects see a **Save as place** button in the building's details. It opens the form for a new place, prefilled with the building's name in your language, a place type (`Farm` for farms, otherwise `Building`), its coordinates, and a link to the Wikidata item. Complete the form, for example by selecting the enclosing place, and save it.
+
+If a place in your tree is at the same location as the building, the button reads **Open saved place** instead and shows that place.
+
+!!! info
+    The server administrator can remove the Wikidata buildings layer with the `mapWikidata` option of the [frontend configuration](../install_setup/frontend-config.md).

@@ -20,3 +20,4 @@ Key |Type | Description
 `mapBaseStyleLight` | string | MapLibre style URL for the base map in light theme (default: `https://tiles.openfreemap.org/styles/liberty`)
 `mapBaseStyleDark` | string | MapLibre style URL for the base map in dark theme (default: `https://tiles.openfreemap.org/styles/dark`)
 `mapOhmStyle` | string | MapLibre style URL for the OpenHistoricalMap overlay (default: `https://www.openhistoricalmap.org/map-styles/main/main.json`)
+`mapWikidata` | boolean | If false, remove the [Wikidata buildings](../user-guide/map.md#wikidata-buildings) layer from the map (default: true)

@@ -1,6 +1,8 @@
 ## Back up your family tree
 
-To create a backup of your family tree, open the Export page in Gramps Web and select the Gramps XML format.
+Tree owners can create, download, and restore complete backups of the tree – including its settings and users – in the [Backups](settings.md#backups) section of the Administration settings.
+
+Alternatively, to create a backup of the family tree data only, open the Export page in Gramps Web and select the Gramps XML format.
 
 Clicking on "export" will generate the file and start the download once it is ready.
 
@@ -16,7 +18,7 @@ When sharing genealogical data as Gramps XML is not an option, you can also expo
 
 To back up your media files, you can create and download a ZIP archive of all media files on the Export page.
 
-Note that, especially for large trees, this can be an expensive operation for the server and should only be done if absolutely necessary.
+Note that, especially for large trees, this can be an expensive operation for the server and should only be done if absolutely necessary. For this reason, the number of media archives that can be created is limited (by default to one per hour). If you reach the limit, the error message shows it.
 
 A better option to back up your media files on a regular basis is to use the [Gramps Web Sync addon](sync.md) (which itself is not a backup solution) and create incremental backups on your local computer.
 

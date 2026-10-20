@@ -22,6 +22,12 @@ In the detail view of any object, click the blue edit button in the bottom right
 
 A dialog will open that offers the same fields as described in the previous section. Click "save" to upload the file, add a new media object, and link it to the viewed object.
 
+## Profile pictures
+
+The first image in a person's gallery is used as their profile picture. In edit mode, it is marked with a "Profile picture" badge. To use a different image, move it to the first position with the arrow buttons on the gallery thumbnails.
+
+If a person has no media yet, edit mode shows an **Add profile picture** placeholder instead. Click it to upload a new media file or select an existing one.
+
 ## Link existing media files when creating an object
 
 When you create a new person, family, event, place, source or citation, the form has a "Media" section. There you can select one or more existing media objects, which are linked to the new object when you save it.
