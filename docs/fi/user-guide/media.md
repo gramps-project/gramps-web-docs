@@ -8,9 +8,9 @@ Napsauta "valitse tiedosto" valitaksesi tiedoston tietokoneeltasi. Mobiililaitte
 
 Valinnaisesti,
 
-- syötä mediafilelle kuvaus "otsikon" alle
+- syötä mediafilelle kuvaus kohtaan "otsikko"
 - syötä päivämäärä
-- aseta mediafile yksityiseksi (mikä tekee sen näkyväksi vain käyttäjille, joilla on riittävä valtuutus)
+- aseta mediafile yksityiseksi (mikä tekee sen näkyväksi vain riittävän valtuutuksen omaaville käyttäjille)
 
 Napsauta "lisää" ladataksesi tiedoston ja luodaksesi mediaobjektin.
 
@@ -20,21 +20,27 @@ Seuraavat objektityypit Grampsissa voivat sisältää liitettyjä mediaobjekteja
 
 Minkä tahansa objektin yksityiskohtaisessa näkymässä napsauta sinistä muokkauspainiketta oikeassa alakulmassa (jos et näe sitä, käyttäjälläsi ei ole muokkausoikeuksia). Napsauta "galleria" -välilehteä ja napsauta sinistä + -painiketta.
 
-Aukeaa dialogi, joka tarjoaa samat kentät kuin edellisessä osiossa. Napsauta "tallenna" ladataksesi tiedoston, lisätäksesi uuden mediaobjektin ja linkittääksesi sen tarkasteltavaan objektiin.
+Avautuu dialogi, joka tarjoaa samat kentät kuin edellisessä osiossa. Napsauta "tallenna" ladataksesi tiedoston, lisätäksesi uuden mediaobjektin ja linkittääksesi sen katsottuun objektiin.
+
+## Profiilikuvas
+
+Henkilön gallerian ensimmäistä kuvaa käytetään heidän profiilikuvanaan. Muokkaustilassa se merkitään "Profiilikuva" -merkillä. Käyttääksesi toista kuvaa, siirrä se ensimmäiseen sijaintiin gallerian pikkukuvien nuolipainikkeilla.
+
+Jos henkilöllä ei vielä ole mediaa, muokkaustila näyttää **Lisää profiilikuva** -paikan. Napsauta sitä ladataksesi uuden mediafile tai valitaksesi olemassa olevan.
 
 ## Linkitä olemassa olevat mediafilet objektin luomisen yhteydessä
 
 Kun luot uuden henkilön, perheen, tapahtuman, paikan, lähteen tai viittauksen, lomakkeessa on "Media" -osio. Siellä voit valita yhden tai useamman olemassa olevan mediaobjektin, jotka linkitetään uuteen objektiin, kun tallennat sen.
 
-Kun luot henkilön yhdessä hänen syntymä- ja kuolintapahtumiensa kanssa, valitut mediaobjektit linkitetään vain henkilöön, eivät tapahtumiin.
+Kun luot henkilön yhdessä heidän syntymä- ja kuolinaikojensa kanssa, valitut mediaobjektit linkitetään vain henkilöön, ei tapahtumiin.
 
-## Tekstintunnistus (OCR)
+## Tekstin tunnistus (OCR)
 
-Jos palvelimen ylläpitäjä on ottanut käyttöön OCR-tuen, "Tekstintunnistus" -painike ilmestyy kuvan alle mediaobjektin yksityiskohtaisessa näkymässä.
+Jos palvelimen ylläpitäjä on ottanut käyttöön OCR-tuen, "Tekstin tunnistus" -painike ilmestyy kuvan alle mediaobjektin yksityiskohtaisessa näkymässä.
 
-Napsauta "Tekstintunnistus", valitse kuvassa näkyvän tekstin kieli ja napsauta sitten "Suorita". Kuva käsitellään [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) -ohjelmalla ja tunnistettu teksti näytetään alla.
+Napsauta "Tekstin tunnistus", valitse kuvassa näkyvän tekstin kieli ja napsauta sitten "Suorita". Kuva käsitellään [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) -ohjelmalla ja tunnistettu teksti näytetään alla.
 
 Jos käyttäjälläsi on muokkausoikeudet, napsauta "Tallenna muistiinpanona" luodaksesi uuden muistiinpanon (tyyppi "Käsikirjoitus"), joka sisältää tunnistetun tekstin ja linkittää sen mediaobjektiin.
 
-!!! vinkki
-    OCR:n tarkkuus riippuu voimakkaasti kuvan laadusta ja valitusta kielestä. Jos tulos näyttää väärältä, kokeile eri kieltä – esimerkiksi historialliset saksalaiset asiakirjat tarvitsevat usein Fraktur-variantin tavallisen saksan sijaan.
+!!! tip
+    OCR:n tarkkuus riippuu voimakkaasti kuvan laadusta ja valitusta kielestä. Jos tulos näyttää väärältä, kokeile toista kieltä – esimerkiksi historialliset saksalaiset asiakirjat tarvitsevat usein Fraktur-muunnoksen tavallisen saksan sijaan.

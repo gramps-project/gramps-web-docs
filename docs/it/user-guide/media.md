@@ -1,4 +1,4 @@
-Ci sono due modi per aggiungere un nuovo file multimediale (un'immagine, un file audio, un file video o qualsiasi altro file), e i file multimediali esistenti possono essere collegati a nuovi oggetti man mano che vengono creati:
+Ci sono due modi per aggiungere un nuovo file multimediale (un'immagine, un file audio, un file video o qualsiasi altro file), e i file multimediali esistenti possono essere collegati a nuovi oggetti mentre vengono creati:
 
 ## Aggiungi un nuovo file multimediale autonomo
 
@@ -18,11 +18,17 @@ Fai clic su "aggiungi" per caricare il file e creare l'oggetto multimediale.
 
 I seguenti tipi di oggetti in Gramps possono avere oggetti multimediali allegati: persone, famiglie, eventi, luoghi, fonti e citazioni.
 
-Nella vista dettagli di qualsiasi oggetto, fai clic sul pulsante blu di modifica in basso a destra (se non lo vedi, il tuo utente non ha autorizzazioni di modifica). Fai clic sulla scheda "galleria" e fai clic sul pulsante blu +.
+Nella vista dettagliata di qualsiasi oggetto, fai clic sul pulsante blu di modifica in basso a destra (se non lo vedi, il tuo utente non ha permessi di modifica). Fai clic sulla scheda "galleria" e fai clic sul pulsante blu +.
 
 Si aprirà una finestra di dialogo che offre gli stessi campi descritti nella sezione precedente. Fai clic su "salva" per caricare il file, aggiungere un nuovo oggetto multimediale e collegarlo all'oggetto visualizzato.
 
-## Collega file multimediali esistenti durante la creazione di un oggetto
+## Foto profilo
+
+La prima immagine nella galleria di una persona viene utilizzata come foto profilo. In modalità modifica, è contrassegnata con un'etichetta "Foto profilo". Per utilizzare un'immagine diversa, spostala nella prima posizione con i pulsanti freccia sulle miniature della galleria.
+
+Se una persona non ha ancora file multimediali, la modalità modifica mostra un segnaposto **Aggiungi foto profilo**. Fai clic su di esso per caricare un nuovo file multimediale o selezionarne uno esistente.
+
+## Collega file multimediali esistenti quando crei un oggetto
 
 Quando crei una nuova persona, famiglia, evento, luogo, fonte o citazione, il modulo ha una sezione "Media". Lì puoi selezionare uno o più oggetti multimediali esistenti, che saranno collegati al nuovo oggetto quando lo salvi.
 
@@ -30,11 +36,11 @@ Quando crei una persona insieme ai suoi eventi di nascita e morte, gli oggetti m
 
 ## Riconoscimento del testo (OCR)
 
-Se l'amministratore del server ha abilitato il supporto OCR, appare un pulsante "Riconoscimento del Testo" sotto l'immagine nella vista dettagli di un oggetto multimediale.
+Se l'amministratore del server ha abilitato il supporto OCR, un pulsante "Riconoscimento del testo" appare sotto l'immagine nella vista dettagliata di un oggetto multimediale.
 
-Fai clic su "Riconoscimento del Testo", scegli la lingua del testo mostrato nell'immagine, quindi fai clic su "Esegui". L'immagine viene elaborata con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e il testo riconosciuto viene visualizzato qui sotto.
+Fai clic su "Riconoscimento del testo", scegli la lingua del testo mostrato nell'immagine, quindi fai clic su "Esegui". L'immagine viene elaborata con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e il testo riconosciuto viene visualizzato sotto.
 
-Se il tuo utente ha autorizzazioni di modifica, fai clic su "Salva come Nota" per creare una nuova nota (di tipo "Trascrizione") contenente il testo riconosciuto e collegarla all'oggetto multimediale.
+Se il tuo utente ha permessi di modifica, fai clic su "Salva come Nota" per creare una nuova nota (di tipo "Trascrizione") contenente il testo riconosciuto e collegarla all'oggetto multimediale.
 
 !!! tip
-    L'accuratezza dell'OCR dipende fortemente dalla qualità dell'immagine e dalla lingua selezionata. Se il risultato sembra errato, prova una lingua diversa – ad esempio, i documenti storici tedeschi spesso necessitano della variante Fraktur piuttosto che del tedesco standard.
+    L'accuratezza dell'OCR dipende fortemente dalla qualità dell'immagine e dalla lingua selezionata. Se il risultato sembra errato, prova una lingua diversa – ad esempio, i documenti storici tedeschi spesso necessitano della variante Fraktur piuttosto che del tedesco semplice.

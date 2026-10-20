@@ -18,15 +18,21 @@ Clique em "adicionar" para fazer o upload do arquivo e criar o objeto de mídia.
 
 Os seguintes tipos de objeto no Gramps podem ter objetos de mídia anexados: pessoas, famílias, eventos, lugares, fontes e citações.
 
-Na visualização de detalhes de qualquer objeto, clique no botão azul de editar no canto inferior direito (se você não o vê, seu usuário não tem permissões de edição). Clique na aba "galeria" e clique no botão azul +.
+Na visualização de detalhes de qualquer objeto, clique no botão azul de editar no canto inferior direito (se você não vê-lo, seu usuário não tem permissões de edição). Clique na aba "galeria" e clique no botão azul +.
 
 Uma caixa de diálogo será aberta que oferece os mesmos campos descritos na seção anterior. Clique em "salvar" para fazer o upload do arquivo, adicionar um novo objeto de mídia e vinculá-lo ao objeto visualizado.
 
+## Fotos de perfil
+
+A primeira imagem na galeria de uma pessoa é usada como sua foto de perfil. No modo de edição, ela é marcada com um distintivo de "Foto de perfil". Para usar uma imagem diferente, mova-a para a primeira posição com os botões de seta nas miniaturas da galeria.
+
+Se uma pessoa ainda não tiver mídia, o modo de edição mostrará um espaço reservado **Adicionar foto de perfil** em vez disso. Clique nele para fazer o upload de um novo arquivo de mídia ou selecionar um existente.
+
 ## Vincular arquivos de mídia existentes ao criar um objeto
 
-Quando você cria uma nova pessoa, família, evento, lugar, fonte ou citação, o formulário tem uma seção "Mídia". Lá você pode selecionar um ou mais objetos de mídia existentes, que são vinculados ao novo objeto quando você o salva.
+Quando você cria uma nova pessoa, família, evento, lugar, fonte ou citação, o formulário possui uma seção "Mídia". Lá você pode selecionar um ou mais objetos de mídia existentes, que são vinculados ao novo objeto quando você o salva.
 
-Quando você cria uma pessoa juntamente com seus eventos de nascimento e morte, os objetos de mídia selecionados são vinculados apenas à pessoa, não aos eventos.
+Quando você cria uma pessoa junto com seus eventos de nascimento e morte, os objetos de mídia selecionados são vinculados apenas à pessoa, não aos eventos.
 
 ## Reconhecimento de texto (OCR)
 
@@ -34,7 +40,7 @@ Se o administrador do servidor ativou o suporte a OCR, um botão "Reconhecimento
 
 Clique em "Reconhecimento de Texto", escolha o idioma do texto mostrado na imagem e, em seguida, clique em "Executar". A imagem é processada com [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e o texto reconhecido é exibido abaixo.
 
-Se o seu usuário tiver permissões de edição, clique em "Salvar como Nota" para criar uma nova nota (do tipo "Transcrição") contendo o texto reconhecido e vinculá-la ao objeto de mídia.
+Se seu usuário tiver permissões de edição, clique em "Salvar como Nota" para criar uma nova nota (do tipo "Transcrição") contendo o texto reconhecido e vinculá-la ao objeto de mídia.
 
 !!! dica
-    A precisão do OCR depende fortemente da qualidade da imagem e do idioma selecionado. Se o resultado parecer incorreto, tente um idioma diferente – por exemplo, documentos históricos em alemão muitas vezes precisam da variante Fraktur em vez do alemão simples.
+    A precisão do OCR depende fortemente da qualidade da imagem e do idioma selecionado. Se o resultado parecer errado, tente um idioma diferente – por exemplo, documentos históricos em alemão muitas vezes precisam da variante Fraktur em vez do alemão simples.

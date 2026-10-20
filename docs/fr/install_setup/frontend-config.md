@@ -1,6 +1,6 @@
-# Personnalisation de l'interface
+# Personnalisation du frontend
 
-L'interface Web de Gramps est une application Javascript déployée sous forme d'un ensemble de fichiers HTML, CSS et Javascript statiques. Normalement, aucune configuration spéciale n'est nécessaire pour l'interface. Cependant, certains comportements peuvent être modifiés en définissant des options appropriées dans le fichier `config.js` à la racine de la distribution.
+Le frontend de Gramps Web est une application Javascript déployée sous forme d'un ensemble de fichiers HTML, CSS et Javascript statiques. Normalement, aucune configuration spéciale n'est nécessaire pour le frontend. Cependant, certains comportements peuvent être modifiés en définissant des options appropriées dans le fichier `config.js` à la racine de la distribution.
 
 Le fichier doit avoir la structure suivante :
 
@@ -10,7 +10,7 @@ window.grampsjsConfig = {
 }
 ```
 
-Les clés d'options suivantes existent.
+Les clés d'option suivantes existent.
 
 Clé | Type | Description 
 ----|-----|-----------
@@ -19,4 +19,5 @@ Clé | Type | Description
 `loginRedirect` | string | URL vers laquelle rediriger lorsque l'utilisateur n'est pas connecté et navigue vers une page autre que "login" ou "register"
 `mapBaseStyleLight` | string | URL de style MapLibre pour la carte de base en thème clair (par défaut : `https://tiles.openfreemap.org/styles/liberty`)
 `mapBaseStyleDark` | string | URL de style MapLibre pour la carte de base en thème sombre (par défaut : `https://tiles.openfreemap.org/styles/dark`)
-`mapOhmStyle` | string | URL de style MapLibre pour la superposition OpenHistoricalMap (par défaut : `https://www.openhistoricalmap.org/map-styles/main/main.json`)
+`mapOhmStyle` | string | URL de style MapLibre pour le superposition OpenHistoricalMap (par défaut : `https://www.openhistoricalmap.org/map-styles/main/main.json`)
+`mapWikidata` | boolean | Si faux, supprime la couche [bâtiments Wikidata](../user-guide/map.md#wikidata-buildings) de la carte (par défaut : vrai)

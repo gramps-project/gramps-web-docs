@@ -1,6 +1,6 @@
 # 服务器配置
 
-使用默认的 Docker 镜像，所有必要的配置都可以通过浏览器进行。然而，根据部署情况，可能需要自定义服务器配置。
+使用默认的 Docker 镜像，所有必要的配置都可以通过浏览器进行。但是，根据部署情况，可能需要自定义服务器配置。
 
 本页面列出了所有更改配置的方法和所有现有的配置选项。
 
@@ -14,7 +14,7 @@
 ```yaml
       - /path/to/config.cfg:/app/config/config.cfg
 ```
-其中 `/path/to/config.cfg` 是您服务器文件系统中配置文件的路径（右侧引用的是容器中的路径，不能更改）。
+其中 `/path/to/config.cfg` 是您服务器文件系统中配置文件的路径（右侧指的是容器中的路径，不能更改）。
 
 使用环境变量时，
 
@@ -24,12 +24,12 @@
 请注意，通过环境设置的配置选项优先于配置文件中的选项。如果两者都存在，环境变量“胜出”。
 
 !!! warning "未加前缀的环境变量已被弃用"
-    出于历史原因，一些设置 – `TREE`、`SECRET_KEY`、`USER_DB_URI`、`POSTGRES_USER`、`POSTGRES_PASSWORD`、`MEDIA_BASE_DIR`、`SEARCH_INDEX_DIR`、`EMAIL_HOST`、`EMAIL_PORT`、`EMAIL_HOST_USER`、`EMAIL_HOST_PASSWORD`、`DEFAULT_FROM_EMAIL`、`BASE_URL` 和 `STATIC_PATH` – 仍然可以通过未带 `GRAMPSWEB_` 前缀的环境变量进行设置。这已被弃用，在启动时会记录警告，并将在未来的版本中停止工作。始终使用带前缀的形式，例如 `GRAMPSWEB_TREE` 而不是 `TREE`。
+    出于历史原因，少数设置 – `TREE`、`SECRET_KEY`、`USER_DB_URI`、`POSTGRES_USER`、`POSTGRES_PASSWORD`、`MEDIA_BASE_DIR`、`SEARCH_INDEX_DIR`、`EMAIL_HOST`、`EMAIL_PORT`、`EMAIL_HOST_USER`、`EMAIL_HOST_PASSWORD`、`DEFAULT_FROM_EMAIL`、`BASE_URL` 和 `STATIC_PATH` – 仍然可以通过不带 `GRAMPSWEB_` 前缀的环境变量进行设置。这已被弃用，在启动时记录警告，并将在未来的版本中停止工作。始终使用带前缀的形式，例如 `GRAMPSWEB_TREE` 而不是 `TREE`。
 
     请注意，这仅涉及环境变量。在配置文件中，设置名称始终使用未加前缀的形式。
 
 !!! tip "检查已弃用的选项"
-    您的服务器仍依赖的已弃用配置选项 – 例如未加前缀的环境变量、`SEARCH_INDEX_DIR` 或 `EMAIL_USE_TLS` – 在启动时会记录为警告。自 Gramps Web API 3.22 起，它们还会在您以管理员身份登录时，列在 **系统信息** 页面顶部（通过应用程序顶部栏中的用户图标访问），并提供其替代选项和将移除支持的版本。
+    您的服务器仍依赖的已弃用配置选项 – 例如未加前缀的环境变量、`SEARCH_INDEX_DIR` 或 `EMAIL_USE_TLS` – 在启动时会记录为警告。自 Gramps Web API 3.22 起，它们还会在您以管理员身份登录时，在 **系统信息** 页面顶部列出，连同其替代方案和支持将被移除的版本（可以通过顶部应用栏中的用户图标访问）。
 
 ## 现有配置设置
 以下配置选项是存在的。
@@ -38,12 +38,12 @@
 
 键 | 描述
 ----|-------------
-`TREE` | 要使用的家谱数据库的名称。使用 `gramps -l` 显示可用的树。如果不存在具有此名称的树，将创建一个新的空树。
-`SECRET_KEY` | Flask 的密钥。密钥不得公开共享。更改它将使所有访问令牌失效。
-`USER_DB_URI` | 用户数据库的数据库 URL。允许任何与 SQLAlchemy 兼容的 URL。
+`TREE` | 要使用的家谱数据库的名称。使用 `gramps -l` 显示可用的树。如果不存在此名称的树，将创建一个新的空树。
+`SECRET_KEY` | Flask 的密钥。该密钥不得公开共享。更改它将使所有访问令牌失效。
+`USER_DB_URI` | 用户数据库的数据库 URL。任何与 SQLAlchemy 兼容的 URL 都是允许的。
 
 !!! info
-    您可以使用以下命令生成一个安全的密钥
+    您可以通过以下命令生成一个安全的密钥
 
     ```
     python3 -c "import secrets;print(secrets.token_urlsafe(32))"
@@ -53,20 +53,20 @@
 
 键 | 描述
 ----|-------------
-`MEDIA_BASE_DIR` | 用作媒体文件的基本目录的路径，覆盖 Gramps 中设置的媒体基本目录。当使用 [S3](s3.md) 时，必须采用 `s3://<bucket_name>` 的形式
-`TREE_ID` | 在单树模式下使用的家谱数据库的目录名称（当 `TREE` 未设置为 `*` 时）。设置后，服务器通过其目录名称而不是显示名称来识别树，这对于重命名更为稳健。如果您想通过 API 重命名树，则需要此设置。目录名称可以通过 `GET /api/trees/-` 找到（`id` 字段）。
-`SEARCH_INDEX_DB_URI` | 搜索索引的数据库 URL。只允许 `sqlite` 或 `postgresql` 作为后端。默认为 `sqlite:///indexdir/search_index.db`，在运行脚本的路径相对的 `indexdir` 文件夹中创建一个 SQLite 文件。
+`MEDIA_BASE_DIR` | 用作媒体文件的基本目录的路径，覆盖 Gramps 中设置的媒体基本目录。当使用 [S3](s3.md) 时，必须具有 `s3://<bucket_name>` 的形式
+`TREE_ID` | 在单树模式下使用的家谱数据库的目录名称（当 `TREE` 未设置为 `*` 时）。设置后，服务器通过其目录名称而不是显示名称来识别树，这对重命名更为稳健。如果您希望通过 API 重命名树，则需要此设置。可以通过 `GET /api/trees/-` 找到目录名称（`id` 字段）。
+`SEARCH_INDEX_DB_URI` | 搜索索引的数据库 URL。仅允许 `sqlite` 或 `postgresql` 作为后端。默认为 `sqlite:///indexdir/search_index.db`，在运行脚本的路径相对的 `indexdir` 文件夹中创建一个 SQLite 文件
 `SEARCH_INDEX_DIR` | **已弃用**（请使用 `SEARCH_INDEX_DB_URI`）。包含搜索索引的目录。如果在 `SEARCH_INDEX_DB_URI` 未设置时设置，则搜索索引 URL 将推导为 `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`。
-`STATIC_PATH` | 提供静态文件的路径（例如，一个静态网页前端）
-`BASE_URL` | API 可访问的基本 URL（例如 `https://mygramps.mydomain.com/`）。这对于构建正确的密码重置链接是必要的。Web Push 也需要一个可公开访问的 HTTPS URL；默认的 `http://localhost/` 会禁用 Web Push。当通过环境配置此设置时，请使用 `GRAMPSWEB_BASE_URL`。
+`STATIC_PATH` | 提供静态文件的路径（例如静态网页前端）
+`BASE_URL` | API 可访问的基本 URL（例如 `https://mygramps.mydomain.com/`）。这对于构建正确的密码重置链接是必要的。Web Push 还需要一个可公开访问的 HTTPS URL；默认的 `http://localhost/` 会禁用 Web Push。通过环境配置此设置时，请使用 `GRAMPSWEB_BASE_URL`。
 `CORS_ORIGINS` | 允许 CORS 请求的来源。默认情况下，所有请求都被拒绝。使用 `"*"` 允许来自任何域的请求。
-`EMAIL_HOST` | SMTP 服务器主机（例如，用于发送密码重置电子邮件）
+`EMAIL_HOST` | SMTP 服务器主机（例如用于发送密码重置电子邮件）
 `EMAIL_PORT` | SMTP 服务器端口。默认为 465
 `EMAIL_HOST_USER` | SMTP 服务器用户名
 `EMAIL_HOST_PASSWORD` | SMTP 服务器密码
-`EMAIL_USE_TLS` | **已弃用**（请使用 `EMAIL_USE_SSL` 或 `EMAIL_USE_STARTTLS`）。布尔值，是否使用 TLS 发送电子邮件。默认为 `True`。使用 STARTTLS 时，将此设置为 `False`，并使用与 25 不同的端口。
-`EMAIL_USE_SSL` | 布尔值，是否对 SMTP 使用隐式 SSL/TLS（v3.6.0+）。如果未明确设置 `EMAIL_USE_TLS`，则默认为 `True`。通常与端口 465 一起使用。
-`EMAIL_USE_STARTTLS` | 布尔值，是否对 SMTP 使用显式 STARTTLS（v3.6.0+）。默认为 `False`。通常与端口 587 或 25 一起使用。
+`EMAIL_USE_TLS` | **已弃用**（请使用 `EMAIL_USE_SSL` 或 `EMAIL_USE_STARTTLS`）。布尔值，是否使用 TLS 发送电子邮件。默认为 `True`。使用 STARTTLS 时，将其设置为 `False`，并使用不同于 25 的端口。
+`EMAIL_USE_SSL` | 布尔值，是否使用隐式 SSL/TLS 进行 SMTP（v3.6.0+）。如果未显式设置 `EMAIL_USE_TLS`，则默认为 `True`。通常与端口 465 一起使用。
+`EMAIL_USE_STARTTLS` | 布尔值，是否使用显式 STARTTLS 进行 SMTP（v3.6.0+）。默认为 `False`。通常与端口 587 或 25 一起使用。
 `DEFAULT_FROM_EMAIL` | 自动电子邮件的“发件人”地址
 `THUMBNAIL_CACHE_CONFIG` | 包含缩略图缓存设置的字典。有关可能的设置，请参见 [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)。
 `REQUEST_CACHE_CONFIG` | 包含请求缓存设置的字典。有关可能的设置，请参见 [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)。
@@ -74,9 +74,13 @@
 `CELERY_CONFIG` | Celery 后台任务队列的设置。有关可能的设置，请参见 [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html)。
 `REPORT_DIR` | 运行 Gramps 报告的输出将存储的临时目录
 `EXPORT_DIR` | 导出 Gramps 数据库的输出将存储的临时目录
+`BACKUP_DIR` | 存储 [备份](../administration/settings.md#backups) 的目录，按树的子目录存储（v3.24.0+）。如果未设置（默认），则无法在服务器上存储备份，但仍可以从上传的文件中恢复。使用持久位置，例如 Docker 卷，并且最好是本身备份或在其他地方同步的。
+`BACKUP_KEEP` | 每棵树保留的存储备份的数量；当创建新的备份时，较旧的备份将被删除（v3.24.0+）。默认为 `5`
+`RATE_LIMIT_BACKUP` | 每棵树创建备份的速率限制（v3.24.0+）。默认为 `"10 per day"`
+`RATE_LIMIT_MEDIA_ARCHIVE` | 在导出页面上创建媒体档案的速率限制。默认为 `"1 per hour"`
 `REGISTRATION_DISABLED` | 如果为 `True`，则不允许新用户注册（默认 `False`）
 `DISABLE_TELEMETRY` | 如果为 `True`，则禁用统计遥测（默认 `False`）。有关详细信息，请参见 [遥测](telemetry.md)。
-`PILLOW_MAX_IMAGE_PIXELS` | 设置 PIL.Image.MAX_IMAGE_PIXELS 参数，指示处理的图像可以包含的像素数。有关详细信息，请参见 [文档](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS)。
+`PILLOW_MAX_IMAGE_PIXELS` | 设置 PIL.Image.MAX_IMAGE_PIXELS 参数，该参数指示处理的图像可以包含的像素数量。有关详细信息，请参见 [文档](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS)。
 `MAX_THUMBNAIL_FILE_BYTES` | 设置缩略图的硬最大文件大小。默认为 `50 * 1024 * 1024`（50 MB）。提高此值可能会大幅增加内存使用，并可能导致内存不足崩溃或在内存中解压缩大文件时数据丢失。
 
 !!! info
@@ -84,7 +88,7 @@
 
 ### PostgreSQL 数据库的设置
 
-如果您的家谱存储在使用 SharedPostgreSQL 附加组件的 [PostgreSQL 数据库](postgres.md) 中，则需要这些设置。
+如果您的家谱树托管在使用 SharedPostgreSQL 附加组件的 [PostgreSQL 数据库](postgres.md) 中，则需要这些设置。
 
 键 | 描述
 ----|-------------
@@ -98,17 +102,17 @@
 键 | 描述
 ----|-------------
 `MEDIA_PREFIX_TREE` | 布尔值，是否为每棵树的媒体文件使用单独的子文件夹。默认为 `False`，但在多树设置中强烈建议使用 `True`
-`NEW_DB_BACKEND` | 新创建的家谱树使用的数据库后端。必须是 `sqlite` 或 `sharedpostgresql` 之一。默认为 `sqlite`。值 `postgresql` 仍然被接受但已被弃用，因为 PostgreSQL 后端将在 Gramps Web API 4.0 中移除。
-`POSTGRES_HOST` | 使用 SharedPostgreSQL 后端创建新树时使用的 PostgreSQL 服务器的主机名
-`POSTGRES_PORT` | 使用 SharedPostgreSQL 后端创建新树时使用的 PostgreSQL 服务器的端口
+`NEW_DB_BACKEND` | 新创建的家谱树要使用的数据库后端。必须是 `sqlite` 或 `sharedpostgresql` 之一。默认为 `sqlite`。值 `postgresql` 仍然被接受，但已被弃用，因为 PostgreSQL 后端将在 Gramps Web API 4.0 中被移除。
+`POSTGRES_HOST` | 在使用 SharedPostgreSQL 后端的多树设置中，用于创建新树的 PostgreSQL 服务器的主机名
+`POSTGRES_PORT` | 在使用 SharedPostgreSQL 后端的多树设置中，用于创建新树的 PostgreSQL 服务器的端口
 
-### OIDC 身份验证的设置
+### OIDC 认证的设置
 
-如果您想使用外部提供者的 OpenID Connect (OIDC) 身份验证，则需要这些设置。有关详细的设置说明和示例，请参见 [OIDC 身份验证](oidc.md)。
+如果您希望使用外部提供者的 OpenID Connect (OIDC) 认证，则需要这些设置。有关详细的设置说明和示例，请参见 [OIDC 认证](oidc.md)。
 
 键 | 描述
 ----|-------------
-`OIDC_ENABLED` | 布尔值，是否启用 OIDC 身份验证。默认为 `False`。
+`OIDC_ENABLED` | 布尔值，是否启用 OIDC 认证。默认为 `False`。
 `OIDC_ISSUER` | OIDC 提供者的发行者 URL（用于自定义 OIDC 提供者）
 `OIDC_CLIENT_ID` | OAuth 客户端 ID（用于自定义 OIDC 提供者）
 `OIDC_CLIENT_SECRET` | OAuth 客户端密钥（用于自定义 OIDC 提供者）
@@ -116,8 +120,8 @@
 `OIDC_SCOPES` | OAuth 范围。默认为 "openid email profile"
 `OIDC_USERNAME_CLAIM` | 用于用户名的声明。默认为 "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | 可选：OpenID Connect 配置端点的 URL（如果不使用标准的 `/.well-known/openid-configuration`）
-`OIDC_PKCE` | 布尔值，是否使用 PKCE。如果未设置，当提供者的发现文档列出 `S256` 时使用 PKCE。请参见 [PKCE](oidc.md#pkce)
-`OIDC_DISABLE_LOCAL_AUTH` | 布尔值，是否禁用本地用户名/密码身份验证。默认为 `False`
+`OIDC_PKCE` | 布尔值，是否使用 PKCE。如果未设置，当提供者的发现文档列出 `S256` 时将使用 PKCE。请参见 [PKCE](oidc.md#pkce)
+`OIDC_DISABLE_LOCAL_AUTH` | 布尔值，是否禁用本地用户名/密码认证。默认为 `False`
 `OIDC_AUTO_REDIRECT` | 布尔值，是否在仅配置一个提供者时自动重定向到 OIDC。默认为 `False`
 
 #### 内置 OIDC 提供者
@@ -130,8 +134,8 @@
 `OIDC_GOOGLE_CLIENT_SECRET` | Google OAuth 的客户端密钥
 `OIDC_MICROSOFT_CLIENT_ID` | Microsoft OAuth 的客户端 ID
 `OIDC_MICROSOFT_CLIENT_SECRET` | Microsoft OAuth 的客户端密钥
-`OIDC_GOOGLE_PKCE` | 布尔值，Google 的 PKCE 设置，参见 [PKCE](oidc.md#pkce)
-`OIDC_MICROSOFT_PKCE` | 布尔值，Microsoft 的 PKCE 设置，参见 [PKCE](oidc.md#pkce)
+`OIDC_GOOGLE_PKCE` | 布尔值，Google 的 PKCE 设置，请参见 [PKCE](oidc.md#pkce)
+`OIDC_MICROSOFT_PKCE` | 布尔值，Microsoft 的 PKCE 设置，请参见 [PKCE](oidc.md#pkce)
 
 #### OIDC 角色映射
 
@@ -149,20 +153,20 @@
 
 ### 仅适用于 AI 功能的设置
 
-如果您想使用 AI 驱动的功能，如聊天或语义搜索，则需要这些设置。有关详细信息，请参见 [设置 AI 聊天](chat.md)。
+如果您希望使用 AI 驱动的功能，如聊天或语义搜索，则需要这些设置。有关详细信息，请参见 [设置 AI 聊天](chat.md)。
 
-!!! warning "语义搜索已被弃用"
+!!! warning "语义搜索已弃用"
     语义搜索，以及与之相关的 `VECTOR_EMBEDDING_*` 设置，已被弃用，并将在 Gramps Web API 3.25 中移除。之后，`VECTOR_EMBEDDING_MODEL` 仍然被接受但会被忽略。自 Gramps Web API 3.24 起，AI 聊天只需要 `LLM_MODEL`。
 
 键 | 描述
 ----|-------------
 `LLM_BASE_URL` | OpenAI 兼容聊天 API 的基本 URL。默认为 `None`，使用 OpenAI API。
-`LLM_MODEL` | 用于 OpenAI 兼容聊天 API 的模型。如果未设置（默认），则聊天被禁用。从 v3.6.0 开始，AI 助手使用具有工具调用能力的 Pydantic AI。
-`VECTOR_EMBEDDING_MODEL` | **已弃用**，将在 3.25 中移除。用于语义搜索向量嵌入的模型。当使用本地模型时，这必须是 [Sentence Transformers](https://sbert.net/) 模型名称。当使用远程 API（见 `VECTOR_EMBEDDING_BASE_URL`）时，这是传递给远程提供者的模型名称。如果未设置（默认），则禁用语义搜索。在 Gramps Web API 3.24 之前，聊天也被禁用。
+`LLM_MODEL` | 用于 OpenAI 兼容聊天 API 的模型。如果未设置（默认），则禁用聊天。从 v3.6.0 开始，AI 助手使用具有工具调用能力的 Pydantic AI。
+`VECTOR_EMBEDDING_MODEL` | **已弃用**，将在 3.25 中移除。用于语义搜索向量嵌入的模型。当使用本地模型时，这必须是 [Sentence Transformers](https://sbert.net/) 模型名称。当使用远程 API（请参见 `VECTOR_EMBEDDING_BASE_URL`）时，这是传递给远程提供者的模型名称。如果未设置（默认），则禁用语义搜索。在 Gramps Web API 3.24 之前，聊天也被禁用。
 `VECTOR_EMBEDDING_BASE_URL` | **已弃用**，将在 3.25 中移除。用于远程 OpenAI 兼容嵌入 API 的基本 URL（例如 Ollama、OpenAI、LiteLLM）。如果未设置（默认），则使用本地 Sentence Transformers 模型。有关详细信息，请参见 [使用远程嵌入 API](chat.md#using-a-remote-embedding-api)。
-`VECTOR_EMBEDDING_API_KEY` | **已弃用**，将在 3.25 中移除。用于经过身份验证的远程嵌入提供者的 API 密钥。仅在设置了 `VECTOR_EMBEDDING_BASE_URL` 并且提供者需要身份验证时需要。
-`LLM_MAX_CONTEXT_LENGTH` | 提供给 LLM 的家谱上下文的字符限制。默认为 50000。
-`LLM_SYSTEM_PROMPT` | LLM 聊天助手的自定义系统提示（v3.6.0+）。如果未设置，则使用默认的基于家谱优化的提示。
+`VECTOR_EMBEDDING_API_KEY` | **已弃用**，将在 3.25 中移除。用于经过身份验证的远程嵌入提供者的 API 密钥。仅在设置了 `VECTOR_EMBEDDING_BASE_URL` 且提供者需要身份验证时需要。
+`LLM_MAX_CONTEXT_LENGTH` | 提供给 LLM 的家谱树上下文的字符限制。默认为 50000。
+`LLM_SYSTEM_PROMPT` | LLM 聊天助手的自定义系统提示（v3.6.0+）。如果未设置，则使用默认的基因组优化提示。
 
 ## 示例配置文件
 

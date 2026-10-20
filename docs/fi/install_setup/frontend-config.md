@@ -1,6 +1,6 @@
-# Etusivun muokkaaminen
+# Etusivun mukauttaminen
 
-Gramps Web etusivu on Javascript-sovellus, joka on otettu käyttöön joukkona staattisia HTML-, CSS- ja Javascript-tiedostoja. Normaalisti etusivulle ei tarvitse tehdä erityistä konfigurointia. Kuitenkin, joitakin käyttäytymisiä voidaan muuttaa asettamalla asianmukaiset vaihtoehdot `config.js` -tiedostoon jakelun juureen.
+Gramps Web -etusivu on Javascript-sovellus, joka on julkaistu joukkona staattisia HTML-, CSS- ja Javascript-tiedostoja. Normaalisti etusivulle ei tarvitse tehdä erityistä konfigurointia. Kuitenkin, joitakin käyttäytymisiä voidaan muuttaa asettamalla sopivia vaihtoehtoja `config.js`-tiedostoon jakelun juureen.
 
 Tiedoston tulisi olla seuraavanlainen:
 
@@ -12,7 +12,7 @@ window.grampsjsConfig = {
 
 Seuraavat vaihtoehtoavaimet ovat käytössä.
 
-Avaimen nimi | Tyyppi | Kuvaus 
+Avain | Tyyppi | Kuvaus 
 ----|-----|-----------
 `hideDNALink` | boolean | Jos tosi, piilota DNA-linkki navigointipalkista.
 `hideRegisterLink` | boolean | Jos tosi, piilota rekisteröintilinkki kirjautumissivulta. Tätä tulisi käyttää monipuun käyttöönottojen yhteydessä.
@@ -20,3 +20,4 @@ Avaimen nimi | Tyyppi | Kuvaus
 `mapBaseStyleLight` | string | MapLibre-tyylin URL peruskartalle vaaleassa teemassa (oletus: `https://tiles.openfreemap.org/styles/liberty`)
 `mapBaseStyleDark` | string | MapLibre-tyylin URL peruskartalle tummassa teemassa (oletus: `https://tiles.openfreemap.org/styles/dark`)
 `mapOhmStyle` | string | MapLibre-tyylin URL OpenHistoricalMap-peitteelle (oletus: `https://www.openhistoricalmap.org/map-styles/main/main.json`)
+`mapWikidata` | boolean | Jos epätosi, poista [Wikidata-rakennukset](../user-guide/map.md#wikidata-buildings) -kerros kartalta (oletus: tosi)

@@ -10,17 +10,23 @@ Optional können Sie
 
 - eine Beschreibung der Mediendatei unter "Titel" eingeben
 - ein Datum eingeben
-- die Mediendatei als privat festlegen (was sie nur für Benutzer mit ausreichenden Berechtigungen sichtbar macht)
+- die Mediendatei als privat festlegen (was sie nur für Benutzer mit ausreichender Berechtigung sichtbar macht)
 
 Klicken Sie auf "Hinzufügen", um die Datei hochzuladen und das Medienobjekt zu erstellen.
 
 ## Fügen Sie eine neue Mediendatei hinzu und verknüpfen Sie sie mit einem anderen Objekt
 
-Die folgenden Objekttypen in Gramps können mit Medienobjekten verknüpft werden: Personen, Familien, Ereignisse, Orte, Quellen und Zitationen.
+Die folgenden Objekttypen in Gramps können Medienobjekte angehängt haben: Personen, Familien, Ereignisse, Orte, Quellen und Zitationen.
 
 In der Detailansicht eines beliebigen Objekts klicken Sie auf die blaue Schaltfläche "Bearbeiten" in der unteren rechten Ecke (wenn Sie sie nicht sehen, hat Ihr Benutzer keine Bearbeitungsberechtigungen). Klicken Sie auf die Registerkarte "Galerie" und klicken Sie auf die blaue +-Schaltfläche.
 
-Ein Dialogfeld öffnet sich, das die gleichen Felder wie im vorherigen Abschnitt beschrieben anbietet. Klicken Sie auf "Speichern", um die Datei hochzuladen, ein neues Medienobjekt hinzuzufügen und es mit dem betrachteten Objekt zu verknüpfen.
+Ein Dialogfeld öffnet sich, das dieselben Felder wie im vorherigen Abschnitt beschrieben anbietet. Klicken Sie auf "Speichern", um die Datei hochzuladen, ein neues Medienobjekt hinzuzufügen und es mit dem angezeigten Objekt zu verknüpfen.
+
+## Profilbilder
+
+Das erste Bild in der Galerie einer Person wird als ihr Profilbild verwendet. Im Bearbeitungsmodus ist es mit einem "Profilbild"-Abzeichen gekennzeichnet. Um ein anderes Bild zu verwenden, verschieben Sie es mit den Pfeiltasten auf den Miniaturansichten der Galerie an die erste Position.
+
+Wenn eine Person noch keine Medien hat, zeigt der Bearbeitungsmodus stattdessen einen **Profilbild hinzufügen** Platzhalter an. Klicken Sie darauf, um eine neue Mediendatei hochzuladen oder eine vorhandene auszuwählen.
 
 ## Verknüpfen Sie vorhandene Mediendateien beim Erstellen eines Objekts
 
@@ -30,11 +36,11 @@ Wenn Sie eine Person zusammen mit ihren Geburts- und Sterbeereignissen erstellen
 
 ## Texterkennung (OCR)
 
-Wenn der Serveradministrator die OCR-Unterstützung aktiviert hat, erscheint unter dem Bild in der Detailansicht eines Medienobjekts eine Schaltfläche "Texterkennung".
+Wenn der Serveradministrator die OCR-Unterstützung aktiviert hat, erscheint eine Schaltfläche "Texterkennung" unter dem Bild in der Detailansicht eines Medienobjekts.
 
 Klicken Sie auf "Texterkennung", wählen Sie die Sprache des im Bild angezeigten Textes aus und klicken Sie dann auf "Ausführen". Das Bild wird mit [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) verarbeitet und der erkannte Text wird darunter angezeigt.
 
-Wenn Ihr Benutzer über Bearbeitungsberechtigungen verfügt, klicken Sie auf "Als Notiz speichern", um eine neue Notiz (vom Typ "Transkript") mit dem erkannten Text zu erstellen und sie mit dem Medienobjekt zu verknüpfen.
+Wenn Ihr Benutzer Bearbeitungsberechtigungen hat, klicken Sie auf "Als Notiz speichern", um eine neue Notiz (vom Typ "Transkript") zu erstellen, die den erkannten Text enthält und mit dem Medienobjekt verknüpft ist.
 
 !!! tip
-    Die OCR-Genauigkeit hängt stark von der Bildqualität und der ausgewählten Sprache ab. Wenn das Ergebnis falsch aussieht, versuchen Sie eine andere Sprache – zum Beispiel benötigen historische deutsche Dokumente oft die Fraktur-Variante anstelle von einfachem Deutsch.
+    Die Genauigkeit der OCR hängt stark von der Bildqualität und der ausgewählten Sprache ab. Wenn das Ergebnis falsch aussieht, versuchen Sie eine andere Sprache – zum Beispiel benötigen historische deutsche Dokumente oft die Fraktur-Variante anstelle von einfachem Deutsch.
