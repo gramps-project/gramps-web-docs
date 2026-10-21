@@ -146,7 +146,9 @@ Accounts created through OIDC get a generated username, assigned once at account
 
 A numeric suffix is appended on collision. There is no way to rename an OIDC-created account's username afterwards; the full name and e-mail address, by contrast, are refreshed on every login.
 
-An OIDC login never attaches itself to an existing local account that happens to share its e-mail address – this is deliberate, since linking accounts by e-mail is an account-takeover vector. A user who already has a local account gets a second, separate account the first time they log in via OIDC.
+An OIDC login never attaches itself to an existing local account that happens to share its e-mail address – this is deliberate, since linking accounts by e-mail is an account-takeover vector. A user who already has a local account gets a second, separate account the first time they log in via OIDC, unless they first link the provider to their account.
+
+Since Gramps Web API 3.24, users can link OIDC identities to their existing account, and list and unlink them, under [User Settings > Linked sign-in methods](../user-guide/settings.md#linked-sign-in-methods). Linking requires a recent login and is confirmed with the user's own token, so it also works when the frontend is on a different origin than the API. An identity can belong to only one account; to link one that already has its own account, an administrator first deletes that account (its edits remain, but the revision history no longer shows its name). The last linked identity can only be unlinked with the account's current password, and not at all if `OIDC_DISABLE_LOCAL_AUTH` is set.
 
 E-mail addresses from the provider are only stored if the provider marks them verified (or omits the `email_verified` claim entirely); otherwise the login proceeds without storing an e-mail address. Since e-mail addresses do not have to be unique (since Gramps Web API 3.22), an address is stored even if another account already uses it.
 
