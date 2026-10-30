@@ -506,7 +506,7 @@ osv=0
 
 if [[ $OS == "Ubuntu" ]]; then
         ost=1
-    if [[ $VER == "24.04" ]] || [[ $VER == "22.10" ]] || [[ $VER == "22.04" ]] || [[ $VER == "20.04" ]] || [[ $VER == "18.04" ]] || [[ $VER == "16.04" ]]; then
+    if [[ $VER == "26.04" ]] || [[ $VER == "24.04" ]] || [[ $VER == "22.10" ]] || [[ $VER == "22.04" ]] || [[ $VER == "20.04" ]] || [[ $VER == "18.04" ]] || [[ $VER == "16.04" ]]; then
         osv=1
     fi
 
@@ -523,6 +523,9 @@ elif [[ "$OS" =~ Debian.* ]]; then
             osv=1
             ;;
         12)
+            osv=1
+            ;;
+        13)
             osv=1
             ;;
         *)
@@ -618,6 +621,12 @@ checkRoot
 
 checkAgent
 
+# Source GPU compatibility check
+if [ -f "$(dirname "$0")/check_gpu_support.sh" ]; then
+    source "$(dirname "$0")/check_gpu_support.sh"
+else
+    echo "GPU check script not found. Skipping GPU compatibility checks."
+fi
 
 # Summary
 echo -en "\n\n---------------------------------------------------------------------------------------------------\n"
