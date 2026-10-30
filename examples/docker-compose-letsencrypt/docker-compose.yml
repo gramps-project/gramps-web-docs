@@ -9,6 +9,7 @@ services:
       VIRTUAL_HOST: ...  # e.g. gramps.mydomain.com
       LETSENCRYPT_HOST: ...   # e.g. gramps.mydomain.com
       LETSENCRYPT_EMAIL: ...  # your email
+      GRAMPSWEB_BASE_URL: ...  # e.g. https://gramps.mydomain.com
       GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://grampsweb_redis:6379/0"
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://grampsweb_redis:6379/1

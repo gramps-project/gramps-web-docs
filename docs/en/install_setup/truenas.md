@@ -48,7 +48,7 @@ This will take you to a the app configuration page.
 
 Please **at least** set the `GRAMPSWEB_BASE_URL` to the URL your Gramps Web instance will be accessible at – this is required for proper operation.
 
-You might also want to set up email configuration at this stage. If you do, you can skip the email configuration step in the onboarding wizard. The relevant environment variables are:
+You might also want to set up email configuration at this stage, which is needed e.g. for password resets. The relevant environment variables are:
 
 - `GRAMPSWEB_EMAIL_HOST`
 - `GRAMPSWEB_EMAIL_HOST_USER`
