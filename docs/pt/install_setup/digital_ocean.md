@@ -22,27 +22,23 @@ Crie uma conta em [DigitalOcean](https://www.digitalocean.com/) se você ainda n
 - Configure a autenticação para o seu droplet.
 - Clique em "Criar Droplet".
 
-!!! info
-    Você pode precisar esperar até dez minutos para que o 1-Click App instale a versão mais recente do `docker-compose`.
-    Usar a versão mais recente do `docker-compose` pode mitigar erros que fazem referência ao `firstlogin.sh`. 
-    
 ## Passo 3: Configurar um nome de domínio
 
-Você precisará de um nome de domínio (ou subdomínio). Se você possui um domínio, aponte-o para o endereço IP do seu droplet. Caso contrário, você pode usar um serviço gratuito como o [DuckDNS](https://www.duckdns.org/).
+Você precisará de um nome de domínio (ou subdomínio). Se você possui um domínio, aponte-o para o endereço IP do seu droplet. Caso contrário, você pode usar um serviço gratuito como [DuckDNS](https://www.duckdns.org/).
 
-## Passo 4: Fazer login no seu droplet
+## Passo 4: Acesse seu droplet
 
-Acesse seu droplet via SSH. Você deve ver a mensagem "Bem-vindo ao assistente de configuração do Gramps Web DigitalOcean 1-click app!". Se não for o caso, aguarde alguns minutos e tente novamente (a instalação ainda não foi concluída).
+Acesse seu droplet via SSH. Você deve ver a mensagem "Bem-vindo à configuração do aplicativo Gramps Web DigitalOcean 1-click!". Se não for o caso, aguarde alguns minutos e tente novamente (a instalação ainda não foi concluída).
 
-O script de configuração pedirá o nome de domínio (por exemplo, `mygrampswebinstance.duckdns.org`) e um endereço de e-mail (necessário para o certificado Let's Encrypt). Opcionalmente, ele também pedirá as configurações SMTP que o Gramps Web usa para enviar e-mails, por exemplo, para redefinições de senha; deixe o host SMTP vazio para pular isso.
+O script de configuração solicitará o nome do domínio (por exemplo, `mygrampswebinstance.duckdns.org`) e um endereço de e-mail (necessário para o certificado Let's Encrypt). Opcionalmente, ele também solicitará as configurações SMTP que o Gramps Web usa para enviar e-mails, por exemplo, para redefinições de senha; deixe o host SMTP vazio para pular isso.
 
 Quando isso estiver feito, aguarde a conclusão da configuração em segundo plano.
 
 ## Passo 5: Iniciar o Gramps Web
 
-Sua instância do Gramps Web agora deve estar acessível na raiz do seu domínio, com um certificado SSL válido, e deve estar exibindo o assistente de primeiro uso.
+Sua instância do Gramps Web agora deve estar acessível na raiz do seu domínio, com um certificado SSL válido, e deve estar mostrando o assistente de primeiro uso.
 
-## Alterando a configuração posteriormente
+## Alterando a configuração depois
 
 O script de configuração armazena a URL base e as configurações de e-mail no arquivo `/root/letsencrypt.env` como [opções de configuração](configuration.md) prefixadas com `GRAMPSWEB_`, por exemplo:
 

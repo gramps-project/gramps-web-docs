@@ -1,12 +1,12 @@
 # Gramps Web DigitalOcean 1-Click App
 
-Au lieu de [configurer Gramps Web vous-même](deployment.md), vous pouvez également utiliser l'[application Gramps Web DigitalOcean 1-Click](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy). Digital Ocean héberge la version Démo de Gramps Web.
+Au lieu de [configurer Gramps Web vous-même](deployment.md), vous pouvez également utiliser l'[application Gramps Web DigitalOcean 1-Click](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy). Digital Ocean héberge la version démo de Gramps Web.
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="Badge de parrainage DigitalOcean" /></a>
 
 Dans le cadre de la procédure de configuration, vous devrez créer un compte chez DigitalOcean et sélectionner un plan payant pour le "droplet" (machine virtuelle) à utiliser.
 
-On peut dire que c'est actuellement la manière la plus simple de déployer votre propre instance de Gramps Web auto-hébergée, sécurisée par SSL, sans utiliser votre propre matériel.
+On peut dire que c'est actuellement le moyen le plus simple de déployer votre propre instance de Gramps Web auto-hébergée, sécurisée par SSL, sans utiliser votre propre matériel.
 
 !!! info
     Notez que vous paierez DigitalOcean pour les services d'hébergement. Le projet open source Gramps ne fournit pas de support payant.
@@ -21,10 +21,6 @@ Créez un compte sur [DigitalOcean](https://www.digitalocean.com/) si vous n'en 
 - Choisissez un plan avec au moins 2 Go de RAM.
 - Configurez l'authentification pour votre droplet.
 - Cliquez sur "Créer Droplet".
-
-!!! info
-    Vous devrez peut-être attendre jusqu'à dix minutes pour que l'application 1-Click installe la dernière version de `docker-compose`.
-    Utiliser la dernière version de `docker-compose` peut atténuer les erreurs faisant référence à `firstlogin.sh`.
 
 ## Étape 3 : Configurer un nom de domaine
 
@@ -42,7 +38,7 @@ Une fois cela fait, attendez que la configuration soit terminée en arrière-pla
 
 Votre instance Gramps Web devrait maintenant être accessible à la racine de votre domaine, avec un certificat SSL valide, et elle devrait afficher l'assistant de première exécution.
 
-## Changer la configuration plus tard
+## Changer la configuration ultérieurement
 
 Le script de configuration stocke l'URL de base et les paramètres d'e-mail dans le fichier `/root/letsencrypt.env` en tant qu'[options de configuration](configuration.md) préfixées par `GRAMPSWEB_`, par exemple :
 

@@ -6,7 +6,7 @@ I stedet for [at opsætte Gramps Web selv](deployment.md), kan du også bruge [G
 
 Som en del af opsætningsproceduren skal du tilmelde dig en konto hos DigitalOcean og vælge en betalt plan for "droplet" (virtuel maskine) at bruge.
 
-Man kan argumentere for, at dette i øjeblikket er den nemmeste måde at implementere din egen, selvhostede Gramps Web-instans, sikret med SSL, uden at bruge dit eget hardware.
+Det kan argumenteres for, at dette i øjeblikket er den nemmeste måde at implementere din egen, selvhostede Gramps Web-instans, sikret med SSL, uden at bruge dit eget hardware.
 
 !!! info
     Bemærk, at du vil betale DigitalOcean for hostingtjenesterne. Gramps open source-projektet tilbyder ikke betalt support.
@@ -19,12 +19,8 @@ Opret en konto på [DigitalOcean](https://www.digitalocean.com/), hvis du ikke a
 
 - Gå til [Gramps Web 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) og klik på "Opret Gramps Web Droplet".
 - Vælg en plan med mindst 2 GB RAM.
-- Opsæt autentifikation til din droplet.
+- Opsæt autentificering til din droplet.
 - Klik på "Opret Droplet".
-
-!!! info
-    Du skal muligvis vente op til ti minutter på, at 1-Click App'en installerer den nyeste version af `docker-compose`.
-    At bruge den nyeste version af `docker-compose` kan mindske fejl, der refererer til `firstlogin.sh`.
 
 ## Trin 3: Opsæt et domænenavn
 
@@ -32,11 +28,11 @@ Du skal bruge et domænenavn (eller subdomæne). Hvis du ejer et domæne, skal d
 
 ## Trin 4: Log ind på din droplet
 
-SSH ind i din droplet. Du skal præsenteres for beskeden "Velkommen til opsætningen af Gramps Web DigitalOcean 1-click app!". Hvis dette ikke er tilfældet, skal du vente et par minutter og prøve igen (installationen er ikke færdig endnu).
+SSH ind i din droplet. Du bør blive præsenteret for beskeden "Velkommen til opsætningen af Gramps Web DigitalOcean 1-click app!". Hvis dette ikke er tilfældet, skal du vente et par minutter og prøve igen (installationen er ikke færdig endnu).
 
-Opsætningsscriptet vil bede dig om domænenavnet (f.eks. `mygrampswebinstance.duckdns.org`) og en e-mailadresse (nødvendig til Let's Encrypt-certifikatet). Valgfrit vil det også spørge om SMTP-indstillingerne, som Gramps Web bruger til at sende e-mails, f.eks. til nulstilling af adgangskoder; lad SMTP-værten stå tom for at springe dette over.
+Opsætningsscriptet vil bede dig om domænenavnet (f.eks. `mygrampswebinstance.duckdns.org`) og en e-mailadresse (nødvendig til Let's Encrypt-certifikatet). Valgfrit vil det også spørge om SMTP-indstillingerne, som Gramps Web bruger til at sende e-mails, f.eks. til nulstilling af adgangskoder; lad SMTP-værten være tom for at springe dette over.
 
-Når dette er gjort, skal du vente på, at opsætningen bliver færdig i baggrunden.
+Når dette er gjort, skal du vente på, at opsætningen er færdig i baggrunden.
 
 ## Trin 5: Start Gramps Web
 

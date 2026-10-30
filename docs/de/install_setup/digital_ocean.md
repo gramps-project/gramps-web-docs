@@ -4,7 +4,7 @@ Statt [Gramps Web selbst einzurichten](deployment.md), können Sie auch die [Gra
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
 
-Im Rahmen des Einrichtungsverfahrens müssen Sie ein Konto bei DigitalOcean erstellen und einen kostenpflichtigen Plan für den "Droplet" (virtuelle Maschine) auswählen, den Sie verwenden möchten.
+Im Rahmen des Einrichtungsverfahrens müssen Sie sich ein Konto bei DigitalOcean erstellen und einen kostenpflichtigen Plan für den "Droplet" (virtuelle Maschine) auswählen.
 
 Man könnte sagen, dass dies derzeit der einfachste Weg ist, Ihre eigene, selbst gehostete Gramps Web-Instanz mit SSL-Schutz bereitzustellen, ohne eigene Hardware zu verwenden.
 
@@ -22,29 +22,25 @@ Erstellen Sie ein Konto bei [DigitalOcean](https://www.digitalocean.com/), wenn 
 - Richten Sie die Authentifizierung für Ihren Droplet ein.
 - Klicken Sie auf "Droplet erstellen".
 
-!!! info
-    Möglicherweise müssen Sie bis zu zehn Minuten warten, bis die 1-Click App die neueste `docker-compose`-Version installiert.
-    Die Verwendung der neuesten Version von `docker-compose` kann Fehler im Zusammenhang mit `firstlogin.sh` mindern.
-
 ## Schritt 3: Richten Sie einen Domainnamen ein
 
 Sie benötigen einen Domainnamen (oder Subdomain). Wenn Sie eine Domain besitzen, weisen Sie sie auf die IP-Adresse Ihres Droplets. Andernfalls können Sie einen kostenlosen Dienst wie [DuckDNS](https://www.duckdns.org/) verwenden.
 
 ## Schritt 4: Melden Sie sich bei Ihrem Droplet an
 
-SSH in Ihren Droplet. Ihnen sollte die Nachricht "Willkommen beim Setup der Gramps Web DigitalOcean 1-Click App!" angezeigt werden. Wenn dies nicht der Fall ist, warten Sie ein paar Minuten und versuchen Sie es erneut (die Installation ist noch nicht abgeschlossen).
+SSH in Ihren Droplet. Ihnen sollte die Nachricht "Willkommen beim Gramps Web DigitalOcean 1-Click App Setup!" angezeigt werden. Wenn dies nicht der Fall ist, warten Sie ein paar Minuten und versuchen Sie es erneut (die Installation ist noch nicht abgeschlossen).
 
-Das Einrichtungs-Skript fragt Sie nach dem Domainnamen (z. B. `mygrampswebinstance.duckdns.org`) und einer E-Mail-Adresse (benötigt für das Let's Encrypt-Zertifikat). Optional wird auch nach den SMTP-Einstellungen gefragt, die Gramps Web zum Versenden von E-Mails verwendet, z. B. für Passwortzurücksetzungen; lassen Sie den SMTP-Host leer, um dies zu überspringen.
+Das Einrichtungs-Skript wird Sie nach dem Domainnamen (z. B. `mygrampswebinstance.duckdns.org`) und einer E-Mail-Adresse (benötigt für das Let's Encrypt-Zertifikat) fragen. Optional wird es auch nach den SMTP-Einstellungen fragen, die Gramps Web zum Versenden von E-Mails verwendet, z. B. für Passwortzurücksetzungen; lassen Sie den SMTP-Host leer, um dies zu überspringen.
 
 Wenn dies erledigt ist, warten Sie, bis die Einrichtung im Hintergrund abgeschlossen ist.
 
 ## Schritt 5: Starten Sie Gramps Web
 
-Ihre Gramps Web-Instanz sollte jetzt im Root-Bereich Ihrer Domain mit einem gültigen SSL-Zertifikat zugänglich sein und den Assistenten für die erste Nutzung anzeigen.
+Ihre Gramps Web-Instanz sollte jetzt im Root-Bereich Ihrer Domain mit einem gültigen SSL-Zertifikat zugänglich sein und den Assistenten für die erste Ausführung anzeigen.
 
 ## Ändern der Konfiguration später
 
-Das Einrichtungs-Skript speichert die Basis-URL und die E-Mail-Einstellungen in der Datei `/root/letsencrypt.env` als [Konfigurationsoptionen](configuration.md), die mit `GRAMPSWEB_` beginnen, z. B.
+Das Einrichtungs-Skript speichert die Basis-URL und die E-Mail-Einstellungen in der Datei `/root/letsencrypt.env` als [Konfigurationsoptionen](configuration.md), die mit `GRAMPSWEB_` vorangestellt sind, z. B.
 
 ```
 GRAMPSWEB_EMAIL_HOST=smtp.example.com
