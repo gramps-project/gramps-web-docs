@@ -3,7 +3,7 @@
 Este guia explica como configurar o Gramps Web no TrueNAS Community Edition 25.04.
 
 !!! warning
-    Este guia é destinado ao TrueNAS Community Edition 25.04 ou posterior, que introduziu um novo sistema de aplicativos baseado em Docker Compose. Não se aplica a versões anteriores do TrueNAS.
+    Este guia é destinado ao TrueNAS Community Edition 25.04 ou posterior, que introduziu um novo sistema de aplicativos baseado em Docker Compose. Ele não se aplica a versões anteriores do TrueNAS.
 
 ## Pré-requisitos
 
@@ -40,13 +40,13 @@ Isso o levará à página de configuração do aplicativo.
 
 - **Fuso horário:** Defina para o seu fuso horário local (por exemplo, `Europe/Berlin`)
 - **Senha do Redis:** Defina uma senha para o Redis. Isso será usado apenas internamente pelo aplicativo.
-- **Desativar telemetria:** por favor, deixe esta caixa desmarcada – veja [aqui para mais detalhes](telemetry.md).
+- **Desativar telemetria:** por favor, deixe esta caixa desmarcada – veja [aqui para detalhes](telemetry.md).
 - **Chave secreta:** é crucial que você defina isso como um valor forte e único. Veja [configuração do servidor](configuration.md#existing-configuration-settings) para instruções sobre como gerar uma chave aleatória.
-- **Variáveis de Ambiente Adicionais:** Você precisará definir todas as [opções de configuração](configuration.md) adicionais como variáveis de ambiente prefixadas por `GRAMPSWEB_`. Por favor, verifique a [documentação de configuração](configuration.md) em detalhes – por exemplo, o fato de que valores booleanos precisam ser definidos como `true` ou `false` (tudo em letras minúsculas) no caso de variáveis de ambiente, um erro comum.
+- **Variáveis de Ambiente Adicionais:** Você precisará definir todas as opções de [configuração adicionais](configuration.md) como variáveis de ambiente prefixadas por `GRAMPSWEB_`. Por favor, verifique a [documentação de configuração](configuration.md) em detalhes – por exemplo, o fato de que valores booleanos precisam ser definidos como `true` ou `false` (tudo em minúsculas) no caso de variáveis de ambiente, um erro comum.
 
-Por favor, **pelo menos** defina o `GRAMPSWEB_BASE_URL` para a URL onde sua instância do Gramps Web estará acessível – isso é necessário para o funcionamento adequado.
+Por favor, **pelo menos** defina o `GRAMPSWEB_BASE_URL` para a URL onde sua instância do Gramps Web será acessível – isso é necessário para o funcionamento adequado.
 
-Você também pode querer configurar a configuração de e-mail nesta fase. Se o fizer, pode pular a etapa de configuração de e-mail no assistente de integração. As variáveis de ambiente relevantes são:
+Você também pode querer configurar a configuração de e-mail nesta fase, que é necessária, por exemplo, para redefinições de senha. As variáveis de ambiente relevantes são:
 
 - `GRAMPSWEB_EMAIL_HOST`
 - `GRAMPSWEB_EMAIL_HOST_USER`
@@ -76,7 +76,7 @@ Se você quiser permitir que os usuários acessem sua interface do Gramps Web, *
 
 ## Passo 5: Configurar um Proxy Reverso
 
-Para expor sua instância do Gramps Web de forma segura para os usuários, é recomendado configurar um proxy reverso. Isso permite que você gerencie certificados SSL/TLS e controle o acesso.
+Para expor sua instância do Gramps Web de forma segura para os usuários, é recomendável configurar um proxy reverso. Isso permite que você gerencie certificados SSL/TLS e controle o acesso.
 
 A opção mais fácil é usar o aplicativo oficial TrueNAS Nginx Proxy Manager. Pesquise o aplicativo na interface de Aplicativos do TrueNAS e instale-o. Você pode deixar todas as configurações em seus padrões, mas recomendamos que você defina uma variável de ambiente adicional: `DISABLE_IPV6` com valor `true` para evitar possíveis problemas relacionados ao IPv6.
 

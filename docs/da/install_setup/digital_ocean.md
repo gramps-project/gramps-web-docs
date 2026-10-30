@@ -23,8 +23,8 @@ Opret en konto på [DigitalOcean](https://www.digitalocean.com/), hvis du ikke a
 - Klik på "Opret Droplet".
 
 !!! info
-    Du skal muligvis vente op til ti minutter, mens 1-Click App'en installerer den nyeste version af `docker-compose`.
-    Brug af den nyeste version af `docker-compose` kan mindske fejl, der refererer til `firstlogin.sh`. 
+    Du skal muligvis vente op til ti minutter på, at 1-Click App'en installerer den nyeste version af `docker-compose`.
+    At bruge den nyeste version af `docker-compose` kan mindske fejl, der refererer til `firstlogin.sh`.
 
 ## Trin 3: Opsæt et domænenavn
 
@@ -32,12 +32,27 @@ Du skal bruge et domænenavn (eller subdomæne). Hvis du ejer et domæne, skal d
 
 ## Trin 4: Log ind på din droplet
 
-SSH ind på din droplet. Du bør blive præsenteret for beskeden "Velkommen til opsætningen af Gramps Web DigitalOcean 1-click app!". Hvis dette ikke er tilfældet, skal du vente et par minutter og prøve igen (installationen er ikke færdig endnu).
+SSH ind i din droplet. Du skal præsenteres for beskeden "Velkommen til opsætningen af Gramps Web DigitalOcean 1-click app!". Hvis dette ikke er tilfældet, skal du vente et par minutter og prøve igen (installationen er ikke færdig endnu).
 
-Opsætningsscriptet vil bede dig om domænenavnet (f.eks. `mygrampswebinstance.duckdns.org`) og en e-mailadresse (nødvendig til Let's Encrypt-certifikatet).
+Opsætningsscriptet vil bede dig om domænenavnet (f.eks. `mygrampswebinstance.duckdns.org`) og en e-mailadresse (nødvendig til Let's Encrypt-certifikatet). Valgfrit vil det også spørge om SMTP-indstillingerne, som Gramps Web bruger til at sende e-mails, f.eks. til nulstilling af adgangskoder; lad SMTP-værten stå tom for at springe dette over.
 
 Når dette er gjort, skal du vente på, at opsætningen bliver færdig i baggrunden.
 
 ## Trin 5: Start Gramps Web
 
 Din Gramps Web-instans bør nu være tilgængelig på roden af dit domæne, med et gyldigt SSL-certifikat, og den bør vise første gang-assistenten.
+
+## Ændring af konfigurationen senere
+
+Opsætningsscriptet gemmer basis-URL'en og e-mailindstillingerne i filen `/root/letsencrypt.env` som [konfigurationsmuligheder](configuration.md) præfiks med `GRAMPSWEB_`, f.eks.
+
+```
+GRAMPSWEB_EMAIL_HOST=smtp.example.com
+GRAMPSWEB_EMAIL_PORT=587
+GRAMPSWEB_EMAIL_USE_STARTTLS=true
+```
+
+For at tilføje eller ændre indstillinger, rediger denne fil på droplet og anvend ændringen med
+
+```bash
+cd /opt/grampsweb && docker compose up -d

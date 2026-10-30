@@ -24,12 +24,14 @@ Lors de l'utilisation de variables d'environnement,
 Notez que les options de configuration définies via l'environnement ont la priorité sur celles du fichier de configuration. Si les deux sont présentes, la variable d'environnement "gagne".
 
 !!! warning "Les variables d'environnement sans préfixe sont obsolètes"
-    Pour des raisons historiques, une poignée de paramètres – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, et `STATIC_PATH` – peuvent encore être définis via une variable d'environnement *sans* le préfixe `GRAMPSWEB_`. Cela est obsolète, génère un avertissement au démarrage, et cessera de fonctionner dans une future version. Utilisez toujours la forme préfixée, par exemple `GRAMPSWEB_TREE` au lieu de `TREE`.
+    Pour des raisons historiques, une poignée de paramètres – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, et `STATIC_PATH` – peuvent encore être définis via une variable d'environnement *sans* le préfixe `GRAMPSWEB_`. Cela est obsolète, génère un avertissement au démarrage et cessera de fonctionner dans une future version. Utilisez toujours la forme préfixée, par exemple `GRAMPSWEB_TREE` au lieu de `TREE`.
 
-    Notez que cela ne concerne que les variables d'environnement. Dans un fichier de configuration, les noms des paramètres sont toujours utilisés sans préfixe.
+    Notez que cela ne concerne que les variables d'environnement. Dans un fichier de configuration, les noms de paramètres sont toujours utilisés sans préfixe.
 
 !!! tip "Vérification des options obsolètes"
-    Les options de configuration obsolètes dont votre serveur dépend encore – telles que les variables d'environnement sans préfixe, `SEARCH_INDEX_DIR`, ou `EMAIL_USE_TLS` – sont enregistrées comme avertissements au démarrage. Depuis Gramps Web API 3.22, elles sont également listées, avec leur remplacement et la version dans laquelle le support sera supprimé, en haut de la page **Informations système** (accessible via l'icône utilisateur dans la barre d'application en haut) lorsque vous êtes connecté en tant qu'administrateur.
+    Les options de configuration obsolètes sur lesquelles votre serveur repose encore – telles que les variables d'environnement sans préfixe, `SEARCH_INDEX_DIR`, ou `EMAIL_USE_TLS` – sont enregistrées comme avertissements au démarrage. Depuis Gramps Web API 3.22, elles sont également listées, avec leur remplacement et la version dans laquelle le support sera supprimé, en haut de la page **Informations système** (accessible via l'icône utilisateur dans la barre d'application en haut) lorsque vous êtes connecté en tant qu'administrateur.
+
+    Les paramètres de messagerie et l'URL de base que l'assistant de première exécution des anciennes versions a stockés dans la base de données y sont également listés. Définissez-les dans votre configuration aux valeurs stockées ; l'avertissement disparaît une fois qu'elles correspondent.
 
 ## Paramètres de configuration existants
 Les options de configuration suivantes existent.
@@ -39,7 +41,7 @@ Les options de configuration suivantes existent.
 Clé | Description
 ----|-------------
 `TREE` | Le nom de la base de données de l'arbre généalogique à utiliser. Affichez les arbres disponibles avec `gramps -l`. Si un arbre avec ce nom n'existe pas, un nouvel arbre vide sera créé.
-`SECRET_KEY` | La clé secrète pour flask. Le secret ne doit pas être partagé publiquement. Le changement invalidera tous les jetons d'accès.
+`SECRET_KEY` | La clé secrète pour Flask. Le secret ne doit pas être partagé publiquement. Le changement invalidera tous les jetons d'accès.
 `USER_DB_URI` | L'URL de la base de données des utilisateurs. Toute URL compatible avec SQLAlchemy est autorisée.
 
 !!! info
@@ -55,11 +57,11 @@ Clé | Description
 ----|-------------
 `MEDIA_BASE_DIR` | Chemin à utiliser comme répertoire de base pour les fichiers multimédias, remplaçant le répertoire de base multimédia défini dans Gramps. Lors de l'utilisation de [S3](s3.md), doit avoir la forme `s3://<bucket_name>`
 `TREE_ID` | Le nom du répertoire de la base de données de l'arbre généalogique à utiliser en mode arbre unique (lorsque `TREE` n'est pas défini sur `*`). Lorsqu'il est défini, le serveur identifie l'arbre par son nom de répertoire plutôt que par son nom d'affichage, ce qui est plus robuste face aux renommages. Requis si vous souhaitez renommer l'arbre via l'API. Le nom du répertoire peut être trouvé via `GET /api/trees/-` (le champ `id`).
-`SEARCH_INDEX_DB_URI` | URL de la base de données pour l'index de recherche. Seuls `sqlite` ou `postgresql` sont autorisés comme backends. Par défaut, c'est `sqlite:///indexdir/search_index.db`, créant un fichier SQLite dans le dossier `indexdir` relatif au chemin où le script est exécuté.
+`SEARCH_INDEX_DB_URI` | URL de la base de données pour l'index de recherche. Seuls `sqlite` ou `postgresql` sont autorisés comme backends. Par défaut, c'est `sqlite:///indexdir/search_index.db`, créant un fichier SQLite dans le dossier `indexdir` par rapport au chemin où le script est exécuté.
 `SEARCH_INDEX_DIR` | **Obsolète** (utilisez `SEARCH_INDEX_DB_URI` à la place). Répertoire contenant l'index de recherche. S'il est défini alors que `SEARCH_INDEX_DB_URI` est non défini, l'URL de l'index de recherche est dérivée comme `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Chemin pour servir des fichiers statiques (par exemple, un frontend web statique)
-`BASE_URL` | URL de base où l'API peut être atteinte (par exemple, `https://mygramps.mydomain.com/`). Ceci est nécessaire par exemple pour construire des liens de réinitialisation de mot de passe corrects. Web Push nécessite également une URL HTTPS accessible publiquement ; la valeur par défaut `http://localhost/` désactive Web Push. Lors de la configuration de ce paramètre via l'environnement, utilisez `GRAMPSWEB_BASE_URL`.
-`CORS_ORIGINS` | Origines d'où les requêtes CORS sont autorisées. Par défaut, toutes sont interdites. Utilisez `"*"` pour autoriser les requêtes de n'importe quel domaine.
+`BASE_URL` | URL de base où l'API peut être atteinte (par exemple, `https://mygramps.mydomain.com/`). Ceci est nécessaire par exemple pour construire des liens de réinitialisation de mot de passe corrects. Web Push nécessite également une URL HTTPS accessible publiquement ; l'URL par défaut `http://localhost/` désactive Web Push. Lors de la configuration de ce paramètre via l'environnement, utilisez `GRAMPSWEB_BASE_URL`.
+`CORS_ORIGINS` | Origines à partir desquelles les requêtes CORS sont autorisées. Par défaut, toutes sont interdites. Utilisez `"*"` pour autoriser les requêtes de n'importe quel domaine.
 `EMAIL_HOST` | Hôte du serveur SMTP (par exemple, pour l'envoi d'e-mails de réinitialisation de mot de passe)
 `EMAIL_PORT` | Port du serveur SMTP. par défaut 465
 `EMAIL_HOST_USER` | Nom d'utilisateur du serveur SMTP
@@ -71,21 +73,21 @@ Clé | Description
 `THUMBNAIL_CACHE_CONFIG` | Dictionnaire avec les paramètres pour le cache des vignettes. Voir [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) pour les paramètres possibles.
 `REQUEST_CACHE_CONFIG` | Dictionnaire avec les paramètres pour le cache des requêtes. Voir [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) pour les paramètres possibles.
 `PERSISTENT_CACHE_CONFIG` | Dictionnaire avec les paramètres pour le cache persistant, utilisé par exemple pour la télémétrie. Voir [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) pour les paramètres possibles.
-`CELERY_CONFIG` | Paramètres pour la file d'attente des tâches en arrière-plan Celery. Voir [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) pour les paramètres possibles.
-`REPORT_DIR` | Répertoire temporaire où la sortie des rapports Gramps sera stockée
+`CELERY_CONFIG` | Paramètres pour la file d'attente de tâches en arrière-plan Celery. Voir [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) pour les paramètres possibles.
+`REPORT_DIR` | Répertoire temporaire où la sortie des rapports Gramps en cours d'exécution sera stockée
 `EXPORT_DIR` | Répertoire temporaire où la sortie de l'exportation de la base de données Gramps sera stockée
-`BACKUP_DIR` | Répertoire où les [sauvegardes](../administration/settings.md#backups) sont stockées, dans un sous-répertoire par arbre (v3.24.0+). Si non défini (valeur par défaut), les sauvegardes ne peuvent pas être stockées sur le serveur, mais peuvent toujours être restaurées à partir d'un fichier téléchargé. Utilisez un emplacement persistant, par exemple un volume Docker, et de préférence un qui est lui-même sauvegardé ou synchronisé ailleurs.
-`BACKUP_KEEP` | Nombre de sauvegardes stockées par arbre ; les plus anciennes sont supprimées lorsqu'une nouvelle sauvegarde est créée (v3.24.0+). Par défaut, c'est `5`
+`BACKUP_DIR` | Répertoire où les [sauvegardes](../administration/settings.md#backups) sont stockées, dans un sous-répertoire par arbre (v3.24.0+). Si non défini (par défaut), les sauvegardes ne peuvent pas être stockées sur le serveur, mais peuvent toujours être restaurées à partir d'un fichier téléchargé. Utilisez un emplacement persistant, par exemple un volume Docker, et de préférence un qui est lui-même sauvegardé ou synchronisé ailleurs.
+`BACKUP_KEEP` | Nombre de sauvegardes stockées conservées par arbre ; les plus anciennes sont supprimées lorsqu'une nouvelle sauvegarde est créée (v3.24.0+). Par défaut, c'est `5`
 `RATE_LIMIT_BACKUP` | Limite de taux pour la création de sauvegardes, par arbre (v3.24.0+). Par défaut, c'est `"10 par jour"`
 `RATE_LIMIT_MEDIA_ARCHIVE` | Limite de taux pour la création d'archives multimédias sur la page d'exportation. Par défaut, c'est `"1 par heure"`
-`REGISTRATION_DISABLED` | Si `True`, interdit l'enregistrement de nouveaux utilisateurs (valeur par défaut `False`)
-`DISABLE_TELEMETRY` | Si `True`, désactive la télémétrie des statistiques (valeur par défaut `False`). Voir [télémétrie](telemetry.md) pour plus de détails.
+`REGISTRATION_DISABLED` | Si `True`, interdire l'enregistrement de nouveaux utilisateurs (par défaut `False`)
+`DISABLE_TELEMETRY` | Si `True`, désactiver la télémétrie des statistiques (par défaut `False`). Voir [télémétrie](telemetry.md) pour plus de détails.
 `PILLOW_MAX_IMAGE_PIXELS` | Définit le paramètre PIL.Image.MAX_IMAGE_PIXELS, qui indique le nombre de pixels que l'image traitée peut contenir. Voir [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) pour plus de détails.
 `MAX_THUMBNAIL_FILE_BYTES` | Définit une taille de fichier maximale stricte pour les vignettes. Par défaut, c'est `50 * 1024 * 1024` (50 Mo). L'augmentation de cette valeur peut considérablement augmenter l'utilisation de la mémoire et peut entraîner des plantages par manque de mémoire ou une perte de données si de gros fichiers sont décompressés en mémoire.
 
 
 !!! info
-    Lors de l'utilisation de variables d'environnement pour la configuration, les options booléennes comme `EMAIL_USE_SSL` doivent être soit la chaîne `true`, soit `false` (sensible à la casse !).
+    Lors de l'utilisation de variables d'environnement pour la configuration, les options booléennes comme `EMAIL_USE_SSL` doivent être soit la chaîne `true` soit `false` (sensible à la casse !).
 
 
 ### Paramètres pour les bases de données PostgreSQL
@@ -113,21 +115,21 @@ Clé | Description
 
 ### Paramètres pour l'authentification OIDC
 
-Ces paramètres sont nécessaires si vous souhaitez utiliser l'authentification OpenID Connect (OIDC) avec des fournisseurs externes. Pour des instructions détaillées de configuration et des exemples, voir [Authentification OIDC](oidc.md).
+Ces paramètres sont nécessaires si vous souhaitez utiliser l'authentification OpenID Connect (OIDC) avec des fournisseurs externes. Pour des instructions de configuration détaillées et des exemples, voir [Authentification OIDC](oidc.md).
 
 Clé | Description
 ----|-------------
 `OIDC_ENABLED` | Booléen, indique s'il faut activer l'authentification OIDC. Par défaut, c'est `False`.
-`OIDC_ISSUER` | URL de l'émetteur du fournisseur OIDC (pour des fournisseurs OIDC personnalisés)
-`OIDC_CLIENT_ID` | ID client OAuth (pour des fournisseurs OIDC personnalisés)
-`OIDC_CLIENT_SECRET` | Secret client OAuth (pour des fournisseurs OIDC personnalisés)
+`OIDC_ISSUER` | URL de l'émetteur du fournisseur OIDC (pour les fournisseurs OIDC personnalisés)
+`OIDC_CLIENT_ID` | ID client OAuth (pour les fournisseurs OIDC personnalisés)
+`OIDC_CLIENT_SECRET` | Secret client OAuth (pour les fournisseurs OIDC personnalisés)
 `OIDC_NAME` | Nom d'affichage personnalisé pour le fournisseur. Par défaut, c'est "OIDC"
-`OIDC_SCOPES` | Scopes OAuth. Par défaut, c'est "openid email profile"
+`OIDC_SCOPES` | Portées OAuth. Par défaut, c'est "openid email profile"
 `OIDC_USERNAME_CLAIM` | La revendication à utiliser pour le nom d'utilisateur. Par défaut, c'est "preferred_username"
-`OIDC_OPENID_CONFIG_URL` | Optionnel : URL vers le point de terminaison de configuration OpenID Connect (si vous n'utilisez pas le standard `/.well-known/openid-configuration`)
+`OIDC_OPENID_CONFIG_URL` | Optionnel : URL vers le point de configuration OpenID Connect (si vous n'utilisez pas le standard `/.well-known/openid-configuration`)
 `OIDC_PKCE` | Booléen, indique s'il faut utiliser PKCE. Si non défini, PKCE est utilisé lorsque le document de découverte du fournisseur liste `S256`. Voir [PKCE](oidc.md#pkce)
 `OIDC_DISABLE_LOCAL_AUTH` | Booléen, indique s'il faut désactiver l'authentification locale par nom d'utilisateur/mot de passe. Par défaut, c'est `False`
-`OIDC_AUTO_REDIRECT` | Booléen, indique s'il faut rediriger automatiquement vers OIDC lorsque seul un fournisseur est configuré. Par défaut, c'est `False`
+`OIDC_AUTO_REDIRECT` | Booléen, indique s'il faut rediriger automatiquement vers OIDC lorsqu'un seul fournisseur est configuré. Par défaut, c'est `False`
 
 #### Fournisseurs OIDC intégrés
 
@@ -142,36 +144,36 @@ Clé | Description
 `OIDC_GOOGLE_PKCE` | Booléen, paramètre PKCE pour Google, voir [PKCE](oidc.md#pkce)
 `OIDC_MICROSOFT_PKCE` | Booléen, paramètre PKCE pour Microsoft, voir [PKCE](oidc.md#pkce)
 
-#### Mapping des rôles OIDC
+#### Mappage des rôles OIDC
 
 Ces paramètres vous permettent de mapper les groupes/rôles OIDC de votre fournisseur d'identité aux rôles d'utilisateur Gramps Web :
 
 Clé | Description
 ----|-------------
 `OIDC_ROLE_CLAIM` | Le nom de la revendication dans le jeton OIDC qui contient les groupes/rôles de l'utilisateur. Par défaut, c'est "groups"
-`OIDC_GROUP_ADMIN` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Admin" de Gramps
-`OIDC_GROUP_OWNER` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Owner" de Gramps
-`OIDC_GROUP_EDITOR` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Editor" de Gramps
-`OIDC_GROUP_CONTRIBUTOR` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Contributor" de Gramps
-`OIDC_GROUP_MEMBER` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Member" de Gramps
-`OIDC_GROUP_GUEST` | Le nom du groupe/rôle de votre fournisseur OIDC qui correspond au rôle "Guest" de Gramps
+`OIDC_GROUP_ADMIN` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Admin" de Gramps
+`OIDC_GROUP_OWNER` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Owner" de Gramps
+`OIDC_GROUP_EDITOR` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Editor" de Gramps
+`OIDC_GROUP_CONTRIBUTOR` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Contributor" de Gramps
+`OIDC_GROUP_MEMBER` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Member" de Gramps
+`OIDC_GROUP_GUEST` | Le nom du groupe/du rôle de votre fournisseur OIDC qui correspond au rôle "Guest" de Gramps
 
-### Paramètres uniquement pour les fonctionnalités d'IA
+### Paramètres uniquement pour les fonctionnalités IA
 
 Ces paramètres sont nécessaires si vous souhaitez utiliser des fonctionnalités alimentées par l'IA comme le chat ou la recherche sémantique. Voir [Configuration du chat IA](chat.md) pour plus de détails.
 
 !!! warning "La recherche sémantique est obsolète"
-    La recherche sémantique, et avec elle les paramètres `VECTOR_EMBEDDING_*`, est obsolète et sera supprimée dans Gramps Web API 3.25. Après cela, `VECTOR_EMBEDDING_MODEL` est toujours accepté mais ignoré. Depuis Gramps Web API 3.24, le chat IA nécessite uniquement `LLM_MODEL`.
+    La recherche sémantique, et avec elle les paramètres `VECTOR_EMBEDDING_*`, est obsolète et sera supprimée dans Gramps Web API 3.25. Après cela, `VECTOR_EMBEDDING_MODEL` est toujours accepté mais ignoré. Depuis Gramps Web API 3.24, le chat IA n'a besoin que de `LLM_MODEL`.
 
 Clé | Description
 ----|-------------
 `LLM_BASE_URL` | URL de base pour l'API de chat compatible OpenAI. Par défaut, c'est `None`, ce qui utilise l'API OpenAI.
-`LLM_MODEL` | Le modèle à utiliser pour l'API de chat compatible OpenAI. Si non défini (valeur par défaut), le chat est désactivé. À partir de v3.6.0, l'assistant IA utilise Pydantic AI avec des capacités d'appel d'outils.
-`VECTOR_EMBEDDING_MODEL` | **Obsolète**, sera supprimé dans 3.25. Le modèle à utiliser pour les embeddings vectoriels de recherche sémantique. Lors de l'utilisation d'un modèle local, cela doit être un nom de modèle [Sentence Transformers](https://sbert.net/). Lors de l'utilisation d'une API distante (voir `VECTOR_EMBEDDING_BASE_URL`), c'est le nom du modèle transmis au fournisseur distant. Si non défini (valeur par défaut), la recherche sémantique est désactivée. Avant Gramps Web API 3.24, le chat était également désactivé.
-`VECTOR_EMBEDDING_BASE_URL` | **Obsolète**, sera supprimé dans 3.25. URL de base pour une API d'embedding compatible OpenAI distante (par exemple, Ollama, OpenAI, LiteLLM). Si non défini (valeur par défaut), un modèle local Sentence Transformers est utilisé. Voir [Utilisation d'une API d'embedding distante](chat.md#using-a-remote-embedding-api) pour plus de détails.
+`LLM_MODEL` | Le modèle à utiliser pour l'API de chat compatible OpenAI. Si non défini (par défaut), le chat est désactivé. À partir de v3.6.0, l'assistant IA utilise Pydantic AI avec des capacités d'appel d'outils.
+`VECTOR_EMBEDDING_MODEL` | **Obsolète**, sera supprimé dans 3.25. Le modèle à utiliser pour les embeddings vectoriels de recherche sémantique. Lors de l'utilisation d'un modèle local, cela doit être un nom de modèle [Sentence Transformers](https://sbert.net/). Lors de l'utilisation d'une API distante (voir `VECTOR_EMBEDDING_BASE_URL`), c'est le nom du modèle transmis au fournisseur distant. Si non défini (par défaut), la recherche sémantique est désactivée. Avant Gramps Web API 3.24, le chat était également désactivé.
+`VECTOR_EMBEDDING_BASE_URL` | **Obsolète**, sera supprimé dans 3.25. URL de base pour une API d'embedding distante compatible OpenAI (par exemple, Ollama, OpenAI, LiteLLM). Si non défini (par défaut), un modèle local Sentence Transformers est utilisé. Voir [Utilisation d'une API d'embedding distante](chat.md#using-a-remote-embedding-api) pour plus de détails.
 `VECTOR_EMBEDDING_API_KEY` | **Obsolète**, sera supprimé dans 3.25. Clé API pour les fournisseurs d'embedding distants authentifiés. Nécessaire uniquement lorsque `VECTOR_EMBEDDING_BASE_URL` est défini et que le fournisseur nécessite une authentification.
 `LLM_MAX_CONTEXT_LENGTH` | Limite de caractères pour le contexte de l'arbre généalogique fourni à l'IA. Par défaut, c'est 50000.
-`LLM_SYSTEM_PROMPT` | Invite système personnalisée pour l'assistant de chat IA (v3.6.0+). Si non défini, utilise l'invite par défaut optimisée pour la généalogie.
+`LLM_SYSTEM_PROMPT` | Invite système personnalisée pour l'assistant de chat IA (v3.6.0+). Si non définie, utilise l'invite par défaut optimisée pour la généalogie.
 
 
 ## Exemple de fichier de configuration

@@ -6,7 +6,7 @@ Em vez de [configurar o Gramps Web você mesmo](deployment.md), você também po
 
 Como parte do procedimento de configuração, você terá que se inscrever para uma conta na DigitalOcean e selecionar um plano pago para o "droplet" (máquina virtual) a ser utilizado.
 
-Pode-se argumentar que esta é atualmente a maneira mais simples de implantar sua própria instância do Gramps Web auto-hospedada, segura com SSL, sem usar seu próprio hardware.
+Sem dúvida, esta é atualmente a maneira mais simples de implantar sua própria instância do Gramps Web auto-hospedada, protegida com SSL, sem usar seu próprio hardware.
 
 !!! info
     Observe que você estará pagando à DigitalOcean pelos serviços de hospedagem. O projeto de código aberto Gramps não oferece suporte pago.
@@ -32,12 +32,27 @@ Você precisará de um nome de domínio (ou subdomínio). Se você possui um dom
 
 ## Passo 4: Fazer login no seu droplet
 
-Acesse seu droplet via SSH. Você deve ver a mensagem "Bem-vindo à configuração do Gramps Web DigitalOcean 1-click app!". Se não for o caso, aguarde alguns minutos e tente novamente (a instalação ainda não foi concluída).
+Acesse seu droplet via SSH. Você deve ver a mensagem "Bem-vindo ao assistente de configuração do Gramps Web DigitalOcean 1-click app!". Se não for o caso, aguarde alguns minutos e tente novamente (a instalação ainda não foi concluída).
 
-O script de configuração solicitará o nome de domínio (por exemplo, `mygrampswebinstance.duckdns.org`) e um endereço de e-mail (necessário para o certificado Let's Encrypt).
+O script de configuração pedirá o nome de domínio (por exemplo, `mygrampswebinstance.duckdns.org`) e um endereço de e-mail (necessário para o certificado Let's Encrypt). Opcionalmente, ele também pedirá as configurações SMTP que o Gramps Web usa para enviar e-mails, por exemplo, para redefinições de senha; deixe o host SMTP vazio para pular isso.
 
 Quando isso estiver feito, aguarde a conclusão da configuração em segundo plano.
 
 ## Passo 5: Iniciar o Gramps Web
 
 Sua instância do Gramps Web agora deve estar acessível na raiz do seu domínio, com um certificado SSL válido, e deve estar exibindo o assistente de primeiro uso.
+
+## Alterando a configuração posteriormente
+
+O script de configuração armazena a URL base e as configurações de e-mail no arquivo `/root/letsencrypt.env` como [opções de configuração](configuration.md) prefixadas com `GRAMPSWEB_`, por exemplo:
+
+```
+GRAMPSWEB_EMAIL_HOST=smtp.example.com
+GRAMPSWEB_EMAIL_PORT=587
+GRAMPSWEB_EMAIL_USE_STARTTLS=true
+```
+
+Para adicionar ou alterar configurações, edite este arquivo no droplet e aplique a alteração com
+
+```bash
+cd /opt/grampsweb && docker compose up -d

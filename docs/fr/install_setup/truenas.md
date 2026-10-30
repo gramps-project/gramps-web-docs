@@ -9,7 +9,7 @@ Ce guide explique comment configurer Gramps Web sur TrueNAS Community Edition 25
 
 - TrueNAS Community Edition 25.04 ou version ultérieure
 - Familiarité de base avec l'interface web de TrueNAS
-- Un dataset pour stocker les données de Gramps Web
+- Un ensemble de données pour stocker les données de Gramps Web
 
 ## Aperçu
 
@@ -17,8 +17,8 @@ TrueNAS Community Edition 25.04 a introduit un nouveau système d'applications b
 
 ## Étape 1 : Préparer le stockage
 
-1. Accédez à **Datasets** dans l'interface web de TrueNAS
-2. Créez un nouveau dataset pour Gramps Web (par exemple, `grampsweb`). Notez le chemin complet de ce dataset, par exemple, `/mnt/storage/grampsweb`, car vous en aurez besoin plus tard.
+1. Accédez à **Ensembles de données** dans l'interface web de TrueNAS
+2. Créez un nouvel ensemble de données pour Gramps Web (par exemple, `grampsweb`). Notez le chemin complet vers cet ensemble de données, par exemple, `/mnt/storage/grampsweb`, car vous en aurez besoin plus tard.
 
 Créez des sous-répertoires pour les différents composants :
 - `users` - Base de données des utilisateurs
@@ -27,8 +27,8 @@ Créez des sous-répertoires pour les différents composants :
 
 ## Étape 2 : Créer l'application Docker Compose
 
-1. Accédez à **Apps** dans l'interface web de TrueNAS
-2. Cliquez sur **Discover Apps**
+1. Accédez à **Applications** dans l'interface web de TrueNAS
+2. Cliquez sur **Découvrir des applications**
 3. Recherchez "Gramps Web" et cliquez dessus
 4. Cliquez sur "Installer"
 
@@ -40,13 +40,13 @@ Cela vous amènera à la page de configuration de l'application.
 
 - **Fuseau horaire :** Définissez-le sur votre fuseau horaire local (par exemple, `Europe/Berlin`)
 - **Mot de passe Redis :** Définissez un mot de passe pour Redis. Cela ne sera utilisé qu'en interne par l'application.
-- **Désactiver la télémétrie :** veuillez laisser cette case décochée – voir [ici pour plus de détails](telemetry.md).
-- **Clé secrète :** il est crucial que vous définissiez cela sur une valeur forte et unique. Voir [configuration du serveur](configuration.md#existing-configuration-settings) pour des instructions sur la façon de générer une clé aléatoire.
+- **Désactiver la télémétrie :** veuillez laisser cette case non cochée – voir [ici pour plus de détails](telemetry.md).
+- **Clé secrète :** il est crucial que vous définissiez cela sur une valeur forte et unique. Voir [configuration du serveur](configuration.md#existing-configuration-settings) pour des instructions sur la manière de générer une clé aléatoire.
 - **Variables d'environnement supplémentaires :** Vous devrez définir toutes les [options de configuration](configuration.md) supplémentaires en tant que variables d'environnement préfixées par `GRAMPSWEB_`. Veuillez consulter la [documentation de configuration](configuration.md) en détail – par exemple, le fait que les valeurs booléennes doivent être définies comme `true` ou `false` (tout en minuscules) dans le cas des variables d'environnement, un piège courant.
 
 Veuillez **au moins** définir le `GRAMPSWEB_BASE_URL` sur l'URL à laquelle votre instance Gramps Web sera accessible – cela est requis pour un fonctionnement correct.
 
-Vous voudrez peut-être également configurer l'email à ce stade. Si vous le faites, vous pouvez sauter l'étape de configuration de l'email dans l'assistant d'intégration. Les variables d'environnement pertinentes sont :
+Vous voudrez peut-être également configurer les paramètres d'email à ce stade, ce qui est nécessaire par exemple pour les réinitialisations de mot de passe. Les variables d'environnement pertinentes sont :
 
 - `GRAMPSWEB_EMAIL_HOST`
 - `GRAMPSWEB_EMAIL_HOST_USER`
@@ -58,9 +58,9 @@ Tous les paramètres de configuration peuvent être modifiés ultérieurement en
 ### Configuration du stockage
 
 - **Stockage des utilisateurs :** Sélectionnez le chemin vers le répertoire `users` que vous avez créé précédemment.
-- **Stockage de l'index :** Vous pouvez laisser le paramètre par défaut "ixVolume (Dataset créé automatiquement par le système)"
-- **Stockage du cache des vignettes :** Vous pouvez laisser le paramètre par défaut "ixVolume (Dataset créé automatiquement par le système)"
-- **Stockage du cache :** Vous pouvez laisser le paramètre par défaut "ixVolume (Dataset créé automatiquement par le système)"
+- **Stockage de l'index :** Vous pouvez laisser le paramètre par défaut "ixVolume (Ensemble de données créé automatiquement par le système)"
+- **Stockage du cache des vignettes :** Vous pouvez laisser le paramètre par défaut "ixVolume (Ensemble de données créé automatiquement par le système)"
+- **Stockage du cache :** Vous pouvez laisser le paramètre par défaut "ixVolume (Ensemble de données créé automatiquement par le système)"
 - **Stockage multimédia :** Sélectionnez le chemin vers le répertoire `media` que vous avez créé précédemment.
 - **Stockage de la base de données Gramps :** Sélectionnez le chemin vers le répertoire `database` que vous avez créé précédemment.
 
@@ -70,15 +70,15 @@ Nous vous recommandons d'allouer au moins 2 CPU et 4096 Mo de RAM pour garantir 
 
 ## Étape 4 : Accéder à Gramps Web
 
-Une fois l'application déployée, vous pouvez accéder à Gramps Web en cliquant sur le bouton "Web UI" dans l'interface des applications TrueNAS. Vous devriez voir l'assistant d'intégration "Bienvenue dans Gramps Web".
+Une fois l'application déployée, vous pouvez accéder à Gramps Web en cliquant sur le bouton "Interface Web" dans l'interface des applications TrueNAS. Vous devriez voir l'assistant d'intégration "Bienvenue dans Gramps Web".
 
-Si vous souhaitez permettre aux utilisateurs d'accéder à votre interface Gramps Web, **ne** pas exposer l'application directement sur Internet, mais passez à l'étape suivante.
+Si vous souhaitez permettre aux utilisateurs d'accéder à votre interface Gramps Web, **ne pas** exposer l'application directement à Internet, mais passez à l'étape suivante.
 
 ## Étape 5 : Configurer un proxy inverse
 
 Pour exposer en toute sécurité votre instance Gramps Web aux utilisateurs, il est recommandé de configurer un proxy inverse. Cela vous permet de gérer les certificats SSL/TLS et de contrôler l'accès.
 
-L'option la plus simple est d'utiliser l'application officielle TrueNAS Nginx Proxy Manager. Recherchez l'application dans l'interface des applications TrueNAS et installez-la. Vous pouvez laisser tous les paramètres par défaut, mais nous vous recommandons de définir une variable d'environnement supplémentaire : `DISABLE_IPV6` avec la valeur `true` pour éviter d'éventuels problèmes liés à l'IPv6.
+L'option la plus simple est d'utiliser l'application officielle TrueNAS Nginx Proxy Manager. Recherchez l'application dans l'interface des applications TrueNAS et installez-la. Vous pouvez laisser tous les paramètres par défaut, mais nous vous recommandons de définir une variable d'environnement supplémentaire : `DISABLE_IPV6` avec la valeur `true` pour éviter d'éventuels problèmes liés à IPv6.
 
 Une fois déployé, ouvrez l'interface web de Nginx Proxy Manager et créez un nouvel hôte proxy avec les paramètres suivants :
 

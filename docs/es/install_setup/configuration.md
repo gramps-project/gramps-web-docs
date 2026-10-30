@@ -9,27 +9,29 @@ Esta página enumera todos los métodos para cambiar la configuración y todas l
 
 Para la configuración, puedes usar un archivo de configuración o variables de entorno.
 
-Cuando utilizas la [configuración basada en Docker Compose](deployment.md), puedes incluir un archivo de configuración añadiendo el siguiente elemento de lista bajo la clave `volumes:` en el bloque `grampsweb:`:
+Cuando utilizas la [configuración basada en Docker Compose](deployment.md), puedes incluir un archivo de configuración agregando el siguiente elemento de lista bajo la clave `volumes:` en el bloque `grampsweb:`:
 
 ```yaml
-      - /ruta/al/config.cfg:/app/config/config.cfg
+      - /ruta/a/config.cfg:/app/config/config.cfg
 ```
-donde `/ruta/al/config.cfg` es la ruta al archivo de configuración en el sistema de archivos de tu servidor (el lado derecho se refiere a la ruta en el contenedor y no debe ser cambiado).
+donde `/ruta/a/config.cfg` es la ruta al archivo de configuración en el sistema de archivos de tu servidor (el lado derecho se refiere a la ruta en el contenedor y no debe ser cambiado).
 
 Al usar variables de entorno,
 
-- precede cada nombre de configuración con `GRAMPSWEB_` para obtener el nombre de la variable de entorno
-- Usa dobles guiones bajos para configuraciones de diccionario anidadas, por ejemplo, `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` establecerá el valor de la opción de configuración `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
+- prefija cada nombre de configuración con `GRAMPSWEB_` para obtener el nombre de la variable de entorno
+- Usa dobles guiones bajos para configuraciones de diccionario anidadas, por ejemplo `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` establecerá el valor de la opción de configuración `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
 
 Ten en cuenta que las opciones de configuración establecidas a través del entorno tienen prioridad sobre las que están en el archivo de configuración. Si ambas están presentes, la variable de entorno "gana".
 
 !!! warning "Las variables de entorno sin prefijo están en desuso"
-    Por razones históricas, un puñado de configuraciones – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, y `STATIC_PATH` – aún pueden ser configuradas a través de una variable de entorno *sin* el prefijo `GRAMPSWEB_`. Esto está en desuso, genera una advertencia al iniciar, y dejará de funcionar en una futura versión. Siempre usa la forma con prefijo, por ejemplo, `GRAMPSWEB_TREE` en lugar de `TREE`.
+    Por razones históricas, un puñado de configuraciones – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, y `STATIC_PATH` – aún pueden ser establecidas a través de una variable de entorno *sin* el prefijo `GRAMPSWEB_`. Esto está en desuso, registra una advertencia al iniciar, y dejará de funcionar en una futura versión. Siempre usa la forma con prefijo, por ejemplo `GRAMPSWEB_TREE` en lugar de `TREE`.
 
     Ten en cuenta que esto solo concierne a las variables de entorno. En un archivo de configuración, los nombres de configuración siempre se utilizan sin prefijo.
 
-!!! tip "Verificando opciones en desuso"
-    Las opciones de configuración en desuso de las que tu servidor aún depende – como variables de entorno sin prefijo, `SEARCH_INDEX_DIR`, o `EMAIL_USE_TLS` – se registran como advertencias al iniciar. Desde Gramps Web API 3.22, también se enumeran, junto con su reemplazo y la versión en la que se eliminará el soporte, en la parte superior de la página **Información del Sistema** (accesible a través del ícono de usuario en la barra de la aplicación superior) cuando estás conectado como administrador.
+!!! tip "Comprobando opciones en desuso"
+    Las opciones de configuración en desuso de las que tu servidor aún depende – como las variables de entorno sin prefijo, `SEARCH_INDEX_DIR`, o `EMAIL_USE_TLS` – se registran como advertencias al iniciar. Desde Gramps Web API 3.22, también se listan, junto con su reemplazo y la versión en la que se eliminará el soporte, en la parte superior de la página de **Información del Sistema** (accesible a través del icono de usuario en la barra superior de la aplicación) cuando inicias sesión como administrador.
+
+    La configuración de correo electrónico y la URL base que el asistente de primera ejecución de versiones anteriores almacenaba en la base de datos también se enumeran allí. Establece en tu configuración los valores almacenados; la advertencia desaparece una vez que coinciden.
 
 ## Configuraciones de configuración existentes
 Las siguientes opciones de configuración existen.
@@ -39,8 +41,8 @@ Las siguientes opciones de configuración existen.
 Clave | Descripción
 ----|-------------
 `TREE` | El nombre de la base de datos del árbol genealógico a utilizar. Muestra los árboles disponibles con `gramps -l`. Si no existe un árbol con este nombre, se creará uno nuevo vacío.
-`SECRET_KEY` | La clave secreta para Flask. La clave secreta no debe ser compartida públicamente. Cambiarla invalidará todos los tokens de acceso.
-`USER_DB_URI` | La URL de la base de datos de usuarios. Se permite cualquier URL compatible con SQLAlchemy.
+`SECRET_KEY` | La clave secreta para Flask. La clave secreta no debe compartirse públicamente. Cambiarla invalidará todos los tokens de acceso.
+`USER_DB_URI` | La URL de la base de datos del usuario. Se permite cualquier URL compatible con SQLAlchemy.
 
 !!! info
     Puedes generar una clave secreta segura, por ejemplo, con el comando
@@ -53,35 +55,35 @@ Clave | Descripción
 
 Clave | Descripción
 ----|-------------
-`MEDIA_BASE_DIR` | Ruta a utilizar como directorio base para archivos multimedia, sobrescribiendo el directorio base de medios establecido en Gramps. Al usar [S3](s3.md), debe tener la forma `s3://<bucket_name>`
+`MEDIA_BASE_DIR` | Ruta a usar como directorio base para archivos multimedia, sobrescribiendo el directorio base de medios establecido en Gramps. Al usar [S3](s3.md), debe tener la forma `s3://<bucket_name>`
 `TREE_ID` | El nombre del directorio de la base de datos del árbol genealógico a utilizar en modo de un solo árbol (cuando `TREE` no está configurado como `*`). Cuando se establece, el servidor identifica el árbol por su nombre de directorio en lugar de su nombre de visualización, lo que es más robusto ante cambios de nombre. Requerido si deseas renombrar el árbol a través de la API. El nombre del directorio se puede encontrar a través de `GET /api/trees/-` (el campo `id`).
 `SEARCH_INDEX_DB_URI` | URL de la base de datos para el índice de búsqueda. Solo se permiten `sqlite` o `postgresql` como backends. Por defecto es `sqlite:///indexdir/search_index.db`, creando un archivo SQLite en la carpeta `indexdir` relativa a la ruta donde se ejecuta el script.
-`SEARCH_INDEX_DIR` | **En desuso** (usa `SEARCH_INDEX_DB_URI` en su lugar). Directorio que contiene el índice de búsqueda. Si se establece mientras `SEARCH_INDEX_DB_URI` no está configurado, la URL del índice de búsqueda se deriva como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
+`SEARCH_INDEX_DIR` | **En desuso** (usa `SEARCH_INDEX_DB_URI` en su lugar). Directorio que contiene el índice de búsqueda. Si se establece mientras `SEARCH_INDEX_DB_URI` está sin establecer, la URL del índice de búsqueda se deriva como `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Ruta para servir archivos estáticos (por ejemplo, un frontend web estático)
-`BASE_URL` | URL base donde se puede alcanzar la API (por ejemplo, `https://mygramps.mydomain.com/`). Esto es necesario, por ejemplo, para construir enlaces correctos de restablecimiento de contraseña. Web Push también requiere una URL HTTPS accesible públicamente; la predeterminada `http://localhost/` desactiva Web Push. Al configurar esta opción a través del entorno, usa `GRAMPSWEB_BASE_URL`.
-`CORS_ORIGINS` | Orígenes desde los cuales se permiten solicitudes CORS. Por defecto, todas están deshabilitadas. Usa `"*"` para permitir solicitudes desde cualquier dominio.
+`BASE_URL` | URL base donde se puede alcanzar la API (por ejemplo, `https://mygramps.mydomain.com/`). Esto es necesario, por ejemplo, para construir enlaces correctos de restablecimiento de contraseña. Web Push también requiere una URL HTTPS accesible públicamente; la por defecto `http://localhost/` desactiva Web Push. Al configurar esta opción a través del entorno, usa `GRAMPSWEB_BASE_URL`.
+`CORS_ORIGINS` | Orígenes desde donde se permiten solicitudes CORS. Por defecto, todos están deshabilitados. Usa `"*"` para permitir solicitudes desde cualquier dominio.
 `EMAIL_HOST` | Host del servidor SMTP (por ejemplo, para enviar correos electrónicos de restablecimiento de contraseña)
 `EMAIL_PORT` | Puerto del servidor SMTP. por defecto es 465
 `EMAIL_HOST_USER` | Nombre de usuario del servidor SMTP
 `EMAIL_HOST_PASSWORD` | Contraseña del servidor SMTP
 `EMAIL_USE_TLS` | **En desuso** (usa `EMAIL_USE_SSL` o `EMAIL_USE_STARTTLS` en su lugar). Booleano, si se debe usar TLS para enviar correos electrónicos. Por defecto es `True`. Al usar STARTTLS, establece esto en `False` y usa un puerto diferente de 25.
-`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto es `True` si `EMAIL_USE_TLS` no está configurado explícitamente. Típicamente se usa con el puerto 465.
-`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto es `False`. Típicamente se usa con el puerto 587 o 25.
-`DEFAULT_FROM_EMAIL` | Dirección "De" para correos electrónicos automatizados
+`EMAIL_USE_SSL` | Booleano, si se debe usar SSL/TLS implícito para SMTP (v3.6.0+). Por defecto es `True` si `EMAIL_USE_TLS` no se establece explícitamente. Típicamente usado con el puerto 465.
+`EMAIL_USE_STARTTLS` | Booleano, si se debe usar STARTTLS explícito para SMTP (v3.6.0+). Por defecto es `False`. Típicamente usado con el puerto 587 o 25.
+`DEFAULT_FROM_EMAIL` | Dirección "Desde" para correos electrónicos automatizados
 `THUMBNAIL_CACHE_CONFIG` | Diccionario con configuraciones para la caché de miniaturas. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
 `REQUEST_CACHE_CONFIG` | Diccionario con configuraciones para la caché de solicitudes. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
 `PERSISTENT_CACHE_CONFIG` | Diccionario con configuraciones para la caché persistente, utilizada por ejemplo para telemetría. Consulta [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) para posibles configuraciones.
 `CELERY_CONFIG` | Configuraciones para la cola de tareas en segundo plano de Celery. Consulta [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) para posibles configuraciones.
 `REPORT_DIR` | Directorio temporal donde se almacenará la salida de los informes de Gramps
 `EXPORT_DIR` | Directorio temporal donde se almacenará la salida de la exportación de la base de datos de Gramps
-`BACKUP_DIR` | Directorio donde se almacenan [copias de seguridad](../administration/settings.md#backups), en un subdirectorio por árbol (v3.24.0+). Si no se establece (el valor predeterminado), las copias de seguridad no se pueden almacenar en el servidor, pero aún se pueden restaurar desde un archivo subido. Usa una ubicación persistente, por ejemplo, un volumen de Docker, y preferiblemente una que esté respaldada o sincronizada en otro lugar.
+`BACKUP_DIR` | Directorio donde se almacenan [copias de seguridad](../administration/settings.md#backups), en un subdirectorio por árbol (v3.24.0+). Si no se establece (el valor por defecto), no se pueden almacenar copias de seguridad en el servidor, pero aún se pueden restaurar desde un archivo subido. Usa una ubicación persistente, por ejemplo, un volumen de Docker, y preferiblemente una que esté respaldada o sincronizada en otro lugar.
 `BACKUP_KEEP` | Número de copias de seguridad almacenadas por árbol; las más antiguas se eliminan cuando se crea una nueva copia de seguridad (v3.24.0+). Por defecto es `5`
 `RATE_LIMIT_BACKUP` | Límite de tasa para crear copias de seguridad, por árbol (v3.24.0+). Por defecto es `"10 por día"`
-`RATE_LIMIT_MEDIA_ARCHIVE` | Límite de tasa para crear archivos multimedia en la página de exportación. Por defecto es `"1 por hora"`
-`REGISTRATION_DISABLED` | Si `True`, no se permite el registro de nuevos usuarios (valor predeterminado `False`)
-`DISABLE_TELEMETRY` | Si `True`, desactiva la telemetría de estadísticas (valor predeterminado `False`). Consulta [telemetría](telemetry.md) para más detalles.
+`RATE_LIMIT_MEDIA_ARCHIVE` | Límite de tasa para crear archivos multimedia en la página de Exportación. Por defecto es `"1 por hora"`
+`REGISTRATION_DISABLED` | Si `True`, no se permite el registro de nuevos usuarios (por defecto `False`)
+`DISABLE_TELEMETRY` | Si `True`, desactiva la telemetría de estadísticas (por defecto `False`). Consulta [telemetría](telemetry.md) para más detalles.
 `PILLOW_MAX_IMAGE_PIXELS` | Establece el parámetro PIL.Image.MAX_IMAGE_PIXELS, que indica el número de píxeles que la imagen procesada puede contener. Consulta [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) para más detalles.
-`MAX_THUMBNAIL_FILE_BYTES` | Establece un tamaño máximo de archivo para miniaturas. Por defecto es `50 * 1024 * 1024` (50 MB). Aumentarlo puede incrementar considerablemente el uso de memoria y puede llevar a fallos por falta de memoria o pérdida de datos si se descomprimen archivos grandes en memoria.
+`MAX_THUMBNAIL_FILE_BYTES` | Establece un tamaño máximo de archivo duro para miniaturas. Por defecto es `50 * 1024 * 1024` (50 MB). Aumentarlo puede incrementar considerablemente el uso de memoria y puede llevar a fallos por falta de memoria o pérdida de datos si se descomprimen archivos grandes en memoria.
 
 
 !!! info
@@ -105,10 +107,10 @@ Las siguientes configuraciones son relevantes al [alojar múltiples árboles](mu
 
 Clave | Descripción
 ----|-------------
-`MEDIA_PREFIX_TREE` | Booleano, si se debe usar una subcarpeta separada para los archivos multimedia de cada árbol. Por defecto es `False`, pero se recomienda encarecidamente usar `True` en una configuración de múltiples árboles.
-`NEW_DB_BACKEND` | El backend de base de datos a utilizar para los árboles genealógicos recién creados. Debe ser uno de `sqlite` o `sharedpostgresql`. Por defecto es `sqlite`. El valor `postgresql` aún se acepta pero está en desuso, ya que el backend de PostgreSQL será eliminado en Gramps Web API 4.0.
-`POSTGRES_HOST` | El nombre del host del servidor PostgreSQL utilizado para crear nuevos árboles cuando se utiliza una configuración de múltiples árboles con el backend SharedPostgreSQL.
-`POSTGRES_PORT` | El puerto del servidor PostgreSQL utilizado para crear nuevos árboles cuando se utiliza una configuración de múltiples árboles con el backend SharedPostgreSQL.
+`MEDIA_PREFIX_TREE` | Booleano, si se debe usar o no una subcarpeta separada para los archivos multimedia de cada árbol. Por defecto es `False`, pero se recomienda encarecidamente usar `True` en una configuración de múltiples árboles.
+`NEW_DB_BACKEND` | El backend de base de datos a usar para los árboles genealógicos recién creados. Debe ser uno de `sqlite` o `sharedpostgresql`. Por defecto es `sqlite`. El valor `postgresql` aún se acepta pero está en desuso, ya que el backend de PostgreSQL se eliminará en Gramps Web API 4.0.
+`POSTGRES_HOST` | El nombre del host del servidor PostgreSQL utilizado para crear nuevos árboles cuando se usa una configuración de múltiples árboles con el backend SharedPostgreSQL.
+`POSTGRES_PORT` | El puerto del servidor PostgreSQL utilizado para crear nuevos árboles cuando se usa una configuración de múltiples árboles con el backend SharedPostgreSQL.
 
 
 ### Configuraciones para autenticación OIDC
@@ -123,10 +125,10 @@ Clave | Descripción
 `OIDC_CLIENT_SECRET` | Secreto de cliente OAuth (para proveedores OIDC personalizados)
 `OIDC_NAME` | Nombre de visualización personalizado para el proveedor. Por defecto es "OIDC"
 `OIDC_SCOPES` | Alcances de OAuth. Por defecto es "openid email profile"
-`OIDC_USERNAME_CLAIM` | La reclamación a utilizar para el nombre de usuario. Por defecto es "preferred_username"
-`OIDC_OPENID_CONFIG_URL` | Opcional: URL al punto de configuración de OpenID Connect (si no se utiliza el estándar `/.well-known/openid-configuration`)
+`OIDC_USERNAME_CLAIM` | La reclamación a usar para el nombre de usuario. Por defecto es "preferred_username"
+`OIDC_OPENID_CONFIG_URL` | Opcional: URL al endpoint de configuración de OpenID Connect (si no se usa el estándar `/.well-known/openid-configuration`)
 `OIDC_PKCE` | Booleano, si se debe usar PKCE. Si no se establece, se usa PKCE cuando el documento de descubrimiento del proveedor lista `S256`. Consulta [PKCE](oidc.md#pkce)
-`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe deshabilitar la autenticación local de nombre de usuario/contraseña. Por defecto es `False`
+`OIDC_DISABLE_LOCAL_AUTH` | Booleano, si se debe desactivar la autenticación local de nombre de usuario/contraseña. Por defecto es `False`
 `OIDC_AUTO_REDIRECT` | Booleano, si se debe redirigir automáticamente a OIDC cuando solo se configura un proveedor. Por defecto es `False`
 
 #### Proveedores OIDC integrados
@@ -139,8 +141,8 @@ Clave | Descripción
 `OIDC_GOOGLE_CLIENT_SECRET` | Secreto de cliente para Google OAuth
 `OIDC_MICROSOFT_CLIENT_ID` | ID de cliente para Microsoft OAuth
 `OIDC_MICROSOFT_CLIENT_SECRET` | Secreto de cliente para Microsoft OAuth
-`OIDC_GOOGLE_PKCE` | Booleano, configuración PKCE para Google, consulta [PKCE](oidc.md#pkce)
-`OIDC_MICROSOFT_PKCE` | Booleano, configuración PKCE para Microsoft, consulta [PKCE](oidc.md#pkce)
+`OIDC_GOOGLE_PKCE` | Booleano, configuración de PKCE para Google, consulta [PKCE](oidc.md#pkce)
+`OIDC_MICROSOFT_PKCE` | Booleano, configuración de PKCE para Microsoft, consulta [PKCE](oidc.md#pkce)
 
 #### Mapeo de Roles OIDC
 
@@ -156,20 +158,20 @@ Clave | Descripción
 `OIDC_GROUP_MEMBER` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Member" de Gramps
 `OIDC_GROUP_GUEST` | El nombre del grupo/rol de tu proveedor OIDC que se mapea al rol "Guest" de Gramps
 
-### Configuraciones solo para funciones de IA
+### Configuraciones solo para características de IA
 
-Estas configuraciones son necesarias si deseas usar funciones impulsadas por IA como chat o búsqueda semántica. Consulta [Configuración del chat de IA](chat.md) para más detalles.
+Estas configuraciones son necesarias si deseas usar características impulsadas por IA como chat o búsqueda semántica. Consulta [Configuración del chat de IA](chat.md) para más detalles.
 
 !!! warning "La búsqueda semántica está en desuso"
-    La búsqueda semántica, y con ella las configuraciones `VECTOR_EMBEDDING_*`, están en desuso y serán eliminadas en Gramps Web API 3.25. Después de eso, `VECTOR_EMBEDDING_MODEL` aún se aceptará pero será ignorado. Desde Gramps Web API 3.24, el chat de IA solo necesita `LLM_MODEL`.
+    La búsqueda semántica, y con ella las configuraciones `VECTOR_EMBEDDING_*`, está en desuso y se eliminará en Gramps Web API 3.25. Después de eso, `VECTOR_EMBEDDING_MODEL` aún se acepta pero se ignora. Desde Gramps Web API 3.24, el chat de IA solo necesita `LLM_MODEL`.
 
 Clave | Descripción
 ----|-------------
 `LLM_BASE_URL` | URL base para la API de chat compatible con OpenAI. Por defecto es `None`, que utiliza la API de OpenAI.
-`LLM_MODEL` | El modelo a utilizar para la API de chat compatible con OpenAI. Si no se establece (el valor predeterminado), el chat está deshabilitado. A partir de v3.6.0, el asistente de IA utiliza Pydantic AI con capacidades de llamada a herramientas.
-`VECTOR_EMBEDDING_MODEL` | **En desuso**, será eliminado en 3.25. El modelo a utilizar para las incrustaciones de vectores de búsqueda semántica. Al usar un modelo local, este debe ser un nombre de modelo de [Sentence Transformers](https://sbert.net/). Al usar una API remota (consulta `VECTOR_EMBEDDING_BASE_URL`), este es el nombre del modelo pasado al proveedor remoto. Si no se establece (el valor predeterminado), la búsqueda semántica está deshabilitada. Antes de Gramps Web API 3.24, el chat también estaba deshabilitado.
-`VECTOR_EMBEDDING_BASE_URL` | **En desuso**, será eliminado en 3.25. URL base para una API de incrustación compatible con OpenAI remota (por ejemplo, Ollama, OpenAI, LiteLLM). Si no se establece (el valor predeterminado), se utiliza un modelo local de Sentence Transformers. Consulta [Uso de una API de incrustación remota](chat.md#using-a-remote-embedding-api) para más detalles.
-`VECTOR_EMBEDDING_API_KEY` | **En desuso**, será eliminado en 3.25. Clave API para proveedores de incrustación remota autenticados. Solo necesaria cuando `VECTOR_EMBEDDING_BASE_URL` está configurada y el proveedor requiere autenticación.
+`LLM_MODEL` | El modelo a usar para la API de chat compatible con OpenAI. Si no se establece (el valor por defecto), el chat está deshabilitado. A partir de v3.6.0, el asistente de IA utiliza Pydantic AI con capacidades de llamada a herramientas.
+`VECTOR_EMBEDDING_MODEL` | **En desuso**, se eliminará en 3.25. El modelo a usar para las incrustaciones de vectores de búsqueda semántica. Al usar un modelo local, este debe ser un nombre de modelo de [Sentence Transformers](https://sbert.net/). Al usar una API remota (consulta `VECTOR_EMBEDDING_BASE_URL`), este es el nombre del modelo pasado al proveedor remoto. Si no se establece (el valor por defecto), la búsqueda semántica está deshabilitada. Antes de Gramps Web API 3.24, el chat también estaba deshabilitado.
+`VECTOR_EMBEDDING_BASE_URL` | **En desuso**, se eliminará en 3.25. URL base para una API de incrustación compatible con OpenAI remota (por ejemplo, Ollama, OpenAI, LiteLLM). Si no se establece (el valor por defecto), se utiliza un modelo local de Sentence Transformers. Consulta [Uso de una API de incrustación remota](chat.md#using-a-remote-embedding-api) para más detalles.
+`VECTOR_EMBEDDING_API_KEY` | **En desuso**, se eliminará en 3.25. Clave API para proveedores de incrustación remota autenticados. Solo necesaria cuando `VECTOR_EMBEDDING_BASE_URL` está establecido y el proveedor requiere autenticación.
 `LLM_MAX_CONTEXT_LENGTH` | Límite de caracteres para el contexto del árbol genealógico proporcionado al LLM. Por defecto es 50000.
 `LLM_SYSTEM_PROMPT` | Aviso del sistema personalizado para el asistente de chat LLM (v3.6.0+). Si no se establece, utiliza el aviso optimizado para genealogía por defecto.
 

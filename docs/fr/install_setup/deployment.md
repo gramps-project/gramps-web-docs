@@ -1,6 +1,6 @@
 # Déployer Gramps Web avec Docker
 
-L'option la plus pratique pour héberger Gramps Web sur votre propre serveur (ou serveur virtuel) est d'utiliser Docker Compose.
+L'option la plus pratique pour héberger Gramps Web sur votre propre serveur (ou serveur virtuel) est avec Docker Compose.
 
 Nous supposerons que Docker et Docker Compose sont déjà installés sur votre système. Vous pouvez utiliser Windows, Mac OS ou Linux comme système hôte. Les architectures prises en charge incluent non seulement x86-64 (systèmes de bureau), mais aussi des systèmes ARM tels qu'un Raspberry Pi, qui peut servir de serveur web à faible coût, mais suffisamment puissant.
 
@@ -14,15 +14,17 @@ Créez un nouveau fichier sur le serveur nommé `docker-compose.yml` et insérez
 
 Cela générera six volumes nommés pour s'assurer que toutes les données pertinentes persistent lors du redémarrage du conteneur.
 
+Définissez `GRAMPSWEB_BASE_URL` à l'adresse à laquelle Gramps Web sera accessible, par exemple `https://gramps.mydomain.com`. Cela est utilisé pour construire des liens dans les e-mails, tels que les réinitialisations de mot de passe. Pour envoyer des e-mails, ajoutez également les paramètres de messagerie décrits dans la [configuration](configuration.md).
+
 !!! warning
     Ce qui précède rendra l'API disponible sur le port 80 de la machine hôte **sans protection SSL/TLS**. Vous pouvez l'utiliser pour des tests locaux, mais ne l'exposez pas directement à Internet, c'est complètement non sécurisé !
 
-## Étape 2 : Accès sécurisé avec SSL/TLS
+## Étape 2 : Sécuriser l'accès avec SSL/TLS
 
 L'API web **doit** être servie au public sur Internet via HTTPS. Il existe plusieurs options, par exemple :
 
 - Utiliser un hébergement Docker qui inclut automatiquement SSL/TLS
-- Utiliser un Nginx Reverse Proxy avec un certificat Let's Encrypt
+- Utiliser un proxy inverse Nginx avec un certificat Let's Encrypt
 
 Voir [Docker avec Let's Encrypt](lets_encrypt.md) pour savoir comment configurer la première option.
 
@@ -38,9 +40,8 @@ docker compose up -d
 
 Lors de la première exécution, l'application affichera un assistant de première exécution qui vous permettra de
 
-- Créer un compte pour l'utilisateur propriétaire (administrateur)
-- Définir certaines options de configuration nécessaires
-- Importer un arbre généalogique au format Gramps XML (`.gramps`)
+- Créer un compte pour l'utilisateur propriétaire (admin)
+- Importer un arbre généalogique au format XML Gramps (`.gramps`)
 
 ## Étape 4 : Télécharger des fichiers multimédias
 
