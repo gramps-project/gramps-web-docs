@@ -39,6 +39,9 @@ services:
 See [the Gunicorn documentation](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) to decide
 about the ideal number of workers.
 
+!!! info
+    The Docker image starts Gunicorn with the `--preload` option, so the workers share the memory of the loaded application and each additional worker needs less memory. If you override the Gunicorn command, keep `--preload` to benefit from this.
+
 
 
 ## Limiting the number of Celery workers

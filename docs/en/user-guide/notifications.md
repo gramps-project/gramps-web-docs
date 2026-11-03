@@ -5,7 +5,7 @@
 The notification log serves two purposes:
 
 - It is a record of errors that occurred during your session – failed API requests, background task errors, save failures, or browser-level errors.
-- It tracks the progress of long-running background tasks – such as imports and exports, generating reports, OCR text recognition, database upgrades, and search/semantic index rebuilds – showing their state (e.g. pending, started, in progress) and notifying you when they complete or fail.
+- It tracks the progress of long-running background tasks – such as imports and exports, generating reports, OCR text recognition, database upgrades, deleting many objects, and search index rebuilds – showing their state (e.g. pending, started, in progress) and notifying you when they complete or fail.
 
 Each entry shows a short message, the source (Network, Task, Save, or Browser), and a timestamp. Finished tasks read "Task completed" or "Task failed".
 

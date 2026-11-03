@@ -34,6 +34,14 @@ When you create a new person, family, event, place, source or citation, the form
 
 When you create a person together with their birth and death events, the selected media objects are linked to the person only, not to the events.
 
+## Browsing media
+
+The media view shows the media objects as a gallery of thumbnails or as a list; the choice is remembered in your browser. Like the other [list views](lists.md), it can be sorted (including by date), filtered and used to select and delete media in bulk.
+
+Clicking a tile in the gallery opens the media in the lightbox. Use the arrow keys, swipe, or click the arrow buttons to step through the filtered and sorted results, across pages. The **Details** button in the lightbox opens the media object's page. Clicking a row in the list layout opens the media object's page directly.
+
+Videos are shown with a thumbnail and a play button. Audio and video files can be played on the media object's page, in the lightbox, in [blog posts](blog.md) and when embedded in notes.
+
 ## Text recognition (OCR)
 
 If the server administrator has enabled OCR support, a "Text Recognition" button appears below the image in a media object's detail view.

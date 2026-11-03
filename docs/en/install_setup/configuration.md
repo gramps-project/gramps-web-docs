@@ -160,18 +160,16 @@ Key | Description
 
 ### Settings only for AI features
 
-These settings are needed if you want to use AI-powered features like chat or semantic search. See [Setting up AI chat](chat.md) for details.
+These settings are needed if you want to use AI chat. See [Setting up AI chat](chat.md) for details.
 
-!!! warning "Semantic search is deprecated"
-    Semantic search, and with it the `VECTOR_EMBEDDING_*` settings, is deprecated and will be removed in Gramps Web API 3.25. After that, `VECTOR_EMBEDDING_MODEL` is still accepted but ignored. Since Gramps Web API 3.24, AI chat only needs `LLM_MODEL`.
+!!! note
+    The `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` and `VECTOR_EMBEDDING_API_KEY` settings for semantic search are ignored since Gramps Web API 3.25, which removed semantic search. AI chat only needs `LLM_MODEL`.
 
 Key | Description
 ----|-------------
 `LLM_BASE_URL` | Base URL for the OpenAI-compatible chat API. Defaults to `None`, which uses the OpenAI API.
 `LLM_MODEL` | The model to use for the OpenAI-compatible chat API. If unset (the default), chat is disabled. As of v3.6.0, the AI assistant uses Pydantic AI with tool calling capabilities.
-`VECTOR_EMBEDDING_MODEL` | **Deprecated**, will be removed in 3.25. The model to use for semantic search vector embeddings. When using a local model, this must be a [Sentence Transformers](https://sbert.net/) model name. When using a remote API (see `VECTOR_EMBEDDING_BASE_URL`), this is the model name passed to the remote provider. If unset (the default), semantic search is disabled. Before Gramps Web API 3.24, chat was disabled as well.
-`VECTOR_EMBEDDING_BASE_URL` | **Deprecated**, will be removed in 3.25. Base URL for a remote OpenAI-compatible embedding API (e.g. Ollama, OpenAI, LiteLLM). If unset (the default), a local Sentence Transformers model is used. See [Using a remote embedding API](chat.md#using-a-remote-embedding-api) for details.
-`VECTOR_EMBEDDING_API_KEY` | **Deprecated**, will be removed in 3.25. API key for authenticated remote embedding providers. Only needed when `VECTOR_EMBEDDING_BASE_URL` is set and the provider requires authentication.
+`LLM_MAX_OUTPUT_TOKENS` | Maximum number of tokens the model may generate in a single response. Unset by default, leaving the limit to the model server. Useful for model servers without a limit of their own, where a response could otherwise go on indefinitely.
 `LLM_MAX_CONTEXT_LENGTH` | Character limit for the family tree context provided to the LLM. Defaults to 50000.
 `LLM_SYSTEM_PROMPT` | Custom system prompt for the LLM chat assistant (v3.6.0+). If unset, uses the default genealogy-optimized prompt.
 

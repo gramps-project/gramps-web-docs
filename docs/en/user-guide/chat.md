@@ -19,7 +19,9 @@ To understand which types of question the assistant can answer, it is helpful to
 3. A large language model formulates an answer based on the records it has found.
 4. The answer is displayed to you, with links to the records it is based on.
 
-On servers running a Gramps Web API version older than 3.24, the assistant also relied on semantic search, which is being phased out.
+The assistant answers only from your tree, not from the general knowledge of the language model – even about well-known people. If the tree does not record something, it says so, mentioning related information it found, for example in a note. Links to objects you are not allowed to see are shown as plain text.
+
+Follow-up questions keep the context of earlier questions in the same conversation, so you can ask "And when did he die?" after asking about a person.
 
 While the assistant is working, indicators show which tools it is currently using (e.g. searching people, looking up relationships) so you can follow along as it builds its answer. Longer-running questions are processed as background tasks – you can navigate away and come back, and progress is also reflected in [Notifications](notifications.md). Answers are formatted with Markdown (lists, emphasis, links, etc.) for easier reading.
 

@@ -30,6 +30,11 @@ This is the primary way to **enable a newly self-registered user**: change their
 
 E-mail addresses do not have to be unique (since Gramps Web API 3.22), so several accounts can share the same address.
 
+Disabling a user, or changing their password, ends all of their sessions within 15 minutes.
+
+!!! note
+    Owners cannot edit, change the password of, or delete users with a higher role, such as the site administrator. Users with the same role, such as two owners of a tree, can manage each other.
+
 ## Add a user manually
 
 Click the **add user** (person-add) icon above the table to create a new user account directly without requiring self-registration. Fill in the username, full name, e-mail address, password, and role in the dialog and click **Save**.

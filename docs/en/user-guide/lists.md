@@ -51,9 +51,13 @@ Users with edit permissions see a **Select** button next to the filter button. C
 
 Tick the objects you want, and a toolbar appears showing how many are selected, along with an **Action** dropdown and an **Apply** button.
 
+The checkbox in the table header selects all objects on the current page. If more objects match the current filters, the toolbar then offers **Select All (N)**, which selects all N matching objects across all pages. Unticking a row, changing the page or the filters, or leaving selection mode ends this selection.
+
 ### Delete
 
 Select one or more objects, choose **Delete**, and click **Apply**. A confirmation dialog asks you to confirm, warning that the action cannot be undone.
+
+Deleting more than ten objects runs as a background task. Its progress is shown next to the **Apply** button and in [Notifications](notifications.md), and the list reloads when it is done.
 
 !!! tip
     Deletions are recorded in the [revision history](revisions.md) like any other change, so a mistaken bulk delete can be reversed by undoing the corresponding transaction.
@@ -63,5 +67,7 @@ Select one or more objects, choose **Delete**, and click **Apply**. A confirmati
 Select **exactly two** objects, choose **Merge**, and click **Apply**. A dialog asks which of the two should provide the primary data for the merged object; click the one you want to keep as primary. The other object's data is merged into it and references are updated.
 
 Merging is available for people, families, events, places, sources, and citations. It is not available for repositories, notes, and media objects.
+
+In the media view, selection works in both the gallery and the list layout: in selection mode, clicking a tile or row toggles it. **Delete** is the only action available for media.
 
 If you choose an action without a valid selection – for example a merge with only one object selected – a dialog explains what is required.

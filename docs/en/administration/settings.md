@@ -40,17 +40,9 @@ Allows uploading a ZIP file of media files to fill in missing files. See [Import
 
 Gramps Web maintains a full-text search index that is normally updated automatically whenever data changes. The status indicator shows how many objects are currently indexed versus the total object count.
 
-Click **Update search index** to trigger a full rebuild. A progress indicator is shown while the task runs in the background. This is usually only needed after a server upgrade.
+Click **Update search index** to trigger a full rebuild. A progress indicator is shown while the task runs in the background. This is rarely needed.
 
-### Semantic search index
-
-!!! warning "Deprecated"
-    Semantic search is deprecated and will be removed in Gramps Web API 3.25, together with this section. AI chat does not need it since Gramps Web API 3.24.
-
-If the server has [semantic (AI-powered) search enabled](../install_setup/chat.md#semantic-search-deprecated), an additional section appears with two actions:
-
-- **Regenerate semantic search index** – rebuilds the entire semantic index from scratch. This is computationally expensive and can take a long time.
-- **Update semantic search index** – performs an incremental update, adding only objects not yet indexed. Faster than a full rebuild.
+If a tree has no search index yet, for example after a server upgrade that changed the index format, Gramps Web builds it in the background the first time the tree is opened. While it is being built, the section shows "The search index is being built." instead of the counts, **Update search index** is disabled, and search results may be incomplete. The build shows up in [Notifications](../user-guide/notifications.md) as the "Update search index" task.
 
 ## Tree settings
 

@@ -19,7 +19,9 @@ Enter a new e-mail address and click **Submit** to update the address associated
 
 ### Change password
 
-Enter your current password and a new password, then click **Submit**. If you have forgotten your current password, use the **Forgot password** link on the login page instead.
+Enter your current password and a new password, then click **Submit**. You stay signed in on the current device, while your sessions on other devices and browsers end within 15 minutes. If you have forgotten your current password, use the **Forgot password** link on the login page instead.
+
+This section is hidden if the server only allows signing in through an external provider (see [OIDC authentication](../install_setup/oidc.md)).
 
 ### Linked sign-in methods
 

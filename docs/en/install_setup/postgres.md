@@ -69,6 +69,8 @@ The search index is also stored in SQLite by default. To use PostgreSQL instead,
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
+The search index needs PostgreSQL 12 or newer.
+
 ## Moving a tree from the PostgreSQL addon to SharedPostgreSQL
 
 Older installations may host their family tree with the PostgreSQL addon, which stores a single tree per database and is deprecated. To find out which addon a tree uses, look at the file `database.txt` in the tree's subdirectory of the Gramps database directory: it contains `postgresql` for the deprecated PostgreSQL addon and `sharedpostgresql` for SharedPostgreSQL.

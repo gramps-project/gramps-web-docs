@@ -8,9 +8,9 @@ Gramps Web API supports asking questions about the genealogical database using l
 
 ## How it works
 
-The AI assistant uses specialized tools to query your genealogy data directly. These tools allow the assistant to search the database with the full-text search, filter people/events/families/places by specific criteria, calculate relationships between individuals, and retrieve complete records, including notes. The assistant then answers based on the records it has looked up and links to them in its answer.
+The AI assistant uses specialized tools to query your genealogy data directly. These tools allow the assistant to search the database with the full-text search, filter people/events/families/places by specific criteria, calculate relationships between individuals, and retrieve complete records, including notes. The assistant then answers based on the records it has looked up and links to them in its answer. It answers only from the tree, not from general knowledge: if the tree does not record something, the assistant says so. Links to objects that do not exist or that are private for the user are replaced by their text.
 
-Since Gramps Web API 3.24, AI chat no longer requires a vector embedding model. Earlier versions also used *semantic search* (retrieval-augmented generation, RAG), which compares the meaning of a question to an index of numerical vectors computed for all objects in the database. Semantic search is deprecated and will be removed in Gramps Web API 3.25, see [Semantic search (deprecated)](#semantic-search-deprecated) below.
+AI chat does not need a vector embedding model. Versions of Gramps Web API before 3.24 also used *semantic search* (retrieval-augmented generation, RAG), which compared the meaning of a question to an index of numerical vectors computed for all objects in the database. Semantic search was removed in Gramps Web API 3.25; the `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` and `VECTOR_EMBEDDING_API_KEY` settings are ignored and can be removed from your configuration.
 
 To enable the chat endpoint in Gramps Web API, two steps are necessary:
 
@@ -30,103 +30,13 @@ pip install gramps_webapi[ai]
 ```
 
 
-## Semantic search (deprecated)
-
-!!! warning "Semantic search is deprecated"
-    Semantic search is deprecated since Gramps Web API 3.24 and will be removed in version 3.25. AI chat and the [full-text search](../user-guide/search.md) do not need it. After the removal, the `VECTOR_EMBEDDING_MODEL` setting is still accepted but ignored. If you set it only to enable AI chat, you can remove it now, together with the other `VECTOR_EMBEDDING_*` settings, which also saves the memory the embedding model needs.
-
-The rest of this section describes semantic search for servers that still use it with Gramps Web API 3.24.
-
-If the necessary dependencies are installed, enabling semantic search can be as simple as setting the `VECTOR_EMBEDDING_MODEL` configuration option (e.g. by setting the `GRAMPSWEB_VECTOR_EMBEDDING_MODEL` environment variable), see [Server Configuration](configuration.md). This can be any string of a model supported by the [Sentence Transformers](https://sbert.net/) library. See the documentation of this project for details and the available models.
-
-
-!!! warning
-    Note that the default docker images do not include a PyTorch version with GPU support. If you have access to a GPU (which will speed up the semantic indexing significantly), please install a GPU-enabled version of PyTorch.
-
-There are several considerations to make when choosing a model.
-
-- When you change the model, you have to manually recreate the semantic search index for your tree (or all trees in a multi-tree setup), otherwise you will encounter errors or meaningless results. Gramps Web detects when the configured embedding model no longer matches the existing index and shows a persistent notice to administrators prompting them to trigger a full reindex from [Administration Settings](../administration/settings.md#semantic-search-index).
-- The models are a tradeoff between accuracy/generality on the one hand and computational time/storage space on the other. If you aren't running Gramps Web API on a system that has access to a powerful GPU, bigger models are usually too slow in practice.
-- Unless your entire database is in English and all your users are only expected to ask chat questions in English, you will need a multilingual embedding model, which are more rare than pure English models.
-
-
-If the model is not present in the local cache, it will be downloaded when Gramps Web API is started for the first time with the new configuration. The model `sentence-transformers/distiluse-base-multilingual-cased-v2` is already available locally when using the standard docker images. This model is a good starting point and supports multilingual input.
-
-Please share learnings about different models with the community!
-
-!!! info
-    The sentence transformers library consumes a significant amount of memory, which might cause worker processes being killed. As a rule of thumb, with semantic search enabled, each Gunicorn worker consumes around 200 MB of memory and each celery worker around 500 MB of memory even when idle, and up to 1 GB when computing embeddings. See [Limit CPU and memory usage](cpu-limited.md) for settings that limit memory usage. In addition, it is advisable to provision a sufficiently large swap partition to prevent OOM errors due to transient memory usage spikes.
-
-### Using a remote embedding API
-
-As an alternative to running a local Sentence Transformers model, you can use a remote OpenAI-compatible embedding API for semantic search. This is useful if you want to offload embedding computation to a separate service (e.g. [Ollama](https://ollama.com/)), use a cloud embedding provider (e.g. OpenAI), or avoid loading the Sentence Transformers and PyTorch libraries into memory.
-
-The remote API must be compatible with the [OpenAI embeddings endpoint](https://platform.openai.com/docs/api-reference/embeddings) (`/v1/embeddings`).
-
-To use a remote embedding API, set the following configuration options (see [Server Configuration](configuration.md)):
-
-Key | Description
-----|-------------
-`VECTOR_EMBEDDING_MODEL` | The model name to pass to the remote provider
-`VECTOR_EMBEDDING_BASE_URL` | Base URL of the remote API
-`VECTOR_EMBEDDING_API_KEY` | API key (only needed if the provider requires authentication)
-
-#### Using Ollama for embeddings
-
-When deploying Gramps Web with Docker Compose, you can add an Ollama service and use it for both embeddings and (optionally) the LLM:
-
-```yaml
-services:
-  grampsweb: &grampsweb
-    # ... existing config ...
-    environment:
-      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
-      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
-
-  grampsweb_celery: &grampsweb_celery
-    # ... existing config ...
-    environment:
-      GRAMPSWEB_VECTOR_EMBEDDING_MODEL: nomic-embed-text
-      GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: http://ollama:11434
-
-  ollama:
-    image: ollama/ollama
-    container_name: ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-
-volumes:
-  ollama_data:
-```
-
-After starting the services, pull the embedding model into Ollama:
-
-```bash
-docker compose exec ollama ollama pull nomic-embed-text
-```
-
-!!! info
-    When using Ollama for embeddings, the Sentence Transformers and PyTorch libraries are not required, which significantly reduces memory usage of the Gramps Web API workers.
-
-#### Using OpenAI for embeddings
-
-To use the OpenAI embeddings API, set the base URL to the OpenAI API and provide your API key:
-
-```yaml
-environment:
-  GRAMPSWEB_VECTOR_EMBEDDING_MODEL: text-embedding-3-small
-  GRAMPSWEB_VECTOR_EMBEDDING_BASE_URL: https://api.openai.com
-  GRAMPSWEB_VECTOR_EMBEDDING_API_KEY: sk-...
-```
-
-!!! warning
-    Changing the embedding model requires reindexing all records for your tree (or all trees in a multi-tree setup), since different models produce vectors with different dimensions.
-
 ## Setting up an LLM provider
 
 Communication with the LLM uses the Pydantic AI framework, which supports OpenAI-compatible APIs. This allows using a locally deployed LLM via Ollama (see [Ollama OpenAI compatibility](https://ollama.com/blog/openai-compatibility)) or hosted APIs like OpenAI, Anthropic, or Hugging Face TGI (Text Generation Inference). The LLM is configured via the configuration parameters `LLM_MODEL` and `LLM_BASE_URL`.
+
+Besides OpenAI-compatible APIs, the provider-specific model prefixes of Pydantic AI can be used for OpenAI, Anthropic, Google, Mistral, Groq, AWS Bedrock and Ollama. Other providers, such as Cohere, Hugging Face and xAI, are not installed; Hugging Face Inference Providers can still be used through their OpenAI-compatible endpoint (`LLM_BASE_URL` set to `https://router.huggingface.co/v1`).
+
+If your model server does not limit the length of a response, set `LLM_MAX_OUTPUT_TOKENS` to the maximum number of tokens the model may generate per response (see [Configuration](configuration.md)).
 
 
 ### Using a hosted LLM via the OpenAI API

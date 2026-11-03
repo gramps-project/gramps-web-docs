@@ -24,7 +24,7 @@ If you use Gramps Desktop, choose Gramps XML (`.gramps`) rather than GEDCOM. It 
 1. Open the **Data** section of the Administration settings.
 2. Under "Import Family Tree", choose your file and click **Import**.
 3. The file is parsed first, and a "Confirm Import" dialog shows how many objects it contains (people, families, events, places, and so on). Nothing has been added to your tree yet. Check that the counts look plausible, then click **Import** to proceed, or **Cancel** to abort without changing anything.
-4. The import runs in the background and a progress indicator is shown. Once the data is imported, the search index is updated, which can take a while for a large tree.
+4. The import runs in the background and a progress indicator is shown. Once the data is imported, the search index is updated, which can take a while for a large tree. If the import fails, the reason is shown.
 
 When the import has finished, check the result: compare the number of people in the **Statistics** panel on the home page with the number in your old program, and open a family you know well to see that parents, children, dates, and places came across as expected.
 
