@@ -1,12 +1,12 @@
 # Usando o Assistente de IA
 
 !!! info
-    O Assistente de IA requer a versão 2.5.0 ou superior da API Web do Gramps e a versão 24.10.0 ou superior do Gramps Web. A versão 3.6.0 da API Web do Gramps introduziu capacidades de chamada de ferramentas para interações mais inteligentes.
+    O Assistente de IA requer a versão 2.5.0 ou superior da API Gramps Web e a versão 24.10.0 ou superior do Gramps Web. A versão 3.6.0 da API Gramps Web introduziu capacidades de chamada de ferramentas para interações mais inteligentes.
 
 A visão **Assistente** no Gramps Web (se disponível na sua instalação, rotulada como "Chat" em versões mais antigas) dá acesso a um assistente de IA que pode responder perguntas sobre sua árvore genealógica.
 
 !!! warning
-    Como esta ainda é uma funcionalidade nova e em evolução, alguns tipos de perguntas funcionam bem enquanto outros não. Além disso, como acontece com qualquer assistente de IA, ele pode fornecer respostas factualmente incorretas, então sempre verifique duas vezes.
+    Como esta ainda é uma funcionalidade nova e em evolução, alguns tipos de perguntas funcionam bem enquanto outros não. Além disso, como qualquer assistente de IA, ele pode fornecer respostas factualmente incorretas, então certifique-se de sempre verificar.
 
 ## Como funciona
 
@@ -17,18 +17,20 @@ Para entender quais tipos de perguntas o assistente pode responder, é útil ent
 3. Um grande modelo de linguagem formula uma resposta com base nos registros que encontrou.
 4. A resposta é exibida para você, com links para os registros nos quais se baseia.
 
-Em servidores que executam uma versão da API Web do Gramps anterior à 3.24, o assistente também dependia da pesquisa semântica, que está sendo descontinuada.
+O assistente responde apenas a partir da sua árvore, não do conhecimento geral do modelo de linguagem – mesmo sobre pessoas bem conhecidas. Se a árvore não registrar algo, ele informa, mencionando informações relacionadas que encontrou, por exemplo, em uma nota. Links para objetos que você não tem permissão para ver são exibidos como texto simples.
 
-Enquanto o assistente está trabalhando, indicadores mostram quais ferramentas ele está usando atualmente (por exemplo, buscando pessoas, procurando relacionamentos), para que você possa acompanhar enquanto ele constrói sua resposta. Perguntas que levam mais tempo para serem processadas são tratadas como tarefas em segundo plano – você pode navegar para longe e voltar, e o progresso também é refletido em [Notificações](notifications.md). As respostas são formatadas com Markdown (listas, ênfase, links, etc.) para facilitar a leitura.
+Perguntas de acompanhamento mantêm o contexto das perguntas anteriores na mesma conversa, então você pode perguntar "E quando ele morreu?" após perguntar sobre uma pessoa.
+
+Enquanto o assistente está trabalhando, indicadores mostram quais ferramentas ele está usando atualmente (por exemplo, buscando pessoas, procurando relacionamentos) para que você possa acompanhar enquanto ele constrói sua resposta. Perguntas que demoram mais são processadas como tarefas em segundo plano – você pode navegar para longe e voltar, e o progresso também é refletido em [Notificações](notifications.md). As respostas são formatadas com Markdown (listas, ênfase, links, etc.) para facilitar a leitura.
 
 ## O que você pode perguntar
 
-Com as capacidades de chamada de ferramentas introduzidas na versão 3.6.0 da API Web do Gramps, o assistente de IA agora pode lidar com perguntas mais complexas:
+Com as capacidades de chamada de ferramentas introduzidas na versão 3.6.0 da API Gramps Web, o assistente de IA agora pode lidar com perguntas mais complexas:
 
 - **Relacionamentos familiares**: "Quem são os avós de Jane Smith?" ou "Como John Doe está relacionado a Mary Johnson?"
 - **Pesquisas filtradas**: "Mostre-me todas as pessoas nascidas em Londres após 1850" ou "Quais eventos aconteceram em Paris?"
 - **Consultas baseadas em datas**: "Quem morreu antes de 1900?" ou "Liste os casamentos que ocorreram entre 1920 e 1950"
-- **Informações sobre lugares**: "Quais lugares estão na França?" ou "Conte-me sobre a Igreja de St. Mary"
+- **Informações sobre lugares**: "Quais lugares estão na França?" ou "Fale-me sobre a Igreja de St. Mary"
 - **Perguntas gerais**: "Qual é o nome dos filhos de John Doe?" ou "Quando Mary Smith nasceu?"
 
 ## Dicas para fazer perguntas

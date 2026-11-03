@@ -5,11 +5,11 @@
 Das Benachrichtigungsprotokoll dient zwei Zwecken:
 
 - Es ist ein Protokoll der Fehler, die während Ihrer Sitzung aufgetreten sind – fehlgeschlagene API-Anfragen, Fehler bei Hintergrundaufgaben, Speicherfehler oder Fehler auf Browser-Ebene.
-- Es verfolgt den Fortschritt von lang laufenden Hintergrundaufgaben – wie Importe und Exporte, das Erstellen von Berichten, OCR-Texterkennung, Datenbank-Upgrades und das Wiederherstellen von Such-/semantischen Indizes – und zeigt deren Status (z. B. ausstehend, gestartet, in Bearbeitung) an und benachrichtigt Sie, wenn sie abgeschlossen oder fehlgeschlagen sind.
+- Es verfolgt den Fortschritt von lang laufenden Hintergrundaufgaben – wie Importe und Exporte, das Erstellen von Berichten, OCR-Texterkennung, Datenbank-Upgrades, das Löschen vieler Objekte und das Wiederherstellen des Suchindex – und zeigt deren Status (z. B. ausstehend, gestartet, in Bearbeitung) an und benachrichtigt Sie, wenn sie abgeschlossen sind oder fehlschlagen.
 
 Jeder Eintrag zeigt eine kurze Nachricht, die Quelle (Netzwerk, Aufgabe, Speicherung oder Browser) und einen Zeitstempel. Abgeschlossene Aufgaben lesen sich als "Aufgabe abgeschlossen" oder "Aufgabe fehlgeschlagen".
 
-Einige Benachrichtigungen enthalten strukturierte Details, wie die Fehlermeldung einer fehlgeschlagenen Aufgabe. Ein Klick auf einen solchen Eintrag öffnet einen Dialog mit einer Aufschlüsselung der Fehlermeldungsdaten und einem **JSON kopieren**-Button. Dies ist nützlich, wenn Sie einen Fehler melden, da das JSON die genauen Fehlermeldungen vom Server enthält.
+Einige Benachrichtigungen enthalten strukturierte Details, wie die Fehlermeldung einer fehlgeschlagenen Aufgabe. Das Klicken auf einen solchen Eintrag öffnet einen Dialog mit einer Aufschlüsselung der Fehlermeldungsdaten und einem **JSON kopieren**-Button. Dies ist nützlich, wenn Sie einen Fehler melden, da das JSON die genauen Fehlermeldungen vom Server enthält.
 
 Verwenden Sie **Alle löschen**, um alle Benachrichtigungen zu entfernen.
 

@@ -16,11 +16,9 @@ Näet, kuinka paljon muistia ja swap-tilaa sinulla on käytettävissä, käytä
 free -h
 ```
 
-
 ## Gunicorn-työntekijöiden määrän rajoittaminen
 
-Helpoin tapa asettaa Gunicorn-työntekijöiden määrä käytettäessä oletus Gramps Web Docker -kuvaa on asettaa ympäristömuuttuja `GUNICORN_NUM_WORKERS`, esimerkiksi määrittämällä se `docker-compose.yml` -tiedostossa,
-"environment"-osion alle.
+Helpoin tapa asettaa Gunicorn-työntekijöiden määrä, kun käytetään oletus Gramps Web Docker -kuvaa, on asettaa ympäristömuuttuja `GUNICORN_NUM_WORKERS`, esimerkiksi määrittämällä se `docker-compose.yml` -tiedostoon, "environment"-osion alle.
 
 ```yaml
 services:
@@ -29,23 +27,24 @@ services:
       GUNICORN_NUM_WORKERS: 2
 ```
 
-Katso [Gunicornin dokumentaatiosta](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) päättääksesi
+Katso [Gunicornin dokumentaatio](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) päättääksesi
 ihanteellisesta työntekijöiden määrästä.
 
-
+!!! info
+    Docker-kuva käynnistää Gunicornin `--preload`-vaihtoehdolla, joten työntekijät jakavat ladatun sovelluksen muistin ja jokainen lisätyöntekijä tarvitsee vähemmän muistia. Jos ohitat Gunicorn-komennon, pidä `--preload` saadaksesi tästä hyödyn.
 
 ## Celery-työntekijöiden määrän rajoittaminen
 
-Aseta Celery-työntekijöiden määrä mukauttamalla `concurrency`-asetusta Docker-compose-tiedostossa:
+Aseta Celery-työntekijöiden määrä mukauttamalla `concurrency`-asetusta Docker Compose -tiedostossa:
 
 ```yaml
   grampsweb_celery:
     command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
 ```
 
-Katso [Celeryn dokumentaatiosta](https://docs.celeryq.dev/en/stable/userguide/workers.html#concurrency) päättääksesi
+Katso [Celeryn dokumentaatio](https://docs.celeryq.dev/en/stable/userguide/workers.html#concurrency) päättääksesi
 ihanteellisesta työntekijöiden määrästä.
 
 !!! info
     Jos `concurrency`-lippua ei ole määritetty (mikä oli tilanne Gramps Web -dokumentaatiossa ennen v2.5.0), se
-    oletusarvoisesti vastaa järjestelmän käytettävissä olevien CPU-ytimien määrää, mikä voi kuluttaa huomattavan määrän muistia.
+    oletusarvoisesti vastaa järjestelmässä käytettävissä olevien CPU-ytimien määrää, mikä voi kuluttaa huomattavan määrän muistia.

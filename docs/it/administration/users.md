@@ -11,10 +11,10 @@ Vedi [Sistema utenti](../install_setup/users.md) per una descrizione completa de
 La pagina di gestione degli utenti mostra una tabella di tutti gli account utente registrati con le seguenti colonne:
 
 - **Nome utente** – il nome di accesso
-- **Nome completo** – il nome visualizzato
+- **Nome Completo** – il nome visualizzato
 - **E-mail** – l'indirizzo e-mail dell'utente
 - **Ruolo** – il ruolo assegnato (Ospite, Membro, Collaboratore, Editore, Proprietario o Amministratore)
-- **Fonte dell'account** – "Password" (account locale) o il nome di un fornitore di identità esterno (ad es. quando si utilizza OIDC)
+- **Fonte dell'Account** – "Password" (account locale) o il nome di un fornitore di identità esterno (ad es. quando si utilizza OIDC)
 
 Utilizza il campo di ricerca e il menu a discesa dei ruoli nella parte superiore della tabella per filtrare l'elenco. Clicca sul pulsante di cancellazione del filtro per ripristinare tutti i filtri.
 
@@ -28,7 +28,12 @@ Clicca sull'icona di modifica (matita) in qualsiasi riga per aprire la finestra 
 
 Questo è il modo principale per **abilitare un nuovo utente auto-registrato**: cambia il suo ruolo da *disabilitato* a qualsiasi ruolo attivo (ad es. Membro o Editore).
 
-Gli indirizzi e-mail non devono essere unici (dalla versione 3.22 dell'API Web di Gramps), quindi diversi account possono condividere lo stesso indirizzo.
+Gli indirizzi e-mail non devono essere unici (dalla versione 3.22 dell'API Web di Gramps), quindi più account possono condividere lo stesso indirizzo.
+
+Disabilitare un utente o cambiare la sua password termina tutte le sue sessioni entro 15 minuti.
+
+!!! nota
+    I proprietari non possono modificare, cambiare la password o eliminare utenti con un ruolo superiore, come l'amministratore del sito. Gli utenti con lo stesso ruolo, come due proprietari di un albero, possono gestirsi a vicenda.
 
 ## Aggiungi un utente manualmente
 
@@ -39,7 +44,7 @@ Clicca sull'icona **aggiungi utente** (persona-aggiungi) sopra la tabella per cr
 Clicca sull'icona di eliminazione (cestino) in qualsiasi riga e conferma nella finestra di dialogo. Questa azione non può essere annullata.
 
 !!! nota
-    Per evitare che un albero rimanga senza nessuno che possa amministrarlo, non puoi abbassare il tuo ruolo sotto Proprietario o eliminare il tuo account se sei l'unico Proprietario o Amministratore dell'albero. Promuovi prima un altro utente a Proprietario. Un amministratore può comunque cambiare o rimuovere l'ultimo proprietario dell'albero di un altro utente, poiché può nominare un nuovo proprietario.
+    Per evitare che un albero venga lasciato senza nessuno che possa amministrarlo, non puoi abbassare il tuo ruolo sotto Proprietario o eliminare il tuo account se sei l'unico Proprietario o Amministratore dell'albero. Promuovi prima un altro utente a Proprietario. Un amministratore può comunque cambiare o rimuovere l'ultimo proprietario dell'albero di un altro utente, poiché può nominare un nuovo proprietario.
 
 ## Esporta e importa account utente
 

@@ -2,10 +2,10 @@
 
 Par défaut, Gramps Web stocke chaque arbre généalogique dans son propre fichier de base de données SQLite. Cela ne nécessite aucun service supplémentaire, les sauvegardes sont aussi simples que de copier des fichiers, et cela fonctionne bien pour la plupart des installations, y compris celles [hébergeant plusieurs arbres](multi-tree.md).
 
-Alternativement, les arbres généalogiques peuvent être hébergés sur un serveur PostgreSQL en utilisant l'addon SharedPostgreSQL, qui conserve tous les arbres dans une seule base de données. Cela peut avoir du sens si vous exécutez déjà un serveur PostgreSQL et souhaitez gérer les sauvegardes et la surveillance là-bas, ou si vous vous attendez à de nombreux utilisateurs modifiant en même temps. PostgreSQL peut également héberger la [base de données utilisateur](#using-a-postgresql-database-for-the-user-database) et l'[index de recherche](#using-a-postgresql-database-for-the-search-index), indépendamment de l'endroit où les arbres généalogiques sont stockés.
+Alternativement, les arbres généalogiques peuvent être hébergés sur un serveur PostgreSQL en utilisant l'addon SharedPostgreSQL, qui conserve tous les arbres dans une seule base de données. Cela peut avoir du sens si vous exécutez déjà un serveur PostgreSQL et souhaitez gérer les sauvegardes et la surveillance là-bas, ou si vous vous attendez à de nombreux utilisateurs éditant en même temps. PostgreSQL peut également héberger la [base de données utilisateur](#using-a-postgresql-database-for-the-user-database) et l'[index de recherche](#using-a-postgresql-database-for-the-search-index), indépendamment de l'endroit où les arbres généalogiques sont stockés.
 
 !!! warning "Addon PostgreSQL obsolète"
-    L'ancien addon PostgreSQL, qui stocke un seul arbre généalogique par base de données, est obsolète depuis l'API Gramps Web 3.24 et ne sera plus supporté dans l'API Gramps Web 4.0, car il n'est pas compatible avec l'hébergement de plusieurs arbres, ce qui devient la norme dans cette version. Si vous l'utilisez, consultez [Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
+    L'ancien addon PostgreSQL, qui stocke un seul arbre généalogique par base de données, est obsolète depuis l'API Gramps Web 3.24 et ne sera plus supporté dans l'API Gramps Web 4.0, car il n'est pas compatible avec l'hébergement de plusieurs arbres, ce qui devient le défaut dans cette version. Si vous l'utilisez, consultez [Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Configuration du serveur PostgreSQL
 
@@ -47,11 +47,11 @@ De nouveaux arbres généalogiques sont créés dans la base de données SharedP
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-Consultez [Configuration](configuration.md) pour une description de toutes ces options. Notez que l'hôte et le port sont enregistrés avec chaque arbre lorsqu'il est créé, donc les modifier plus tard n'affecte que les nouveaux arbres.
+Voir [Configuration](configuration.md) pour une description de toutes ces options. Notez que l'hôte et le port sont enregistrés avec chaque arbre lorsqu'il est créé, donc les modifier plus tard n'affecte que les nouveaux arbres.
 
 ## Création d'un arbre et importation de données
 
-Pour créer un nouvel arbre, POST vers le point de terminaison `/trees/` comme décrit dans [Configuration pour héberger plusieurs arbres](multi-tree.md#create-a-new-tree). La réponse contient l'ID du nouvel arbre, dont vous avez besoin pour [créer le compte propriétaire de l'arbre](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+Pour créer un nouvel arbre, POSTez à l'endpoint `/trees/` comme décrit dans [Configuration pour héberger plusieurs arbres](multi-tree.md#create-a-new-tree). La réponse contient l'ID du nouvel arbre, dont vous avez besoin pour [créer le compte propriétaire de l'arbre](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
 
 Une fois que le propriétaire de l'arbre s'est connecté, il peut [importer](../administration/import.md) un arbre généalogique existant, par exemple un fichier XML Gramps exporté depuis Gramps Desktop, via l'interface web.
 
@@ -64,16 +64,18 @@ postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/gr
 
 ## Utilisation d'une base de données PostgreSQL pour l'index de recherche
 
-L'index de recherche est également stocké dans SQLite par défaut. Pour utiliser PostgreSQL à la place, définissez l'option de configuration `SEARCH_INDEX_DB_URI` sur une URL de base de données PostgreSQL. Avec l'image `gramps-postgres` ci-dessus, vous pouvez utiliser sa base de données `gramps`, que vos arbres généalogiques y soient hébergés ou non :
+L'index de recherche est également stocké dans SQLite par défaut. Pour utiliser PostgreSQL à la place, définissez l'option de configuration `SEARCH_INDEX_DB_URI` sur une URL de base de données PostgreSQL. Avec l'image `gramps-postgres` ci-dessus, vous pouvez utiliser sa base de données `gramps`, que vos arbres généalogiques soient hébergés là ou non :
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
+L'index de recherche nécessite PostgreSQL 12 ou une version plus récente.
+
 ## Déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL
 
-Les anciennes installations peuvent héberger leur arbre généalogique avec l'addon PostgreSQL, qui stocke un seul arbre par base de données et est obsolète. Pour savoir quel addon un arbre utilise, regardez le fichier `database.txt` dans le sous-répertoire de l'arbre dans le répertoire de la base de données Gramps : il contient `postgresql` pour l'addon PostgreSQL obsolète et `sharedpostgresql` pour SharedPostgreSQL.
+Les installations plus anciennes peuvent héberger leur arbre généalogique avec l'addon PostgreSQL, qui stocke un seul arbre par base de données et est obsolète. Pour savoir quel addon un arbre utilise, regardez le fichier `database.txt` dans le sous-répertoire de l'arbre du répertoire de base de données Gramps : il contient `postgresql` pour l'addon PostgreSQL obsolète et `sharedpostgresql` pour SharedPostgreSQL.
 
-Pour déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL au sein de la même installation, en conservant vos comptes utilisateurs et fichiers multimédias :
+Pour déplacer un arbre de l'addon PostgreSQL vers SharedPostgreSQL dans la même installation, en conservant vos comptes utilisateurs et fichiers multimédias :
 
 1. [Sauvegardez votre arbre généalogique](../administration/export.md#back-up-your-family-tree) en tant que fichier XML Gramps (`.gramps`), en utilisant un compte qui peut voir les enregistrements privés.
 2. Modifiez votre configuration comme décrit dans [Configuration de Gramps Web](#configuring-gramps-web). Vous pouvez continuer à utiliser votre conteneur `gramps-postgres` existant.

@@ -4,24 +4,28 @@ Die Suchseite ist zugänglich, indem Sie auf das Lupe-Symbol in der oberen App-L
 
 ## Volltextsuche
 
-Geben Sie eine beliebige Abfrage in das Suchfeld ein und drücken Sie die Eingabetaste (oder klicken Sie auf die Suchschaltfläche). Gramps Web durchsucht alle Objekttypen – Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Archive, Notizen und Medien – und gibt übereinstimmende Ergebnisse zurück, die nach Relevanz sortiert sind.
+Geben Sie eine beliebige Abfrage in das Suchfeld ein und drücken Sie die Eingabetaste (oder klicken Sie auf die Schaltfläche "Suchen"). Gramps Web durchsucht alle Objekttypen – Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Archive, Notizen und Medien – und gibt übereinstimmende Ergebnisse zurück, die nach Relevanz sortiert sind.
 
 Die Ergebnisse zeigen den Objekttyp, den Namen und eine kurze Zusammenfassung. Klicken Sie auf ein Ergebnis, um die entsprechende Detailseite zu öffnen.
 
-Ein nachgestelltes `*` kann als Platzhalter verwendet werden, z. B. `Mey*` entspricht "Meyer", "Meyers", "Meyerhofer" usw.
+## Suchsyntax
+
+- **Alle Wörter müssen übereinstimmen.** `Müller Berlin` findet Objekte, die beide Wörter enthalten.
+- **`or`** findet Objekte, die entweder das eine oder das andere Wort enthalten, z.B. `Meyer or Maier`. `and` kann ebenfalls zwischen Wörtern eingegeben werden, hat jedoch keinen Einfluss.
+- `or` gilt für die direkt daneben stehenden Wörter: `Meyer or Maier Berlin` bedeutet "(Meyer or Maier) und Berlin". Klammern werden nicht unterstützt.
+- **Anführungszeichen** entsprechen einem Satz, d.h. Wörtern in dieser Reihenfolge: `"Johann Georg"`.
+- **Wildcard:** ein abschließendes `*` entspricht jeder Endung, z.B. `Mey*` entspricht "Meyer", "Meyers", "Meyerhofer" usw. Dies funktioniert auch für Sätze: `"Johann Georg"*`.
+- `or` und `and` werden in jeder Schreibweise erkannt. Um eines dieser Wörter selbst zu suchen, setzen Sie es in Anführungszeichen.
+- Wörter können nicht ausgeschlossen werden; es gibt kein "nicht".
+
+## Was die Suche findet
+
+- Akzente müssen nicht übereinstimmen: "Müller" findet auch "Muller", und "muller" findet "Müller".
+- Familien und Ereignisse werden auch durch die Namen ihrer Personen gefunden, z.B. "Müller" findet die Familien und Ereignisse aller, die Müller heißen. Diese Ergebnisse werden unter direkten Übereinstimmungen eingestuft.
+- Standardtypen werden durch ihre Namen in Ihrer Benutzeroberflächensprache gefunden, z.B. "Taufe" findet Taufen in der deutschen Benutzeroberfläche.
+- Unterstriche trennen Wörter, sodass "microfilm" eine Mediendatei mit dem Namen `scanned_microfilm.png` findet.
+- Benutzer, die private Aufzeichnungen nicht einsehen können, finden keine Objekte durch private Informationen, wie z.B. eine Familie durch den Namen eines privaten Mitglieds.
 
 ## Filtern nach Objekttyp
 
-Unter dem Suchfeld ermöglichen Umschaltknöpfe für jeden Objekttyp (Personen, Familien, Ereignisse, Orte, …) die Eingrenzung der Ergebnisse auf einen oder mehrere spezifische Typen. Standardmäßig werden alle Typen durchsucht. Das Aktivieren eines oder mehrerer Umschalter beschränkt die Ergebnisse nur auf diese Typen.
-
-## Semantische Suche
-
-!!! warning "Veraltet"
-    Die semantische Suche ist veraltet und wird in der Gramps Web API 3.25 entfernt. Die oben beschriebene Volltextsuche ist davon nicht betroffen.
-
-Wenn der Serveradministrator die [semantische (KI-gestützte) Suche](../install_setup/chat.md#semantic-search-deprecated) aktiviert hat, erscheint in der oberen rechten Ecke der Suchseite ein Modus-Umschalter mit zwei Optionen:
-
-- **Suche** – standardmäßige Volltextsuche (die Standardoption)
-- **Semantisch** – KI-gestützte Suche, die die Bedeutung Ihrer Abfrage versteht, anstatt exakte Wörter zuzuordnen
-
-Die semantische Suche ist nützlich für Abfragen in natürlicher Sprache wie "Bauer in Bayern im 19. Jahrhundert". Sie erfordert, dass der Index für die semantische Suche gefüllt ist; siehe [Verwaltungseinstellungen](../administration/settings.md) für Informationen zum Erstellen oder Aktualisieren des Index.
+Unter dem Suchfeld ermöglichen Umschaltknöpfe für jeden Objekttyp (Personen, Familien, Ereignisse, Orte, …) die Einschränkung der Ergebnisse auf einen oder mehrere spezifische Typen. Standardmäßig werden alle Typen durchsucht. Das Aktivieren eines oder mehrerer Umschalter beschränkt die Ergebnisse nur auf diese Typen.

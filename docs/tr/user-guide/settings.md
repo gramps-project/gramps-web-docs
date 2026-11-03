@@ -15,25 +15,27 @@ Profil bilgilerinizi, kimlik bilgilerinizi ve hesap güvenliğinizi kapsar.
 
 ### E-posta değiştir
 
-Yeni bir e-posta adresi girin ve hesabınıza bağlı adresi güncellemek için **Gönder**'e tıklayın. E-posta adresi, şifre sıfırlamaları ve (eğer yapılandırılmışsa) bildirimler için kullanılır.
+Yeni bir e-posta adresi girin ve hesabınıza bağlı adresi güncellemek için **Gönder** butonuna tıklayın. E-posta adresi, şifre sıfırlamaları ve (eğer yapılandırılmışsa) bildirimler için kullanılır.
 
 ### Şifre değiştir
 
-Mevcut şifrenizi ve yeni bir şifre girin, ardından **Gönder**'e tıklayın. Mevcut şifrenizi unuttuysanız, giriş sayfasındaki **Şifremi unuttum** bağlantısını kullanın.
+Mevcut şifrenizi ve yeni bir şifre girin, ardından **Gönder** butonuna tıklayın. Mevcut cihazda oturumunuz açık kalır, diğer cihazlar ve tarayıcılardaki oturumlarınız 15 dakika içinde sona erer. Mevcut şifrenizi unuttuysanız, giriş sayfasındaki **Şifremi unuttum** bağlantısını kullanın.
+
+Bu bölüm, sunucunun yalnızca bir dış sağlayıcı aracılığıyla oturum açmaya izin vermesi durumunda gizlidir (bkz. [OIDC kimlik doğrulaması](../install_setup/oidc.md)).
 
 ### Bağlı oturum açma yöntemleri
 
-Sunucunuz tek oturum açma (bkz. [OIDC kimlik doğrulama](../install_setup/oidc.md)) sunuyorsa, Google veya kuruluşunuzun girişi gibi bir sağlayıcıdan bir hesabı Gramps Web hesabınıza bağlayabilirsiniz. Daha sonra o sağlayıcı ile oturum açabilir ve mevcut hesabınıza, rolünüzle ve düzenlemelerinizle ulaşabilirsiniz. Bu bölüm yalnızca tek oturum açma etkinleştirildiğinde ve sunucu bağlantıyı desteklediğinde görünür (Gramps Web API 3.24 ve sonrası).
+Sunucunuz tek oturum açma (bkz. [OIDC kimlik doğrulaması](../install_setup/oidc.md)) sunuyorsa, bir sağlayıcıdan (örneğin, Google veya kuruluşunuzun girişi) bir hesabı Gramps Web hesabınıza bağlayabilirsiniz. Daha sonra o sağlayıcı ile oturum açabilir ve mevcut hesabınıza, rolünüz ve düzenlemeleriniz ile ulaşabilirsiniz. Bu bölüm yalnızca tek oturum açma etkinleştirildiğinde ve sunucu bağlantıyı desteklediğinde görünür (Gramps Web API 3.24 ve sonrası).
 
 Bir hesabı bağlamak için **Bağla** ve sağlayıcının adını tıklayın, sağlayıcıda oturum açın ve ayarlarınıza geri yönlendirilirsiniz. Eğer yakın zamanda oturum açmadıysanız, önce tekrar oturum açmanız istenir.
 
-Bir sağlayıcı hesabı yalnızca bir Gramps Web hesabına bağlanabilir. "Bu oturum açma başka bir hesaba bağlı" mesajını görüyorsanız, başka bir yerde bağlıdır; örneğin, o sağlayıcı ile ilk oturum açtığınızda oluşturulan bir hesaba. Bir yönetici, o diğer hesabı silebilir; ardından onu kendi hesabınıza bağlayabilirsiniz.
+Bir sağlayıcı hesabı yalnızca bir Gramps Web hesabına bağlanabilir. "Bu oturum açma zaten başka bir hesaba bağlı" mesajını görüyorsanız, başka bir yerde bağlıdır; örneğin, o sağlayıcı ile ilk oturum açtığınızda oluşturulan bir hesaba. Bir yönetici, o diğer hesabı silebilir; ardından onu kendi hesabınıza bağlayabilirsiniz.
 
-Bir hesabı ayırmak için **Ayrıl**'a tıklayın. Eğer bu, son bağlı oturum açma yönteminizse, ardından hala oturum açabilmeniz için şifrenizi de girmeniz gerekir. Hesabınız tek oturum açma ile oluşturulduysa ve hiç şifre belirlemediyseniz, önce bir tane belirlemek için giriş sayfasındaki **Şifremi unuttum** seçeneğini kullanın (bu, sunucunun e-posta göndermesini gerektirir). Sunucu yalnızca bir sağlayıcı aracılığıyla oturum açmaya izin veriyorsa, son bağlı hesap ayrılamaz.
+Bir hesabı ayırmak için **Bağlantıyı kes** butonuna tıklayın. Eğer bu, son bağlı oturum açma yönteminizse, daha sonra hala oturum açabilmeniz için şifrenizi de girmeniz gerekir. Hesabınız tek oturum açma ile oluşturulduysa ve hiç şifre ayarlamadıysanız, önce bir şifre ayarlamak için giriş sayfasındaki **Şifremi unuttum** seçeneğini kullanın (bu, sunucunun e-posta göndermesini gerektirir). Sunucu yalnızca bir sağlayıcı aracılığıyla oturum açmaya izin veriyorsa, son bağlı hesap ayrılamaz.
 
 ## Görünüm
 
-Cihazınızda kaydedilen görüntüleme tercihlerini kontrol eder.
+Cihazınızda kaydedilen görüntü tercihlerini kontrol eder.
 
 ### Dil
 
@@ -53,17 +55,17 @@ Tema ayarı, tarayıcının yerel depolamasında saklanır.
 
 #### Varsayılan aile ağacı görünümü
 
-[Family Tree](tree.md) sayfasına gittiğinizde varsayılan olarak hangi grafik türünün açılacağını ayarlar. Seçenekler, Ata Ağacı, Soy Ağacı, Kum Saati Grafiği, İlişki Grafiği ve Fan Grafiği'dir.
+[Family Tree](tree.md) sayfasına gittiğinizde varsayılan olarak hangi grafik türünün açılacağını ayarlar. Seçenekler: Ata Ağacı, Soy Ağacı, Kum Saati Grafiği, İlişki Grafiği ve Fan Grafiği.
 
 Bu tercih, tarayıcının yerel depolamasında saklanır.
 
 ## Geliştirici araçları
 
-### API token
+### API jetonu
 
-Mevcut oturum belirtecinizi panoya kopyalar. Belirteç, örneğin Gramps Web örneğinizde `/api/swagger-ui` adresinde sunulan etkileşimli Swagger UI'ye doğrudan kimlik doğrulamak için kullanılabilir.
+Mevcut oturum jetonunuzu panoya kopyalar. Jeton, örneğin Gramps Web örneğinizin `/api/swagger-ui` adresinde sunduğu etkileşimli Swagger UI aracılığıyla REST API'sine doğrudan kimlik doğrulamak için kullanılabilir.
 
-Oturumunuz zaten mevcut olan Swagger UI'yi yeni bir sekmede açmak için **Swagger'ı Başlat**'a tıklayın.
+Oturumunuz zaten mevcut olan Swagger UI'yi yeni bir sekmede açmak için **Swagger'ı Başlat** butonuna tıklayın.
 
 !!! note
-    Oturum belirteci kısa ömürlüdür. Swagger'da kullanmadan önce hemen kopyalayın, çünkü süresi dolabilir.
+    Oturum jetonu kısa ömürlüdür. Swagger'da kullanmadan önce hemen kopyalayın, çünkü süresi dolabilir.

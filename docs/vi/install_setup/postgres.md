@@ -1,17 +1,17 @@
 # Sử dụng cơ sở dữ liệu PostgreSQL
 
-Theo mặc định, Gramps Web lưu trữ mỗi cây gia đình trong tệp cơ sở dữ liệu SQLite riêng. Điều này không cần dịch vụ bổ sung, việc sao lưu đơn giản như sao chép tệp, và nó hoạt động tốt cho hầu hết các cài đặt, bao gồm cả những cài đặt [hosting nhiều cây](multi-tree.md).
+Theo mặc định, Gramps Web lưu trữ mỗi cây gia đình trong một tệp cơ sở dữ liệu SQLite riêng. Điều này không cần dịch vụ bổ sung, việc sao lưu đơn giản như sao chép tệp, và nó hoạt động tốt cho hầu hết các cài đặt, bao gồm cả những cài đặt [hosting nhiều cây](multi-tree.md).
 
-Ngoài ra, các cây gia đình có thể được lưu trữ trên máy chủ PostgreSQL bằng cách sử dụng addon SharedPostgreSQL, giữ tất cả các cây trong một cơ sở dữ liệu duy nhất. Điều này có thể hợp lý nếu bạn đã chạy một máy chủ PostgreSQL và muốn quản lý việc sao lưu và giám sát ở đó, hoặc nếu bạn mong đợi nhiều người dùng chỉnh sửa cùng một lúc. PostgreSQL cũng có thể lưu trữ [cơ sở dữ liệu người dùng](#using-a-postgresql-database-for-the-user-database) và [chỉ mục tìm kiếm](#using-a-postgresql-database-for-the-search-index), độc lập với nơi lưu trữ các cây gia đình.
+Ngoài ra, các cây gia đình có thể được lưu trữ trên một máy chủ PostgreSQL bằng cách sử dụng addon SharedPostgreSQL, giữ tất cả các cây trong một cơ sở dữ liệu duy nhất. Điều này có thể hợp lý nếu bạn đã chạy một máy chủ PostgreSQL và muốn quản lý sao lưu và giám sát ở đó, hoặc nếu bạn mong đợi nhiều người dùng chỉnh sửa cùng một lúc. PostgreSQL cũng có thể lưu trữ [cơ sở dữ liệu người dùng](#using-a-postgresql-database-for-the-user-database) và [chỉ mục tìm kiếm](#using-a-postgresql-database-for-the-search-index), độc lập với nơi lưu trữ các cây gia đình.
 
 !!! warning "Addon PostgreSQL đã lỗi thời"
-    Addon PostgreSQL cũ hơn, lưu trữ một cây gia đình duy nhất trên mỗi cơ sở dữ liệu, đã bị lỗi thời kể từ Gramps Web API 3.24 và sẽ không còn được hỗ trợ trong Gramps Web API 4.0, vì nó không tương thích với việc lưu trữ nhiều cây, điều này trở thành mặc định trong phiên bản đó. Nếu bạn đang sử dụng nó, hãy xem [Chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
+    Addon PostgreSQL cũ hơn, lưu trữ một cây gia đình duy nhất trên mỗi cơ sở dữ liệu, đã lỗi thời kể từ Gramps Web API 3.24 và sẽ không còn được hỗ trợ trong Gramps Web API 4.0, vì nó không tương thích với việc lưu trữ nhiều cây, điều này trở thành mặc định trong phiên bản đó. Nếu bạn đang sử dụng nó, hãy xem [Di chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Thiết lập máy chủ PostgreSQL
 
 Tùy chọn dễ nhất là chạy máy chủ PostgreSQL trong một container trên cùng một máy chủ Docker với Gramps Web, sử dụng Docker Compose.
 
-Gramps cần các ngôn ngữ địa phương được cài đặt trên máy chủ PostgreSQL để sắp xếp các đối tượng chính xác trong các ngôn ngữ khác nhau, và các hình ảnh PostgreSQL mặc định không bao gồm bất kỳ ngôn ngữ nào. Hình ảnh [`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/) thêm chúng vào. Để sử dụng nó, hãy thêm phần sau vào tệp `docker-compose.yml` của bạn:
+Gramps cần các ngôn ngữ địa phương được cài đặt trên máy chủ PostgreSQL để sắp xếp các đối tượng chính xác trong các ngôn ngữ khác nhau, và các hình ảnh PostgreSQL mặc định không bao gồm bất kỳ ngôn ngữ nào. Hình ảnh [`gramps-postgres`](https://github.com/DavidMStraub/gramps-postgres-docker/) thêm chúng vào. Để sử dụng nó, thêm phần sau vào tệp `docker-compose.yml` của bạn:
 ```yaml
   postgres_gramps:
     image: ghcr.io/davidmstraub/gramps-postgres:latest
@@ -29,10 +29,10 @@ Nếu bạn sử dụng máy chủ PostgreSQL của riêng mình, hãy tạo m�
 
 ## Cấu hình Gramps Web
 
-Các cây gia đình mới được tạo trong cơ sở dữ liệu SharedPostgreSQL khi Gramps Web chạy ở [chế độ nhiều cây](multi-tree.md) và tùy chọn cấu hình `NEW_DB_BACKEND` được đặt thành `sharedpostgresql`. Với thiết lập Docker Compose ở trên, hãy thêm các mục sau dưới khóa `environment:` của dịch vụ `grampsweb` trong `docker-compose.yml`:
+Các cây gia đình mới được tạo trong cơ sở dữ liệu SharedPostgreSQL khi Gramps Web chạy ở chế độ [multi-tree](multi-tree.md) và tùy chọn cấu hình `NEW_DB_BACKEND` được đặt thành `sharedpostgresql`. Với thiết lập Docker Compose ở trên, thêm phần sau dưới khóa `environment:` của dịch vụ `grampsweb` trong `docker-compose.yml`:
 
 ```yaml
-      # kích hoạt chế độ nhiều cây
+      # kích hoạt chế độ multi-tree
       GRAMPSWEB_TREE: "*"
       GRAMPSWEB_MEDIA_PREFIX_TREE: true
       # tạo cây mới trong cơ sở dữ liệu SharedPostgreSQL
@@ -41,7 +41,7 @@ Các cây gia đình mới được tạo trong cơ sở dữ liệu SharedPostg
       # máy chủ là tên của dịch vụ PostgreSQL ở trên
       GRAMPSWEB_POSTGRES_HOST: postgres_gramps
       GRAMPSWEB_POSTGRES_PORT: 5432
-      # Thông tin xác thực phải phù hợp với những thông tin đã sử dụng cho
+      # Thông tin xác thực phải khớp với những thông tin được sử dụng cho
       # container PostgreSQL
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
@@ -51,40 +51,42 @@ Xem [Cấu hình](configuration.md) để biết mô tả về tất cả các t
 
 ## Tạo một cây và nhập dữ liệu
 
-Để tạo một cây mới, hãy gửi yêu cầu POST đến điểm cuối `/trees/` như đã mô tả trong [Thiết lập để lưu trữ nhiều cây](multi-tree.md#create-a-new-tree). Phản hồi chứa ID của cây mới, mà bạn cần để [tạo tài khoản chủ cây](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+Để tạo một cây mới, gửi POST đến điểm cuối `/trees/` như đã mô tả trong [Thiết lập để lưu trữ nhiều cây](multi-tree.md#create-a-new-tree). Phản hồi chứa ID của cây mới, mà bạn cần để [tạo tài khoản chủ cây](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
 
-Khi chủ cây đã đăng nhập, họ có thể [nhập](../administration/import.md) một cây gia đình hiện có, ví dụ: một tệp XML Gramps được xuất từ Gramps Desktop, thông qua giao diện web.
+Khi chủ cây đã đăng nhập, họ có thể [nhập](../administration/import.md) một cây gia đình hiện có, ví dụ như một tệp XML Gramps được xuất từ Gramps Desktop, qua giao diện web.
 
 ## Sử dụng cơ sở dữ liệu PostgreSQL cho cơ sở dữ liệu người dùng
 
-Cơ sở dữ liệu người dùng thường là một tệp SQLite, bất kể nơi lưu trữ các cây gia đình. Để sử dụng PostgreSQL thay thế, hãy đặt tùy chọn cấu hình `USER_DB_URI` thành URL cơ sở dữ liệu PostgreSQL. Với hình ảnh `gramps-postgres` ở trên, hãy sử dụng cơ sở dữ liệu `grampswebuser` của nó:
+Cơ sở dữ liệu người dùng thường là một tệp SQLite, bất kể nơi lưu trữ các cây gia đình. Để sử dụng PostgreSQL thay thế, hãy đặt tùy chọn cấu hình `USER_DB_URI` thành một URL cơ sở dữ liệu PostgreSQL. Với hình ảnh `gramps-postgres` ở trên, sử dụng cơ sở dữ liệu `grampswebuser` của nó:
 ```
 postgresql://grampswebuser:postgres_password_gramps_user@postgres_gramps:5432/grampswebuser
 ```
 
 ## Sử dụng cơ sở dữ liệu PostgreSQL cho chỉ mục tìm kiếm
 
-Chỉ mục tìm kiếm cũng được lưu trữ trong SQLite theo mặc định. Để sử dụng PostgreSQL thay thế, hãy đặt tùy chọn cấu hình `SEARCH_INDEX_DB_URI` thành URL cơ sở dữ liệu PostgreSQL. Với hình ảnh `gramps-postgres` ở trên, bạn có thể sử dụng cơ sở dữ liệu `gramps` của nó, bất kể các cây gia đình của bạn có được lưu trữ ở đó hay không:
+Chỉ mục tìm kiếm cũng được lưu trữ trong SQLite theo mặc định. Để sử dụng PostgreSQL thay thế, hãy đặt tùy chọn cấu hình `SEARCH_INDEX_DB_URI` thành một URL cơ sở dữ liệu PostgreSQL. Với hình ảnh `gramps-postgres` ở trên, bạn có thể sử dụng cơ sở dữ liệu `gramps` của nó, bất kể các cây gia đình của bạn có được lưu trữ ở đó hay không:
 ```
 postgresql://gramps:postgres_password_gramps@postgres_gramps:5432/gramps
 ```
 
-## Chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL
+Chỉ mục tìm kiếm cần PostgreSQL 12 hoặc mới hơn.
 
-Các cài đặt cũ hơn có thể lưu trữ cây gia đình của họ với addon PostgreSQL, lưu trữ một cây duy nhất trên mỗi cơ sở dữ liệu và đã bị lỗi thời. Để tìm ra addon mà một cây sử dụng, hãy xem tệp `database.txt` trong thư mục con của cây trong thư mục cơ sở dữ liệu Gramps: nó chứa `postgresql` cho addon PostgreSQL đã lỗi thời và `sharedpostgresql` cho SharedPostgreSQL.
+## Di chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL
 
-Để chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL trong cùng một cài đặt, giữ nguyên tài khoản người dùng và tệp phương tiện của bạn:
+Các cài đặt cũ hơn có thể lưu trữ cây gia đình của họ với addon PostgreSQL, lưu trữ một cây duy nhất trên mỗi cơ sở dữ liệu và đã lỗi thời. Để tìm ra addon mà một cây sử dụng, hãy xem tệp `database.txt` trong thư mục con của cây trong thư mục cơ sở dữ liệu Gramps: nó chứa `postgresql` cho addon PostgreSQL đã lỗi thời và `sharedpostgresql` cho SharedPostgreSQL.
 
-1. [Sao lưu cây gia đình của bạn](../administration/export.md#back-up-your-family-tree) dưới dạng tệp XML Gramps (`.gramps`), sử dụng tài khoản có thể xem các hồ sơ riêng tư.
+Để di chuyển một cây từ addon PostgreSQL sang SharedPostgreSQL trong cùng một cài đặt, giữ lại tài khoản người dùng và tệp phương tiện của bạn:
+
+1. [Sao lưu cây gia đình của bạn](../administration/export.md#back-up-your-family-tree) dưới dạng tệp XML Gramps (`.gramps`), sử dụng một tài khoản có thể xem các hồ sơ riêng tư.
 2. Thay đổi cấu hình của bạn như đã mô tả trong [Cấu hình Gramps Web](#configuring-gramps-web). Bạn có thể tiếp tục sử dụng container `gramps-postgres` hiện tại của mình.
-3. [Tạo một cây mới](multi-tree.md#create-a-new-tree) và ghi lại ID cây của nó.
+3. [Tạo một cây mới](multi-tree.md#create-a-new-tree) và ghi nhớ ID cây của nó.
 4. Gán các tài khoản người dùng hiện có của bạn cho cây mới, như đã mô tả trong [Di chuyển cơ sở dữ liệu người dùng hiện có](multi-tree.md#migrate-existing-user-database).
-5. Di chuyển các tệp phương tiện của bạn đến vị trí mong đợi cho cây mới, như đã mô tả trong [Di chuyển các tệp phương tiện hiện có](multi-tree.md#migrate-existing-media-files).
+5. Di chuyển các tệp phương tiện của bạn đến vị trí được mong đợi cho cây mới, như đã mô tả trong [Di chuyển các tệp phương tiện hiện có](multi-tree.md#migrate-existing-media-files).
 6. Đăng nhập và [nhập](../administration/import.md) tệp XML Gramps vào cây mới.
 
 Giữ tệp XML Gramps cho đến khi bạn đã kiểm tra rằng cây mới hoàn chỉnh.
 
-Nếu bạn đang chuyển đến một cài đặt Gramps Web riêng biệt, hãy làm theo các bước trong [Chuyển đến một phiên bản Gramps Web khác](../administration/export.md#move-to-a-different-gramps-web-instance).
+Nếu bạn đang di chuyển đến một cài đặt Gramps Web riêng biệt, hãy làm theo các bước trong [Di chuyển đến một phiên bản Gramps Web khác](../administration/export.md#move-to-a-different-gramps-web-instance).
 
 ## Vấn đề
 

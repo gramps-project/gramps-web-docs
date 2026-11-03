@@ -1,8 +1,8 @@
 # Limitar o uso de CPU e memória
 
 Na configuração recomendada baseada em docker, o Gramps Web usa [Gunicorn](https://gunicorn.org/) para servir o
-backend e [Celery](https://docs.celeryq.dev) para tarefas em segundo plano. Em ambos os casos, vários processos
-de trabalho podem ser executados em paralelo, o que torna a aplicação mais responsiva do ponto de vista do usuário.
+backend e [Celery](https://docs.celeryq.dev) para tarefas em segundo plano. Em ambos os casos, vários processos de trabalho
+podem ser executados em paralelo, o que torna a aplicação mais responsiva do ponto de vista do usuário.
 No entanto, aumentar o número de trabalhadores também aumenta a quantidade de RAM utilizada (mesmo quando a aplicação está ociosa)
 e permitir que as solicitações sejam processadas em paralelo pode levar a um alto uso de CPU (em particular quando muitos usuários
 estão usando a aplicação simultaneamente). Tanto o Gunicorn quanto o Celery permitem limitar o número de trabalhadores paralelos.
@@ -27,7 +27,7 @@ free -h
 A maneira mais fácil de definir o número de trabalhadores do Gunicorn ao usar a imagem docker padrão do Gramps Web
 é definir a variável de ambiente `GUNICORN_NUM_WORKERS`, por exemplo, declarando-a
 no arquivo `docker-compose.yml`,
-sob "environment".
+sob a seção "environment".
 
 ```yaml
 services:
@@ -38,6 +38,9 @@ services:
 
 Consulte [a documentação do Gunicorn](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) para decidir
 sobre o número ideal de trabalhadores.
+
+!!! info
+    A imagem Docker inicia o Gunicorn com a opção `--preload`, então os trabalhadores compartilham a memória da aplicação carregada e cada trabalhador adicional precisa de menos memória. Se você substituir o comando do Gunicorn, mantenha `--preload` para se beneficiar disso.
 
 
 
@@ -54,5 +57,5 @@ Consulte [a documentação do Celery](https://docs.celeryq.dev/en/stable/usergui
 sobre o número ideal de trabalhadores.
 
 !!! info
-    Se a flag `concurrency` for omitida (o que era o caso na documentação do Gramps Web até a v2.5.0), ela
+    Se a flag `concurrency` for omitida (o que era o caso na documentação do Gramps Web até a versão v2.5.0), ela
     assume o número de núcleos de CPU disponíveis no sistema, o que pode consumir uma quantidade substancial de memória.

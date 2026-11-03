@@ -19,7 +19,7 @@ free -h
 
 ## Limiter le nombre de travailleurs Gunicorn
 
-Le moyen le plus simple de définir le nombre de travailleurs Gunicorn lors de l'utilisation de l'image Docker par défaut de Gramps Web est de définir la variable d'environnement `GUNICORN_NUM_WORKERS`, par exemple en la déclarant dans le fichier `docker-compose.yml`, sous "environment".
+La façon la plus simple de définir le nombre de travailleurs Gunicorn lors de l'utilisation de l'image Docker Gramps Web par défaut est de définir la variable d'environnement `GUNICORN_NUM_WORKERS`, par exemple en la déclarant dans le fichier `docker-compose.yml`, sous "environment".
 
 ```yaml
 services:
@@ -29,6 +29,9 @@ services:
 ```
 
 Consultez [la documentation de Gunicorn](https://docs.gunicorn.org/en/stable/design.html#how-many-workers) pour décider du nombre idéal de travailleurs.
+
+!!! info
+    L'image Docker démarre Gunicorn avec l'option `--preload`, de sorte que les travailleurs partagent la mémoire de l'application chargée et chaque travailleur supplémentaire nécessite moins de mémoire. Si vous remplacez la commande Gunicorn, conservez `--preload` pour bénéficier de cela.
 
 
 
@@ -44,4 +47,4 @@ Pour définir le nombre de travailleurs Celery, adaptez le paramètre `concurren
 Consultez [la documentation de Celery](https://docs.celeryq.dev/en/stable/userguide/workers.html#concurrency) pour décider du nombre idéal de travailleurs.
 
 !!! info
-    Si le drapeau `concurrency` est omis (ce qui était le cas dans la documentation de Gramps Web jusqu'à la v2.5.0), il par défaut au nombre de cœurs CPU disponibles sur le système, ce qui pourrait consommer une quantité substantielle de mémoire.
+    Si le drapeau `concurrency` est omis (ce qui était le cas dans la documentation de Gramps Web jusqu'à la version 2.5.0), il par défaut au nombre de cœurs CPU disponibles sur le système, ce qui pourrait consommer une quantité substantielle de mémoire.

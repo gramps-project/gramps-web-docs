@@ -1,6 +1,6 @@
 # Gerenciar Usuários
 
-A interface de gerenciamento de usuários é acessível via **Configurações > Gerenciar Usuários** (o ícone de usuário na barra superior do aplicativo). Está disponível apenas para usuários com o papel de Proprietário ou Administrador.
+A interface de gerenciamento de usuários é acessível via **Configurações > Gerenciar Usuários** (o ícone do usuário na barra superior do aplicativo). Está disponível apenas para usuários com o papel de Proprietário ou Administrador.
 
 ## Papéis de usuário
 
@@ -16,7 +16,7 @@ A página de gerenciar usuários mostra uma tabela de todas as contas de usuári
 - **Papel** – o papel atribuído (Convidado, Membro, Contribuidor, Editor, Proprietário ou Administrador)
 - **Fonte da conta** – "Senha" (conta local) ou o nome de um provedor de identidade externo (por exemplo, ao usar OIDC)
 
-Use o campo de pesquisa e o menu suspenso de papéis no topo da tabela para filtrar a lista. Clique no botão de limpar filtro para redefinir todos os filtros.
+Use o campo de busca e o menu suspenso de papéis no topo da tabela para filtrar a lista. Clique no botão de limpar filtro para redefinir todos os filtros.
 
 ## Editar um usuário
 
@@ -26,9 +26,14 @@ Clique no ícone de editar (lápis) em qualquer linha para abrir a caixa de diá
 - Endereço de e-mail
 - Papel
 
-Esta é a principal maneira de **habilitar um novo usuário auto-registrado**: mude seu papel de *desativado* para qualquer papel ativo (por exemplo, Membro ou Editor).
+Esta é a principal maneira de **habilitar um novo usuário auto-registrado**: altere seu papel de *desativado* para qualquer papel ativo (por exemplo, Membro ou Editor).
 
-Os endereços de e-mail não precisam ser exclusivos (desde a API Web do Gramps 3.22), portanto, várias contas podem compartilhar o mesmo endereço.
+Os endereços de e-mail não precisam ser únicos (desde a API Gramps Web 3.22), portanto, várias contas podem compartilhar o mesmo endereço.
+
+Desativar um usuário ou alterar sua senha encerra todas as suas sessões em 15 minutos.
+
+!!! nota
+    Proprietários não podem editar, alterar a senha ou excluir usuários com um papel mais alto, como o administrador do site. Usuários com o mesmo papel, como dois proprietários de uma árvore, podem gerenciar uns aos outros.
 
 ## Adicionar um usuário manualmente
 
@@ -48,7 +53,7 @@ Esses botões são úteis ao [migrar para uma instância diferente do Gramps Web
 - **Exportar detalhes do usuário** (ícone de download) – baixa um arquivo JSON contendo todas as contas de usuário (sem senhas, já que as senhas são armazenadas em forma criptografada).
 - **Importar contas de usuário** (ícone de grupo-adicionar) – faz o upload de um arquivo JSON exportado anteriormente para criar contas de usuário em massa. Todos os usuários importados precisarão definir uma nova senha através do link "Esqueci a senha", já que as senhas não podem ser transferidas.
 
-## Link de registro (somente configuração de múltiplas árvores)
+## Link de registro (apenas configuração de múltiplas árvores)
 
 Em uma configuração de múltiplas árvores, o link de registro para novos usuários é exibido no topo da página de gerenciar usuários. Você pode copiar este link e compartilhá-lo com pessoas que deseja convidar para registrar uma conta em sua árvore.
 
@@ -57,11 +62,11 @@ Em uma configuração de múltiplas árvores, o link de registro para novos usu�
 
 ## Permissões de chat de IA
 
-Se o chat de IA foi habilitado no servidor, um menu suspenso no topo da página permite que você controle quais papéis de usuário têm permissão para usar o recurso de chat:
+Se o chat de IA foi habilitado no servidor, um menu suspenso no topo da página permite controlar quais papéis de usuário têm permissão para usar o recurso de chat:
 
 - Todos (incluindo convidados)
 - Membro e acima
 - Contribuidor e acima
 - Editor e acima
-- Somente Proprietários e administradores
-- Ninguém (desabilitar chat para todos os usuários)
+- Apenas proprietários e administradores
+- Ninguém (desativar chat para todos os usuários)

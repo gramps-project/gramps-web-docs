@@ -4,19 +4,19 @@ Brugeradministrationsgrænsefladen er tilgængelig via **Indstillinger > Adminis
 
 ## Brugerroller
 
-Se [Brugersystem](../install_setup/users.md) for en fuld beskrivelse af de tilgængelige brugerroller og deres rettigheder.
+Se [Brugersystem](../install_setup/users.md) for en fuld beskrivelse af de tilgængelige brugerroller og deres tilladelser.
 
 ## Vis og filtrer brugere
 
-Siden til at administrere brugere viser en tabel over alle registrerede brugerkonti med følgende kolonner:
+Siden til at administrere brugere viser en tabel med alle registrerede brugerkonti med følgende kolonner:
 
-- **Brugernavn** – login-navnet
-- **Fuldt Navn** – visningsnavnet
+- **Brugernavn** – login-navn
+- **Fuldt navn** – visningsnavn
 - **E-mail** – brugerens e-mailadresse
 - **Rolle** – den tildelte rolle (Gæst, Medlem, Bidragyder, Redaktør, Ejer eller Administrator)
-- **Kontokilde** – enten "Adgangskode" (lokal konto) eller navnet på en ekstern identitetsudbyder (f.eks. når der bruges OIDC)
+- **Kilde til konto** – enten "Adgangskode" (lokal konto) eller navnet på en ekstern identitetsudbyder (f.eks. ved brug af OIDC)
 
-Brug søgefeltet og rolle-dropdown-menuen øverst i tabellen til at filtrere listen. Klik på filter-ryd-knappen for at nulstille alle filtre.
+Brug søgefeltet og rolle-dropdown-menuen øverst i tabellen til at filtrere listen. Klik på knappen til at rydde filtre for at nulstille alle filtre.
 
 ## Rediger en bruger
 
@@ -30,13 +30,18 @@ Dette er den primære måde at **aktivere en ny selvregistreret bruger**: ændre
 
 E-mailadresser behøver ikke at være unikke (siden Gramps Web API 3.22), så flere konti kan dele den samme adresse.
 
+Deaktivering af en bruger eller ændring af deres adgangskode afslutter alle deres sessioner inden for 15 minutter.
+
+!!! note
+    Ejere kan ikke redigere, ændre adgangskoden for eller slette brugere med en højere rolle, såsom webstedets administrator. Brugere med samme rolle, såsom to ejere af et træ, kan administrere hinanden.
+
 ## Tilføj en bruger manuelt
 
 Klik på **tilføj bruger** (person-tilføj) ikonet over tabellen for at oprette en ny brugerkonto direkte uden at kræve selvregistrering. Udfyld brugernavnet, fulde navn, e-mailadresse, adgangskode og rolle i dialogen og klik på **Gem**.
 
 ## Slet en bruger
 
-Klik på slet (skraldespand) ikonet på en hvilken som helst række og bekræft dialogen. Denne handling kan ikke fortrydes.
+Klik på sletteikonet (skraldespand) på en hvilken som helst række og bekræft dialogen. Denne handling kan ikke fortrydes.
 
 !!! note
     For at forhindre, at et træ efterlades uden nogen, der kan administrere det, kan du ikke sænke din egen rolle under Ejer eller slette din egen konto, hvis du er den eneste Ejer eller Administrator af træet. Forfrem en anden bruger til Ejer først. En administrator kan stadig ændre eller fjerne den sidste ejer af en anden brugers træ, da de kan udpege en ny.
@@ -46,7 +51,7 @@ Klik på slet (skraldespand) ikonet på en hvilken som helst række og bekræft 
 Disse knapper er nyttige, når du [migrerer til en anden Gramps Web-instans](export.md).
 
 - **Eksportér brugeroplysninger** (download-ikon) – downloader en JSON-fil, der indeholder alle brugerkonti (uden adgangskoder, da adgangskoder opbevares i krypteret form).
-- **Importer brugerkonti** (gruppe-tilføj ikon) – uploader en tidligere eksporteret JSON-fil for at oprette brugerkonti i bulk. Alle importerede brugere skal indstille en ny adgangskode via "Glemt adgangskode"-linket, da adgangskoder ikke kan overføres.
+- **Importer brugerkonti** (gruppe-tilføj ikon) – uploader en tidligere eksporteret JSON-fil for at oprette brugerkonti i bulk. Alle importerede brugere skal indstille en ny adgangskode via linket "Glemt adgangskode", da adgangskoder ikke kan overføres.
 
 ## Registreringslink (kun multi-træ opsætning)
 
@@ -55,13 +60,13 @@ I en multi-træ opsætning vises registreringslinket for nye brugere øverst på
 !!! note
     I en enkelt-træ opsætning er der et generisk "Registrer" link på login-siden; registreringslinket pr. træ er kun nødvendigt i multi-træ installationer.
 
-## AI chat rettigheder
+## AI chat tilladelser
 
-Hvis AI chat er blevet aktiveret på serveren, giver en dropdown-menu øverst på siden dig mulighed for at kontrollere, hvilke brugerroller der har lov til at bruge chat-funktionen:
+Hvis AI chat er blevet aktiveret på serveren, giver en dropdown-menu øverst på siden dig mulighed for at kontrollere, hvilke brugerroller der har lov til at bruge chatfunktionen:
 
 - Alle (inklusive gæster)
 - Medlem og derover
 - Bidragyder og derover
 - Redaktør og derover
-- Ejere og administratorer kun
+- Kun ejere og administratorer
 - Ingen (deaktiver chat for alle brugere)

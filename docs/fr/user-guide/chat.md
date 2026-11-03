@@ -6,20 +6,22 @@
 La vue **Assistant** dans Gramps Web (si disponible dans votre installation, étiquetée "Chat" dans les anciennes versions) donne accès à un assistant IA qui peut répondre à des questions sur votre arbre généalogique.
 
 !!! warning
-    Étant donné qu'il s'agit encore d'une fonctionnalité nouvelle et en évolution, certains types de questions fonctionnent bien tandis que d'autres ne le font pas. De plus, comme avec tout assistant IA, il peut donner des réponses factuellement incorrectes, alors assurez-vous de toujours vérifier.
+    Comme il s'agit encore d'une fonctionnalité nouvelle et en évolution, certains types de questions fonctionnent bien tandis que d'autres ne fonctionnent pas. De plus, comme avec tout assistant IA, il peut donner des réponses factuellement incorrectes, donc assurez-vous de toujours vérifier.
 
-## Comment ça fonctionne
+## Comment cela fonctionne
 
-Pour comprendre quels types de questions l'assistant peut répondre, il est utile de comprendre comment cela fonctionne sous le capot :
+Pour comprendre quels types de questions l'assistant peut répondre, il est utile de comprendre comment cela fonctionne en coulisses :
 
 1. L'utilisateur pose une question.
 2. L'assistant interroge directement votre base de données en utilisant des outils spécialisés : il recherche dans l'arbre avec la [recherche en texte intégral](search.md), filtre les personnes/événements/familles/lieux par des critères spécifiques, calcule les relations entre les individus et consulte des dossiers complets, y compris leurs notes.
-3. Un grand modèle linguistique formule une réponse basée sur les dossiers qu'il a trouvés.
+3. Un grand modèle de langage formule une réponse basée sur les dossiers qu'il a trouvés.
 4. La réponse vous est affichée, avec des liens vers les dossiers sur lesquels elle est basée.
 
-Sur les serveurs exécutant une version de l'API Gramps Web antérieure à 3.24, l'assistant s'appuyait également sur la recherche sémantique, qui est en cours de suppression.
+L'assistant répond uniquement à partir de votre arbre, pas à partir des connaissances générales du modèle de langage – même à propos de personnes bien connues. Si l'arbre ne consigne pas quelque chose, il le dit, mentionnant des informations connexes qu'il a trouvées, par exemple dans une note. Les liens vers des objets que vous n'êtes pas autorisé à voir sont affichés en texte brut.
 
-Pendant que l'assistant travaille, des indicateurs montrent quels outils il utilise actuellement (par exemple, recherche de personnes, recherche de relations) afin que vous puissiez suivre son raisonnement. Les questions plus longues sont traitées comme des tâches en arrière-plan – vous pouvez naviguer ailleurs et revenir, et les progrès sont également reflétés dans [Notifications](notifications.md). Les réponses sont formatées avec Markdown (listes, emphase, liens, etc.) pour une lecture plus facile.
+Les questions de suivi conservent le contexte des questions précédentes dans la même conversation, vous pouvez donc demander "Et quand est-il mort ?" après avoir posé une question sur une personne.
+
+Pendant que l'assistant travaille, des indicateurs montrent quels outils il utilise actuellement (par exemple, recherche de personnes, recherche de relations) afin que vous puissiez suivre son raisonnement en construisant sa réponse. Les questions plus longues sont traitées comme des tâches en arrière-plan – vous pouvez naviguer ailleurs et revenir, et les progrès sont également reflétés dans les [Notifications](notifications.md). Les réponses sont formatées avec Markdown (listes, emphase, liens, etc.) pour une lecture plus facile.
 
 ## Ce que vous pouvez demander
 
@@ -38,7 +40,7 @@ Pour obtenir les meilleurs résultats de l'assistant IA :
 - **Soyez spécifique** : Formulez votre question avec autant de détails que possible pour éviter les ambiguïtés. Par exemple, "Quand John Smith né en 1850 à Boston s'est-il marié ?" est mieux que "Quand John Smith s'est-il marié ?"
 - **Utilisez des noms propres** : Mentionnez des noms, des lieux et des dates spécifiques lorsque cela est pertinent.
 - **Posez une chose à la fois** : Décomposez les questions complexes en parties plus simples pour de meilleurs résultats.
-- **Utilisez votre langue** : Les grands modèles linguistiques sont multilingues, donc vous pouvez poser des questions dans votre propre langue et recevoir des réponses dans la même langue.
+- **Utilisez votre langue** : Les grands modèles de langage sont multilingues, vous pouvez donc poser des questions dans votre propre langue et recevoir des réponses dans la même langue.
 
 !!! tip
-    Veuillez partager votre expérience sur ce qui fonctionne et ce qui ne fonctionne pas avec la communauté.
+    Merci de partager votre expérience sur ce qui fonctionne et ce qui ne fonctionne pas avec la communauté.

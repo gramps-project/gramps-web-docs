@@ -4,7 +4,7 @@ Existem duas maneiras de adicionar um novo arquivo de mídia (uma imagem, arquiv
 
 Para adicionar um arquivo de mídia independente, clique no ícone + na barra superior do aplicativo e selecione "Objeto de Mídia".
 
-Clique em "selecionar um arquivo" para escolher um arquivo do seu computador. Em um dispositivo móvel, clicar neste botão lhe dará a opção de tirar uma foto diretamente com a câmera do seu dispositivo.
+Clique em "selecionar um arquivo" para escolher um arquivo do seu computador. Em um dispositivo móvel, clicar neste botão dará a opção de tirar uma foto diretamente com a câmera do seu dispositivo.
 
 Opcionalmente,
 
@@ -18,27 +18,35 @@ Clique em "adicionar" para fazer o upload do arquivo e criar o objeto de mídia.
 
 Os seguintes tipos de objeto no Gramps podem ter objetos de mídia anexados: pessoas, famílias, eventos, lugares, fontes e citações.
 
-Na visualização de detalhes de qualquer objeto, clique no botão azul de editar no canto inferior direito (se você não vê-lo, seu usuário não tem permissões de edição). Clique na aba "galeria" e clique no botão azul +.
+Na visualização de detalhes de qualquer objeto, clique no botão azul de editar no canto inferior direito (se você não o vê, seu usuário não tem permissões de edição). Clique na aba "galeria" e clique no botão azul +.
 
 Uma caixa de diálogo será aberta que oferece os mesmos campos descritos na seção anterior. Clique em "salvar" para fazer o upload do arquivo, adicionar um novo objeto de mídia e vinculá-lo ao objeto visualizado.
 
 ## Fotos de perfil
 
-A primeira imagem na galeria de uma pessoa é usada como sua foto de perfil. No modo de edição, ela é marcada com um distintivo de "Foto de perfil". Para usar uma imagem diferente, mova-a para a primeira posição com os botões de seta nas miniaturas da galeria.
+A primeira imagem na galeria de uma pessoa é usada como sua foto de perfil. No modo de edição, ela é marcada com um selo "Foto de perfil". Para usar uma imagem diferente, mova-a para a primeira posição com os botões de seta nas miniaturas da galeria.
 
-Se uma pessoa ainda não tiver mídia, o modo de edição mostrará um espaço reservado **Adicionar foto de perfil** em vez disso. Clique nele para fazer o upload de um novo arquivo de mídia ou selecionar um existente.
+Se uma pessoa ainda não tiver mídia, o modo de edição mostrará um espaço reservado **Adicionar foto de perfil**. Clique nele para fazer o upload de um novo arquivo de mídia ou selecionar um existente.
 
 ## Vincular arquivos de mídia existentes ao criar um objeto
 
-Quando você cria uma nova pessoa, família, evento, lugar, fonte ou citação, o formulário possui uma seção "Mídia". Lá você pode selecionar um ou mais objetos de mídia existentes, que são vinculados ao novo objeto quando você o salva.
+Quando você cria uma nova pessoa, família, evento, lugar, fonte ou citação, o formulário tem uma seção "Mídia". Lá você pode selecionar um ou mais objetos de mídia existentes, que são vinculados ao novo objeto quando você o salva.
 
 Quando você cria uma pessoa junto com seus eventos de nascimento e morte, os objetos de mídia selecionados são vinculados apenas à pessoa, não aos eventos.
+
+## Navegando na mídia
+
+A visualização de mídia mostra os objetos de mídia como uma galeria de miniaturas ou como uma lista; a escolha é lembrada no seu navegador. Assim como as outras [visualizações de lista](lists.md), pode ser ordenada (inclusive por data), filtrada e usada para selecionar e excluir mídias em massa.
+
+Clicar em um tile na galeria abre a mídia na lightbox. Use as teclas de seta, deslize ou clique nos botões de seta para percorrer os resultados filtrados e ordenados, através das páginas. O botão **Detalhes** na lightbox abre a página do objeto de mídia. Clicar em uma linha no layout de lista abre a página do objeto de mídia diretamente.
+
+Os vídeos são mostrados com uma miniatura e um botão de reprodução. Arquivos de áudio e vídeo podem ser reproduzidos na página do objeto de mídia, na lightbox, em [postagens de blog](blog.md) e quando incorporados em notas.
 
 ## Reconhecimento de texto (OCR)
 
 Se o administrador do servidor ativou o suporte a OCR, um botão "Reconhecimento de Texto" aparece abaixo da imagem na visualização de detalhes de um objeto de mídia.
 
-Clique em "Reconhecimento de Texto", escolha o idioma do texto mostrado na imagem e, em seguida, clique em "Executar". A imagem é processada com [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e o texto reconhecido é exibido abaixo.
+Clique em "Reconhecimento de Texto", escolha o idioma do texto exibido na imagem e, em seguida, clique em "Executar". A imagem é processada com [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) e o texto reconhecido é exibido abaixo.
 
 Se seu usuário tiver permissões de edição, clique em "Salvar como Nota" para criar uma nova nota (do tipo "Transcrição") contendo o texto reconhecido e vinculá-la ao objeto de mídia.
 
