@@ -7,23 +7,23 @@ hide:
 # Özellikler
 
 
-![Görsel başlığı](screenshots/sync.png){ align=left width="300"}
+![Görüntü başlığı](screenshots/sync.png){ align=left width="300"}
 
 ## Gramps Masaüstü ile Tam Entegrasyon
 
-Gramps Web, genealogik verileri depolamak için [Gramps Masaüstü](https://gramps-project.org/) tarafından kullanılan aynı **Model / Veritabanı** yapısını kullanır. Gramps Masaüstü'nde yaptığınız gibi tüm aynı [Kayıt Türlerini](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) gözden geçirebilirsiniz: ***kişiler, aileler, olaylar, yerler, arşivler, kaynaklar, alıntılar, medya nesneleri ve notlar.***
+Gramps Web, genealogik verileri depolamak için [Gramps Masaüstü](https://gramps-project.org/) tarafından kullanılan aynı **Model / Veritabanı** yapısını kullanır. Gramps Masaüstü'nde yaptığınız gibi tüm [Kayıt Türleri](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) arasında gezinebilirsiniz: ***kişiler, aileler, olaylar, yerler, depolar, kaynaklar, alıntılar, medya nesneleri ve notlar.***
 
-Gramps Masaüstü için [Gramps Web Senkronizasyon Eklentisi](../administration/sync.md) kullanarak, veriler Gramps Web ve Gramps Masaüstü arasında çift yönlü olarak senkronize edilebilir! Verilerinizi Gramps Web veya tanıdığınız ve sevdiğiniz Gramps Masaüstü Uygulaması ile düzenlemeye devam edin – her ikisi de sorunsuz bir şekilde çalışır!
+Gramps Masaüstü için [Gramps Web Senkronizasyon Eklentisi](../administration/sync.md) kullanarak, veriler Gramps Web ve Gramps Masaüstü arasında iki yönlü olarak senkronize edilebilir! Verilerinizi Gramps Web veya bildiğiniz ve sevdiğiniz Gramps Masaüstü Uygulaması ile düzenlemeye devam edin – her ikisi de sorunsuz bir şekilde çalışır!
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/fan.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/fan.png){ align=right width="400"}
 
 ## Etkileşimli Aile Ağaçları Grafikleri
 
-Aile ağacınızı bir ata ağacı, torun ağacı, kum saati grafiği, ilişki grafiği veya fan grafiği olarak gezin, yüksek kaliteli etkileşimli grafikler ve yapılandırılabilir nesil sayısı ile.
+Aile ağacınızı bir ata ağacı, soy ağacı, kum saati grafiği, ilişki grafiği veya fan grafiği olarak yüksek kaliteli etkileşimli grafiklerle ve yapılandırılabilir nesil sayısıyla keşfedin.
 
 Herhangi bir kişinin üzerine gelerek ana bilgileri içeren bir önizleme kartı görebilir ve grafikten tam detay sayfasına doğrudan geçiş yapabilirsiniz.
 
@@ -31,11 +31,11 @@ Herhangi bir kişinin üzerine gelerek ana bilgileri içeren bir önizleme kart�
 
 ---
 
-![Görsel başlığı](screenshots/tree-edit.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/tree-edit.png){ align=left width="400"}
 
 ## Ağacınızı Grafikte Oluşturun
 
-Ağaç görünümünü düzenleme moduna geçirin ve grafiği terk etmeden aile ağacınızı büyütün. Her kişi kartında bir baba, anne, çocuk veya eş eklemek için **+** düğmesi bulunur – ya veritabanınızdaki birine bağlanarak ya da anında yeni bir kişi oluşturarak. Her değişiklik hemen kaydedilir.
+Ağaç görünümünü düzenleme moduna geçirin ve grafiği terk etmeden aile ağacınızı büyütün. Her kişi kartında bir **+** butonu vardır; bu, bir baba, anne, çocuk veya eş eklemek için – ya veritabanınızdaki birini bağlayarak ya da anında yeni bir kişi oluşturarak. Her değişiklik hemen kaydedilir.
 
 [Aile Ağacını Düzenleme](../user-guide/tree-edit.md) bölümüne bakın.
 
@@ -43,11 +43,11 @@ Ağaç görünümünü düzenleme moduna geçirin ve grafiği terk etmeden aile 
 
 ---
 
-![Görsel başlığı](screenshots/timeline.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/timeline.png){ align=right width="400"}
 
 ## Kronolojik Zaman Çizelgesi
 
-Aile ağacınızdaki her olayı yatay, yakınlaştırılabilir bir zaman çizelgesinde görün. Yüzyıllar boyunca kaydırın ve yakınlaştırın, ardından tek bir kişiye – ya da onların tüm atalarına veya torunlarına – ya da bir yerde gerçekleşen her şeye filtreleyin.
+Aile ağacınızdaki her olayı yatay, yakınlaştırılabilir bir zaman çizelgesinde görün. Yüzyıllar boyunca kaydırın ve yakınlaştırın, ardından tek bir kişiye – ya da tüm atalarına veya soyuna – ya da bir yerde meydana gelen her şeye filtreleyin.
 
 [Zaman Çizelgesi](../user-guide/timeline.md) bölümüne bakın.
 
@@ -55,35 +55,35 @@ Aile ağacınızdaki her olayı yatay, yakınlaştırılabilir bir zaman çizelg
 
 ---
 
-![Görsel başlığı](screenshots/map.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/map.png){ align=left width="400"}
 
 ## Güçlü Harita
 
-Ağaçınızdaki tüm yerleri etkileşimli, aranabilir bir haritada görüntüleyin. Bir yer oluştururken OpenStreetMap'te yeni yerler arayın, veritabanınızdaki kişileri coğrafi olarak haritada yerleştirin ve bir kişinin yaşamını haritada olaylarını birbirine bağlayarak izleyin.
+Ağaçınızdaki tüm yerleri etkileşimli, aranabilir bir haritada görüntüleyin. Bir yer oluştururken OpenStreetMap'te yeni yerler arayın, veritabanınızdaki kişileri coğrafi olarak haritada yerleştirin ve bir kişinin yaşamını haritadaki olaylarını birbirine bağlayarak izleyin.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/ohm.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/ohm.png){ align=right width="400"}
 
 ## Tarihsel Haritalar
 
-Gramps'te medya nesnesi olarak depolanan bir tarihsel haritayı özel bir harita katmanına dönüştürün.
+Gramps'te medya nesnesi olarak depolanan bir tarihsel haritayı özel bir harita örtüsü haline getirin.
 
-Bunun yanı sıra, [OpenHistoricalMap](https://www.openhistoricalmap.org/) projesi tarafından oluşturulan tarihsel vektör haritalar, genealogik haritalama için mükemmel bir tamamlayıcıdır. Zaman kaydırıcısını kullanarak aile tarihinizdeki yerlerin evrimini gözden geçirin ve atalarınızın yaşadığı veya olayların gerçekleştiği yerleri görüntüleyin.
+Buna ek olarak, [OpenHistoricalMap](https://www.openhistoricalmap.org/) projesi tarafından oluşturulan tarihsel vektör haritalar, genealogik haritalama için mükemmel bir tamamlayıcıdır. Zaman kaydırıcısını kullanarak aile tarihinizdeki yerlerin evrimine göz atın ve atalarınızın yaşadığı veya olayların gerçekleştiği yerleri görüntüleyin.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/search.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/search.png){ align=left width="400"}
 
 ## Her Şeyi Bulun
 
 Tam metin arama motoru, metin notlarının içeriği de dahil olmak üzere tüm Gramps nesne türlerini kapsar ve joker karakterler ile mantıksal operatörleri destekler.
 
-Kesin sorgular için, nesne liste görünümleri, [Gramps Sorgu Dili](../user-guide/gql.md) temelinde gelişmiş bir filtreleme modu sunar, ayrıca metin, etiket ve gizlilik ile hızlı filtreler sağlar.
+Kesin sorgular için, nesne liste görünümleri, [Gramps Nesne Sorgu Dili](../user-guide/goql.md) temelinde gelişmiş bir filtreleme modu sunar; ayrıca metin, etiket ve gizlilik açısından hızlı filtreler sağlar.
 
 Herhangi bir kişinin sayfasından, [Dış Arama](../user-guide/external-search.md) FamilySearch, Ancestry, CompGen ve diğer sitelerde önceden doldurulmuş bir arama açar – ve kendi aramalarınızı ekleyebilirsiniz.
 
@@ -91,23 +91,23 @@ Herhangi bir kişinin sayfasından, [Dış Arama](../user-guide/external-search.
 
 ---
 
-![Görsel başlığı](screenshots/chat.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/chat.png){ align=right width="400"}
 
 ## Entegre AI Asistanı
 
-AI destekli Gramps Web, aile ağacınızla sohbet etmenizi sağlar – kendi ana dilinizde!
+AI destekli Gramps Web, aile ağacınızla kendi ana dilinizde sohbet etmenizi sağlar!
 
-Asistan sadece arama yapmakla kalmaz: doğrudan veritabanınızı sorgular, kişileri, olayları, aileleri ve yerleri filtreler ve bireyler arasındaki ilişkileri hesaplar. Bir cevap oluştururken hangi araçları kullandığını izleyebilirsiniz ve daha uzun sorular arka planda görevler olarak çalışır, böylece başka bir yere geçip geri dönebilirsiniz.
+Asistan sadece arama yapmaz: veritabanınızı doğrudan bir dizi araçla sorgular, kişileri, olayları, aileleri ve yerleri filtreler ve bireyler arasındaki ilişkileri hesaplar. Bir yanıt oluştururken hangi araçları kullandığını izleyebilir ve daha uzun sorular arka planda çalışır, böylece başka bir yere gidebilir ve geri dönebilirsiniz.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/dna.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/dna.png){ align=left width="400"}
 
 ## DNA Eşleşmeleri, Kromozom Tarayıcı ve Y-DNA
 
-Eğer DNA genetik sağlayıcılarından birinden DNA eşleşme veriniz varsa, bunu yükleyin ve geleceğe yönelik bir şekilde depolayın ve eşleşmelerinizi etkileşimli bir kromozom tarayıcısında görüntüleyin.
+Eğer DNA soybilgisi sağlayıcılarından birinden DNA eşleşme veriniz varsa, bunu yükleyin ve geleceğe yönelik bir şekilde depolayın ve etkileşimli bir kromozom tarayıcısında eşleşmelerinizi görüntüleyin.
 
 Ham Y kromozomu SNP verileri, bir kişinin en olası [Y-DNA haplogrubunu](../user-guide/y-dna.md) belirlemek için kullanılabilir ve onların patrilineal atalarını insan Y kromozomu ağacında zaman tahminleri ile görüntüleyebilirsiniz. Analiz tamamen kendi sunucunuzda çalışır – hiçbir veri üçüncü taraflara gönderilmez.
 
@@ -115,21 +115,21 @@ Ham Y kromozomu SNP verileri, bir kişinin en olası [Y-DNA haplogrubunu](../use
 
 ---
 
-![Görsel başlığı](screenshots/tag.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/tag.png){ align=right width="400"}
 
-## Otomatik Yüz Tanıma ile Fotoğraflarda İnsanları Etiketleyin
+## Otomatik Yüz Tanıma ile Fotoğraflardaki İnsanları Etiketleyin
 
-Akrabalarınızla birlikte eski aile fotoğraflarındaki ataları tanımlamak için işbirliği yapın. Otomatik yüz tanıma sayesinde, insanları etiketlemek sadece iki tıklama uzaklığındadır.
+Akrabalarınızla birlikte eski aile fotoğraflarındaki ataları tanımlayın. Otomatik yüz tanıma sayesinde, insanları etiketlemek sadece iki tıklama uzaklığındadır.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/revisions.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/revisions.png){ align=left width="400"}
 
 ## Tam Revizyon Geçmişi – Geri Alma ile
 
-Aile ağacınızdaki her düzenleme kaydedilir. Tam geçmişi işlem başına gruplandırarak gözden geçirin, herhangi bir bireysel değişikliğe inerek hangi alanların eklendiğini, kaldırıldığını veya değiştirildiğini tam olarak görün ve bir işlemi geri alarak yanlış olduğunu düşünüyorsanız düzeltin. Her nesnenin sayfasında ayrıca kim tarafından ve ne zaman değiştirildiğini gösteren kendi revizyon sekmesi bulunur.
+Aile ağacınızdaki her düzenleme kaydedilir. Tam geçmişi işlem grupları halinde gözden geçirin, herhangi bir bireysel değişikliğe inerek hangi alanların eklendiğini, kaldırıldığını veya değiştirildiğini tam olarak görün ve bir işlem hatalı çıkarsa geri alın. Her nesnenin sayfasında, kimin ve ne zaman değiştirdiğini gösteren kendi revizyon sekmesi de vardır.
 
 [Revizyon Geçmişi](../user-guide/revisions.md) bölümüne bakın.
 
@@ -137,55 +137,55 @@ Aile ağacınızdaki her düzenleme kaydedilir. Tam geçmişi işlem başına gr
 
 ---
 
-![Görsel başlığı](screenshots/list.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/list.png){ align=right width="400"}
 
-## Gizlilik Düzeyleri ve Kullanıcı Erişimi
+## Gizlilik Seviyeleri ve Kullanıcı Erişimi
 
-Birçok kişi bazı detayları özel tutmak ister ve buna saygı gösteriyoruz! Kayıtları özel olarak işaretleyebilir ve hangi kullanıcıların özel kayıtlara erişebileceğini kontrol edebilirsiniz. Özel kayıtlar, maksimum güvenlik için veritabanı katmanında filtrelenir. Ayrıca, kullanıcıların neleri ekleyip düzenleyebileceğini kontrol edebilirsiniz.
+Birçok kişi bazı ayrıntıları gizli tutmak ister ve buna saygı gösteriyoruz! Kayıtları özel olarak işaretleyebilir ve hangi kullanıcıların özel kayıtlara erişebileceğini kontrol edebilirsiniz. Özel kayıtlar, maksimum güvenlik için veritabanı katmanında filtrelenir. Ayrıca, kullanıcıların ekleme ve düzenleme yeteneklerini kontrol edebilirsiniz.
 
-Kullanıcılar, bir şifre ile veya [OpenID Connect](../install_setup/oidc.md) kullanarak bir dış kimlik sağlayıcısı aracılığıyla – Google ve Microsoft ile birlikte, Keycloak, Authentik ve Authelia gibi özel sağlayıcılar ile – oturum açabilirler.
-
-<div style="clear:both;"></div>
-
----
-
-![Görsel başlığı](screenshots/blog.png){ align=left width="400"}
-
-## Dahil Edilmiş Genealoji Blogu
-
-Araştırmanızı resimlerle blog hikayeleri şeklinde özetleyin ve akrabalarınızla paylaşın. Yeni bir gönderi yazmayı kolaylaştıran özel bir editör bulunmaktadır. Tüm veriler Gramps veritabanında depolanır.
+Kullanıcılar bir şifre ile veya [OpenID Connect](../install_setup/oidc.md) kullanarak bir dış kimlik sağlayıcısı aracılığıyla giriş yapabilir – Google ve Microsoft kutudan çıkmış olarak, ayrıca Keycloak, Authentik ve Authelia gibi özel sağlayıcılar.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/tasks.png){ align=right width="400"}
+![Görüntü başlığı](screenshots/blog.png){ align=left width="400"}
+
+## Dahil Edilmiş Soybilgisi Blogu
+
+Araştırmanızı resimlerle birlikte blog hikayeleri şeklinde özetleyin ve akrabalarınızla paylaşın. Özel bir editör, yeni bir gönderi yazmayı kolaylaştırır. Tüm veriler Gramps veritabanında saklanır.
+
+<div style="clear:both;"></div>
+
+---
+
+![Görüntü başlığı](screenshots/tasks.png){ align=right width="400"}
 
 ## Entegre Görev Yönetim Uygulaması
 
-Gramps Web, genealogik araştırmanızı organize etmek ve planlamak için entegre bir görev yönetim uygulaması ile birlikte gelir. Her göreve bir durum, öncelik ve etiket verin, ilerlemenizi zengin metin açıklaması ile belgeleyin ve topladığınız medyayı ekleyin.
+Gramps Web, soybilgisel araştırmanızı organize etmek ve planlamak için entegre bir görev yönetim uygulaması ile birlikte gelir. Her göreve bir durum, öncelik ve etiket verin, ilerlemenizi zengin metin açıklaması ile belgeleyin ve yol boyunca topladığınız medyayı ekleyin.
 
-Görevler, Gramps veritabanında kaynaklar olarak depolanır, bu nedenle genealogik verilerinizin bir parçasını oluşturur ve Gramps Masaüstü'nde de erişilebilir ve düzenlenebilir.
+Görevler, Gramps veritabanında kaynaklar olarak saklanır, böylece soybilgisel verilerinizin bir parçasını oluşturur ve Gramps Masaüstü'nde de erişilip düzenlenebilir.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/report.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/report.png){ align=left width="400"}
 
 ## Yazdırılabilir Raporlar Oluşturun
 
-Gramps Masaüstünü destekleyen çekirdek üzerine doğrudan inşa edildiğinden, masaüstü uygulamanın desteklediği neredeyse tüm [raporları](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) tarayıcıdan oluşturabilirsiniz, ilişki grafiklerini veya kitap raporlarını PDF olarak dahil.
+Gramps Masaüstünü güçlendiren çekirdek üzerine inşa edildiğinden, masaüstü uygulamasının desteklediği neredeyse tüm [raporları](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) tarayıcıdan oluşturabilirsiniz; ilişki grafikleri veya kitap raporları gibi PDF formatında.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/export.png){ align=right width="300"}
+![Görüntü başlığı](screenshots/export.png){ align=right width="300"}
 
 ## Kilitlenme Yok – Veri İçe Aktarma ve Dışa Aktarma
 
-Gramps XML ve GEDCOM dahil olmak üzere çeşitli formatlarda veri içe aktarma yeteneğinin yanı sıra, Gramps Web, kullanıcıların tüm verilerini (aile ağacı verileri, medya dosyaları, kullanıcı hesapları) herhangi bir zamanda yedekleme amacıyla veya farklı bir sunucuya geçiş yapmak için indirmelerini kolaylaştırır. Veriler yalnızca size aittir!
+Gramps XML ve GEDCOM dahil olmak üzere çeşitli formatlarda veri içe aktarma imkanı sağlamanın yanı sıra, Gramps Web kullanıcıların tüm verilerini (aile ağacı verileri, medya dosyaları, kullanıcı hesapları) herhangi bir zamanda yedekleme amaçları için veya farklı bir sunucuya geçmek için indirmelerini kolaylaştırır. Veriler yalnızca size aittir!
 
 İçe aktarımlar, herhangi bir şey yazılmadan önce bir deneme olarak önizlenebilir ve tam bir yedekleme ağaca geri yüklenebilir.
 
@@ -193,19 +193,19 @@ Gramps XML ve GEDCOM dahil olmak üzere çeşitli formatlarda veri içe aktarma 
 
 ---
 
-![Görsel başlığı](screenshots/mobile.png){ align=left width="400"}
+![Görüntü başlığı](screenshots/mobile.png){ align=left width="400"}
 
 ## Her Cihazda Çalışır
 
-Gramps Web'e herhangi bir web destekli cihazdan erişin. Fotoğraf yükleyebilir, kayıt oluşturabilir veya düzenleyebilir, aile ağacınızı başkalarına gösterebilir veya bir sonraki aile buluşmanızda hatırlayamadığınız aile üyelerinin isimlerini arayabilirsiniz!
+Gramps Web'e herhangi bir web uyumlu cihazdan erişin. Fotoğraflar yükleyebilir, kayıtlar oluşturabilir veya düzenleyebilir, aile ağacınızı başkalarına gösterebilir veya bir sonraki aile buluşmanızda hatırlayamadığınız aile üyesi isimlerini arayabilirsiniz!
 
-Gramps Web, ilerici bir web uygulamasıdır: ana ekranınıza veya masaüstünüze yükleyin ve yerel bir uygulama gibi davranır. Masaüstünde, [klavye kısayolları](../user-guide/shortcuts.md) ile birkaç tuş vuruşunda her yere ulaşabilirsiniz – hepsini görmek için `?` tuşuna basın.
+Gramps Web, ilerici bir web uygulamasıdır: ana ekranınıza veya masaüstünüze kurun ve yerel bir uygulama gibi davranır. Masaüstünde, [klavye kısayolları](../user-guide/shortcuts.md) ile birkaç tuş vuruşunda her yere gidebilirsiniz – hepsini görmek için `?` tuşuna basın.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Görsel başlığı](screenshots/lang.png){ align=right width="300"}
+![Görüntü başlığı](screenshots/lang.png){ align=right width="300"}
 
 ## Tamamen Uluslararasılaştırılmış
 
@@ -215,22 +215,22 @@ Arayüzün dilini Gramps topluluğu tarafından çevrilen 50'den fazla dil aras�
 
 ---
 
-## Ve Daha Fazlası
+## Ve daha fazlası
 
-- **Bildirimler ve arka plan görevleri** – içe aktarmalar, dışa aktarmalar, raporlar ve indeks yeniden oluşturma işlemleri arka planda çalışır, ilerleme ve hatalar bir yerde toplanır
-- **Etiketler, yer imleri ve tarihçe** – nesneleri renk kodlu etiketlerle organize edin ve üzerinde çalıştığınız şeye geri dönün
+- **Bildirimler ve arka plan görevleri** – içe aktarmalar, dışa aktarmalar, raporlar ve indeks yeniden oluşturma işlemleri arka planda çalışır, ilerleme ve hatalar tek bir yerde toplanır
+- **Etiketler, yer imleri ve geçmiş** – nesneleri renk kodlu etiketlerle organize edin ve üzerinde çalıştığınız şeye geri dönün
 - **Toplu düzenleme** – liste görünümlerinde birden fazla nesneyi seçerek hepsini birden silin veya yinelenen nesneleri birleştirin
-- **Özelleştirilebilir liste görünümleri** – hangi sütunların gösterileceğini seçin ve metin, etiket veya gizlilik ile filtreleyin
+- **Özelleştirilebilir liste görünümleri** – hangi sütunların gösterileceğini seçin ve metin, etiket veya gizlilik açısından filtreleyin
 - **Metin tanıma (OCR)** – medya galerinizdeki taranmış belgelerden metin çıkarın
 - **Veri doğrulama** – ağacınızı mantıksız tarihler ve diğer veri sorunları için kontrol edin
-- **Takvimler** – tarihleri Gregoryen, Julian, İbrani, Fransız Cumhuriyeti, Pers, İslam veya İsveç takviminde girin
-- **Kendinize ait hale getirin** – sitenize kendi adını, tema renklerini ve ana sayfa metni ve görselini verin
+- **Takvimler** – tarihleri Gregoryen, Julian, İbrani, Fransız Cumhuriyeti, Pers, İslam veya İsveç takvimine göre girin
+- **Kendinize ait yapın** – sitenize kendi adını, tema renklerini ve ana sayfa metni ile resmini verin
 
 <p>&nbsp;</p>
 
 ## Demo
 
-Demo'ya giriş yapmak için aşağıdaki ***KULLANICI / ŞİFRE*** giriş bilgilerini kullanın. Her biri bir Gramps Web kullanıcısına atanabilecek bir kullanıcı türünü temsil eder.
+Demo'ya giriş yapmak için aşağıdaki ***KULLANICI / ŞİFRE*** giriş kimlik bilgilerinden birini kullanın. Her biri, bir Gramps Web kullanıcısına atanabilecek bir kullanıcı türünü temsil eder.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -245,4 +245,4 @@ Demo'ya giriş yapmak için aşağıdaki ***KULLANICI / ŞİFRE*** giriş bilgil
 
 Demo, DigitalOcean tarafından nazikçe desteklenmektedir.
 
-<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referans Rozeti" /></a>
+<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>

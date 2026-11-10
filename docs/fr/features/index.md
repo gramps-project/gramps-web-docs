@@ -13,7 +13,7 @@ hide:
 
 Gramps Web utilise la même structure **Modèle / Base de données** que [Gramps Desktop](https://gramps-project.org/) pour stocker les données généalogiques. Vous pouvez parcourir tous les mêmes [Types d'enregistrements](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) que dans Gramps Desktop : ***personnes, familles, événements, lieux, dépôts, sources, citations, objets multimédias et notes.***
 
-En utilisant le [Gramps Web Sync Add-on](../administration/sync.md) pour Gramps Desktop, les données peuvent être synchronisées de manière bidirectionnelle entre Gramps Web et Gramps Desktop ! N'hésitez pas à modifier vos données avec Gramps Web ou l'application Gramps Desktop que vous connaissez et aimez – elles fonctionnent ensemble sans problème !
+En utilisant le [Gramps Web Sync Add-on](../administration/sync.md) pour Gramps Desktop, les données peuvent être synchronisées dans les deux sens entre Gramps Web et Gramps Desktop ! Allez-y et modifiez vos données avec Gramps Web ou l'application Gramps Desktop que vous connaissez et aimez – elles fonctionnent ensemble sans problème !
 
 <div style="clear:both;"></div>
 
@@ -21,11 +21,11 @@ En utilisant le [Gramps Web Sync Add-on](../administration/sync.md) pour Gramps 
 
 ![Image title](screenshots/fan.png){ align=right width="400"}
 
-## Graphiques interactifs d'arbres généalogiques
+## Graphiques interactifs de l'arbre généalogique
 
-Naviguez dans votre arbre généalogique sous forme d'arbre ancestral, d'arbre descendant, de graphique en sablier, de graphique de relations ou de graphique en éventail, avec des graphiques interactifs de haute qualité et un nombre de générations configurable.
+Naviguez dans votre arbre généalogique sous forme d'arbre d'ancêtres, d'arbre de descendants, de graphique en sablier, de graphique de relations ou de graphique en éventail, avec des graphiques interactifs de haute qualité et un nombre de générations configurable.
 
-Survolez n'importe quelle personne pour voir une carte de prévisualisation avec ses faits clés, et accédez directement de l'arbre à la page de détails complète.
+Survolez n'importe quelle personne pour voir une carte de prévisualisation avec ses faits clés, et passez directement du graphique à la page de détails complète.
 
 <div style="clear:both;"></div>
 
@@ -47,7 +47,7 @@ Voir [Édition de l'arbre généalogique](../user-guide/tree-edit.md).
 
 ## Chronologie chronologique
 
-Voyez chaque événement de votre arbre généalogique disposé sur une chronologie horizontale et zoomable. Faites défiler et zoomez à travers les siècles, puis filtrez pour une seule personne – ou pour tous leurs ancêtres ou descendants – ou pour tout ce qui s'est passé à un endroit donné.
+Voyez chaque événement de votre arbre généalogique disposé sur une chronologie horizontale et zoomable. Faites défiler et zoomez à travers les siècles, puis filtrez pour une seule personne – ou pour tous ses ancêtres ou descendants – ou pour tout ce qui s'est passé à un endroit donné.
 
 Voir [Chronologie](../user-guide/timeline.md).
 
@@ -71,7 +71,7 @@ Affichez tous les lieux de votre arbre sur une carte interactive et consultable.
 
 Transformez une carte historique stockée en tant qu'objet multimédia dans Gramps en une superposition de carte personnalisée.
 
-De plus, les cartes vectorielles historiques créées par le projet [OpenHistoricalMap](https://www.openhistoricalmap.org/) sont le complément parfait pour la cartographie généalogique. Utilisez le curseur temporel pour faire défiler l'évolution des lieux dans votre histoire familiale et afficher les endroits où vos ancêtres ont vécu ou où des événements se sont produits.
+De plus, les cartes vectorielles historiques créées par le projet [OpenHistoricalMap](https://www.openhistoricalmap.org/) sont le complément parfait à la cartographie généalogique. Utilisez le curseur temporel pour faire défiler l'évolution des lieux dans votre histoire familiale et afficher les lieux où vivaient les ancêtres ou où se sont déroulés des événements.
 
 <div style="clear:both;"></div>
 
@@ -81,9 +81,9 @@ De plus, les cartes vectorielles historiques créées par le projet [OpenHistori
 
 ## Trouvez n'importe quoi
 
-Le moteur de recherche en texte intégral couvre tous les types d'objets Gramps, y compris le contenu des notes textuelles, et prend en charge les jokers et les opérateurs logiques.
+Le moteur de recherche en texte intégral couvre tous les types d'objets Gramps, y compris le contenu des notes textuelles, et prend en charge les caractères génériques et les opérateurs logiques.
 
-Pour des requêtes précises, les vues de liste d'objets offrent un mode de filtre avancé basé sur le [Gramps Query Language](../user-guide/gql.md), ainsi que des filtres rapides par texte, étiquette et confidentialité.
+Pour des requêtes précises, les vues de liste d'objets offrent un mode de filtre avancé basé sur le [Gramps Object Query Language](../user-guide/goql.md), ainsi que des filtres rapides par texte, étiquette et confidentialité.
 
 Depuis la page de n'importe quelle personne, [Recherche externe](../user-guide/external-search.md) ouvre une recherche pré-remplie sur FamilySearch, Ancestry, CompGen et d'autres sites – et vous pouvez ajouter les vôtres.
 
@@ -93,11 +93,11 @@ Depuis la page de n'importe quelle personne, [Recherche externe](../user-guide/e
 
 ![Image title](screenshots/chat.png){ align=right width="400"}
 
-## Assistant AI intégré
+## Assistant IA intégré
 
 Propulsé par l'IA, Gramps Web vous permet de discuter avec votre arbre généalogique – dans votre langue maternelle !
 
-L'assistant ne se contente pas de rechercher : il interroge directement votre base de données avec un ensemble d'outils, filtrant les personnes, événements, familles et lieux, et calculant les relations entre les individus. Vous pouvez voir quels outils il utilise pour construire une réponse, et les questions plus longues s'exécutent en tant que tâches d'arrière-plan, vous permettant de naviguer ailleurs et de revenir.
+L'assistant ne se contente pas de rechercher : il interroge directement votre base de données avec un ensemble d'outils, filtrant les personnes, événements, familles et lieux, et calculant les relations entre les individus. Vous pouvez voir quels outils il utilise pendant qu'il construit une réponse, et les questions plus longues s'exécutent en arrière-plan afin que vous puissiez naviguer ailleurs et revenir.
 
 <div style="clear:both;"></div>
 
@@ -107,9 +107,9 @@ L'assistant ne se contente pas de rechercher : il interroge directement votre ba
 
 ## Correspondances ADN, navigateur de chromosomes & Y-ADN
 
-Si vous avez des données de correspondance ADN d'un des fournisseurs de généalogie ADN, téléchargez-les et stockez-les de manière pérenne et visualisez vos correspondances dans un navigateur de chromosomes interactif.
+Si vous avez des données de correspondance ADN provenant de l'un des fournisseurs de généalogie ADN, téléchargez-les et stockez-les de manière pérenne et visualisez vos correspondances dans un navigateur de chromosomes interactif.
 
-Les données brutes SNP du chromosome Y peuvent être utilisées pour déterminer le [haplogroupe Y-ADN](../user-guide/y-dna.md) le plus probable d'une personne et afficher ses ancêtres patrilinéaires dans l'arbre du chromosome Y humain, avec des estimations de temps. L'analyse se déroule entièrement sur votre propre serveur – aucune donnée n'est envoyée à un tiers.
+Les données brutes SNP du chromosome Y peuvent être utilisées pour déterminer le [haplogroupe Y-ADN](../user-guide/y-dna.md) le plus probable d'une personne et afficher ses ancêtres patrilinéaires dans l'arbre du chromosome Y humain, avec des estimations de temps. L'analyse s'exécute entièrement sur votre propre serveur – aucune donnée n'est envoyée à un tiers.
 
 <div style="clear:both;"></div>
 
@@ -129,7 +129,7 @@ Collaborez avec vos proches pour identifier des ancêtres sur de vieilles photos
 
 ## Historique complet des révisions – avec annulation
 
-Chaque modification de votre arbre généalogique est enregistrée. Parcourez l'historique complet regroupé par transaction, explorez tout changement individuel pour voir exactement quels champs ont été ajoutés, supprimés ou modifiés, et annulez une transaction si elle s'avère être une erreur. La page de chaque objet a également son propre onglet de révision montrant qui l'a modifié et quand.
+Chaque modification apportée à votre arbre généalogique est enregistrée. Parcourez l'historique complet regroupé par transaction, explorez tout changement individuel pour voir exactement quels champs ont été ajoutés, supprimés ou modifiés, et annulez une transaction si elle s'avère être une erreur. La page de chaque objet dispose également de son propre onglet de révision montrant qui l'a modifié et quand.
 
 Voir [Historique des révisions](../user-guide/revisions.md).
 
@@ -163,9 +163,9 @@ Résumez vos recherches sous forme d'histoires de blog avec des images, et parta
 
 ## Application de gestion des tâches intégrée
 
-Gramps Web est livré avec une application de gestion des tâches intégrée pour organiser et planifier vos recherches généalogiques. Donnez à chaque tâche un statut, une priorité et des étiquettes, documentez vos progrès dans une description en texte enrichi, et attachez les médias que vous avez rassemblés en cours de route.
+Gramps Web est livré avec une application de gestion des tâches intégrée pour organiser et planifier vos recherches généalogiques. Donnez à chaque tâche un statut, une priorité et des étiquettes, documentez vos progrès dans une description en texte enrichi, et joignez les médias que vous avez rassemblés en cours de route.
 
-Les tâches sont stockées en tant que sources dans la base de données Gramps, elles font donc partie de vos données généalogiques et peuvent être accessibles et modifiées dans Gramps Desktop également.
+Les tâches sont stockées en tant que sources dans la base de données Gramps, elles font donc partie de vos données généalogiques et peuvent également être accessibles et modifiées dans Gramps Desktop.
 
 <div style="clear:both;"></div>
 
@@ -175,7 +175,7 @@ Les tâches sont stockées en tant que sources dans la base de données Gramps, 
 
 ## Générer des rapports imprimables
 
-Puisqu'il est construit directement sur le noyau alimentant Gramps Desktop, vous pouvez générer presque tous les [rapports](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) que l'application de bureau prend en charge directement depuis le navigateur, y compris des graphiques de relations ou des rapports de livre au format PDF.
+Puisqu'il est construit directement sur le noyau alimentant Gramps Desktop, vous pouvez générer presque tous les [rapports](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) que l'application de bureau prend en charge directement depuis le navigateur, y compris des graphiques de relations ou des rapports de livres au format PDF.
 
 <div style="clear:both;"></div>
 
@@ -185,7 +185,7 @@ Puisqu'il est construit directement sur le noyau alimentant Gramps Desktop, vous
 
 ## Pas de verrouillage – importation et exportation de données
 
-En plus de pouvoir importer des données dans divers formats, y compris Gramps XML et GEDCOM, Gramps Web facilite aux utilisateurs le téléchargement de toutes leurs données (données d'arbre généalogique, fichiers multimédias, comptes utilisateurs) à tout moment, à des fins de sauvegarde ou pour passer à un autre serveur. Vos données vous appartiennent !
+En plus de pouvoir importer des données dans divers formats, y compris Gramps XML et GEDCOM, Gramps Web facilite aux utilisateurs le téléchargement de toutes leurs données (données de l'arbre généalogique, fichiers multimédias, comptes utilisateurs) à tout moment, à des fins de sauvegarde ou pour passer à un autre serveur. Vos données vous appartiennent !
 
 Les importations peuvent être prévisualisées comme un essai avant que quoi que ce soit ne soit écrit, et une sauvegarde complète peut être restaurée dans l'arbre.
 
@@ -199,7 +199,7 @@ Les importations peuvent être prévisualisées comme un essai avant que quoi qu
 
 Accédez à Gramps Web depuis n'importe quel appareil connecté à Internet. Vous pouvez télécharger des photos, créer ou modifier des enregistrements, montrer votre arbre généalogique à d'autres, ou rechercher ces noms de membres de la famille que vous ne pouvez pas vous rappeler lors de votre prochaine réunion de famille !
 
-Gramps Web est une application web progressive : installez-la sur votre écran d'accueil ou votre bureau et elle se comporte comme une application native. Sur le bureau, des [raccourcis clavier](../user-guide/shortcuts.md) vous permettent d'accéder à tout en quelques frappes – appuyez sur `?` pour les voir tous.
+Gramps Web est une application web progressive : installez-la sur votre écran d'accueil ou votre bureau et elle se comporte comme une application native. Sur le bureau, des [raccourcis clavier](../user-guide/shortcuts.md) vous permettent d'accéder à n'importe où en quelques frappes – appuyez sur `?` pour les voir tous.
 
 <div style="clear:both;"></div>
 
@@ -209,20 +209,20 @@ Gramps Web est une application web progressive : installez-la sur votre écran d
 
 ## Entièrement internationalisé
 
-Changez la langue de l'interface parmi plus de 50 langues traduites par la communauté Gramps.
+Changez la langue de l'interface entre plus de 50 langues traduites par la communauté Gramps.
 
 <div style="clear:both;"></div>
 
 ---
 
-## Et plus encore
+## Et plus
 
-- **Notifications et tâches d'arrière-plan** – les importations, exportations, rapports et reconstructions d'index s'exécutent en arrière-plan, avec les progrès et les erreurs collectés en un seul endroit
+- **Notifications et tâches en arrière-plan** – les importations, exportations, rapports et reconstructions d'index s'exécutent en arrière-plan, avec les progrès et les erreurs collectées en un seul endroit
 - **Étiquettes, signets et historique** – organisez les objets avec des étiquettes codées par couleur et revenez à ce sur quoi vous travailliez
-- **Édition en masse** – sélectionnez plusieurs objets dans les vues de liste pour les supprimer en une seule fois, ou fusionnez des objets dupliqués
+- **Édition en masse** – sélectionnez plusieurs objets dans les vues de liste pour les supprimer en une seule fois, ou fusionner des objets en double
 - **Vues de liste personnalisables** – choisissez quelles colonnes afficher, et filtrez par texte, étiquette ou confidentialité
 - **Reconnaissance de texte (OCR)** – extrayez du texte à partir de documents numérisés dans votre galerie multimédia
-- **Vérification des données** – vérifiez votre arbre pour des dates peu plausibles et d'autres problèmes de données
+- **Vérification des données** – vérifiez votre arbre pour des dates implausibles et d'autres problèmes de données
 - **Calendriers** – saisissez des dates dans le calendrier grégorien, julien, hébreu, républicain français, persan, islamique ou suédois
 - **Personnalisez-le** – donnez à votre site son propre nom, ses couleurs de thème, et son texte et image de page d'accueil
 
@@ -230,7 +230,7 @@ Changez la langue de l'interface parmi plus de 50 langues traduites par la commu
 
 ## Démo
 
-Pour vous connecter à la démo, utilisez l'une des identifiants de connexion ***USER / PASS*** suivants. Chacun représente un type d'utilisateur auquel un utilisateur de Gramps Web peut être assigné.
+Pour vous connecter à la démo, utilisez l'un des identifiants de connexion ***USER / PASS*** suivants. Chacun représente un type d'utilisateur auquel un utilisateur de Gramps Web peut être assigné.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -241,8 +241,8 @@ Pour vous connecter à la démo, utilisez l'une des identifiants de connexion **
 [Accéder à la connexion de la démo](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 
-### Remerciements
+### Merci
 
 La démo est gentiment soutenue par DigitalOcean.
 
-<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="Badge de parrainage DigitalOcean" /></a>
+<a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>

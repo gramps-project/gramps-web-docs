@@ -11,7 +11,7 @@ hide:
 
 ## Vollständige Integration mit Gramps Desktop
 
-Gramps Web verwendet die gleiche **Modell / Datenbank**-Struktur, die [Gramps Desktop](https://gramps-project.org/) zur Speicherung genealogischer Daten verwendet. Sie können alle gleichen [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen, die Sie in Gramps Desktop haben: ***Personen, Familien, Ereignisse, Orte, Archive, Quellen, Zitationen, Medienobjekte und Notizen.***
+Gramps Web verwendet die gleiche **Modell-/Datenbank**-Struktur, die auch [Gramps Desktop](https://gramps-project.org/) zur Speicherung genealogischer Daten nutzt. Sie können alle gleichen [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen, die Sie in Gramps Desktop finden: ***Personen, Familien, Ereignisse, Orte, Archive, Quellen, Zitationen, Medienobjekte und Notizen.***
 
 Mit dem [Gramps Web Sync Add-on](../administration/sync.md) für Gramps Desktop können Daten bidirektional zwischen Gramps Web und Gramps Desktop synchronisiert werden! Bearbeiten Sie Ihre Daten mit Gramps Web oder der Gramps Desktop-App, die Sie kennen und lieben – sie arbeiten nahtlos zusammen!
 
@@ -21,9 +21,9 @@ Mit dem [Gramps Web Sync Add-on](../administration/sync.md) für Gramps Desktop 
 
 ![Bildtitel](screenshots/fan.png){ align=right width="400"}
 
-## Interaktive Familienstammbaum-Diagramme
+## Interaktive Stammbaumgrafiken
 
-Navigieren Sie durch Ihren Familienstammbaum als Ahnenbaum, Nachkommenbaum, Sanduhr-Diagramm, Beziehungsgrafik oder Fächerdiagramm, mit hochwertigen interaktiven Grafiken und einer konfigurierbaren Anzahl von Generationen.
+Navigieren Sie durch Ihren Stammbaum als Ahnenbaum, Nachkommenbaum, Sanduhrgrafik, Beziehungsgrafik oder Fächerdiagramm, mit hochwertigen interaktiven Grafiken und einer konfigurierbaren Anzahl von Generationen.
 
 Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren wichtigsten Fakten zu sehen, und springen Sie direkt vom Diagramm zur vollständigen Detailseite.
 
@@ -35,9 +35,9 @@ Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren wicht
 
 ## Bauen Sie Ihren Baum direkt im Diagramm
 
-Schalten Sie die Baumansicht in den Bearbeitungsmodus und erweitern Sie Ihren Familienstammbaum, ohne das Diagramm zu verlassen. Jede Personenkarten erhält einen **+**-Button, um einen Vater, eine Mutter, ein Kind oder einen Ehepartner hinzuzufügen – entweder indem Sie jemanden verlinken, der bereits in Ihrer Datenbank ist, oder indem Sie sofort eine ganz neue Person erstellen. Jede Änderung wird sofort gespeichert.
+Schalten Sie die Baumansicht in den Bearbeitungsmodus und erweitern Sie Ihren Stammbaum, ohne das Diagramm zu verlassen. Jede Personenkarten erhält einen **+**-Button, um einen Vater, eine Mutter, ein Kind oder einen Ehepartner hinzuzufügen – entweder indem Sie jemanden verlinken, der bereits in Ihrer Datenbank ist, oder indem Sie sofort eine ganz neue Person erstellen. Jede Änderung wird sofort gespeichert.
 
-Siehe [Familienstammbaum bearbeiten](../user-guide/tree-edit.md).
+Siehe [Bearbeiten des Stammbaums](../user-guide/tree-edit.md).
 
 <div style="clear:both;"></div>
 
@@ -47,7 +47,7 @@ Siehe [Familienstammbaum bearbeiten](../user-guide/tree-edit.md).
 
 ## Chronologische Zeitleiste
 
-Sehen Sie jedes Ereignis in Ihrem Familienstammbaum auf einer horizontalen, zoombaren Zeitleiste. Scrollen und zoomen Sie durch die Jahrhunderte, filtern Sie dann nach einer einzelnen Person – oder nach allen ihren Vorfahren oder Nachkommen – oder nach allem, was an einem Ort passiert ist.
+Sehen Sie jedes Ereignis in Ihrem Stammbaum auf einer horizontalen, zoombaren Zeitleiste. Scrollen und zoomen Sie durch die Jahrhunderte, filtern Sie dann nach einer einzelnen Person – oder nach allen ihren Vorfahren oder Nachkommen – oder nach allem, was an einem bestimmten Ort passiert ist.
 
 Siehe [Zeitleiste](../user-guide/timeline.md).
 
@@ -79,13 +79,13 @@ Darüber hinaus sind die historischen Vektorkarten, die vom [OpenHistoricalMap](
 
 ![Bildtitel](screenshots/search.png){ align=left width="400"}
 
-## Alles finden
+## Finde alles
 
-Die Volltext-Suchmaschine deckt alle Gramps-Objekttypen ab, einschließlich des Inhalts von Textnotizen, und unterstützt Platzhalter und logische Operatoren.
+Die Volltextsuchmaschine deckt alle Gramps-Objekttypen ab, einschließlich des Inhalts von Textnotizen, und unterstützt Platzhalter und logische Operatoren.
 
-Für präzise Abfragen bieten die Objektlistenansichten einen erweiterten Filtermodus basierend auf der [Gramps-Abfragesprache](../user-guide/gql.md), neben schnellen Filtern nach Text, Etikett und Privatsphäre.
+Für präzise Abfragen bieten die Objektlistenansichten einen erweiterten Filtermodus basierend auf der [Gramps Object Query Language](../user-guide/goql.md), neben schnellen Filtern nach Text, Etikett und Privatsphäre.
 
-Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-search.md) eine vorab ausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Seiten – und Sie können Ihre eigenen hinzufügen.
+Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-search.md) eine vorausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Seiten – und Sie können Ihre eigenen hinzufügen.
 
 <div style="clear:both;"></div>
 
@@ -95,9 +95,9 @@ Von der Seite einer Person aus öffnet [Externe Suche](../user-guide/external-se
 
 ## Integrierter KI-Assistent
 
-Angetrieben von KI ermöglicht Gramps Web Ihnen, mit Ihrem Familienstammbaum zu chatten – in Ihrer Muttersprache!
+Angetrieben von KI ermöglicht Gramps Web Ihnen, mit Ihrem Stammbaum zu chatten – in Ihrer Muttersprache!
 
-Der Assistent sucht nicht nur: Er fragt direkt in Ihrer Datenbank mit einer Reihe von Werkzeugen nach, filtert Personen, Ereignisse, Familien und Orte und berechnet Beziehungen zwischen Individuen. Sie können beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt, und längere Fragen laufen als Hintergrundaufgaben, sodass Sie navigieren und später zurückkehren können.
+Der Assistent sucht nicht nur: Er fragt direkt in Ihrer Datenbank mit einer Reihe von Werkzeugen ab, filtert Personen, Ereignisse, Familien und Orte und berechnet Beziehungen zwischen Individuen. Sie können beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt, und längere Fragen laufen als Hintergrundaufgaben, sodass Sie weg navigieren und zurückkommen können.
 
 <div style="clear:both;"></div>
 
@@ -107,9 +107,9 @@ Der Assistent sucht nicht nur: Er fragt direkt in Ihrer Datenbank mit einer Reih
 
 ## DNA-Übereinstimmungen, Chromosomenbrowser & Y-DNA
 
-Wenn Sie DNA-Übereinstimmungsdaten von einem der DNA-Genealogie-Anbieter haben, laden Sie diese hoch und speichern Sie sie zukunftssicher und sehen Sie sich Ihre Übereinstimmungen in einem interaktiven Chromosomenbrowser an.
+Wenn Sie DNA-Übereinstimmungsdaten von einem der DNA-Genealogie-Anbieter haben, laden Sie sie hoch und speichern Sie sie zukunftssicher und sehen Sie Ihre Übereinstimmungen in einem interaktiven Chromosomenbrowser.
 
-Rohe Y-Chromosomen-SNP-Daten können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre patrilinearen Vorfahren im menschlichen Y-Chromosomenbaum anzuzeigen, mit Zeitabschätzungen. Die Analyse erfolgt vollständig auf Ihrem eigenen Server – keine Daten werden an Dritte gesendet.
+Rohdaten zu Y-Chromosomen-SNPs können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre patrilinearen Vorfahren im menschlichen Y-Chromosomenbaum mit Zeitabschätzungen anzuzeigen. Die Analyse erfolgt vollständig auf Ihrem eigenen Server – keine Daten werden an Dritte gesendet.
 
 <div style="clear:both;"></div>
 
@@ -117,9 +117,9 @@ Rohe Y-Chromosomen-SNP-Daten können verwendet werden, um die wahrscheinlichste 
 
 ![Bildtitel](screenshots/tag.png){ align=right width="400"}
 
-## Personen in Fotos mit automatischer Gesichtserkennung kennzeichnen
+## Personen in Fotos mit automatischer Gesichtserkennung markieren
 
-Arbeiten Sie mit Ihren Verwandten zusammen, um Vorfahren in alten Familienfotos zu identifizieren. Dank automatischer Gesichtserkennung ist das Kennzeichnen von Personen nur zwei Klicks entfernt.
+Arbeiten Sie mit Ihren Verwandten zusammen, um Vorfahren in alten Familienfotos zu identifizieren. Dank der automatischen Gesichtserkennung ist das Taggen von Personen nur zwei Klicks entfernt.
 
 <div style="clear:both;"></div>
 
@@ -129,7 +129,7 @@ Arbeiten Sie mit Ihren Verwandten zusammen, um Vorfahren in alten Familienfotos 
 
 ## Vollständige Versionshistorie – mit Rückgängig
 
-Jede Bearbeitung Ihres Familienstammbaums wird aufgezeichnet. Durchsuchen Sie die vollständige Historie, gruppiert nach Transaktionen, und gehen Sie auf jede einzelne Änderung ein, um genau zu sehen, welche Felder hinzugefügt, entfernt oder geändert wurden, und machen Sie eine Transaktion rückgängig, wenn sich herausstellt, dass es ein Fehler war. Jede Objektseite hat auch ihren eigenen Reiter für Revisionen, der zeigt, wer sie geändert hat und wann.
+Jede Bearbeitung Ihres Stammbaums wird aufgezeichnet. Durchsuchen Sie die vollständige Historie, gruppiert nach Transaktionen, und tauchen Sie in jede einzelne Änderung ein, um genau zu sehen, welche Felder hinzugefügt, entfernt oder geändert wurden, und machen Sie eine Transaktion rückgängig, wenn sich herausstellt, dass es ein Fehler war. Jede Objektseite hat auch ihren eigenen Reiter für Revisionen, der zeigt, wer sie geändert hat und wann.
 
 Siehe [Versionshistorie](../user-guide/revisions.md).
 
@@ -143,7 +143,7 @@ Siehe [Versionshistorie](../user-guide/revisions.md).
 
 Viele Menschen möchten einige Details privat halten, und das respektieren wir! Sie können Datensätze als privat kennzeichnen und steuern, welche Benutzer private Datensätze einsehen dürfen. Private Datensätze werden auf der Datenbankebene für maximale Sicherheit herausgefiltert. Darüber hinaus können Sie steuern, was Benutzer hinzufügen und bearbeiten dürfen.
 
-Benutzer können sich mit einem Passwort oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) anmelden – Google und Microsoft sofort einsatzbereit, sowie benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
+Benutzer können sich mit einem Passwort oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) anmelden – Google und Microsoft standardmäßig sowie benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
 
 <div style="clear:both;"></div>
 
@@ -185,9 +185,9 @@ Da es direkt auf dem Kern basiert, der Gramps Desktop antreibt, können Sie fast
 
 ## Kein Lock-in – Datenimport und -export
 
-Neben der Möglichkeit, Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, zu importieren, erleichtert Gramps Web es Benutzern, jederzeit alle ihre Daten (Familienstammdaten, Mediendateien, Benutzerkonten) herunterzuladen, zu Backup-Zwecken oder um auf einen anderen Server zu wechseln. Ihre Daten gehören nur Ihnen!
+Neben der Möglichkeit, Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, zu importieren, erleichtert Gramps Web den Benutzern, jederzeit alle ihre Daten (Stammdaten, Mediendateien, Benutzerkonten) herunterzuladen, um Sicherungskopien zu erstellen oder auf einen anderen Server zu wechseln. Ihre Daten gehören nur Ihnen!
 
-Importe können als Trockenlauf angezeigt werden, bevor etwas geschrieben wird, und ein vollständiges Backup kann wieder in den Baum zurückgestellt werden.
+Importe können als Trockenlauf angezeigt werden, bevor etwas geschrieben wird, und eine vollständige Sicherung kann wieder in den Baum zurückgestellt werden.
 
 <div style="clear:both;"></div>
 
@@ -197,9 +197,9 @@ Importe können als Trockenlauf angezeigt werden, bevor etwas geschrieben wird, 
 
 ## Funktioniert auf jedem Gerät
 
-Greifen Sie von jedem webfähigen Gerät auf Gramps Web zu. Sie können Fotos hochladen, Datensätze erstellen oder bearbeiten, Ihren Familienstammbaum anderen zeigen oder sich bei Ihrem nächsten Familientreffen an die Namen der Familienmitglieder erinnern, die Sie nicht mehr wissen!
+Greifen Sie von jedem webfähigen Gerät auf Gramps Web zu. Sie können Fotos hochladen, Datensätze erstellen oder bearbeiten, Ihren Stammbaum anderen zeigen oder die Namen von Familienmitgliedern nachschlagen, die Sie sich bei Ihrem nächsten Familientreffen nicht erinnern können!
 
-Gramps Web ist eine progressive Web-App: Installieren Sie es auf Ihrem Startbildschirm oder Desktop, und es verhält sich wie eine native App. Auf dem Desktop bringen Sie mit [Tastenkombinationen](../user-guide/shortcuts.md) alles in ein paar Tastenanschlägen – drücken Sie `?`, um sie alle zu sehen.
+Gramps Web ist eine progressive Web-App: Installieren Sie es auf Ihrem Startbildschirm oder Desktop, und es verhält sich wie eine native App. Auf dem Desktop bringen Sie [Tastenkombinationen](../user-guide/shortcuts.md) in wenigen Tastenanschlägen überall hin – drücken Sie `?`, um sie alle zu sehen.
 
 <div style="clear:both;"></div>
 
@@ -209,7 +209,7 @@ Gramps Web ist eine progressive Web-App: Installieren Sie es auf Ihrem Startbild
 
 ## Vollständig internationalisiert
 
-Wechseln Sie die Sprache der Benutzeroberfläche zwischen über 50 Sprachen, die von der Gramps-Community übersetzt wurden.
+Wechseln Sie die Sprache der Benutzeroberfläche zwischen mehr als 50 Sprachen, die von der Gramps-Community übersetzt wurden.
 
 <div style="clear:both;"></div>
 
@@ -217,20 +217,20 @@ Wechseln Sie die Sprache der Benutzeroberfläche zwischen über 50 Sprachen, die
 
 ## Und mehr
 
-- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Index-Neuerstellungen laufen im Hintergrund, mit Fortschritt und Fehlern, die an einem Ort gesammelt werden
+- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Index-Neubauten laufen im Hintergrund, mit Fortschritt und Fehlern, die an einem Ort gesammelt werden
 - **Etiketten, Lesezeichen und Verlauf** – Organisieren Sie Objekte mit farbcodierten Etiketten und kehren Sie zu dem zurück, woran Sie gearbeitet haben
 - **Massenbearbeitung** – Wählen Sie mehrere Objekte in den Listenansichten aus, um sie auf einmal zu löschen oder doppelte Objekte zusammenzuführen
 - **Anpassbare Listenansichten** – Wählen Sie aus, welche Spalten angezeigt werden sollen, und filtern Sie nach Text, Etikett oder Privatsphäre
-- **Texterkennung (OCR)** – Extrahieren Sie Text aus gescannten Dokumenten in Ihrer Mediagalerie
-- **Datenverifizierung** – Überprüfen Sie Ihren Baum auf unplausible Daten und andere Datenprobleme
+- **Texterkennung (OCR)** – Extrahieren Sie Text aus gescannten Dokumenten in Ihrer Mediengalerie
+- **Datenüberprüfung** – Überprüfen Sie Ihren Baum auf unplausible Daten und andere Datenprobleme
 - **Kalender** – Geben Sie Daten im Gregorianischen, Julianischen, Hebräischen, Französischen Republik, Persischen, Islamischen oder Schwedischen Kalender ein
-- **Machen Sie es zu Ihrem eigenen** – Geben Sie Ihrer Website einen eigenen Namen, Themenfarben und Text und Bild für die Startseite
+- **Gestalten Sie es nach Ihren Wünschen** – Geben Sie Ihrer Website einen eigenen Namen, Themenfarben und Text- sowie Bildinhalte für die Startseite
 
 <p>&nbsp;</p>
 
 ## Demo
 
-Um sich in die Demo einzuloggen, verwenden Sie eines der folgenden ***BENUTZER / PASS*** Anmeldeinformationen. Jedes steht für einen Benutzertyp, dem ein Gramps Web-Benutzer zugeordnet werden kann.
+Um sich bei der Demo anzumelden, verwenden Sie eines der folgenden ***BENUTZER / PASS*** Anmeldeinformationen. Jedes repräsentiert einen Benutzertyp, dem ein Gramps Web-Benutzer zugewiesen werden kann.
 
 `owner / owner` <br>
 `editor / editor` <br>
@@ -238,11 +238,11 @@ Um sich in die Demo einzuloggen, verwenden Sie eines der folgenden ***BENUTZER /
 `member / member`
 
 
-[Gehe zu Demo-Anmeldung](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
+[Gehe zur Demo-Anmeldung](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 
 ### Danke
 
-Die Demo wird freundlicherweise von DigitalOcean unterstützt.
+Die Demo wird freundlich von DigitalOcean unterstützt.
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>

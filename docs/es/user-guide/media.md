@@ -1,10 +1,10 @@
-Hay dos formas de agregar un nuevo archivo multimedia (una imagen, archivo de audio, archivo de video o cualquier otro archivo), y los archivos multimedia existentes se pueden vincular a nuevos objetos a medida que se crean:
+Hay dos formas de agregar un nuevo archivo multimedia (una imagen, un archivo de audio, un archivo de video o cualquier otro archivo), y los archivos multimedia existentes se pueden vincular a nuevos objetos a medida que se crean:
 
 ## Agregar un nuevo archivo multimedia independiente
 
-Para agregar un archivo multimedia independiente, haz clic en el ícono + en la barra superior de la aplicación y selecciona "Objeto Multimedia".
+Para agregar un archivo multimedia independiente, haz clic en el ícono + en la barra de aplicaciones superior y selecciona "Objeto multimedia".
 
-Haz clic en "seleccionar un archivo" para seleccionar un archivo de tu computadora. En un dispositivo móvil, al hacer clic en este botón, tendrás la opción de tomar una foto directamente con la cámara de tu dispositivo.
+Haz clic en "seleccionar un archivo" para elegir un archivo de tu computadora. En un dispositivo móvil, al hacer clic en este botón, tendrás la opción de tomar una foto directamente con la cámara de tu dispositivo.
 
 Opcionalmente,
 
@@ -18,19 +18,18 @@ Haz clic en "agregar" para subir el archivo y crear el objeto multimedia.
 
 Los siguientes tipos de objetos en Gramps pueden tener objetos multimedia adjuntos: personas, familias, eventos, lugares, fuentes y citas.
 
-En la vista de detalles de cualquier objeto, haz clic en el botón de edición azul en la esquina inferior derecha (si no lo ves, tu usuario no tiene permisos de edición). Haz clic en la pestaña "galería" y haz clic en el botón azul +.
+En la vista de detalle de cualquier objeto, haz clic en el botón azul de editar en la esquina inferior derecha (si no lo ves, tu usuario no tiene permisos de edición). Haz clic en la pestaña "galería" y haz clic en el botón azul +.
 
-Se abrirá un diálogo que ofrece los mismos campos que se describieron en la sección anterior. Haz clic en "guardar" para subir el archivo, agregar un nuevo objeto multimedia y vincularlo al objeto visualizado.
+Se abrirá un diálogo que ofrece los mismos campos que se describen en la sección anterior. Haz clic en "guardar" para subir el archivo, agregar un nuevo objeto multimedia y vincularlo al objeto visualizado.
 
 ## Fotos de perfil
 
-La primera imagen en la galería de una persona se utiliza como su foto de perfil. En modo de edición, está marcada con una insignia de "Foto de perfil". Para usar una imagen diferente, muévela a la primera posición con los botones de flecha en las miniaturas de la galería.
-
+La primera imagen en la galería de una persona se utiliza como su foto de perfil. En modo de edición, está marcada con una insignia de "Foto de perfil". Para usar una imagen diferente, muévela a la primera posición con los botones de flecha en las miniaturas de la galería, o arrástrala allí: con el mouse, presiona la miniatura y muévela; en una pantalla táctil, presiónala y mantenla hasta que se recoja.
 Si una persona no tiene medios aún, el modo de edición muestra un marcador de **Agregar foto de perfil** en su lugar. Haz clic en él para subir un nuevo archivo multimedia o seleccionar uno existente.
 
 ## Vincular archivos multimedia existentes al crear un objeto
 
-Cuando creas una nueva persona, familia, evento, lugar, fuente o cita, el formulario tiene una sección "Medios". Allí puedes seleccionar uno o más objetos multimedia existentes, que se vinculan al nuevo objeto cuando lo guardas.
+Cuando creas una nueva persona, familia, evento, lugar, fuente o cita, el formulario tiene una sección "Medios". Allí puedes seleccionar uno o más objetos multimedia existentes, que se vincularán al nuevo objeto cuando lo guardes.
 
 Cuando creas una persona junto con sus eventos de nacimiento y muerte, los objetos multimedia seleccionados se vinculan solo a la persona, no a los eventos.
 
@@ -38,17 +37,17 @@ Cuando creas una persona junto con sus eventos de nacimiento y muerte, los objet
 
 La vista de medios muestra los objetos multimedia como una galería de miniaturas o como una lista; la elección se recuerda en tu navegador. Al igual que las otras [vistas de lista](lists.md), se puede ordenar (incluido por fecha), filtrar y usar para seleccionar y eliminar medios en bloque.
 
-Hacer clic en un mosaico en la galería abre el medio en la caja de luz. Usa las teclas de flecha, desliza o haz clic en los botones de flecha para avanzar a través de los resultados filtrados y ordenados, a través de páginas. El botón **Detalles** en la caja de luz abre la página del objeto multimedia. Hacer clic en una fila en el diseño de lista abre directamente la página del objeto multimedia.
+Hacer clic en una loseta en la galería abre el medio en el lightbox. Usa las teclas de flecha, desliza o haz clic en los botones de flecha para avanzar a través de los resultados filtrados y ordenados, a través de páginas. El botón **Detalles** en el lightbox abre la página del objeto multimedia. Hacer clic en una fila en el diseño de lista abre directamente la página del objeto multimedia.
 
-Los videos se muestran con una miniatura y un botón de reproducción. Los archivos de audio y video se pueden reproducir en la página del objeto multimedia, en la caja de luz, en [publicaciones de blog](blog.md) y cuando se incrustan en notas.
+Los videos se muestran con una miniatura y un botón de reproducción. Los archivos de audio y video se pueden reproducir en la página del objeto multimedia, en el lightbox, en [publicaciones de blog](blog.md) y cuando se incrustan en notas.
 
 ## Reconocimiento de texto (OCR)
 
-Si el administrador del servidor ha habilitado el soporte OCR, un botón de "Reconocimiento de Texto" aparece debajo de la imagen en la vista de detalles de un objeto multimedia.
+Si el administrador del servidor ha habilitado el soporte de OCR, un botón de "Reconocimiento de texto" aparece debajo de la imagen en la vista de detalle de un objeto multimedia.
 
-Haz clic en "Reconocimiento de Texto", elige el idioma del texto mostrado en la imagen, luego haz clic en "Ejecutar". La imagen se procesa con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) y el texto reconocido se muestra a continuación.
+Haz clic en "Reconocimiento de texto", elige el idioma del texto mostrado en la imagen y luego haz clic en "Ejecutar". La imagen se procesa con [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) y el texto reconocido se muestra a continuación.
 
 Si tu usuario tiene permisos de edición, haz clic en "Guardar como Nota" para crear una nueva nota (de tipo "Transcripción") que contenga el texto reconocido y vincularla al objeto multimedia.
 
-!!! tip
+!!! consejo
     La precisión del OCR depende en gran medida de la calidad de la imagen y del idioma seleccionado. Si el resultado parece incorrecto, prueba con un idioma diferente; por ejemplo, los documentos históricos alemanes a menudo necesitan la variante Fraktur en lugar del alemán estándar.

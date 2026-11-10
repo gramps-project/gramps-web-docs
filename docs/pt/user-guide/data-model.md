@@ -22,9 +22,9 @@ Cada tipo de objeto tem sua própria lista no Gramps Web, veja [Listas](lists.md
 
 ## Pessoas e famílias
 
-Pais e filhos não estão vinculados diretamente entre si, mas através de uma **família**. Uma família tem até dois parceiros e qualquer número de filhos:
+Pais e filhos não estão vinculados diretamente, mas através de uma **família**. Uma família tem até dois parceiros e qualquer número de filhos:
 
-- Seus pais e você estão vinculados através da família na qual você é uma criança.
+- Seus pais e você estão ligados através da família na qual você é uma criança.
 - Seus irmãos são os outros filhos da mesma família.
 - Você e seu cônjuge formam outra família, na qual você é um parceiro, junto com seus filhos.
 
@@ -34,9 +34,9 @@ Uma pessoa pode ser uma criança em uma família e um parceiro em várias. Cada 
 
 ## Eventos
 
-Um nascimento, morte ou casamento não é um campo de uma pessoa, mas um **evento** próprio, com um tipo, uma data, um lugar e uma descrição. As pessoas estão vinculadas a um evento com um **papel**: a pessoa cujo nascimento é tem o papel de "Primário", enquanto alguém mais pode estar vinculado ao mesmo evento como uma testemunha.
+Um nascimento, morte ou casamento não é um campo de uma pessoa, mas um **evento** próprio, com um tipo, uma data, um lugar e uma descrição. As pessoas estão ligadas a um evento com um **papel**: a pessoa cujo nascimento é tem o papel "Primário", enquanto outra pessoa pode estar ligada ao mesmo evento como testemunha.
 
-Eventos que dizem respeito a um casal, como um casamento, pertencem à família em vez de a qualquer um dos parceiros. Um evento também pode ser compartilhado por várias pessoas – por exemplo, um registro de censo listando um lar inteiro – em vez de ser inserido uma vez por pessoa.
+Eventos que dizem respeito a um casal, como um casamento, pertencem à família em vez de a qualquer um dos parceiros. Um evento também pode ser compartilhado por várias pessoas – por exemplo, um registro de censo listando toda a família – em vez de ser inserido uma vez por pessoa.
 
 ## Objetos compartilhados: lugares e fontes
 
@@ -49,18 +49,24 @@ Lugares, fontes, citações, repositórios, notas e objetos de mídia existem po
 
 Se você acidentalmente criou o mesmo lugar ou fonte duas vezes, você pode [mesclar os duplicados](lists.md#merge).
 
+## Editando a página de um objeto
+
+Na página de uma fonte, repositório ou objeto de mídia, clique no título em modo de edição para alterá-lo (para um objeto de mídia, sua descrição). Pressione Enter, clique ✓, ou clique em outro lugar para salvar; pressione Escape ou clique ✕ para cancelar.
+
+A maioria das listas na página de um objeto mantém a ordem que você lhes dá, por exemplo, os eventos, nomes, atributos, endereços, citações ou os filhos de uma família. Em modo de edição, selecione uma linha e mova-a com os botões para cima e para baixo, ou arraste-a para sua nova posição: com o mouse, pressione a linha e mova-a; em uma tela sensível ao toque, pressione e segure a linha até que ela seja levantada. Pressione Escape enquanto arrasta para cancelar. Mídia na galeria pode ser reordenada da mesma forma, veja [Fotos de perfil](media.md#profile-pictures).
+
 ## A Pessoa Principal
 
 A Pessoa Principal é a pessoa a partir da qual os gráficos da árvore genealógica começam e o ponto de partida padrão para relatórios. Veja [Primeiro login](first-login.md) para saber como configurá-la.
 
 !!! note "Diferente do Gramps Desktop"
-    No Gramps Desktop, a Pessoa Principal é armazenada no banco de dados da árvore genealógica, então é a mesma para todos que abrem esse banco de dados. O Gramps Web não a utiliza. Em vez disso, a Pessoa Principal é armazenada em seu navegador, separadamente para cada árvore: não é compartilhada com outros usuários, e não a acompanha para um navegador ou dispositivo diferente. Após importar uma árvore do Gramps Desktop, ou quando você usa o Gramps Web em outro dispositivo, você precisa configurá-la novamente.
+    No Gramps Desktop, a Pessoa Principal é armazenada no banco de dados da árvore genealógica, então é a mesma para todos que abrem esse banco de dados. O Gramps Web não a utiliza. Em vez disso, a Pessoa Principal é armazenada em seu navegador, separadamente para cada árvore: não é compartilhada com outros usuários, e não a acompanha em outro navegador ou dispositivo. Após importar uma árvore do Gramps Desktop, ou quando você usa o Gramps Web em outro dispositivo, você deve configurá-la novamente.
 
 ## Uma ordem recomendada
 
-Ao inserir uma nova família manualmente, esta ordem evita saltos entre formulários:
+Ao inserir uma nova família manualmente, essa ordem evita saltos de um formulário para outro:
 
-1. **Lugares e fontes.** Crie os lugares que você precisa e, se você registrar fontes, a fonte da qual você está trabalhando.
+1. **Lugares e fontes.** Crie os lugares que você precisa e, se registrar fontes, a fonte da qual você está trabalhando.
 2. **Pessoas.** Adicione as pessoas com suas datas e lugares de nascimento e morte. Isso é mais rápido no modo de edição do gráfico da Árvore Genealógica, que cria as famílias para você – veja [Começar uma nova árvore](start-tree.md) e [Editando a árvore genealógica](tree-edit.md).
 3. **Eventos adicionais.** Abra uma família (por exemplo, a partir da aba de Relacionamentos de uma pessoa) para adicionar o casamento, e a página de uma pessoa para adicionar outros eventos.
 4. **Citações.** Na aba de Citações de Fonte da pessoa, evento ou outro objeto que uma fonte apoia, adicione uma nova citação, selecione a fonte e insira a página.
@@ -68,24 +74,23 @@ Ao inserir uma nova família manualmente, esta ordem evita saltos entre formulá
 
 ## Inserindo datas
 
-Uma data é inserida como campos separados de ano, mês e dia, que também podem ser preenchidos usando um seletor de data. Deixe de fora as partes que você não sabe: um ano sozinho é uma data válida.
-
-Em vez de adivinhar um dia exato, descreva o que você realmente sabe com o **Tipo** da data:
+Uma data é inserida como campos separados de ano, mês e dia, que também podem ser preenchidos usando um seletor de data. Deixe de fora as partes que você não sabe: um ano sozinho é uma data válida. Em vez de adivinhar um dia exato, descreva o que você realmente sabe escolhendo o tipo da data com os chips acima dos campos. Uma dica abaixo dos chips explica o tipo selecionado:
 
 | O que você sabe | Tipo | Exemplo |
 |---|---|---|
 | A data exata, ou parte dela | Regular | 12 de março de 1850, ou apenas 1850 |
-| Uma data aproximada | cerca de | cerca de 1850 |
-| Um limite | antes, depois | antes de 1900 |
-| A data está em algum lugar dentro de um período | Intervalo | entre 1850 e 1855 |
+| Uma data aproximada | Cerca de | cerca de 1850 |
+| Um limite | Antes, Depois | antes de 1900 |
+| A data está em algum lugar dentro de um período | Intervalo | entre 1850 e 1855 (campos "Mais cedo" e "Mais tarde") |
 | Algo durou por um período | Duração | de 1850 a 1855 |
-| Apenas o início ou o fim de um período | de, até | de 1850 |
 
-O campo **Qualidade** registra como você chegou a uma data: "Estimado" para uma suposição educada, "Calculado" para uma data derivada de outras informações, como um ano de nascimento calculado a partir de uma idade na morte.
+Para uma Duração, qualquer uma das duas datas ("De" e "Para") pode ser deixada em branco, então "de 1850" ou "para 1855" é uma Duração com apenas uma data.
 
-!!! warning "Datas sobre e estimadas cobrem 50 anos para cada lado"
-    Quando o Gramps compara datas, ele trata uma data do tipo "cerca de" – e qualquer data com a qualidade "Estimado" – como um intervalo que vai de 50 anos antes a 50 anos depois da data dada. Por exemplo, filtrar a lista de Pessoas para pessoas nascidas entre 1840 e 1860 também encontra uma pessoa nascida "cerca de 1880", porque essa data é considerada como cobrindo 1830 a 1930. Da mesma forma, "antes" e "depois" são considerados como abrangendo até 50 anos antes ou depois da data.
+Os campos **Qualidade** e **Calendário** estão sob **Mais opções**, que se abre automaticamente quando uma data usa qualquer um deles. A qualidade registra como você chegou a uma data: "Estimado" para um palpite educado, "Calculado" para uma data derivada de outras informações, como um ano de nascimento calculado a partir de uma idade na morte.
+
+!!! warning "Datas aproximadas e estimadas cobrem 50 anos para mais ou para menos"
+    Quando o Gramps compara datas, ele trata uma data do tipo "cerca de" – e qualquer data com a qualidade "Estimado" – como um intervalo que vai de 50 anos antes a 50 anos depois da data dada. Por exemplo, filtrar a lista de Pessoas para pessoas nascidas entre 1840 e 1860 também encontra uma pessoa nascida "cerca de 1880", porque essa data é considerada como abrangendo 1830 a 1930. Da mesma forma, "antes" e "depois" são considerados como abrangendo até 50 anos antes ou depois da data.
 
     Isso pode levar a resultados surpreendentes, então use "cerca de" e "Estimado" apenas quando você não puder restringir a data. Se você souber um período mais curto, um Intervalo como "entre 1878 e 1882" é mais preciso.
 
-O campo **Calendário** permite que você insira uma data no calendário usado no registro original, como o calendário juliano, em vez de convertê-la você mesmo.
+O calendário permite que você insira uma data no calendário usado no registro original, como o calendário juliano, em vez de convertê-la você mesmo.

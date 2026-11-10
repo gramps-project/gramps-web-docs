@@ -10,13 +10,13 @@ Gramps Web utilise le même modèle de données que Gramps Desktop, donc tout ce
 |---|---|---|
 | Personne | Un individu | Vous, votre grand-mère |
 | Famille | Un couple, leurs enfants, ou les deux | Vos parents et leurs enfants |
-| Événement | Quelque chose qui s'est produit, avec une date et un lieu | Naissance, mariage, recensement, émigration |
-| Lieu | Une localisation géographique | Un village, une paroisse, un pays |
+| Événement | Quelque chose qui s'est passé, avec une date et un lieu | Naissance, mariage, recensement, émigration |
+| Lieu | Un emplacement géographique | Un village, une paroisse, un pays |
 | Source | Un document ou une collection d'informations | Un registre paroissial, un recensement, un livre |
 | Citation | Une référence spécifique dans une source | Page 12, entrée 3 du registre paroissial |
-| Répertoire | L'endroit où une source est conservée | Un archive, une bibliothèque, un site web |
+| Répertoire | Où une source est conservée | Un archive, une bibliothèque, un site web |
 | Note | Texte libre | Une transcription, des remarques de recherche |
-| Objet multimédia | Un fichier | Une photo, un certificat scanné |
+| Objet média | Un fichier | Une photo, un certificat scanné |
 
 Chaque type d'objet a sa propre liste dans Gramps Web, voir [Listes](lists.md).
 
@@ -28,26 +28,32 @@ Les parents et les enfants ne sont pas liés directement, mais par l'intermédia
 - Vos frères et sœurs sont les autres enfants de la même famille.
 - Vous et votre conjoint formez une autre famille, dans laquelle vous êtes un partenaire, avec vos enfants.
 
-Une personne peut être un enfant dans une famille et un partenaire dans plusieurs. Chaque enfant a une relation avec chacun des parents, telle que naissance, adoption ou beau-fils, et chaque famille a un type de relation, tel que marié ou union civile.
+Une personne peut être un enfant dans une famille et un partenaire dans plusieurs. Chaque enfant a une relation avec chacun des parents, comme la naissance, l'adoption ou l'enfant de cœur, et chaque famille a un type de relation, comme marié ou union civile.
 
-C'est pourquoi "ajouter des parents" à une personne signifie ajouter la personne en tant qu'enfant à une famille – ce que le [graphique de l'arbre](tree-edit.md) fait pour vous en une seule étape.
+C'est pourquoi "ajouter des parents" à une personne signifie ajouter la personne en tant qu'enfant à une famille – ce que le [graphique d'arbre](tree-edit.md) fait pour vous en une seule étape.
 
 ## Événements
 
 Une naissance, un décès ou un mariage n'est pas un champ d'une personne, mais un **événement** à part entière, avec un type, une date, un lieu et une description. Les personnes sont liées à un événement par un **rôle** : la personne dont il s'agit a le rôle "Principal", tandis qu'une autre personne peut être liée au même événement en tant que témoin.
 
-Les événements qui concernent un couple, comme un mariage, appartiennent à la famille plutôt qu'à l'un ou l'autre partenaire. Un événement peut également être partagé par plusieurs personnes – par exemple, un enregistrement de recensement répertoriant tout un ménage – au lieu d'être saisi une fois par personne.
+Les événements qui concernent un couple, comme un mariage, appartiennent à la famille plutôt qu'à l'un ou l'autre partenaire. Un événement peut également être partagé par plusieurs personnes – par exemple, un enregistrement de recensement listant un ménage entier – au lieu d'être saisi une fois par personne.
 
 ## Objets partagés : lieux et sources
 
-Les lieux, sources, citations, répertoires, notes et objets multimédias existent en tant que tels, et un nombre quelconque d'autres objets peut faire référence au même. Cela a quelques conséquences :
+Les lieux, sources, citations, répertoires, notes et objets média existent en leur propre droit, et un nombre quelconque d'autres objets peut faire référence au même. Cela a quelques conséquences :
 
 - **Créer une fois, sélectionner plusieurs fois.** Le village où dix de vos ancêtres sont nés est un lieu, sélectionné dans dix événements de naissance. Si vous corrigez son nom ou ses coordonnées, la correction s'applique partout.
 - **Créez-le avant de le sélectionner.** Les formulaires dans Gramps Web sélectionnent des lieux et des sources qui existent déjà. Créez d'abord un nouveau lieu ou une nouvelle source en utilisant le bouton **+** (Ajouter) dans la barre d'application en haut.
 - **Les lieux sont imbriqués.** Un lieu peut être englobé par un plus grand – un village par un comté, le comté par un pays – donc vous n'avez pas à répéter toute la hiérarchie pour chaque village.
-- **Les sources et les citations sont séparées.** Une source est le registre paroissial dans son ensemble ; une citation est l'entrée spécifique qui soutient un fait, avec sa page, sa date, et votre confiance en elle. De nombreuses citations peuvent pointer vers la même source.
+- **Les sources et les citations sont séparées.** Une source est le registre paroissial dans son ensemble ; une citation est l'entrée spécifique qui soutient un fait, avec sa page, sa date et votre confiance en elle. De nombreuses citations peuvent pointer vers la même source.
 
 Si vous avez accidentellement créé le même lieu ou la même source deux fois, vous pouvez [fusionner les doublons](lists.md#merge).
+
+## Édition de la page d'un objet
+
+Sur la page d'une source, d'un répertoire ou d'un objet média, cliquez sur le titre en mode édition pour le modifier (pour un objet média, sa description). Appuyez sur Entrée, cliquez sur ✓, ou cliquez ailleurs pour enregistrer ; appuyez sur Échap ou cliquez sur ✕ pour annuler.
+
+La plupart des listes sur la page d'un objet conservent l'ordre que vous leur donnez, par exemple les événements, noms, attributs, adresses, citations, ou les enfants d'une famille. En mode édition, sélectionnez une ligne et déplacez-la avec les boutons haut et bas, ou faites-la glisser vers sa nouvelle position : avec la souris, appuyez sur la ligne et déplacez-la ; sur un écran tactile, appuyez et maintenez la ligne jusqu'à ce qu'elle soit prise. Appuyez sur Échap pendant le glissement pour annuler. Les médias dans la galerie peuvent être réorganisés de la même manière, voir [Photos de profil](media.md#profile-pictures).
 
 ## La Personne Domicile
 
@@ -63,29 +69,28 @@ Lors de la saisie d'une nouvelle famille à la main, cet ordre évite de sauter 
 1. **Lieux et sources.** Créez les lieux dont vous avez besoin et, si vous enregistrez des sources, la source à partir de laquelle vous travaillez.
 2. **Personnes.** Ajoutez les personnes avec leurs dates et lieux de naissance et de décès. C'est le plus rapide en mode édition du graphique de l'arbre généalogique, qui crée les familles pour vous – voir [Démarrer un nouvel arbre](start-tree.md) et [Édition de l'arbre généalogique](tree-edit.md).
 3. **Événements supplémentaires.** Ouvrez une famille (par exemple depuis l'onglet Relations d'une personne) pour ajouter le mariage, et la page d'une personne pour ajouter d'autres événements.
-4. **Citations.** Dans l'onglet Citations de Source de la personne, de l'événement ou d'un autre objet qu'une source soutient, ajoutez une nouvelle citation, sélectionnez la source, et entrez la page.
-5. **Notes et médias.** Joignez des transcriptions, des photos et des scans – voir [Ajouter des fichiers multimédias](media.md).
+4. **Citations.** Sur l'onglet Citations de la source de la personne, de l'événement ou d'un autre objet qu'une source soutient, ajoutez une nouvelle citation, sélectionnez la source et entrez la page.
+5. **Notes et médias.** Joignez des transcriptions, des photos et des scans – voir [Ajouter des fichiers média](media.md).
 
 ## Saisie des dates
 
-Une date est saisie sous forme de champs séparés pour l'année, le mois et le jour, qui peuvent également être remplis à l'aide d'un sélecteur de date. Laissez de côté les parties que vous ne connaissez pas : une année seule est une date valide.
-
-Au lieu de deviner un jour exact, décrivez ce que vous savez réellement avec le **Type** de la date :
+Une date est saisie sous forme de champs séparés pour l'année, le mois et le jour, qui peuvent également être remplis à l'aide d'un sélecteur de date. Laissez de côté les parties que vous ne connaissez pas : une année seule est une date valide. Au lieu de deviner un jour exact, décrivez ce que vous savez réellement en choisissant le type de date avec les puces au-dessus des champs. Un indice sous les puces explique le type sélectionné :
 
 | Ce que vous savez | Type | Exemple |
 |---|---|---|
 | La date exacte, ou une partie de celle-ci | Régulière | 12 mars 1850, ou juste 1850 |
-| Une date approximative | environ | environ 1850 |
-| Une limite | avant, après | avant 1900 |
-| La date se situe quelque part dans une période | Plage | entre 1850 et 1855 |
+| Une date approximative | Environ | environ 1850 |
+| Une limite | Avant, Après | avant 1900 |
+| La date se situe quelque part dans une période | Plage | entre 1850 et 1855 (champs "Plus tôt" et "Plus tard") |
 | Quelque chose a duré pendant une période | Durée | de 1850 à 1855 |
-| Seulement le début ou la fin d'une période | de, à | de 1850 |
 
-Le champ **Qualité** enregistre comment vous êtes arrivé à une date : "Estimée" pour une estimation éclairée, "Calculée" pour une date dérivée d'autres informations, comme une année de naissance calculée à partir d'un âge au décès.
+Pour une Durée, l'une des deux dates ("De" et "À") peut être laissée vide, donc "de 1850" ou "à 1855" est une Durée avec seulement une date.
 
-!!! warning "Les dates environ et estimées couvrent 50 ans dans les deux sens"
+Les champs **Qualité** et **Calendrier** se trouvent sous **Plus d'options**, qui s'ouvre automatiquement lorsqu'une date utilise l'un d'eux. La qualité enregistre comment vous êtes arrivé à une date : "Estimée" pour une estimation éclairée, "Calculée" pour une date dérivée d'autres informations, comme une année de naissance calculée à partir d'un âge au décès.
+
+!!! avertissement "Les dates approximatives et estimées couvrent 50 ans dans chaque sens"
     Lorsque Gramps compare des dates, il traite une date de type "environ" – et toute date avec la qualité "Estimée" – comme une plage allant de 50 ans avant à 50 ans après la date donnée. Par exemple, filtrer la liste des personnes pour celles nées entre 1840 et 1860 trouve également une personne née "environ 1880", car cette date est considérée comme couvrant 1830 à 1930. De la même manière, "avant" et "après" sont considérés comme allant jusqu'à 50 ans avant ou après la date.
 
     Cela peut conduire à des résultats surprenants, donc utilisez "environ" et "Estimée" uniquement lorsque vous ne pouvez pas affiner la date. Si vous connaissez une période plus courte, une Plage telle que "entre 1878 et 1882" est plus précise.
 
-Le champ **Calendrier** vous permet d'entrer une date dans le calendrier utilisé dans l'enregistrement original, tel que le calendrier julien, au lieu de le convertir vous-même.
+Le calendrier vous permet de saisir une date dans le calendrier utilisé dans l'enregistrement original, comme le calendrier julien, au lieu de la convertir vous-même.
