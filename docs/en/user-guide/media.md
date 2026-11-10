@@ -24,8 +24,7 @@ A dialog will open that offers the same fields as described in the previous sect
 
 ## Profile pictures
 
-The first image in a person's gallery is used as their profile picture. In edit mode, it is marked with a "Profile picture" badge. To use a different image, move it to the first position with the arrow buttons on the gallery thumbnails.
-
+The first image in a person's gallery is used as their profile picture. In edit mode, it is marked with a "Profile picture" badge. To use a different image, move it to the first position with the arrow buttons on the gallery thumbnails, or drag it there: with the mouse, press the thumbnail and move it; on a touch screen, press and hold it until it is picked up.
 If a person has no media yet, edit mode shows an **Add profile picture** placeholder instead. Click it to upload a new media file or select an existing one.
 
 ## Link existing media files when creating an object

@@ -67,7 +67,7 @@ nav:
           - History: user-guide/recent.md
           - Revision history: user-guide/revisions.md
       - Advanced:
-          - GQL filters: user-guide/gql.md
+          - GOQL filters: user-guide/goql.md
           - AI Assistant: user-guide/chat.md
           - External Search: user-guide/external-search.md
       - Account & preferences:
@@ -203,7 +203,7 @@ plugins:
             User Settings: Benutzereinstellungen
             Notifications: Benachrichtigungen
             Advanced: Erweitert
-            GQL filters: GQL-Filter
+            GOQL filters: GOQL-Filter
             AI Assistant: KI-Assistent
             External Search: Externe Suche
             Developers: Entwickler
@@ -286,7 +286,7 @@ plugins:
             User Settings: Paramètres utilisateur
             Notifications: Notifications
             Advanced: Avancé
-            GQL filters: Filtres GQL
+            GOQL filters: Filtres GOQL
             AI Assistant: Assistant IA
             External Search: Recherche externe
             Developers: Développeurs
@@ -369,7 +369,7 @@ plugins:
             User Settings: Configuración de usuario
             Notifications: Notificaciones
             Advanced: Avanzado
-            GQL filters: Filtros GQL
+            GOQL filters: Filtros GOQL
             AI Assistant: Asistente de IA
             External Search: Búsqueda externa
             Developers: Desarrolladores
@@ -452,7 +452,7 @@ plugins:
             User Settings: 用户设置
             Notifications: 通知
             Advanced: 高级
-            GQL filters: GQL 过滤器
+            GOQL filters: GOQL 过滤器
             AI Assistant: AI 助手
             External Search: 外部搜索
             Developers: 开发者
@@ -535,7 +535,7 @@ plugins:
             User Settings: Cài đặt người dùng
             Notifications: Thông báo
             Advanced: Nâng cao
-            GQL filters: Bộ lọc GQL
+            GOQL filters: Bộ lọc GOQL
             AI Assistant: Trợ lý AI
             External Search: Tìm kiếm bên ngoài
             Developers: Nhà phát triển
@@ -618,7 +618,7 @@ plugins:
             User Settings: Kullanıcı ayarları
             Notifications: Bildirimler
             Advanced: Gelişmiş
-            GQL filters: GQL filtreleri
+            GOQL filters: GOQL filtreleri
             AI Assistant: AI Asistanı
             External Search: Harici arama
             Developers: Geliştiriciler
@@ -701,7 +701,7 @@ plugins:
             User Settings: Настройки пользователя
             Notifications: Уведомления
             Advanced: Расширенные
-            GQL filters: Фильтры GQL
+            GOQL filters: Фильтры GOQL
             AI Assistant: ИИ-ассистент
             External Search: Внешний поиск
             Developers: Разработчики
@@ -784,7 +784,7 @@ plugins:
             User Settings: Configurações do utilizador
             Notifications: Notificações
             Advanced: Avançado
-            GQL filters: Filtros GQL
+            GOQL filters: Filtros GOQL
             AI Assistant: Assistente de IA
             External Search: Pesquisa externa
             Developers: Desenvolvedores
@@ -867,7 +867,7 @@ plugins:
             User Settings: ユーザー設定
             Notifications: 通知
             Advanced: 高度
-            GQL filters: GQL フィルター
+            GOQL filters: GOQL フィルター
             AI Assistant: AIアシスタント
             External Search: 外部検索
             Developers: 開発者
@@ -950,7 +950,7 @@ plugins:
             User Settings: Brugerindstillinger
             Notifications: Notifikationer
             Advanced: Avanceret
-            GQL filters: GQL-filtre
+            GOQL filters: GOQL-filtre
             AI Assistant: AI-assistent
             External Search: Ekstern søgning
             Developers: Udviklere
@@ -1033,7 +1033,7 @@ plugins:
             User Settings: Käyttäjäasetukset
             Notifications: Ilmoitukset
             Advanced: Edistynyt
-            GQL filters: GQL-suodattimet
+            GOQL filters: GOQL-suodattimet
             AI Assistant: Tekoälyavustaja
             External Search: Ulkoinen haku
             Developers: Kehittäjät
@@ -1116,7 +1116,7 @@ plugins:
             User Settings: Impostazioni utente
             Notifications: Notifiche
             Advanced: Avanzato
-            GQL filters: Filtri GQL
+            GOQL filters: Filtri GOQL
             AI Assistant: Assistente IA
             External Search: Ricerca esterna
             Developers: Sviluppatori
@@ -1199,7 +1199,7 @@ plugins:
             User Settings: Налаштування користувача
             Notifications: Сповіщення
             Advanced: Розширені
-            GQL filters: GQL фільтри
+            GOQL filters: GOQL фільтри
             AI Assistant: ШІ-асистент
             External Search: Зовнішній пошук
             Developers: Розробники
@@ -1217,7 +1217,8 @@ plugins:
       manual: false # optional lightboxing.  Requires HTML in markdown.
   - redirects:
       redirect_maps:
-        "help.md": "help/help.md"
-        "development.md": "development/dev.md"
-        "development/index.md": "development/dev.md"
-        "user-guide/sync.md": "administration/sync.md"
+        "help.md": "https://www.grampsweb.org/help/help/"
+        "development.md": "https://www.grampsweb.org/development/dev/"
+        "development/index.md": "https://www.grampsweb.org/development/dev/"
+        "user-guide/sync.md": "https://www.grampsweb.org/administration/sync/"
+        "user-guide/gql.md": "https://www.grampsweb.org/user-guide/goql/"

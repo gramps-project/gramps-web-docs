@@ -12,7 +12,7 @@ On narrow screens the table automatically switches to a compact layout, so list 
 
 ## Choosing columns
 
-Click the gear icon above the list to open the **Columns** dialog. Tick or untick a column to show or hide it. **Reset** restores the default selection for that list.
+Click the gear icon at the right end of the toolbar above the list to open the **Columns** dialog. Tick or untick a column to show or hide it. **Reset** restores the default selection for that list.
 
 At least one column must remain visible, so the last remaining column cannot be unticked.
 
@@ -22,11 +22,11 @@ Your column selection is remembered per object type and per family tree. It is s
 
 Click the **filter** button to open the filter panel. It offers three ways to filter, which can be combined:
 
-- **Ready-made filters** in collapsible sections that depend on the object type. For people, for instance, you can filter by birth year, death year, various person properties, the number of associations, tags, and whether an object is private or public.
+- **Ready-made filters** in collapsible sections that depend on the object type. For people, for instance, you can filter by name, birth year, death year, various person properties, the number of associations, tags, and whether an object is private or public. Families can be filtered by the name of the father, mother, or a child, sources by author, and places and repositories by their type.
 - **Advanced filter** – a condition builder for filters the ready-made ones can't express, described [below](#advanced-filter).
-- **GQL** – a text field for a query in the [Gramps Query Language](gql.md). Type the query and press Enter or click **Apply**. If the query is invalid, the field's frame turns red. A query applies on top of the other filters.
+- **GOQL** – a text field for an expression in the [Gramps Object Query Language](goql.md), with syntax highlighting. Type the expression and press Enter or click **Apply**. If the expression is invalid, the field is marked as an error. An expression applies on top of the other filters.
 
-Active filters are shown as chips above the list. Remove a single filter by clicking the chip's clear button, or use **Clear all filters** to remove them all at once.
+Active filters are shown as chips in a row below the toolbar. Remove a single filter by clicking the chip's clear button, or use **Clear all filters** to remove them all at once.
 
 ### Advanced filter
 
@@ -40,7 +40,7 @@ Click **Advanced filter** at the bottom of the filter panel to open the conditio
 
 Click **Apply** to filter the list.
 
-The ready-made filters that are active when you open the builder appear there as conditions. If the filter you build can be expressed with the ready-made filters, it is shown with them after applying. Otherwise, it is shown as a single **Advanced filter** chip, and the filter panel offers an **Edit** button to reopen the builder.
+The ready-made filters and the GOQL expression that are active when you open the builder appear there as conditions. A GOQL expression can also be added as a condition of its own, for example to combine several expressions with **Any condition**. If the filter you build can be expressed with the ready-made filters, it is shown with them after applying. Otherwise, it is shown as a single **Advanced filter** chip, and the filter panel offers an **Edit** button to reopen the builder.
 
 !!! note
     Rules that refer to custom filters saved in Gramps Desktop are not available in the builder. The rules are shown in your language with Gramps Web API 3.24 or newer.

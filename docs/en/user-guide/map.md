@@ -73,6 +73,8 @@ Behind the scenes, this stores the image's corner coordinates in a `map:bounds` 
 
 Once a media object has been georeferenced this way, it automatically becomes available as a toggleable layer on the Map page. Open the layer switcher (stacked-layers icon, bottom-left) to show or hide each overlay independently of the base map. Overlays are listed by the media object's title.
 
+Each overlay has an opacity slider below its name, so you can see the base map through it.
+
 ## Map files of places
 
 Places can have map files attached as media objects – for example the boundaries of a parish, a district, or an estate, or a route. Supported are KML (`.kml`), GeoJSON (`.geojson`), and GPX (`.gpx`) files.

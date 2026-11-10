@@ -33,6 +33,8 @@ Shows the relationship path between two people. The selected person is one endpo
 
 A circular pedigree chart. Ancestors radiate outward from the selected person at the centre.
 
+The **Color** button in the toolbar colours the segments by a property of each person: the number of events or notes, birth year, death year, age, surname, religion, or ancestor frequency (how often a person appears in the chart). Colouring by surname uses the surname of the person's birth name, or of the primary name if there is no birth name. To remove the colouring, clear the chip that shows the chosen colour.
+
 ## Moving to relatives and expanding branches
 
 In the Ancestor Tree and the Fan Chart, the selected person has a chevron button that opens a menu of their children. In the Descendant Tree, it opens a menu of their parents instead. Choosing a person from the menu centres the chart on them.
@@ -56,7 +58,7 @@ The **Preferences** dialog (gear icon in the toolbar) lets you adjust the follow
 
 - **Max Ancestor Generations** – how many generations of ancestors to display
 - **Max Descendant Generations** – how many generations of descendants to display
-- **Max Degree of Separation** – for the Relationship Graph, the maximum path length to search
+- **Max Degree of Separation** – for the Relationship Graph, the maximum path length to search, up to 6
 - **Max Number of Images displayed** – limits profile photos shown in the chart for performance
 - **Name Display Format** – controls how names are shown on person cards
 

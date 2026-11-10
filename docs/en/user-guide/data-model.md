@@ -49,6 +49,12 @@ Places, sources, citations, repositories, notes, and media objects exist in thei
 
 If you have accidentally created the same place or source twice, you can [merge the duplicates](lists.md#merge).
 
+## Editing an object's page
+
+On the page of a source, repository, or media object, click the title in edit mode to change it (for a media object, its description). Press Enter, click ✓, or click elsewhere to save; press Escape or click ✕ to cancel.
+
+Most lists on an object's page keep the order you give them, for example the events, names, attributes, addresses, citations, or the children of a family. In edit mode, select a row and move it with the up and down buttons, or drag it to its new position: with the mouse, press the row and move it; on a touch screen, press and hold the row until it is picked up. Press Escape while dragging to cancel. Media in the gallery can be reordered the same way, see [Profile pictures](media.md#profile-pictures).
+
 ## The Home Person
 
 The Home Person is the person the family tree charts start from and the default starting point for reports. See [First login](first-login.md) for how to set it.
@@ -69,23 +75,23 @@ When entering a new family by hand, this order avoids jumping back and forth bet
 ## Entering dates
 
 A date is entered as separate year, month, and day fields, which can also be filled in using a date picker. Leave out the parts you don't know: a year alone is a valid date.
-
-Instead of guessing an exact day, describe what you actually know with the date's **Type**:
+Instead of guessing an exact day, describe what you actually know by choosing the date's type with the chips above the fields. A hint below the chips explains the selected type:
 
 | What you know | Type | Example |
 |---|---|---|
 | The exact date, or part of it | Regular | 12 March 1850, or just 1850 |
-| An approximate date | about | about 1850 |
-| A limit | before, after | before 1900 |
-| The date lies somewhere within a period | Range | between 1850 and 1855 |
+| An approximate date | About | about 1850 |
+| A limit | Before, After | before 1900 |
+| The date lies somewhere within a period | Range | between 1850 and 1855 (fields "Earliest" and "Latest") |
 | Something lasted for a period | Span | from 1850 to 1855 |
-| Only the start or end of a period | from, to | from 1850 |
 
-The **Quality** field records how you arrived at a date: "Estimated" for an educated guess, "Calculated" for a date derived from other information, such as a birth year calculated from an age at death.
+For a Span, either of the two dates ("From" and "To") can be left empty, so "from 1850" or "to 1855" is a Span with only one date.
+
+The **Quality** and **Calendar** fields are under **More options**, which opens by itself when a date uses either of them. The quality records how you arrived at a date: "Estimated" for an educated guess, "Calculated" for a date derived from other information, such as a birth year calculated from an age at death.
 
 !!! warning "About and estimated dates cover 50 years either way"
     When Gramps compares dates, it treats a date of the type "about" – and any date with the quality "Estimated" – as a range reaching from 50 years before to 50 years after the given date. For example, filtering the People list for people born between 1840 and 1860 also finds a person born "about 1880", because that date is taken to cover 1830 to 1930. In the same way, "before" and "after" are taken to reach up to 50 years before or after the date.
 
     This can lead to surprising results, so use "about" and "Estimated" only when you can't narrow the date down. If you know a shorter period, a Range such as "between 1878 and 1882" is more precise.
 
-The **Calendar** field lets you enter a date in the calendar used in the original record, such as the Julian calendar, instead of converting it yourself.
+The calendar lets you enter a date in the calendar used in the original record, such as the Julian calendar, instead of converting it yourself.
