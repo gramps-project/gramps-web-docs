@@ -28,6 +28,7 @@ nav:
       - Introduction: administration/admin.md
       - Create owner account: administration/owner.md
       - Import data: administration/import.md
+      - Import media files: administration/import-media.md
       - Export data: administration/export.md
       - Manage users: administration/users.md
       - Administration settings: administration/settings.md
@@ -167,6 +168,7 @@ plugins:
             Map: Karte
             Create owner account: Besitzerkonto erstellen
             Import data: Daten importieren
+            Import media files: Mediendateien importieren
             Export data: Daten exportieren
             Manage users: Benutzer verwalten
             Administration settings: Verwaltungseinstellungen
@@ -250,6 +252,7 @@ plugins:
             Map: Carte
             Create owner account: Créer un compte propriétaire
             Import data: Importer des données
+            Import media files: Importer des fichiers multimédias
             Export data: Exporter des données
             Manage users: Gérer les utilisateurs
             Administration settings: Paramètres d'administration
@@ -333,6 +336,7 @@ plugins:
             Map: Mapa
             Create owner account: Crear cuenta de propietario
             Import data: Importar datos
+            Import media files: Importar archivos multimedia
             Export data: Exportar datos
             Manage users: Gestionar usuarios
             Administration settings: Configuración de administración
@@ -416,6 +420,7 @@ plugins:
             Map: 地图
             Create owner account: 创建所有者账户
             Import data: 导入数据
+            Import media files: 导入媒体文件
             Export data: 导出数据
             Manage users: 管理用户
             Administration settings: 管理设置
@@ -499,6 +504,7 @@ plugins:
             Map: Bản đồ
             Create owner account: Tạo tài khoản chủ sở hữu
             Import data: Nhập dữ liệu
+            Import media files: Nhập tệp phương tiện
             Export data: Xuất dữ liệu
             Manage users: Quản lý người dùng
             Administration settings: Cài đặt quản trị
@@ -582,6 +588,7 @@ plugins:
             Map: Harita
             Create owner account: Sahip hesabı oluştur
             Import data: Veri içe aktar
+            Import media files: Medya dosyalarını içe aktar
             Export data: Veri dışa aktar
             Manage users: Kullanıcıları yönet
             Administration settings: Yönetim ayarları
@@ -665,6 +672,7 @@ plugins:
             Map: Карта
             Create owner account: Создать учетную запись владельца
             Import data: Импорт данных
+            Import media files: Импорт медиафайлов
             Export data: Экспорт данных
             Manage users: Управление пользователями
             Administration settings: Настройки администрирования
@@ -748,6 +756,7 @@ plugins:
             Map: Mapa
             Create owner account: Criar conta de proprietário
             Import data: Importar dados
+            Import media files: Importar arquivos de mídia
             Export data: Exportar dados
             Manage users: Gerir utilizadores
             Administration settings: Definições de administração
@@ -831,6 +840,7 @@ plugins:
             Map: 地図
             Create owner account: オーナーアカウントの作成
             Import data: データのインポート
+            Import media files: メディアファイルのインポート
             Export data: データのエクスポート
             Manage users: ユーザーの管理
             Administration settings: 管理設定
@@ -914,6 +924,7 @@ plugins:
             Map: Kort
             Create owner account: Opret ejerkonto
             Import data: Importér data
+            Import media files: Importér mediefiler
             Export data: Eksportér data
             Manage users: Administrer brugere
             Administration settings: Administrationsindstillinger
@@ -997,6 +1008,7 @@ plugins:
             Map: Kartta
             Create owner account: Luo omistajatili
             Import data: Tuo tietoja
+            Import media files: Tuo mediatiedostoja
             Export data: Vie tietoja
             Manage users: Hallitse käyttäjiä
             Administration settings: Hallinta-asetukset
@@ -1080,6 +1092,7 @@ plugins:
             Map: Mappa
             Create owner account: Crea account proprietario
             Import data: Importa dati
+            Import media files: Importa file multimediali
             Export data: Esporta dati
             Manage users: Gestisci utenti
             Administration settings: Impostazioni di amministrazione
@@ -1163,6 +1176,7 @@ plugins:
             Map: Карта
             Create owner account: Створити обліковий запис власника
             Import data: Імпорт даних
+            Import media files: Імпорт медіафайлів
             Export data: Експорт даних
             Manage users: Керування користувачами
             Administration settings: Налаштування адміністрування

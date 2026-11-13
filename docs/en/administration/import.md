@@ -51,7 +51,7 @@ Many programs add their own extensions to GEDCOM that other programs don't under
 
 ### Media files
 
-A GEDCOM file contains references to media files (such as photos or scanned documents), but not the files themselves. After the import, the media objects exist in your tree, but their files are missing, which is shown under [Media file status](settings.md#media-file-status). To add the files, see [Import media files](#import-media-files) below.
+A GEDCOM file contains references to media files (such as photos or scanned documents), but not the files themselves. After the import, the media objects exist in your tree, but their files are missing, which is shown under [Media file status](settings.md#media-file-status). To add the files, see [Import media files](import-media.md).
 
 ## Coming from Gramps Desktop
 
@@ -63,20 +63,11 @@ If you are using Gramps Desktop, there are two steps to prepare your database to
 2. Convert media paths to relative
     - Use the Gramps Media Manager to [convert all media paths from absolute to relative](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Note that even with relative paths, any media files outside of your Gramps media directory will not work properly when synchronized with Gramps Web.
 
-Then export your tree to Gramps XML (`.gramps`), import it as described above, and upload your media files as described in the next section. To keep working on the same tree on your computer and on the web, use the [Gramps Web Sync addon](sync.md).
+Then export your tree to Gramps XML (`.gramps`), import it as described above, and [upload your media files](import-media.md). To keep working on the same tree on your computer and on the web, use the [Gramps Web Sync addon](sync.md).
 
 ### Why no support for Gramps XML package?
 
 While Gramps XML (`.gramps`) is the preferred format for importing data, Gramps XML *package* (`.gpkg`) is not supported by Gramps Web. This is because the import and export routines for media files are not suited for use on a web server.
-
-## Import media files
-
-If you have imported a family tree and need to upload the corresponding media files, use **Import Media Files** in the Data section of the Administration settings. It expects a ZIP file containing the missing media files. Files are matched to media objects in your tree in one of two ways:
-
-- **By checksum.** For media objects that have a checksum – as is the case for trees imported from Gramps Desktop – the file with the matching checksum is used, regardless of its name or the folder structure in the ZIP file. This only works if the checksums in the Gramps database are correct, which running the check and repair tool ensures.
-- **By path.** Media objects without a checksum – as is typical after a GEDCOM import – are matched by their path: the ZIP file must contain the file under exactly the relative path stored in the media object.
-
-If the paths stored in your GEDCOM file are absolute (for example `C:\Users\...\photo.jpg`), matching by path will not work. In this case, it is recommended to first import everything into Gramps Desktop, which has more options to associate existing media files with an imported tree, and then move to Gramps Web as described in [Coming from Gramps Desktop](#coming-from-gramps-desktop).
 
 ## Common problems
 
@@ -86,7 +77,7 @@ If the paths stored in your GEDCOM file are absolute (for example `C:\Users\...\
 
 **Garbled special characters.** See [Character encoding](#character-encoding).
 
-**Photos are missing.** See [Import media files](#import-media-files).
+**Photos are missing.** See [Import media files](import-media.md).
 
 ### Starting over
 
