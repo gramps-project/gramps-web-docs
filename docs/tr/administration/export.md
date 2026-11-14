@@ -1,22 +1,24 @@
+# Veri Dışa Aktar
+
+Dışa Aktarma sayfası, aile ağacı verilerini çeşitli formatlarda indirmenizi ve tüm medya dosyalarının bir arşivini almanızı sağlar.
+
+## Aile ağacını Gramps XML olarak dışa aktar
+
+Aile ağacı verilerinin bir kopyasını almak için, Gramps Web'de Dışa Aktarma sayfasını açın ve Gramps XML formatını seçin. "Dışa aktar" butonuna tıkladığınızda dosya oluşturulacak ve hazır olduğunda indirmeye başlayacaktır.
+
+Eğer Gramps Web kullanıcınızın özel kayıtlara erişim izni yoksa, dışa aktarma özel kayıtları içermeyecektir.
+
 ## Aile ağacınızı yedekleyin
 
-Ağaç sahipleri, [Yedeklemeler](settings.md#backups) bölümünde ağaçlarının ayarları ve kullanıcıları da dahil olmak üzere tam yedeklerini oluşturabilir, indirebilir ve geri yükleyebilir.
+Ağaç için tam yedeklemeler – ayarları ve kullanıcıları dahil – için [Yedekleme ve geri yükleme](backups.md) sayfasına bakın. Gramps XML dışa aktarımı yalnızca aile ağacı verilerinin bir yedeği olarak hizmet edebilir ve [Yedekten Geri Yükle](backups.md#restore-from-backup) aracılığıyla geri yüklenebilir.
 
-Alternatif olarak, yalnızca aile ağacı verilerinin yedeğini oluşturmak için Gramps Web'deki Dışa Aktarma sayfasını açın ve Gramps XML formatını seçin.
+## Aile ağacınızı diğer soybilim programı kullanıcılarıyla paylaşın
 
-"İhraç et" butonuna tıklamak, dosyayı oluşturacak ve hazır olduğunda indirmeye başlayacaktır.
-
-Eğer Gramps Web kullanıcınızın özel kayıtlara erişim izni yoksa, dışa aktarma tam bir yedek olmayacaktır, çünkü özel kayıtları içermeyecektir.
-
-Bu Gramps XML dosyası daha sonra [Yedekten Geri Yükle](settings.md#restore-from-backup) aracılığıyla ağacı tam olarak bu duruma geri yüklemek için kullanılabilir.
-
-## Aile ağacınızı diğer soybilim programlarının kullanıcılarıyla paylaşın
-
-Soybilim verilerini Gramps XML olarak paylaşmak bir seçenek değilse, bir GEDCOM dosyası da dışa aktarabilirsiniz. Bunun Gramps Web ağacınız için bir yedekleme olarak uygun olmadığını unutmayın.
+Gramps XML olarak soybilim verilerini paylaşmak bir seçenek değilse, bir GEDCOM dosyası da dışa aktarabilirsiniz. Bunun, Gramps Web ağacınızın yedeği olarak uygun olmadığını unutmayın.
 
 ## Medya dosyalarınızı yedekleyin
 
-Medya dosyalarınızı yedeklemek için, Dışa Aktarma sayfasında tüm medya dosyalarının bir ZIP arşivini oluşturabilir ve indirebilirsiniz.
+Medya dosyalarınızı yedeklemek için, Dışa Aktarma sayfasında tüm medya dosyalarının bir ZIP arşivini oluşturup indirebilirsiniz.
 
 Özellikle büyük ağaçlar için, bu işlemin sunucu için maliyetli olabileceğini ve yalnızca gerçekten gerekli olduğunda yapılması gerektiğini unutmayın. Bu nedenle, oluşturulabilecek medya arşivlerinin sayısı sınırlıdır (varsayılan olarak saatte bir). Sınırı aştığınızda, hata mesajı bunu gösterir.
 
@@ -26,9 +28,9 @@ Her iki durumda da, eğer Gramps Web kullanıcınızın özel kayıtlara erişim
 
 ## Farklı bir Gramps Web örneğine geçin
 
-Gramps Web, sizi belirli bir sağlayıcı ile kilitlemez ve verilerinizi kaybetmeden, sunuculara doğrudan erişim olmadan farklı bir Gramps Web örneğine her zaman geçebilirsiniz.
+Gramps Web, sizi belirli bir sağlayıcıya kilitlemez ve verilerinizi kaybetmeden, sunuculara doğrudan erişim olmadan farklı bir Gramps Web örneğine her zaman geçebilirsiniz.
 
-Tam bir geçiş sağlamak için bu adımları izleyin (ağaç sahibi izinleriniz olduğunu varsayarak):
+Tam bir geçiş sağlamak için, bu adımları izleyin (ağaç sahibi izinleriniz olduğunu varsayarak):
 
 1. Dışa Aktarma sayfasına gidin ve ağacınızı Gramps XML (`.gramps`) dosyası olarak dışa aktarın. [Senkronizasyon eklentisini](sync.md) kullanıyorsanız, dışa aktarmayı Gramps masaüstünde de oluşturabilirsiniz.
 2. Dışa Aktarma sayfasında, bir medya arşivi oluşturun ve indirin. [Senkronizasyon eklentisini](sync.md) kullanıyorsanız, yerel Gramps medya klasörünüzü de basitçe ZIP'leyebilirsiniz.
@@ -37,4 +39,4 @@ Tam bir geçiş sağlamak için bu adımları izleyin (ağaç sahibi izinleriniz
 5. Yeni Gramps Web örneğinin İçe Aktarma sayfasında, medya arşivini (ZIP) yükleyin.
 6. Yeni Gramps Web örneğinin Ayarlar > Yönetim > Kullanıcıları Yönet bölümüne gidin. "Kullanıcı hesaplarını içe aktar" butonuna tıklayın ve 3. adımda indirilen JSON dosyasını yükleyin.
 
-Kullanıcı hesaplarınızın taşınacağını unutmayın, ancak tüm kullanıcılarınızın "şifremi unuttum" bağlantısını kullanarak yeni şifreler belirlemesi gerekecektir, çünkü şifreler şifreli biçimde saklanır ve dışa aktarılamaz.
+Kullanıcı hesaplarınızın taşınacağına dikkat edin, ancak tüm kullanıcılarınızın "şifremi unuttum" bağlantısını kullanarak yeni şifreler belirlemesi gerekecektir, çünkü şifreler şifreli biçimde saklanır ve dışa aktarılamaz.

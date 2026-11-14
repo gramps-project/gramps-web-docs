@@ -1,11 +1,11 @@
 # Brug af en PostgreSQL-database
 
-Som standard gemmer Gramps Web hvert slægtstræ i sin egen SQLite-databasefil. Dette kræver ingen yderligere service, sikkerhedskopier er så enkle som at kopiere filer, og det fungerer godt for de fleste installationer, inklusive dem [der hoster flere træer](multi-tree.md).
+Som standard gemmer Gramps Web hver slægtstræ i sin egen SQLite-databasefil. Dette kræver ingen yderligere service, sikkerhedskopier er så enkle som at kopiere filer, og det fungerer godt for de fleste installationer, herunder dem [der hoster flere træer](multi-tree.md).
 
-Alternativt kan slægtstræer hostes på en PostgreSQL-server ved hjælp af SharedPostgreSQL-tilføjelsen, som holder alle træer i en enkelt database. Dette kan give mening, hvis du allerede kører en PostgreSQL-server og ønsker at administrere sikkerhedskopier og overvågning der, eller hvis du forventer mange brugere, der redigerer samtidig. PostgreSQL kan også hoste [brugerdatabasen](#using-a-postgresql-database-for-the-user-database) og [søgeindekset](#using-a-postgresql-database-for-the-search-index), uafhængigt af hvor slægtstræerne er gemt.
+Alternativt kan slægtstræer hostes på en PostgreSQL-server ved hjælp af SharedPostgreSQL-tilføjelsen, som holder alle træer i en enkelt database. Dette kan give mening, hvis du allerede kører en PostgreSQL-server og ønsker at administrere sikkerhedskopier og overvågning der, eller hvis du forventer mange brugere, der redigerer på samme tid. PostgreSQL kan også hoste [bruger databasen](#using-a-postgresql-database-for-the-user-database) og [søgeindekset](#using-a-postgresql-database-for-the-search-index), uafhængigt af hvor slægtstræerne er gemt.
 
-!!! warning "PostgreSQL-tilføjelse afbrudt"
-    Den ældre PostgreSQL-tilføjelse, som gemmer et enkelt slægtstræ pr. database, er afbrudt siden Gramps Web API 3.24 og vil ikke længere blive understøttet i Gramps Web API 4.0, fordi den ikke er kompatibel med hosting af flere træer, som bliver standard i den version. Hvis du bruger den, se [Flytning af et træ fra PostgreSQL-tilføjelsen til SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
+!!! warning "PostgreSQL-tilføjelse afviklet"
+    Den ældre PostgreSQL-tilføjelse, som gemmer et enkelt slægtstræ pr. database, er afviklet siden Gramps Web API 3.24 og vil ikke længere blive understøttet i Gramps Web API 4.0, fordi den ikke er kompatibel med hosting af flere træer, hvilket bliver standard i den version. Hvis du bruger den, se [Flytning af et træ fra PostgreSQL-tilføjelsen til SharedPostgreSQL](#moving-a-tree-from-the-postgresql-addon-to-sharedpostgresql).
 
 ## Opsætning af PostgreSQL-serveren
 
@@ -25,7 +25,7 @@ Gramps har brug for lokaliteter installeret på PostgreSQL-serveren for at sorte
 ```
 og tilføj også `postgres_data:` som nøgle under `volumes:` sektionen i denne YAML-fil. Billedet indeholder to databaser, hver med sin egen bruger og adgangskode: `gramps` til de genealogiske data og `grampswebuser` til Gramps Web-bruger databasen.
 
-Hvis du bruger din egen PostgreSQL-server i stedet, skal du oprette en database med navnet `gramps`, som den konfigurerede bruger kan oprette tabeller i, og sørg for, at de lokaliteter, dine brugere har brug for, er installeret.
+Hvis du i stedet bruger din egen PostgreSQL-server, skal du oprette en database med navnet `gramps`, som den konfigurerede bruger kan oprette tabeller i, og sørge for, at de lokaliteter, dine brugere har brug for, er installeret.
 
 ## Konfigurering af Gramps Web
 
@@ -37,23 +37,23 @@ Nye slægtstræer oprettes i SharedPostgreSQL-databasen, når Gramps Web kører 
       GRAMPSWEB_MEDIA_PREFIX_TREE: true
       # opret nye træer i SharedPostgreSQL-databasen
       GRAMPSWEB_NEW_DB_BACKEND: sharedpostgresql
-      # Værten og porten for PostgreSQL-serveren. Værten
-      # er navnet på PostgreSQL-tjenesten ovenfor
+      # Værten og porten til PostgreSQL-serveren. Den
+      # vært er navnet på PostgreSQL-tjenesten ovenfor
       GRAMPSWEB_POSTGRES_HOST: postgres_gramps
       GRAMPSWEB_POSTGRES_PORT: 5432
-      # legitimationsoplysningerne skal stemme overens med dem, der bruges til
+      # Legitimationsoplysningerne skal stemme overens med dem, der bruges til
       # PostgreSQL-containeren
       GRAMPSWEB_POSTGRES_USER: gramps
       GRAMPSWEB_POSTGRES_PASSWORD: postgres_password_gramps
 ```
 
-Se [Konfiguration](configuration.md) for en beskrivelse af alle disse muligheder. Bemærk, at værten og porten gemmes med hvert træ, når det oprettes, så ændringer af dem senere kun påvirker nye træer.
+Se [Konfiguration](configuration.md) for en beskrivelse af alle disse muligheder. Bemærk, at vært og port gemmes med hvert træ, når det oprettes, så ændringer af dem senere kun påvirker nye træer.
 
 ## Oprettelse af et træ og import af data
 
-For at oprette et nyt træ, POST til `/trees/` endpointet som beskrevet i [Opsætning til hosting af flere træer](multi-tree.md#create-a-new-tree). Svaret indeholder ID'et for det nye træ, som du har brug for for at [oprette træejerskontoen](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
+For at oprette et nyt træ, POST til `/trees/` endpointet som beskrevet i [Opsætning til hosting af flere træer](multi-tree.md#create-a-new-tree). Svaret indeholder ID'et for det nye træ, som du har brug for for at [oprette træejerskabs-kontoen](../administration/owner.md#multi-tree-setup-create-tree-owner-account).
 
-Når træejeren er logget ind, kan de [importere](../administration/import.md) et eksisterende slægtstræ, f.eks. en Gramps XML-fil eksporteret fra Gramps Desktop, via webgrænsefladen.
+Når træejeren har logget ind, kan de [importere](../administration/import.md) et eksisterende slægtstræ, f.eks. en Gramps XML-fil eksporteret fra Gramps Desktop, via webgrænsefladen.
 
 ## Brug af en PostgreSQL-database til bruger databasen
 
@@ -73,18 +73,18 @@ Søgeindekset kræver PostgreSQL 12 eller nyere.
 
 ## Flytning af et træ fra PostgreSQL-tilføjelsen til SharedPostgreSQL
 
-Ældre installationer kan hoste deres slægtstræ med PostgreSQL-tilføjelsen, som gemmer et enkelt træ pr. database og er afbrudt. For at finde ud af, hvilken tilføjelse et træ bruger, skal du se på filen `database.txt` i træets undermappe i Gramps-databasekataloget: den indeholder `postgresql` for den afbrudte PostgreSQL-tilføjelse og `sharedpostgresql` for SharedPostgreSQL.
+Ældre installationer kan hoste deres slægtstræ med PostgreSQL-tilføjelsen, som gemmer et enkelt træ pr. database og er afviklet. For at finde ud af, hvilken tilføjelse et træ bruger, skal du se på filen `database.txt` i træets undermappe i Gramps-databasedirektoriet: den indeholder `postgresql` for den afviklede PostgreSQL-tilføjelse og `sharedpostgresql` for SharedPostgreSQL.
 
-For at flytte et træ fra PostgreSQL-tilføjelsen til SharedPostgreSQL inden for den samme installation, mens du bevarer dine brugerkonti og mediefiler:
+For at flytte et træ fra PostgreSQL-tilføjelsen til SharedPostgreSQL inden for den samme installation, mens du beholder dine brugerkonti og mediefiler:
 
-1. [Sikkerhedskopier dit slægtstræ](../administration/export.md#back-up-your-family-tree) som en Gramps XML (`.gramps`) fil, ved hjælp af en konto, der kan se private optegnelser.
+1. [Eksporter dit slægtstræ](../administration/export.md#export-the-family-tree-as-gramps-xml) som en Gramps XML (`.gramps`) fil, ved hjælp af en konto, der kan se private poster.
 2. Ændre din konfiguration som beskrevet i [Konfigurering af Gramps Web](#configuring-gramps-web). Du kan fortsætte med at bruge din eksisterende `gramps-postgres` container.
 3. [Opret et nyt træ](multi-tree.md#create-a-new-tree) og noter dets træ-ID.
-4. Tildel dine eksisterende brugerkonti til det nye træ, som beskrevet i [Migrer eksisterende bruger database](multi-tree.md#migrate-existing-user-database).
-5. Flyt dine mediefiler til den placering, der forventes for det nye træ, som beskrevet i [Migrer eksisterende mediefiler](multi-tree.md#migrate-existing-media-files).
+4. Tildel dine eksisterende brugerkonti til det nye træ, som beskrevet i [Migrere eksisterende bruger database](multi-tree.md#migrate-existing-user-database).
+5. Flyt dine mediefiler til den placering, der forventes for det nye træ, som beskrevet i [Migrere eksisterende mediefiler](multi-tree.md#migrate-existing-media-files).
 6. Log ind og [importer](../administration/import.md) Gramps XML-filen til det nye træ.
 
-Behold Gramps XML-filen, indtil du har tjekket, at det nye træ er komplet.
+Behold Gramps XML-filen, indtil du har kontrolleret, at det nye træ er komplet.
 
 Hvis du flytter til en separat Gramps Web-installation i stedet, skal du følge trinene i [Flyt til en anden Gramps Web-instans](../administration/export.md#move-to-a-different-gramps-web-instance).
 

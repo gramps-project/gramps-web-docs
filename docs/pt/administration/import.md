@@ -2,7 +2,7 @@
 
 Você pode trazer uma árvore genealógica existente para o Gramps Web fazendo o upload de um arquivo exportado de outro programa de genealogia, de um serviço online ou do Gramps Desktop.
 
-A importação é encontrada na seção **Dados** das [configurações de administração](settings.md) (ícone do usuário na barra superior do aplicativo ▸ Administração), que está disponível para proprietários de árvores e administradores. Enquanto a árvore ainda estiver vazia, o botão **Importar Árvore Genealógica** no cartão "Começar" da página inicial também leva até lá.
+A importação é encontrada na seção **Dados** das [Configurações de administração](settings.md) (ícone do usuário na barra superior do aplicativo ▸ Administração), que está disponível para proprietários de árvores e administradores. Enquanto a árvore ainda estiver vazia, o botão **Importar Árvore Genealógica** no cartão "Começar" da página inicial também leva a essa seção.
 
 ## Qual arquivo usar
 
@@ -15,29 +15,36 @@ A importação é encontrada na seção **Dados** das [configurações de admini
 | Uma planilha | Gramps CSV | `.csv` |
 | Um catálogo de endereços | vCard | `.vcf` |
 
-GEDCOM é o formato de troca comum que quase todos os programas de genealogia e serviços online podem exportar. Procure uma opção de "Exportar" ou "Baixar" em seu programa ou no site, e escolha GEDCOM se você tiver várias opções de formato. A página do Gramps Wiki [Importar de outro programa de genealogia](https://www.gramps-project.org/wiki/index.php/Import_from_another_genealogy_program) possui notas sobre programas específicos.
+GEDCOM é o formato de troca comum que quase todos os programas de genealogia e serviços online podem exportar. Procure uma opção "Exportar" ou "Baixar" em seu programa ou no site, e escolha GEDCOM se você tiver várias opções de formato. A página da Wiki do Gramps [Importar de outro programa de genealogia](https://www.gramps-project.org/wiki/index.php/Import_from_another_genealogy_program) tem notas sobre programas específicos.
 
-Se você usar o Gramps Desktop, escolha Gramps XML (`.gramps`) em vez de GEDCOM. Ele carrega todos os dados do Gramps sem perda, e suas árvores online e offline mantêm os mesmos identificadores, para que possam ser [sincronizadas](sync.md). Veja [Vindo do Gramps Desktop](#coming-from-gramps-desktop) abaixo.
+Se você usar o Gramps Desktop, escolha Gramps XML (`.gramps`) em vez de GEDCOM. Ele transporta todos os dados do Gramps sem perda, e suas árvores online e offline mantêm os mesmos identificadores, para que possam ser [sincronizadas](sync.md). Veja [Vindo do Gramps Desktop](#coming-from-gramps-desktop) abaixo.
 
 ## Importar um arquivo de árvore genealógica
 
-1. Abra a seção **Dados** das configurações de administração.
+1. Abra a seção **Dados** das Configurações de administração.
 2. Em "Importar Árvore Genealógica", escolha seu arquivo e clique em **Importar**.
 3. O arquivo é analisado primeiro, e uma caixa de diálogo "Confirmar Importação" mostra quantos objetos ele contém (pessoas, famílias, eventos, lugares, e assim por diante). Nada foi adicionado à sua árvore ainda. Verifique se as contagens parecem plausíveis, então clique em **Importar** para prosseguir, ou **Cancelar** para abortar sem alterar nada.
-4. A importação é executada em segundo plano e um indicador de progresso é exibido. Uma vez que os dados são importados, o índice de busca é atualizado, o que pode levar um tempo para uma árvore grande. Se a importação falhar, o motivo é exibido.
+4. A importação é executada em segundo plano e um indicador de progresso é mostrado. Uma vez que os dados são importados, o índice de busca é atualizado, o que pode levar um tempo para uma árvore grande. Se a importação falhar, a razão é mostrada.
 
-Quando a importação terminar, verifique o resultado: compare o número de pessoas no painel **Estatísticas** na página inicial com o número em seu programa antigo, e abra uma família que você conhece bem para ver se pais, filhos, datas e lugares foram transferidos como esperado.
+Quando a importação terminar, verifique o resultado: compare o número de pessoas no painel de **Estatísticas** na página inicial com o número em seu programa antigo, e abra uma família que você conhece bem para ver se os pais, filhos, datas e lugares foram transferidos conforme esperado.
 
 !!! warning
-    Uma importação regular é puramente aditiva: ela sempre cria novos objetos e nunca atualiza ou exclui os existentes, mesmo para objetos que já existem em sua árvore sob o mesmo ID ou identificador do Gramps. Importar o mesmo arquivo duas vezes – ou importar um arquivo que se sobreponha a dados já existentes na árvore – duplicará cada objeto correspondente em vez de mesclar ou ignorá-lo.
+    Uma importação regular é puramente aditiva: ela sempre cria novos objetos e nunca atualiza ou exclui os existentes, mesmo para objetos que já existem em sua árvore sob o mesmo ID ou identificador do Gramps. Importar o mesmo arquivo duas vezes – ou importar um arquivo que se sobreponha a dados já na árvore – duplicará cada objeto correspondente em vez de mesclar ou ignorá-lo.
 
-    Se você precisar trazer alterações feitas em outro lugar para uma árvore que já foi importada, use [Restaurar de Backup](settings.md#restore-from-backup) em vez disso, que substitui a árvore para corresponder ao arquivo carregado em vez de adicionar a ele. Isso requer um arquivo Gramps XML ou um backup do Gramps Web.
+    Se você precisar trazer alterações feitas em outro lugar para uma árvore que já foi importada, use [Restaurar do Backup](backups.md#restore-from-backup) em vez disso, que substitui a árvore para corresponder ao arquivo carregado em vez de adicionar a ele. Isso requer um arquivo Gramps XML ou um backup do Gramps Web.
 
-Se um limite no número de pessoas foi definido para sua árvore (veja [Cotas de uso](settings.md#usage-quotas)), uma importação que excederia esse limite é recusada como um todo.
+## Quotas de uso
+
+O administrador do servidor pode definir limites para sua árvore (veja [Configuração do servidor](../install_setup/configuration.md)). O topo da seção **Dados** mostra o uso atual em relação a esses limites:
+
+- **Pessoas** – o número de objetos de pessoa na árvore versus o máximo configurado (∞ se ilimitado)
+- **Armazenamento de mídia** – tamanho total dos arquivos de mídia carregados versus a cota de armazenamento configurada (∞ se ilimitado)
+
+Uma importação que excederia o limite no número de pessoas é recusada como um todo.
 
 ## Arquivos GEDCOM
 
-Tanto arquivos GEDCOM 5.5.1 quanto GEDCOM 7 podem ser importados. Há algumas coisas a serem observadas.
+Tanto arquivos GEDCOM 5.5.1 quanto GEDCOM 7 podem ser importados. Existem algumas coisas a serem observadas.
 
 ### Codificação de caracteres
 
@@ -47,19 +54,19 @@ Arquivos GEDCOM 7 devem sempre ser codificados como UTF-8; outros arquivos são 
 
 ### Dados específicos do programa
 
-Muitos programas adicionam suas próprias extensões ao GEDCOM que outros programas não entendem. O Gramps não descarta silenciosamente esses dados: linhas que não pode interpretar são coletadas em uma nota do tipo "importação GEDCOM", anexada à pessoa, família ou outro objeto a que pertencem. Revise essas notas para ver se algo importante não foi transferido.
+Muitos programas adicionam suas próprias extensões ao GEDCOM que outros programas não entendem. O Gramps não descarta silenciosamente esses dados: linhas que ele não pode interpretar são coletadas em uma nota do tipo "importação GEDCOM", anexada à pessoa, família ou outro objeto a que pertencem. Revise essas notas para ver se algo importante não foi transferido.
 
 ### Arquivos de mídia
 
-Um arquivo GEDCOM contém referências a arquivos de mídia (como fotos ou documentos digitalizados), mas não os arquivos em si. Após a importação, os objetos de mídia existem em sua árvore, mas seus arquivos estão ausentes, o que é mostrado sob [Status do arquivo de mídia](settings.md#media-file-status). Para adicionar os arquivos, veja [Importar arquivos de mídia](import-media.md).
+Um arquivo GEDCOM contém referências a arquivos de mídia (como fotos ou documentos digitalizados), mas não os arquivos em si. Após a importação, os objetos de mídia existem em sua árvore, mas seus arquivos estão ausentes, o que é mostrado sob [Status do arquivo de mídia](import-media.md#media-file-status). Para adicionar os arquivos, veja [Importar arquivos de mídia](import-media.md).
 
 ## Vindo do Gramps Desktop
 
-Se você estiver usando o Gramps Desktop, há duas etapas para preparar seu banco de dados e garantir que tudo funcione sem problemas a seguir.
+Se você estiver usando o Gramps Desktop, há duas etapas para preparar seu banco de dados para garantir que tudo funcione sem problemas a seguir.
 
 1. Verifique e repare o banco de dados
     - Opcional: crie um backup do banco de dados exportando para Gramps XML
-    - Execute a [ferramenta de Verificação e Reparação do Banco de Dados](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Isso corrige algumas inconsistências internas que podem levar a problemas no Gramps Web.
+    - Execute a [ferramenta de Verificação e Reparo do banco de dados](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Isso corrige algumas inconsistências internas que poderiam levar a problemas no Gramps Web.
 2. Converta caminhos de mídia para relativos
     - Use o Gerenciador de Mídia do Gramps para [converter todos os caminhos de mídia de absolutos para relativos](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Observe que mesmo com caminhos relativos, quaisquer arquivos de mídia fora do diretório de mídia do Gramps não funcionarão corretamente quando sincronizados com o Gramps Web.
 
@@ -67,11 +74,11 @@ Em seguida, exporte sua árvore para Gramps XML (`.gramps`), importe-a conforme 
 
 ### Por que não há suporte para pacote Gramps XML?
 
-Embora Gramps XML (`.gramps`) seja o formato preferido para importar dados, o pacote Gramps XML (`.gpkg`) não é suportado pelo Gramps Web. Isso ocorre porque as rotinas de importação e exportação para arquivos de mídia não são adequadas para uso em um servidor web.
+Embora Gramps XML (`.gramps`) seja o formato preferido para importar dados, o pacote Gramps XML (`.gpkg`) não é suportado pelo Gramps Web. Isso se deve ao fato de que as rotinas de importação e exportação para arquivos de mídia não são adequadas para uso em um servidor web.
 
 ## Problemas comuns
 
-**"Formato não suportado".** Apenas as extensões de arquivo listadas [acima](#qual-arquivo-usar) podem ser importadas. Se seu programa ou serviço online lhe deu um arquivo ZIP, descompacte-o e carregue o arquivo `.ged` dentro.
+**"Formato não suportado".** Apenas as extensões de arquivo listadas [acima](#qual-arquivo-usar) podem ser importadas. Se seu programa ou serviço online lhe deu um arquivo ZIP, descompacte-o e faça o upload do arquivo `.ged` dentro.
 
 **Tudo aparece duas vezes.** O mesmo arquivo foi importado duas vezes. Como as importações nunca mesclam, [comece de novo](#starting-over).
 
@@ -81,4 +88,19 @@ Embora Gramps XML (`.gramps`) seja o formato preferido para importar dados, o pa
 
 ### Começando de novo
 
-Se uma importação deu errado, ou se você quiser corrigir algo em seu programa antigo e importar novamente, primeiro esvazie a árvore usando [Excluir todos os objetos](settings.md#delete-all-objects) na Zona de Perigo das configurações de administração, e então importe o arquivo corrigido. Observe que isso também exclui quaisquer alterações que você tenha feito no Gramps Web desde a importação.
+Se uma importação deu errado, ou se você deseja corrigir algo em seu programa antigo e importar novamente, primeiro esvazie a árvore usando [Excluir todos os objetos](#delete-all-objects), depois importe o arquivo corrigido. Observe que isso também exclui quaisquer alterações que você tenha feito no Gramps Web desde a importação.
+
+### Excluir todos os objetos
+
+!!! danger
+    Excluir objetos é **irreversível**. Faça um [backup](backups.md) antes de prosseguir.
+
+**Excluir todos os objetos** é encontrado na seção **Zona de Perigo** das [Configurações de administração](settings.md). Clicar em **Excluir** abre uma caixa de diálogo onde você pode escolher excluir:
+
+- **Todos os objetos** – limpa completamente a árvore
+- **Tipos de objetos específicos** – por exemplo, apenas eventos ou apenas objetos de mídia
+
+Você será solicitado a re-autenticar (fazer login novamente) para confirmar a ação. A exclusão é executada como uma tarefa em segundo plano e um indicador de progresso é mostrado.
+
+!!! warning
+    Excluir apenas um subconjunto de tipos de objetos (em vez de todos os objetos de uma vez) pode levar muito tempo para árvores grandes, pois o servidor deve verificar e atualizar todos os relacionamentos entre os objetos.

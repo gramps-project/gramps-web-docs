@@ -1,8 +1,17 @@
 # Medya dosyalarını içe aktar
 
-Eğer bir [ağaç içe aktardıysanız](import.md) ve ilgili medya dosyalarını yüklemeniz gerekiyorsa, [Yönetim ayarları](settings.md) bölümündeki **Medya Dosyalarını İçe Aktar** seçeneğini kullanın. Bu, eksik medya dosyalarını içeren bir ZIP dosyası bekler. Dosyalar, ağacınızdaki medya nesneleri ile iki şekilde eşleştirilir:
+Eğer bir [ağaç içe aktardıysanız](import.md) ve ilgili medya dosyalarını yüklemeniz gerekiyorsa, [Yönetim ayarları](settings.md) bölümündeki **Medya Dosyalarını İçe Aktar** seçeneğini kullanın. Eksik medya dosyalarını içeren bir ZIP dosyası beklenir. Dosyalar, ağacınızdaki medya nesneleriyle iki şekilde eşleştirilir:
 
-- **Checksum ile.** Bir checksum'a sahip medya nesneleri için – Gramps Desktop'tan içe aktarılan ağaçlar için olduğu gibi – eşleşen checksum'a sahip dosya kullanılır; dosyanın adı veya ZIP dosyasındaki klasör yapısı dikkate alınmaz. Bu, Gramps veritabanındaki checksum'ların doğru olması durumunda çalışır; bu da kontrol ve onarım aracını çalıştırarak sağlanır.
-- **Yol ile.** Checksum'a sahip olmayan medya nesneleri – GEDCOM içe aktarımdan sonra tipik olan – yollarına göre eşleştirilir: ZIP dosyası, medya nesnesinde saklanan tam olarak göreceli yol altında dosyayı içermelidir.
+- **Kontrol toplamına göre.** Kontrol toplamı olan medya nesneleri için – Gramps Desktop'tan içe aktarılan ağaçlar için olduğu gibi – eşleşen kontrol toplamına sahip dosya kullanılır; dosyanın adı veya ZIP dosyasındaki klasör yapısı önemli değildir. Bu, Gramps veritabanındaki kontrol toplamlarının doğru olması durumunda çalışır; bu da kontrol ve onarım aracını çalıştırarak sağlanır.
+- **Yola göre.** Kontrol toplamı olmayan medya nesneleri – GEDCOM içe aktarıldıktan sonra tipik olarak olduğu gibi – yollarına göre eşleştirilir: ZIP dosyası, medya nesnesinde saklanan tam göreli yol altında dosyayı içermelidir.
 
-Eğer GEDCOM dosyanızda saklanan yollar mutlak ise (örneğin `C:\Users\...\photo.jpg`), yol ile eşleştirme çalışmayacaktır. Bu durumda, mevcut medya dosyalarını içe aktarılan bir ağaç ile ilişkilendirmek için daha fazla seçeneğe sahip olan Gramps Desktop'a her şeyi önce içe aktarmanız önerilir ve ardından [Gramps Desktop'tan gelme](import.md#coming-from-gramps-desktop) bölümünde açıklandığı gibi Gramps Web'e geçebilirsiniz.
+Eğer GEDCOM dosyanızda saklanan yollar mutlaksa (örneğin `C:\Users\...\photo.jpg`), yola göre eşleştirme çalışmayacaktır. Bu durumda, mevcut medya dosyalarını içe aktarılan bir ağaçla ilişkilendirmek için daha fazla seçeneğe sahip olan Gramps Desktop'a her şeyi önce içe aktarmanız ve ardından [Gramps Desktop'tan Gelme](import.md#coming-from-gramps-desktop) bölümünde açıklandığı gibi Gramps Web'e geçmeniz önerilir.
+
+## Medya dosyası durumu
+
+[Yönetim ayarları](settings.md) bölümündeki **Veri** kısmı şunları gösterir:
+
+- Ağaçtaki toplam medya nesnesi sayısı ve herhangi birinin kontrol toplamının eksik olup olmadığı
+- Sunucudan eksik olan dosyası olan medya nesnelerinin sayısı
+
+Yeşil bir onay işareti her şeyin yolunda olduğunu gösterir. Problemler tespit edilirse, etkilenen nesnelere bağlantılar gösterilir. Eksik kontrol toplamları genellikle medya referanslarını içeren ancak gerçek dosyaları içermeyen bir format olan GEDCOM'dan veri içe aktarıldığında meydana gelir. Eksik dosyalar yukarıda açıklandığı gibi yüklenebilir.
