@@ -190,6 +190,13 @@
       return;
     }
 
+    // Respect a language picked with the language selector
+    try {
+      if (localStorage.getItem('gramps-web-docs.language')) {
+        return;
+      }
+    } catch (e) {}
+
     const availableLanguages = ['da', 'de', 'es', 'fi', 'fr', 'it', 'ja', 'pt', 'ru', 'tr', 'uk', 'vi', 'zh'];
     const browserLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
     

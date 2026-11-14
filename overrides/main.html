@@ -10,6 +10,42 @@
 
 
 
+{% block scripts %}
+{#- Each language has its own search index (see overrides/hooks.py). -#}
+{%- set search_locale = i18n_page_locale if i18n_page_locale is defined else none -%}
+{%- set default_locale = (i18n_config.languages | selectattr("default") | map(attribute="locale") | first) if i18n_config is defined else none -%}
+{%- if search_locale and search_locale != default_locale %}
+<script>
+  (function () {
+    var config = JSON.parse(document.getElementById("__config").textContent);
+    var base = new URL(config.base, location.href);
+    var original = new URL("search/search_index.json", base).href;
+    var localized = new URL({{ search_locale | tojson }} + "/search/search_index.json", base).href;
+    var open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function (method, url) {
+      var args = Array.prototype.slice.call(arguments);
+      if (new URL(String(url), location.href).href === original) args[1] = localized;
+      return open.apply(this, args);
+    };
+  })();
+</script>
+{%- endif %}
+<script>
+  // The search index is only loaded on a full page load, so switching the
+  // language must not go through instant navigation. The choice is also
+  // remembered so the home page doesn't redirect to the browser language.
+  document.addEventListener("click", function (ev) {
+    var link = ev.target instanceof Element && ev.target.closest("a[hreflang]");
+    if (!link) return;
+    ev.stopPropagation();
+    try {
+      localStorage.setItem("gramps-web-docs.language", link.getAttribute("hreflang"));
+    } catch (e) {}
+  }, true);
+</script>
+{{ super() }}
+{% endblock %}
+
 {% block styles %}
 {{ super() }}
 <style>

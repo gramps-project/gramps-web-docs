@@ -129,6 +129,8 @@ markdown_extensions:
 plugins:
   - i18n:
       docs_structure: folder
+      # per-language search indexes are written by overrides/hooks.py
+      reconfigure_search: false
       languages:
         - locale: en
           name: English
