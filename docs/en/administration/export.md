@@ -1,14 +1,16 @@
+# Export data
+
+The Export page lets you download the family tree data in various formats, as well as an archive of all media files.
+
+## Export the family tree as Gramps XML
+
+To get a copy of the family tree data, open the Export page in Gramps Web and select the Gramps XML format. Clicking on "export" will generate the file and start the download once it is ready.
+
+Note that if your Gramps Web user does not have permission to view private records, the export will not contain any private records.
+
 ## Back up your family tree
 
-Tree owners can create, download, and restore complete backups of the tree – including its settings and users – in the [Backups](settings.md#backups) section of the Administration settings.
-
-Alternatively, to create a backup of the family tree data only, open the Export page in Gramps Web and select the Gramps XML format.
-
-Clicking on "export" will generate the file and start the download once it is ready.
-
-Note that if your Gramps Web user does not have permission to view private records, the export will not be a full backup, since it will not contain any private records.
-
-This Gramps XML file can later be used to restore the tree to this exact state via [Restore from Backup](settings.md#restore-from-backup).
+For complete backups of the tree – including its settings and users – see [Back up and restore](backups.md). A Gramps XML export can serve as a backup of the family tree data only and can be restored via [Restore from Backup](backups.md#restore-from-backup).
 
 ## Share your family tree with users of other genealogy programs
 

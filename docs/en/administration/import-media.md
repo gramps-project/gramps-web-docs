@@ -6,3 +6,12 @@ If you have [imported a family tree](import.md) and need to upload the correspon
 - **By path.** Media objects without a checksum – as is typical after a GEDCOM import – are matched by their path: the ZIP file must contain the file under exactly the relative path stored in the media object.
 
 If the paths stored in your GEDCOM file are absolute (for example `C:\Users\...\photo.jpg`), matching by path will not work. In this case, it is recommended to first import everything into Gramps Desktop, which has more options to associate existing media files with an imported tree, and then move to Gramps Web as described in [Coming from Gramps Desktop](import.md#coming-from-gramps-desktop).
+
+## Media file status
+
+The **Data** section of the [Administration settings](settings.md) shows:
+
+- The total number of media objects in the tree and whether any are missing a checksum
+- The number of media objects whose associated file is missing from the server
+
+A green check mark indicates everything is in order. If problems are detected, links to the affected objects are shown. Missing checksums typically occur when data was imported from a format such as GEDCOM that includes media references but not the actual files. The missing files can be uploaded as described above.

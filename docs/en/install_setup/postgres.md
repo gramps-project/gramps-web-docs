@@ -77,7 +77,7 @@ Older installations may host their family tree with the PostgreSQL addon, which 
 
 To move a tree from the PostgreSQL addon to SharedPostgreSQL within the same installation, keeping your user accounts and media files:
 
-1. [Back up your family tree](../administration/export.md#back-up-your-family-tree) as a Gramps XML (`.gramps`) file, using an account that can view private records.
+1. [Export your family tree](../administration/export.md#export-the-family-tree-as-gramps-xml) as a Gramps XML (`.gramps`) file, using an account that can view private records.
 2. Change your configuration as described in [Configuring Gramps Web](#configuring-gramps-web). You can keep using your existing `gramps-postgres` container.
 3. [Create a new tree](multi-tree.md#create-a-new-tree) and note its tree ID.
 4. Assign your existing user accounts to the new tree, as described in [Migrate existing user database](multi-tree.md#migrate-existing-user-database).

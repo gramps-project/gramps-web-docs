@@ -31,9 +31,16 @@ When the import has finished, check the result: compare the number of people in 
 !!! warning
     A regular import is purely additive: it always creates new objects and never updates or deletes existing ones, even for objects that already exist in your tree under the same Gramps ID or handle. Importing the same file twice – or importing a file that overlaps with data already in the tree – will duplicate every matching object rather than merge or skip it.
 
-    If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](settings.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it. This requires a Gramps XML file or a Gramps Web backup.
+    If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](backups.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it. This requires a Gramps XML file or a Gramps Web backup.
 
-If a limit on the number of people has been set for your tree (see [Usage quotas](settings.md#usage-quotas)), an import that would exceed it is refused as a whole.
+## Usage quotas
+
+The server administrator can set limits for your tree (see [Server configuration](../install_setup/configuration.md)). The top of the **Data** section shows the current usage relative to these limits:
+
+- **People** – the number of person objects in the tree versus the configured maximum (∞ if unlimited)
+- **Media storage** – total size of uploaded media files versus the configured storage quota (∞ if unlimited)
+
+An import that would exceed the limit on the number of people is refused as a whole.
 
 ## GEDCOM files
 
@@ -51,7 +58,7 @@ Many programs add their own extensions to GEDCOM that other programs don't under
 
 ### Media files
 
-A GEDCOM file contains references to media files (such as photos or scanned documents), but not the files themselves. After the import, the media objects exist in your tree, but their files are missing, which is shown under [Media file status](settings.md#media-file-status). To add the files, see [Import media files](import-media.md).
+A GEDCOM file contains references to media files (such as photos or scanned documents), but not the files themselves. After the import, the media objects exist in your tree, but their files are missing, which is shown under [Media file status](import-media.md#media-file-status). To add the files, see [Import media files](import-media.md).
 
 ## Coming from Gramps Desktop
 
@@ -81,4 +88,19 @@ While Gramps XML (`.gramps`) is the preferred format for importing data, Gramps 
 
 ### Starting over
 
-If an import went wrong, or you want to fix something in your old program and import again, first empty the tree using [Delete all objects](settings.md#delete-all-objects) in the Danger Zone of the Administration settings, then import the corrected file. Note that this also deletes any changes you have made in Gramps Web since the import.
+If an import went wrong, or you want to fix something in your old program and import again, first empty the tree using [Delete all objects](#delete-all-objects), then import the corrected file. Note that this also deletes any changes you have made in Gramps Web since the import.
+
+### Delete all objects
+
+!!! danger
+    Deleting objects is **irreversible**. Make a [backup](backups.md) before proceeding.
+
+**Delete all objects** is found in the **Danger Zone** section of the [Administration settings](settings.md). Clicking **Delete** opens a dialog where you can choose to delete:
+
+- **All objects** – completely clears the tree
+- **Specific object types** – for example, only events or only media objects
+
+You will be asked to re-authenticate (log in again) to confirm the action. The deletion runs as a background task and a progress indicator is shown.
+
+!!! warning
+    Deleting only a subset of object types (rather than all objects at once) can take a very long time for large trees, as the server must check and update all relationships between objects.

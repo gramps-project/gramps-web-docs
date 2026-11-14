@@ -30,9 +30,12 @@ nav:
       - Import data: administration/import.md
       - Import media files: administration/import-media.md
       - Export data: administration/export.md
+      - Back up and restore: administration/backups.md
       - Manage users: administration/users.md
+      - Customize the tree: administration/customization.md
+      - Check and verify data: administration/check-repair.md
+      - Search index: administration/search-index.md
       - Administration settings: administration/settings.md
-      # - Manage search index:  admin/search.md
       - Synchronize with Gramps: administration/sync.md
       # # - Command Line Interface:  cli.md
       # - First steps:
@@ -174,6 +177,10 @@ plugins:
             Export data: Daten exportieren
             Manage users: Benutzer verwalten
             Administration settings: Verwaltungseinstellungen
+            Back up and restore: Sichern und wiederherstellen
+            Customize the tree: Stammbaum anpassen
+            Check and verify data: Daten prüfen
+            Search index: Suchindex
             Synchronize with Gramps: Mit Gramps synchronisieren
             User Guide: Benutzerhandbuch
             Getting started: Erste Schritte
@@ -258,6 +265,10 @@ plugins:
             Export data: Exporter des données
             Manage users: Gérer les utilisateurs
             Administration settings: Paramètres d'administration
+            Back up and restore: Sauvegarder et restaurer
+            Customize the tree: "Personnaliser l'arbre"
+            Check and verify data: Vérifier les données
+            Search index: Index de recherche
             Synchronize with Gramps: Synchroniser avec Gramps
             User Guide: Guide utilisateur
             Getting started: Premiers pas
@@ -342,6 +353,10 @@ plugins:
             Export data: Exportar datos
             Manage users: Gestionar usuarios
             Administration settings: Configuración de administración
+            Back up and restore: Copia de seguridad y restauración
+            Customize the tree: Personalizar el árbol
+            Check and verify data: Comprobar y verificar datos
+            Search index: Índice de búsqueda
             Synchronize with Gramps: Sincronizar con Gramps
             User Guide: Guía del usuario
             Getting started: Primeros pasos
@@ -426,6 +441,10 @@ plugins:
             Export data: 导出数据
             Manage users: 管理用户
             Administration settings: 管理设置
+            Back up and restore: 备份与恢复
+            Customize the tree: 自定义家族树
+            Check and verify data: 检查和验证数据
+            Search index: 搜索索引
             Synchronize with Gramps: 与 Gramps 同步
             User Guide: 用户指南
             Getting started: 第一步
@@ -510,6 +529,10 @@ plugins:
             Export data: Xuất dữ liệu
             Manage users: Quản lý người dùng
             Administration settings: Cài đặt quản trị
+            Back up and restore: Sao lưu và khôi phục
+            Customize the tree: Tùy chỉnh cây
+            Check and verify data: Kiểm tra và xác minh dữ liệu
+            Search index: Chỉ mục tìm kiếm
             Synchronize with Gramps: Đồng bộ với Gramps
             User Guide: Hướng dẫn sử dụng
             Getting started: Các bước đầu tiên
@@ -594,6 +617,10 @@ plugins:
             Export data: Veri dışa aktar
             Manage users: Kullanıcıları yönet
             Administration settings: Yönetim ayarları
+            Back up and restore: Yedekleme ve geri yükleme
+            Customize the tree: Ağacı özelleştir
+            Check and verify data: Verileri kontrol et ve doğrula
+            Search index: Arama dizini
             Synchronize with Gramps: Gramps ile senkronize et
             User Guide: Kullanıcı Kılavuzu
             Getting started: İlk adımlar
@@ -678,6 +705,10 @@ plugins:
             Export data: Экспорт данных
             Manage users: Управление пользователями
             Administration settings: Настройки администрирования
+            Back up and restore: Резервное копирование и восстановление
+            Customize the tree: Настройка дерева
+            Check and verify data: Проверка данных
+            Search index: Поисковый индекс
             Synchronize with Gramps: Синхронизация с Gramps
             User Guide: Руководство пользователя
             Getting started: Первые шаги
@@ -762,6 +793,10 @@ plugins:
             Export data: Exportar dados
             Manage users: Gerir utilizadores
             Administration settings: Definições de administração
+            Back up and restore: Cópia de segurança e restauro
+            Customize the tree: Personalizar a árvore
+            Check and verify data: Verificar dados
+            Search index: Índice de pesquisa
             Synchronize with Gramps: Sincronizar com Gramps
             User Guide: Guia do usuário
             Getting started: Primeiros passos
@@ -846,6 +881,10 @@ plugins:
             Export data: データのエクスポート
             Manage users: ユーザーの管理
             Administration settings: 管理設定
+            Back up and restore: バックアップと復元
+            Customize the tree: ツリーのカスタマイズ
+            Check and verify data: データの確認と検証
+            Search index: 検索インデックス
             Synchronize with Gramps: Gramps と同期
             User Guide: ユーザーガイド
             Getting started: 最初のステップ
@@ -930,6 +969,10 @@ plugins:
             Export data: Eksportér data
             Manage users: Administrer brugere
             Administration settings: Administrationsindstillinger
+            Back up and restore: Sikkerhedskopiering og gendannelse
+            Customize the tree: Tilpas træet
+            Check and verify data: Kontrollér og verificér data
+            Search index: Søgeindeks
             Synchronize with Gramps: Synkroniser med Gramps
             User Guide: Brugervejledning
             Getting started: Første trin
@@ -1014,6 +1057,10 @@ plugins:
             Export data: Vie tietoja
             Manage users: Hallitse käyttäjiä
             Administration settings: Hallinta-asetukset
+            Back up and restore: Varmuuskopiointi ja palautus
+            Customize the tree: Mukauta puuta
+            Check and verify data: Tarkista ja vahvista tiedot
+            Search index: Hakuhakemisto
             Synchronize with Gramps: Synkronoi Grampsin kanssa
             User Guide: Käyttöopas
             Getting started: Ensimmäiset askeleet
@@ -1098,6 +1145,10 @@ plugins:
             Export data: Esporta dati
             Manage users: Gestisci utenti
             Administration settings: Impostazioni di amministrazione
+            Back up and restore: Backup e ripristino
+            Customize the tree: "Personalizza l'albero"
+            Check and verify data: Controlla e verifica i dati
+            Search index: Indice di ricerca
             Synchronize with Gramps: Sincronizza con Gramps
             User Guide: Guida Utente
             Getting started: Primi passi
@@ -1182,6 +1233,10 @@ plugins:
             Export data: Експорт даних
             Manage users: Керування користувачами
             Administration settings: Налаштування адміністрування
+            Back up and restore: Резервне копіювання та відновлення
+            Customize the tree: Налаштування дерева
+            Check and verify data: Перевірка даних
+            Search index: Пошуковий індекс
             Synchronize with Gramps: Синхронізація з Gramps
             User Guide: Посібник користувача
             Getting started: Перші кроки

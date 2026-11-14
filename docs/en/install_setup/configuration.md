@@ -76,7 +76,7 @@ Key | Description
 `CELERY_CONFIG` | Settings for the Celery background task queue. See [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) for possible settings.
 `REPORT_DIR` | Temporary directory where the output of running Gramps reports will be stored
 `EXPORT_DIR` | Temporary directory where the output of exporting the Gramps database will be stored
-`BACKUP_DIR` | Directory where [backups](../administration/settings.md#backups) are stored, in a subdirectory per tree (v3.24.0+). If unset (the default), backups can't be stored on the server, but can still be restored from an uploaded file. Use a persistent location, e.g. a Docker volume, and preferably one that is itself backed up or synchronized elsewhere.
+`BACKUP_DIR` | Directory where [backups](../administration/backups.md) are stored, in a subdirectory per tree (v3.24.0+). If unset (the default), backups can't be stored on the server, but can still be restored from an uploaded file. Use a persistent location, e.g. a Docker volume, and preferably one that is itself backed up or synchronized elsewhere.
 `BACKUP_KEEP` | Number of stored backups kept per tree; older ones are deleted when a new backup is created (v3.24.0+). Defaults to `5`
 `RATE_LIMIT_BACKUP` | Rate limit for creating backups, per tree (v3.24.0+). Defaults to `"10 per day"`
 `RATE_LIMIT_MEDIA_ARCHIVE` | Rate limit for creating media archives on the Export page. Defaults to `"1 per hour"`
