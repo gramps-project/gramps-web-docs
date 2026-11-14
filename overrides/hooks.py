@@ -63,6 +63,28 @@ def on_page_context(context, page, config, nav, **kwargs):
     return context
 
 
+_default_404 = None
+
+
+def on_post_template(output_content, template_name, config, **kwargs):
+    """
+    Keep the 404 page in the default language.
+
+    There is only one 404.html at the site root, but mkdocs-static-i18n renders
+    it again for every language, so the last language built would win. The
+    default language is built first (outside the i18n plugin's inner builds),
+    so remember its 404 page and reuse it for all other languages.
+    """
+    global _default_404
+    if template_name != "404.html":
+        return output_content
+    i18n = config.plugins.get("i18n")
+    if i18n is None or not getattr(i18n, "building", False):
+        _default_404 = output_content
+        return output_content
+    return _default_404 or output_content
+
+
 def _search_config(locale, base_config):
     """Return the lunr configuration for a single-language search index."""
     search_config = dict(base_config)
