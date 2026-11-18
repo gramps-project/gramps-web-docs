@@ -67,18 +67,32 @@ The PKCE code verifier is kept in the user's session between the redirect to the
 
 ### Multi-Tree Setups
 
-On a multi-tree server, the tree the user is logging into has to be known before Gramps Web redirects to the identity provider, so login starts with:
+On a multi-tree server, a user who signs in with an identity that is already linked to a Gramps Web account is logged into that account's tree, so the plain login page works for them.
+
+To create a *new* account with an OIDC identity, Gramps Web needs to know the tree it should belong to. New users therefore have to start from the tree's registration link (`/register/<tree_id>`, see [Registration link](../administration/users.md#registration-link-multi-tree-setup-only)), or from the login page of the tree (`/login/<tree_id>`). Both offer the configured providers. Signing in with an unknown identity from the plain login page is refused with a message pointing to the registration link. This requires Gramps Web API 3.25.3 and Gramps Web 26.11.2 or newer.
+
+Behind the scenes, the login starts with:
 
 ```
 GET /api/oidc/login/?provider=<id>&tree=<tree_id>
 ```
 
-`tree` is required in multi-tree setups; omitting it, or passing the ID of a tree that doesn't exist, fails the login. On a single-tree server `tree` is optional, but if given it must match the configured `TREE`.
+where `tree` is optional unless a new account is created. Passing the ID of a tree that doesn't exist fails the login. On a single-tree server `tree` is optional, but if given it must match the configured `TREE`.
 
 An OIDC identity is bound to exactly one Gramps Web account, which in turn belongs to exactly one tree – logging in against a different tree fails rather than moving the account. There is no way to link a single identity at the provider to accounts in several trees; users who need access to multiple trees need separate identities at the provider (e.g. distinct usernames or accounts).
 
 !!! warning
-    A site administrator account with no associated tree (see [creating an admin account](../administration/owner.md)) cannot log in via OIDC, since OIDC login always requires a tree. Such accounts must be created and authenticated with a local username/password instead.
+    A site administrator account with no associated tree (see [creating an admin account](../administration/owner.md)) cannot be created via OIDC, since an account created by an OIDC login always belongs to a tree. Create such accounts with a local username and password.
+
+### Native apps
+
+Native apps, such as mobile apps for Gramps Web, can let the user sign in in the system browser and receive the result at an `https` link of the app. Since Gramps Web API 3.26, this works if the link is listed in `OIDC_ALLOWED_REDIRECT_URIS`, e.g.
+
+```
+GRAMPSWEB_OIDC_ALLOWED_REDIRECT_URIS='["https://app.example.com/oidc-callback"]'
+```
+
+The app's documentation tells you which link to add. The redirect URIs registered at the identity provider stay the same.
 
 ## Required Redirect URIs
 

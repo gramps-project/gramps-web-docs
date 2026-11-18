@@ -38,6 +38,8 @@ A birth, death, or marriage is not a field of a person, but an **event** of its 
 
 Events that concern a couple, such as a marriage, belong to the family rather than to either partner. An event can also be shared by several people – for example a census record listing a whole household – instead of being entered once per person.
 
+This affects editing. The event itself – its type, date, place, and description – is the same for everybody linked to it, so editing a shared event from one person's page changes it for all of them. The edit dialog therefore lists the other participants first, and the fields only become editable after **Edit for everyone**. What belongs to one person's link to the event – the role, and citations, notes, and attributes that only apply to that person – is edited on the event's page, in the **Participants** tab in edit mode. There you can also add and remove participants. For example, a godparent's role and the note "signed with a mark" belong to the godparent's link to the baptism, not to the baptism itself.
+
 ## Shared objects: places and sources
 
 Places, sources, citations, repositories, notes, and media objects exist in their own right, and any number of other objects can refer to the same one. This has a few consequences:

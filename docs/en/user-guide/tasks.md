@@ -21,11 +21,11 @@ To create a task, click on the + button on the task list page. Enter at least a 
 
 ## The task list
 
-The task list is sorted by status – done tasks last – and within each status by priority, highest first.
+By default, the task list is sorted by status – done tasks last – and within each status by priority, highest first. The sort menu in the filter bar also sorts by priority, title, or last change (newest first).
 
 Click a task to open it. Users with edit permissions can also click the status icon of a task to change its status directly in the list, for example to mark it as done.
 
-The **filter** button above the list filters the tasks by tag, with a [GOQL](goql.md) expression, or with the [advanced filter](lists.md#advanced-filter).
+The **filter** button above the list filters the tasks by title, status, priority, or tag, with a [GOQL](goql.md) expression, or with the [advanced filter](lists.md#advanced-filter). Ticking several statuses or priorities shows tasks with any of them, for example all open and blocked tasks.
 
 ## Edit a task
 

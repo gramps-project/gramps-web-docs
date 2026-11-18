@@ -141,7 +141,7 @@ See [Revision History](../user-guide/revisions.md).
 
 ## Privacy levels & user access
 
-Many folks want to keep some details private and we respect that! You can mark records as private and control which users are allowed to view private records. Private records are filtered out at the database layer for maximum security. In addition, you can control what users are able to add and edit.
+Many folks want to keep some details private and we respect that! You can [mark records as private](../user-guide/privacy.md) – down to a single name, event link, or DNA match – and control which users are allowed to view private records. Private records are filtered out at the database layer for maximum security. In addition, you can control what users are able to add and edit.
 
 Users can sign in with a password, or through an external identity provider using [OpenID Connect](../install_setup/oidc.md) – Google and Microsoft out of the box, plus custom providers such as Keycloak, Authentik and Authelia.
 

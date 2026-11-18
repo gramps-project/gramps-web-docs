@@ -26,6 +26,8 @@ Combines ancestors above and descendants below the selected person in a single v
 
 Shows the relationship path between two people. The selected person is one endpoint; click any other person in the chart to set the second endpoint and display the shortest relationship path between them.
 
+Each couple is joined by a small family node between the two partners. Hover over it, or click or tap it, to see the family's details – such as the marriage date and place and the children – without leaving the chart. The **Open** button in the preview leads to the family's page. The node of a couple who are not married has a dashed outline.
+
 !!! note
     The same person may appear more than once in the graph – for example when someone has been married multiple times and appears in several family units along the path. This is intentional, not a bug.
 
@@ -58,7 +60,7 @@ The **Preferences** dialog (gear icon in the toolbar) lets you adjust the follow
 
 - **Max Ancestor Generations** – how many generations of ancestors to display
 - **Max Descendant Generations** – how many generations of descendants to display
-- **Max Degree of Separation** – for the Relationship Graph, the maximum path length to search, up to 6
+- **Max Degree of Separation** – for the Relationship Graph, the maximum path length to search. High values can make the chart slow to load on large trees.
 - **Max Number of Images displayed** – limits profile photos shown in the chart for performance
 - **Name Display Format** – controls how names are shown on person cards
 

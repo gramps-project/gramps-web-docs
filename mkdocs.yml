@@ -59,6 +59,7 @@ nav:
           - Use the blog: user-guide/blog.md
           - Manage tasks: user-guide/tasks.md
           - Tags: user-guide/tags.md
+          - Private records: user-guide/privacy.md
           - Edit in tree view: user-guide/tree-edit.md
       - DNA:
           - Overview: user-guide/dna.md
@@ -197,6 +198,7 @@ plugins:
             Use the blog: Blog verwenden
             Manage tasks: Aufgaben verwalten
             Tags: Etiketten
+            Private records: Private Datensätze
             Edit in tree view: Im Stammbaum bearbeiten
             DNA: DNA
             Overview: Übersicht
@@ -285,6 +287,7 @@ plugins:
             Use the blog: Utiliser le blog
             Manage tasks: Gérer les tâches
             Tags: Étiquettes
+            Private records: Enregistrements privés
             Edit in tree view: Modifier dans l'arbre
             DNA: ADN
             Overview: Vue d'ensemble
@@ -373,6 +376,7 @@ plugins:
             Use the blog: Usar el blog
             Manage tasks: Gestionar tareas
             Tags: Etiquetas
+            Private records: Registros privados
             Edit in tree view: Editar en el árbol
             DNA: ADN
             Overview: Descripción general
@@ -461,6 +465,7 @@ plugins:
             Use the blog: 使用博客
             Manage tasks: 管理任务
             Tags: 标签
+            Private records: 私密记录
             Edit in tree view: 在家谱中编辑
             DNA: DNA
             Overview: 概述
@@ -549,6 +554,7 @@ plugins:
             Use the blog: Sử dụng blog
             Manage tasks: Quản lý nhiệm vụ
             Tags: Thẻ
+            Private records: Bản ghi riêng tư
             Edit in tree view: Chỉnh sửa trong cây
             DNA: DNA
             Overview: Tổng quan
@@ -637,6 +643,7 @@ plugins:
             Use the blog: Blog kullan
             Manage tasks: Görevleri yönet
             Tags: Etiketler
+            Private records: Gizli kayıtlar
             Edit in tree view: Ağaçta düzenle
             DNA: DNA
             Overview: Genel Bakış
@@ -725,6 +732,7 @@ plugins:
             Use the blog: Использование блога
             Manage tasks: Управление задачами
             Tags: Метки
+            Private records: Личные записи
             Edit in tree view: Редактировать в дереве
             DNA: ДНК
             Overview: Обзор
@@ -813,6 +821,7 @@ plugins:
             Use the blog: Usar o blog
             Manage tasks: Gerenciar tarefas
             Tags: Etiquetas
+            Private records: Registros privados
             Edit in tree view: Editar na árvore
             DNA: DNA
             Overview: Visão geral
@@ -901,6 +910,7 @@ plugins:
             Use the blog: ブログの使用
             Manage tasks: タスクの管理
             Tags: タグ
+            Private records: 非公開レコード
             Edit in tree view: 家系図で編集
             DNA: DNA
             Overview: 概要
@@ -989,6 +999,7 @@ plugins:
             Use the blog: Brug bloggen
             Manage tasks: Administrer opgaver
             Tags: Etiketter
+            Private records: Private poster
             Edit in tree view: Rediger i stamtræet
             DNA: DNA
             Overview: Oversigt
@@ -1077,6 +1088,7 @@ plugins:
             Use the blog: Käytä blogia
             Manage tasks: Hallitse tehtäviä
             Tags: Tunnisteet
+            Private records: Yksityiset tietueet
             Edit in tree view: Muokkaa sukupuussa
             DNA: DNA
             Overview: Yleiskatsaus
@@ -1165,6 +1177,7 @@ plugins:
             Use the blog: Usa il blog
             Manage tasks: Gestisci attività
             Tags: Etichette
+            Private records: Record privati
             Edit in tree view: Modifica nell'albero
             DNA: DNA
             Overview: Panoramica
@@ -1253,6 +1266,7 @@ plugins:
             Use the blog: Використання блогу
             Manage tasks: Управління завданнями
             Tags: Мітки
+            Private records: Приватні записи
             Edit in tree view: Редагувати в дереві
             DNA: ДНК
             Overview: Огляд

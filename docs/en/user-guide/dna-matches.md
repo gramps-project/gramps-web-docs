@@ -28,13 +28,47 @@ Finally, click on the &ldquo;Save&rdquo; button to store the match in the databa
 
 ## Viewing DNA match data
 
-The DNA match view has a dropdown that allows to select each person in the database that has an associated DNA match. Once a person is selected, the DNA match data is shown in a table below the dropdown. It shows the name of the person the match is associated with, the relation to the person selected in the dropdown (automatically determined from the Gramps database), the total length of shared DNA in centimorgans (cM), the number of shared segments, and the length of the largest of these segments.
+The DNA match view has a dropdown that allows to select each person in the database that has an associated DNA match. Once a person is selected, their matches are listed in a table: the name of the match, their relationship to the selected person, the total length of shared DNA in centimorgans (cM), the number of shared segments, and the length of the largest of these segments.
 
-When you click on an individual match, it opens a detail page showing all the segments and whether the match is on the maternal or paternal side. This information can be either entered manually (by providing a `P` for paternal or `M` for maternal in a column named `Side` in the raw data) or automatically determined by Gramps based on the most recent common ancestor.
+For matches that are already placed in the tree, the relationship column shows the relationship recorded in the tree (automatically determined from the Gramps database). For matches who are not related to the selected person in the tree, it shows the relationship estimated from the shared DNA, marked with "≈".
+
+Clicking a match opens its page, with a summary of the shared DNA, the [relationship estimate](#relationship-estimate), a chart of the relationship in the tree, and the list of segments. Each segment shows whether it is on the paternal or maternal side. The side can either be entered manually (by providing a `P` for paternal or `M` for maternal in a column named `Side` in the raw data) or determined automatically from the most recent common ancestor. The download button next to the segments saves them as a CSV file in the format the match dialog accepts.
+
+## Relationship estimate
+
+Shared DNA is not proof of a specific relationship: the amount of DNA two relatives share varies a lot, and different relationships overlap. Gramps Web therefore shows a range of possible relationships with their probabilities, computed from the number and lengths of the shared segments (requires Gramps Web API 3.26 or newer).
+
+Relationships are grouped by their *degree*:
+
+- **Parent or child** and **Full sibling** are shown on their own.
+- **Relative of degree 2** includes half siblings, grandparents and grandchildren, and aunts, uncles, nieces, and nephews.
+- **Relative of degree 3** includes first cousins, great-grandparents, great-aunts and great-uncles, and half aunts and uncles.
+- Each further degree is about one generation further apart, e.g. first cousins once removed are degree 4 and second cousins are degree 5. Degree 9 and beyond are grouped as "9+".
+
+Relationships with the same degree share about the same amount of DNA on average, so DNA alone cannot tell them apart. Use the ages of the people to decide between them – a 30-year-old relative of degree 2 of a 60-year-old is more likely a niece than a grandparent.
+
+The estimate is most reliable for close relatives. For distant relationships, matches share only few segments, and the probabilities spread over several degrees.
+
+### Checking the tree against the DNA
+
+If the match is placed in the tree, Gramps Web checks whether the shared DNA fits the relationship recorded there. If the DNA is very unlikely for that relationship, a warning icon is shown in the matches table and a warning on the match page. The number in brackets, e.g. "1 : 500", compares how likely the DNA is for the recorded relationship with how likely it is for the most likely relationship.
+
+A warning is a reason to look more closely, not proof of an error. Common causes are:
+
+- a mistake in the tree, such as a wrong parent,
+- a misattributed parentage, e.g. an unknown adoption or a different biological father,
+- incomplete match data, for example if only segments above a high threshold were copied from the testing service,
+- relationships through more than one line, e.g. people related through both their mother and father ("pedigree collapse"), which share more DNA than expected.
+
+Relationships that are not by birth, such as through an adoption, are not checked.
 
 ## Editing a match
 
-You can edit a match by clicking on the pencil button in the bottom right in the match detail view. This opens a similar dialog as when creating a new match, but with the data pre-filled. Note that you can change the raw data, but not the individuals associated with the match &ndash; you need to delete the match and create a new one if you want to change the individuals.
+To edit a match, open its page and click the edit button, or press `e`. Note that you can change the raw data, but not the individuals associated with the match – you need to delete the match and create a new one if you want to change the individuals.
+
+## Private matches
+
+The dialogs for adding and editing a match have a **Private** switch. A private match, including its segments, is hidden from users who can't view private records. Private matches are marked with a lock for everybody else. See [Private records](privacy.md) for more about privacy.
 
 ## Working with match data in Gramps Desktop
 

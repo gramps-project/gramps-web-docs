@@ -14,7 +14,7 @@
 
 Use the filter field to focus the timeline on a single **person** or **place**:
 
-- **Person** – shows only events linked to that person. A toggle lets you switch between **Person** (events of that individual only), **Ancestors**, and **Descendants** (events of all their ancestors/descendants).
+- **Person** – shows only events linked to that person, including the events of their families, such as marriages. A toggle lets you switch between **Person** (events of that individual only), **Ancestors**, and **Descendants** (events of all their ancestors/descendants).
 - **Place** – shows only events that took place there.
 
 Clear the filter chip to return to the full timeline.

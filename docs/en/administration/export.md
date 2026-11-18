@@ -4,7 +4,7 @@ The Export page lets you download the family tree data in various formats, as we
 
 ## Export the family tree as Gramps XML
 
-To get a copy of the family tree data, open the Export page in Gramps Web and select the Gramps XML format. Clicking on "export" will generate the file and start the download once it is ready.
+To get a copy of the family tree data, open the Export page in Gramps Web and select the Gramps XML format. Click **Generate** to create the file, and **Download** once it is ready. For a large tree, generating the file can take a while; you can leave the page in the meantime and download the file later from its entry in the [notifications](../user-guide/notifications.md).
 
 Note that if your Gramps Web user does not have permission to view private records, the export will not contain any private records.
 
@@ -35,8 +35,8 @@ To achieve a full migration, follow these steps (assuming you have tree owner pe
 1. Go to the Export page and export your tree as a Gramps XML (`.gramps`) file. If you use the [Sync addon](sync.md), you can also generate the export in Gramps desktop.
 2. On the Export page, generate & download a media archive. If you use the [Sync addon](sync.md), you can also simply ZIP your local Gramps media folder.
 3. Go to Settings > Administration > Manage users and click the "Export user details" button. It will download a JSON file.
-4. In the new Gramps Web instance, open the Import page. Import the `.gramps` file exported in step 1.
-5. On the Import page of the new Gramps Web instance, upload the media archive (ZIP).
+4. In the new Gramps Web instance, open the [Import page](import.md). Import the `.gramps` file exported in step 1.
+5. On the Import page of the new Gramps Web instance, upload the media archive (ZIP) under [Import Media Files](import-media.md).
 6. Go to Settings > Administration > Manage users of the new Gramps Web instance. Click the "Import user accounts" button and upload the JSON file downloaded in step 3.
 
 Note that, while your user accounts will be migrated, all your users will need to set new passwords by using the "forgot password" link, since passwords are stored in encrypted form and cannot be exported.

@@ -116,3 +116,15 @@ To troubleshoot problems with Ollama, you can enable debug logging by setting en
 ### Using other providers
 
 Please feel free to submit documentation for other providers and share your experience with the community!
+
+## Optional features
+
+### Images in questions
+
+If your model accepts images, set `LLM_VISION` to `True` to let users attach images to their questions, for example scans of records (Gramps Web API 3.26+). Images are scaled down to at most 1568 pixels on the long side before they are sent to the model. Check that the model really supports image input: many small local models don't, and the provider then rejects questions with images.
+
+### Letting the assistant propose changes
+
+With `LLM_ALLOW_WRITE_PROPOSALS` set to `True` (Gramps Web API 3.26+), the assistant can [propose changes to the tree](../user-guide/chat.md#letting-the-assistant-change-your-tree), which users apply after reviewing them. The assistant itself never writes to the database. Proposals are only offered to users who are allowed to add, edit, and delete objects, i.e. editors and above, and who are allowed to use the chat.
+
+Writing correct proposals is harder for a model than answering questions, so test it with your model before enabling it for your users. The additional tools also make each request to the model somewhat larger.

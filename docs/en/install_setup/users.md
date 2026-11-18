@@ -15,6 +15,8 @@ Editor | 3 | Contributor + edit and delete objects
 Owner | 4 | Editor + manage users
 Admin | 5 | Owner + edit other trees in multi-tree setup
 
+Whether a record is private is set per record, see [Private records](../user-guide/privacy.md). Nothing is private by default, not even living people.
+
 \* Note that the "Contributor" role is currently only partially supported; e.g., family objects cannot be added since they imply a modification of the underlying Gramps person objects of family members. It is recommended to use the other roles whenever possible.
 
 ## Configuring who can use AI chat
@@ -38,7 +40,9 @@ When using [Docker Compose](deployment.md), the basic command is
 docker compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
 ```
 
-The `COMMAND` can be `add` or `delete`. Use `--help` for `[ARGS]` to show the syntax and possible configuration options.
+The `COMMAND` can be `add`, `set-password`, or `delete`. Use `--help` for `[ARGS]` to show the syntax and possible configuration options.
+
+`set-password NAME` sets a new password for an existing user without needing the old one, for example when nobody can log in any more and e-mail is not set up for password resets (Gramps Web API 3.26+). It asks for the password twice without showing it, so the password does not end up in the shell history. All of the user's sessions are ended.
 
 ### Approving self-registered users
 

@@ -16,6 +16,8 @@ Click the gear icon at the right end of the toolbar above the list to open the *
 
 At least one column must remain visible, so the last remaining column cannot be unticked.
 
+Besides the default columns, every list offers a **Tags** column and, for users who can view private records, a **Privacy** column that shows a lock for each private object. If you have changed the column selection of a list before, new columns such as **Tags** are not added automatically; tick them in the dialog.
+
 Your column selection is remembered per object type and per family tree. It is stored in your browser, so it is not visible to other users – but it also does not follow you to a different browser or device.
 
 ## Filtering
@@ -45,6 +47,14 @@ The ready-made filters and the GOQL expression that are active when you open the
 !!! note
     Rules that refer to custom filters saved in Gramps Desktop are not available in the builder. The rules are shown in your language with Gramps Web API 3.24 or newer.
 
+#### Saved filters
+
+To reuse a filter you have built, click **Save** in the condition builder and give it a name. Saving under an existing name replaces that filter. **Saved filters** in the builder lists the saved filters for the current object type; picking one loads it into the builder, where you can change it before clicking **Apply**.
+
+Saved filters are stored in your browser, per family tree and object type, so they are not available to other users or on your other devices.
+
+A saved filter can stop working when the tree changes, for example if it refers to a person who has since been deleted (the object selector then shows "Not found"). Such a filter cannot be applied or saved until the condition is fixed.
+
 ## Selecting objects and acting on them in bulk
 
 Users with edit permissions see a **Select** button next to the filter button. Click it to enter selection mode, which adds a checkbox to every row.
@@ -62,12 +72,22 @@ Deleting more than ten objects runs as a background task. Its progress is shown 
 !!! tip
     Deletions are recorded in the [revision history](revisions.md) like any other change, so a mistaken bulk delete can be reversed by undoing the corresponding transaction.
 
+### Tags and privacy
+
+The actions **Add Tag**, **Remove Tag**, and **Privacy** change all selected objects at once (requires Gramps Web API 3.26 or newer):
+
+- **Add Tag** adds an existing tag or a new one you create in the dialog.
+- **Remove Tag** removes a tag from the selected objects that have it.
+- **Privacy** marks the selected objects as private or public. This only changes the objects themselves, not their parts or the records they link to – see [Private records](privacy.md).
+
+As with deleting, editing more than ten objects runs as a background task. The changes are recorded in the [revision history](revisions.md) as one transaction, so they can be undone together.
+
 ### Merge
 
 Select **exactly two** objects, choose **Merge**, and click **Apply**. A dialog asks which of the two should provide the primary data for the merged object; click the one you want to keep as primary. The other object's data is merged into it and references are updated.
 
 Merging is available for people, families, events, places, sources, and citations. It is not available for repositories, notes, and media objects.
 
-In the media view, selection works in both the gallery and the list layout: in selection mode, clicking a tile or row toggles it. **Delete** is the only action available for media.
+In the media view, selection works in both the gallery and the list layout: in selection mode, clicking a tile or row toggles it. Media objects cannot be merged.
 
 If you choose an action without a valid selection – for example a merge with only one object selected – a dialog explains what is required.

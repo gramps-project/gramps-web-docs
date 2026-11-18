@@ -31,7 +31,6 @@ The sidebar (or hamburger menu on mobile) is the primary way to move between sec
 - **Reports** – generate reports
 - **Export** – export the family tree
 - **Revisions** – full transaction history (visible to members and above)
-- **Notifications** – past notifications
 
 !!! note
     Tags are no longer managed from the sidebar – tag management has moved to [Administration Settings](../administration/settings.md#tags) (Owner/Administrator only). See [Tags](tags.md) for how tags are used.
@@ -42,6 +41,7 @@ The bar at the top of every page contains:
 
 - **Add** (plus icon, visible to contributors and above) – opens a menu to create a new object: Person, Family, Event, Place, Source, Citation, Repository, Note, Media Object, or Task
 - **Search** (magnifying glass) – opens the search page
+- **Bell** – opens the [notifications](notifications.md), including changes by other users and finished background tasks
 - **User icon** – opens the settings menu: User Settings, Administration (owners only), Manage Users (owners only), System Info
 
 ## The home page (dashboard)

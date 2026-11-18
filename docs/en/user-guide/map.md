@@ -23,7 +23,7 @@ The external results are also useful when adding coordinates to a place: you can
 
 ## Following a person across the map
 
-Selecting a person – from the map's search box, or with the **Open in map** button on a person's detail page – shows the places connected to that person's events, joined by lines in chronological order. Small arrows along each line indicate the direction of travel, so you can follow a person's life from birth through to death across the map.
+Selecting a person – from the map's search box, or with the **Open in map** button on a person's detail page – shows the places connected to that person's events – including the events of their families, such as marriages – joined by lines in chronological order. Small arrows along each line indicate the direction of travel, so you can follow a person's life from birth through to death across the map.
 
 Places on a place detail page have an **Open in map** button as well, which opens the map centred on that place.
 

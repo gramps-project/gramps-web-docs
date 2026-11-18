@@ -4,7 +4,7 @@ The user management interface is accessible via **Settings > Manage Users** (the
 
 ## User roles
 
-See [User system](../install_setup/users.md) for a full description of the available user roles and their permissions.
+See [User system](../install_setup/users.md) for a full description of the available user roles and their permissions. The main difference between guests and members is that guests can't see [private records](../user-guide/privacy.md), so choose the role together with what you mark as private.
 
 ## View and filter users
 

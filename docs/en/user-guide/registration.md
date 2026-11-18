@@ -8,7 +8,9 @@ In a multi-tree installation, users additionally require the tree ID to sign up;
 
 On the login form on the home page of Gramps Web, usually there is a link "Register new account".
 
-If this link is missing, it is probably because it is a multi-tree installation of Gramps Web. In that case, contact the tree owner for a registration link.
+If this link is missing, either registration is disabled on this server, or it is a multi-tree installation of Gramps Web. In either case, contact the tree owner, who can create an account for you or send you a registration link.
+
+If the server supports signing in with an external account (such as Google, Microsoft, or your organization's single sign-on), the registration page offers these as well. Choosing one creates your account without a password and without the e-mail confirmation below. Unless the server assigns roles automatically, the account still has to be enabled by the tree owner (step 4).
 
 The tree owner can find and copy the registration link under Settings/Administration.
 

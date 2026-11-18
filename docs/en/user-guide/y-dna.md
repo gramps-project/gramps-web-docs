@@ -29,6 +29,14 @@ In the patrineal ancestor tree shown in Gramps Web, the box directly above the t
 
 Due to the slow mutation rate of Y chromosomes, the MRCA can be many hundreds of years in the past. For rare haplogroups (i.e. halogroups where few people have been tested so far), it can even be thousands of years.
 
+Between the MRCA and the tested person, the chart shows the paternal line as far as it is documented in your tree: the father, his father, and so on, oldest first. The dotted line above the oldest documented ancestor stands for the generations that are not documented, with an estimate of their number. Only biological fathers are followed – the line stops at an adoptive father or stepfather, since they did not pass on the Y chromosome. Click a person in the line to open their page.
+
+The icon on each clade box opens that clade on the YFull website.
+
+## Private Y-DNA data
+
+The dialogs for adding and editing Y-DNA data have a **Private** switch. Private Y-DNA data is hidden from users who can't view private records. See [Private records](privacy.md).
+
 
 ## Instructions for obtaining SNP data from testing services
 

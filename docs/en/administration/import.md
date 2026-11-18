@@ -2,7 +2,7 @@
 
 You can bring an existing family tree into Gramps Web by uploading a file exported from another genealogy program, from an online service, or from Gramps Desktop.
 
-The import is found in the **Data** section of the [Administration settings](settings.md) (user icon in the top app bar ▸ Administration), which is available to tree owners and administrators. While the tree is still empty, the **Import Family Tree** button on the home page's "Get started" card leads there as well.
+Importing has its own page, available to tree owners and administrators. Open it with **Import Family Tree** in the **Data** section of the [Administration settings](settings.md) (user icon in the top app bar ▸ Administration). While the tree is still empty, the **Import Family Tree** button of the "Get started" card on the home page, in the family tree, and in the lists leads there as well.
 
 ## Which file to use
 
@@ -21,17 +21,24 @@ If you use Gramps Desktop, choose Gramps XML (`.gramps`) rather than GEDCOM. It 
 
 ## Import a family tree file
 
-1. Open the **Data** section of the Administration settings.
-2. Under "Import Family Tree", choose your file and click **Import**.
-3. The file is parsed first, and a "Confirm Import" dialog shows how many objects it contains (people, families, events, places, and so on). Nothing has been added to your tree yet. Check that the counts look plausible, then click **Import** to proceed, or **Cancel** to abort without changing anything.
+1. Open the Import page as described above.
+2. Under "Import Family Tree", choose your file and click **Import**. The upload progress is shown.
+3. The file is read first, and a "Confirm Import" dialog shows how many objects it contains (people, families, events, places, and so on), and the importer's [report](#the-import-report) if it has one. Nothing has been added to your tree yet. Check that the counts look plausible, then click **Import** to proceed, or **Cancel** to abort without changing anything. If your tree already contains people, the dialog warns that importing the same data again creates duplicates.
 4. The import runs in the background and a progress indicator is shown. Once the data is imported, the search index is updated, which can take a while for a large tree. If the import fails, the reason is shown.
+5. If the tree has no home person yet, you are offered to choose one.
 
-When the import has finished, check the result: compare the number of people in the **Statistics** panel on the home page with the number in your old program, and open a family you know well to see that parents, children, dates, and places came across as expected.
+When the import has finished, check the result: compare the number of people in the **Statistics** panel on the home page with the number in your old program, and open a family you know well to see that parents, children, dates, and places came across as expected. If the file refers to photos or other media files, add them next, under [Import Media Files](import-media.md) on the same page.
 
 !!! warning
     A regular import is purely additive: it always creates new objects and never updates or deletes existing ones, even for objects that already exist in your tree under the same Gramps ID or handle. Importing the same file twice – or importing a file that overlaps with data already in the tree – will duplicate every matching object rather than merge or skip it.
 
     If you need to bring in changes made elsewhere to a tree that was already imported, use [Restore from Backup](backups.md#restore-from-backup) instead, which replaces the tree to match the uploaded file rather than adding to it. This requires a Gramps XML file or a Gramps Web backup.
+
+## The import report
+
+Importers report what they could not import completely, for example GEDCOM lines they didn't understand, references to records missing from the file, or an outdated file format. The report is shown under **Report**, both in the confirmation dialog and after the import. Read it before confirming: it often explains problems you would otherwise only notice later in the tree.
+
+Not every message is a problem – many GEDCOM files contain program-specific data that is reported but kept, see [Program-specific data](#program-specific-data). Use the buttons next to the report to copy it or download it as a text file, for example to ask for help in the [forum](../help/help.md).
 
 ## Usage quotas
 

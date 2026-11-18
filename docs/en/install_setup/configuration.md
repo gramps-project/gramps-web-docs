@@ -80,7 +80,8 @@ Key | Description
 `BACKUP_KEEP` | Number of stored backups kept per tree; older ones are deleted when a new backup is created (v3.24.0+). Defaults to `5`
 `RATE_LIMIT_BACKUP` | Rate limit for creating backups, per tree (v3.24.0+). Defaults to `"10 per day"`
 `RATE_LIMIT_MEDIA_ARCHIVE` | Rate limit for creating media archives on the Export page. Defaults to `"1 per hour"`
-`REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`)
+`REGISTRATION_DISABLED` | If `True`, disallow new user registration (default `False`). Since Gramps Web API 3.26, the login page then also hides its registration link.
+`PROXY_FIX_X_FOR` | Number of trusted reverse proxies in front of Gramps Web (v3.26.0+). Set to `1` behind a single reverse proxy so that rate limits apply per client rather than to all users together. Defaults to `0`. Only set it if the server is reachable exclusively through these proxies.
 `DISABLE_TELEMETRY` | If `True`, disable statistics telemetry (default `False`). See [telemetry](telemetry.md) for details.
 `PILLOW_MAX_IMAGE_PIXELS` | Sets the PIL.Image.MAX_IMAGE_PIXELS parameter, which indicates the number of pixels that the processed image can contain. See [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) for details.
 `MAX_THUMBNAIL_FILE_BYTES` | Sets a hard maximum file size for thumbnails. Defaults to `50 * 1024 * 1024` (50 MB). Raising it can greatly increase memory usage and may lead to out-of-memory crashes or data loss if large files are decompressed in memory.
@@ -130,6 +131,7 @@ Key | Description
 `OIDC_PKCE` | Boolean, whether to use PKCE. If unset, PKCE is used when the provider's discovery document lists `S256`. See [PKCE](oidc.md#pkce)
 `OIDC_DISABLE_LOCAL_AUTH` | Boolean, whether to disable local username/password authentication. Defaults to `False`
 `OIDC_AUTO_REDIRECT` | Boolean, whether to automatically redirect to OIDC when only one provider is configured. Defaults to `False`
+`OIDC_ALLOWED_REDIRECT_URIS` | List of `https` URIs at which native apps may receive the login result (v3.26.0+), set as a JSON list in an environment variable. Empty by default. Only needed if a native app's documentation asks for it. See [Native apps](oidc.md#native-apps)
 
 #### Built-in OIDC providers
 
@@ -172,6 +174,8 @@ Key | Description
 `LLM_MAX_OUTPUT_TOKENS` | Maximum number of tokens the model may generate in a single response. Unset by default, leaving the limit to the model server. Useful for model servers without a limit of their own, where a response could otherwise go on indefinitely.
 `LLM_MAX_CONTEXT_LENGTH` | Character limit for the family tree context provided to the LLM. Defaults to 50000.
 `LLM_SYSTEM_PROMPT` | Custom system prompt for the LLM chat assistant (v3.6.0+). If unset, uses the default genealogy-optimized prompt.
+`LLM_VISION` | Boolean, whether users can attach images to their questions (v3.26.0+). Only enable it if the model accepts images. Defaults to `False`. See [Images in questions](chat.md#images-in-questions)
+`LLM_ALLOW_WRITE_PROPOSALS` | Boolean, whether the assistant can propose changes to the tree for users to review and apply (v3.26.0+). Defaults to `False`. See [Letting the assistant propose changes](chat.md#letting-the-assistant-propose-changes)
 
 
 ## Example configuration file

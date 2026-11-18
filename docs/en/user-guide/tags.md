@@ -17,7 +17,9 @@ Tags are managed from the **Tags** section of [Administration Settings](../admin
 
 ## Applying tags to objects
 
-Tags can be applied to or removed from an object on its detail page when in edit mode.
+Tags can be applied to or removed from an object on its detail page when in edit mode. To tag many objects at once, select them in a list and use the **Add Tag** or **Remove Tag** action, see [Lists](lists.md#tags-and-privacy).
+
+Tags are shown in the **Tags** column of the lists, and in search results, bookmarks, and history. If a list does not show the column, enable it in the column picker.
 
 ## Filtering by tag
 
