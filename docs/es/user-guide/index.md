@@ -7,42 +7,42 @@ hide:
 
 Esta sección documenta las características disponibles para los usuarios de Gramps Web.
 
-!!! note "¿No ves todas las características?"
-    Gramps Web utiliza un sistema de permisos basado en roles. Algunas características, como editar datos, gestionar etiquetas o ver registros privados, solo están disponibles para usuarios con permisos suficientes. Puedes verificar tu rol actual en [Configuración del Usuario](settings.md). Si necesitas más acceso, contacta a tu propietario del árbol o administrador. Consulta el [Sistema de Usuarios](../install_setup/users.md) para una descripción de todos los roles.
+!!! note "¿No ves todas las funciones?"
+    Gramps Web utiliza un sistema de permisos basado en roles. Algunas funciones, como editar datos, gestionar etiquetas o ver registros privados, solo están disponibles para usuarios con permisos suficientes. Puedes verificar tu rol actual en [Configuración del Usuario](settings.md). Si necesitas más acceso, contacta a tu propietario del árbol o administrador. Consulta [Sistema de Usuarios](../install_setup/users.md) para una descripción de todos los roles.
 
 ## Navegando por la interfaz
 
 ### Navegación principal
 
-La barra lateral (o menú hamburguesa en dispositivos móviles) es la forma principal de moverse entre secciones:
+La barra lateral (o menú hamburguesa en móvil) es la forma principal de moverse entre secciones:
 
-- **Inicio** – el panel de control (ver abajo)
+- **Inicio** – el panel de control (ver más abajo)
 - **Blog** – historias de historia familiar escritas como publicaciones de blog
-- **Árbol Genealógico** – gráficos de árbol interactivos
-- **Línea de Tiempo** – vista cronológica de eventos a través del árbol (requiere una versión de API de Gramps Web suficientemente reciente)
+- **Árbol Familiar** – gráficos de árbol interactivos
+- **Línea de Tiempo** – vista cronológica de eventos a través del árbol (requiere una versión suficientemente reciente de la API de Gramps Web)
 - **Mapa** – vista geográfica de lugares en el árbol
 - **ADN** – herramientas de análisis de coincidencias de ADN
-- **Listas** – navegar por todos los objetos de cada tipo: Personas, Familias, Eventos, Lugares, Fuentes, Citas, Repositorios, Notas
-- **Medios** – navegar por todos los archivos multimedia (fotos, documentos, etc.)
-- **Asistente** – asistente de chat de IA (si está habilitado por el administrador)
+- **Listas** – explorar todos los objetos de cada tipo: Personas, Familias, Eventos, Lugares, Fuentes, Citaciones, Repositorios, Notas
+- **Medios** – explorar todos los archivos multimedia (fotos, documentos, etc.)
+- **Asistente** – asistente de chat AI (si está habilitado por el administrador)
 - **Historial** – objetos cambiados recientemente
 - **Marcadores** – tus marcadores guardados
 - **Tareas** – tareas de investigación
 - **Informes** – generar informes
-- **Exportar** – exportar el árbol genealógico
+- **Exportar** – exportar el árbol familiar
 - **Revisiones** – historial completo de transacciones (visible para miembros y superiores)
-- **Notificaciones** – notificaciones pasadas
 
 !!! note
     Las etiquetas ya no se gestionan desde la barra lateral; la gestión de etiquetas se ha trasladado a [Configuración de Administración](../administration/settings.md#tags) (solo Propietario/Administrador). Consulta [Etiquetas](tags.md) para ver cómo se utilizan las etiquetas.
 
-### Barra de aplicación superior
+### Barra de aplicaciones superior
 
 La barra en la parte superior de cada página contiene:
 
-- **Agregar** (icono de más, visible para colaboradores y superiores) – abre un menú para crear un nuevo objeto: Persona, Familia, Evento, Lugar, Fuente, Cita, Repositorio, Nota, Objeto Multimedia o Tarea
+- **Agregar** (icono de más, visible para colaboradores y superiores) – abre un menú para crear un nuevo objeto: Persona, Familia, Evento, Lugar, Fuente, Citación, Repositorio, Nota, Objeto Multimedia o Tarea
 - **Buscar** (lupa) – abre la página de búsqueda
-- **Icono de Usuario** – abre el menú de configuración: Configuración del Usuario, Administración (solo propietarios), Gestionar Usuarios (solo propietarios), Información del Sistema
+- **Campana** – abre las [notificaciones](notifications.md), incluidos cambios de otros usuarios y tareas en segundo plano finalizadas
+- **Icono de usuario** – abre el menú de configuración: Configuración del Usuario, Administración (solo propietarios), Gestionar Usuarios (solo propietarios), Información del Sistema
 
 ## La página de inicio (panel de control)
 
@@ -50,7 +50,7 @@ El panel de control se muestra cuando inicias sesión por primera vez. Tiene dos
 
 **Columna izquierda:**
 
-- **Tarjeta de persona de inicio** – muestra el nombre, foto (si está disponible) y datos clave de tu persona de inicio elegida, con un enlace a su perfil completo y navegación rápida al árbol genealógico. Haz clic en el botón **Establecer Persona de Inicio** en la tarjeta para buscar y seleccionar a otra persona.
+- **Tarjeta de persona principal** – muestra el nombre, foto (si está disponible) y datos clave de tu persona principal elegida, con un enlace a su perfil completo y navegación rápida al árbol familiar. Haz clic en el botón **Establecer Persona Principal** en la tarjeta para buscar y seleccionar a otra persona.
 - **Aniversarios** – próximos cumpleaños y aniversarios del árbol, basados en la fecha de hoy.
 - **Recientemente cambiado** – una lista corta de los objetos modificados más recientemente, útil para rastrear ediciones colaborativas.
 
@@ -77,7 +77,7 @@ Cómo la instalas depende de tu navegador:
 - **Escritorio (Chrome, Edge)** – haz clic en el icono de instalación en el extremo derecho de la barra de direcciones, o usa la entrada "Instalar" del menú del navegador.
 - **Escritorio (Firefox, Safari)** – la instalación no es compatible; usa una pestaña o ventana normal del navegador.
 
-Nada cambia sobre cómo funciona Gramps Web, y no se almacenan datos de manera diferente; es la misma aplicación, solo presentada como una aplicación independiente.
+Nada cambia en cómo funciona Gramps Web, y no se almacenan datos de manera diferente; es la misma aplicación, solo presentada como una aplicación independiente.
 
 !!! note
     Gramps Web aún necesita acceder a tu servidor para mostrar tus datos, por lo que una aplicación instalada no te permite navegar por tu árbol familiar sin conexión.

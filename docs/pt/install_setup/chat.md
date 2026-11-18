@@ -3,26 +3,26 @@
 !!! info
     O chat de IA requer a versão 2.5.0 ou superior da Gramps Web API. A versão 3.6.0 introduziu capacidades de chamada de ferramentas para interações mais inteligentes.
 
-A Gramps Web API suporta fazer perguntas sobre o banco de dados genealógico usando modelos de linguagem de grande porte (LLM) com chamada de ferramentas.
+A Gramps Web API suporta fazer perguntas sobre o banco de dados genealógico usando modelos de linguagem grandes (LLM) com chamada de ferramentas.
 
 ## Como funciona
 
 O assistente de IA usa ferramentas especializadas para consultar seus dados genealógicos diretamente. Essas ferramentas permitem que o assistente pesquise o banco de dados com busca de texto completo, filtre pessoas/eventos/famílias/lugares por critérios específicos, calcule relacionamentos entre indivíduos e recupere registros completos, incluindo notas. O assistente então responde com base nos registros que consultou e fornece links para eles em sua resposta. Ele responde apenas a partir da árvore, não a partir do conhecimento geral: se a árvore não registrar algo, o assistente diz isso. Links para objetos que não existem ou que são privados para o usuário são substituídos pelo seu texto.
 
-O chat de IA não precisa de um modelo de incorporação vetorial. Versões da Gramps Web API anteriores à 3.24 também usavam *busca semântica* (geração aumentada por recuperação, RAG), que comparava o significado de uma pergunta a um índice de vetores numéricos calculados para todos os objetos no banco de dados. A busca semântica foi removida na Gramps Web API 3.25; as configurações `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` e `VECTOR_EMBEDDING_API_KEY` são ignoradas e podem ser removidas de sua configuração.
+O chat de IA não precisa de um modelo de incorporação vetorial. Versões da Gramps Web API anteriores à 3.24 também usavam *busca semântica* (geração aumentada por recuperação, RAG), que comparava o significado de uma pergunta a um índice de vetores numéricos computados para todos os objetos no banco de dados. A busca semântica foi removida na Gramps Web API 3.25; as configurações `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` e `VECTOR_EMBEDDING_API_KEY` são ignoradas e podem ser removidas de sua configuração.
 
-Para habilitar o endpoint de chat na Gramps Web API, são necessários dois passos:
+Para habilitar o endpoint de chat na Gramps Web API, são necessárias duas etapas:
 
 1. Instalar as dependências necessárias,
 2. Configurar um provedor de LLM.
 
-Os dois passos são descritos abaixo, um a um. Finalmente, um proprietário ou administrador deve [configurar quais usuários podem acessar o recurso de chat](users.md#configuring-who-can-use-ai-chat) nas configurações de Gerenciar Usuários.
+As duas etapas são descritas abaixo, uma a uma. Finalmente, um proprietário ou administrador deve [configurar quais usuários podem acessar o recurso de chat](users.md#configuring-who-can-use-ai-chat) nas configurações de Gerenciar Usuários.
 
 ## Instalando as dependências necessárias
 
-As imagens padrão do docker para Gramps Web já têm todas as dependências necessárias para o chat de IA pré-instaladas.
+As imagens padrão do Docker para Gramps Web já têm todas as dependências necessárias para o chat de IA pré-instaladas.
 
-Ao instalar a Gramps Web API via `pip` (isso não é necessário ao usar as imagens Docker), as dependências necessárias são instaladas com
+Ao instalar a Gramps Web API via `pip` (isso não é necessário ao usar as imagens do Docker), as dependências necessárias são instaladas com
 
 ```bash
 pip install gramps_webapi[ai]
@@ -30,7 +30,7 @@ pip install gramps_webapi[ai]
 
 ## Configurando um provedor de LLM
 
-A comunicação com o LLM usa o framework Pydantic AI, que suporta APIs compatíveis com OpenAI. Isso permite usar um LLM implantado localmente via Ollama (veja [Compatibilidade do Ollama com OpenAI](https://ollama.com/blog/openai-compatibility)) ou APIs hospedadas como OpenAI, Anthropic ou Hugging Face TGI (Geração de Texto por Inferência). O LLM é configurado através dos parâmetros de configuração `LLM_MODEL` e `LLM_BASE_URL`.
+A comunicação com o LLM usa o framework Pydantic AI, que suporta APIs compatíveis com OpenAI. Isso permite usar um LLM implantado localmente via Ollama (veja [Compatibilidade do Ollama com OpenAI](https://ollama.com/blog/openai-compatibility)) ou APIs hospedadas como OpenAI, Anthropic ou Hugging Face TGI (Geração de Texto Inferência). O LLM é configurado através dos parâmetros de configuração `LLM_MODEL` e `LLM_BASE_URL`.
 
 Além das APIs compatíveis com OpenAI, os prefixos de modelo específicos do provedor do Pydantic AI podem ser usados para OpenAI, Anthropic, Google, Mistral, Groq, AWS Bedrock e Ollama. Outros provedores, como Cohere, Hugging Face e xAI, não estão instalados; os Provedores de Inferência do Hugging Face ainda podem ser usados através de seu endpoint compatível com OpenAI (`LLM_BASE_URL` definido como `https://router.huggingface.co/v1`).
 
@@ -43,13 +43,13 @@ Ao usar a API OpenAI, `LLM_BASE_URL` pode ser deixado não definido, enquanto `L
 Você também precisará se inscrever para uma conta, obter uma chave de API e armazená-la na variável de ambiente `OPENAI_API_KEY`.
 
 !!! info
-    `LLM_MODEL` é um parâmetro de configuração; se você quiser defini-lo via uma variável de ambiente, use `GRAMPSWEB_LLM_MODEL` (veja [Configuração](configuration.md)). `OPENAI_API_KEY` não é um parâmetro de configuração, mas uma variável de ambiente usada diretamente pela biblioteca Pydantic AI, portanto, não deve ser prefixada.
+    `LLM_MODEL` é um parâmetro de configuração; se você quiser defini-lo através de uma variável de ambiente, use `GRAMPSWEB_LLM_MODEL` (veja [Configuração](configuration.md)). `OPENAI_API_KEY` não é um parâmetro de configuração, mas uma variável de ambiente usada diretamente pela biblioteca Pydantic AI, portanto, não deve ser prefixada.
 
 ### Usando Mistral AI
 
 Para usar os modelos hospedados da Mistral AI, prefixe o nome do modelo com `mistral:` ao definir `LLM_MODEL`.
 
-Você precisará se inscrever para uma conta Mistral AI, obter uma chave de API e armazená-la na variável de ambiente `MISTRAL_API_KEY`. Não é necessário definir `LLM_BASE_URL`, pois o Pydantic AI usará automaticamente o endpoint correto da API Mistral.
+Você precisará se inscrever para uma conta Mistral AI, obter uma chave de API e armazená-la na variável de ambiente `MISTRAL_API_KEY`. Não há necessidade de definir `LLM_BASE_URL`, pois o Pydantic AI usará automaticamente o endpoint correto da API Mistral.
 
 Exemplo de configuração ao usar docker compose com variáveis de ambiente:
 ```yaml
@@ -90,7 +90,7 @@ volumes:
   ollama_data:
 ```
 
-Após iniciar os serviços, puxe o modelo para o Ollama:
+Após iniciar os serviços, baixe o modelo para o Ollama:
 
 ```bash
 docker compose exec ollama ollama pull qwen2.5:7b
@@ -100,14 +100,26 @@ Algumas coisas a serem observadas:
 
 - Defina `LLM_MODEL` para o nome do modelo Ollama, incluindo sua tag (a parte após os dois pontos, por exemplo, `7b`), prefixada com `ollama:`. O prefixo faz com que o Pydantic AI use suas configurações específicas do Ollama para o modelo, que é a configuração recomendada.
 - `LLM_BASE_URL` deve terminar em `/v1/`, por exemplo, `http://ollama:11434/v1/`.
-- Com o prefixo `ollama:`, nem `OPENAI_API_KEY` nem a variável de ambiente `OLLAMA_BASE_URL` são necessárias. Se `LLM_BASE_URL` não estiver definido, o Gramps Web recuará para `OLLAMA_BASE_URL`.
+- Com o prefixo `ollama:`, nem `OPENAI_API_KEY` nem a variável de ambiente `OLLAMA_BASE_URL` são necessárias. Se `LLM_BASE_URL` não estiver definido, o Gramps Web recua para `OLLAMA_BASE_URL`.
 - Alternativamente, você pode deixar de fora o prefixo (por exemplo, `LLM_MODEL: qwen2.5:7b`) e usar o Ollama através de sua API genérica compatível com OpenAI. Nesse caso, você também deve definir a variável de ambiente `OPENAI_API_KEY` como `ollama` (qualquer valor não vazio funciona).
 
 Para solucionar problemas com o Ollama, você pode habilitar o registro de depuração definindo a variável de ambiente `OLLAMA_DEBUG=1` no ambiente do serviço Ollama.
 
 !!! info
-    Se você estiver usando o Ollama para o chat de IA do Gramps Web, por favor, apoie a comunidade completando esta documentação com quaisquer detalhes que estiverem faltando.
+    Se você estiver usando o Ollama para o chat de IA do Gramps Web, por favor, apoie a comunidade completando esta documentação com quaisquer detalhes faltantes.
 
 ### Usando outros provedores
 
 Sinta-se à vontade para enviar documentação para outros provedores e compartilhar sua experiência com a comunidade!
+
+## Recursos Opcionais
+
+### Imagens em perguntas
+
+Se seu modelo aceitar imagens, defina `LLM_VISION` como `True` para permitir que os usuários anexem imagens às suas perguntas, por exemplo, digitalizações de registros (Gramps Web API 3.26+). As imagens são redimensionadas para no máximo 1568 pixels no lado longo antes de serem enviadas ao modelo. Verifique se o modelo realmente suporta entrada de imagem: muitos modelos locais pequenos não suportam, e o provedor então rejeita perguntas com imagens.
+
+### Permitir que o assistente proponha alterações
+
+Com `LLM_ALLOW_WRITE_PROPOSALS` definido como `True` (Gramps Web API 3.26+), o assistente pode [propor alterações à árvore](../user-guide/chat.md#letting-the-assistant-change-your-tree), que os usuários aplicam após revisá-las. O assistente em si nunca escreve no banco de dados. Propostas são oferecidas apenas a usuários que têm permissão para adicionar, editar e excluir objetos, ou seja, editores e acima, e que têm permissão para usar o chat.
+
+Escrever propostas corretas é mais difícil para um modelo do que responder perguntas, então teste-o com seu modelo antes de habilitá-lo para seus usuários. As ferramentas adicionais também tornam cada solicitação ao modelo um pouco maior.

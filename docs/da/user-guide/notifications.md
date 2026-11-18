@@ -1,19 +1,20 @@
 # Notifikationer
 
-**Notifikationer** er et sidepanel element med et klokkeikon. Når der er opstået fejl, eller baggrundsopgaver kører, viser et badge antallet af ulæste notifikationer. Klik på det for at åbne notifikationsloggen.
+Klokken i den øverste app-bar åbner notifikationerne. Et badge på klokken viser antallet af ulæste notifikationer. Menuen viser kørende opgaver og de seneste notifikationer; **Vis alle** åbner den fulde notifikationslog. På små skærme åbner klokken loggen direkte.
 
-Notifikationsloggen tjener to formål:
+Notifikationer handler om:
 
-- Det er en optegnelse over fejl, der opstod under din session – mislykkede API-anmodninger, fejl i baggrundsopgaver, gemmefejl eller browser-niveau fejl.
-- Det sporer fremskridtene for langvarige baggrundsopgaver – såsom importer og eksporter, generering af rapporter, OCR-tekstgenkendelse, databaseopgraderinger, sletning af mange objekter og genopbygning af søgeindekser – viser deres tilstand (f.eks. ventende, startet, i gang) og underretter dig, når de er færdige eller fejler.
+- **Ændringer fra andre brugere.** Når andre brugere ændrer træet, mens du bruger Gramps Web, siger en notifikation, hvem der ændrede hvad, f.eks. "Rediger person" eller "12 ændringer". Klik på den for at åbne ændringen i [revisionshistorikken](revisions.md). Ændringer, der ikke har en Gramps Web-bruger, såsom ændringer foretaget direkte i en delt database med Gramps Desktop, vises uden et navn. Dette er kun tilgængeligt for brugere, der kan se revisionshistorikken (medlemmer og derover).
+- **Baggrundsopgaver** – såsom import og eksport, generering af rapporter, OCR-tekstgenkendelse, databaseopgraderinger, sletning eller redigering af mange objekter og genopbygning af søgeindekser – viser deres status (f.eks. ventende, startet, i gang) og underretter dig, når de er afsluttet eller fejler.
+- **Fejl** der opstod under din session – mislykkede API-anmodninger, fejl i baggrundsopgaver, gemmefejl eller fejl på browserniveau.
 
-Hver post viser en kort besked, kilden (Netværk, Opgave, Gem, eller Browser), og et tidsstempel. Færdige opgaver læser "Opgave fuldført" eller "Opgave fejlet".
+Færdige eksporter og mediearkiver kan downloades fra deres notifikation, også efter du har forladt [Eksport siden](../administration/export.md).
 
-Nogle notifikationer inkluderer strukturerede detaljer, såsom fejlmeddelelsen fra en mislykket opgave. Klik på en sådan post åbner en dialog med en opdeling af fejldataene og en **Kopier JSON** knap. Dette er nyttigt, når du rapporterer en fejl, da JSON'en indeholder de nøjagtige fejloplysninger fra serveren.
+Nogle notifikationer inkluderer strukturerede detaljer, såsom fejlmeddelelsen fra en mislykket opgave. Klikker du på en sådan post i notifikationsloggen, åbner der sig en dialog med en opdeling af fejldataene og en **Kopier JSON**-knap. Dette er nyttigt, når du rapporterer en fejl, da JSON'en indeholder de præcise fejloplysninger fra serveren.
 
-Brug **Ryd alle** for at afvise alle notifikationer.
+Brug **Ryd alle** i notifikationsloggen for at afvise alle notifikationer.
 
-Opgaver, der ændrer hele træet, såsom en import, en gendannelse, sletning af alle objekter eller genopbygning af søgeindekset, kan ikke køre samtidig. Hvis du starter en, mens en anden kører, vises en meddelelse om, at en anden opgave allerede kører på dette træ, og den kørende opgave vises med sin fremdrift.
+Opgaver, der ændrer hele træet, såsom en import, en gendannelse, sletning af alle objekter eller genopbygning af søgeindekset, kan ikke køre samtidig. Hvis du starter en, mens en anden kører, siger en besked, at en anden opgave allerede kører på dette træ, og den kørende opgave vises med sin fremdrift.
 
 !!! note
-    Notifikationer gemmes kun i hukommelsen og ryddes, når du genindlæser siden.
+    Notifikationer gemmes kun i hukommelsen og ryddes, når du genindlæser siden. Gramps Web tjekker for ændringer fra andre brugere kun, mens det er åbent, så ændringer foretaget, mens du var væk, rapporteres ikke; se [Revisionshistorik](revisions.md) for dem.

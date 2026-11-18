@@ -1,46 +1,57 @@
 # Verwendung des KI-Assistenten
 
-!!! info
-    Der KI-Assistent erfordert die Gramps Web API Version 2.5.0 oder höher und Gramps Web Version 24.10.0 oder höher. Die Gramps Web API Version 3.6.0 führte Funktionen zum Aufrufen von Werkzeugen für intelligentere Interaktionen ein.
-
-Die **Assistent**-Ansicht in Gramps Web (sofern in Ihrer Installation verfügbar, in älteren Versionen als "Chat" bezeichnet) bietet Zugriff auf einen KI-Assistenten, der Fragen zu Ihrem Stammbaum beantworten kann.
+Die **Assistent**-Ansicht in Gramps Web (sofern in Ihrer Installation aktiviert) bietet Zugriff auf einen KI-Assistenten, der Fragen zu Ihrem Stammbaum beantwortet.
 
 !!! warning
-    Da dies noch eine neue und sich entwickelnde Funktion ist, funktionieren einige Arten von Fragen gut, während andere es nicht tun. Außerdem kann der KI-Assistent, wie jeder andere KI-Assistent, faktisch falsche Antworten geben, daher sollten Sie immer doppelt überprüfen.
+    Wie bei jedem KI-Assistenten können die Antworten falsch sein. Verwenden Sie die Links in der Antwort, um die Aufzeichnungen zu überprüfen, auf denen sie basieren.
 
-## Wie es funktioniert
+## So funktioniert es
 
-Um zu verstehen, welche Arten von Fragen der Assistent beantworten kann, ist es hilfreich zu verstehen, wie er im Hintergrund funktioniert:
+Der Assistent kennt Ihren Baum im Voraus nicht. Um eine Frage zu beantworten, sucht ein großes Sprachmodell die benötigten Aufzeichnungen, ähnlich wie Sie es selbst tun würden:
 
-1. Der Benutzer stellt eine Frage.
-2. Der Assistent fragt direkt Ihre Datenbank mit spezialisierten Werkzeugen ab: Er durchsucht den Stammbaum mit der [Volltextsuche](search.md), filtert Personen/Ereignisse/Familien/Orte nach spezifischen Kriterien, berechnet Beziehungen zwischen Individuen und sucht vollständige Datensätze, einschließlich ihrer Notizen.
-3. Ein großes Sprachmodell formuliert eine Antwort basierend auf den gefundenen Datensätzen.
-4. Die Antwort wird Ihnen angezeigt, mit Links zu den Datensätzen, auf denen sie basiert.
+- es durchsucht den Baum mit der [Volltextsuche](search.md),
+- es filtert Personen, Ereignisse und Familien nach Kriterien wie Namen, Daten, Orten oder der Anzahl der Kinder,
+- es findet Vorfahren, Nachkommen und andere Verwandte einer Person sowie deren Beziehung,
+- es liest vollständige Aufzeichnungen von Personen, Familien, Ereignissen, Orten und Notizen.
 
-Der Assistent antwortet nur aus Ihrem Stammbaum, nicht aus dem allgemeinen Wissen des Sprachmodells – selbst über bekannte Personen. Wenn der Stammbaum etwas nicht verzeichnet, sagt er das und erwähnt verwandte Informationen, die er gefunden hat, zum Beispiel in einer Notiz. Links zu Objekten, die Sie nicht sehen dürfen, werden als einfacher Text angezeigt.
+Anschließend beantwortet es die Fragen basierend auf den gefundenen Aufzeichnungen und gibt Links zu diesen an. Während es arbeitet, werden die verwendeten Werkzeuge angezeigt, sodass Sie folgen können. Fragen, die länger dauern, laufen im Hintergrund – Sie können weg navigieren und zurückkommen.
 
-Folgefragen behalten den Kontext früherer Fragen im selben Gespräch, sodass Sie nach einer Person fragen können: "Und wann ist er gestorben?"
+Der Assistent antwortet nur auf Basis Ihres Baums, nicht aus dem allgemeinen Wissen des Sprachmodells – selbst über bekannte Personen. Wenn der Baum etwas nicht verzeichnet, sagt er das und erwähnt verwandte Informationen, die er gefunden hat, beispielsweise in einer Notiz. Er sieht nur das, was Sie sehen dürfen: Links zu privaten Aufzeichnungen werden als Klartext für Benutzer angezeigt, die sie nicht einsehen können.
 
-Während der Assistent arbeitet, zeigen Indikatoren an, welche Werkzeuge er derzeit verwendet (z. B. Personen suchen, Beziehungen nachschlagen), sodass Sie ihm folgen können, während er seine Antwort aufbaut. Länger laufende Fragen werden als Hintergrundaufgaben verarbeitet – Sie können weg navigieren und zurückkommen, und der Fortschritt wird auch in [Benachrichtigungen](notifications.md) angezeigt. Antworten sind mit Markdown formatiert (Listen, Hervorhebungen, Links usw.) für eine einfachere Lesbarkeit.
+Folgefragen behalten den Kontext früherer Fragen im selben Gespräch, sodass Sie nach einer Frage zu einer Person fragen können: "Und wann ist er gestorben?"
 
 ## Was Sie fragen können
 
-Mit den in der Gramps Web API Version 3.6.0 eingeführten Funktionen zum Aufrufen von Werkzeugen kann der KI-Assistent nun komplexere Fragen bearbeiten:
+- **Fakten über Personen**: "Wann wurde Mary Smith geboren?" oder "Wie heißen die Kinder von John Doe?"
+- **Verwandte**: "Wer sind die Großeltern von Jane Smith?" oder "Welche Nachkommen von Johann Meyer sind nach Amerika ausgewandert?"
+- **Suchen mit Kriterien**: "Wer wurde nach 1850 in London geboren?", "Liste der Ehen zwischen 1920 und 1950" oder "Welche Paare hatten fünf oder mehr Kinder?"
+- **Orte**: "Welche Ereignisse fanden in Paris statt?" oder "Wer wurde in Dänemark geboren?" – Orte innerhalb eines größeren Ortes sind eingeschlossen.
+- **Notizen**: "Was sagen die Notizen über den Hof der Familie Meyer?"
 
-- **Familienbeziehungen**: "Wer sind die Großeltern von Jane Smith?" oder "Wie ist John Doe mit Mary Johnson verwandt?"
-- **Gefilterte Suchen**: "Zeige mir alle Personen, die nach 1850 in London geboren wurden" oder "Welche Ereignisse fanden in Paris statt?"
-- **Datumbasierte Abfragen**: "Wer starb vor 1900?" oder "Liste Ehen auf, die zwischen 1920 und 1950 stattfanden"
-- **Ortsinformationen**: "Welche Orte gibt es in Frankreich?" oder "Erzähle mir von der St. Mary's Church"
-- **Allgemeine Fragen**: "Wie heißen die Kinder von John Doe?" oder "Wann wurde Mary Smith geboren?"
+Fragen, die den gesamten Baum auf einmal benötigen, wie "Was ist der häufigste Vorname?", funktionieren weniger gut, da der Assistent nur eine begrenzte Anzahl von Aufzeichnungen pro Abfrage sieht.
+
+## Fragen zu Bildern
+
+Wenn der Serveradministrator dies aktiviert hat, hat die Eingabeaufforderung eine Schaltfläche zum Anhängen von Bildern. Sie können auch ein Bild einfügen oder Bilddateien in die Eingabeaufforderung ziehen. Bis zu vier Bilder können einer Frage angehängt werden, zum Beispiel ein Scan eines Kirchenbuchs, um zu fragen: "Wer wird in diesem Eintrag erwähnt, und sind sie in meinem Baum?"
+
+Die Bilder werden nur mit der Frage gesendet, an die sie angehängt sind. Folgefragen können sich auf das beziehen, was der Assistent darüber gesagt hat, jedoch nicht auf die Bilder selbst, sodass Sie sie bei Bedarf erneut anhängen müssen. Wenn Ihr Baum eine Begrenzung für die Nutzung der KI hat, zählt jedes Bild wie eine zusätzliche Frage.
+
+## Den Assistenten Änderungen an Ihrem Baum vornehmen lassen
+
+Wenn der Serveradministrator dies aktiviert hat, können Redakteure, Eigentümer und Administratoren den Assistenten bitten, den Baum zu ändern, zum Beispiel "Fügen Sie eine Taufe am 3. Mai 1802 in St. Mary's zu Johann Meyer hinzu" oder "Korrigieren Sie das Geburtsjahr von Anna Smith, es sollte 1871 sein".
+
+Der Assistent ändert niemals etwas von sich aus. Er antwortet mit einer **Vorgeschlagenen Änderungen**-Karte, die jede Aufzeichnung auflistet, die er hinzufügen, bearbeiten oder löschen würde, wobei die alten Werte durchgestrichen und die neuen Werte hervorgehoben sind. Nichts passiert, bis Sie auf **Übernehmen** klicken. Die Änderungen werden dann in einem Schritt vorgenommen, den Sie wie jede andere Bearbeitung rückgängig machen können, aus der Nachricht, die erscheint, oder in der [Versionsgeschichte](revisions.md).
+
+Überprüfen Sie einen Vorschlag sorgfältig, bevor Sie ihn anwenden – insbesondere, dass der Assistent die richtige Person ausgewählt hat und dass er keinen neuen Datensatz (wie einen Ort oder eine Quelle) hinzugefügt hat, der bereits in Ihrem Baum unter einem leicht anderen Namen existiert. Wenn ein Vorschlag nicht ganz richtig ist, sagen Sie, was geändert werden soll, und der Assistent schlägt erneut vor.
+
+Sobald ein Vorschlag angewendet wurde, können ältere Vorschläge im selben Gespräch nicht mehr angewendet werden, da sie für den Baum gemacht wurden, wie er zuvor war. Dasselbe passiert, wenn einer der betroffenen Datensätze inzwischen geändert wurde.
 
 ## Tipps zum Stellen von Fragen
 
-Um die besten Ergebnisse vom KI-Assistenten zu erhalten:
-
-- **Seien Sie spezifisch**: Formulieren Sie Ihre Frage mit so vielen Details wie möglich, um Mehrdeutigkeiten zu vermeiden. Zum Beispiel ist "Wann hat John Smith, der 1850 in Boston geboren wurde, geheiratet?" besser als "Wann hat John Smith geheiratet?"
-- **Verwenden Sie Eigennamen**: Nennen Sie spezifische Namen, Orte und Daten, wenn relevant.
-- **Fragen Sie eine Sache auf einmal**: Zerlegen Sie komplexe Fragen in einfachere Teile für bessere Ergebnisse.
-- **Verwenden Sie Ihre Sprache**: Große Sprachmodelle sind mehrsprachig, sodass Sie Fragen in Ihrer eigenen Sprache stellen und Antworten in derselben Sprache erhalten können.
+- **Nennen Sie die Personen.** Der Assistent weiß nicht, wer Sie sind oder wer Ihre Hauptperson ist, also fragen Sie statt "meiner Großmutter" nach "der Großmutter von Anna Smith (geboren 1950)". Sie können auch Gramps-IDs verwenden, z.B. "die Kinder von I0042".
+- **Seien Sie spezifisch**, wenn Namen häufig sind: "Wann hat der John Smith, der 1850 in Boston geboren wurde, geheiratet?" ist besser als "Wann hat John Smith geheiratet?"
+- **Verwenden Sie Ihre Sprache.** Sie können in Ihrer eigenen Sprache fragen und Antworten in derselben Sprache erhalten.
+- **Fragen Sie anders erneut**, wenn eine Antwort unvollständig aussieht – zum Beispiel, indem Sie den Ort oder den Zeitraum nennen, an dem Sie interessiert sind.
 
 !!! tip
-    Bitte teilen Sie Ihre Erfahrungen über Dinge, die funktionieren und nicht funktionieren, mit der Community.
+    Bitte teilen Sie Ihre Erfahrungen über Dinge, die funktionieren und nicht funktionieren, mit der Gemeinschaft.

@@ -1,14 +1,14 @@
-# Use o gerenciamento de tarefas embutido
+# Use a gestão de tarefas integrada
 
-O Gramps Web contém uma ferramenta de gerenciamento de tarefas genealógicas embutida. Ela é destinada a permitir que os pesquisadores planejem e priorizem, mas também documentem suas tarefas. É por isso que as tarefas são representadas como fontes no banco de dados do Gramps. Após a conclusão de uma tarefa, o conteúdo associado pode servir como uma fonte documentando o processo de pesquisa.
+O Gramps Web contém uma ferramenta de gestão de tarefas genealógicas integrada. Ela visa permitir que os pesquisadores planejem e priorizem, mas também documentem suas tarefas. É por isso que as tarefas são representadas como fontes no banco de dados do Gramps. Após a conclusão de uma tarefa, o conteúdo associado pode servir como uma fonte documentando o processo de pesquisa.
 
 ## Noções básicas sobre tarefas
 
 As tarefas têm as seguintes propriedades:
 
-- Status. Isso pode ser "Aberto", "Em Andamento", "Bloqueado" ou "Concluído"
+- Status. Isso pode ser "Aberto", "Em Progresso", "Bloqueado" ou "Concluído"
 - Prioridade. Isso pode ser "Baixa", "Média" ou "Alta"
-- Tags. Os rótulos são tags normais do Gramps da fonte subjacente. (Observe que todas as tarefas têm adicionalmente o rótulo `ToDo` para identificá-las como tarefas, mas esse rótulo é ocultado na lista de tarefas para evitar desordem.)
+- Tags. Os rótulos são tags normais do Gramps da fonte subjacente. (Observe que todas as tarefas também têm o rótulo `ToDo` para identificá-las como tarefas, mas esse rótulo é oculto na lista de tarefas para evitar desordem.)
 - Título. Exibido na lista de tarefas
 - Descrição. Um campo de texto rico que pode ser usado para descrever a declaração do problema, mas também documentar qualquer progresso feito
 - Mídia. Quaisquer arquivos de mídia anexados à tarefa
@@ -21,11 +21,11 @@ Para criar uma tarefa, clique no botão + na página da lista de tarefas. Insira
 
 ## A lista de tarefas
 
-A lista de tarefas é ordenada por status – tarefas concluídas por último – e dentro de cada status por prioridade, da mais alta para a mais baixa.
+Por padrão, a lista de tarefas é ordenada por status – tarefas concluídas por último – e dentro de cada status por prioridade, da mais alta para a mais baixa. O menu de ordenação na barra de filtro também classifica por prioridade, título ou última alteração (a mais nova primeiro).
 
-Clique em uma tarefa para abri-la. Usuários com permissões de edição também podem clicar no ícone de status de uma tarefa para mudar seu status diretamente na lista, por exemplo, para marcá-la como concluída.
+Clique em uma tarefa para abri-la. Usuários com permissões de edição também podem clicar no ícone de status de uma tarefa para alterar seu status diretamente na lista, por exemplo, para marcá-la como concluída.
 
-O botão **filtro** acima da lista filtra as tarefas por tag, com uma expressão [GOQL](goql.md) ou com o [filtro avançado](lists.md#advanced-filter).
+O botão **filtro** acima da lista filtra as tarefas por título, status, prioridade ou tag, com uma expressão [GOQL](goql.md), ou com o [filtro avançado](lists.md#advanced-filter). Marcar vários status ou prioridades mostra tarefas com qualquer um deles, por exemplo, todas as tarefas abertas e bloqueadas.
 
 ## Editar uma tarefa
 
@@ -46,11 +46,11 @@ Usuários com permissões de edição veem uma caixa de seleção em cada linha 
 
 ## Tarefas no Gramps Desktop
 
-Ao adicionar tarefas via Gramps Web, tanto as fontes quanto as notas terão a tag `ToDo` anexada a elas, de modo que as tarefas aparecerão no [Gramplet de Notas a Fazer do Gramps Desktop](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) assim como no [Relatório de Tarefas a Fazer](https://gramps-project.org/wiki/index.php/Addon:ToDoReport).
+Ao adicionar tarefas via Gramps Web, tanto as fontes quanto as notas terão a tag `ToDo` anexada a elas, então as tarefas aparecerão no [Gramplet de Notas a Fazer](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) do desktop, assim como no [Relatório de Tarefas a Fazer](https://gramps-project.org/wiki/index.php/Addon:ToDoReport).
 
 Para adicionar ou editar uma tarefa no Gramps Desktop, use as seguintes diretrizes:
 
 - Adicione uma fonte com a tag `ToDo` e o título da tarefa como título
 - Opcionalmente, adicione uma nota à fonte com a tag `ToDo`, tipo "A Fazer", e a descrição como texto
-- Adicione um atributo "Status" e defina como "Aberto", "Em Andamento", "Bloqueado" ou "Concluído"
-- Adicione um atributo "Prioridade" e defina como 9 para baixa, 5 para média ou 1 para alta (esses valores contra-intuitivos são retirados da especificação iCalendar)
+- Adicione um atributo "Status" e defina como "Aberto", "Em Progresso", "Bloqueado" ou "Concluído"
+- Adicione um atributo "Prioridade" e defina como 9 para baixa, 5 para média ou 1 para alta (esses valores contra-intuitivos são retirados da especificação do iCalendar)

@@ -1,6 +1,6 @@
 # Zaman Çizelgesi
 
-!!! bilgi
+!!! info
     Zaman Çizelgesi görünümü, yeterince güncel bir Gramps Web API sürümü gerektirir. Sunucunuz eskiyse, **Zaman Çizelgesi** öğesi yan menüden gizlenir.
 
 **Zaman Çizelgesi**, aile ağacınızdaki tüm olayları yatay, yakınlaştırılabilir bir zaman çizelgesinde kronolojik olarak gösteren bir yan menü öğesidir.
@@ -12,12 +12,12 @@
 
 ## Filtreleme
 
-Zaman çizelgesini tek bir **kişi** veya **yer** üzerinde yoğunlaştırmak için filtre alanını kullanın:
+Zaman çizelgesini tek bir **kişi** veya **yer** üzerine odaklamak için filtre alanını kullanın:
 
-- **Kişi** – yalnızca o kişiyle bağlantılı olayları gösterir. Bir geçiş, **Kişi** (yalnızca o bireyin olayları), **Ata** ve **Torun** (tüm ataları/torunlarıyla ilgili olaylar) arasında geçiş yapmanıza olanak tanır.
+- **Kişi** – yalnızca o kişiyle bağlantılı olayları gösterir, ailelerinin olayları, örneğin evlilikler de dahil. Bir anahtar, **Kişi** (yalnızca o bireyin olayları), **Ata** ve **Torun** (tüm atalarının/torunlarının olayları) arasında geçiş yapmanıza olanak tanır.
 - **Yer** – yalnızca orada gerçekleşen olayları gösterir.
 
-Tam zaman çizelgesine dönmek için filtre çipini temizleyin.
+Tam zaman çizelgesine geri dönmek için filtre çipini temizleyin.
 
 ## Zaman Çizelgesine Atlama
 

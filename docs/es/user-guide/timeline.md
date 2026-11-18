@@ -7,14 +7,14 @@
 
 ## Navegando por la línea de tiempo
 
-- Desplázate, arrastra o pellizca para moverte a través del tiempo; usa los botones de zoom (o la rueda del ratón/gesto de pellizco) para acercar y alejar.
+- Desplázate, arrastra o pellizca para moverte a través del tiempo; utiliza los botones de zoom (o la rueda del mouse/gesto de pellizco) para acercar y alejar.
 - A medida que te acercas, aparecen las etiquetas de los eventos; haz clic en un punto de evento para ver sus detalles (y los de cualquier otro evento en la misma fecha).
 
 ## Filtrado
 
-Utiliza el campo de filtro para centrar la línea de tiempo en una **persona** o **lugar** único:
+Utiliza el campo de filtro para centrar la línea de tiempo en una **persona** o **lugar**:
 
-- **Persona** – muestra solo los eventos vinculados a esa persona. Un interruptor te permite alternar entre **Persona** (eventos de ese individuo solamente), **Antepasados** y **Descendientes** (eventos de todos sus antepasados/descendientes).
+- **Persona** – muestra solo los eventos vinculados a esa persona, incluidos los eventos de sus familias, como matrimonios. Un interruptor te permite alternar entre **Persona** (eventos de ese individuo solamente), **Antepasados** y **Descendientes** (eventos de todos sus antepasados/descendientes).
 - **Lugar** – muestra solo los eventos que tuvieron lugar allí.
 
 Limpia el chip de filtro para volver a la línea de tiempo completa.

@@ -1,12 +1,12 @@
 # Importer des données
 
-Vous pouvez importer un arbre généalogique existant dans Gramps Web en téléchargeant un fichier exporté depuis un autre programme de généalogie, un service en ligne ou depuis Gramps Desktop.
+Vous pouvez importer un arbre généalogique existant dans Gramps Web en téléchargeant un fichier exporté d'un autre programme de généalogie, d'un service en ligne ou de Gramps Desktop.
 
-L'importation se trouve dans la section **Données** des [paramètres d'administration](settings.md) (icône utilisateur dans la barre d'application en haut ▸ Administration), qui est accessible aux propriétaires d'arbres et aux administrateurs. Tant que l'arbre est encore vide, le bouton **Importer un arbre généalogique** sur la carte "Commencer" de la page d'accueil y mène également.
+L'importation a sa propre page, accessible aux propriétaires d'arbres et aux administrateurs. Ouvrez-la avec **Importer un arbre généalogique** dans la section **Données** des [paramètres d'administration](settings.md) (icône utilisateur dans la barre d'application en haut ▸ Administration). Tant que l'arbre est encore vide, le bouton **Importer un arbre généalogique** de la carte "Commencer" sur la page d'accueil, dans l'arbre généalogique et dans les listes y mène également.
 
 ## Quel fichier utiliser
 
-| Provenant de | Exportez votre arbre sous | Extension de fichier |
+| Provenant de | Exportez votre arbre en tant que | Extension de fichier |
 |---|---|---|
 | Un autre programme de généalogie ou service en ligne | GEDCOM | `.ged` |
 | Gramps Desktop | Gramps XML | `.gramps` |
@@ -15,23 +15,30 @@ L'importation se trouve dans la section **Données** des [paramètres d'administ
 | Un tableur | Gramps CSV | `.csv` |
 | Un carnet d'adresses | vCard | `.vcf` |
 
-Le GEDCOM est le format d'échange commun que presque tous les programmes de généalogie et services en ligne peuvent exporter. Recherchez une option "Exporter" ou "Télécharger" dans votre programme ou sur le site web, et choisissez GEDCOM si plusieurs formats vous sont proposés. La page Wiki de Gramps [Importer depuis un autre programme de généalogie](https://www.gramps-project.org/wiki/index.php/Import_from_another_genealogy_program) contient des notes sur des programmes spécifiques.
+GEDCOM est le format d'échange commun que presque tous les programmes de généalogie et services en ligne peuvent exporter. Recherchez une option "Exporter" ou "Télécharger" dans votre programme ou sur le site web, et choisissez GEDCOM si plusieurs formats vous sont proposés. La page Wiki de Gramps [Importer depuis un autre programme de généalogie](https://www.gramps-project.org/wiki/index.php/Import_from_another_genealogy_program) contient des notes sur des programmes spécifiques.
 
-Si vous utilisez Gramps Desktop, choisissez Gramps XML (`.gramps`) plutôt que GEDCOM. Il contient toutes les données de Gramps sans perte, et vos arbres en ligne et hors ligne conservent les mêmes identifiants, de sorte qu'ils peuvent être [synchronisés](sync.md). Voir [Provenant de Gramps Desktop](#provenant-de-gramps-desktop) ci-dessous.
+Si vous utilisez Gramps Desktop, choisissez Gramps XML (`.gramps`) plutôt que GEDCOM. Il contient toutes les données de Gramps sans perte, et vos arbres en ligne et hors ligne conservent les mêmes identifiants, ce qui permet de les [synchroniser](sync.md). Voir [Provenant de Gramps Desktop](#provenant-de-gramps-desktop) ci-dessous.
 
 ## Importer un fichier d'arbre généalogique
 
-1. Ouvrez la section **Données** des paramètres d'administration.
-2. Sous "Importer un arbre généalogique", choisissez votre fichier et cliquez sur **Importer**.
-3. Le fichier est d'abord analysé, et une boîte de dialogue "Confirmer l'importation" montre combien d'objets il contient (personnes, familles, événements, lieux, etc.). Rien n'a encore été ajouté à votre arbre. Vérifiez que les comptes semblent plausibles, puis cliquez sur **Importer** pour continuer, ou **Annuler** pour abandonner sans rien changer.
+1. Ouvrez la page d'importation comme décrit ci-dessus.
+2. Sous "Importer un arbre généalogique", choisissez votre fichier et cliquez sur **Importer**. La progression du téléchargement est affichée.
+3. Le fichier est d'abord lu, et une boîte de dialogue "Confirmer l'importation" montre combien d'objets il contient (personnes, familles, événements, lieux, etc.), et le [rapport](#le-rapport-d-importation) de l'importateur s'il en a un. Rien n'a encore été ajouté à votre arbre. Vérifiez que les comptes semblent plausibles, puis cliquez sur **Importer** pour continuer, ou **Annuler** pour abandonner sans rien changer. Si votre arbre contient déjà des personnes, la boîte de dialogue avertit que l'importation des mêmes données à nouveau crée des doublons.
 4. L'importation s'exécute en arrière-plan et un indicateur de progression est affiché. Une fois les données importées, l'index de recherche est mis à jour, ce qui peut prendre un certain temps pour un grand arbre. Si l'importation échoue, la raison est affichée.
+5. Si l'arbre n'a pas encore de personne principale, vous êtes invité à en choisir une.
 
-Lorsque l'importation est terminée, vérifiez le résultat : comparez le nombre de personnes dans le panneau **Statistiques** sur la page d'accueil avec le nombre dans votre ancien programme, et ouvrez une famille que vous connaissez bien pour voir que les parents, enfants, dates et lieux ont été transférés comme prévu.
+Lorsque l'importation est terminée, vérifiez le résultat : comparez le nombre de personnes dans le panneau **Statistiques** sur la page d'accueil avec le nombre dans votre ancien programme, et ouvrez une famille que vous connaissez bien pour voir que les parents, enfants, dates et lieux ont été importés comme prévu. Si le fichier fait référence à des photos ou d'autres fichiers multimédias, ajoutez-les ensuite, sous [Importer des fichiers multimédias](import-media.md) sur la même page.
 
 !!! warning
-    Une importation régulière est purement additive : elle crée toujours de nouveaux objets et ne met jamais à jour ou ne supprime les objets existants, même pour les objets qui existent déjà dans votre arbre sous le même ID ou identifiant Gramps. Importer le même fichier deux fois – ou importer un fichier qui chevauche des données déjà présentes dans l'arbre – dupliquera chaque objet correspondant plutôt que de les fusionner ou de les ignorer.
+    Une importation régulière est purement additive : elle crée toujours de nouveaux objets et ne met jamais à jour ou ne supprime des objets existants, même pour des objets qui existent déjà dans votre arbre sous le même ID ou identifiant Gramps. Importer le même fichier deux fois – ou importer un fichier qui chevauche des données déjà présentes dans l'arbre – dupliquera chaque objet correspondant plutôt que de les fusionner ou de les ignorer.
 
-    Si vous devez apporter des modifications effectuées ailleurs à un arbre qui a déjà été importé, utilisez [Restaurer à partir d'une sauvegarde](backups.md#restore-from-backup) à la place, ce qui remplace l'arbre pour correspondre au fichier téléchargé plutôt que d'y ajouter. Cela nécessite un fichier Gramps XML ou une sauvegarde Gramps Web.
+    Si vous devez apporter des modifications effectuées ailleurs à un arbre qui a déjà été importé, utilisez plutôt [Restaurer à partir d'une sauvegarde](backups.md#restore-from-backup), qui remplace l'arbre pour correspondre au fichier téléchargé plutôt que d'y ajouter. Cela nécessite un fichier Gramps XML ou une sauvegarde Gramps Web.
+
+## Le rapport d'importation
+
+Les importateurs signalent ce qu'ils n'ont pas pu importer complètement, par exemple des lignes GEDCOM qu'ils n'ont pas comprises, des références à des enregistrements manquants dans le fichier, ou un format de fichier obsolète. Le rapport est affiché sous **Rapport**, à la fois dans la boîte de dialogue de confirmation et après l'importation. Lisez-le avant de confirmer : il explique souvent des problèmes que vous ne remarqueriez autrement que plus tard dans l'arbre.
+
+Tous les messages ne sont pas des problèmes – de nombreux fichiers GEDCOM contiennent des données spécifiques au programme qui sont signalées mais conservées, voir [Données spécifiques au programme](#donnees-specifiques-au-programme). Utilisez les boutons à côté du rapport pour le copier ou le télécharger en tant que fichier texte, par exemple pour demander de l'aide dans le [forum](../help/help.md).
 
 ## Quotas d'utilisation
 
@@ -48,13 +55,13 @@ Les fichiers GEDCOM 5.5.1 et GEDCOM 7 peuvent être importés. Il y a quelques p
 
 ### Encodage des caractères
 
-Un fichier GEDCOM 5.5.1 déclare son encodage de caractères dans son en-tête. Les encodages UTF-8, UTF-16, ANSEL et Windows (ANSI) sont pris en charge. Si les noms avec des accents ou d'autres caractères spéciaux semblent déformés après l'importation (par exemple `MÃ¼ller` au lieu de `Müller`), le fichier a probablement été exporté avec un encodage différent de celui qu'il déclare. Exportez à nouveau le fichier depuis votre ancien programme, en choisissant UTF-8 s'il offre un choix, et [recommencez](#recommencer).
+Un fichier GEDCOM 5.5.1 déclare son encodage de caractères dans son en-tête. Les encodages UTF-8, UTF-16, ANSEL et Windows (ANSI) sont pris en charge. Si les noms avec accents ou d'autres caractères spéciaux semblent déformés après l'importation (par exemple `MÃ¼ller` au lieu de `Müller`), le fichier a probablement été exporté avec un encodage différent de celui qu'il déclare. Exportez à nouveau le fichier depuis votre ancien programme, en choisissant UTF-8 s'il offre un choix, et [recommencez](#recommencer).
 
 Les fichiers GEDCOM 7 doivent toujours être encodés en UTF-8 ; les autres fichiers sont rejetés avec une erreur "Fichier GEDCOM invalide".
 
 ### Données spécifiques au programme
 
-De nombreux programmes ajoutent leurs propres extensions au GEDCOM que d'autres programmes ne comprennent pas. Gramps ne supprime pas silencieusement ces données : les lignes qu'il ne peut pas interpréter sont collectées dans une note de type "importation GEDCOM", attachée à la personne, à la famille ou à tout autre objet auquel elles appartiennent. Consultez ces notes pour voir si quelque chose d'important n'a pas été transféré.
+De nombreux programmes ajoutent leurs propres extensions au GEDCOM que d'autres programmes ne comprennent pas. Gramps ne supprime pas silencieusement ces données : les lignes qu'il ne peut pas interpréter sont collectées dans une note de type "importation GEDCOM", attachée à la personne, à la famille ou à tout autre objet auquel elles appartiennent. Consultez ces notes pour voir si quelque chose d'important n'a pas été importé.
 
 ### Fichiers multimédias
 
@@ -68,27 +75,27 @@ Si vous utilisez Gramps Desktop, il y a deux étapes pour préparer votre base d
     - Optionnel : créez une sauvegarde de la base de données en exportant vers Gramps XML
     - Exécutez l'[outil de vérification et de réparation de la base de données](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Check_and_Repair_Database). Cela corrige certaines incohérences internes qui pourraient entraîner des problèmes dans Gramps Web.
 2. Convertir les chemins multimédias en relatifs
-    - Utilisez le Gestionnaire multimédia de Gramps pour [convertir tous les chemins multimédias d'absolus à relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez que même avec des chemins relatifs, tout fichier multimédia en dehors de votre répertoire multimédia Gramps ne fonctionnera pas correctement lorsqu'il sera synchronisé avec Gramps Web.
+    - Utilisez le Gestionnaire multimédia de Gramps pour [convertir tous les chemins multimédias d'absolus à relatifs](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Tools#Convert_paths_from_relative_to_absolute). Notez qu même avec des chemins relatifs, tous les fichiers multimédias en dehors de votre répertoire multimédia Gramps ne fonctionneront pas correctement lorsqu'ils sont synchronisés avec Gramps Web.
 
-Ensuite, exportez votre arbre vers Gramps XML (`.gramps`), importez-le comme décrit ci-dessus, et [téléchargez vos fichiers multimédias](import-media.md). Pour continuer à travailler sur le même arbre sur votre ordinateur et sur le web, utilisez l'[addon de synchronisation Gramps Web](sync.md).
+Ensuite, exportez votre arbre vers Gramps XML (`.gramps`), importez-le comme décrit ci-dessus, et [téléchargez vos fichiers multimédias](import-media.md). Pour continuer à travailler sur le même arbre sur votre ordinateur et sur le web, utilisez le [module complémentaire de synchronisation Gramps Web](sync.md).
 
 ### Pourquoi pas de support pour le package Gramps XML ?
 
-Bien que Gramps XML (`.gramps`) soit le format préféré pour l'importation de données, le package Gramps XML (`.gpkg`) n'est pas pris en charge par Gramps Web. Cela est dû au fait que les routines d'importation et d'exportation pour les fichiers multimédias ne sont pas adaptées à une utilisation sur un serveur web.
+Bien que Gramps XML (`.gramps`) soit le format préféré pour importer des données, le package Gramps XML (`.gpkg`) n'est pas pris en charge par Gramps Web. Cela est dû au fait que les routines d'importation et d'exportation pour les fichiers multimédias ne sont pas adaptées à une utilisation sur un serveur web.
 
 ## Problèmes courants
 
-**"Format non pris en charge".** Seules les extensions de fichiers listées [ci-dessus](#quel-fichier-utiliser) peuvent être importées. Si votre programme ou service en ligne vous a donné une archive ZIP, décompressez-la et téléchargez le fichier `.ged` à l'intérieur.
+**"Format non pris en charge".** Seules les extensions de fichier listées [ci-dessus](#quel-fichier-utiliser) peuvent être importées. Si votre programme ou service en ligne vous a donné une archive ZIP, décompressez-la et téléchargez le fichier `.ged` à l'intérieur.
 
 **Tout apparaît deux fois.** Le même fichier a été importé deux fois. Comme les importations ne fusionnent jamais, [recommencez](#recommencer).
 
-**Caractères spéciaux déformés.** Voir [Encodage des caractères](#encodage-des-caractères).
+**Caractères spéciaux déformés.** Voir [Encodage des caractères](#encodage-des-caracteres).
 
-**Photos manquantes.** Voir [Importer des fichiers multimédias](import-media.md).
+**Les photos sont manquantes.** Voir [Importer des fichiers multimédias](import-media.md).
 
 ### Recommencer
 
-Si une importation s'est mal passée, ou si vous souhaitez corriger quelque chose dans votre ancien programme et importer à nouveau, videz d'abord l'arbre en utilisant [Supprimer tous les objets](#supprimer-tous-les-objets), puis importez le fichier corrigé. Notez que cela supprime également toutes les modifications que vous avez apportées dans Gramps Web depuis l'importation.
+Si une importation a mal tourné, ou si vous souhaitez corriger quelque chose dans votre ancien programme et importer à nouveau, videz d'abord l'arbre en utilisant [Supprimer tous les objets](#supprimer-tous-les-objets), puis importez le fichier corrigé. Notez que cela supprime également toutes les modifications que vous avez apportées dans Gramps Web depuis l'importation.
 
 ### Supprimer tous les objets
 
@@ -100,7 +107,7 @@ Si une importation s'est mal passée, ou si vous souhaitez corriger quelque chos
 - **Tous les objets** – vide complètement l'arbre
 - **Types d'objets spécifiques** – par exemple, uniquement des événements ou uniquement des objets multimédias
 
-Vous serez invité à vous ré-authentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tâche de fond et un indicateur de progression est affiché.
+Vous serez invité à vous réauthentifier (vous reconnecter) pour confirmer l'action. La suppression s'exécute en tâche de fond et un indicateur de progression est affiché.
 
 !!! warning
-    La suppression d'un sous-ensemble seulement de types d'objets (plutôt que de tous les objets à la fois) peut prendre beaucoup de temps pour de grands arbres, car le serveur doit vérifier et mettre à jour toutes les relations entre les objets.
+    Supprimer uniquement un sous-ensemble de types d'objets (plutôt que tous les objets en même temps) peut prendre beaucoup de temps pour de grands arbres, car le serveur doit vérifier et mettre à jour toutes les relations entre les objets.

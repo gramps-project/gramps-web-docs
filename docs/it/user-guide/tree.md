@@ -4,9 +4,9 @@ La pagina dell'Albero Genealogico è accessibile dalla barra laterale e visualiz
 
 ## Selezionare la persona di partenza
 
-Tutti i grafici partono dalla persona attualmente selezionata nell'albero (mostrata nella barra degli strumenti). La persona attualmente centrata è evidenziata con un'ombra. Usa il pulsante **Persona di Casa** per tornare alla tua persona di casa, o il pulsante **Indietro** per tornare alla persona visualizzata in precedenza. Cliccando sulla scheda di una persona in qualsiasi grafico, si ricentra il grafico su quella persona.
+Tutti i grafici partono dalla persona attualmente selezionata nell'albero (mostrata nella barra degli strumenti). La persona attualmente centrata è evidenziata con un'ombra. Usa il pulsante **Persona Home** per tornare alla tua persona di casa, o il pulsante **Indietro** per tornare alla persona visualizzata in precedenza. Cliccando sulla scheda di una persona in qualsiasi grafico si ricentra il grafico su quella persona.
 
-Se non è stata impostata alcuna persona di casa, la pagina offre un pulsante **Imposta Persona di Casa** per cercarne e selezionarne una direttamente. Se l'albero non contiene ancora persone, gli utenti con il ruolo di Editor o superiore vedranno invece un pulsante **Nuova Persona** – la prima persona creata in un albero vuoto diventa automaticamente la tua persona di casa, quindi il grafico viene mostrato immediatamente.
+Se non è stata impostata alcuna persona di casa, la pagina offre un pulsante **Imposta Persona Home** per cercarne e selezionarne una direttamente. Se l'albero non contiene ancora persone, gli utenti con il ruolo di Editor o superiore vedono invece un pulsante **Nuova Persona** – la prima persona creata in un albero vuoto diventa automaticamente la tua persona di casa, quindi il grafico viene mostrato immediatamente.
 
 ## Tipi di grafico
 
@@ -24,7 +24,9 @@ Combina gli antenati sopra e i discendenti sotto la persona selezionata in un'un
 
 ### Grafico delle Relazioni
 
-Mostra il percorso di relazione tra due persone. La persona selezionata è un'estremità; clicca su qualsiasi altra persona nel grafico per impostare il secondo punto finale e visualizzare il percorso di relazione più breve tra di loro.
+Mostra il percorso di relazione tra due persone. La persona selezionata è un'estremità; clicca su qualsiasi altra persona nel grafico per impostare la seconda estremità e visualizzare il percorso di relazione più breve tra di loro.
+
+Ogni coppia è unita da un piccolo nodo familiare tra i due partner. Passa il mouse su di esso, o cliccaci sopra o toccalo, per vedere i dettagli della famiglia – come la data e il luogo di matrimonio e i figli – senza lasciare il grafico. Il pulsante **Apri** nell'anteprima porta alla pagina della famiglia. Il nodo di una coppia non sposata ha un contorno tratteggiato.
 
 !!! nota
     La stessa persona può apparire più di una volta nel grafico – ad esempio quando qualcuno è stato sposato più volte e appare in diverse unità familiari lungo il percorso. Questo è intenzionale, non un bug.
@@ -33,38 +35,38 @@ Mostra il percorso di relazione tra due persone. La persona selezionata è un'es
 
 Un grafico genealogico circolare. Gli antenati si irradiano verso l'esterno dalla persona selezionata al centro.
 
-Il pulsante **Colore** nella barra degli strumenti colora i segmenti in base a una proprietà di ciascuna persona: il numero di eventi o note, anno di nascita, anno di morte, età, cognome, religione o frequenza degli antenati (quante volte una persona appare nel grafico). Colorare per cognome utilizza il cognome del nome di nascita della persona, o del nome principale se non c'è un nome di nascita. Per rimuovere il colore, cancella il chip che mostra il colore scelto.
+Il pulsante **Colore** nella barra degli strumenti colora i segmenti in base a una proprietà di ciascuna persona: il numero di eventi o note, anno di nascita, anno di morte, età, cognome, religione o frequenza degli antenati (quante volte una persona appare nel grafico). Colorare per cognome utilizza il cognome del nome di nascita della persona, o del nome primario se non c'è un nome di nascita. Per rimuovere il colore, cancella il chip che mostra il colore scelto.
 
-## Passare ai parenti ed espandere i rami
+## Spostarsi verso i parenti ed espandere i rami
 
-Nell'Albero degli Antenati e nel Grafico a Ventaglio, la persona selezionata ha un pulsante a forma di chevron che apre un menu dei loro figli. Nell'Albero dei Discendenti, apre invece un menu dei loro genitori. Scegliere una persona dal menu centra il grafico su di essa.
+Nell'Albero degli Antenati e nel Grafico a Ventaglio, la persona selezionata ha un pulsante a chevron che apre un menu dei loro figli. Nell'Albero dei Discendenti, apre un menu dei loro genitori invece. Scegliere una persona dal menu centra il grafico su di essa.
 
-Nell'Albero degli Antenati, nell'Albero dei Discendenti e nel Grafico a Clessidra, le persone ai margini del grafico le cui madri o padri non sono mostrati hanno un chevron sul lato dove il loro ramo continua. Cliccando su di esso si aggiunge un'altra generazione a quel ramo, mentre la persona selezionata rimane la stessa. In questo modo, puoi ad esempio guardare tutti i nonni e poi seguire solo una linea più indietro. I rami espansi vengono ripristinati quando selezioni un'altra persona o cambi a un grafico diverso.
+Nell'Albero degli Antenati, nell'Albero dei Discendenti e nel Grafico a Clessidra, le persone ai margini del grafico le cui madri o padri non sono mostrati hanno un chevron sul lato dove il loro ramo continua. Cliccando su di esso si aggiunge un'altra generazione a quel ramo, mentre la persona selezionata rimane la stessa. In questo modo, puoi ad esempio guardare tutti i nonni e poi seguire solo una linea più indietro. I rami espansi vengono ripristinati quando selezioni un'altra persona o cambi grafico.
 
 ## Controlli di navigazione
 
 Tutti i tipi di grafico condividono una barra degli strumenti con i seguenti pulsanti:
 
-- **Persona di Casa** – torna alla tua persona di casa
+- **Persona Home** – torna alla tua persona di casa
 - **Indietro** – torna alla persona precedentemente centrata
 - **Dettagli Persona** – apri la pagina del profilo completo della persona attualmente centrata
 - **Preferenze** – apri una finestra di dialogo per regolare le opzioni di visualizzazione specifiche del grafico (vedi sotto)
 
-Tutti i grafici supportano **pan** (clicca e trascina) e **zoom** (rotella del mouse o pizzica).
+Tutti i grafici supportano **pan** (clicca e trascina) e **zoom** (rotellina del mouse o pizzica).
 
 ## Preferenze del grafico
 
 La finestra di dialogo **Preferenze** (icona dell'ingranaggio nella barra degli strumenti) ti consente di regolare le seguenti opzioni, a seconda del tipo di grafico:
 
-- **Generazioni Massime di Antenati** – quante generazioni di antenati visualizzare
-- **Generazioni Massime di Discendenti** – quante generazioni di discendenti visualizzare
-- **Massimo Grado di Separazione** – per il Grafico delle Relazioni, la lunghezza massima del percorso da cercare, fino a 6
-- **Numero Massimo di Immagini visualizzate** – limita le foto profilo mostrate nel grafico per prestazioni
-- **Formato di Visualizzazione del Nome** – controlla come vengono mostrati i nomi sulle schede delle persone
+- **Max Generazioni di Antenati** – quante generazioni di antenati visualizzare
+- **Max Generazioni di Discendenti** – quante generazioni di discendenti visualizzare
+- **Max Grado di Separazione** – per il Grafico delle Relazioni, la lunghezza massima del percorso da cercare. Valori elevati possono rendere il grafico lento da caricare su alberi grandi.
+- **Max Numero di Immagini visualizzate** – limita le foto del profilo mostrate nel grafico per prestazioni
+- **Formato di Visualizzazione del Nome** – controlla come i nomi sono mostrati sulle schede delle persone
 
-Clicca su **Ripristina** per ripristinare le impostazioni predefinite, o su **Chiudi** per applicare le tue modifiche.
+Clicca su **Ripristina** per ripristinare le impostazioni predefinite, o **Chiudi** per applicare le tue modifiche.
 
-Le impostazioni delle preferenze del grafico vengono memorizzate nello storage locale del browser, quindi persistono tra le sessioni sullo stesso dispositivo.
+Le impostazioni delle preferenze del grafico sono memorizzate nella memoria locale del browser, quindi persistono tra le sessioni sullo stesso dispositivo.
 
 ## Tipo di grafico predefinito
 

@@ -1,6 +1,6 @@
 # Kullanıcı sistemi
 
-Gramps Web, kamu erişimi için internete açılmak üzere tasarlanmamıştır, yalnızca kimlik doğrulaması yapılmış kullanıcılar tarafından erişilebilir. Kullanıcı hesapları, site sahibi tarafından komut satırı veya web arayüzü aracılığıyla veya kendi kendine kayıt olup site sahibi tarafından onaylanarak oluşturulabilir.
+Gramps Web, kamu erişimi için internete açılmak üzere tasarlanmamıştır, yalnızca kimlik doğrulaması yapılmış kullanıcılar tarafından erişilebilir. Kullanıcı hesapları, site sahibi tarafından komut satırı veya web arayüzü aracılığıyla veya kendi kendine kayıt olup sonrasında site sahibi tarafından onaylanarak oluşturulabilir.
 
 ## Kullanıcı rolleri
 
@@ -15,7 +15,9 @@ Editör | 3 | Katkıda Bulunan + nesneleri düzenle ve sil
 Sahip | 4 | Editör + kullanıcıları yönet
 Yönetici | 5 | Sahip + çoklu ağaç kurulumunda diğer ağaçları düzenle
 
-\* "Katkıda Bulunan" rolünün şu anda yalnızca kısmen desteklendiğini unutmayın; örneğin, aile nesneleri eklenemez çünkü bu, aile üyelerinin temel Gramps kişi nesnelerinin değiştirilmesini gerektirir. Mümkün olduğunda diğer rollerin kullanılması önerilir.
+Bir kaydın özel olup olmadığı, kayıt başına ayarlanır, bkz. [Özel kayıtlar](../user-guide/privacy.md). Varsayılan olarak hiçbir şey özel değildir, hatta yaşayan insanlar bile.
+
+\* "Katkıda Bulunan" rolünün şu anda yalnızca kısmen desteklendiğini unutmayın; örneğin, aile nesneleri eklenemez çünkü bunlar aile üyelerinin temel Gramps kişi nesnelerinin değiştirilmesini gerektirir. Mümkün olduğunca diğer rolleri kullanmanız önerilir.
 
 ## AI sohbetini kimlerin kullanabileceğini yapılandırma
 
@@ -25,7 +27,7 @@ Eğer [AI sohbetini yapılandırdıysanız](chat.md), burada sohbet özelliğini
 
 Kullanıcıları yönetmenin iki yolu vardır:
 
-- Web arayüzü ile sahip izinleri kullanarak
+- Web arayüzü kullanarak sahip izinleri ile
 - Sunucuda komut satırında
 
 Web uygulamasına ilk erişim için gereken sahip hesabı, boş bir kullanıcı veritabanı ile Gramps Web'e erişildiğinde otomatik olarak başlatılan onboarding sihirbazında eklenebilir.
@@ -38,8 +40,10 @@ Web uygulamasına ilk erişim için gereken sahip hesabı, boş bir kullanıcı 
 docker compose run grampsweb python3 -m gramps_webapi user COMMAND [ARGS]
 ```
 
-`COMMAND`, `add` veya `delete` olabilir. `[ARGS]` için `--help` kullanarak sözdizimini ve olası yapılandırma seçeneklerini görüntüleyebilirsiniz.
+`COMMAND` `add`, `set-password` veya `delete` olabilir. `[ARGS]` için `--help` kullanarak sözdizimini ve olası yapılandırma seçeneklerini görüntüleyebilirsiniz.
+
+`set-password NAME`, mevcut bir kullanıcı için eski şifreye ihtiyaç duymadan yeni bir şifre ayarlar; örneğin, kimsenin artık giriş yapamadığı ve e-posta şifre sıfırlamaları için ayarlanmadığı durumlarda (Gramps Web API 3.26+). Şifreyi iki kez girmesi istenir ve gösterilmez, böylece şifre shell geçmişine geçmez. Kullanıcının tüm oturumları sonlandırılır.
 
 ### Kendi kendine kayıtlı kullanıcıları onaylama
 
-Bir kullanıcı kendi kendine kayıt olduğunda, hemen erişim verilmez. Yeni kullanıcı kaydı hakkında ağaç sahibine bir e-posta gönderilir ve kullanıcıya e-posta adresini onaylaması için bir e-posta isteği gönderilir. E-posta adresini başarıyla onaylamak, rolünü `onaylanmamış` durumundan `devre dışı` durumuna değiştirir. Kullanıcı hesabı bu iki rolden birinde olduğu sürece, kullanıcı giriş yapamaz. Ağaç sahibi, kullanıcının isteğini gözden geçirmeli ve giriş yapmasına izin verilmeden önce kullanıcıya uygun bir rol atamalıdır.
+Bir kullanıcı kendi kendine kayıt olduğunda, hemen erişim verilmez. Yeni kullanıcı kaydı hakkında ağaç sahibine bir e-posta gönderilir ve kullanıcıya e-posta adresini onaylaması için bir e-posta isteği gönderilir. E-posta adresini başarıyla onaylamak, kullanıcının rolünü `onaylanmamış`'tan `devre dışı`'ya değiştirir. Kullanıcı hesabı bu iki rolden birindeyken, kullanıcı giriş yapamaz. Ağaç sahibi, kullanıcının talebini gözden geçirmeli ve giriş yapmasına izin verilmeden önce kullanıcıya uygun bir rol atamalıdır.

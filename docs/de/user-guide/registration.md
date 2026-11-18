@@ -1,12 +1,14 @@
 In einer Einzelbaum-Installation kann sich jeder ein neues Konto bei einer Gramps Web-Instanz registrieren, aber es muss manuell von einem Seiteninhaber aktiviert werden, bevor es zum Einloggen verwendet werden kann.
 
-In einer Mehrbaum-Installation benötigen die Benutzer zusätzlich die Baum-ID, um sich anzumelden; in der Praxis bedeutet dies, dass sie sich über einen Registrierungslink anmelden können, der vom Bauminhaber geteilt wird.
+In einer Mehrbaum-Installation benötigen Benutzer zusätzlich die Baum-ID, um sich anzumelden; in der Praxis bedeutet dies, dass sie sich über einen Registrierungslink anmelden können, der vom Bauminhaber geteilt wird.
 
 ## 1. Registrierungsformular finden
 
 Auf dem Anmeldeformular auf der Startseite von Gramps Web gibt es normalerweise einen Link "Neues Konto registrieren".
 
-Wenn dieser Link fehlt, liegt es wahrscheinlich daran, dass es sich um eine Mehrbaum-Installation von Gramps Web handelt. In diesem Fall kontaktieren Sie den Bauminhaber für einen Registrierungslink.
+Wenn dieser Link fehlt, ist entweder die Registrierung auf diesem Server deaktiviert oder es handelt sich um eine Mehrbaum-Installation von Gramps Web. In beiden Fällen wenden Sie sich an den Bauminhaber, der ein Konto für Sie erstellen oder Ihnen einen Registrierungslink senden kann.
+
+Wenn der Server die Anmeldung mit einem externen Konto (wie Google, Microsoft oder dem Single Sign-On Ihrer Organisation) unterstützt, bietet die Registrierungsseite diese ebenfalls an. Die Auswahl eines dieser Konten erstellt Ihr Konto ohne Passwort und ohne die untenstehende E-Mail-Bestätigung. Sofern der Server keine Rollen automatisch zuweist, muss das Konto dennoch vom Bauminhaber aktiviert werden (Schritt 4).
 
 Der Bauminhaber kann den Registrierungslink unter Einstellungen/Verwaltung finden und kopieren.
 
@@ -24,4 +26,4 @@ Wenn die Bestätigungs-E-Mail nicht ankommt (und Sie Ihren Spam-Ordner überprü
 
 Nachdem die E-Mail-Adresse bestätigt wurde, erhält der Bauminhaber eine E-Mail-Benachrichtigung und kann das neue Benutzerkonto aktivieren, indem er zum Abschnitt "Benutzerverwaltung" auf der Einstellungsseite (erreichbar über das Benutzersymbol in der oberen App-Leiste) geht und die Benutzerrolle von "deaktiviert" auf eine der [anderen Rollen](../install_setup/users.md) ändert.
 
-Beachten Sie, dass der neue Benutzer *keine* automatisierte Benachrichtigung erhält, dass sein Konto aktiviert wurde, daher ist es ratsam, dass der Administrator ihn persönlich benachrichtigt.
+Bitte beachten Sie, dass der neue Benutzer *keine* automatisierte Benachrichtigung erhält, dass sein Konto aktiviert wurde, daher ist es ratsam, dass der Administrator ihn persönlich benachrichtigt.

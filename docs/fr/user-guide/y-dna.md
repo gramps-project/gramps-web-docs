@@ -1,13 +1,13 @@
 # Utilisation de Gramps Web pour l'analyse Y-DNA
 
 !!! note "Note"
-    Cette fonctionnalité nécessite la version 3.3.0 ou ultérieure de l'API Gramps Web et la version 25.9.0 ou ultérieure du frontend Gramps Web.
+    Cette fonctionnalité nécessite la version 3.3.0 ou ultérieure de l'API Gramps Web et la version 25.9.0 ou ultérieure de l'interface Gramps Web.
 
 La vue Y-DNA dans Gramps Web peut utiliser des données brutes de polymorphisme de nucléotides simples (SNP) du chromosome Y pour déterminer le haplogroupe Y-DNA le plus probable d'une personne et afficher les ancêtres dérivés dans l'arbre du chromosome Y humain avec des estimations de temps.
 
 ## Comment obtenir et stocker les données SNP Y-DNA
 
-Pour obtenir les données SNP Y-DNA, vous devez faire effectuer un test Y-DNA par un service de test génétique. Le résultat est représenté sous forme d'un ensemble de mutations (SNP), chacune identifiée par une chaîne (par exemple, `R-BY44535`) et un signe `+` ou `-` indiquant si la mutation est présente ou absente. Gramps Web s'attend à ce que la chaîne de tous les SNP testés soit au format `SNP1+, SNP2-, SNP3+,...` et soit stockée dans un attribut de personne de type personnalisé `Y-DNA` (sensible à la casse). Vous pouvez soit créer manuellement cet attribut dans Gramps Web ou Gramps Desktop, soit naviguer vers la vue Y-DNA dans Gramps Web et cliquer sur le bouton bleu "Ajouter", sélectionner la personne à laquelle ajouter les données, et coller la chaîne SNP. Dans tous les cas, les données seront stockées comme un attribut de personne dans votre base de données Gramps.
+Pour obtenir les données SNP Y-DNA, vous devez faire effectuer un test Y-DNA par un service de test génétique. Le résultat est représenté sous la forme d'un ensemble de mutations (SNP), chacune identifiée par une chaîne (par exemple, `R-BY44535`) et un signe `+` ou `-` indiquant si la mutation est présente ou absente. Gramps Web s'attend à ce que la chaîne de tous les SNP testés soit au format `SNP1+, SNP2-, SNP3+,...` et soit stockée dans un attribut de personne de type personnalisé `Y-DNA` (sensible à la casse). Vous pouvez soit créer manuellement cet attribut dans Gramps Web ou Gramps Desktop, soit naviguer vers la vue Y-DNA dans Gramps Web et cliquer sur le bouton bleu "Ajouter", sélectionner la personne à laquelle ajouter les données, puis coller la chaîne SNP. Dans tous les cas, les données seront stockées en tant qu'attribut de personne dans votre base de données Gramps.
 
 [Voir ci-dessous](#instructions-pour-obtenir-des-données-snp-des-services-de-test) pour des instructions sur la façon d'obtenir les données SNP auprès de divers services de test.
 
@@ -17,20 +17,28 @@ Une fois qu'une personne a un attribut `Y-DNA` contenant les données SNP, Gramp
 
 L'arbre est parcouru de la racine aux feuilles, et à chaque nœud, les SNP associés à ce nœud sont comparés aux SNP testés positivement et négativement de la personne, et la branche appropriée est suivie.
 
-Le résultat final est une succession de clades depuis la racine de l'arbre (l'[« Adam » chromosomique Y](https://en.wikipedia.org/wiki/Y-chromosomal_Adam)) jusqu'au clade le plus dérivé qui est cohérent avec les données SNP de la personne. Chaque clade a une âge estimé basé sur les âges des échantillons dans la base de données YFull qui appartiennent à ce clade.
+Le résultat final est une succession de clades depuis la racine de l'arbre (l'[« Adam » chromosomique Y](https://en.wikipedia.org/wiki/Y-chromosomal_Adam)) jusqu'au clade le plus dérivé qui est cohérent avec les données SNP de la personne. Chaque clade a un âge estimé basé sur les âges des échantillons dans la base de données YFull qui appartiennent à ce clade.
 
-Puisque les chromosomes Y sont hérités du père au fils, cette succession correspond à un extrait de l'ascendance patrilinéaire de la personne.
+Étant donné que les chromosomes Y sont hérités du père au fils, cette succession correspond à un extrait de l'ascendance patrilinéaire de la personne.
 
 ## Comment interpréter les résultats
 
 L'information la plus importante est le haplogroupe le plus probable de la personne, affiché en haut de la page. Le nom est lié à la page correspondante sur le site [YFull](https://www.yfull.com/), qui contient plus d'informations, telles que le pays d'origine des échantillons testés appartenant à ce haplogroupe.
 
-Dans l'arbre des ancêtres patrilinéaires montré dans Gramps Web, la case directement au-dessus de la personne testée est l'ancêtre commun le plus récent (MRCA) de tous les échantillons testés appartenant au haplogroupe de la personne. La date affichée pour cet ancêtre est sa date de naissance approximative estimée. L'ancêtre au-dessus de lui est l'ancêtre où la mutation définissant ce haplogroupe est apparue pour la première fois.
+Dans l'arbre des ancêtres patrilinéaires affiché dans Gramps Web, la case directement au-dessus de la personne testée est l'ancêtre commun le plus récent (MRCA) de tous les échantillons testés appartenant au haplogroupe de la personne. La date affichée pour cet ancêtre est sa date de naissance approximative estimée. L'ancêtre au-dessus de lui est l'ancêtre où la mutation définissant ce haplogroupe est apparue pour la première fois.
 
-En raison du taux de mutation lent des chromosomes Y, le MRCA peut dater de plusieurs centaines d'années dans le passé. Pour les haplogroupes rares (c'est-à-dire les haplogroupes où peu de personnes ont été testées jusqu'à présent), cela peut même être des milliers d'années.
+En raison du taux de mutation lent des chromosomes Y, le MRCA peut remonter à plusieurs centaines d'années dans le passé. Pour les haplogroupes rares (c'est-à-dire les haplogroupes pour lesquels peu de personnes ont été testées jusqu'à présent), cela peut même être des milliers d'années.
+
+Entre le MRCA et la personne testée, le graphique montre la lignée paternelle autant qu'elle est documentée dans votre arbre : le père, son père, et ainsi de suite, du plus ancien au plus récent. La ligne pointillée au-dessus de l'ancêtre documenté le plus ancien représente les générations qui ne sont pas documentées, avec une estimation de leur nombre. Seuls les pères biologiques sont suivis – la ligne s'arrête à un père adoptif ou un beau-père, car ils n'ont pas transmis le chromosome Y. Cliquez sur une personne dans la ligne pour ouvrir sa page.
+
+L'icône sur chaque case de clade ouvre ce clade sur le site YFull.
+
+## Données Y-DNA privées
+
+Les dialogues pour ajouter et modifier les données Y-DNA ont un interrupteur **Privé**. Les données Y-DNA privées sont cachées des utilisateurs qui ne peuvent pas voir les enregistrements privés. Voir [Enregistrements privés](privacy.md).
 
 ## Instructions pour obtenir des données SNP des services de test
 
 ### [YSEQ](https://www.yseq.net/)
 
-Une fois connecté à "Mon Compte", allez à "Mes Résultats / Voir mes Allèles" et naviguez vers le bas de la page. Le champ de texte "Liste des allèles compacte" a été ajouté spécifiquement pour Gramps Web et est dans exactement le bon format pour être collé dans l'attribut `Y-DNA`.
+Une fois connecté à "Mon Compte", allez dans "Mes Résultats / Voir mes Allèles" et naviguez vers le bas de la page. Le champ de texte "Liste des allèles compacte" a été ajouté spécifiquement pour Gramps Web et est exactement au bon format pour être collé dans l'attribut `Y-DNA`.

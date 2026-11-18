@@ -1,12 +1,12 @@
-# Gestire gli Utenti
+# Gestisci Utenti
 
 L'interfaccia di gestione degli utenti è accessibile tramite **Impostazioni > Gestisci Utenti** (l'icona dell'utente nella barra superiore dell'app). È disponibile solo per gli utenti con il ruolo di Proprietario o Amministratore.
 
-## Ruoli degli utenti
+## Ruoli utente
 
-Vedi [Sistema utenti](../install_setup/users.md) per una descrizione completa dei ruoli utente disponibili e delle loro autorizzazioni.
+Consulta il [Sistema utenti](../install_setup/users.md) per una descrizione completa dei ruoli utente disponibili e delle loro autorizzazioni. La principale differenza tra ospiti e membri è che gli ospiti non possono vedere i [record privati](../user-guide/privacy.md), quindi scegli il ruolo insieme a ciò che contrassegni come privato.
 
-## Visualizza e filtra gli utenti
+## Visualizza e filtra utenti
 
 La pagina di gestione degli utenti mostra una tabella di tutti gli account utente registrati con le seguenti colonne:
 
@@ -16,7 +16,7 @@ La pagina di gestione degli utenti mostra una tabella di tutti gli account utent
 - **Ruolo** – il ruolo assegnato (Ospite, Membro, Collaboratore, Editore, Proprietario o Amministratore)
 - **Fonte dell'Account** – "Password" (account locale) o il nome di un fornitore di identità esterno (ad es. quando si utilizza OIDC)
 
-Utilizza il campo di ricerca e il menu a discesa dei ruoli nella parte superiore della tabella per filtrare l'elenco. Clicca sul pulsante di cancellazione del filtro per ripristinare tutti i filtri.
+Utilizza il campo di ricerca e il menu a discesa dei ruoli in cima alla tabella per filtrare l'elenco. Clicca sul pulsante per cancellare i filtri per ripristinare tutti i filtri.
 
 ## Modifica un utente
 
@@ -26,11 +26,11 @@ Clicca sull'icona di modifica (matita) in qualsiasi riga per aprire la finestra 
 - Indirizzo e-mail
 - Ruolo
 
-Questo è il modo principale per **abilitare un nuovo utente auto-registrato**: cambia il suo ruolo da *disabilitato* a qualsiasi ruolo attivo (ad es. Membro o Editore).
+Questo è il modo principale per **abilitare un nuovo utente auto-registrato**: cambia il loro ruolo da *disabilitato* a qualsiasi ruolo attivo (ad es. Membro o Editore).
 
 Gli indirizzi e-mail non devono essere unici (dalla versione 3.22 dell'API Web di Gramps), quindi più account possono condividere lo stesso indirizzo.
 
-Disabilitare un utente o cambiare la sua password termina tutte le sue sessioni entro 15 minuti.
+Disabilitare un utente o cambiare la loro password termina tutte le loro sessioni entro 15 minuti.
 
 !!! nota
     I proprietari non possono modificare, cambiare la password o eliminare utenti con un ruolo superiore, come l'amministratore del sito. Gli utenti con lo stesso ruolo, come due proprietari di un albero, possono gestirsi a vicenda.
@@ -44,29 +44,29 @@ Clicca sull'icona **aggiungi utente** (persona-aggiungi) sopra la tabella per cr
 Clicca sull'icona di eliminazione (cestino) in qualsiasi riga e conferma nella finestra di dialogo. Questa azione non può essere annullata.
 
 !!! nota
-    Per evitare che un albero venga lasciato senza nessuno che possa amministrarlo, non puoi abbassare il tuo ruolo sotto Proprietario o eliminare il tuo account se sei l'unico Proprietario o Amministratore dell'albero. Promuovi prima un altro utente a Proprietario. Un amministratore può comunque cambiare o rimuovere l'ultimo proprietario dell'albero di un altro utente, poiché può nominare un nuovo proprietario.
+    Per evitare che un albero rimanga senza nessuno che possa amministrarlo, non puoi abbassare il tuo ruolo sotto Proprietario o eliminare il tuo account se sei l'unico Proprietario o Amministratore dell'albero. Promuovi prima un altro utente a Proprietario. Un amministratore può comunque cambiare o rimuovere l'ultimo proprietario dell'albero di un altro utente, poiché può nominare un nuovo proprietario.
 
 ## Esporta e importa account utente
 
 Questi pulsanti sono utili quando si [migra a un'istanza Gramps Web diversa](export.md).
 
-- **Esporta dettagli utente** (icona di download) – scarica un file JSON contenente tutti gli account utente (senza password, poiché le password sono memorizzate in forma crittografata).
-- **Importa account utente** (icona di gruppo-aggiungi) – carica un file JSON precedentemente esportato per creare account utente in blocco. Tutti gli utenti importati dovranno impostare una nuova password tramite il link "Password dimenticata", poiché le password non possono essere trasferite.
+- **Esporta dettagli utente** (icona download) – scarica un file JSON contenente tutti gli account utente (senza password, poiché le password sono memorizzate in forma crittografata).
+- **Importa account utente** (icona gruppo-aggiungi) – carica un file JSON precedentemente esportato per creare account utente in blocco. Tutti gli utenti importati dovranno impostare una nuova password tramite il link "Password dimenticata", poiché le password non possono essere trasferite.
 
 ## Link di registrazione (solo configurazione multi-albero)
 
-In una configurazione multi-albero, il link di registrazione per i nuovi utenti è mostrato nella parte superiore della pagina di gestione degli utenti. Puoi copiare questo link e condividerlo con le persone che desideri invitare a registrare un account sul tuo albero.
+In una configurazione multi-albero, il link di registrazione per i nuovi utenti è mostrato in cima alla pagina di gestione degli utenti. Puoi copiare questo link e condividerlo con le persone che desideri invitare a registrare un account sul tuo albero.
 
 !!! nota
     In una configurazione a singolo albero c'è un link generico "Registrati" nella pagina di accesso; il link di registrazione per albero è necessario solo nelle installazioni multi-albero.
 
 ## Permessi chat AI
 
-Se la chat AI è stata abilitata sul server, un menu a discesa nella parte superiore della pagina ti consente di controllare quali ruoli utente possono utilizzare la funzione di chat:
+Se la chat AI è stata abilitata sul server, un menu a discesa in cima alla pagina ti consente di controllare quali ruoli utente possono utilizzare la funzione di chat:
 
 - Tutti (inclusi gli ospiti)
-- Membro e superiori
-- Collaboratore e superiori
-- Editore e superiori
-- Solo proprietari e amministratori
+- Membro e superiore
+- Collaboratore e superiore
+- Editore e superiore
+- Solo Proprietari e amministratori
 - Nessuno (disabilita la chat per tutti gli utenti)

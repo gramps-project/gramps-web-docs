@@ -6,22 +6,24 @@ Em uma instalação de múltiplas árvores, os usuários também precisam do ID 
 
 No formulário de login na página inicial do Gramps Web, geralmente há um link "Registrar nova conta".
 
-Se esse link estiver ausente, provavelmente é porque se trata de uma instalação de múltiplas árvores do Gramps Web. Nesse caso, entre em contato com o proprietário da árvore para obter um link de registro.
+Se esse link estiver ausente, ou o registro está desativado neste servidor, ou é uma instalação de múltiplas árvores do Gramps Web. Em qualquer um dos casos, entre em contato com o proprietário da árvore, que pode criar uma conta para você ou enviar um link de registro.
 
-O proprietário da árvore pode encontrar e copiar o link de registro em Configurações/Administração.
+Se o servidor suportar login com uma conta externa (como Google, Microsoft ou o sistema de autenticação única da sua organização), a página de registro também oferece essas opções. Escolher uma delas cria sua conta sem uma senha e sem a confirmação de e-mail abaixo. A menos que o servidor atribua funções automaticamente, a conta ainda precisa ser ativada pelo proprietário da árvore (passo 4).
 
-## 2. Enviar o formulário de registro
+O proprietário da árvore pode encontrar e copiar o link de registro em Configurações/ Administração.
 
-O formulário de registro possui quatro campos obrigatórios: nome de usuário, senha, endereço de e-mail e nome completo. Quando todos os quatro campos forem preenchidos, clique em "enviar" para iniciar o processo de registro.
+## 2. Enviar formulário de registro
 
-## 3. Confirmar o endereço de e-mail
+O formulário de registro possui quatro campos obrigatórios: nome de usuário, senha, endereço de e-mail e nome completo. Quando todos os quatro campos estiverem preenchidos, clique em "enviar" para iniciar o processo de registro.
+
+## 3. Confirmar endereço de e-mail
 
 Após o formulário ter sido enviado, um e-mail automatizado será enviado para o endereço de e-mail fornecido contendo um link de confirmação de e-mail. Clicar nele abrirá uma página de confirmação.
 
-Se o e-mail de confirmação não chegar (e você já verificou sua pasta de Spam), pode ser que o e-mail não tenha sido configurado corretamente pelo administrador do servidor do Gramps Web.
+Se o e-mail de confirmação não chegar (e você já verificou sua pasta de Spam), pode ser que o e-mail não tenha sido configurado corretamente pelo administrador do servidor Gramps Web.
 
 ## 4. Ativar conta
 
-Após o endereço de e-mail ter sido confirmado, o proprietário da árvore receberá uma notificação por e-mail e poderá ativar a nova conta de usuário acessando a seção "Administração de usuários" na página de configurações (acessível através do ícone do usuário na barra superior do aplicativo) e alterando o papel do usuário de "desativado" para qualquer um dos [outros papéis](../install_setup/users.md).
+Após o endereço de e-mail ter sido confirmado, o proprietário da árvore receberá uma notificação por e-mail e poderá ativar a nova conta de usuário acessando a seção "Administração de usuários" na página de configurações (acessível através do ícone do usuário na barra superior do aplicativo) e mudando o papel do usuário de "desativado" para qualquer um dos [outros papéis](../install_setup/users.md).
 
-Observe que o novo usuário *não* receberá uma notificação automatizada de que sua conta foi ativada, portanto, é aconselhável que o administrador os notifique pessoalmente.
+Note que o novo usuário *não* receberá uma notificação automatizada de que sua conta foi ativada, portanto, é aconselhável que o administrador o notifique pessoalmente.

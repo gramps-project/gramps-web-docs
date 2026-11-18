@@ -7,9 +7,9 @@ Die Gramps Web API unterstützt das Stellen von Fragen zur genealogischen Datenb
 
 ## Funktionsweise
 
-Der KI-Assistent verwendet spezialisierte Werkzeuge, um direkt auf Ihre Genealogiedaten zuzugreifen. Diese Werkzeuge ermöglichen es dem Assistenten, die Datenbank mit der Volltextsuche zu durchsuchen, Personen/Ereignisse/Familien/Orte nach spezifischen Kriterien zu filtern, Beziehungen zwischen Individuen zu berechnen und vollständige Datensätze, einschließlich Notizen, abzurufen. Der Assistent antwortet dann basierend auf den Datensätzen, die er abgerufen hat, und verlinkt in seiner Antwort darauf. Er antwortet nur aus dem Baum, nicht aus allgemeinem Wissen: Wenn der Baum etwas nicht verzeichnet, sagt der Assistent das. Links zu Objekten, die nicht existieren oder die für den Benutzer privat sind, werden durch ihren Text ersetzt.
+Der KI-Assistent verwendet spezialisierte Werkzeuge, um direkt auf Ihre genealogischen Daten zuzugreifen. Diese Werkzeuge ermöglichen es dem Assistenten, die Datenbank mit der Volltextsuche zu durchsuchen, Personen/Ereignisse/Familien/Orte nach bestimmten Kriterien zu filtern, Beziehungen zwischen Individuen zu berechnen und vollständige Datensätze, einschließlich Notizen, abzurufen. Der Assistent antwortet dann basierend auf den Datensätzen, die er abgerufen hat, und verlinkt in seiner Antwort auf diese. Er antwortet nur aus dem Baum, nicht aus allgemeinem Wissen: Wenn der Baum etwas nicht aufzeichnet, sagt der Assistent das. Links zu Objekten, die nicht existieren oder die privat für den Benutzer sind, werden durch ihren Text ersetzt.
 
-Der KI-Chat benötigt kein Vektor-Einbettungsmodell. Versionen der Gramps Web API vor 3.24 verwendeten ebenfalls *semantische Suche* (retrieval-augmented generation, RAG), die die Bedeutung einer Frage mit einem Index von numerischen Vektoren verglich, die für alle Objekte in der Datenbank berechnet wurden. Die semantische Suche wurde in der Gramps Web API 3.25 entfernt; die Einstellungen `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` und `VECTOR_EMBEDDING_API_KEY` werden ignoriert und können aus Ihrer Konfiguration entfernt werden.
+Der KI-Chat benötigt kein Vektor-Einbettungsmodell. Versionen der Gramps Web API vor 3.24 verwendeten ebenfalls *semantische Suche* (retrieval-augmented generation, RAG), die die Bedeutung einer Frage mit einem Index numerischer Vektoren verglich, die für alle Objekte in der Datenbank berechnet wurden. Die semantische Suche wurde in der Gramps Web API 3.25 entfernt; die Einstellungen `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` und `VECTOR_EMBEDDING_API_KEY` werden ignoriert und können aus Ihrer Konfiguration entfernt werden.
 
 Um den Chat-Endpunkt in der Gramps Web API zu aktivieren, sind zwei Schritte erforderlich:
 
@@ -20,9 +20,9 @@ Die beiden Schritte werden im Folgenden nacheinander beschrieben. Schließlich m
 
 ## Installation der erforderlichen Abhängigkeiten
 
-Die Standard-Docker-Images für Gramps Web haben bereits alle erforderlichen Abhängigkeiten für den KI-Chat vorinstalliert.
+Die Standard-Docker-Images für Gramps Web haben bereits alle für den KI-Chat erforderlichen Abhängigkeiten vorinstalliert.
 
-Bei der Installation der Gramps Web API über `pip` (dies ist bei der Verwendung der Docker-Images nicht erforderlich) werden die notwendigen Abhängigkeiten mit
+Bei der Installation der Gramps Web API über `pip` (dies ist nicht erforderlich, wenn die Docker-Images verwendet werden) werden die erforderlichen Abhängigkeiten mit
 
 ```bash
 pip install gramps_webapi[ai]
@@ -34,18 +34,18 @@ installiert.
 
 Die Kommunikation mit dem LLM verwendet das Pydantic AI-Framework, das OpenAI-kompatible APIs unterstützt. Dies ermöglicht die Verwendung eines lokal bereitgestellten LLM über Ollama (siehe [Ollama OpenAI-Kompatibilität](https://ollama.com/blog/openai-compatibility)) oder gehostete APIs wie OpenAI, Anthropic oder Hugging Face TGI (Text Generation Inference). Das LLM wird über die Konfigurationsparameter `LLM_MODEL` und `LLM_BASE_URL` konfiguriert.
 
-Neben OpenAI-kompatiblen APIs können die anbieter-spezifischen Modellpräfixe von Pydantic AI für OpenAI, Anthropic, Google, Mistral, Groq, AWS Bedrock und Ollama verwendet werden. Andere Anbieter wie Cohere, Hugging Face und xAI sind nicht installiert; Hugging Face Inference Providers können jedoch weiterhin über ihren OpenAI-kompatiblen Endpunkt verwendet werden (`LLM_BASE_URL` auf `https://router.huggingface.co/v1` gesetzt).
+Neben OpenAI-kompatiblen APIs können die anbieter-spezifischen Modellpräfixe von Pydantic AI für OpenAI, Anthropic, Google, Mistral, Groq, AWS Bedrock und Ollama verwendet werden. Andere Anbieter, wie Cohere, Hugging Face und xAI, sind nicht installiert; Hugging Face Inference Providers können jedoch weiterhin über ihren OpenAI-kompatiblen Endpunkt verwendet werden (`LLM_BASE_URL` auf `https://router.huggingface.co/v1` gesetzt).
 
 Wenn Ihr Modellserver die Länge einer Antwort nicht begrenzt, setzen Sie `LLM_MAX_OUTPUT_TOKENS` auf die maximale Anzahl von Tokens, die das Modell pro Antwort generieren darf (siehe [Konfiguration](configuration.md)).
 
 ### Verwendung eines gehosteten LLM über die OpenAI API
 
-Bei der Verwendung der OpenAI API kann `LLM_BASE_URL` ungesetzt bleiben, während `LLM_MODEL` auf eines der OpenAI-Modelle gesetzt werden muss, z.B. `gpt-4o-mini`. Das LLM verwendet Werkzeugaufrufe, um Fragen zu beantworten: Es fragt die Datenbank direkt mit spezialisierten Werkzeugen ab und antwortet basierend auf den Datensätzen, die es findet. Es erfordert kein tiefes genealogisches oder historisches Wissen. Daher können Sie ausprobieren, ob ein kleines/günstiges Modell ausreicht.
+Bei der Verwendung der OpenAI API kann `LLM_BASE_URL` ungesetzt bleiben, während `LLM_MODEL` auf eines der OpenAI-Modelle, z.B. `gpt-4o-mini`, gesetzt werden muss. Das LLM verwendet Werkzeugaufrufe, um Fragen zu beantworten: Es fragt die Datenbank direkt unter Verwendung spezialisierter Werkzeuge ab und antwortet basierend auf den Datensätzen, die es findet. Es erfordert kein tiefes genealogisches oder historisches Wissen. Daher können Sie ausprobieren, ob ein kleines/günstiges Modell ausreicht.
 
 Sie müssen sich auch für ein Konto anmelden, einen API-Schlüssel erhalten und ihn in der Umgebungsvariable `OPENAI_API_KEY` speichern.
 
 !!! info
-    `LLM_MODEL` ist ein Konfigurationsparameter; wenn Sie ihn über eine Umgebungsvariable setzen möchten, verwenden Sie `GRAMPSWEB_LLM_MODEL` (siehe [Konfiguration](configuration.md)). `OPENAI_API_KEY` ist kein Konfigurationsparameter, sondern eine Umgebungsvariable, die direkt von der Pydantic AI-Bibliothek verwendet wird, daher sollte sie nicht mit einem Präfix versehen werden.
+    `LLM_MODEL` ist ein Konfigurationsparameter; wenn Sie ihn über eine Umgebungsvariable setzen möchten, verwenden Sie `GRAMPSWEB_LLM_MODEL` (siehe [Konfiguration](configuration.md)). `OPENAI_API_KEY` ist kein Konfigurationsparameter, sondern eine Umgebungsvariable, die direkt von der Pydantic AI-Bibliothek verwendet wird, daher sollte sie nicht vorangestellt werden.
 
 ### Verwendung von Mistral AI
 
@@ -62,7 +62,7 @@ environment:
 
 ### Verwendung eines lokalen LLM über Ollama
 
-[Ollama](https://ollama.com/) ist eine bequeme Möglichkeit, LLMs lokal auszuführen. Bitte konsultieren Sie die Ollama-Dokumentation für Details. Bitte beachten Sie, dass LLMs erhebliche Rechenressourcen benötigen und alle außer den kleinsten Modellen wahrscheinlich ohne GPU-Unterstützung zu langsam sein werden. Da der Assistent auf Werkzeugaufrufen basiert, wählen Sie ein Modell, das Werkzeuge unterstützt, wie z.B. [`qwen2.5`](https://ollama.com/library/qwen2.5). Beginnen Sie mit einer kleinen Variante wie `qwen2.5:7b` und probieren Sie ein größeres Modell, wenn die Antworten nicht gut genug sind. Bitte teilen Sie Ihre Erfahrungen mit der Community!
+[Ollama](https://ollama.com/) ist eine bequeme Möglichkeit, LLMs lokal auszuführen. Bitte konsultieren Sie die Ollama-Dokumentation für Details. Bitte beachten Sie, dass LLMs erhebliche Rechenressourcen benötigen und alle bis auf die kleinsten Modelle wahrscheinlich ohne GPU-Unterstützung zu langsam sein werden. Da der Assistent auf Werkzeugaufrufe angewiesen ist, wählen Sie ein Modell, das Werkzeuge unterstützt, wie z.B. [`qwen2.5`](https://ollama.com/library/qwen2.5). Beginnen Sie mit einer kleinen Variante wie `qwen2.5:7b` und versuchen Sie eine größere, wenn die Antworten nicht gut genug sind. Bitte teilen Sie Ihre Erfahrungen mit der Community!
 
 Beim Bereitstellen von Gramps Web mit Docker Compose können Sie einen Ollama-Dienst hinzufügen und Gramps Web darauf verweisen:
 
@@ -113,3 +113,15 @@ Um Probleme mit Ollama zu beheben, können Sie das Debug-Logging aktivieren, ind
 ### Verwendung anderer Anbieter
 
 Bitte zögern Sie nicht, Dokumentationen für andere Anbieter einzureichen und Ihre Erfahrungen mit der Community zu teilen!
+
+## Optionale Funktionen
+
+### Bilder in Fragen
+
+Wenn Ihr Modell Bilder akzeptiert, setzen Sie `LLM_VISION` auf `True`, um Benutzern zu ermöglichen, Bilder an ihre Fragen anzuhängen, z.B. Scans von Dokumenten (Gramps Web API 3.26+). Bilder werden vor dem Senden an das Modell auf maximal 1568 Pixel auf der langen Seite verkleinert. Überprüfen Sie, ob das Modell tatsächlich die Eingabe von Bildern unterstützt: Viele kleine lokale Modelle tun dies nicht, und der Anbieter lehnt dann Fragen mit Bildern ab.
+
+### Lassen Sie den Assistenten Änderungen vorschlagen
+
+Mit `LLM_ALLOW_WRITE_PROPOSALS`, das auf `True` gesetzt ist (Gramps Web API 3.26+), kann der Assistent [Änderungen am Baum vorschlagen](../user-guide/chat.md#letting-the-assistant-change-your-tree), die Benutzer nach Überprüfung anwenden. Der Assistent selbst schreibt niemals in die Datenbank. Vorschläge werden nur Benutzern angeboten, die berechtigt sind, Objekte hinzuzufügen, zu bearbeiten und zu löschen, d.h. Redakteuren und höher, und die berechtigt sind, den Chat zu verwenden.
+
+Korrekte Vorschläge zu schreiben, ist für ein Modell schwieriger als Fragen zu beantworten, testen Sie es daher mit Ihrem Modell, bevor Sie es für Ihre Benutzer aktivieren. Die zusätzlichen Werkzeuge machen jede Anfrage an das Modell auch etwas größer.

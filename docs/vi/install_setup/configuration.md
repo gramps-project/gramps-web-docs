@@ -21,17 +21,17 @@ Khi sử dụng biến môi trường,
 - tiền tố mỗi tên cài đặt với `GRAMPSWEB_` để có được tên của biến môi trường
 - Sử dụng hai dấu gạch dưới cho các cài đặt từ điển lồng nhau, ví dụ `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT` sẽ thiết lập giá trị cho tùy chọn cấu hình `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']`
 
-Lưu ý rằng các tùy chọn cấu hình được thiết lập thông qua môi trường có ưu tiên hơn so với các tùy chọn trong tệp cấu hình. Nếu cả hai đều có mặt, biến môi trường "thắng".
+Lưu ý rằng các tùy chọn cấu hình được thiết lập thông qua môi trường có ưu tiên hơn so với các tùy chọn trong tệp cấu hình. Nếu cả hai đều có mặt, biến môi trường sẽ "thắng".
 
 !!! warning "Các biến môi trường không có tiền tố đã lỗi thời"
-    Vì lý do lịch sử, một số cài đặt – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, và `STATIC_PATH` – vẫn có thể được thiết lập thông qua một biến môi trường *không có* tiền tố `GRAMPSWEB_`. Điều này đã lỗi thời, ghi lại một cảnh báo khi khởi động, và sẽ ngừng hoạt động trong một phiên bản tương lai. Luôn sử dụng dạng có tiền tố, ví dụ `GRAMPSWEB_TREE` thay vì `TREE`.
+    Vì lý do lịch sử, một số cài đặt – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL`, và `STATIC_PATH` – vẫn có thể được thiết lập thông qua một biến môi trường *mà không có* tiền tố `GRAMPSWEB_`. Điều này đã lỗi thời, ghi lại một cảnh báo khi khởi động, và sẽ ngừng hoạt động trong một phiên bản tương lai. Luôn sử dụng dạng có tiền tố, ví dụ `GRAMPSWEB_TREE` thay vì `TREE`.
 
     Lưu ý rằng điều này chỉ liên quan đến các biến môi trường. Trong một tệp cấu hình, tên cài đặt luôn được sử dụng mà không có tiền tố.
 
 !!! tip "Kiểm tra các tùy chọn đã lỗi thời"
-    Các tùy chọn cấu hình đã lỗi thời mà máy chủ của bạn vẫn phụ thuộc vào – chẳng hạn như các biến môi trường không có tiền tố, `SEARCH_INDEX_DIR`, hoặc `EMAIL_USE_TLS` – được ghi lại dưới dạng cảnh báo khi khởi động. Kể từ Gramps Web API 3.22, chúng cũng được liệt kê, cùng với sự thay thế của chúng và phiên bản mà hỗ trợ sẽ bị loại bỏ, ở đầu trang **Thông tin hệ thống** (có thể truy cập thông qua biểu tượng người dùng trong thanh ứng dụng trên cùng) khi bạn đăng nhập với tư cách quản trị viên.
+    Các tùy chọn cấu hình đã lỗi thời mà máy chủ của bạn vẫn phụ thuộc vào – chẳng hạn như các biến môi trường không có tiền tố, `SEARCH_INDEX_DIR`, hoặc `EMAIL_USE_TLS` – được ghi lại dưới dạng cảnh báo khi khởi động. Kể từ Gramps Web API 3.22, chúng cũng được liệt kê, cùng với thay thế của chúng và phiên bản mà hỗ trợ sẽ bị loại bỏ, ở đầu trang **Thông tin hệ thống** (có thể truy cập qua biểu tượng người dùng trong thanh ứng dụng trên cùng) khi bạn đăng nhập với tư cách là quản trị viên.
 
-    Các cài đặt email và URL cơ sở mà trình hướng dẫn lần đầu của các phiên bản cũ lưu trữ trong cơ sở dữ liệu cũng được liệt kê ở đó. Đặt chúng trong cấu hình của bạn với các giá trị đã lưu; cảnh báo sẽ biến mất khi chúng khớp.
+    Các cài đặt email và URL cơ sở mà trình hướng dẫn lần đầu của các phiên bản cũ lưu trữ trong cơ sở dữ liệu cũng được liệt kê ở đó. Đặt chúng trong cấu hình của bạn thành các giá trị đã lưu; cảnh báo sẽ biến mất khi chúng khớp.
 
 ## Các cài đặt cấu hình hiện có
 Các tùy chọn cấu hình sau đây tồn tại.
@@ -45,7 +45,7 @@ Khóa | Mô tả
 `USER_DB_URI` | URL cơ sở dữ liệu của cơ sở dữ liệu người dùng. Bất kỳ URL nào tương thích với SQLAlchemy đều được phép.
 
 !!! info
-    Bạn có thể tạo một khóa bí mật an toàn ví dụ như với lệnh
+    Bạn có thể tạo một khóa bí mật an toàn ví dụ với lệnh
 
     ```
     python3 -c "import secrets;print(secrets.token_urlsafe(32))"
@@ -55,35 +55,36 @@ Khóa | Mô tả
 
 Khóa | Mô tả
 ----|-------------
-`MEDIA_BASE_DIR` | Đường dẫn để sử dụng làm thư mục cơ sở cho các tệp phương tiện, ghi đè lên thư mục cơ sở phương tiện được thiết lập trong Gramps. Khi sử dụng [S3](s3.md), phải có dạng `s3://<bucket_name>`
-`TREE_ID` | Tên thư mục của cơ sở dữ liệu cây gia đình để sử dụng trong chế độ một cây (khi `TREE` không được thiết lập thành `*`). Khi được thiết lập, máy chủ xác định cây theo tên thư mục của nó thay vì tên hiển thị của nó, điều này mạnh mẽ hơn khi đổi tên. Bắt buộc nếu bạn muốn đổi tên cây thông qua API. Tên thư mục có thể được tìm thấy qua `GET /api/trees/-` (trường `id`).
-`SEARCH_INDEX_DB_URI` | URL cơ sở dữ liệu cho chỉ mục tìm kiếm. Chỉ cho phép `sqlite` hoặc `postgresql` làm backend. Mặc định là `sqlite:///indexdir/search_index.db`, tạo một tệp SQLite trong thư mục `indexdir` tương đối với đường dẫn nơi kịch bản được chạy
-`SEARCH_INDEX_DIR` | **Đã lỗi thời** (sử dụng `SEARCH_INDEX_DB_URI` thay thế). Thư mục chứa chỉ mục tìm kiếm. Nếu được thiết lập trong khi `SEARCH_INDEX_DB_URI` chưa được thiết lập, URL chỉ mục tìm kiếm được suy ra là `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
+`MEDIA_BASE_DIR` | Đường dẫn để sử dụng làm thư mục cơ sở cho các tệp phương tiện, ghi đè thư mục cơ sở phương tiện được thiết lập trong Gramps. Khi sử dụng [S3](s3.md), phải có dạng `s3://<bucket_name>`
+`TREE_ID` | Tên thư mục của cơ sở dữ liệu cây gia đình để sử dụng trong chế độ đơn cây (khi `TREE` không được đặt thành `*`). Khi được đặt, máy chủ xác định cây bằng tên thư mục của nó thay vì tên hiển thị của nó, điều này mạnh mẽ hơn với các lần đổi tên. Bắt buộc nếu bạn muốn đổi tên cây qua API. Tên thư mục có thể được tìm thấy qua `GET /api/trees/-` (trường `id`).
+`SEARCH_INDEX_DB_URI` | URL cơ sở dữ liệu cho chỉ mục tìm kiếm. Chỉ `sqlite` hoặc `postgresql` được phép làm backend. Mặc định là `sqlite:///indexdir/search_index.db`, tạo một tệp SQLite trong thư mục `indexdir` tương đối với đường dẫn nơi kịch bản được chạy
+`SEARCH_INDEX_DIR` | **Đã lỗi thời** (sử dụng `SEARCH_INDEX_DB_URI` thay thế). Thư mục chứa chỉ mục tìm kiếm. Nếu được đặt trong khi `SEARCH_INDEX_DB_URI` không được đặt, URL chỉ mục tìm kiếm được suy ra là `sqlite:///<SEARCH_INDEX_DIR>/search_index.db`.
 `STATIC_PATH` | Đường dẫn để phục vụ các tệp tĩnh (ví dụ: một giao diện web tĩnh)
-`BASE_URL` | URL cơ sở nơi API có thể được truy cập (ví dụ: `https://mygramps.mydomain.com/`). Điều này là cần thiết để xây dựng các liên kết đặt lại mật khẩu chính xác. Web Push cũng yêu cầu một URL HTTPS có thể truy cập công khai; mặc định `http://localhost/` sẽ vô hiệu hóa Web Push. Khi cấu hình cài đặt này thông qua môi trường, sử dụng `GRAMPSWEB_BASE_URL`.
-`CORS_ORIGINS` | Các nguồn mà yêu cầu CORS được phép từ. Mặc định, tất cả đều bị cấm. Sử dụng `"*"` để cho phép yêu cầu từ bất kỳ miền nào.
+`BASE_URL` | URL cơ sở nơi API có thể được truy cập (ví dụ: `https://mygramps.mydomain.com/`). Điều này là cần thiết ví dụ để xây dựng các liên kết đặt lại mật khẩu chính xác. Web Push cũng yêu cầu một URL HTTPS có thể truy cập công khai; mặc định `http://localhost/` vô hiệu hóa Web Push. Khi cấu hình cài đặt này thông qua môi trường, sử dụng `GRAMPSWEB_BASE_URL`.
+`CORS_ORIGINS` | Các nguồn mà yêu cầu CORS được phép từ. Theo mặc định, tất cả đều bị cấm. Sử dụng `"*"` để cho phép yêu cầu từ bất kỳ miền nào.
 `EMAIL_HOST` | Máy chủ SMTP (ví dụ: để gửi email đặt lại mật khẩu)
 `EMAIL_PORT` | Cổng máy chủ SMTP. mặc định là 465
 `EMAIL_HOST_USER` | Tên người dùng máy chủ SMTP
 `EMAIL_HOST_PASSWORD` | Mật khẩu máy chủ SMTP
-`EMAIL_USE_TLS` | **Đã lỗi thời** (sử dụng `EMAIL_USE_SSL` hoặc `EMAIL_USE_STARTTLS` thay thế). Boolean, có sử dụng TLS để gửi email hay không. Mặc định là `True`. Khi sử dụng STARTTLS, đặt điều này thành `False` và sử dụng một cổng khác với 25.
-`EMAIL_USE_SSL` | Boolean, có sử dụng SSL/TLS ngầm cho SMTP (v3.6.0+). Mặc định là `True` nếu `EMAIL_USE_TLS` không được thiết lập rõ ràng. Thường được sử dụng với cổng 465.
-`EMAIL_USE_STARTTLS` | Boolean, có sử dụng STARTTLS rõ ràng cho SMTP (v3.6.0+). Mặc định là `False`. Thường được sử dụng với cổng 587 hoặc 25.
-`DEFAULT_FROM_EMAIL` | Địa chỉ "Từ" cho các email tự động
+`EMAIL_USE_TLS` | **Đã lỗi thời** (sử dụng `EMAIL_USE_SSL` hoặc `EMAIL_USE_STARTTLS` thay thế). Boolean, liệu có sử dụng TLS để gửi email hay không. Mặc định là `True`. Khi sử dụng STARTTLS, đặt điều này thành `False` và sử dụng một cổng khác với 25.
+`EMAIL_USE_SSL` | Boolean, liệu có sử dụng SSL/TLS ngầm cho SMTP (v3.6.0+). Mặc định là `True` nếu `EMAIL_USE_TLS` không được đặt rõ ràng. Thường được sử dụng với cổng 465.
+`EMAIL_USE_STARTTLS` | Boolean, liệu có sử dụng STARTTLS rõ ràng cho SMTP (v3.6.0+). Mặc định là `False`. Thường được sử dụng với cổng 587 hoặc 25.
+`DEFAULT_FROM_EMAIL` | Địa chỉ "Từ" cho email tự động
 `THUMBNAIL_CACHE_CONFIG` | Từ điển với các cài đặt cho bộ nhớ cache hình thu nhỏ. Xem [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) để biết các cài đặt có thể.
 `REQUEST_CACHE_CONFIG` | Từ điển với các cài đặt cho bộ nhớ cache yêu cầu. Xem [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) để biết các cài đặt có thể.
 `PERSISTENT_CACHE_CONFIG` | Từ điển với các cài đặt cho bộ nhớ cache bền vững, được sử dụng ví dụ cho telemetry. Xem [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) để biết các cài đặt có thể.
 `CELERY_CONFIG` | Cài đặt cho hàng đợi tác vụ nền Celery. Xem [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) để biết các cài đặt có thể.
 `REPORT_DIR` | Thư mục tạm thời nơi đầu ra của các báo cáo Gramps sẽ được lưu trữ
 `EXPORT_DIR` | Thư mục tạm thời nơi đầu ra của việc xuất cơ sở dữ liệu Gramps sẽ được lưu trữ
-`BACKUP_DIR` | Thư mục nơi [sao lưu](../administration/backups.md) được lưu trữ, trong một thư mục con cho mỗi cây (v3.24.0+). Nếu không được thiết lập (mặc định), các bản sao lưu không thể được lưu trữ trên máy chủ, nhưng vẫn có thể được khôi phục từ một tệp đã tải lên. Sử dụng một vị trí bền vững, ví dụ: một volume Docker, và tốt nhất là một vị trí được sao lưu hoặc đồng bộ hóa ở nơi khác.
+`BACKUP_DIR` | Thư mục nơi [sao lưu](../administration/backups.md) được lưu trữ, trong một thư mục con cho mỗi cây (v3.24.0+). Nếu không được đặt (mặc định), các bản sao lưu không thể được lưu trữ trên máy chủ, nhưng vẫn có thể được khôi phục từ một tệp đã tải lên. Sử dụng một vị trí bền vững, ví dụ: một volume Docker, và tốt nhất là một vị trí được sao lưu hoặc đồng bộ hóa ở nơi khác.
 `BACKUP_KEEP` | Số lượng bản sao lưu được lưu trữ cho mỗi cây; các bản cũ hơn sẽ bị xóa khi một bản sao lưu mới được tạo (v3.24.0+). Mặc định là `5`
-`RATE_LIMIT_BACKUP` | Giới hạn tỷ lệ cho việc tạo bản sao lưu, cho mỗi cây (v3.24.0+). Mặc định là `"10 mỗi ngày"`
-`RATE_LIMIT_MEDIA_ARCHIVE` | Giới hạn tỷ lệ cho việc tạo các kho lưu trữ phương tiện trên trang Xuất. Mặc định là `"1 mỗi giờ"`
-`REGISTRATION_DISABLED` | Nếu `True`, không cho phép đăng ký người dùng mới (mặc định `False`)
+`RATE_LIMIT_BACKUP` | Giới hạn tỷ lệ cho việc tạo sao lưu, cho mỗi cây (v3.24.0+). Mặc định là `"10 mỗi ngày"`
+`RATE_LIMIT_MEDIA_ARCHIVE` | Giới hạn tỷ lệ cho việc tạo các kho phương tiện trên trang Xuất. Mặc định là `"1 mỗi giờ"`
+`REGISTRATION_DISABLED` | Nếu `True`, không cho phép đăng ký người dùng mới (mặc định `False`). Kể từ Gramps Web API 3.26, trang đăng nhập cũng ẩn liên kết đăng ký của nó.
+`PROXY_FIX_X_FOR` | Số lượng proxy đảo ngược đáng tin cậy trước Gramps Web (v3.26.0+). Đặt thành `1` sau một proxy đảo ngược duy nhất để giới hạn tỷ lệ áp dụng cho mỗi khách hàng thay vì cho tất cả người dùng cùng nhau. Mặc định là `0`. Chỉ đặt nó nếu máy chủ chỉ có thể truy cập thông qua các proxy này.
 `DISABLE_TELEMETRY` | Nếu `True`, vô hiệu hóa thống kê telemetry (mặc định `False`). Xem [telemetry](telemetry.md) để biết chi tiết.
-`PILLOW_MAX_IMAGE_PIXELS` | Thiết lập tham số PIL.Image.MAX_IMAGE_PIXELS, chỉ ra số lượng pixel mà hình ảnh được xử lý có thể chứa. Xem [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) để biết chi tiết.
-`MAX_THUMBNAIL_FILE_BYTES` | Thiết lập kích thước tệp tối đa cứng cho hình thu nhỏ. Mặc định là `50 * 1024 * 1024` (50 MB). Tăng nó có thể làm tăng đáng kể mức sử dụng bộ nhớ và có thể dẫn đến sự cố hết bộ nhớ hoặc mất dữ liệu nếu các tệp lớn được giải nén trong bộ nhớ.
+`PILLOW_MAX_IMAGE_PIXELS` | Thiết lập tham số PIL.Image.MAX_IMAGE_PIXELS, chỉ ra số pixel mà hình ảnh đã xử lý có thể chứa. Xem [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) để biết chi tiết.
+`MAX_THUMBNAIL_FILE_BYTES` | Thiết lập kích thước tệp tối đa cứng cho các hình thu nhỏ. Mặc định là `50 * 1024 * 1024` (50 MB). Tăng nó có thể làm tăng đáng kể mức sử dụng bộ nhớ và có thể dẫn đến sự cố hết bộ nhớ hoặc mất dữ liệu nếu các tệp lớn được giải nén trong bộ nhớ.
 
 
 !!! info
@@ -102,12 +103,12 @@ Khóa | Mô tả
 
 ### Cài đặt liên quan đến việc lưu trữ nhiều cây
 
-Các cài đặt sau đây có liên quan khi [lưu trữ nhiều cây](multi-tree.md).
+Các cài đặt sau đây liên quan khi [lưu trữ nhiều cây](multi-tree.md).
 
 
 Khóa | Mô tả
 ----|-------------
-`MEDIA_PREFIX_TREE` | Boolean, có sử dụng một thư mục con riêng cho các tệp phương tiện của mỗi cây hay không. Mặc định là `False`, nhưng rất khuyến nghị sử dụng `True` trong một cài đặt nhiều cây
+`MEDIA_PREFIX_TREE` | Boolean, liệu có sử dụng một thư mục con riêng cho các tệp phương tiện của mỗi cây hay không. Mặc định là `False`, nhưng rất khuyến nghị sử dụng `True` trong một cài đặt nhiều cây
 `NEW_DB_BACKEND` | Backend cơ sở dữ liệu để sử dụng cho các cây gia đình mới được tạo. Phải là một trong `sqlite` hoặc `sharedpostgresql`. Mặc định là `sqlite`. Giá trị `postgresql` vẫn được chấp nhận nhưng đã lỗi thời, vì backend PostgreSQL sẽ bị loại bỏ trong Gramps Web API 4.0.
 `POSTGRES_HOST` | Tên máy chủ của máy chủ PostgreSQL được sử dụng để tạo các cây mới khi sử dụng cài đặt nhiều cây với backend SharedPostgreSQL
 `POSTGRES_PORT` | Cổng của máy chủ PostgreSQL được sử dụng để tạo các cây mới khi sử dụng cài đặt nhiều cây với backend SharedPostgreSQL
@@ -119,21 +120,22 @@ Các cài đặt này cần thiết nếu bạn muốn sử dụng xác thực O
 
 Khóa | Mô tả
 ----|-------------
-`OIDC_ENABLED` | Boolean, có bật xác thực OIDC hay không. Mặc định là `False`.
+`OIDC_ENABLED` | Boolean, liệu có kích hoạt xác thực OIDC hay không. Mặc định là `False`.
 `OIDC_ISSUER` | URL nhà cung cấp OIDC (đối với các nhà cung cấp OIDC tùy chỉnh)
 `OIDC_CLIENT_ID` | ID khách hàng OAuth (đối với các nhà cung cấp OIDC tùy chỉnh)
 `OIDC_CLIENT_SECRET` | Mật khẩu khách hàng OAuth (đối với các nhà cung cấp OIDC tùy chỉnh)
 `OIDC_NAME` | Tên hiển thị tùy chỉnh cho nhà cung cấp. Mặc định là "OIDC"
-`OIDC_SCOPES` | Phạm vi OAuth. Mặc định là "openid email profile"
+`OIDC_SCOPES` | Các phạm vi OAuth. Mặc định là "openid email profile"
 `OIDC_USERNAME_CLAIM` | Khẳng định để sử dụng cho tên người dùng. Mặc định là "preferred_username"
 `OIDC_OPENID_CONFIG_URL` | Tùy chọn: URL đến điểm cuối cấu hình OpenID Connect (nếu không sử dụng tiêu chuẩn `/.well-known/openid-configuration`)
-`OIDC_PKCE` | Boolean, có sử dụng PKCE hay không. Nếu không được thiết lập, PKCE sẽ được sử dụng khi tài liệu khám phá của nhà cung cấp liệt kê `S256`. Xem [PKCE](oidc.md#pkce)
-`OIDC_DISABLE_LOCAL_AUTH` | Boolean, có vô hiệu hóa xác thực tên người dùng/mật khẩu cục bộ hay không. Mặc định là `False`
-`OIDC_AUTO_REDIRECT` | Boolean, có tự động chuyển hướng đến OIDC khi chỉ có một nhà cung cấp được cấu hình hay không. Mặc định là `False`
+`OIDC_PKCE` | Boolean, liệu có sử dụng PKCE hay không. Nếu không được đặt, PKCE sẽ được sử dụng khi tài liệu khám phá của nhà cung cấp liệt kê `S256`. Xem [PKCE](oidc.md#pkce)
+`OIDC_DISABLE_LOCAL_AUTH` | Boolean, liệu có vô hiệu hóa xác thực tên người dùng/mật khẩu cục bộ hay không. Mặc định là `False`
+`OIDC_AUTO_REDIRECT` | Boolean, liệu có tự động chuyển hướng đến OIDC khi chỉ có một nhà cung cấp được cấu hình hay không. Mặc định là `False`
+`OIDC_ALLOWED_REDIRECT_URIS` | Danh sách các URI `https` mà tại đó các ứng dụng gốc có thể nhận được kết quả đăng nhập (v3.26.0+), được đặt dưới dạng danh sách JSON trong một biến môi trường. Mặc định là trống. Chỉ cần thiết nếu tài liệu của ứng dụng gốc yêu cầu điều này. Xem [Các ứng dụng gốc](oidc.md#native-apps)
 
 #### Các nhà cung cấp OIDC tích hợp sẵn
 
-Đối với các nhà cung cấp tích hợp sẵn (Google, Microsoft), sử dụng các cài đặt này:
+Đối với các nhà cung cấp tích hợp sẵn (Google, Microsoft), sử dụng các cài đặt sau:
 
 Khóa | Mô tả
 ----|-------------
@@ -150,7 +152,7 @@ Các cài đặt này cho phép bạn ánh xạ các nhóm/ vai trò OIDC từ n
 
 Khóa | Mô tả
 ----|-------------
-`OIDC_ROLE_CLAIM` | Tên khẳng định trong token OIDC chứa các nhóm/ vai trò của người dùng. Mặc định là "groups"
+`OIDC_ROLE_CLAIM` | Tên khẳng định trong mã thông báo OIDC chứa các nhóm/ vai trò của người dùng. Mặc định là "groups"
 `OIDC_GROUP_ADMIN` | Tên nhóm/ vai trò từ nhà cung cấp OIDC của bạn ánh xạ đến vai trò "Quản trị viên" của Gramps
 `OIDC_GROUP_OWNER` | Tên nhóm/ vai trò từ nhà cung cấp OIDC của bạn ánh xạ đến vai trò "Chủ sở hữu" của Gramps
 `OIDC_GROUP_EDITOR` | Tên nhóm/ vai trò từ nhà cung cấp OIDC của bạn ánh xạ đến vai trò "Biên tập viên" của Gramps
@@ -158,27 +160,29 @@ Khóa | Mô tả
 `OIDC_GROUP_MEMBER` | Tên nhóm/ vai trò từ nhà cung cấp OIDC của bạn ánh xạ đến vai trò "Thành viên" của Gramps
 `OIDC_GROUP_GUEST` | Tên nhóm/ vai trò từ nhà cung cấp OIDC của bạn ánh xạ đến vai trò "Khách" của Gramps
 
-### Cài đặt chỉ cho các tính năng AI
+### Cài đặt chỉ dành cho các tính năng AI
 
 Các cài đặt này cần thiết nếu bạn muốn sử dụng trò chuyện AI. Xem [Cài đặt trò chuyện AI](chat.md) để biết chi tiết.
 
 !!! note
-    Các cài đặt `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` và `VECTOR_EMBEDDING_API_KEY` cho tìm kiếm ngữ nghĩa đã bị bỏ qua kể từ Gramps Web API 3.25, mà đã loại bỏ tìm kiếm ngữ nghĩa. Trò chuyện AI chỉ cần `LLM_MODEL`.
+    Các cài đặt `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` và `VECTOR_EMBEDDING_API_KEY` cho tìm kiếm ngữ nghĩa đã bị bỏ qua kể từ Gramps Web API 3.25, đã loại bỏ tìm kiếm ngữ nghĩa. Trò chuyện AI chỉ cần `LLM_MODEL`.
 
 Khóa | Mô tả
 ----|-------------
 `LLM_BASE_URL` | URL cơ sở cho API trò chuyện tương thích với OpenAI. Mặc định là `None`, sử dụng API OpenAI.
-`LLM_MODEL` | Mô hình để sử dụng cho API trò chuyện tương thích với OpenAI. Nếu không được thiết lập (mặc định), trò chuyện sẽ bị vô hiệu hóa. Từ phiên bản v3.6.0, trợ lý AI sử dụng Pydantic AI với khả năng gọi công cụ.
-`LLM_MAX_OUTPUT_TOKENS` | Số lượng tối đa các token mà mô hình có thể tạo ra trong một phản hồi duy nhất. Không được thiết lập theo mặc định, để giới hạn cho máy chủ mô hình. Hữu ích cho các máy chủ mô hình không có giới hạn riêng, nơi một phản hồi có thể kéo dài vô tận.
+`LLM_MODEL` | Mô hình để sử dụng cho API trò chuyện tương thích với OpenAI. Nếu không được đặt (mặc định), trò chuyện sẽ bị vô hiệu hóa. Từ phiên bản v3.6.0, trợ lý AI sử dụng Pydantic AI với khả năng gọi công cụ.
+`LLM_MAX_OUTPUT_TOKENS` | Số lượng tối đa token mà mô hình có thể tạo trong một phản hồi duy nhất. Không được đặt theo mặc định, để giới hạn cho máy chủ mô hình. Hữu ích cho các máy chủ mô hình không có giới hạn riêng, nơi một phản hồi có thể kéo dài vô tận.
 `LLM_MAX_CONTEXT_LENGTH` | Giới hạn ký tự cho ngữ cảnh cây gia đình được cung cấp cho LLM. Mặc định là 50000.
-`LLM_SYSTEM_PROMPT` | Lời nhắc hệ thống tùy chỉnh cho trợ lý trò chuyện LLM (v3.6.0+). Nếu không được thiết lập, sử dụng lời nhắc tối ưu hóa genealogi mặc định.
+`LLM_SYSTEM_PROMPT` | Lời nhắc hệ thống tùy chỉnh cho trợ lý trò chuyện LLM (v3.6.0+). Nếu không được đặt, sử dụng lời nhắc tối ưu hóa gia phả mặc định.
+`LLM_VISION` | Boolean, liệu người dùng có thể đính kèm hình ảnh vào câu hỏi của họ hay không (v3.26.0+). Chỉ kích hoạt nếu mô hình chấp nhận hình ảnh. Mặc định là `False`. Xem [Hình ảnh trong câu hỏi](chat.md#images-in-questions)
+`LLM_ALLOW_WRITE_PROPOSALS` | Boolean, liệu trợ lý có thể đề xuất thay đổi cho cây để người dùng xem xét và áp dụng hay không (v3.26.0+). Mặc định là `False`. Xem [Cho phép trợ lý đề xuất thay đổi](chat.md#letting-the-assistant-propose-changes)
 
 
 ## Ví dụ về tệp cấu hình
 
 Một tệp cấu hình tối thiểu cho sản xuất có thể trông như thế này:
 ```python
-TREE="My Family Tree"
+TREE="Cây Gia Đình Của Tôi"
 BASE_URL="https://mytree.example.com"
 SECRET_KEY="..."  # khóa bí mật của bạn
 USER_DB_URI="sqlite:////path/to/users.sqlite"

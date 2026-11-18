@@ -1,46 +1,57 @@
-# Käyttämällä AI-avustajaa
+# Käyttäminen AI-avustajaa
 
-!!! info
-    AI-avustaja vaatii Gramps Web API -version 2.5.0 tai uudemman ja Gramps Web -version 24.10.0 tai uudemman. Gramps Web API -version 3.6.0 myötä esiteltiin työkalujen kutsumismahdollisuuksia älykkäämpiin vuorovaikutuksiin.
-
-**Avustaja**-näkymä Gramps Webissä (jos se on saatavilla asennuksessasi, merkitty "Chat" vanhemmissa versioissa) antaa pääsyn AI-avustajaan, joka voi vastata kysymyksiin perhepuustasi.
+**Avustaja**-näkymä Gramps Webissä (jos se on käytössä asennuksessasi) antaa pääsyn AI-avustajaan, joka vastaa kysymyksiin perhepuustasi.
 
 !!! warning
-    Koska tämä on edelleen uusi ja kehittyvä ominaisuus, jotkut kysymystyypit toimivat hyvin, kun taas toiset eivät. Myös, kuten minkä tahansa AI-avustajan kanssa, se voi antaa faktatietoja virheellisiä vastauksia, joten muista aina tarkistaa tiedot.
+    Kuten minkä tahansa AI-avustajan kanssa, vastaukset voivat olla vääriä. Käytä vastauksessa olevia linkkejä tarkistaaksesi, mihin tietueisiin ne perustuvat.
 
 ## Kuinka se toimii
 
-Ymmärtääksesi, minkä tyyppisiin kysymyksiin avustaja voi vastata, on hyödyllistä ymmärtää, miten se toimii taustalla:
+Avustaja ei tunne puuta etukäteen. Vastatakseen kysymykseen suuri kielimalli etsii tarvitsemansa tietueet, aivan kuten sinä itse:
 
-1. Käyttäjä esittää kysymyksen.
-2. Avustaja kysyy suoraan tietokannastasi erikoistyökalujen avulla: se etsii puusta [kokotekstihaku](search.md), suodattaa henkilöitä/tapahtumia/perheitä/paikkoja tiettyjen kriteerien mukaan, laskee suhteita yksilöiden välillä ja etsii täydellisiä tietueita, mukaan lukien niiden muistiinpanot.
-3. Suuri kielimalli muotoilee vastauksen sen perusteella, mitä tietueita se on löytänyt.
-4. Vastaus näytetään sinulle, ja siinä on linkkejä tietueisiin, joihin se perustuu.
+- se etsii puusta [kokotekstihaku](search.md),
+- se suodattaa henkilöitä, tapahtumia ja perheitä kriteerien, kuten nimien, päivämäärien, paikkojen tai lasten määrän mukaan,
+- se löytää esi-isiä, jälkeläisiä ja muita sukulaisia henkilöstä, heidän suhteensa mukaan,
+- se lukee täydelliset tietueet henkilöistä, perheistä, tapahtumista, paikoista ja muistiinpanoista.
 
-Avustaja vastaa vain puustasi, ei kielen mallin yleisestä tiedosta – edes tunnetuista henkilöistä. Jos puu ei tallenna jotain, se ilmoittaa siitä ja mainitsee siihen liittyvät tiedot, joita se on löytänyt, esimerkiksi muistiinpanossa. Linkit objekteihin, joita et saa nähdä, näytetään tavallisena tekstinä.
+Se vastaa sitten löytämistään tietueista, linkkien kera. Kun se työskentelee, käytettävät työkalut näkyvät, joten voit seurata mukana. Kysymykset, jotka vievät enemmän aikaa, toimivat taustalla – voit navigoida muualle ja palata takaisin.
 
-Seuraavat kysymykset pitävät aikaisempien kysymysten kontekstin samassa keskustelussa, joten voit kysyä "Ja milloin hän kuoli?" kysyttyäsi henkilöstä.
+Avustaja vastaa vain puustasi, ei kielimallin yleisestä tiedosta – edes tunnetuista henkilöistä. Jos puu ei tallenna jotain, se ilmoittaa siitä, mainiten siihen liittyvää tietoa, jonka se on löytänyt, esimerkiksi muistiinpanossa. Se näkee vain sen, mitä sinulla on oikeus nähdä: linkit yksityisiin tietueisiin näkyvät tavallisena tekstinä käyttäjille, jotka eivät voi nähdä niitä.
 
-Kun avustaja työskentelee, indikaattorit näyttävät, mitä työkaluja se tällä hetkellä käyttää (esim. etsii henkilöitä, tarkistaa suhteita), joten voit seurata, kun se rakentaa vastaustaan. Pidempiä kysymyksiä käsitellään taustatehtävinä – voit siirtyä muualle ja palata takaisin, ja edistyminen näkyy myös [Ilmoituksissa](notifications.md). Vastaukset on muotoiltu Markdownilla (luettelot, korostus, linkit jne.) helpomman lukemisen vuoksi.
+Seurantakysymykset pitävät aikaisempien kysymysten kontekstin samassa keskustelussa, joten voit kysyä "Ja milloin hän kuoli?" kysyttyäsi henkilöstä.
 
 ## Mitä voit kysyä
 
-Gramps Web API -version 3.6.0 myötä esiteltyjen työkalujen kutsumismahdollisuuksien ansiosta AI-avustaja voi nyt käsitellä monimutkaisempia kysymyksiä:
+- **Tietoja ihmisistä**: "Milloin Mary Smith syntyi?" tai "Mitkä ovat John Doen lasten nimet?"
+- **Sukulaiset**: "Keitä Jane Smithin isovanhemmat ovat?" tai "Mitkä Johann Meyerin jälkeläiset muuttivat Amerikkaan?"
+- **Haut kriteereillä**: "Kuka syntyi Lontoossa vuoden 1850 jälkeen?", "Listaa avioliitot vuosina 1920–1950", tai "Mitkä parit saivat viisi tai enemmän lasta?"
+- **Paikat**: "Mitkä tapahtumat tapahtuivat Pariisissa?" tai "Kuka syntyi Tanskassa?" – suuremman paikan sisällä olevat paikat sisältyvät.
+- **Muistiinpanot**: "Mitä muistiinpanot sanovat Meyer-perheen tilasta?"
 
-- **Perhesuhteet**: "Keitä Jane Smithin isovanhemmat ovat?" tai "Miten John Doe on sukua Mary Johnsonille?"
-- **Suodatetut haut**: "Näytä kaikki henkilöt, jotka on syntynyt Lontoossa vuoden 1850 jälkeen" tai "Mitä tapahtumia Pariisissa on tapahtunut?"
-- **Päivämääräpohjaiset kysymykset**: "Kuka kuoli ennen vuotta 1900?" tai "Listaa avioliitot, jotka tapahtuivat vuosien 1920 ja 1950 välillä"
-- **Paikkatiedot**: "Mitä paikkoja Ranskassa on?" tai "Kerro minulle St. Maryn kirkosta"
-- **Yleiset kysymykset**: "Mikä on John Doen lasten nimet?" tai "Milloin Mary Smith syntyi?"
+Kysymykset, jotka tarvitsevat koko puun kerralla, kuten "Mikä on yleisin etunimi?", toimivat huonommin, koska avustaja näkee vain rajoitetun määrän tietueita jokaisella haulla.
+
+## Kysyminen kuvista
+
+Jos palvelimen ylläpitäjä on mahdollistanut sen, kehotteessa on painike kuvien liittämiseen. Voit myös liittää kuvan tai pudottaa kuvafailit kehotteeseen. Kysymykseen voidaan liittää jopa neljä kuvaa, esimerkiksi kirkon tietueen skannaus kysyessäsi "Kuka mainitaan tässä merkinnässä, ja ovatko he puussani?"
+
+Kuvat lähetetään vain kysymyksen mukana, johon ne on liitetty. Seurantakysymykset voivat viitata siihen, mitä avustaja sanoi niistä, mutta eivät itse kuviin, joten liitä ne uudelleen tarvittaessa. Jos puullasi on rajoitus AI:n käytölle, jokainen kuva lasketaan kuin lisäkysymys.
+
+## Antaa avustajan muuttaa puuta
+
+Jos palvelimen ylläpitäjä on mahdollistanut sen, toimittajat, omistajat ja ylläpitäjät voivat pyytää avustajaa muuttamaan puuta, esimerkiksi "Lisää kaste 3. toukokuuta 1802 St. Maryssä Johann Meyerille" tai "Korjaa Anna Smithin syntymävuosi, sen pitäisi olla 1871".
+
+Avustaja ei koskaan muuta mitään omatoimisesti. Se vastaa **Ehdotetut muutokset** -kortilla, joka listaa jokaisen tietueen, jonka se lisäisi, muokkaisi tai poistaisi, vanhat arvot yliviivattuina ja uudet arvot korostettuina. Mikään ei tapahdu ennen kuin napsautat **Hyväksy**. Muutokset tehdään sitten yhdellä kertaa, ja voit peruuttaa ne kuten minkä tahansa muun muokkauksen, viestistä, joka ilmestyy tai [muutoshistoriasta](revisions.md).
+
+Tarkista ehdotus huolellisesti ennen sen hyväksymistä – erityisesti, että avustaja valitsi oikean henkilön, ja että se ei lisännyt uutta tietuetta (kuten paikkaa tai lähdettä), joka jo olemassa puussasi hieman eri nimellä. Jos ehdotus ei ole aivan oikea, kerro mitä muuttaa, ja avustaja ehdottaa uudelleen.
+
+Kun ehdotus on hyväksytty, aikaisempia ehdotuksia samassa keskustelussa ei voi enää hyväksyä, koska ne tehtiin puulle sellaisena kuin se oli ennen. Sama tapahtuu, jos jokin vaikuttavista tietueista on muuttunut sillä välin.
 
 ## Vinkkejä kysymysten esittämiseen
 
-Saadaksesi parhaat tulokset AI-avustajalta:
-
-- **Ole tarkka**: Muotoile kysymyksesi mahdollisimman yksityiskohtaisesti välttääksesi epäselvyyksiä. Esimerkiksi "Milloin John Smith, joka syntyi vuonna 1850 Bostonissa, meni naimisiin?" on parempi kuin "Milloin John Smith meni naimisiin?"
-- **Käytä oikeita nimiä**: Mainitse erityiset nimet, paikat ja päivämäärät, kun se on relevanttia.
-- **Kysy yksi asia kerrallaan**: Pilko monimutkaiset kysymykset yksinkertaisempiin osiin parempien tulosten saamiseksi.
-- **Käytä omaa kieltäsi**: Suuret kielimallit ovat monikielisiä, joten voit esittää kysymyksiä omalla kielelläsi ja saada vastauksia samalla kielellä.
+- **Nimeä ihmiset.** Avustaja ei tiedä, kuka olet tai kuka kotihenkilösi on, joten sen sijaan, että kysyisit "isoäitini", kysy "Anna Smithin (s. 1950) isoäidistä". Voit myös käyttää Gramps ID:itä, esim. "I0042:n lapset".
+- **Ole tarkka** kun nimet ovat yleisiä: "Milloin vuonna 1850 Bostonissa syntynyt John Smith meni naimisiin?" on parempi kuin "Milloin John Smith meni naimisiin?"
+- **Käytä omaa kieltäsi.** Voit kysyä omalla kielelläsi ja saada vastauksia samalla kielellä.
+- **Kysy uudelleen eri tavalla** jos vastaus näyttää puutteelliselta – esimerkiksi nimeämällä paikka tai aikakausi, joka sinua kiinnostaa.
 
 !!! tip
     Jaa kokemuksesi asioista, jotka toimivat ja eivät toimi, yhteisön kanssa.

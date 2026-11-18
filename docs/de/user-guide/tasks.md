@@ -6,35 +6,35 @@ Gramps Web enthält ein integriertes genealogisches Aufgabenmanagement-Tool. Es 
 
 Aufgaben haben die folgenden Eigenschaften:
 
-- Status. Dies kann "Offen", "In Bearbeitung", "Blockiert" oder "Fertig" sein
-- Priorität. Dies kann "Niedrig", "Mittel" oder "Hoch" sein
-- Etiketten. Die Etiketten sind normale Gramps-Etiketten der zugrunde liegenden Quelle. (Beachten Sie, dass alle Aufgaben zusätzlich das Etikett `ToDo` haben, um sie als Aufgaben zu kennzeichnen, dieses Etikett jedoch in der Aufgabenliste ausgeblendet wird, um Unordnung zu vermeiden.)
-- Titel. Wird in der Aufgabenliste angezeigt
-- Beschreibung. Ein Rich-Text-Feld, das verwendet werden kann, um die Problemstellung zu beschreiben, aber auch um Fortschritte zu dokumentieren
-- Medien. Alle Mediendateien, die an die Aufgabe angehängt sind
+- Status. Dies kann "Offen", "In Bearbeitung", "Blockiert" oder "Erledigt" sein.
+- Priorität. Dies kann "Niedrig", "Mittel" oder "Hoch" sein.
+- Etiketten. Die Etiketten sind normale Gramps-Etiketten der zugrunde liegenden Quelle. (Beachten Sie, dass alle Aufgaben zusätzlich das Etikett `ToDo` haben, um sie als Aufgaben zu kennzeichnen, aber dieses Etikett in der Aufgabenliste ausgeblendet ist, um Unordnung zu vermeiden.)
+- Titel. Wird in der Aufgabenliste angezeigt.
+- Beschreibung. Ein Rich-Text-Feld, das verwendet werden kann, um die Problemstellung zu beschreiben, aber auch um Fortschritte zu dokumentieren.
+- Medien. Alle Mediendateien, die an die Aufgabe angehängt sind.
 
 ## Eine Aufgabe erstellen
 
-Da Aufgaben normale Gramps-Objekte sind, können sie von der gleichen Benutzergruppe bearbeitet oder erstellt werden, die auch andere Objekte (wie Personen oder Ereignisse) bearbeiten oder erstellen kann.
+Da Aufgaben normale Gramps-Objekte sind, können sie von derselben Benutzergruppe bearbeitet oder erstellt werden, die auch andere Objekte (wie Personen oder Ereignisse) bearbeiten oder erstellen kann.
 
-Um eine Aufgabe zu erstellen, klicken Sie auf die Schaltfläche + auf der Seite der Aufgabenliste. Geben Sie mindestens einen Titel ein und optional eine Priorität, eine Beschreibung, Anhänge und Etiketten. Der Status wird bei der Erstellung immer "Offen" sein.
+Um eine Aufgabe zu erstellen, klicken Sie auf die Schaltfläche + auf der Seite der Aufgabenliste. Geben Sie mindestens einen Titel ein und optional eine Priorität, eine Beschreibung, Anhänge und Etiketten. Der Status ist bei der Erstellung immer "Offen".
 
 ## Die Aufgabenliste
 
-Die Aufgabenliste ist nach Status sortiert – erledigte Aufgaben zuletzt – und innerhalb jedes Status nach Priorität, wobei die höchste zuerst kommt.
+Standardmäßig ist die Aufgabenliste nach Status sortiert – erledigte Aufgaben zuletzt – und innerhalb jedes Status nach Priorität, wobei die höchste zuerst kommt. Das Sortiermenü in der Filterleiste sortiert ebenfalls nach Priorität, Titel oder letzter Änderung (neueste zuerst).
 
 Klicken Sie auf eine Aufgabe, um sie zu öffnen. Benutzer mit Bearbeitungsberechtigungen können auch auf das Statussymbol einer Aufgabe klicken, um ihren Status direkt in der Liste zu ändern, zum Beispiel um sie als erledigt zu markieren.
 
-Die **Filter**-Schaltfläche über der Liste filtert die Aufgaben nach Etikett, mit einem [GOQL](goql.md)-Ausdruck oder mit dem [erweiterten Filter](lists.md#advanced-filter).
+Die **Filter**-Schaltfläche über der Liste filtert die Aufgaben nach Titel, Status, Priorität oder Etikett, mit einem [GOQL](goql.md)-Ausdruck oder mit dem [erweiterten Filter](lists.md#advanced-filter). Das Ankreuzen mehrerer Status oder Prioritäten zeigt Aufgaben mit einem von ihnen an, zum Beispiel alle offenen und blockierten Aufgaben.
 
 ## Eine Aufgabe bearbeiten
 
 Die Aufgaben-Seite hat keinen separaten "Bearbeitungsmodus" wie andere Gramps-Objekte:
 
-- Klicken Sie auf den Titel, um ihn zu bearbeiten. Drücken Sie Enter, klicken Sie auf ✓ oder klicken Sie woanders, um zu speichern; drücken Sie Escape oder klicken Sie auf ✕, um abzubrechen.
+- Klicken Sie auf den Titel, um ihn zu bearbeiten. Drücken Sie die Eingabetaste, klicken Sie auf ✓ oder klicken Sie an eine andere Stelle, um zu speichern; drücken Sie die Escape-Taste oder klicken Sie auf ✕, um abzubrechen.
 - Änderungen am Status und an der Priorität werden sofort angewendet.
-- Um die Beschreibung oder die Anhänge zu bearbeiten, klicken Sie auf die Schaltfläche Bearbeiten neben der Überschrift des Abschnitts. Die Beschreibung wird mit der Schaltfläche "Speichern" darunter gespeichert; das Bearbeiten von Anhängen endet mit **Fertig**.
-- Die Schaltfläche für das Schloss legt fest, ob die Aufgabe privat ist. Die Beschreibung der Aufgabe erhält die gleiche Privatsphäre.
+- Um die Beschreibung oder die Anhänge zu bearbeiten, klicken Sie auf die Schaltfläche "Bearbeiten" neben der Überschrift des Abschnitts. Die Beschreibung wird mit der Schaltfläche "Speichern" darunter gespeichert; das Bearbeiten von Anhängen endet mit **Fertig**.
+- Die Schaltfläche "Sperren" legt fest, ob die Aufgabe privat ist. Die Beschreibung der Aufgabe erhält die gleiche Privatsphäre.
 
 Benutzer ohne Bearbeitungsberechtigungen sehen den Status und die Priorität als Text, und Abschnitte ohne Inhalt sind ausgeblendet.
 
@@ -50,7 +50,7 @@ Beim Hinzufügen von Aufgaben über Gramps Web haben sowohl die Quellen als auch
 
 Um eine Aufgabe in Gramps Desktop hinzuzufügen oder zu bearbeiten, verwenden Sie die folgenden Richtlinien:
 
-- Fügen Sie eine Quelle mit dem Etikett `ToDo` und dem Aufgabentitel als Titel hinzu
-- Optional, fügen Sie eine Notiz zur Quelle mit dem Etikett `ToDo`, dem Typ "To Do" und der Beschreibung als Text hinzu
-- Fügen Sie ein Attribut "Status" hinzu und setzen Sie es auf "Offen", "In Bearbeitung", "Blockiert" oder "Fertig"
-- Fügen Sie ein Attribut "Priorität" hinzu und setzen Sie es auf 9 für niedrig, 5 für mittel oder 1 für hoch (diese kontraintuitiven Werte stammen aus der iCalendar-Spezifikation)
+- Fügen Sie eine Quelle mit dem Etikett `ToDo` und dem Aufgabentitel als Titel hinzu.
+- Fügen Sie optional eine Notiz zur Quelle mit dem Etikett `ToDo`, dem Typ "To Do" und der Beschreibung als Text hinzu.
+- Fügen Sie ein Attribut "Status" hinzu und setzen Sie es auf "Offen", "In Bearbeitung", "Blockiert" oder "Erledigt".
+- Fügen Sie ein Attribut "Priorität" hinzu und setzen Sie es auf 9 für niedrig, 5 für mittel oder 1 für hoch (diese kontraintuitiven Werte stammen aus der iCalendar-Spezifikation).

@@ -1,12 +1,12 @@
 # Árvore Genealógica
 
-A página da Árvore Genealógica é acessível a partir da barra lateral e exibe gráficos interativos centrados em uma pessoa selecionada. Cinco tipos de gráficos estão disponíveis através de abas na parte superior da página.
+A página da Árvore Genealógica é acessível pela barra lateral e exibe gráficos interativos centrados em uma pessoa selecionada. Cinco tipos de gráficos estão disponíveis através de abas na parte superior da página.
 
 ## Selecionando a pessoa inicial
 
-Todos os gráficos começam a partir da pessoa atualmente selecionada na árvore (mostrada na barra de ferramentas). A pessoa atualmente centrada é destacada com uma sombra. Use o botão **Pessoa Inicial** para voltar à sua pessoa inicial ou o botão **Voltar** para retornar à pessoa visualizada anteriormente. Clicar no cartão de uma pessoa em qualquer gráfico recentra o gráfico nessa pessoa.
+Todos os gráficos começam a partir da pessoa atualmente selecionada na árvore (mostrada na barra de ferramentas). A pessoa atualmente centrada é destacada com uma sombra. Use o botão **Pessoa Inicial** para voltar à sua pessoa inicial, ou o botão **Voltar** para retornar à pessoa visualizada anteriormente. Clicar no cartão de uma pessoa em qualquer gráfico recentra o gráfico nessa pessoa.
 
-Se nenhuma pessoa inicial tiver sido definida, a página oferece um botão **Definir Pessoa Inicial** para pesquisar e selecionar uma diretamente. Se a árvore ainda não contiver nenhuma pessoa, os usuários com a função de Editor ou superior verão um botão **Nova Pessoa** – a primeira pessoa criada em uma árvore vazia automaticamente se torna sua pessoa inicial, então o gráfico é exibido imediatamente.
+Se nenhuma pessoa inicial tiver sido definida, a página oferece um botão **Definir Pessoa Inicial** para pesquisar e selecionar uma diretamente. Se a árvore ainda não contiver nenhuma pessoa, os usuários com a função de Editor ou superior verão um botão **Nova Pessoa** – a primeira pessoa criada em uma árvore vazia automaticamente se torna sua pessoa inicial, portanto o gráfico é exibido imediatamente.
 
 ## Tipos de gráficos
 
@@ -22,9 +22,11 @@ Mostra os descendentes da pessoa selecionada – filhos, netos, e assim por dian
 
 Combina antepassados acima e descendentes abaixo da pessoa selecionada em uma única visão.
 
-### Gráfico de Relações
+### Gráfico de Relação
 
-Mostra o caminho de relacionamento entre duas pessoas. A pessoa selecionada é uma extremidade; clique em qualquer outra pessoa no gráfico para definir a segunda extremidade e exibir o caminho de relacionamento mais curto entre elas.
+Mostra o caminho de relação entre duas pessoas. A pessoa selecionada é uma extremidade; clique em qualquer outra pessoa no gráfico para definir a segunda extremidade e exibir o caminho de relação mais curto entre elas.
+
+Cada casal é unido por um pequeno nó familiar entre os dois parceiros. Passe o mouse sobre ele, ou clique ou toque, para ver os detalhes da família – como a data e o local do casamento e os filhos – sem sair do gráfico. O botão **Abrir** na pré-visualização leva à página da família. O nó de um casal que não é casado tem um contorno tracejado.
 
 !!! note
     A mesma pessoa pode aparecer mais de uma vez no gráfico – por exemplo, quando alguém foi casado várias vezes e aparece em várias unidades familiares ao longo do caminho. Isso é intencional, não um erro.
@@ -33,9 +35,9 @@ Mostra o caminho de relacionamento entre duas pessoas. A pessoa selecionada é u
 
 Um gráfico de pedigree circular. Os antepassados irradiam para fora da pessoa selecionada no centro.
 
-O botão **Cor** na barra de ferramentas colore os segmentos por uma propriedade de cada pessoa: o número de eventos ou notas, ano de nascimento, ano de falecimento, idade, sobrenome, religião ou frequência de antepassados (com que frequência uma pessoa aparece no gráfico). A coloração por sobrenome utiliza o sobrenome do nome de nascimento da pessoa ou do nome principal se não houver nome de nascimento. Para remover a coloração, limpe o chip que mostra a cor escolhida.
+O botão **Cor** na barra de ferramentas colore os segmentos por uma propriedade de cada pessoa: o número de eventos ou notas, ano de nascimento, ano de falecimento, idade, sobrenome, religião ou frequência de antepassados (com que frequência uma pessoa aparece no gráfico). A coloração por sobrenome usa o sobrenome do nome de nascimento da pessoa, ou do nome principal se não houver nome de nascimento. Para remover a coloração, limpe o chip que mostra a cor escolhida.
 
-## Navegando para parentes e expandindo ramos
+## Movendo-se para parentes e expandindo ramos
 
 Na Árvore de Antepassados e no Gráfico em Leque, a pessoa selecionada tem um botão de chevron que abre um menu de seus filhos. Na Árvore de Descendentes, ele abre um menu de seus pais. Escolher uma pessoa no menu centra o gráfico nela.
 
@@ -47,24 +49,24 @@ Todos os tipos de gráficos compartilham uma barra de ferramentas com os seguint
 
 - **Pessoa Inicial** – volte para sua pessoa inicial
 - **Voltar** – volte para a pessoa que estava centrada anteriormente
-- **Detalhes da Pessoa** – abra a página de perfil completa da pessoa atualmente centrada
-- **Preferências** – abra um diálogo para ajustar opções de exibição específicas do gráfico (veja abaixo)
+- **Detalhes da Pessoa** – abra a página de perfil completo da pessoa atualmente centrada
+- **Preferências** – abra uma caixa de diálogo para ajustar opções de exibição específicas do gráfico (veja abaixo)
 
 Todos os gráficos suportam **pan** (clique e arraste) e **zoom** (rolagem do mouse ou pinça).
 
 ## Preferências do gráfico
 
-O diálogo **Preferências** (ícone de engrenagem na barra de ferramentas) permite que você ajuste as seguintes opções, dependendo do tipo de gráfico:
+A caixa de diálogo **Preferências** (ícone de engrenagem na barra de ferramentas) permite ajustar as seguintes opções, dependendo do tipo de gráfico:
 
 - **Máx. Gerações de Antepassados** – quantas gerações de antepassados exibir
 - **Máx. Gerações de Descendentes** – quantas gerações de descendentes exibir
-- **Máx. Grau de Separação** – para o Gráfico de Relações, o comprimento máximo do caminho a ser pesquisado, até 6
+- **Máx. Grau de Separação** – para o Gráfico de Relação, o comprimento máximo do caminho a ser pesquisado. Valores altos podem tornar o gráfico lento para carregar em árvores grandes.
 - **Máx. Número de Imagens exibidas** – limita as fotos de perfil mostradas no gráfico para desempenho
-- **Formato de Exibição do Nome** – controla como os nomes são exibidos nos cartões das pessoas
+- **Formato de Exibição do Nome** – controla como os nomes são mostrados nos cartões de pessoa
 
-Clique em **Redefinir** para restaurar os padrões ou **Fechar** para aplicar suas alterações.
+Clique em **Redefinir** para restaurar os padrões, ou **Fechar** para aplicar suas alterações.
 
-As configurações de preferências do gráfico são armazenadas no armazenamento local do navegador, para que persistam entre sessões no mesmo dispositivo.
+As configurações de preferências do gráfico são armazenadas no armazenamento local do navegador, portanto, persistem entre as sessões no mesmo dispositivo.
 
 ## Tipo de gráfico padrão
 

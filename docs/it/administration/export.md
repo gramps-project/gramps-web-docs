@@ -1,16 +1,16 @@
 # Esporta dati
 
-La pagina di Esportazione ti consente di scaricare i dati dell'albero genealogico in vari formati, così come un archivio di tutti i file multimediali.
+La pagina di Esportazione ti consente di scaricare i dati dell'albero genealogico in vari formati, oltre a un archivio di tutti i file multimediali.
 
 ## Esporta l'albero genealogico come Gramps XML
 
-Per ottenere una copia dei dati dell'albero genealogico, apri la pagina di Esportazione in Gramps Web e seleziona il formato Gramps XML. Cliccando su "esporta" verrà generato il file e inizierà il download non appena sarà pronto.
+Per ottenere una copia dei dati dell'albero genealogico, apri la pagina di Esportazione in Gramps Web e seleziona il formato Gramps XML. Clicca su **Genera** per creare il file e su **Scarica** una volta che è pronto. Per un albero di grandi dimensioni, la generazione del file può richiedere del tempo; puoi lasciare la pagina nel frattempo e scaricare il file in seguito dalla sua voce nelle [notifiche](../user-guide/notifications.md).
 
-Nota che se il tuo utente Gramps Web non ha il permesso di visualizzare i record privati, l'esportazione non conterrà alcun record privato.
+Nota che se il tuo utente Gramps Web non ha il permesso di visualizzare record privati, l'esportazione non conterrà alcun record privato.
 
 ## Esegui il backup del tuo albero genealogico
 
-Per backup completi dell'albero – inclusi le sue impostazioni e gli utenti – vedi [Esegui il backup e ripristina](backups.md). Un'esportazione in Gramps XML può servire come backup dei dati dell'albero genealogico solo e può essere ripristinata tramite [Ripristina da Backup](backups.md#restore-from-backup).
+Per backup completi dell'albero – inclusi le sue impostazioni e gli utenti – consulta [Esegui il backup e ripristina](backups.md). Un'esportazione in Gramps XML può servire come backup dei dati dell'albero genealogico solo e può essere ripristinata tramite [Ripristina da Backup](backups.md#restore-from-backup).
 
 ## Condividi il tuo albero genealogico con utenti di altri programmi genealogici
 
@@ -24,19 +24,19 @@ Nota che, specialmente per alberi di grandi dimensioni, questa può essere un'op
 
 Un'opzione migliore per eseguire il backup dei tuoi file multimediali su base regolare è utilizzare il [complemento Gramps Web Sync](sync.md) (che di per sé non è una soluzione di backup) e creare backup incrementali sul tuo computer locale.
 
-In entrambi i casi, se il tuo utente Gramps Web non ha il permesso di visualizzare i record privati, l'esportazione non conterrà file di oggetti multimediali privati.
+In entrambi i casi, se il tuo utente Gramps Web non ha il permesso di visualizzare record privati, l'esportazione non conterrà file di oggetti multimediali privati.
 
-## Trasferisci a un'altra istanza di Gramps Web
+## Sposta a un'altra istanza di Gramps Web
 
-Gramps Web non ti blocca con un fornitore specifico e puoi sempre trasferirti a un'altra istanza di Gramps Web senza perdere dati e senza avere accesso diretto a nessuno dei server.
+Gramps Web non ti vincola a un fornitore specifico e puoi sempre spostarti a un'altra istanza di Gramps Web senza perdere dati e senza avere accesso diretto a nessuno dei server.
 
 Per ottenere una migrazione completa, segui questi passaggi (supponendo che tu abbia i permessi di proprietario dell'albero):
 
 1. Vai alla pagina di Esportazione ed esporta il tuo albero come file Gramps XML (`.gramps`). Se utilizzi il [complemento Sync](sync.md), puoi anche generare l'esportazione in Gramps desktop.
-2. Nella pagina di Esportazione, genera e scarica un archivio multimediale. Se utilizzi il [complemento Sync](sync.md), puoi anche semplicemente comprimere la tua cartella multimediale locale di Gramps in un file ZIP.
-3. Vai su Impostazioni > Amministrazione > Gestisci utenti e clicca sul pulsante "Esporta dettagli utente". Verrà scaricato un file JSON.
-4. Nella nuova istanza di Gramps Web, apri la pagina di Importazione. Importa il file `.gramps` esportato nel passaggio 1.
-5. Nella pagina di Importazione della nuova istanza di Gramps Web, carica l'archivio multimediale (ZIP).
+2. Nella pagina di Esportazione, genera e scarica un archivio multimediale. Se utilizzi il [complemento Sync](sync.md), puoi anche semplicemente comprimere la tua cartella multimediale Gramps locale in un file ZIP.
+3. Vai su Impostazioni > Amministrazione > Gestisci utenti e clicca sul pulsante "Esporta dettagli utente". Scaricherà un file JSON.
+4. Nella nuova istanza di Gramps Web, apri la [pagina di Importazione](import.md). Importa il file `.gramps` esportato nel passaggio 1.
+5. Nella pagina di Importazione della nuova istanza di Gramps Web, carica l'archivio multimediale (ZIP) sotto [Importa file multimediali](import-media.md).
 6. Vai su Impostazioni > Amministrazione > Gestisci utenti della nuova istanza di Gramps Web. Clicca sul pulsante "Importa account utente" e carica il file JSON scaricato nel passaggio 3.
 
 Nota che, mentre i tuoi account utente saranno migrati, tutti i tuoi utenti dovranno impostare nuove password utilizzando il link "password dimenticata", poiché le password sono memorizzate in forma crittografata e non possono essere esportate.

@@ -4,7 +4,7 @@ L'interface de gestion des utilisateurs est accessible via **Paramètres > Gére
 
 ## Rôles des utilisateurs
 
-Voir [Système d'utilisateurs](../install_setup/users.md) pour une description complète des rôles d'utilisateur disponibles et de leurs permissions.
+Voir [Système d'utilisateurs](../install_setup/users.md) pour une description complète des rôles d'utilisateur disponibles et de leurs permissions. La principale différence entre les invités et les membres est que les invités ne peuvent pas voir les [enregistrements privés](../user-guide/privacy.md), donc choisissez le rôle en fonction de ce que vous marquez comme privé.
 
 ## Afficher et filtrer les utilisateurs
 
@@ -14,7 +14,7 @@ La page de gestion des utilisateurs affiche un tableau de tous les comptes d'uti
 - **Nom complet** – le nom affiché
 - **E-mail** – l'adresse e-mail de l'utilisateur
 - **Rôle** – le rôle attribué (Invité, Membre, Contributeur, Éditeur, Propriétaire ou Administrateur)
-- **Source du compte** – soit "Mot de passe" (compte local) soit le nom d'un fournisseur d'identité externe (par exemple, lors de l'utilisation de l'OIDC)
+- **Source du compte** – soit "Mot de passe" (compte local) soit le nom d'un fournisseur d'identité externe (par exemple, lors de l'utilisation d'OIDC)
 
 Utilisez le champ de recherche et le menu déroulant des rôles en haut du tableau pour filtrer la liste. Cliquez sur le bouton de réinitialisation des filtres pour réinitialiser tous les filtres.
 
@@ -26,9 +26,9 @@ Cliquez sur l'icône de modification (crayon) sur n'importe quelle ligne pour ou
 - L'adresse e-mail
 - Le rôle
 
-C'est le moyen principal pour **activer un nouvel utilisateur auto-enregistré** : changez son rôle de *désactivé* à un rôle actif (par exemple, Membre ou Éditeur).
+C'est la principale façon de **permettre à un nouvel utilisateur auto-enregistré** : changez son rôle de *désactivé* à tout rôle actif (par exemple, Membre ou Éditeur).
 
-Les adresses e-mail n'ont pas besoin d'être uniques (depuis l'API Web Gramps 3.22), donc plusieurs comptes peuvent partager la même adresse.
+Les adresses e-mail n'ont pas besoin d'être uniques (depuis Gramps Web API 3.22), donc plusieurs comptes peuvent partager la même adresse.
 
 Désactiver un utilisateur ou changer son mot de passe met fin à toutes ses sessions dans les 15 minutes.
 
@@ -41,28 +41,28 @@ Cliquez sur l'icône **ajouter un utilisateur** (personne-ajouter) au-dessus du 
 
 ## Supprimer un utilisateur
 
-Cliquez sur l'icône de suppression (corbeille) sur n'importe quelle ligne et confirmez dans la boîte de dialogue. Cette action ne peut pas être annulée.
+Cliquez sur l'icône de suppression (corbeille) sur n'importe quelle ligne et confirmez la boîte de dialogue. Cette action ne peut pas être annulée.
 
 !!! note
-    Pour éviter qu'un arbre ne soit laissé sans personne pouvant l'administrer, vous ne pouvez pas abaisser votre propre rôle en dessous de Propriétaire ou supprimer votre propre compte si vous êtes le seul Propriétaire ou Administrateur de l'arbre. Promouvez d'abord un autre utilisateur au rôle de Propriétaire. Un administrateur peut toujours changer ou supprimer le dernier propriétaire de l'arbre d'un autre utilisateur, puisqu'il peut en nommer un nouveau.
+    Pour éviter qu'un arbre ne soit laissé sans personne pour l'administrer, vous ne pouvez pas abaisser votre propre rôle en dessous de Propriétaire ou supprimer votre propre compte si vous êtes le seul Propriétaire ou Administrateur de l'arbre. Promouvez d'abord un autre utilisateur au rôle de Propriétaire. Un administrateur peut toujours changer ou supprimer le dernier propriétaire de l'arbre d'un autre utilisateur, car il peut en nommer un nouveau.
 
 ## Exporter et importer des comptes utilisateurs
 
 Ces boutons sont utiles lors de [la migration vers une autre instance de Gramps Web](export.md).
 
 - **Exporter les détails des utilisateurs** (icône de téléchargement) – télécharge un fichier JSON contenant tous les comptes utilisateurs (sans mots de passe, puisque les mots de passe sont stockés sous forme cryptée).
-- **Importer des comptes utilisateurs** (icône de groupe-ajouter) – télécharge un fichier JSON précédemment exporté pour créer des comptes utilisateurs en masse. Tous les utilisateurs importés devront définir un nouveau mot de passe via le lien "Mot de passe oublié", puisque les mots de passe ne peuvent pas être transférés.
+- **Importer des comptes utilisateurs** (icône de groupe-ajouter) – télécharge un fichier JSON précédemment exporté pour créer des comptes utilisateurs en masse. Tous les utilisateurs importés devront définir un nouveau mot de passe via le lien "Mot de passe oublié", car les mots de passe ne peuvent pas être transférés.
 
 ## Lien d'inscription (configuration multi-arbres uniquement)
 
 Dans une configuration multi-arbres, le lien d'inscription pour les nouveaux utilisateurs est affiché en haut de la page de gestion des utilisateurs. Vous pouvez copier ce lien et le partager avec les personnes que vous souhaitez inviter à s'inscrire pour un compte sur votre arbre.
 
 !!! note
-    Dans une configuration mono-arbre, il y a un lien générique "S'inscrire" sur la page de connexion ; le lien d'inscription par arbre n'est nécessaire que dans les installations multi-arbres.
+    Dans une configuration à arbre unique, il y a un lien générique "S'inscrire" sur la page de connexion ; le lien d'inscription par arbre n'est nécessaire que dans les installations multi-arbres.
 
 ## Permissions de chat AI
 
-Si le chat AI a été activé sur le serveur, un menu déroulant en haut de la page vous permet de contrôler quels rôles d'utilisateur sont autorisés à utiliser la fonctionnalité de chat :
+Si le chat AI a été activé sur le serveur, un menu déroulant en haut de la page vous permet de contrôler quels rôles d'utilisateur sont autorisés à utiliser la fonction de chat :
 
 - Tout le monde (y compris les invités)
 - Membre et plus

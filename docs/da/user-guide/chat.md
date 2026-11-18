@@ -1,46 +1,57 @@
 # Brug af AI-assistenten
 
-!!! info
-    AI-assistenten kræver Gramps Web API version 2.5.0 eller højere og Gramps Web version 24.10.0 eller højere. Gramps Web API version 3.6.0 introducerede værktøjsopkaldsfunktioner for mere intelligente interaktioner.
-
-Den **Assistent** visning i Gramps Web (hvis tilgængelig i din installation, mærket "Chat" i ældre versioner) giver adgang til en AI-assistent, der kan besvare spørgsmål om dit slægtstræ.
+**Assistent**-visningen i Gramps Web (hvis aktiveret i din installation) giver adgang til en AI-assistent, der besvarer spørgsmål om dit slægtstræ.
 
 !!! warning
-    Da dette stadig er en ny og udviklende funktion, fungerer nogle typer spørgsmål godt, mens andre ikke gør. Ligesom med enhver AI-assistent kan den give faktuelt forkerte svar, så sørg for altid at dobbelttjekke.
+    Som med enhver AI-assistent kan svarene være forkerte. Brug linksene i svaret til at tjekke de optegnelser, det er baseret på.
 
 ## Sådan fungerer det
 
-For at forstå, hvilke typer spørgsmål assistenten kan besvare, er det nyttigt at forstå, hvordan det fungerer under motorhjelmen:
+Assistenten kender ikke dit træ på forhånd. For at besvare et spørgsmål slår en stor sprogmodel op i de optegnelser, den har brug for, ligesom du ville gøre selv:
 
-1. Brugeren stiller et spørgsmål.
-2. Assistenten forespørger direkte din database ved hjælp af specialiserede værktøjer: den søger i træet med [fuldtekst søgning](search.md), filtrerer personer/begivenheder/familier/steder efter specifikke kriterier, beregner relationer mellem individer og slår komplette optegnelser op, inklusive deres noter.
-3. En stor sprogmodel formulerer et svar baseret på de optegnelser, den har fundet.
-4. Svaret vises for dig, med links til de optegnelser, det er baseret på.
+- den søger i træet med [fuldtekst søgning](search.md),
+- den filtrerer personer, begivenheder og familier efter kriterier som navne, datoer, steder eller antallet af børn,
+- den finder forfædre, efterkommere og andre slægtninge til en person, med deres relation,
+- den læser komplette optegnelser om personer, familier, begivenheder, steder og noter.
 
-Assistenten svarer kun ud fra dit træ, ikke fra den generelle viden om sprogmodellen – selvom det gælder velkendte personer. Hvis træet ikke registrerer noget, siger det det, og nævner relateret information, det fandt, for eksempel i en note. Links til objekter, du ikke har lov til at se, vises som almindelig tekst.
+Den svarer derefter baseret på de optegnelser, den har fundet, med links til dem. Mens den arbejder, vises de værktøjer, den bruger, så du kan følge med. Spørgsmål, der tager længere tid, kører i baggrunden – du kan navigere væk og komme tilbage.
 
-Opfølgende spørgsmål bevarer konteksten fra tidligere spørgsmål i den samme samtale, så du kan spørge "Og hvornår døde han?" efter at have spurgt om en person.
+Assistenten svarer kun ud fra dit træ, ikke fra den generelle viden om sprogmodellen – selv ikke om velkendte personer. Hvis træet ikke registrerer noget, siger det det, og nævner relateret information, den fandt, for eksempel i en note. Den ser kun, hvad du har lov til at se: links til private optegnelser vises som almindelig tekst for brugere, der ikke kan se dem.
 
-Mens assistenten arbejder, viser indikatorer, hvilke værktøjer den i øjeblikket bruger (f.eks. søger efter personer, slår relationer op), så du kan følge med, mens den bygger sit svar. Længerevarende spørgsmål behandles som baggrundsopgaver – du kan navigere væk og komme tilbage, og fremskridt afspejles også i [Notifikationer](notifications.md). Svarene er formateret med Markdown (lister, fremhævelse, links osv.) for lettere læsning.
+Opfølgningsspørgsmål bevarer konteksten fra tidligere spørgsmål i den samme samtale, så du kan spørge "Og hvornår døde han?" efter at have spurgt om en person.
 
 ## Hvad du kan spørge om
 
-Med de værktøjsopkaldsfunktioner, der blev introduceret i Gramps Web API version 3.6.0, kan AI-assistenten nu håndtere mere komplekse spørgsmål:
+- **Fakta om personer**: "Hvornår blev Mary Smith født?" eller "Hvad hedder John Does børn?"
+- **Slægtninge**: "Hvem er bedsteforældrene til Jane Smith?" eller "Hvilke efterkommere af Johann Meyer emigrerede til Amerika?"
+- **Søgninger med kriterier**: "Hvem blev født i London efter 1850?", "List ægteskaber mellem 1920 og 1950", eller "Hvilke par havde fem eller flere børn?"
+- **Steder**: "Hvilke begivenheder fandt sted i Paris?" eller "Hvem blev født i Danmark?" – steder inden for et større sted er inkluderet.
+- **Noter**: "Hvad siger noterne om gården til Meyer-familien?"
 
-- **Familierelationer**: "Hvem er bedsteforældrene til Jane Smith?" eller "Hvordan er John Doe relateret til Mary Johnson?"
-- **Filtrerede søgninger**: "Vis mig alle personer født i London efter 1850" eller "Hvilke begivenheder fandt sted i Paris?"
-- **Dato-baserede forespørgsler**: "Hvem døde før 1900?" eller "List ægteskaber, der fandt sted mellem 1920 og 1950"
-- **Stedinformation**: "Hvilke steder er der i Frankrig?" eller "Fortæl mig om St. Mary's Church"
-- **Generelle spørgsmål**: "Hvad hedder John Does børn?" eller "Hvornår blev Mary Smith født?"
+Spørgsmål, der kræver hele træet på én gang, såsom "Hvad er det mest almindelige fornavn?", fungerer mindre godt, da assistenten kun ser et begrænset antal optegnelser pr. opslag.
+
+## Spørgsmål om billeder
+
+Hvis serveradministratoren har aktiveret det, har prompten en knap til at vedhæfte billeder. Du kan også indsætte et billede eller trække billedfiler ind på prompten. Op til fire billeder kan vedhæftes til et spørgsmål, for eksempel et scan af en kirkebog for at spørge "Hvem nævnes i denne post, og er de i mit træ?"
+
+Billederne sendes kun med det spørgsmål, de er vedhæftet. Opfølgningsspørgsmål kan referere til, hvad assistenten sagde om dem, men ikke til billederne selv, så vedhæft dem igen, hvis det er nødvendigt. Hvis dit træ har en grænse for AI-brug, tæller hvert billede som et ekstra spørgsmål.
+
+## Lad assistenten ændre dit træ
+
+Hvis serveradministratoren har aktiveret det, kan redaktører, ejere og administratorer bede assistenten om at ændre træet, for eksempel "Tilføj en dåb den 3. maj 1802 i St. Mary's til Johann Meyer" eller "Ret fødselsåret for Anna Smith, det skal være 1871".
+
+Assistenten ændrer aldrig noget af sig selv. Den svarer med et **Foreslåede ændringer** kort, der viser hver optegnelse, den ville tilføje, redigere eller slette, med de gamle værdier gennemstreget og de nye værdier fremhævet. Intet sker, før du klikker på **Anvend**. Ændringerne foretages derefter i ét trin, som du kan fortryde ligesom enhver anden redigering, fra den besked, der vises, eller i [revisionshistorikken](revisions.md).
+
+Tjek et forslag grundigt, før du anvender det – især at assistenten har valgt den rigtige person, og at den ikke har tilføjet en ny optegnelse (såsom et sted eller en kilde), der allerede findes i dit træ under et lidt andet navn. Hvis et forslag ikke er helt korrekt, så sig, hvad der skal ændres, og assistenten foreslår igen.
+
+Når et forslag er blevet anvendt, kan ældre forslag i den samme samtale ikke længere anvendes, da de blev lavet til træet, som det var før. Det samme sker, hvis en af de berørte optegnelser er blevet ændret i mellemtiden.
 
 ## Tips til at stille spørgsmål
 
-For at få de bedste resultater fra AI-assistenten:
-
-- **Vær specifik**: Formuler dit spørgsmål med så mange detaljer som muligt for at undgå tvetydigheder. For eksempel, "Hvornår giftede John Smith, født i 1850 i Boston, sig?" er bedre end "Hvornår giftede John Smith sig?"
-- **Brug rigtige navne**: Nævn specifikke navne, steder og datoer, når det er relevant.
-- **Spørg om én ting ad gangen**: Del komplekse spørgsmål op i enklere dele for bedre resultater.
-- **Brug dit eget sprog**: Store sprogmodeller er flersprogede, så du kan stille spørgsmål på dit eget sprog og modtage svar på samme sprog.
+- **Navngiv personerne.** Assistenten ved ikke, hvem du er, eller hvem din hjemmeperson er, så i stedet for "min bedstemor", spørg om "bedstemoren til Anna Smith (født 1950)". Du kan også bruge Gramps ID'er, f.eks. "børnene til I0042".
+- **Vær specifik** når navne er almindelige: "Hvornår giftede John Smith, født i 1850 i Boston, sig?" er bedre end "Hvornår giftede John Smith sig?"
+- **Brug dit sprog.** Du kan spørge på dit eget sprog og modtage svar på samme sprog.
+- **Spørg igen anderledes** hvis et svar ser ufuldstændigt ud – for eksempel ved at nævne det sted eller tidsrum, du er interesseret i.
 
 !!! tip
-    Del venligst din erfaring om, hvad der fungerer og ikke fungerer med fællesskabet.
+    Del venligst din erfaring med, hvad der fungerer og ikke fungerer med fællesskabet.

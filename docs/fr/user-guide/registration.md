@@ -1,12 +1,14 @@
-Dans une installation à arbre unique, n'importe qui peut créer un nouveau compte sur une instance de Gramps Web, mais il devra être activé manuellement par un propriétaire de site avant de pouvoir être utilisé pour se connecter.
+Dans une installation à arbre unique, n'importe qui peut enregistrer un nouveau compte sur une instance Gramps Web, mais il devra être activé manuellement par un propriétaire de site avant de pouvoir être utilisé pour se connecter.
 
 Dans une installation à plusieurs arbres, les utilisateurs ont également besoin de l'ID de l'arbre pour s'inscrire ; en pratique, cela signifie qu'ils peuvent s'inscrire en utilisant un lien d'inscription partagé par le propriétaire de l'arbre.
 
 ## 1. Trouver le formulaire d'inscription
 
-Sur le formulaire de connexion de la page d'accueil de Gramps Web, il y a généralement un lien "Créer un nouveau compte".
+Sur le formulaire de connexion de la page d'accueil de Gramps Web, il y a généralement un lien "Enregistrer un nouveau compte".
 
-Si ce lien est manquant, c'est probablement parce qu'il s'agit d'une installation à plusieurs arbres de Gramps Web. Dans ce cas, contactez le propriétaire de l'arbre pour obtenir un lien d'inscription.
+Si ce lien est manquant, soit l'inscription est désactivée sur ce serveur, soit il s'agit d'une installation à plusieurs arbres de Gramps Web. Dans les deux cas, contactez le propriétaire de l'arbre, qui peut créer un compte pour vous ou vous envoyer un lien d'inscription.
+
+Si le serveur prend en charge la connexion avec un compte externe (tel que Google, Microsoft ou le système d'authentification unique de votre organisation), la page d'inscription propose également ces options. Choisir l'une d'elles crée votre compte sans mot de passe et sans la confirmation par e-mail ci-dessous. À moins que le serveur n'attribue des rôles automatiquement, le compte doit encore être activé par le propriétaire de l'arbre (étape 4).
 
 Le propriétaire de l'arbre peut trouver et copier le lien d'inscription sous Paramètres/Administration.
 
@@ -24,4 +26,4 @@ Si l'e-mail de confirmation n'arrive pas (et que vous avez vérifié votre dossi
 
 Après que l'adresse e-mail a été confirmée, le propriétaire de l'arbre recevra une notification par e-mail et pourra activer le nouveau compte utilisateur en se rendant dans la section "Administration des utilisateurs" de la page des paramètres (accessible via l'icône utilisateur dans la barre d'application en haut) et en changeant le rôle de l'utilisateur de "désactivé" à l'un des [autres rôles](../install_setup/users.md).
 
-Notez que le nouvel utilisateur ne recevra *pas* de notification automatisée que son compte a été activé, il est donc conseillé à l'administrateur de les informer personnellement.
+Notez que le nouvel utilisateur ne recevra *pas* de notification automatisée que son compte a été activé, il est donc conseillé à l'administrateur de les notifier personnellement.

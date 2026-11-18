@@ -1,46 +1,57 @@
 # AI Asistanını Kullanma
 
-!!! bilgi
-    AI Asistanı, Gramps Web API sürüm 2.5.0 veya daha yüksek ve Gramps Web sürüm 24.10.0 veya daha yüksek gerektirir. Gramps Web API sürüm 3.6.0, daha akıllı etkileşimler için araç çağırma yeteneklerini tanıttı.
-
-Gramps Web'deki **Asistan** görünümü (kurulumunuzda mevcutsa, eski sürümlerde "Sohbet" olarak etiketlenmiştir) aile ağacınızla ilgili soruları yanıtlayabilen bir AI asistanına erişim sağlar.
+Gramps Web'deki **Asistan** görünümü (kurulumunuzda etkinleştirildiyse), aile ağacınızla ilgili soruları yanıtlayan bir AI asistanına erişim sağlar.
 
 !!! uyarı
-    Bu hala yeni ve gelişen bir özellik olduğundan, bazı soru türleri iyi çalışırken diğerleri çalışmayabilir. Ayrıca, herhangi bir AI asistanında olduğu gibi, yanlış bilgi verebilir, bu nedenle her zaman iki kez kontrol ettiğinizden emin olun.
+    Her AI asistanında olduğu gibi, yanıtlar yanlış olabilir. Yanıtın dayandığı kayıtları kontrol etmek için bağlantıları kullanın.
 
 ## Nasıl çalışır
 
-Asistanın hangi tür soruları yanıtlayabileceğini anlamak için, nasıl çalıştığını anlamak faydalıdır:
+Asistan, ağacınızı önceden bilmez. Bir soruyu yanıtlamak için, büyük bir dil modeli ihtiyaç duyduğu kayıtları arar, tıpkı sizin kendinizin yapacağı gibi:
 
-1. Kullanıcı bir soru sorar.
-2. Asistan, özel araçlar kullanarak doğrudan veritabanınızı sorgular: ağaçta [tam metin araması](search.md) yapar, insanları/olayları/aileleri/yerleri belirli kriterlere göre filtreler, bireyler arasındaki ilişkileri hesaplar ve notları da dahil olmak üzere tam kayıtları arar.
-3. Büyük bir dil modeli, bulduğu kayıtlara dayanarak bir cevap oluşturur.
-4. Cevap, dayandığı kayıtlara bağlantılarla birlikte size gösterilir.
+- [tam metin araması](search.md) ile ağacı arar,
+- isimler, tarihler, yerler veya çocuk sayısı gibi kriterlere göre insanları, olayları ve aileleri filtreler,
+- bir kişinin atalarını, torunlarını ve diğer akrabalarını, aralarındaki ilişki ile birlikte bulur,
+- insanların, ailelerin, olayların, yerlerin ve notların tam kayıtlarını okur.
 
-Asistan, yalnızca sizin ağacınızdan yanıt verir, dil modelinin genel bilgisinden değil – tanınmış kişiler hakkında bile. Ağaç bir şeyi kaydetmiyorsa, bunu belirtir ve bulduğu ilgili bilgileri, örneğin bir notta, belirtir. Görmenize izin verilmeyen nesnelere bağlantılar düz metin olarak gösterilir.
+Sonrasında bulduğu kayıtlara dayanarak yanıt verir ve onlara bağlantılar sağlar. Çalışırken kullandığı araçlar gösterilir, böylece süreci takip edebilirsiniz. Daha uzun süren sorular arka planda çalışır – başka sayfalara geçebilir ve geri dönebilirsiniz.
 
-Takip soruları, aynı konuşmadaki önceki soruların bağlamını korur, böylece bir kişi hakkında soru sorduktan sonra "Ve ne zaman öldü?" diye sorabilirsiniz.
+Asistan yalnızca sizin ağacınızdan yanıt verir, dil modelinin genel bilgisinden değil – tanınmış kişiler hakkında bile. Eğer ağaçta bir şey kaydedilmemişse, bunu belirtir ve bulduğu ilgili bilgileri, örneğin bir notta, belirtir. Sadece sizin görebileceğiniz şeyleri görür: özel kayıtlara bağlantılar, bunları göremeyen kullanıcılar için düz metin olarak gösterilir.
 
-Asistan çalışırken, hangi araçları kullandığını gösteren göstergeler vardır (örneğin, insanları arama, ilişkileri araştırma), böylece cevabını oluştururken onu takip edebilirsiniz. Uzun süren sorular arka plan görevleri olarak işlenir – başka bir yere gidebilir ve geri dönebilirsiniz, ilerleme [Bildirimler](notifications.md) bölümünde de yansıtılır. Cevaplar, daha kolay okunabilmesi için Markdown ile biçimlendirilmiştir (listeler, vurgular, bağlantılar vb.).
+Takip soruları, aynı konuşmadaki önceki soruların bağlamını korur, böylece bir kişi hakkında sorduğunuzdan sonra "Ve ne zaman öldü?" diye sorabilirsiniz.
 
 ## Ne sorabilirsiniz
 
-Gramps Web API sürüm 3.6.0 ile tanıtılan araç çağırma yetenekleri sayesinde, AI asistanı artık daha karmaşık soruları da yanıtlayabilir:
+- **İnsanlar hakkında gerçekler**: "Mary Smith ne zaman doğdu?" veya "John Doe'nun çocuklarının isimleri nelerdir?"
+- **Akrabalar**: "Jane Smith'in büyükanne ve büyükbabaları kimlerdir?" veya "Johann Meyer'in hangi torunları Amerika'ya göç etti?"
+- **Kriterlerle aramalar**: "1850'den sonra Londra'da kim doğdu?", "1920 ile 1950 arasındaki evlilikleri listele" veya "Beş veya daha fazla çocuğu olan çiftler kimlerdir?"
+- **Yerler**: "Paris'te hangi olaylar gerçekleşti?" veya "Kim Danimarka'da doğdu?" – daha büyük bir yer içindeki yerler de dahil edilir.
+- **Notlar**: "Meyer ailesinin çiftliği hakkında notlar ne diyor?"
 
-- **Aile ilişkileri**: "Jane Smith'in büyük ebeveynleri kimlerdir?" veya "John Doe, Mary Johnson ile nasıl akrabadır?"
-- **Filtrelenmiş aramalar**: "1850'den sonra Londra'da doğan tüm insanları göster" veya "Paris'te hangi olaylar oldu?"
-- **Tarih tabanlı sorgular**: "1900'den önce kimler öldü?" veya "1920 ile 1950 arasında gerçekleşen evlilikleri listele"
-- **Yer bilgisi**: "Fransa'da hangi yerler var?" veya "St. Mary's Kilisesi hakkında bana bilgi ver"
-- **Genel sorular**: "John Doe'nun çocuklarının adı nedir?" veya "Mary Smith ne zaman doğdu?"
+Tüm ağacı bir anda gerektiren sorular, örneğin "En yaygın ilk isim nedir?", asistanın her aramada sınırlı sayıda kaydı görebilmesi nedeniyle daha az etkili çalışır.
 
-## Soru sormak için ipuçları
+## Görseller hakkında sorma
 
-AI asistanından en iyi sonuçları almak için:
+Eğer sunucu yöneticisi bunu etkinleştirdiyse, istemde görsel eklemek için bir düğme vardır. Ayrıca bir görseli yapıştırabilir veya isteme görsel dosyaları sürükleyip bırakabilirsiniz. Bir soruya kadar dört görsel eklenebilir, örneğin "Bu kayıtta kim bahsediliyor ve benim ağacımda var mı?" diye sormak için bir kilise kaydının taramasını ekleyebilirsiniz.
 
-- **Açık olun**: Sorunuzu mümkün olduğunca fazla ayrıntıyla formüle edin, belirsizliklerden kaçının. Örneğin, "1850'de Boston'da doğan John Smith ne zaman evlendi?" demek, "John Smith ne zaman evlendi?" demekten daha iyidir.
-- **Doğru isimler kullanın**: İlgili olduğunda belirli isimleri, yerleri ve tarihleri belirtin.
-- **Tek bir şey sorun**: Karmaşık soruları daha basit parçalara ayırarak daha iyi sonuçlar alın.
-- **Kendi dilinizi kullanın**: Büyük dil modelleri çok dilli olduğu için, kendi dilinizde sorular sorabilir ve aynı dilde cevaplar alabilirsiniz.
+Görseller yalnızca ekli oldukları soruyla birlikte gönderilir. Takip soruları, asistanın bunlar hakkında söylediklerine atıfta bulunabilir, ancak görsellere değil, bu nedenle gerekirse onları tekrar ekleyin. Eğer ağacınızda AI kullanımına bir sınır varsa, her görsel ek bir soru gibi sayılır.
+
+## Asistanın ağacınızı değiştirmesine izin verme
+
+Eğer sunucu yöneticisi bunu etkinleştirdiyse, editörler, sahipler ve yöneticiler asistanın ağacı değiştirmesini isteyebilir, örneğin "Johann Meyer için 3 Mayıs 1802'de St. Mary's'te bir vaftiz ekle" veya "Anna Smith'in doğum yılını düzelt, 1871 olmalı" gibi.
+
+Asistan asla kendi başına bir şeyi değiştirmez. Eklemek, düzenlemek veya silmek istediği her kaydı listeleyen bir **Önerilen değişiklikler** kartı ile yanıt verir; eski değerler üstü çizili, yeni değerler ise vurgulanmış olarak gösterilir. **Uygula** butonuna tıklamadığınız sürece hiçbir şey gerçekleşmez. Değişiklikler, diğer düzenlemeler gibi geri alabileceğiniz bir mesajdan veya [revizyon geçmişinden](revisions.md) tek adımda yapılır.
+
+Bir öneriyi uygulamadan önce dikkatlice kontrol edin – özellikle asistanın doğru kişiyi seçtiğinden ve ağacınızda zaten var olan (bir yer veya kaynak gibi) yeni bir kayıt eklemediğinden emin olun, bu kayıt biraz farklı bir isimle mevcut olabilir. Eğer bir öneri tam doğru değilse, neyin değiştirilmesi gerektiğini belirtin ve asistan tekrar öneride bulunsun.
+
+Bir öneri uygulandıktan sonra, aynı konuşmadaki daha eski öneriler artık uygulanamaz, çünkü bunlar ağacın öncesi için yapılmıştı. Aynı şey, etkilenen kayıtlardan biri bu süre zarfında değiştirilirse de geçerlidir.
+
+## Soru sorma ipuçları
+
+- **İnsanları adlandırın.** Asistan sizin kim olduğunuzu veya evdeki kişinin kim olduğunu bilmez, bu yüzden "büyükanne" yerine "Anna Smith'in (1950 doğumlu) büyükanne" hakkında sorun. Ayrıca Gramps ID'lerini de kullanabilirsiniz, örneğin "I0042'nin çocukları".
+- **Belirgin olun** isimler yaygın olduğunda: "1850'de Boston'da doğan John Smith ne zaman evlendi?" demek, "John Smith ne zaman evlendi?" demekten daha iyidir.
+- **Kendi dilinizi kullanın.** Kendi dilinizde sorabilirsiniz ve aynı dilde yanıt alabilirsiniz.
+- **Farklı bir şekilde tekrar sorun** eğer bir yanıt eksik görünüyorsa – örneğin, ilgilendiğiniz yer veya zaman dilimini belirterek.
 
 !!! ipucu
-    Lütfen toplulukla işe yarayan ve yaramayan şeyler hakkında deneyimlerinizi paylaşın.
+    Lütfen toplulukla işe yarayan ve işe yaramayan şeyler hakkında deneyimlerinizi paylaşın.

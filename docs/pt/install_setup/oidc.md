@@ -2,7 +2,7 @@
 
 Gramps Web suporta autenticação OpenID Connect (OIDC), permitindo que os usuários façam login usando provedores de identidade externos. Isso inclui os provedores integrados Google e Microsoft, bem como provedores OIDC personalizados como Keycloak, Authentik e Authelia.
 
-!!! warning "GitHub como um provedor OIDC não é mais suportado"
+!!! warning "GitHub como provedor OIDC não é mais suportado"
     Se você tiver `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET` configurados de uma versão anterior, remova-os – eles agora são ignorados, e usuários que anteriormente fizeram login via GitHub não podem mais fazer login dessa forma. O GitHub é um provedor OAuth 2.0, não um provedor OpenID Connect, e nunca retornou a reivindicação da qual o Gramps Web depende para identidade, portanto, nunca foi totalmente confiável.
 
 ## Visão Geral
@@ -11,16 +11,16 @@ A autenticação OIDC permite que você:
 
 - Use provedores de identidade externos para autenticação de usuários
 - Suporte múltiplos provedores de autenticação simultaneamente
-- Mapeie grupos/papéis OIDC para papéis de usuário do Gramps Web
+- Mapeie grupos/roles OIDC para roles de usuário do Gramps Web
 - Implemente Single Sign-On (SSO) e Single Sign-Out
 - Opcionalmente desative a autenticação local por nome de usuário/senha
 
 ## Configuração
 
-Para habilitar a autenticação OIDC, você precisa configurar as configurações apropriadas no seu arquivo de configuração do Gramps Web ou nas variáveis de ambiente. Veja a página de [Configuração do Servidor](configuration.md#settings-for-oidc-authentication) para uma lista completa de configurações OIDC disponíveis.
+Para habilitar a autenticação OIDC, você precisa configurar as configurações apropriadas no seu arquivo de configuração do Gramps Web ou em variáveis de ambiente. Consulte a página de [Configuração do Servidor](configuration.md#settings-for-oidc-authentication) para uma lista completa de configurações OIDC disponíveis.
 
 !!! info
-    Ao usar variáveis de ambiente, lembre-se de prefixar cada nome de configuração com `GRAMPSWEB_` (por exemplo, `GRAMPSWEB_OIDC_ENABLED`). Veja [Arquivo de configuração vs. variáveis de ambiente](configuration.md#configuration-file-vs-environment-variables) para mais detalhes.
+    Ao usar variáveis de ambiente, lembre-se de prefixar cada nome de configuração com `GRAMPSWEB_` (por exemplo, `GRAMPSWEB_OIDC_ENABLED`). Consulte [Arquivo de configuração vs. variáveis de ambiente](configuration.md#configuration-file-vs-environment-variables) para detalhes.
 
 ### Provedores Integrados
 
@@ -53,34 +53,48 @@ Chave | Descrição
 
 Desde a API Gramps Web 3.23, o Gramps Web suporta [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, método `S256`) para o fluxo de código de autorização. Alguns provedores de identidade, como Pocket ID, podem ser configurados para *exigir* PKCE para um cliente e recusar logins que não o utilizem. Versões mais antigas da API Gramps Web nunca usam PKCE, portanto, logins com tal cliente falham.
 
-Se o PKCE é usado é decidido no login da seguinte forma:
+Se o PKCE é utilizado é decidido no login da seguinte forma:
 
-- Se `OIDC_PKCE` estiver definido como `True`, o PKCE é usado.
-- Se `OIDC_PKCE` estiver definido como `False`, o PKCE não é usado, mesmo que o provedor o suporte.
-- Se `OIDC_PKCE` não estiver definido, ou estiver definido mas vazio, o PKCE é usado se o documento de descoberta do provedor (`/.well-known/openid-configuration`) listar `S256` em `code_challenge_methods_supported`, e não é usado de outra forma.
+- Se `OIDC_PKCE` estiver definido como `True`, o PKCE é utilizado.
+- Se `OIDC_PKCE` estiver definido como `False`, o PKCE não é utilizado, mesmo que o provedor o suporte.
+- Se `OIDC_PKCE` não estiver definido, ou estiver definido mas vazio, o PKCE é utilizado se o documento de descoberta do provedor (`/.well-known/openid-configuration`) listar `S256` em `code_challenge_methods_supported`, e não é utilizado caso contrário.
 
-Para a maioria das configurações, você não precisa definir nada. Defina `OIDC_PKCE` como `True` se seu provedor exigir PKCE, mas não anunciar `S256` em seu documento de descoberta, e como `False` se seu provedor anunciar `S256`, mas o manusear incorretamente. Como variáveis de ambiente, booleanos devem ser minúsculos (`GRAMPSWEB_OIDC_PKCE=true`), veja [Configuração](configuration.md).
+Para a maioria das configurações, você não precisa definir nada. Defina `OIDC_PKCE` como `True` se seu provedor exigir PKCE, mas não anunciar `S256` em seu documento de descoberta, e como `False` se seu provedor anunciar `S256`, mas o manusear incorretamente. Como variáveis de ambiente, booleanos devem estar em minúsculas (`GRAMPSWEB_OIDC_PKCE=true`), veja [Configuração](configuration.md).
 
 Para os provedores integrados, as opções correspondentes são `OIDC_GOOGLE_PKCE` e `OIDC_MICROSOFT_PKCE`.
 
 O verificador de código PKCE é mantido na sessão do usuário entre o redirecionamento para o provedor e o callback, portanto, isso não requer alteração nas URIs de redirecionamento.
 
-### Configurações de Múltiplas Árvores
+### Configurações Multi-Árvore
 
-Em um servidor de múltiplas árvores, a árvore na qual o usuário está fazendo login deve ser conhecida antes que o Gramps Web redirecione para o provedor de identidade, portanto, o login começa com:
+Em um servidor multi-árvore, um usuário que faz login com uma identidade que já está vinculada a uma conta do Gramps Web é conectado à árvore dessa conta, portanto, a página de login simples funciona para eles.
+
+Para criar uma conta *nova* com uma identidade OIDC, o Gramps Web precisa saber a árvore à qual deve pertencer. Portanto, novos usuários devem começar pelo link de registro da árvore (`/register/<tree_id>`, veja [Link de Registro](../administration/users.md#registration-link-multi-tree-setup-only)), ou pela página de login da árvore (`/login/<tree_id>`). Ambas oferecem os provedores configurados. Fazer login com uma identidade desconhecida a partir da página de login simples é recusado com uma mensagem apontando para o link de registro. Isso requer API Gramps Web 3.25.3 e Gramps Web 26.11.2 ou mais recente.
+
+Nos bastidores, o login começa com:
 
 ```
 GET /api/oidc/login/?provider=<id>&tree=<tree_id>
 ```
 
-`tree` é obrigatório em configurações de múltiplas árvores; omiti-lo ou passar o ID de uma árvore que não existe falha no login. Em um servidor de árvore única, `tree` é opcional, mas se fornecido, deve corresponder à `TREE` configurada.
+onde `tree` é opcional, a menos que uma nova conta seja criada. Passar o ID de uma árvore que não existe falha o login. Em um servidor de árvore única, `tree` é opcional, mas se fornecido, deve corresponder à `TREE` configurada.
 
 Uma identidade OIDC está vinculada a exatamente uma conta do Gramps Web, que por sua vez pertence a exatamente uma árvore – fazer login em uma árvore diferente falha em vez de mover a conta. Não há como vincular uma única identidade no provedor a contas em várias árvores; usuários que precisam de acesso a várias árvores precisam de identidades separadas no provedor (por exemplo, nomes de usuário ou contas distintas).
 
 !!! warning
-    Uma conta de administrador do site sem árvore associada (veja [criando uma conta de administrador](../administration/owner.md)) não pode fazer login via OIDC, uma vez que o login OIDC sempre requer uma árvore. Essas contas devem ser criadas e autenticadas com um nome de usuário/senha local.
+    Uma conta de administrador do site sem árvore associada (veja [criando uma conta de administrador](../administration/owner.md)) não pode ser criada via OIDC, uma vez que uma conta criada por um login OIDC sempre pertence a uma árvore. Crie tais contas com um nome de usuário e senha locais.
 
-## URIs de Redirecionamento Necessárias
+### Aplicativos Nativos
+
+Aplicativos nativos, como aplicativos móveis para Gramps Web, podem permitir que o usuário faça login no navegador do sistema e receba o resultado em um link `https` do aplicativo. Desde a API Gramps Web 3.26, isso funciona se o link estiver listado em `OIDC_ALLOWED_REDIRECT_URIS`, por exemplo:
+
+```
+GRAMPSWEB_OIDC_ALLOWED_REDIRECT_URIS='["https://app.example.com/oidc-callback"]'
+```
+
+A documentação do aplicativo informa qual link adicionar. As URIs de redirecionamento registradas no provedor de identidade permanecem as mesmas.
+
+## URIs de Redirecionamento Requeridas
 
 Ao configurar seu provedor OIDC, você deve registrar a seguinte URI de redirecionamento:
 
@@ -88,51 +102,51 @@ Ao configurar seu provedor OIDC, você deve registrar a seguinte URI de redireci
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
-Onde `*` é um curinga regex. Dependendo do interpretador regex do seu provedor, isso também pode ser um `.*` ou similar.
-Certifique-se de que o regex está habilitado se seu provedor exigir (por exemplo, Authentik).
+Onde `*` é um curinga regex. Dependendo do interpretador regex do seu provedor, isso também pode ser um `.*` ou similar. 
+Certifique-se de que o regex esteja habilitado se seu provedor exigir (por exemplo, Authentik).
 
 **Para provedores OIDC que não suportam curingas: (por exemplo, Authelia)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/custom`
 
-A árvore nunca faz parte da URI de redirecionamento, mesmo em servidores de múltiplas árvores – ela viaja separadamente na sessão, uma vez que os provedores exigem que a URI de redirecionamento corresponda exatamente à registrada.
+A árvore nunca faz parte da URI de redirecionamento, mesmo em servidores multi-árvore – ela viaja separadamente na sessão, uma vez que os provedores exigem que a URI de redirecionamento corresponda exatamente à registrada.
 
-## Mapeamento de Papéis
+## Mapeamento de Roles
 
-Gramps Web pode mapear automaticamente grupos ou papéis OIDC do seu provedor de identidade para papéis de usuário do Gramps Web. Isso permite que você gerencie permissões de usuário centralmente em seu provedor de identidade. O mapeamento de papéis funciona da mesma forma para todos os provedores, integrados ou personalizados.
+Gramps Web pode mapear automaticamente grupos ou roles OIDC do seu provedor de identidade para roles de usuário do Gramps Web. Isso permite que você gerencie permissões de usuários centralmente em seu provedor de identidade. O mapeamento de roles funciona da mesma forma para todos os provedores, integrados ou personalizados.
 
 ### Configuração
 
-Use estas configurações para configurar o mapeamento de papéis:
+Use estas configurações para configurar o mapeamento de roles:
 
 Chave | Descrição
 ----|-------------
-`OIDC_ROLE_CLAIM` | O nome da reivindicação no token OIDC que contém os grupos/papéis do usuário. O padrão é "groups". Caminhos com pontos são suportados, por exemplo, `realm_access.roles`.
-`OIDC_GROUP_ADMIN` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Admin" do Gramps
-`OIDC_GROUP_OWNER` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Owner" do Gramps
-`OIDC_GROUP_EDITOR` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Editor" do Gramps
-`OIDC_GROUP_CONTRIBUTOR` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Contributor" do Gramps
-`OIDC_GROUP_MEMBER` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Member" do Gramps
-`OIDC_GROUP_GUEST` | O nome do grupo/papel do seu provedor OIDC que mapeia para o papel "Guest" do Gramps
+`OIDC_ROLE_CLAIM` | O nome da reivindicação no token OIDC que contém os grupos/roles do usuário. O padrão é "groups". Caminhos com pontos são suportados, por exemplo, `realm_access.roles`.
+`OIDC_GROUP_ADMIN` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Admin" do Gramps
+`OIDC_GROUP_OWNER` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Owner" do Gramps
+`OIDC_GROUP_EDITOR` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Editor" do Gramps
+`OIDC_GROUP_CONTRIBUTOR` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Contributor" do Gramps
+`OIDC_GROUP_MEMBER` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Member" do Gramps
+`OIDC_GROUP_GUEST` | O nome do grupo/role do seu provedor OIDC que mapeia para a role "Guest" do Gramps
 
-### Comportamento do Mapeamento de Papéis
+### Comportamento do Mapeamento de Roles
 
-Se nenhuma configuração `OIDC_GROUP_*` estiver configurada, o mapeamento de papéis está desativado e os papéis são gerenciados manualmente no Gramps Web; novas contas OIDC são então criadas desativadas e precisam ser aprovadas por um proprietário ou administrador existente (veja [Primeiro Login e Inicialização](#first-login-and-bootstrapping) abaixo).
+Se nenhuma configuração `OIDC_GROUP_*` estiver configurada, o mapeamento de roles está desativado e as roles são gerenciadas manualmente no Gramps Web; novas contas OIDC são então criadas desativadas e precisam ser aprovadas por um proprietário ou administrador existente (veja [Primeiro Login e Inicialização](#first-login-and-bootstrapping) abaixo).
 
-Uma vez que o mapeamento de papéis esteja configurado, em cada login:
+Uma vez que o mapeamento de roles esteja configurado, em cada login:
 
-- Se a reivindicação de papel estiver presente e o usuário pertencer a um grupo mapeado, ele recebe o papel correspondente.
-- Se a reivindicação de papel estiver presente, mas o usuário não pertencer a nenhum grupo mapeado, seu papel é definido como desativado. Este é um padrão de falha fechada, não um bug – o Gramps Web não pode inferir um papel para um grupo que não reconhece.
-- Se a reivindicação de papel estiver ausente do token completamente, o papel existente permanece inalterado; uma nova conta ainda tem como padrão o estado desativado.
+- Se a reivindicação de role estiver presente e o usuário pertencer a um grupo mapeado, ele recebe a role correspondente.
+- Se a reivindicação de role estiver presente, mas o usuário não pertencer a nenhum grupo mapeado, sua role é definida como desativada. Este é um padrão fail-closed, não um bug – o Gramps Web não pode inferir uma role para um grupo que não reconhece.
+- Se a reivindicação de role estiver ausente do token totalmente, a role existente permanece inalterada; uma nova conta ainda tem como padrão a desativação.
 
 !!! warning "O Google não envia uma reivindicação de grupos"
-    Os tokens do Google nunca incluem uma reivindicação `groups`, então com o mapeamento de papéis habilitado, logins do Google caem sob "reivindicação ausente" acima: usuários existentes mantêm seu papel, mas novos usuários do Google são criados desativados e precisam de aprovação manual. Tenha isso em mente antes de habilitar o mapeamento de papéis apenas para outro provedor – isso não desativa, por si só, usuários existentes do Google.
+    Os tokens do Google nunca incluem uma reivindicação de `groups`, então, com o mapeamento de roles habilitado, logins do Google caem sob "reivindicação ausente" acima: usuários existentes mantêm sua role, mas novos usuários do Google são criados desativados e precisam de aprovação manual. Tenha isso em mente antes de habilitar o mapeamento de roles apenas para outro provedor – isso não desativa, por si só, os usuários existentes do Google.
 
-Microsoft Entra retorna papéis de aplicativo e associações de grupo apenas no token de ID, não no endpoint de userinfo. O Gramps Web mescla as reivindicações do token de ID na resposta de userinfo para que `OIDC_ROLE_CLAIM` funcione da mesma forma que para outros provedores; onde ambos contêm uma reivindicação, o valor de userinfo tem precedência.
+Microsoft Entra retorna roles de aplicativo e associações de grupo apenas no token ID, não do endpoint de userinfo. O Gramps Web mescla as reivindicações do token ID na resposta de userinfo para que `OIDC_ROLE_CLAIM` funcione da mesma forma que para outros provedores; onde ambos contêm uma reivindicação, o valor de userinfo tem precedência.
 
 ## Primeiro Login e Inicialização
 
-Novas contas criadas através do OIDC começam desativadas, a menos que o mapeamento de papéis atribua a elas um papel (veja acima). Em uma nova instância, ninguém pode aprovar uma conta desativada, e se `OIDC_DISABLE_LOCAL_AUTH` também estiver habilitado, não há login por senha para recorrer.
+Novas contas criadas através do OIDC começam desativadas, a menos que o mapeamento de roles atribua uma role a elas (veja acima). Em uma instância totalmente nova, ninguém pode aprovar uma conta desativada, e se `OIDC_DISABLE_LOCAL_AUTH` também estiver habilitado, não há login por senha para recorrer.
 
 !!! warning "Configure um grupo de proprietário/admin antes do primeiro login"
     Antes que alguém faça login via OIDC pela primeira vez, defina `OIDC_GROUP_OWNER` (ou `OIDC_GROUP_ADMIN`) e certifique-se de que o primeiro usuário pertença a esse grupo no provedor. Caso contrário, a instância não pode ser inicializada através do OIDC.
@@ -141,27 +155,27 @@ Novas contas criadas através do OIDC começam desativadas, a menos que o mapeam
 
 Contas criadas através do OIDC recebem um nome de usuário gerado, atribuído uma vez na criação da conta e nunca alterado em logins posteriores:
 
-- Provedores integrados: `<provider>_<valor da reivindicação>`, por exemplo, `microsoft_alice@contoso.com`
+- Provedores integrados: `<provider>_<claim value>`, por exemplo, `microsoft_alice@contoso.com`
 - Provedor personalizado: o valor da reivindicação simples, por exemplo, `alice`
 
-Um sufixo numérico é anexado em caso de colisão. Não há como renomear o nome de usuário de uma conta criada pelo OIDC posteriormente; o nome completo e o endereço de e-mail, por outro lado, são atualizados em cada login.
+Um sufixo numérico é anexado em caso de colisão. Não há como renomear o nome de usuário de uma conta criada por OIDC posteriormente; o nome completo e o endereço de e-mail, por outro lado, são atualizados em cada login.
 
-Um login OIDC nunca se vincula a uma conta local existente que compartilha seu endereço de e-mail – isso é deliberado, uma vez que vincular contas por e-mail é um vetor de tomada de conta. Um usuário que já possui uma conta local recebe uma segunda conta separada na primeira vez que faz login via OIDC, a menos que primeiro vincule o provedor à sua conta.
+Um login OIDC nunca se anexa a uma conta local existente que compartilha seu endereço de e-mail – isso é deliberado, uma vez que vincular contas por e-mail é um vetor de tomada de conta. Um usuário que já possui uma conta local recebe uma segunda conta separada na primeira vez que faz login via OIDC, a menos que primeiro vincule o provedor à sua conta.
 
 Desde a API Gramps Web 3.24, os usuários podem vincular identidades OIDC à sua conta existente e listar e desvincular, sob [Configurações do Usuário > Métodos de login vinculados](../user-guide/settings.md#linked-sign-in-methods). O vínculo requer um login recente e é confirmado com o próprio token do usuário, portanto, também funciona quando o frontend está em uma origem diferente da API. Uma identidade pode pertencer a apenas uma conta; para vincular uma que já possui sua própria conta, um administrador primeiro exclui essa conta (suas edições permanecem, mas o histórico de revisões não mostra mais seu nome). A última identidade vinculada só pode ser desvinculada com a senha atual da conta, e não de forma alguma se `OIDC_DISABLE_LOCAL_AUTH` estiver definido.
 
-Endereços de e-mail do provedor são armazenados apenas se o provedor os marcar como verificados (ou omitir a reivindicação `email_verified` completamente); caso contrário, o login prossegue sem armazenar um endereço de e-mail. Como os endereços de e-mail não precisam ser exclusivos (desde a API Gramps Web 3.22), um endereço é armazenado mesmo que outra conta já o utilize.
+Endereços de e-mail do provedor são armazenados apenas se o provedor os marcar como verificados (ou omitir completamente a reivindicação `email_verified`); caso contrário, o login prossegue sem armazenar um endereço de e-mail. Como os endereços de e-mail não precisam ser exclusivos (desde a API Gramps Web 3.22), um endereço é armazenado mesmo que outra conta já o utilize.
 
 ## Logout OIDC
 
-Gramps Web suporta Single Sign-Out (logout SSO) para provedores OIDC. `GET /api/oidc/logout/` busca o `end_session_endpoint` do provedor e o retorna como `logout_url` na resposta; é o frontend do Gramps Web que navega o navegador até lá para realmente encerrar a sessão no provedor de identidade. `logout_url` é `null` quando o provedor não tem `end_session_endpoint`.
+Gramps Web suporta Single Sign-Out (logout SSO) para provedores OIDC. `GET /api/oidc/logout/` procura o `end_session_endpoint` do provedor e o retorna como `logout_url` na resposta; é o frontend do Gramps Web que navega o navegador até lá para realmente encerrar a sessão no provedor de identidade. `logout_url` é `null` quando o provedor não tem `end_session_endpoint`.
 
 !!! warning "Tokens não são revogados no logout"
-    Fazer logout apenas encerra a sessão do navegador; atualmente, não há como revogar um token do Gramps Web que já foi emitido. Os tokens permanecem válidos até expirarem (`JWT_ACCESS_TOKEN_EXPIRES`, padrão de 15 minutos para tokens de acesso), independentemente de o usuário ter feito logout no Gramps Web ou no provedor de identidade.
+    Fazer logout apenas encerra a sessão do navegador; atualmente não há como revogar um token do Gramps Web que já foi emitido. Os tokens permanecem válidos até expirarem (`JWT_ACCESS_TOKEN_EXPIRES`, padrão 15 minutos para tokens de acesso), independentemente de o usuário ter feito logout no Gramps Web ou no provedor de identidade.
 
 ## Solução de Problemas
 
-Comece no ponto onde o login para e siga o ramo. O Gramps Web registra o motivo de um callback falhado (procure por `OIDC callback error for provider` no log do servidor), que geralmente é mais específico do que a mensagem mostrada no navegador.
+Comece no ponto onde o login para e siga o ramo. O Gramps Web registra a razão para um callback falhado (procure por `OIDC callback error for provider` no log do servidor), que geralmente é mais específica do que a mensagem exibida no navegador.
 
 **1. O botão de login está faltando?**
 
@@ -169,26 +183,26 @@ Comece no ponto onde o login para e siga o ramo. O Gramps Web registra o motivo 
 - Um provedor integrado (Google, Microsoft) só está registrado se tanto seu ID do cliente quanto seu segredo do cliente estiverem definidos.
 - Verifique no log do servidor na inicialização por `Could not load discovery document`. Isso significa que o servidor não conseguiu acessar `<issuer>/.well-known/openid-configuration` (ou `OIDC_OPENID_CONFIG_URL`). Ele tenta novamente na primeira utilização, mas o contêiner do Gramps Web deve ser capaz de resolver e acessar a URL do emissor por conta própria, não apenas seu navegador.
 
-**2. O navegador recebe um erro logo após ser enviado para o provedor?**
+**2. O navegador recebe um erro logo após ser enviado ao provedor?**
 
 O erro é mostrado pelo provedor de identidade, antes de você fazer login.
 
-- *"redirect URI mismatch"* (ou similar): a URI de redirecionamento registrada no provedor deve corresponder exatamente, incluindo esquema, host, porta e ID do provedor. Veja [URIs de Redirecionamento Necessárias](#required-redirect-uris). Note que ela é construída a partir de `BASE_URL`, então um `BASE_URL` errado gera uma URI de redirecionamento errada.
-- *Um erro de PKCE* (por exemplo, `invalid_request`, "code challenge required", ou um parâmetro `code_challenge` ausente): o provedor exige PKCE, mas o Gramps Web não o enviou. Vá para [o ramo PKCE](#pkce-branch) abaixo.
+- *"redirect URI mismatch"* (ou similar): a URI de redirecionamento registrada no provedor deve corresponder exatamente, incluindo esquema, host, porta e ID do provedor. Veja [URIs de Redirecionamento Requeridas](#required-redirect-uris). Note que ela é construída a partir de `BASE_URL`, então um `BASE_URL` errado dá uma URI de redirecionamento errada.
+- *Um erro PKCE* (por exemplo, `invalid_request`, "code challenge required", ou um parâmetro `code_challenge` ausente): o provedor exige PKCE, mas o Gramps Web não o enviou. Vá para [o ramo PKCE](#pkce-branch) abaixo.
 
 **3. O provedor aceita o login, mas o Gramps Web então mostra um erro?**
 
 - *`mismatching_state`, ou o erro menciona a sessão ou estado*: o navegador não enviou de volta o cookie de sessão que o Gramps Web definiu quando o login começou. Este cookie também carrega o verificador de código PKCE. Certifique-se de que o endereço no navegador corresponda a `BASE_URL` (mesmo esquema e host), que um proxy reverso passe cookies e o host original, e que o login seja iniciado e concluído na mesma aba ou janela do navegador.
-- *`OIDC authentication failed for <provider>` (HTTP 401)*: verifique o log do servidor para o motivo subjacente. Causas comuns são um segredo do cliente errado, uma URL do emissor que não corresponde à reivindicação `iss` dos tokens, e o provedor retornando um erro para o callback (por exemplo, PKCE, veja abaixo).
-- *Muitas tentativas*: os endpoints de login e callback têm limite de taxa (5 solicitações por minuto). Espere um minuto e tente novamente.
+- *`OIDC authentication failed for <provider>` (HTTP 401)*: verifique o log do servidor para a razão subjacente. Causas comuns são um segredo do cliente errado, uma URL do emissor que não corresponde à reivindicação `iss` dos tokens, e o provedor retornando um erro para o callback (por exemplo, PKCE, veja abaixo).
+- *Tentativas demais*: os endpoints de login e callback têm limite de taxa (5 solicitações por minuto). Aguarde um minuto e tente novamente.
 
 **4. O login é bem-sucedido, mas você vê "Conta em Revisão", ou não consegue fazer nada?**
 
-Novas contas são criadas desativadas, a menos que o mapeamento de papéis atribua um papel. Veja [Primeiro Login e Inicialização](#first-login-and-bootstrapping) e [Comportamento do Mapeamento de Papéis](#role-mapping-behavior). Um administrador também pode ativar a conta em Configurações > Administração > Gerenciar usuários.
+Novas contas são criadas desativadas, a menos que o mapeamento de roles atribua uma role. Veja [Primeiro Login e Inicialização](#first-login-and-bootstrapping) e [Comportamento do Mapeamento de Roles](#role-mapping-behavior). Um administrador também pode ativar a conta em Configurações > Administração > Gerenciar usuários.
 
 ### Ramo PKCE
 
-Gramps Web decide se deve usar PKCE quando um login começa (veja [PKCE](#pkce)). Para descobrir o que aconteceu na sua configuração, siga estas perguntas em ordem:
+Gramps Web decide se deve usar PKCE quando um login começa (veja [PKCE](#pkce)). Para descobrir o que aconteceu na sua configuração, trabalhe através dessas perguntas em ordem:
 
 1. **`OIDC_PKCE` está definido?** (Para provedores integrados, `OIDC_GOOGLE_PKCE` ou `OIDC_MICROSOFT_PKCE`.)
     - `True`: PKCE é usado. Pule para a pergunta 3.
@@ -196,13 +210,13 @@ Gramps Web decide se deve usar PKCE quando um login começa (veja [PKCE](#pkce))
     - Não definido, ou vazio: continue com a pergunta 2.
 2. **O documento de descoberta lista `S256`?** Abra `<issuer>/.well-known/openid-configuration` e procure por `S256` em `code_challenge_methods_supported`.
     - Sim: PKCE é usado automaticamente. Continue com a pergunta 3.
-    - Não, ou o campo está ausente: PKCE **não** é usado. Defina `OIDC_PKCE` como `True` se seu provedor exigir. Verifique também o log do servidor para `Could not check the provider for PKCE support`, o que significa que o documento de descoberta não pôde ser buscado e o PKCE foi, portanto, desativado.
-3. **O PKCE foi realmente enviado?** Inicie um login e olhe para o endereço da página de login do provedor (ou o primeiro redirecionamento na aba de rede do seu navegador). Ele deve conter `code_challenge=` e `code_challenge_method=S256`.
+    - Não, ou o campo está ausente: PKCE **não** é usado. Defina `OIDC_PKCE` como `True` se seu provedor exigir. Verifique também o log do servidor para `Could not check the provider for PKCE support`, o que significa que o documento de descoberta não pôde ser buscado e o PKCE foi, portanto, deixado de fora.
+3. **O PKCE realmente foi enviado?** Inicie um login e olhe para o endereço da página de login do provedor (ou o primeiro redirecionamento na aba de rede do seu navegador). Ele deve conter `code_challenge=` e `code_challenge_method=S256`.
     - Presente, mas o login ainda falha no callback: o provedor rejeitou o verificador de código. O cookie de sessão pode ter sido perdido entre o redirecionamento e o callback (veja o ramo 3 acima), ou o provedor não suporta `S256`, caso em que defina `OIDC_PKCE` como `False` se o provedor não exigir PKCE.
-    - Ausente: as configurações acima não foram aplicadas. Verifique se a variável de ambiente tem o prefixo correto e um valor em minúsculas (por exemplo, `GRAMPSWEB_OIDC_PKCE=true` no Docker; `True` não é lido como booleano), reinicie o servidor e verifique a configuração novamente.
+    - Ausente: as configurações acima não foram aplicadas. Verifique se a variável de ambiente tem o prefixo correto e um valor em minúsculas (por exemplo, `GRAMPSWEB_OIDC_PKCE=true` no Docker; `True` não é lido como um booleano), reinicie o servidor e verifique a configuração novamente.
 
 !!! note
-    Com o PKCE habilitado no provedor como *opcional*, ou não habilitado de forma alguma, os logins funcionam independentemente de o Gramps Web enviar um desafio. Apenas provedores (ou clientes) configurados para *exigir* PKCE tornam essa configuração relevante.
+    Com o PKCE habilitado no provedor como *opcional*, ou não habilitado, os logins funcionam se o Gramps Web envia ou não um desafio. Somente provedores (ou clientes) configurados para *exigir* PKCE fazem essa configuração importar.
 
 ## Configurações de Exemplo
 
@@ -224,7 +238,7 @@ OIDC_SCOPES="openid email profile"
 OIDC_AUTO_REDIRECT=True  # Opcional: redirecionar automaticamente para o login SSO
 OIDC_DISABLE_LOCAL_AUTH=True  # Opcional: desativar login por nome de usuário/senha
 
-# Opcional: Mapeamento de papéis de grupos OIDC para papéis do Gramps
+# Opcional: Mapeamento de roles de grupos OIDC para roles do Gramps
 OIDC_ROLE_CLAIM="groups"  # ou "roles" dependendo do seu provedor
 OIDC_GROUP_ADMIN="gramps-admins"
 OIDC_GROUP_EDITOR="gramps-editors"
@@ -279,27 +293,27 @@ OIDC_MICROSOFT_CLIENT_SECRET="seu-segredo-do-cliente-microsoft"
 
 ### Pocket ID
 
-Crie um cliente OIDC no Pocket ID com a URI de redirecionamento `<BASE_URL>/api/oidc/callback/custom` (veja [URIs de Redirecionamento Necessárias](#required-redirect-uris)). Se você habilitar "Requerer PKCE" para o cliente, nenhuma configuração adicional do Gramps Web é necessária, uma vez que o Pocket ID anuncia suporte a PKCE em seu documento de descoberta. Em seguida, configure:
+Crie um cliente OIDC no Pocket ID com a URI de redirecionamento `<BASE_URL>/api/oidc/callback/custom` (veja [URIs de Redirecionamento Requeridas](#required-redirect-uris)). Se você habilitar "Exigir PKCE" para o cliente, nenhuma configuração adicional do Gramps Web é necessária, uma vez que o Pocket ID anuncia suporte a PKCE em seu documento de descoberta. Em seguida, configure:
 
 ```
 GRAMPSWEB_OIDC_ENABLED=True
 GRAMPSWEB_OIDC_ISSUER=https://id.example.com
-GRAMPSWEB_OIDC_CLIENT_ID=<id do cliente>
-GRAMPSWEB_OIDC_CLIENT_SECRET=<segredo do cliente>
+GRAMPSWEB_OIDC_CLIENT_ID=<client id>
+GRAMPSWEB_OIDC_CLIENT_SECRET=<client secret>
 GRAMPSWEB_OIDC_NAME=Pocket ID
 ```
 
 ### Authelia
 
-Um guia de configuração OIDC feito pela comunidade para o Gramps Web está disponível no [site oficial da documentação do Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
+Um guia de configuração OIDC feito pela comunidade para Gramps Web está disponível no [site oficial da documentação do Authelia](https://www.authelia.com/integration/openid-connect/clients/gramps/).
 
 ### Keycloak
 
-A maior parte da configuração para o Keycloak pode ser deixada em seus padrões (*Cliente → Criar cliente → Autenticação do cliente ATIVADA*).
+A maior parte da configuração do Keycloak pode ser deixada em seus padrões (*Cliente → Criar cliente → Autenticação do cliente ATIVADA*).
 Existem algumas exceções:
 
 1. **Escopo OpenID** – O escopo `openid` não está incluído por padrão em todas as versões do Keycloak. Para evitar problemas, adicione-o manualmente: *Cliente → [Cliente Gramps] → Escopos do cliente → Adicionar escopo → Nome: `openid` → Definir como padrão.*
-2. **Papéis** – Os papéis podem ser atribuídos no nível do cliente ou globalmente por reino.
+2. **Roles** – As roles podem ser atribuídas no nível do cliente ou globalmente por realm.
 
-    * Se você estiver usando papéis de cliente, defina a opção de configuração `OIDC_ROLE_CLAIM` como: `resource_access.[nome-do-cliente-gramps].roles`
-    * Para tornar os papéis visíveis para o Gramps, navegue até *Escopos do Cliente* (a seção de nível superior, não sob o cliente específico), então: *Papéis → Mapeadores → papéis do cliente → Adicionar ao userinfo → ON.*
+    * Se você estiver usando roles de cliente, defina a opção de configuração `OIDC_ROLE_CLAIM` para: `resource_access.[gramps-client-name].roles`
+    * Para tornar as roles visíveis para o Gramps, navegue até *Escopos do Cliente* (a seção de nível superior, não sob o cliente específico), então: *Roles → Mappers → roles de cliente → Adicionar ao userinfo → ATIVADO.*
