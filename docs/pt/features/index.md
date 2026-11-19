@@ -6,24 +6,17 @@ hide:
 
 # Recursos
 
+Gramps Web é um aplicativo web para genealogia colaborativa. Ele é construído sobre o [Gramps](https://gramps-project.org/), o programa de genealogia de código aberto, e funciona com os mesmos dados. Você pode executá-lo em seu próprio servidor ou usar um provedor de hospedagem.
 
-![Título da imagem](screenshots/sync.png){ align=left width="300"}
+[Experimente a demonstração](#demo){ .md-button .md-button--primary } [Comece agora](../install_setup/setup.md){ .md-button }
 
-## Integração total com o Gramps Desktop
+## Explore sua árvore genealógica { .feature-group }
 
-O Gramps Web utiliza a mesma estrutura de **Modelo / Banco de Dados** que o [Gramps Desktop](https://gramps-project.org/) usa para armazenar dados genealógicos. Você pode navegar por todos os mesmos [Tipos de Registro](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) que no Gramps Desktop: ***pessoas, famílias, eventos, lugares, repositórios, fontes, citações, objetos de mídia e notas.***
+![Gráfico em leque mostrando sete gerações de ancestrais](screenshots/fan.png){ align=right width="400"}
 
-Usando o [Gramps Web Sync Add-on](../administration/sync.md) para Gramps Desktop, os dados podem ser sincronizados bidirecionalmente entre o Gramps Web e o Gramps Desktop! Vá em frente e edite seus dados com o Gramps Web ou o aplicativo Gramps Desktop que você conhece e ama – eles funcionam juntos perfeitamente!
+### Gráficos interativos da árvore genealógica
 
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/fan.png){ align=right width="400"}
-
-## Gráficos interativos de árvore genealógica
-
-Navegue pela sua árvore genealógica como uma árvore de ancestrais, árvore de descendentes, gráfico de ampulheta, gráfico de relacionamento ou gráfico em leque, com gráficos interativos de alta qualidade e um número configurável de gerações.
+Navegue pela sua árvore genealógica como uma árvore de ancestrais, árvore de descendentes, gráfico de ampulheta, gráfico de relacionamentos ou gráfico em leque, com gráficos interativos de alta qualidade e um número configurável de gerações.
 
 Passe o mouse sobre qualquer pessoa para ver um cartão de pré-visualização com seus fatos principais e pule diretamente do gráfico para a página de detalhes completa.
 
@@ -31,23 +24,11 @@ Passe o mouse sobre qualquer pessoa para ver um cartão de pré-visualização c
 
 ---
 
-![Título da imagem](screenshots/tree-edit.png){ align=left width="400"}
+![Linha do tempo de eventos familiares entre as décadas de 1940 e 1970](screenshots/timeline.png){ align=left width="400"}
 
-## Construa sua árvore diretamente no gráfico
+### Linha do tempo cronológica
 
-Mude a visualização da árvore para o modo de edição e cresça sua árvore genealógica sem sair do gráfico. Cada cartão de pessoa recebe um botão **+** para adicionar um pai, mãe, filho ou cônjuge – seja vinculando alguém já em seu banco de dados ou criando uma nova pessoa na hora. Cada alteração é salva imediatamente.
-
-Veja [Editando a Árvore Genealógica](../user-guide/tree-edit.md).
-
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/timeline.png){ align=right width="400"}
-
-## Linha do tempo cronológica
-
-Veja cada evento em sua árvore genealógica disposto em uma linha do tempo horizontal e ampliável. Role e amplie pelos séculos, depois filtre para uma única pessoa – ou para todos os seus ancestrais ou descendentes – ou para tudo que aconteceu em um único lugar.
+Veja cada evento em sua árvore genealógica disposto em uma linha do tempo horizontal e ampliável. Role e amplie através dos séculos, depois filtre para uma única pessoa – ou para todos os seus ancestrais ou descendentes – ou para tudo que aconteceu em um único lugar.
 
 Veja [Linha do Tempo](../user-guide/timeline.md).
 
@@ -55,115 +36,95 @@ Veja [Linha do Tempo](../user-guide/timeline.md).
 
 ---
 
-![Título da imagem](screenshots/map.png){ align=left width="400"}
+![Mapa de Londres com um local selecionado, mostrando sua foto e eventos](screenshots/map.png){ align=right width="400"}
 
-## Mapa poderoso
+### Mapa interativo
 
-Exiba todos os lugares em sua árvore em um mapa interativo e pesquisável. Pesquise novos lugares diretamente no OpenStreetMap ao criar um lugar, trace as pessoas em seu banco de dados geograficamente e siga a vida de uma única pessoa conectando seus eventos com linhas no mapa.
+Exiba todos os locais em sua árvore em um mapa interativo e pesquisável. Pesquise novos locais diretamente no OpenStreetMap ao criar um local, trace as pessoas em seu banco de dados geograficamente e siga a vida de uma única pessoa conectando seus eventos com linhas no mapa.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/ohm.png){ align=right width="400"}
+![Londres no layer OpenHistoricalMap, com o controle deslizante de tempo definido para 1707](screenshots/ohm.png){ align=left width="400"}
 
-## Mapas históricos
+### Mapas históricos
 
 Transforme um mapa histórico armazenado como um objeto de mídia no Gramps em uma sobreposição de mapa personalizada.
 
-Além disso, os mapas vetoriais históricos criados pelo projeto [OpenHistoricalMap](https://www.openhistoricalmap.org/) são o complemento perfeito para mapeamento genealógico. Use o controle deslizante de tempo para percorrer a evolução dos lugares na sua história familiar e exibir os lugares onde os ancestrais viveram ou onde os eventos aconteceram.
+Você também pode alternar para os mapas vetoriais históricos do projeto [OpenHistoricalMap](https://www.openhistoricalmap.org/). Use o controle deslizante de tempo para percorrer a evolução dos locais na sua história familiar e exibir os lugares onde os ancestrais viveram ou onde os eventos aconteceram.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/search.png){ align=left width="400"}
+![Resultados da pesquisa para "Albert" em pessoas, eventos e mídias](screenshots/search.png){ align=right width="400"}
 
-## Encontre qualquer coisa
+### Encontre qualquer coisa
 
 O mecanismo de busca de texto completo cobre todos os tipos de objetos do Gramps, incluindo o conteúdo de notas de texto, e suporta curingas e operadores lógicos.
 
 Para consultas precisas, as visualizações de lista de objetos oferecem um modo de filtro avançado baseado na [Gramps Object Query Language](../user-guide/goql.md), juntamente com filtros rápidos por texto, tag e privacidade.
 
-Da página de qualquer pessoa, [Busca Externa](../user-guide/external-search.md) abre uma busca pré-preenchida no FamilySearch, Ancestry, CompGen e outros sites – e você pode adicionar os seus.
+Na página de qualquer pessoa, [Pesquisa Externa](../user-guide/external-search.md) abre uma pesquisa pré-preenchida no FamilySearch, Ancestry, CompGen e outros sites – e você pode adicionar os seus próprios.
+
+<div style="clear:both;"></div>
+
+## Construir e pesquisar { .feature-group }
+
+![Árvore de ancestrais em modo de edição com o diálogo para adicionar um membro da família](screenshots/tree-edit.png){ align=left width="400"}
+
+### Construa sua árvore diretamente no gráfico
+
+Mude a visualização da árvore para o modo de edição e faça crescer sua árvore genealógica sem sair do gráfico. Cada cartão de pessoa recebe um botão **+** para adicionar um pai, mãe, filho ou cônjuge – vinculando alguém já em seu banco de dados ou criando uma nova pessoa na hora. Cada mudança é salva imediatamente.
+
+Veja [Editando a Árvore Genealógica](../user-guide/tree-edit.md).
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/chat.png){ align=right width="400"}
+![O assistente de IA lendo uma certidão de nascimento e propondo novos registros](screenshots/chat.png){ align=right width="400"}
 
-## Assistente de IA integrado
+### Assistente de IA integrado
 
-Com o poder da IA, o Gramps Web permite que você converse com sua árvore genealógica – em seu idioma nativo!
+Faça perguntas sobre sua árvore genealógica em seu próprio idioma e obtenha respostas baseadas em seus dados.
 
-O assistente não apenas busca: ele consulta seu banco de dados diretamente com um conjunto de ferramentas, filtrando pessoas, eventos, famílias e lugares, e calculando relacionamentos entre indivíduos. Você pode ver quais ferramentas ele está usando enquanto constrói uma resposta, e perguntas mais longas são executadas como tarefas em segundo plano, para que você possa navegar para longe e voltar.
+O assistente não apenas pesquisa: ele consulta seu banco de dados diretamente com um conjunto de ferramentas, filtrando pessoas, eventos, famílias e locais, e calculando relacionamentos entre indivíduos. Você pode ver quais ferramentas ele está usando enquanto constrói uma resposta, e perguntas mais longas são executadas como tarefas em segundo plano, para que você possa navegar para longe e voltar.
 
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/dna.png){ align=left width="400"}
-
-## Correspondências de DNA, navegador de cromossomos e Y-DNA
-
-Se você tiver dados de correspondência de DNA de um dos provedores de genealogia de DNA, faça o upload e armazene-os de uma maneira que seja à prova de futuro e visualize suas correspondências em um navegador de cromossomos interativo.
-
-Os dados brutos de SNP do cromossomo Y podem ser usados para determinar o [haplogrupo Y-DNA](../user-guide/y-dna.md) mais provável de uma pessoa e exibir seus ancestrais patrilineares na árvore do cromossomo Y humano, com estimativas de tempo. A análise é executada inteiramente em seu próprio servidor – nenhum dado é enviado a terceiros.
+O assistente é opcional e precisa ser [configurado pelo administrador do servidor](../install_setup/chat.md) com um provedor de modelo de IA.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/tag.png){ align=right width="400"}
+![Navegador de cromossomos mostrando os segmentos de DNA compartilhados de onze correspondências](screenshots/dna.png){ align=left width="400"}
 
-## Marque pessoas em fotos com detecção automática de rostos
+### Correspondências de DNA, navegador de cromossomos e Y-DNA
 
-Colabore com seus parentes para identificar ancestrais em fotos antigas da família. Graças à detecção automática de rostos, marcar pessoas está a apenas dois cliques de distância.
+Carregue dados de correspondência de DNA do seu provedor de testes de DNA, armazene-os ao lado de sua árvore genealógica e visualize suas correspondências em um navegador de cromossomos interativo.
 
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/revisions.png){ align=left width="400"}
-
-## Histórico de revisões completo – com desfazer
-
-Cada edição em sua árvore genealógica é registrada. Navegue pelo histórico completo agrupado por transação, aprofunde-se em qualquer alteração individual para ver exatamente quais campos foram adicionados, removidos ou modificados, e desfaça uma transação se descobrir que foi um erro. A página de cada objeto também possui sua própria aba de revisão mostrando quem a alterou e quando.
-
-Veja [Histórico de Revisões](../user-guide/revisions.md).
+Dados brutos de SNP do cromossomo Y podem ser usados para determinar o [haplogrupo Y-DNA](../user-guide/y-dna.md) mais provável de uma pessoa e exibir seus ancestrais patrilineares na árvore do cromossomo Y humano, com estimativas de tempo. A análise é executada inteiramente em seu próprio servidor – nenhum dado é enviado a terceiros.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/list.png){ align=right width="400"}
+![Pintura com duas pessoas marcadas e os outros rostos detectados contornados](screenshots/tag.png){ align=right width="400"}
 
-## Níveis de privacidade e acesso do usuário
+### Marque pessoas em fotos com detecção automática de rostos
 
-Muitas pessoas desejam manter alguns detalhes privados e nós respeitamos isso! Você pode [marcar registros como privados](../user-guide/privacy.md) – até um único nome, link de evento ou correspondência de DNA – e controlar quais usuários têm permissão para visualizar registros privados. Registros privados são filtrados na camada de banco de dados para máxima segurança. Além disso, você pode controlar o que os usuários podem adicionar e editar.
-
-Os usuários podem fazer login com uma senha ou através de um provedor de identidade externo usando [OpenID Connect](../install_setup/oidc.md) – Google e Microsoft de forma nativa, além de provedores personalizados como Keycloak, Authentik e Authelia.
+Identifique ancestrais em fotos antigas da família junto com seus parentes. Os rostos são detectados automaticamente, então marcar uma pessoa leva dois cliques.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/blog.png){ align=left width="400"}
+![Lista de tarefas de pesquisa com status, prioridade e tags](screenshots/tasks.png){ align=left width="400"}
 
-## Blog de genealogia incluído
+### Aplicativo de gerenciamento de tarefas integrado
 
-Resuma sua pesquisa na forma de histórias de blog com fotos e compartilhe-as com seus parentes. Um editor dedicado torna a escrita de um novo post simples. Todos os dados são armazenados no banco de dados do Gramps.
-
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/tasks.png){ align=right width="400"}
-
-## Aplicativo de gerenciamento de tarefas integrado
-
-O Gramps Web vem com um aplicativo de gerenciamento de tarefas integrado para organizar e planejar sua pesquisa genealógica. Dê a cada tarefa um status, uma prioridade e tags, documente seu progresso em uma descrição em rich-text e anexe a mídia que você coletou ao longo do caminho.
+Gramps Web vem com um aplicativo de gerenciamento de tarefas integrado para organizar e planejar sua pesquisa genealógica. Dê a cada tarefa um status, uma prioridade e tags, documente seu progresso em uma descrição em rich-text e anexe a mídia que você coletou ao longo do caminho.
 
 As tarefas são armazenadas como fontes no banco de dados do Gramps, portanto, fazem parte dos seus dados genealógicos e podem ser acessadas e editadas no Gramps Desktop também.
 
@@ -171,75 +132,117 @@ As tarefas são armazenadas como fontes no banco de dados do Gramps, portanto, f
 
 ---
 
-![Título da imagem](screenshots/report.png){ align=left width="400"}
+![Postagem de blog sobre a identificação das pessoas em uma fotografia de família](screenshots/blog.png){ align=right width="400"}
 
-## Gere relatórios imprimíveis
+### Blog de genealogia incluído
 
-Como é construído diretamente sobre o núcleo que alimenta o Gramps Desktop, você pode gerar quase todos os [relatórios](https://gramps-project.org/wiki/index.php/Gramps_5.2_Wiki_Manual_-_Reports) que o aplicativo de desktop suporta diretamente do navegador, incluindo gráficos de relacionamento ou relatórios em livro em PDF.
+Resuma sua pesquisa na forma de histórias de blog com imagens e compartilhe-as com seus parentes. Um editor dedicado torna a escrita de uma nova postagem simples. Todos os dados são armazenados no banco de dados do Gramps.
+
+<div style="clear:both;"></div>
+
+## Trabalhe em conjunto { .feature-group }
+
+![Lista de pessoas na árvore genealógica](screenshots/list.png){ align=left width="400"}
+
+### Níveis de privacidade e acesso do usuário
+
+Você pode [marcar registros como privados](../user-guide/privacy.md) – até um único nome, link de evento ou correspondência de DNA – e controlar quais usuários têm permissão para visualizar registros privados. Registros privados são filtrados na camada do banco de dados para máxima segurança. Além disso, você pode controlar o que os usuários podem adicionar e editar.
+
+Os usuários podem fazer login com uma senha ou através de um provedor de identidade externo usando [OpenID Connect](../install_setup/oidc.md) – Google e Microsoft por padrão, além de provedores personalizados como Keycloak, Authentik e Authelia.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/export.png){ align=right width="300"}
+![Uma revisão mostrando os campos alterados em um registro de pessoa](screenshots/revisions.png){ align=right width="400"}
 
-## Sem bloqueio – importação e exportação de dados
+### Histórico completo de revisões – com desfazer
 
-Além de poder importar dados em vários formatos, incluindo Gramps XML e GEDCOM, o Gramps Web facilita para os usuários baixarem todos os seus dados (dados da árvore genealógica, arquivos de mídia, contas de usuário) a qualquer momento, para fins de backup ou para mover para um servidor diferente. Seus dados são apenas seus!
+Cada edição em sua árvore genealógica é registrada. Navegue pelo histórico completo agrupado por transação, aprofunde-se em qualquer mudança individual para ver exatamente quais campos foram adicionados, removidos ou modificados, e desfaça uma transação se descobrir que foi um erro. A página de cada objeto também possui sua própria aba de revisões mostrando quem a alterou e quando.
 
-As importações podem ser visualizadas como uma execução de teste antes que qualquer coisa seja escrita, e um backup completo pode ser restaurado de volta na árvore.
-
-<div style="clear:both;"></div>
-
----
-
-![Título da imagem](screenshots/mobile.png){ align=left width="400"}
-
-## Funciona em todos os dispositivos
-
-Acesse o Gramps Web de qualquer dispositivo com acesso à internet. Você pode fazer upload de fotos, criar ou editar registros, mostrar sua árvore genealógica para outras pessoas ou procurar aqueles nomes de membros da família que você não consegue lembrar em sua próxima reunião de família!
-
-O Gramps Web é um aplicativo web progressivo: instale-o na tela inicial ou área de trabalho e ele se comporta como um aplicativo nativo. No desktop, [atalhos de teclado](../user-guide/shortcuts.md) o levam a qualquer lugar em algumas teclas – pressione `?` para vê-los todos.
+Veja [Histórico de Revisões](../user-guide/revisions.md).
 
 <div style="clear:both;"></div>
 
 ---
 
-![Título da imagem](screenshots/lang.png){ align=right width="300"}
+![Menu Ferramentas do Gramps Desktop com a entrada Gramps Web Sync](screenshots/sync.png){ align=left width="300"}
 
-## Totalmente internacionalizado
+### Integração completa com o Gramps Desktop
 
-Alterne o idioma da interface entre qualquer um dos mais de 50 idiomas traduzidos pela comunidade Gramps.
+Gramps Web usa o mesmo modelo de dados e banco de dados que o [Gramps Desktop](https://gramps-project.org/). Você pode navegar e editar todos os mesmos [tipos de registros](https://gramps-project.org/wiki/index.php/Gramps_Data_Model): pessoas, famílias, eventos, lugares, repositórios, fontes, citações, objetos de mídia e notas.
+
+Com o [complemento Gramps Web Sync](../administration/sync.md) para o Gramps Desktop, você pode sincronizar seus dados em ambas as direções, para que possa continuar trabalhando no Gramps Desktop e no Gramps Web lado a lado.
+
+<div style="clear:both;"></div>
+
+## Relatórios e exportação de dados { .feature-group }
+
+![Relatório de ancestrais gerado como um PDF](screenshots/report.png){ align=right width="400"}
+
+### Gere relatórios imprimíveis
+
+Gramps Web é construído sobre o mesmo núcleo que o Gramps Desktop, então você pode gerar quase todos os [relatórios](https://gramps-project.org/wiki/index.php/Gramps_6.0_Wiki_Manual_-_Reports) que o aplicativo desktop suporta diretamente do navegador, incluindo gráficos de relacionamento ou relatórios em livro como PDF.
 
 <div style="clear:both;"></div>
 
 ---
+
+![Página de exportação com a lista de formatos de arquivo disponíveis](screenshots/export.png){ align=left width="300"}
+
+### Sem bloqueio – importação e exportação de dados
+
+Importe dados em vários formatos, incluindo Gramps XML e GEDCOM, e baixe todos os seus dados a qualquer momento – dados da árvore genealógica, arquivos de mídia e contas de usuário – para backups ou para mover para um servidor diferente.
+
+As importações podem ser visualizadas como um teste antes que qualquer coisa seja escrita, e um backup completo pode ser restaurado de volta na árvore.
+
+<div style="clear:both;"></div>
+
+## Use em qualquer lugar { .feature-group }
+
+![A mesma página de pessoa em um desktop e em um telefone](screenshots/mobile.png){ align=right width="400"}
+
+### Funciona em todos os dispositivos
+
+Use Gramps Web em qualquer dispositivo com um navegador web: carregue fotos, crie ou edite registros, ou mostre sua árvore genealógica para parentes na próxima reunião de família.
+
+Gramps Web é um aplicativo web progressivo: instale-o na tela inicial ou desktop e ele se comporta como um aplicativo nativo. No desktop, [atalhos de teclado](../user-guide/shortcuts.md) levam você a qualquer lugar em algumas teclas – pressione `?` para vê-los todos.
+
+<div style="clear:both;"></div>
+
+---
+
+![Menu de seleção de idioma](screenshots/lang.png){ align=left width="300"}
+
+### Totalmente internacionalizado
+
+Use a interface em qualquer um de mais de 50 idiomas traduzidos pela comunidade Gramps.
+
+<div style="clear:both;"></div>
 
 ## E mais
 
 - **Notificações e tarefas em segundo plano** – importações, exportações, relatórios e reconstruções de índice são executados em segundo plano, com progresso e erros coletados em um só lugar
-- **Tags, favoritos e histórico** – organize objetos com tags codificadas por cores e volte ao que estava trabalhando
+- **Tags, marcadores e histórico** – organize objetos com tags codificadas por cores e volte ao que estava trabalhando
 - **Edição em massa** – selecione vários objetos nas visualizações de lista para excluí-los de uma vez ou mesclar objetos duplicados
-- **Visualizações de lista personalizáveis** – escolha quais colunas exibir e filtre por texto, tag ou privacidade
+- **Visualizações de lista personalizáveis** – escolha quais colunas mostrar e filtre por texto, tag ou privacidade
 - **Reconhecimento de texto (OCR)** – extraia texto de documentos digitalizados em sua galeria de mídia
-- **Verificação de dados** – verifique sua árvore em busca de datas implausíveis e outros problemas de dados
+- **Verificação de dados** – verifique sua árvore para datas implausíveis e outros problemas de dados
 - **Calendários** – insira datas no calendário gregoriano, juliano, hebraico, republicano francês, persa, islâmico ou sueco
-- **Personalize como quiser** – dê ao seu site seu próprio nome, cores de tema e texto e imagem da página inicial
-
-<p>&nbsp;</p>
+- **Personalize** – dê ao seu site seu próprio nome, cores de tema e texto e imagem da página inicial
 
 ## Demonstração
 
-Para fazer login na Demonstração, use qualquer uma das seguintes credenciais de login ***USUÁRIO / SENHA***. Cada uma representa um tipo de usuário que um usuário do Gramps Web pode ser atribuído.
+Para fazer login na demonstração, use uma das seguintes combinações de nome de usuário/senha. Cada uma representa um dos papéis de usuário no Gramps Web.
 
 `owner / owner` <br>
 `editor / editor` <br>
 `contributor / contributor` <br>
 `member / member`
 
+A demonstração é redefinida a cada duas horas, então quaisquer alterações que você fizer são temporárias.
 
-[Ir para o Login da Demonstração](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
-
+[Vá para o Login da Demonstração](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 ### Agradecimentos
 
