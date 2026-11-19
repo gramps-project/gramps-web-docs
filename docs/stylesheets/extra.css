@@ -75,3 +75,23 @@
 .md-search__form {
   border-radius: 999px;
 }
+
+/* Group headings on the features page */
+.md-typeset h2.feature-group {
+  margin-top: 2em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 1.7em;
+  font-weight: 500;
+}
+
+/* Outlined buttons use the primary colour, which is too dark on the dark background */
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary) {
+  color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):hover {
+  color: var(--md-accent-bg-color);
+  background-color: var(--md-typeset-a-color);
+}
