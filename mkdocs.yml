@@ -109,14 +109,28 @@ theme:
     - navigation.footer
     - content.action.edit
     - content.code.copy
+  # Colours are set in docs/stylesheets/extra.css to match the Gramps Web app
   palette:
-    scheme: default
-    primary: brown
-    accent: blue
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   logo: logo.svg
   favicon: favicon.ico
   font:
     text: Inter
+extra_css:
+  - stylesheets/extra.css
 hooks:
   - overrides/hooks.py
 markdown_extensions:

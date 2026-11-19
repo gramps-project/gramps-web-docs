@@ -1,10 +1,4 @@
 {% extends "main.html" %} {% block styles %} {{ super() }}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-  rel="stylesheet"
-/>
 <style>
   .hero-container {
     width: 100vw;
@@ -20,7 +14,7 @@
     display: block;
     top: 0;
     width: 100%;
-    font-family: Inter;
+    font-family: var(--md-text-font-family);
     text-align: center;
     color: rgba(255, 255, 255, 0.85);
   }
@@ -29,12 +23,12 @@
     margin-top: -50px;
     padding-bottom: 3rem;
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--md-typeset-color);
   }
 
   .home-content h2 {
-    font-family: Poppins;
-    color: rgba(0, 0, 0, 0.7);
+    font-family: var(--md-text-font-family);
+    color: var(--md-default-fg-color--light);
     font-weight: 600;
     font-size: 1.7rem;
   }
@@ -71,6 +65,14 @@
     padding: 3rem;
   }
 
+  [data-md-color-scheme="slate"] .hero-content {
+    background: linear-gradient(
+      185deg,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  }
+
   @media (max-width: 768px) {
     .hero-content {
       flex-direction: column;
@@ -105,7 +107,7 @@
   }
 
   .hero h1 {
-    font-family: Poppins;
+    font-family: var(--md-text-font-family);
     color: rgba(255, 255, 255, 0.9);
     font-size: 2.8rem;
     margin: 0;
