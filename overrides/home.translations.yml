@@ -8,7 +8,7 @@ hero:
     demo_button: "Try the demo"
   de:
     title: "Gramps Web"
-    description: "Das kostenlose, quelloffene Genealogie-System zum Aufbau Ihres Stammbaums – gemeinsam. Nutzen Sie es eigenständig oder als Ergänzung zu Gramps Desktop, mit voller Kontrolle über Ihre Daten und Datenschutz als oberste Priorität."
+    description: "Das kostenlose, quelloffene Genealogie-System zum Aufbau deines Stammbaums – gemeinsam. Nutze es eigenständig oder als Ergänzung zu Gramps Desktop, mit voller Kontrolle über deine Daten und Datenschutz als oberste Priorität."
     demo_button: "Demo ausprobieren"
   fr:
     title: "Gramps Web"
@@ -81,19 +81,19 @@ learn_more:
     title: "Mehr erfahren"
     features:
       title: "Gramps Web Funktionsübersicht"
-      description: "Entdecken Sie die leistungsstarken Funktionen, die Gramps Web zum idealen Werkzeug für die kollaborative Familienforschung machen."
+      description: "Entdecke die leistungsstarken Funktionen, die Gramps Web zum idealen Werkzeug für die kollaborative Familienforschung machen."
     install:
       title: "Installations- und Einrichtungsinformationen"
-      description: "Starten Sie mit Schritt-für-Schritt-Anleitungen zur Installation und Konfiguration von Gramps Web."
+      description: "Leg los mit Schritt-für-Schritt-Anleitungen zur Installation und Konfiguration von Gramps Web."
     admin:
       title: "Web-Administrator-Handbuch"
-      description: "Erfahren Sie, wie Sie eine Gramps Web-Instanz einfach verwalten und warten."
+      description: "Erfahre, wie du eine Gramps-Web-Instanz einfach verwaltest und wartest."
     user_guide:
       title: "Benutzerhandbuch"
-      description: "Entdecken Sie, wie Sie Gramps Web zur Dokumentation Ihrer Familiengeschichte navigieren und nutzen."
+      description: "Entdecke, wie du Gramps Web nutzt, um deine Familiengeschichte zu dokumentieren."
     development:
       title: "Entwicklerdokumentation"
-      description: "Tauchen Sie ein in die Codebasis, API-Dokumentation und technische Details zur Erweiterung von Gramps Web."
+      description: "Tauche ein in die Codebasis, API-Dokumentation und technische Details zur Erweiterung von Gramps Web."
   fr:
     title: "En savoir plus"
     features:
