@@ -1,71 +1,71 @@
 # Benutzereinstellungen
 
-Benutzereinstellungen sind über das Benutzersymbol in der oberen App-Leiste zugänglich, dann **Benutzereinstellungen**. Die Seite ist in zusammenklappbare Abschnitte organisiert. Änderungen treten sofort in Kraft, sofern nicht anders angegeben.
+Die Benutzereinstellungen sind über das Benutzersymbol in der oberen App-Leiste und anschließend über **Benutzereinstellungen** erreichbar. Die Seite ist in auf- und zuklappbare Abschnitte gegliedert. Änderungen werden sofort wirksam, sofern nicht anders angegeben.
 
-!!! Hinweis
-    Änderungen in den Benutzereinstellungen betreffen nur Ihr eigenes Konto. Einstellungen, die alle Benutzer des Baums betreffen, werden in den [Verwaltungseinstellungen](../administration/settings.md) verwaltet.
+!!! note
+    Änderungen in den Benutzereinstellungen betreffen nur dein eigenes Konto. Einstellungen, die alle Benutzer des Stammbaums betreffen, werden in den [Administrationseinstellungen](../administration/settings.md) verwaltet.
 
 ## Konto
 
-Beinhaltet Ihre Profilinformationen, Anmeldeinformationen und Kontosicherheit.
+Enthält deine Profilinformationen, Zugangsdaten und Kontosicherheit.
 
 ### Benutzerinformationen
 
-Zeigt Ihren **Benutzernamen** und Ihre aktuelle **Benutzerrolle** (z. B. Gast, Mitglied, Redakteur). Diese sind schreibgeschützt.
+Zeigt deinen **Benutzernamen** und deine aktuelle **Benutzerrolle** (z. B. Gast, Mitglied, Bearbeiter). Diese Angaben sind schreibgeschützt.
 
-### E-Mail ändern
+### E-Mail-Adresse ändern
 
-Geben Sie eine neue E-Mail-Adresse ein und klicken Sie auf **Absenden**, um die mit Ihrem Konto verknüpfte Adresse zu aktualisieren. Die E-Mail-Adresse wird für Passwortzurücksetzungen und (wenn konfiguriert) Benachrichtigungen verwendet.
+Gib eine neue E-Mail-Adresse ein und klicke auf **Absenden**, um die mit deinem Konto verknüpfte Adresse zu aktualisieren. Die E-Mail-Adresse wird zum Zurücksetzen des Passworts und (falls konfiguriert) für Benachrichtigungen verwendet.
 
 ### Passwort ändern
 
-Geben Sie Ihr aktuelles Passwort und ein neues Passwort ein und klicken Sie dann auf **Absenden**. Sie bleiben auf dem aktuellen Gerät angemeldet, während Ihre Sitzungen auf anderen Geräten und Browsern innerhalb von 15 Minuten enden. Wenn Sie Ihr aktuelles Passwort vergessen haben, verwenden Sie stattdessen den Link **Passwort vergessen** auf der Anmeldeseite.
+Gib dein aktuelles Passwort und ein neues Passwort ein und klicke anschließend auf **Absenden**. Du bleibst auf dem aktuellen Gerät angemeldet, während deine Sitzungen auf anderen Geräten und in anderen Browsern innerhalb von 15 Minuten beendet werden. Wenn du dein aktuelles Passwort vergessen hast, verwende stattdessen den Link **Passwort vergessen** auf der Anmeldeseite.
 
-Dieser Abschnitt ist verborgen, wenn der Server nur die Anmeldung über einen externen Anbieter zulässt (siehe [OIDC-Authentifizierung](../install_setup/oidc.md)).
+Dieser Abschnitt ist ausgeblendet, wenn der Server die Anmeldung nur über einen externen Anbieter erlaubt (siehe [OIDC-Authentifizierung](../install_setup/oidc.md)).
 
 ### Verknüpfte Anmeldemethoden
 
-Wenn Ihr Server eine Single Sign-On-Funktion anbietet (siehe [OIDC-Authentifizierung](../install_setup/oidc.md)), können Sie ein Konto von einem Anbieter, wie Google oder dem Login Ihrer Organisation, mit Ihrem Gramps Web-Konto verknüpfen. Sie können sich dann mit diesem Anbieter anmelden und gelangen in Ihr bestehendes Konto, mit Ihrer Rolle und Ihren Änderungen. Dieser Abschnitt erscheint nur, wenn Single Sign-On aktiviert ist und der Server das Verknüpfen unterstützt (Gramps Web API 3.24 und höher).
+Wenn dein Server Single Sign-on anbietet (siehe [OIDC-Authentifizierung](../install_setup/oidc.md)), kannst du ein Konto bei einem Anbieter, beispielsweise Google oder dem Anmeldesystem deiner Organisation, mit deinem Gramps-Web-Konto verknüpfen. Du kannst dich dann mit diesem Anbieter anmelden und gelangst zu deinem bestehenden Konto, einschließlich deiner Rolle und deiner Änderungen. Dieser Abschnitt wird nur angezeigt, wenn Single Sign-on aktiviert ist und der Server die Verknüpfung unterstützt (Gramps Web API 3.24 und höher).
 
-Um ein Konto zu verknüpfen, klicken Sie auf **Verknüpfen mit** und dem Namen des Anbieters, melden Sie sich beim Anbieter an, und Sie werden zurück zu Ihren Einstellungen geleitet. Wenn Sie sich in letzter Zeit nicht angemeldet haben, werden Sie zuerst aufgefordert, sich erneut anzumelden.
+Um ein Konto zu verknüpfen, klicke auf **Verknüpfen mit** und den Namen des Anbieters, melde dich beim Anbieter an und kehre anschließend zu deinen Einstellungen zurück. Wenn du dich nicht vor Kurzem angemeldet hast, wirst du zunächst aufgefordert, dich erneut anzumelden.
 
-Ein Anbieter-Konto kann nur mit einem Gramps Web-Konto verknüpft werden. Wenn Sie "Diese Anmeldung ist bereits mit einem anderen Konto verknüpft" sehen, ist es anderswo verknüpft, zum Beispiel mit einem Konto, das erstellt wurde, als Sie sich zum ersten Mal mit diesem Anbieter angemeldet haben. Ein Administrator kann dieses andere Konto löschen, nach dem Sie es mit Ihrem verknüpfen können.
+Ein Anbieterkonto kann nur mit einem Gramps-Web-Konto verknüpft werden. Wenn du die Meldung „Diese Anmeldung ist bereits mit einem anderen Konto verknüpft“ siehst, ist sie bereits an anderer Stelle verknüpft, beispielsweise mit einem Konto, das bei deiner ersten Anmeldung mit diesem Anbieter erstellt wurde. Ein Administrator kann das andere Konto löschen. Danach kannst du es mit deinem Konto verknüpfen.
 
-Um ein Konto zu trennen, klicken Sie auf **Trennen**. Wenn es Ihre letzte verknüpfte Anmeldemethode ist, müssen Sie auch Ihr Passwort eingeben, damit Sie sich danach weiterhin anmelden können. Wenn Ihr Konto über Single Sign-On erstellt wurde und Sie nie ein Passwort festgelegt haben, verwenden Sie **Passwort vergessen** auf der Anmeldeseite, um zuerst eines festzulegen (dies erfordert, dass der Server E-Mails sendet). Wenn der Server nur die Anmeldung über einen Anbieter zulässt, kann das letzte verknüpfte Konto nicht getrennt werden.
+Um die Verknüpfung eines Kontos aufzuheben, klicke auf **Verknüpfung aufheben**. Wenn es sich um deine letzte verknüpfte Anmeldemethode handelt, musst du außerdem dein Passwort eingeben, damit du dich anschließend weiterhin anmelden kannst. Wenn dein Konto über Single Sign-on erstellt wurde und du nie ein Passwort festgelegt hast, verwende **Passwort vergessen** auf der Anmeldeseite, um zunächst eines festzulegen (dazu muss der Server E-Mails versenden können). Wenn der Server die Anmeldung nur über einen Anbieter erlaubt, kann die Verknüpfung des letzten Kontos nicht aufgehoben werden.
 
-## Erscheinungsbild
+## Darstellung
 
-Steuert die Anzeigeeinstellungen, die auf Ihrem Gerät gespeichert sind.
+Steuert die auf deinem Gerät gespeicherten Anzeigeeinstellungen.
 
 ### Sprache
 
-Wählen Sie die Sprache für die Gramps Web-Oberfläche. Die Spracheinstellung wird im lokalen Speicher des Browsers gespeichert und gilt nur für das aktuelle Gerät.
+Wähle die Sprache für die Gramps-Web-Oberfläche aus. Die Spracheinstellung wird im lokalen Speicher des Browsers gespeichert und gilt nur für das aktuelle Gerät.
 
-### Thema
+### Design
 
-Wählen Sie zwischen:
+Wähle zwischen:
 
-- **System** – folgt der Licht-/Dunkel-Präferenz des Betriebssystems (Standard)
-- **Hell** – immer das helle Thema verwenden
-- **Dunkel** – immer das dunkle Thema verwenden
+- **System** – folgt der Hell-/Dunkel-Einstellung des Betriebssystems (Standard)
+- **Hell** – verwendet immer das helle Design
+- **Dunkel** – verwendet immer das dunkle Design
 
-Die Themen-Einstellung wird im lokalen Speicher des Browsers gespeichert.
+Die Design-Einstellung wird im lokalen Speicher des Browsers gespeichert.
 
-### Familienbaum-Einstellungen
+### Einstellungen zum Stammbaum
 
-#### Standardansicht des Familienbaums
+#### Standardansicht des Stammbaums
 
-Legt fest, welcher Diagrammtyp standardmäßig geöffnet wird, wenn Sie zur [Familienbaum](tree.md)-Seite navigieren. Optionen sind Ahnenbaum, Nachkommenbaum, Sanduhrgrafik, Beziehungsgrafik und Fandiagramm.
+Legt fest, welcher Diagrammtyp standardmäßig geöffnet wird, wenn du zur Seite [Stammbaum](tree.md) navigierst. Die Optionen sind Vorfahrenbaum, Nachkommenbaum, Sanduhrdiagramm, Beziehungsdiagramm und Fächerdiagramm.
 
-Diese Präferenz wird im lokalen Speicher des Browsers gespeichert.
+Diese Einstellung wird im lokalen Speicher des Browsers gespeichert.
 
-## Entwicklertools
+## Entwicklerwerkzeuge
 
 ### API-Token
 
-Kopiert Ihr aktuelles Sitzungstoken in die Zwischenablage. Das Token kann verwendet werden, um sich direkt gegen die REST-API zu authentifizieren, zum Beispiel in der interaktiven Swagger UI, die von Ihrer Gramps Web-Instanz unter `/api/swagger-ui` bereitgestellt wird.
+Kopiert dein aktuelles Sitzungstoken in die Zwischenablage. Das Token kann zur direkten Authentifizierung gegenüber der REST-API verwendet werden, beispielsweise in der interaktiven Swagger-Benutzeroberfläche, die von deiner Gramps-Web-Instanz unter `/api/swagger-ui` bereitgestellt wird.
 
-Klicken Sie auf **Swagger starten**, um die Swagger UI in einem neuen Tab zu öffnen, wobei Ihre Sitzung bereits verfügbar ist.
+Klicke auf **Swagger starten**, um die Swagger-Benutzeroberfläche in einem neuen Tab zu öffnen, wobei deine Sitzung bereits verfügbar ist.
 
-!!! Hinweis
-    Das Sitzungstoken ist kurzlebig. Kopieren Sie es sofort, bevor Sie es in Swagger verwenden, da es ablaufen kann.
+!!! note
+    Das Sitzungstoken ist nur kurzzeitig gültig. Kopiere es unmittelbar vor der Verwendung in Swagger, da es ablaufen kann.

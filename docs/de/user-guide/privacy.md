@@ -1,68 +1,68 @@
-# Private Aufzeichnungen
+# Private Datensätze
 
-Jeder Eintrag im Baum kann als privat markiert werden. Zusammen mit den [Benutzerrollen](../install_setup/users.md#user-roles) entscheidet dies, wer was sieht.
+Jeder Datensatz im Stammbaum kann als privat markiert werden. Zusammen mit den [Benutzerrollen](../install_setup/users.md#user-roles) wird dadurch festgelegt, wer was sehen kann.
 
-## Wer kann was sehen
+## Wer kann was sehen?
 
-Gramps Web ist niemals öffentlich zugänglich: Nur Benutzer mit einem Konto können etwas sehen. "Öffentlich" in Gramps bedeutet einfach "nicht privat", d.h. sichtbar für jeden angemeldeten Benutzer des Baums.
+Gramps Web ist niemals öffentlich zugänglich: Nur Benutzer mit einem Konto können überhaupt etwas sehen. „Öffentlich“ bedeutet in Gramps einfach „nicht privat“, also für jeden angemeldeten Benutzer des Stammbaums sichtbar.
 
-| Rolle | Öffentliche Aufzeichnungen | Private Aufzeichnungen |
+| Rolle | Öffentliche Datensätze | Private Datensätze |
 |---|---|---|
 | Gast | anzeigen | – |
 | Mitglied | anzeigen | anzeigen |
-| Mitwirkender | anzeigen, hinzufügen | anzeigen, hinzufügen |
-| Redakteur, Eigentümer, Administrator | anzeigen, hinzufügen, bearbeiten, löschen | anzeigen, hinzufügen, bearbeiten, löschen |
+| Beitragender | anzeigen, hinzufügen | anzeigen, hinzufügen |
+| Bearbeiter, Eigentümer, Administrator | anzeigen, hinzufügen, bearbeiten, löschen | anzeigen, hinzufügen, bearbeiten, löschen |
 
-Für Gäste existieren private Aufzeichnungen nicht: Sie werden aus Seiten, Listen, Suchergebnissen, Diagrammen, Berichten, Exporten und Antworten des KI-Assistenten ausgeschlossen. Dies wird durchgesetzt, wenn der Server die Datenbank liest, nicht durch das Verstecken von Inhalten in der App, sodass ein Gast auch auf keine andere Weise auf private Daten zugreifen kann.
+Für Gäste existieren private Datensätze nicht: Sie werden aus Seiten, Listen, Suchergebnissen, Diagrammen, Berichten, Exporten und Antworten des KI-Assistenten ausgeschlossen. Dies wird beim Lesen der Datenbank durch den Server erzwungen und nicht dadurch, dass Dinge in der App ausgeblendet werden. Ein Gast kann daher auch auf keinem anderen Weg an private Daten gelangen.
 
-Konten, die noch nicht genehmigt wurden (nach [Selbstregistrierung](registration.md)), können sich überhaupt nicht anmelden.
+Konten, die noch nicht genehmigt wurden (nach der [Selbstregistrierung](registration.md)), können sich überhaupt nicht anmelden.
 
-Wenn also Verwandte oder andere Personen mit einem Gastkonto bestimmte Informationen nicht sehen sollen, markieren Sie diese als privat. Wenn alle Benutzer eines Baums alles sehen dürfen, geben Sie ihnen die Rolle Mitglied (oder höher), und es ist nicht nötig, etwas als privat zu markieren.
+Wenn Verwandte oder andere Personen mit einem Gastkonto bestimmte Informationen nicht sehen sollen, markiere sie als privat. Wenn alle Benutzer eines Stammbaums alles sehen dürfen, gib ihnen die Rolle „Mitglied“ (oder eine höhere Rolle); dann müssen keine Datensätze als privat markiert werden.
 
 ## Lebende Personen sind nicht automatisch privat
 
-Nichts wird automatisch privat gemacht – nicht einmal Personen, die noch leben. Daten lebender Personen sind für Gäste sichtbar, bis Sie sie als privat markieren. Dies gilt auch für importierte Bäume.
+Nichts wird automatisch privat gemacht – auch nicht Personen, die noch leben. Die Daten lebender Personen sind für Gäste sichtbar, bis du sie als privat markierst. Dies gilt auch für importierte Stammbäume.
 
-Um die Personen, die wahrscheinlich leben, in Gramps Web privat zu machen:
+So machst du die wahrscheinlich noch lebenden Personen in Gramps Web privat:
 
-1. Öffnen Sie in der Personenliste den [erweiterten Filter](lists.md#advanced-filter) und fügen Sie die Bedingung "Personen wahrscheinlich lebend" hinzu (lassen Sie das Datum für heute leer). Wenden Sie den Filter an.
-2. Klicken Sie auf **Auswählen**, aktivieren Sie das Kontrollkästchen im Header und wählen Sie **Alle auswählen**.
-3. Wählen Sie die Aktion **Privatsphäre** und markieren Sie die Aufzeichnungen als privat.
+1. Öffne in der Personenliste den [erweiterten Filter](lists.md#advanced-filter) und füge die Bedingung „Wahrscheinlich lebende Personen“ hinzu (lasse das Datum für den heutigen Tag leer). Wende den Filter an.
+2. Klicke auf **Auswählen**, aktiviere das Kontrollkästchen in der Kopfzeile und wähle **Alle auswählen**.
+3. Wähle die Aktion **Privatsphäre** und markiere die Datensätze als privat.
 
-"Voraussichtlich lebend" wird aus den Daten der Person und ihrer Verwandten geschätzt. Personen ohne verwertbare Daten gelten als lebend. Überprüfen Sie das Ergebnis und beachten Sie, dass die Schätzung sich ändern kann, wenn Sie Daten hinzufügen.
+„Wahrscheinlich lebend“ wird anhand der Daten der Person und ihrer Verwandten geschätzt. Personen ohne verwertbare Datumsangaben werden als lebend betrachtet. Überprüfe das Ergebnis und beachte, dass sich die Schätzung ändern kann, wenn du weitere Daten hinzufügst.
 
-Das Markieren einer Person als privat verbirgt die Person, jedoch nicht ihre Ereignisse, Notizen, Medien oder Familien – siehe unten. Gramps Desktop bietet weitere Werkzeuge, um die Privatsphäre vieler verwandter Aufzeichnungen auf einmal festzulegen, die Sie mit dem [Sync-Addon](../administration/sync.md) verwenden können.
+Wenn du eine Person als privat markierst, wird die Person ausgeblendet, nicht jedoch ihre Ereignisse, Notizen, Medien oder Familien – siehe unten. Gramps Desktop bietet weitere Werkzeuge, um die Privatsphäre vieler zugehöriger Datensätze gleichzeitig festzulegen. Du kannst diese mit dem [Sync-Addon](../administration/sync.md) verwenden.
 
-Personen, die später sterben, werden ebenfalls nicht automatisch öffentlich. Ob Sie das wünschen, liegt bei Ihnen – viele Forscher ziehen es vor, gesammelte Informationen eine Zeit lang privat zu halten.
+Personen, die später sterben, werden ebenfalls nicht automatisch öffentlich. Ob du das möchtest, bleibt dir überlassen – viele Forscher ziehen es vor, gesammelte Informationen eine Zeit lang privat zu halten.
 
-## Lesen der Schloss-Symbole
+## Die Schlosssymbole verstehen
 
-Benutzer, die private Daten anzeigen können, sehen ein Schloss neben privaten Elementen. Es gibt zwei Arten:
+Benutzer, die private Daten anzeigen dürfen, sehen neben privaten Einträgen ein Schloss. Es gibt zwei Arten:
 
-- **Gefülltes Schloss** – der Eintrag selbst ist privat. Auf der Seite einer Person bedeutet beispielsweise ein gefülltes Schloss neben einem Ereignis, dass das Ereignis privat ist, und neben einem Kind, dass das Kind privat ist.
-- **Umriss-Schloss** – nur der *Link* ist privat, nicht der Eintrag, auf den er verweist. Zum Beispiel kann der Link einer Person zu einem Ereignis privat sein, während das Ereignis selbst öffentlich ist. Das Ereignis wird dann von der Seite dieser Person verborgen, bleibt jedoch anderswo sichtbar, z.B. auf den Seiten anderer Teilnehmer oder in der Ereignisliste.
+- **Ausgefülltes Schloss** – der Datensatz selbst ist privat. Auf der Seite einer Person bedeutet beispielsweise ein ausgefülltes Schloss neben einem Ereignis, dass das Ereignis privat ist, und neben einem Kind, dass das Kind privat ist.
+- **Umrissschloss** – nur der *Link* ist privat, nicht der Datensatz, auf den er verweist. Beispielsweise kann der Link einer Person zu einem Ereignis privat sein, während das Ereignis selbst öffentlich ist. Das Ereignis wird dann auf der Seite dieser Person ausgeblendet, bleibt aber an anderer Stelle sichtbar, etwa auf den Seiten anderer Teilnehmer oder in der Ereignisliste.
 
-Wenn sowohl der Eintrag als auch sein Link privat sind, wird das gefüllte Schloss angezeigt.
+Wenn sowohl der Datensatz als auch sein Link privat sind, wird das ausgefüllte Schloss angezeigt.
 
-Die gleiche Unterscheidung gilt für Kinder (das Kind oder der Link des Kindes zur Familie), Assoziationen, Repository-Links einer Quelle und Medien in einer Galerie. Namen, Attribute, Adressen und URLs gehören zu ihrem Eintrag und haben nur das gefüllte Schloss.
+Dieselbe Unterscheidung gilt für Kinder (das Kind oder der Link des Kindes zur Familie), Zuordnungen, Repository-Links einer Quelle und Medien in einer Galerie. Namen, Attribute, Adressen und URLs gehören zu ihrem Datensatz und haben nur das ausgefüllte Schloss.
 
 ## Etwas privat machen
 
-Sie benötigen Bearbeitungsrechte, um die Privatsphäre zu ändern.
+Um die Privatsphäre zu ändern, benötigst du Bearbeitungsrechte.
 
-- **Einen ganzen Eintrag**: Öffnen Sie seine Seite, gehen Sie in den Bearbeitungsmodus und klicken Sie auf die Schloss-Schaltfläche in der Symbolleiste.
-- **Teil eines Eintrags** – ein alternativer Name, Attribut, Adresse, URL, Assoziation, Kinderlink oder Repository-Link: Öffnen Sie den Bearbeitungsdialog dieses Elements und aktivieren Sie den Schalter **Privat**. Der Hauptname hat keinen Schalter, da die Person sonst als "Privat" angezeigt würde.
-- **Ein Ereignis von der Seite einer Person oder Familie**: Der Bearbeitungsdialog des Ereignisses hat einen Datenschalter für das Ereignis selbst. Wenn das Ereignis mit anderen Personen geteilt wird, kann es erst nach **Für alle bearbeiten** bearbeitet werden, da es für alle privat ist.
-- **Ein Link einer Person zu einem Ereignis**: Öffnen Sie auf der Ereignisseite die Zeile des Teilnehmers im Bearbeitungsmodus. Der Datenschalter dort gilt nur für den Link dieses Teilnehmers, sodass das Ereignis für die anderen Teilnehmer sichtbar bleibt.
-- **Ein Medienobjekt in einer Galerie**: Klicken Sie im Bearbeitungsmodus auf das Schloss in der Ecke der Kachel.
-- **Viele Einträge auf einmal**: Wählen Sie sie in einer Liste aus und verwenden Sie die Aktion **Privatsphäre**, siehe [Listen](lists.md#tags-and-privacy).
+- **Ein vollständiger Datensatz**: Öffne seine Seite, wechsle in den Bearbeitungsmodus und klicke in der Werkzeugleiste auf die Schaltfläche mit dem Schloss.
+- **Teil eines Datensatzes** – ein alternativer Name, ein Attribut, eine Adresse, eine URL, eine Zuordnung, ein Link zu einem Kind oder ein Repository-Link: Öffne den Bearbeitungsdialog dieses Elements und aktiviere den Schalter **Privat**. Für den primären Namen gibt es keinen Schalter, da die Person andernfalls als „Privat“ angezeigt würde.
+- **Ein Ereignis auf der Seite einer Person oder Familie**: Im Bearbeitungsdialog des Ereignisses gibt es einen Schalter für die Privatsphäre des Ereignisses selbst. Wenn das Ereignis mit anderen Personen geteilt wird, kann es erst nach **Für alle bearbeiten** bearbeitet werden, da es für alle diese Personen privat ist.
+- **Der Link einer Person zu einem Ereignis**: Öffne auf der Ereignisseite die Zeile des Teilnehmers im Bearbeitungsmodus. Der dortige Schalter für die Privatsphäre gilt nur für den Link dieses Teilnehmers, sodass das Ereignis für die anderen Teilnehmer sichtbar bleibt.
+- **Ein Medienobjekt in einer Galerie**: Klicke im Bearbeitungsmodus auf das Schloss in der Ecke der Kachel.
+- **Viele Datensätze auf einmal**: Wähle sie in einer Liste aus und verwende die Aktion **Privatsphäre**; siehe [Listen](lists.md#tags-and-privacy).
 
-Um zu überprüfen, welche Einträge in einer Liste privat sind, aktivieren Sie die **Privatsphäre**-Spalte im Spaltenauswähler der Liste.
+Um zu prüfen, welche Datensätze in einer Liste privat sind, aktiviere die Spalte **Privatsphäre** in der Spaltenauswahl der Liste.
 
-## Dinge, die zu beachten sind
+## Was du beachten solltest
 
-- Das Privatmachen eines Eintrags macht die Einträge, auf die er verweist, nicht privat. Wenn eine Person privat ist, sind ihre Ereignisse, die Familien, zu denen sie gehört, und die angehängten Notizen weiterhin sichtbar, es sei denn, sie sind selbst privat. Verwenden Sie den erweiterten Filter oder die **Privatsphäre**-Spalte, um verwandte Einträge zu überprüfen.
-- Das Privatmachen einer Familie oder eines Ereignisses verbirgt es, jedoch nicht die darin enthaltenen Personen.
-- [DNA-Übereinstimmungen und Y-DNA-Daten](dna-matches.md#private-matches) haben ihren eigenen **Privat**-Schalter in ihren Dialogen.
-- Exporte und Medienarchive, die von einem Benutzer erstellt wurden, der keine privaten Daten anzeigen kann, enthalten keine privaten Aufzeichnungen oder Dateien.
-- Privatsphäre ist ein Gramps-Feature, sodass in Gramps Desktop als privat markierte Aufzeichnungen auch in Gramps Web privat sind und umgekehrt.
+- Wenn du einen Datensatz privat machst, werden die Datensätze, auf die er verweist, nicht ebenfalls privat. Wenn eine Person privat ist, bleiben ihre Ereignisse, die Familien, denen sie angehört, und die an sie angehängten Notizen sichtbar, sofern sie nicht selbst privat sind. Verwende den erweiterten Filter oder die Spalte **Privatsphäre**, um zugehörige Datensätze zu überprüfen.
+- Wenn du eine Familie oder ein Ereignis privat machst, wird es ausgeblendet, nicht jedoch die darin enthaltenen Personen.
+- [DNA-Matches und Y-DNA-Daten](dna-matches.md#private-matches) verfügen in ihren Dialogen über einen eigenen Schalter **Privat**.
+- Von einem Benutzer erstellte Exporte und Medienarchive, der private Daten nicht anzeigen darf, enthalten keine privaten Datensätze oder Dateien.
+- Privatsphäre ist eine Gramps-Funktion. Daher sind in Gramps Desktop als privat markierte Datensätze auch in Gramps Web privat und umgekehrt.

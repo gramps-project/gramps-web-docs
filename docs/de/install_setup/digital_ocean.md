@@ -1,46 +1,46 @@
-# Gramps Web DigitalOcean 1-Click App
+# Gramps Web DigitalOcean 1-Klick-App
 
-Statt [Gramps Web selbst einzurichten](deployment.md), können Sie auch die [Gramps Web DigitalOcean 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) verwenden. Digital Ocean hostet die Demoversion von Gramps Web.
+Anstatt [Gramps Web selbst einzurichten](deployment.md), kannst du auch die [Gramps Web DigitalOcean 1-Klick-App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) verwenden. DigitalOcean hostet die Demo-Version von Gramps Web.
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
 
-Im Rahmen des Einrichtungsverfahrens müssen Sie sich ein Konto bei DigitalOcean erstellen und einen kostenpflichtigen Plan für den "Droplet" (virtuelle Maschine) auswählen.
+Im Rahmen des Einrichtungsvorgangs musst du ein Konto bei DigitalOcean erstellen und einen kostenpflichtigen Tarif für den zu verwendenden „Droplet“ (virtuelle Maschine) auswählen.
 
-Man könnte sagen, dass dies derzeit der einfachste Weg ist, Ihre eigene, selbst gehostete Gramps Web-Instanz mit SSL-Schutz bereitzustellen, ohne eigene Hardware zu verwenden.
+Dies ist derzeit wohl die einfachste Möglichkeit, deine eigene, selbst gehostete Gramps-Web-Instanz bereitzustellen, die mit SSL abgesichert ist, ohne deine eigene Hardware zu verwenden.
 
 !!! info
-    Beachten Sie, dass Sie DigitalOcean für die Hosting-Dienste bezahlen werden. Das Gramps-Open-Source-Projekt bietet keinen kostenpflichtigen Support an.
+    Beachte, dass du DigitalOcean für die Hosting-Dienste bezahlen musst. Das Open-Source-Projekt Gramps bietet keinen kostenpflichtigen Support an.
 
-## Schritt 1: Erstellen Sie ein DigitalOcean-Konto
+## Schritt 1: DigitalOcean-Konto erstellen
 
-Erstellen Sie ein Konto bei [DigitalOcean](https://www.digitalocean.com/), wenn Sie noch keins haben.
+Erstelle ein Konto bei [DigitalOcean](https://www.digitalocean.com/), falls du noch keines hast.
 
-## Schritt 2: Erstellen Sie den Droplet
+## Schritt 2: Droplet erstellen
 
-- Gehen Sie zur [Gramps Web 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) und klicken Sie auf "Gramps Web Droplet erstellen".
-- Wählen Sie einen Plan mit mindestens 2 GB RAM.
-- Richten Sie die Authentifizierung für Ihren Droplet ein.
-- Klicken Sie auf "Droplet erstellen".
+- Gehe zu [Gramps Web 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) und klicke auf „Create Gramps Web Droplet“.
+- Wähle einen Tarif mit mindestens 2 GB RAM.
+- Richte die Authentifizierung für dein Droplet ein
+- Klicke auf „Create Droplet“
 
-## Schritt 3: Richten Sie einen Domainnamen ein
+## Schritt 3: Domainnamen einrichten
 
-Sie benötigen einen Domainnamen (oder Subdomain). Wenn Sie eine Domain besitzen, weisen Sie sie auf die IP-Adresse Ihres Droplets. Andernfalls können Sie einen kostenlosen Dienst wie [DuckDNS](https://www.duckdns.org/) verwenden.
+Du benötigst einen Domainnamen (oder eine Subdomain). Wenn du eine Domain besitzt, verweise sie auf die IP-Adresse deines Droplets. Andernfalls kannst du einen kostenlosen Dienst wie [DuckDNS](https://www.duckdns.org/) verwenden.
 
-## Schritt 4: Melden Sie sich bei Ihrem Droplet an
+## Schritt 4: Bei deinem Droplet anmelden
 
-SSH in Ihren Droplet. Ihnen sollte die Nachricht "Willkommen beim Gramps Web DigitalOcean 1-Click App Setup!" angezeigt werden. Wenn dies nicht der Fall ist, warten Sie ein paar Minuten und versuchen Sie es erneut (die Installation ist noch nicht abgeschlossen).
+Melde dich per SSH bei deinem Droplet an. Dir sollte die Meldung „Welcome to the Gramps Web DigitalOcean 1-click app setup!“ angezeigt werden. Falls dies nicht der Fall ist, warte einige Minuten und versuche es erneut (die Installation ist noch nicht abgeschlossen).
 
-Das Einrichtungs-Skript wird Sie nach dem Domainnamen (z. B. `mygrampswebinstance.duckdns.org`) und einer E-Mail-Adresse (benötigt für das Let's Encrypt-Zertifikat) fragen. Optional wird es auch nach den SMTP-Einstellungen fragen, die Gramps Web zum Versenden von E-Mails verwendet, z. B. für Passwortzurücksetzungen; lassen Sie den SMTP-Host leer, um dies zu überspringen.
+Das Einrichtungsskript fragt dich nach dem Domainnamen (z. B. `mygrampswebinstance.duckdns.org`) und einer E-Mail-Adresse (die für das Let's-Encrypt-Zertifikat benötigt wird). Optional fragt es dich auch nach den SMTP-Einstellungen, die Gramps Web zum Senden von E-Mails verwendet, z. B. für das Zurücksetzen von Passwörtern. Lass den SMTP-Host leer, um dies zu überspringen.
 
-Wenn dies erledigt ist, warten Sie, bis die Einrichtung im Hintergrund abgeschlossen ist.
+Wenn dies erledigt ist, warte, bis die Einrichtung im Hintergrund abgeschlossen ist.
 
-## Schritt 5: Starten Sie Gramps Web
+## Schritt 5: Gramps Web starten
 
-Ihre Gramps Web-Instanz sollte jetzt im Root-Bereich Ihrer Domain mit einem gültigen SSL-Zertifikat zugänglich sein und den Assistenten für die erste Ausführung anzeigen.
+Deine Gramps-Web-Instanz sollte jetzt am Stammverzeichnis deiner Domain mit einem gültigen SSL-Zertifikat erreichbar sein und den Assistenten für die Ersteinrichtung anzeigen.
 
-## Ändern der Konfiguration später
+## Konfiguration später ändern
 
-Das Einrichtungs-Skript speichert die Basis-URL und die E-Mail-Einstellungen in der Datei `/root/letsencrypt.env` als [Konfigurationsoptionen](configuration.md), die mit `GRAMPSWEB_` vorangestellt sind, z. B.
+Das Einrichtungsskript speichert die Basis-URL und die E-Mail-Einstellungen in der Datei `/root/letsencrypt.env` als [Konfigurationsoptionen](configuration.md) mit dem Präfix `GRAMPSWEB_`, z. B.
 
 ```
 GRAMPSWEB_EMAIL_HOST=smtp.example.com
@@ -48,7 +48,8 @@ GRAMPSWEB_EMAIL_PORT=587
 GRAMPSWEB_EMAIL_USE_STARTTLS=true
 ```
 
-Um Einstellungen hinzuzufügen oder zu ändern, bearbeiten Sie diese Datei auf dem Droplet und wenden Sie die Änderung mit
+Um Einstellungen hinzuzufügen oder zu ändern, bearbeite diese Datei auf dem Droplet und wende die Änderung mit folgendem Befehl an:
 
 ```bash
 cd /opt/grampsweb && docker compose up -d
+```

@@ -3,51 +3,52 @@ hide:
   - navigation
 ---
 
-Wenn Sie auf Probleme stoßen oder Hilfe mit Gramps Web benötigen, wählen Sie bitte eine der folgenden Optionen aus.
+Wenn du auf Probleme stößt oder Hilfe bei Gramps Web benötigst, wähle bitte eine der folgenden Optionen.
 
 [Forum :material-forum:](https://gramps.discourse.group/c/gramps-web/){ .md-button }
-[Backend-Probleme :material-github:](https://github.com/gramps-project/gramps-web-api/issues){ .md-button }
-[Frontend-Probleme :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
+[Probleme im Backend :material-github:](https://github.com/gramps-project/gramps-web-api/issues){ .md-button }
+[Probleme im Frontend :material-github:](https://github.com/gramps-project/gramps-web/issues){ .md-button }
 
-Siehe unten für einige Hinweise, wo Sie zuerst hingehen sollten.
+Weiter unten findest du Hinweise dazu, wohin du dich zuerst wenden solltest.
 
 ## Fragen stellen
 
-Das offizielle Gramps Discourse-Forum hat eine [separate Kategorie für Gramps Web](https://gramps.discourse.group/c/gramps-web/). Bitte nutzen Sie diese, um Fragen zu Gramps Web zu stellen, zum Beispiel
+Das offizielle Gramps-Discourse-Forum hat eine [eigene Kategorie für Gramps Web](https://gramps.discourse.group/c/gramps-web/). Bitte nutze sie, um Fragen zu Gramps Web zu stellen, zum Beispiel
 
 - Fragen zur Nutzung von Gramps Web
 - Fragen zur Konfiguration von Gramps Web
-- Fehlersuche bei einer Bereitstellung von Gramps Web
-- Ideen zur Verbesserung von Gramps Web
+- Fehlerbehebung bei einer Bereitstellung von Gramps Web
+- Ideen für Verbesserungen von Gramps Web
 - ...
 
 ## Probleme melden
 
-Wenn Sie auf ein Problem stoßen, von dem Sie glauben, dass es ein Fehler in Gramps Web ist, melden Sie es bitte über GitHub.
+Wenn du auf ein Problem stößt, bei dem es sich deiner Meinung nach um einen Fehler in Gramps Web handelt, melde es bitte über GitHub.
 
-Es gibt zwei separate GitHub-Repositories für den Code, der in Gramps Web verwendet wird, eines für die Benutzeroberfläche („Frontend“) und eines für den Servercode („Backend“):
+Für den in Gramps Web verwendeten Code gibt es zwei separate GitHub-Repositorys: eines für die Benutzeroberfläche („Frontend“) und eines für den Servercode („Backend“):
 
-- [Frontend-Probleme](https://github.com/gramps-project/gramps-web/issues)
-- [Backend-Probleme](https://github.com/gramps-project/gramps-web-api/issues)
+- [Probleme im Frontend](https://github.com/gramps-project/gramps-web/issues)
+- [Probleme im Backend](https://github.com/gramps-project/gramps-web-api/issues)
 
-Wenn Sie sich nicht sicher sind, wo Sie ein Problem melden sollen, machen Sie sich keine Sorgen und wählen Sie einfach eines der beiden – die Maintainer werden in der Lage sein, das Problem bei Bedarf zu übertragen.
 
-In jedem Fall fügen Sie bitte immer die folgenden Informationen in Ihren Bericht ein:
+Wenn du unsicher bist, wo du ein Problem melden solltest, mach dir keine Sorgen und wähle einfach eines der beiden aus – die Maintainer können das Problem bei Bedarf verschieben.
 
-- Details zu Ihrer Konfiguration (z. B. eine docker-compose-Datei mit sensiblen Werten entfernt oder ob Sie eine gehostete Version wie Grampshub oder ein vorkonfiguriertes Image wie DigitalOcean verwenden)
-- Versionsinformationen. Um diese zu erhalten, gehen Sie zum Tab „Systeminformationen“ auf der Einstellungsseite in Gramps Web und kopieren Sie die Werte aus dem Feld, das etwa so aussehen sollte:
+Füge deinem Bericht in jedem Fall immer die folgenden Informationen hinzu:
+
+- Details zu deiner Einrichtung (z. B. eine docker-compose-Datei, bei der vertrauliche Werte unkenntlich gemacht wurden, oder ob du eine gehostete Version wie Grampshub oder ein vorkonfiguriertes Image wie DigitalOcean verwendest)
+- Versionsinformationen. Um sie abzurufen, gehe in Gramps Web auf der Einstellungsseite zum Tab „Systeminformationen“ und kopiere die Werte aus dem Feld. Sie sollten ungefähr so aussehen:
 
 ```
 Gramps 5.1.6
 Gramps Web API 1.5.1
 Gramps.js 24.1.0
-locale: de
+locale: en
 multi-tree: false
 task queue: true
 ```
 
-## Verbesserungsvorschläge
+## Verbesserungen vorschlagen
 
-Für allgemeine Ideen und Diskussionen über zukünftige Verbesserungen können Sie gerne eine Diskussion im [Forum](https://gramps.discourse.group/c/gramps-web/) eröffnen. Sie möchten möglicherweise auch die Problembereiche (siehe Links oben) überprüfen, ob eine bestimmte Funktion bereits geplant oder in Arbeit ist.
+Für allgemeine Ideen und Diskussionen über zukünftige Verbesserungen kannst du gerne eine Diskussion im [Forum](https://gramps.discourse.group/c/gramps-web/) eröffnen. Du kannst auch die Problemseiten prüfen (siehe Links oben), um herauszufinden, ob eine bestimmte Funktion bereits geplant ist oder daran gearbeitet wird.
 
-Für spezifische Verbesserungen mit begrenztem Umfang können Sie gerne direkt ein Problem mit einem Funktionswunsch im entsprechenden Frontend- oder Backend-GitHub-Repository eröffnen.
+Für konkrete Verbesserungen mit begrenztem Umfang kannst du gerne direkt ein Problem mit einem Funktionswunsch im entsprechenden GitHub-Repository für das Frontend oder Backend eröffnen.

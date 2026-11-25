@@ -1,230 +1,230 @@
 # OIDC-Authentifizierung
 
-Gramps Web unterstützt die OpenID Connect (OIDC) Authentifizierung, die es Benutzern ermöglicht, sich mit externen Identitätsanbietern anzumelden. Dazu gehören die integrierten Anbieter Google und Microsoft sowie benutzerdefinierte OIDC-Anbieter wie Keycloak, Authentik und Authelia.
+Gramps Web unterstützt die OpenID-Connect-(OIDC-)Authentifizierung und ermöglicht es Benutzern, sich über externe Identitätsanbieter anzumelden. Dazu gehören die integrierten Anbieter Google und Microsoft sowie benutzerdefinierte OIDC-Anbieter wie Keycloak, Authentik und Authelia.
 
-!!! warning "GitHub als OIDC-Anbieter wird nicht mehr unterstützt"
-    Wenn Sie `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET` aus einer früheren Version gesetzt haben, entfernen Sie diese – sie werden jetzt ignoriert, und Benutzer, die sich zuvor über GitHub angemeldet haben, können sich nicht mehr auf diese Weise anmelden. GitHub ist ein OAuth 2.0-Anbieter, kein OpenID Connect-Anbieter, und hat nie den Anspruch zurückgegeben, auf den Gramps Web für die Identität angewiesen ist, sodass es nie vollständig zuverlässig war.
+!!! warning "GitHub wird nicht mehr als OIDC-Anbieter unterstützt"
+    Falls du aus einer früheren Version noch `OIDC_GITHUB_CLIENT_ID` / `OIDC_GITHUB_CLIENT_SECRET` gesetzt hast, entferne diese Einstellungen – sie werden jetzt ignoriert, und Benutzer, die sich zuvor über GitHub angemeldet haben, können sich auf diesem Weg nicht mehr anmelden. GitHub ist ein OAuth-2.0-Anbieter, kein OpenID-Connect-Anbieter, und hat den Claim, auf den Gramps Web zur Identifizierung angewiesen ist, nie zurückgegeben. Daher war diese Integration nie vollständig zuverlässig.
 
 ## Übersicht
 
-Die OIDC-Authentifizierung ermöglicht es Ihnen:
+Die OIDC-Authentifizierung ermöglicht dir:
 
-- Externe Identitätsanbieter für die Benutzeranmeldung zu verwenden
+- Externe Identitätsanbieter zur Benutzerauthentifizierung zu verwenden
 - Mehrere Authentifizierungsanbieter gleichzeitig zu unterstützen
-- OIDC-Gruppen/Rollen auf Gramps Web-Benutzerrollen abzubilden
+- OIDC-Gruppen/Rollen den Gramps-Web-Benutzerrollen zuzuordnen
 - Single Sign-On (SSO) und Single Sign-Out zu implementieren
-- Optional die lokale Benutzername/Passwort-Authentifizierung zu deaktivieren
+- Optional die lokale Authentifizierung mit Benutzername/Passwort zu deaktivieren
 
 ## Konfiguration
 
-Um die OIDC-Authentifizierung zu aktivieren, müssen Sie die entsprechenden Einstellungen in Ihrer Gramps Web-Konfigurationsdatei oder in Umgebungsvariablen konfigurieren. Siehe die [Serverkonfiguration](configuration.md#settings-for-oidc-authentication) Seite für eine vollständige Liste der verfügbaren OIDC-Einstellungen.
+Um die OIDC-Authentifizierung zu aktivieren, musst du die entsprechenden Einstellungen in deiner Gramps-Web-Konfigurationsdatei oder als Umgebungsvariablen konfigurieren. Eine vollständige Liste der verfügbaren OIDC-Einstellungen findest du auf der Seite [Serverkonfiguration](configuration.md#settings-for-oidc-authentication).
 
 !!! info
-    Wenn Sie Umgebungsvariablen verwenden, denken Sie daran, jeden Einstellungsnamen mit `GRAMPSWEB_` zu kennzeichnen (z. B. `GRAMPSWEB_OIDC_ENABLED`). Siehe [Konfigurationsdatei vs. Umgebungsvariablen](configuration.md#configuration-file-vs-environment-variables) für Details.
+    Bei der Verwendung von Umgebungsvariablen musst du jedem Einstellungsnamen das Präfix `GRAMPSWEB_` voranstellen (z. B. `GRAMPSWEB_OIDC_ENABLED`). Einzelheiten findest du unter [Konfigurationsdatei im Vergleich zu Umgebungsvariablen](configuration.md#configuration-file-vs-environment-variables).
 
 ### Integrierte Anbieter
 
-Gramps Web bietet integrierte Unterstützung für beliebte Identitätsanbieter. Um sie zu verwenden, müssen Sie nur die Client-ID und das Client-Geheimnis angeben:
+Gramps Web bietet integrierte Unterstützung für beliebte Identitätsanbieter. Um sie zu verwenden, musst du lediglich die Client-ID und das Client-Geheimnis angeben:
 
 - **Google**: `OIDC_GOOGLE_CLIENT_ID` und `OIDC_GOOGLE_CLIENT_SECRET`
 - **Microsoft**: `OIDC_MICROSOFT_CLIENT_ID` und `OIDC_MICROSOFT_CLIENT_SECRET`
 
-Sie können mehrere Anbieter gleichzeitig konfigurieren. Das System erkennt automatisch, welche Anbieter basierend auf den Konfigurationswerten verfügbar sind.
+Du kannst mehrere Anbieter gleichzeitig konfigurieren. Das System erkennt automatisch anhand der Konfigurationswerte, welche Anbieter verfügbar sind.
 
-!!! tip "Microsoft: Single-Tenant-Bereitstellungen"
-    Der integrierte Microsoft-Anbieter verwendet den Multi-Tenant-Endpoint `/common` und akzeptiert Anmeldungen von jedem Microsoft-Konto. Wenn Sie nur Benutzer aus Ihrem eigenen Mandanten zulassen möchten, verwenden Sie stattdessen den [benutzerdefinierten OIDC-Anbieter](#custom-oidc-providers) mit Ihrer mandantenspezifischen Aussteller-URL, die die Ausstellerüberprüfung aktiv hält und die Anmeldungen auf diesen Mandanten beschränkt.
+!!! tip "Microsoft: Bereitstellungen mit einem Mandanten"
+    Der integrierte Microsoft-Anbieter verwendet den mandantenübergreifenden Endpunkt `/common` und akzeptiert absichtlich Anmeldungen von jedem Microsoft-Konto. Wenn du nur Benutzer aus deinem eigenen Mandanten zulassen möchtest, verwende stattdessen den [benutzerdefinierten OIDC-Anbieter](#custom-oidc-providers) mit der mandantenspezifischen Issuer-URL. Dadurch bleibt die Issuer-Validierung aktiv und Anmeldungen werden auf diesen Mandanten beschränkt.
 
 ### Benutzerdefinierte OIDC-Anbieter
 
-Für benutzerdefinierte OIDC-Anbieter (wie Keycloak, Authentik, Authelia oder einen Single-Tenant Microsoft Entra-Mandanten) verwenden Sie diese Einstellungen:
+Für benutzerdefinierte OIDC-Anbieter (wie Keycloak, Authentik, Authelia oder einen Microsoft-Entra-Mandanten mit einem Mandanten) verwende diese Einstellungen:
 
 Key | Beschreibung
 ----|-------------
 `OIDC_ENABLED` | Boolean, ob die OIDC-Authentifizierung aktiviert werden soll. Auf `True` setzen.
-`OIDC_ISSUER` | Die Aussteller-URL Ihres Anbieters. Die Entdeckung wird von `<issuer>/.well-known/openid-configuration` abgerufen.
-`OIDC_CLIENT_ID` | Client-ID für Ihren OIDC-Anbieter
-`OIDC_CLIENT_SECRET` | Client-Geheimnis für Ihren OIDC-Anbieter
-`OIDC_NAME` | Benutzerdefinierter Anzeigename (optional, standardmäßig "OIDC")
-`OIDC_SCOPES` | OAuth-Bereiche (optional, standardmäßig "openid email profile")
-`OIDC_USERNAME_CLAIM` | Anspruch, der zur Generierung des Benutzernamens verwendet wird (optional, standardmäßig "preferred_username")
-`OIDC_PKCE` | Ob PKCE verwendet werden soll, siehe [PKCE](#pkce) (optional, automatisch aktiviert, wenn der Anbieter es unterstützt)
+`OIDC_ISSUER` | Die Issuer-URL deines Anbieters. Die Discovery-Informationen werden von `<issuer>/.well-known/openid-configuration` abgerufen.
+`OIDC_CLIENT_ID` | Client-ID deines OIDC-Anbieters
+`OIDC_CLIENT_SECRET` | Client-Geheimnis deines OIDC-Anbieters
+`OIDC_NAME` | Benutzerdefinierter Anzeigename (optional, Standard ist „OIDC“)
+`OIDC_SCOPES` | OAuth-Scopes (optional, Standard ist „openid email profile“)
+`OIDC_USERNAME_CLAIM` | Claim, der zur Erzeugung des Benutzernamens verwendet wird (optional, Standard ist „preferred_username“)
+`OIDC_PKCE` | Ob PKCE verwendet werden soll, siehe [PKCE](#pkce) (optional, wird automatisch aktiviert, wenn der Anbieter dies unterstützt)
 
 ### PKCE
 
-Seit Gramps Web API 3.23 unterstützt Gramps Web [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, `S256`-Methode) für den Autorisierungs-Code-Fluss. Einige Identitätsanbieter, wie Pocket ID, können so konfiguriert werden, dass sie PKCE für einen Client *erfordern* und Anmeldungen ablehnen, die es nicht verwenden. Ältere Versionen der Gramps Web API verwenden niemals PKCE, sodass Anmeldungen mit einem solchen Client fehlschlagen.
+Seit Gramps Web API 3.23 unterstützt Gramps Web [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) (Proof Key for Code Exchange, Methode `S256`) für den Authorization-Code-Flow. Einige Identitätsanbieter, beispielsweise Pocket ID, können so konfiguriert werden, dass sie PKCE für einen Client *verlangen* und Anmeldungen ohne PKCE ablehnen. Ältere Versionen der Gramps Web API verwenden PKCE nie, weshalb Anmeldungen mit einem solchen Client fehlschlagen.
 
-Ob PKCE verwendet wird, wird beim Login wie folgt entschieden:
+Ob PKCE verwendet wird, wird bei der Anmeldung folgendermaßen entschieden:
 
 - Wenn `OIDC_PKCE` auf `True` gesetzt ist, wird PKCE verwendet.
-- Wenn `OIDC_PKCE` auf `False` gesetzt ist, wird PKCE nicht verwendet, auch wenn der Anbieter es unterstützt.
-- Wenn `OIDC_PKCE` nicht gesetzt ist oder gesetzt, aber leer ist, wird PKCE verwendet, wenn das Entdeckungsdokument des Anbieters (`/.well-known/openid-configuration`) `S256` in `code_challenge_methods_supported` auflistet, und andernfalls nicht verwendet.
+- Wenn `OIDC_PKCE` auf `False` gesetzt ist, wird PKCE nicht verwendet, selbst wenn der Anbieter dies unterstützt.
+- Wenn `OIDC_PKCE` nicht gesetzt oder leer gesetzt ist, wird PKCE verwendet, wenn das Discovery-Dokument des Anbieters (`/.well-known/openid-configuration`) `S256` in `code_challenge_methods_supported` aufführt, andernfalls nicht.
 
-Für die meisten Setups müssen Sie nichts setzen. Setzen Sie `OIDC_PKCE` auf `True`, wenn Ihr Anbieter PKCE erfordert, aber `S256` in seinem Entdeckungsdokument nicht bewirbt, und auf `False`, wenn Ihr Anbieter `S256` bewirbt, es aber falsch behandelt. Als Umgebungsvariablen müssen Booleans klein geschrieben werden (`GRAMPSWEB_OIDC_PKCE=true`), siehe [Konfiguration](configuration.md).
+Für die meisten Konfigurationen musst du nichts festlegen. Setze `OIDC_PKCE` auf `True`, wenn dein Anbieter PKCE verlangt, aber `S256` in seinem Discovery-Dokument nicht ankündigt, und auf `False`, wenn dein Anbieter `S256` ankündigt, es aber fehlerhaft verarbeitet. Als Umgebungsvariablen müssen boolesche Werte kleingeschrieben werden (`GRAMPSWEB_OIDC_PKCE=true`); siehe [Konfiguration](configuration.md).
 
-Für die integrierten Anbieter sind die entsprechenden Optionen `OIDC_GOOGLE_PKCE` und `OIDC_MICROSOFT_PKCE`.
+Für die integrierten Anbieter lauten die entsprechenden Optionen `OIDC_GOOGLE_PKCE` und `OIDC_MICROSOFT_PKCE`.
 
-Der PKCE-Codeverifier wird in der Benutzersitzung zwischen der Weiterleitung zum Anbieter und dem Callback gespeichert, sodass dies keine Änderung der Weiterleitungs-URIs erfordert.
+Der PKCE-Codeprüfer wird während der Weiterleitung zum Anbieter und dem Callback in der Sitzung des Benutzers gespeichert. Daher ist keine Änderung an den Weiterleitungs-URIs erforderlich.
 
-### Multi-Tree-Setups
+### Konfigurationen mit mehreren Stammverzeichnissen
 
-Auf einem Multi-Tree-Server wird ein Benutzer, der sich mit einer Identität anmeldet, die bereits mit einem Gramps Web-Konto verknüpft ist, in den Baum dieses Kontos angemeldet, sodass die einfache Anmeldeseite für sie funktioniert.
+Auf einem Server mit mehreren Stammverzeichnissen wird ein Benutzer, der sich mit einer Identität anmeldet, die bereits mit einem Gramps-Web-Konto verknüpft ist, beim Stammverzeichnis dieses Kontos angemeldet. Für diesen Benutzer funktioniert daher die einfache Anmeldeseite.
 
-Um ein *neues* Konto mit einer OIDC-Identität zu erstellen, muss Gramps Web wissen, zu welchem Baum es gehören soll. Neue Benutzer müssen daher von dem Registrierungslink des Baums (`/register/<tree_id>`, siehe [Registrierungslink](../administration/users.md#registration-link-multi-tree-setup-only)) oder von der Anmeldeseite des Baums (`/login/<tree_id>`) starten. Beide bieten die konfigurierten Anbieter an. Eine Anmeldung mit einer unbekannten Identität von der einfachen Anmeldeseite wird mit einer Nachricht verweigert, die auf den Registrierungslink verweist. Dies erfordert Gramps Web API 3.25.3 und Gramps Web 26.11.2 oder neuer.
+Um ein *neues* Konto mit einer OIDC-Identität zu erstellen, muss Gramps Web wissen, zu welchem Stammverzeichnis es gehören soll. Neue Benutzer müssen daher über den Registrierungslink des Stammverzeichnisses (`/register/<tree_id>`, siehe [Registrierungslink](../administration/users.md#registration-link-multi-tree-setup-only)) oder über die Anmeldeseite des Stammverzeichnisses (`/login/<tree_id>`) beginnen. Beide bieten die konfigurierten Anbieter an. Die Anmeldung mit einer unbekannten Identität über die einfache Anmeldeseite wird mit einer Meldung abgelehnt, die auf den Registrierungslink verweist. Dies erfordert Gramps Web API 3.25.3 und Gramps Web 26.11.2 oder neuer.
 
-Hinter den Kulissen beginnt die Anmeldung mit:
+Im Hintergrund beginnt die Anmeldung mit:
 
 ```
 GET /api/oidc/login/?provider=<id>&tree=<tree_id>
 ```
 
-wobei `tree` optional ist, es sei denn, ein neues Konto wird erstellt. Das Übergeben der ID eines Baums, der nicht existiert, schlägt die Anmeldung fehl. Auf einem Single-Tree-Server ist `tree` optional, aber wenn angegeben, muss es mit dem konfigurierten `TREE` übereinstimmen.
+Dabei ist `tree` optional, außer wenn ein neues Konto erstellt wird. Die Übergabe der ID eines nicht vorhandenen Stammverzeichnisses führt zu einem fehlgeschlagenen Anmeldeversuch. Auf einem Server mit nur einem Stammverzeichnis ist `tree` optional; falls angegeben, muss es mit dem konfigurierten `TREE` übereinstimmen.
 
-Eine OIDC-Identität ist genau einem Gramps Web-Konto zugeordnet, das wiederum genau zu einem Baum gehört – die Anmeldung bei einem anderen Baum schlägt fehl, anstatt das Konto zu verschieben. Es gibt keine Möglichkeit, eine einzelne Identität beim Anbieter mit Konten in mehreren Bäumen zu verknüpfen; Benutzer, die Zugriff auf mehrere Bäume benötigen, benötigen separate Identitäten beim Anbieter (z. B. unterschiedliche Benutzernamen oder Konten).
+Eine OIDC-Identität ist genau an ein Gramps-Web-Konto gebunden, das wiederum genau zu einem Stammverzeichnis gehört. Eine Anmeldung bei einem anderen Stammverzeichnis schlägt daher fehl, anstatt das Konto zu verschieben. Es gibt keine Möglichkeit, eine einzelne Identität beim Anbieter mit Konten in mehreren Stammverzeichnissen zu verknüpfen. Benutzer, die Zugriff auf mehrere Stammverzeichnisse benötigen, brauchen beim Anbieter separate Identitäten (z. B. unterschiedliche Benutzernamen oder Konten).
 
 !!! warning
-    Ein Site-Administratorkonto ohne zugeordneten Baum (siehe [Erstellen eines Administratorkontos](../administration/owner.md)) kann nicht über OIDC erstellt werden, da ein Konto, das durch eine OIDC-Anmeldung erstellt wurde, immer zu einem Baum gehört. Erstellen Sie solche Konten mit einem lokalen Benutzernamen und Passwort.
+    Ein Administratorkonto der Website ohne zugeordnetes Stammverzeichnis (siehe [Administratorkonto erstellen](../administration/owner.md)) kann nicht über OIDC erstellt werden, da ein durch eine OIDC-Anmeldung erstelltes Konto immer zu einem Stammverzeichnis gehört. Erstelle solche Konten mit einem lokalen Benutzernamen und Passwort.
 
 ### Native Apps
 
-Native Apps, wie mobile Apps für Gramps Web, können den Benutzer im Systembrowser anmelden und das Ergebnis über einen `https`-Link der App empfangen. Seit Gramps Web API 3.26 funktioniert dies, wenn der Link in `OIDC_ALLOWED_REDIRECT_URIS` aufgeführt ist, z. B.
+Native Apps, beispielsweise mobile Apps für Gramps Web, können dem Benutzer ermöglichen, sich im Systembrowser anzumelden und das Ergebnis über einen `https`-Link der App zu empfangen. Seit Gramps Web API 3.26 funktioniert dies, wenn der Link in `OIDC_ALLOWED_REDIRECT_URIS` aufgeführt ist, z. B.
 
 ```
 GRAMPSWEB_OIDC_ALLOWED_REDIRECT_URIS='["https://app.example.com/oidc-callback"]'
 ```
 
-Die Dokumentation der App gibt an, welchen Link Sie hinzufügen müssen. Die registrierten Weiterleitungs-URIs beim Identitätsanbieter bleiben gleich.
+Die Dokumentation der App teilt dir mit, welchen Link du hinzufügen musst. Die beim Identitätsanbieter registrierten Weiterleitungs-URIs bleiben unverändert.
 
 ## Erforderliche Weiterleitungs-URIs
 
-Beim Konfigurieren Ihres OIDC-Anbieters müssen Sie die folgende Weiterleitungs-URI registrieren:
+Bei der Konfiguration deines OIDC-Anbieters musst du die folgende Weiterleitungs-URI registrieren:
 
 **Für OIDC-Anbieter, die Wildcards unterstützen: (z. B. Authentik)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/*`
 
-Wobei `*` ein Regex-Wildcard ist. Je nach Regex-Interpreter Ihres Anbieters könnte dies auch ein `.*` oder ähnlich sein. Stellen Sie sicher, dass Regex aktiviert ist, wenn Ihr Anbieter es erfordert (z. B. Authentik).
+Dabei ist `*` eine reguläre Wildcard. Je nach Regex-Interpreter deines Anbieters kann dies auch `.*` oder ähnlich sein. Stelle sicher, dass Regex aktiviert ist, wenn dein Anbieter dies verlangt (z. B. Authentik).
 
 **Für OIDC-Anbieter, die keine Wildcards unterstützen: (z. B. Authelia)**
 
 - `https://your-gramps-backend.com/api/oidc/callback/custom`
 
-Der Baum ist niemals Teil der Weiterleitungs-URI, selbst auf Multi-Tree-Servern – er wird separat in der Sitzung übermittelt, da Anbieter erfordern, dass die Weiterleitungs-URI genau mit der registrierten übereinstimmt.
+Das Stammverzeichnis ist nie Bestandteil der Weiterleitungs-URI, auch nicht auf Servern mit mehreren Stammverzeichnissen. Es wird separat in der Sitzung übertragen, da Anbieter verlangen, dass die Weiterleitungs-URI exakt mit der registrierten URI übereinstimmt.
 
-## Rollenabbildung
+## Rollenzuordnung
 
-Gramps Web kann OIDC-Gruppen oder -Rollen von Ihrem Identitätsanbieter automatisch auf Gramps Web-Benutzerrollen abbilden. Dies ermöglicht es Ihnen, Benutzerberechtigungen zentral in Ihrem Identitätsanbieter zu verwalten. Die Rollenabbildung funktioniert für alle Anbieter gleich, ob integriert oder benutzerdefiniert.
+Gramps Web kann OIDC-Gruppen oder -Rollen deines Identitätsanbieters automatisch den Gramps-Web-Benutzerrollen zuordnen. Dadurch kannst du Benutzerberechtigungen zentral in deinem Identitätsanbieter verwalten. Die Rollenzuordnung funktioniert für alle Anbieter gleich, unabhängig davon, ob sie integriert oder benutzerdefiniert sind.
 
 ### Konfiguration
 
-Verwenden Sie diese Einstellungen zur Konfiguration der Rollenabbildung:
+Verwende diese Einstellungen, um die Rollenzuordnung zu konfigurieren:
 
 Key | Beschreibung
 ----|-------------
-`OIDC_ROLE_CLAIM` | Der Anspruchsname im OIDC-Token, der die Gruppen/Rollen des Benutzers enthält. Standardmäßig "groups". Punktierte Pfade werden unterstützt, z. B. `realm_access.roles`.
-`OIDC_GROUP_ADMIN` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Admin"-Rolle zugeordnet ist
-`OIDC_GROUP_OWNER` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Owner"-Rolle zugeordnet ist
-`OIDC_GROUP_EDITOR` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Editor"-Rolle zugeordnet ist
-`OIDC_GROUP_CONTRIBUTOR` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Contributor"-Rolle zugeordnet ist
-`OIDC_GROUP_MEMBER` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Member"-Rolle zugeordnet ist
-`OIDC_GROUP_GUEST` | Der Gruppen-/Rollennamen von Ihrem OIDC-Anbieter, der der Gramps "Guest"-Rolle zugeordnet ist
+`OIDC_ROLE_CLAIM` | Der Claim-Name im OIDC-Token, der die Gruppen/Rollen des Benutzers enthält. Standard ist „groups“. Punktpfade werden unterstützt, z. B. `realm_access.roles`.
+`OIDC_GROUP_ADMIN` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Admin“ zugeordnet wird
+`OIDC_GROUP_OWNER` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Owner“ zugeordnet wird
+`OIDC_GROUP_EDITOR` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Editor“ zugeordnet wird
+`OIDC_GROUP_CONTRIBUTOR` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Contributor“ zugeordnet wird
+`OIDC_GROUP_MEMBER` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Member“ zugeordnet wird
+`OIDC_GROUP_GUEST` | Der Gruppen-/Rollenname deines OIDC-Anbieters, der der Gramps-Rolle „Guest“ zugeordnet wird
 
-### Verhalten der Rollenabbildung
+### Verhalten der Rollenzuordnung
 
-Wenn keine `OIDC_GROUP_*`-Einstellung überhaupt konfiguriert ist, ist die Rollenabbildung deaktiviert und Rollen werden manuell in Gramps Web verwaltet; neue OIDC-Konten werden dann deaktiviert erstellt und müssen von einem bestehenden Eigentümer oder Administrator genehmigt werden (siehe [Erster Login und Bootstrapping](#first-login-and-bootstrapping) unten).
+Wenn überhaupt keine `OIDC_GROUP_*`-Einstellung konfiguriert ist, ist die Rollenzuordnung deaktiviert und die Rollen werden manuell in Gramps Web verwaltet. Neue OIDC-Konten werden dann deaktiviert erstellt und müssen von einem bereits vorhandenen Besitzer oder Administrator genehmigt werden (siehe [Erste Anmeldung und erstmalige Einrichtung](#first-login-and-bootstrapping) weiter unten).
 
-Sobald die Rollenabbildung konfiguriert ist, bei jedem Login:
+Sobald die Rollenzuordnung konfiguriert ist, geschieht bei jeder Anmeldung Folgendes:
 
-- Wenn der Rollenanspruch vorhanden ist und der Benutzer zu einer abgebildeten Gruppe gehört, erhält er die entsprechende Rolle.
-- Wenn der Rollenanspruch vorhanden ist, der Benutzer jedoch keiner abgebildeten Gruppe angehört, wird seine Rolle auf deaktiviert gesetzt. Dies ist ein fail-closed Standard, kein Fehler – Gramps Web kann keine Rolle für eine Gruppe ableiten, die es nicht erkennt.
-- Wenn der Rollenanspruch im Token vollständig fehlt, bleibt die bestehende Rolle unverändert; ein neues Konto wird weiterhin standardmäßig deaktiviert.
+- Wenn der Rollen-Claim vorhanden ist und der Benutzer zu einer zugeordneten Gruppe gehört, erhält er die entsprechende Rolle.
+- Wenn der Rollen-Claim vorhanden ist, der Benutzer aber keiner zugeordneten Gruppe angehört, wird seine Rolle auf deaktiviert gesetzt. Dies ist ein ausfallsicherer Standardwert und kein Fehler – Gramps Web kann für eine unbekannte Gruppe keine Rolle ableiten.
+- Wenn der Rollen-Claim vollständig im Token fehlt, bleibt die bestehende Rolle unverändert; ein neues Konto wird weiterhin standardmäßig deaktiviert.
 
-!!! warning "Google sendet keinen Gruppenanspruch"
-    Googles Token enthalten niemals einen `groups`-Anspruch, sodass bei aktivierter Rollenabbildung Google-Anmeldungen unter "Anspruch fehlt" fallen: bestehende Benutzer behalten ihre Rolle, aber neue Google-Benutzer werden deaktiviert erstellt und benötigen eine manuelle Genehmigung. Behalten Sie dies im Hinterkopf, bevor Sie die Rollenabbildung nur für einen anderen Anbieter aktivieren – sie deaktiviert nicht automatisch bestehende Google-Benutzer.
+!!! warning "Google sendet keinen groups-Claim"
+    Die Tokens von Google enthalten niemals einen `groups`-Claim. Bei aktivierter Rollenzuordnung fallen Google-Anmeldungen daher unter „Claim fehlt“: Bestehende Benutzer behalten ihre Rolle, neue Google-Benutzer werden jedoch deaktiviert erstellt und benötigen eine manuelle Genehmigung. Beachte dies, bevor du die Rollenzuordnung nur für einen anderen Anbieter aktivierst – dadurch werden bestehende Google-Benutzer nicht automatisch deaktiviert.
 
-Microsoft Entra gibt App-Rollen und Gruppenmitgliedschaften nur im ID-Token zurück, nicht vom Benutzerinfo-Endpunkt. Gramps Web fügt die Ansprüche des ID-Tokens in die Benutzerinfo-Antwort ein, sodass `OIDC_ROLE_CLAIM` auf die gleiche Weise funktioniert wie für andere Anbieter; wo beide einen Anspruch enthalten, hat der Benutzerinfo-Wert Vorrang.
+Microsoft Entra gibt App-Rollen und Gruppenmitgliedschaften nur im ID-Token und nicht über den Userinfo-Endpunkt zurück. Gramps Web führt die Claims des ID-Tokens mit der Userinfo-Antwort zusammen, sodass `OIDC_ROLE_CLAIM` wie bei anderen Anbietern funktioniert. Wenn beide einen Claim enthalten, hat der Userinfo-Wert Vorrang.
 
-## Erster Login und Bootstrapping
+## Erste Anmeldung und erstmalige Einrichtung
 
-Neue Konten, die über OIDC erstellt werden, starten deaktiviert, es sei denn, die Rollenabbildung weist ihnen eine Rolle zu (siehe oben). Bei einer brandneuen Instanz kann niemand ein deaktiviertes Konto genehmigen, und wenn `OIDC_DISABLE_LOCAL_AUTH` ebenfalls aktiviert ist, gibt es auch keinen Passwort-Login, auf den man zurückgreifen kann.
+Neue über OIDC erstellte Konten sind zunächst deaktiviert, sofern ihnen die Rollenzuordnung keine Rolle zuweist (siehe oben). Auf einer vollständig neuen Instanz kann niemand ein deaktiviertes Konto genehmigen. Wenn außerdem `OIDC_DISABLE_LOCAL_AUTH` aktiviert ist, gibt es auch keine Anmeldung per Passwort als Ausweichmöglichkeit.
 
-!!! warning "Konfigurieren Sie eine Eigentümer-/Admin-Gruppe vor dem ersten Login"
-    Bevor sich jemand zum ersten Mal über OIDC anmeldet, setzen Sie `OIDC_GROUP_OWNER` (oder `OIDC_GROUP_ADMIN`) und stellen Sie sicher, dass der erste Benutzer zu dieser Gruppe beim Anbieter gehört. Andernfalls kann die Instanz überhaupt nicht über OIDC bootstrapped werden.
+!!! warning "Vor der ersten Anmeldung eine Besitzer-/Administratorgruppe konfigurieren"
+    Bevor sich jemand zum ersten Mal über OIDC anmeldet, setze `OIDC_GROUP_OWNER` (oder `OIDC_GROUP_ADMIN`) und stelle sicher, dass der erste Benutzer beim Anbieter zu dieser Gruppe gehört. Andernfalls kann die Instanz über OIDC überhaupt nicht erstmalig eingerichtet werden.
 
 ## Konten und Benutzernamen
 
-Konten, die über OIDC erstellt werden, erhalten einen generierten Benutzernamen, der einmal bei der Kontoerstellung zugewiesen wird und sich bei späteren Anmeldungen nie ändert:
+Über OIDC erstellte Konten erhalten einen generierten Benutzernamen. Dieser wird bei der Kontoerstellung einmalig vergeben und bei späteren Anmeldungen nie geändert:
 
 - Integrierte Anbieter: `<provider>_<claim value>`, z. B. `microsoft_alice@contoso.com`
-- Benutzerdefinierter Anbieter: der reine Anspruchswert, z. B. `alice`
+- Benutzerdefinierter Anbieter: der reine Claim-Wert, z. B. `alice`
 
-Ein numerisches Suffix wird bei Kollisionen angehängt. Es gibt keine Möglichkeit, den Benutzernamen eines OIDC-erstellten Kontos später umzubenennen; der vollständige Name und die E-Mail-Adresse hingegen werden bei jeder Anmeldung aktualisiert.
+Bei einer Kollision wird ein numerisches Suffix angehängt. Es gibt keine Möglichkeit, den Benutzernamen eines über OIDC erstellten Kontos nachträglich umzubenennen. Der vollständige Name und die E-Mail-Adresse werden dagegen bei jeder Anmeldung aktualisiert.
 
-Eine OIDC-Anmeldung wird niemals an ein bestehendes lokales Konto angehängt, das zufällig die gleiche E-Mail-Adresse teilt – dies ist absichtlich, da die Verknüpfung von Konten über E-Mail ein Vektor für Kontoübernahmen ist. Ein Benutzer, der bereits ein lokales Konto hat, erhält beim ersten Login über OIDC ein zweites, separates Konto, es sei denn, er verknüpft zuerst den Anbieter mit seinem Konto.
+Eine OIDC-Anmeldung verknüpft sich niemals mit einem bestehenden lokalen Konto, das zufällig dieselbe E-Mail-Adresse verwendet. Dies ist beabsichtigt, da die Verknüpfung von Konten per E-Mail-Adresse einen Angriffsvektor zur Kontoübernahme darstellt. Ein Benutzer mit einem bereits vorhandenen lokalen Konto erhält bei der ersten OIDC-Anmeldung ein zweites, separates Konto, sofern er den Anbieter nicht zuvor mit seinem Konto verknüpft.
 
-Seit Gramps Web API 3.24 können Benutzer OIDC-Identitäten mit ihrem bestehenden Konto verknüpfen und sie unter [Benutzereinstellungen > Verknüpfte Anmeldemethoden](../user-guide/settings.md#linked-sign-in-methods) auflisten und trennen. Das Verknüpfen erfordert eine kürzliche Anmeldung und wird mit dem Token des Benutzers bestätigt, sodass es auch funktioniert, wenn das Frontend auf einem anderen Ursprung als die API ist. Eine Identität kann nur zu einem Konto gehören; um eine zu verknüpfen, die bereits ihr eigenes Konto hat, löscht ein Administrator zuerst dieses Konto (seine Bearbeitungen bleiben erhalten, aber die Versionshistorie zeigt seinen Namen nicht mehr an). Die letzte verknüpfte Identität kann nur mit dem aktuellen Passwort des Kontos getrennt werden und nicht, wenn `OIDC_DISABLE_LOCAL_AUTH` gesetzt ist.
+Seit Gramps Web API 3.24 können Benutzer OIDC-Identitäten unter [Benutzereinstellungen > Verknüpfte Anmeldemethoden](../user-guide/settings.md#linked-sign-in-methods) mit ihrem bestehenden Konto verknüpfen sowie diese auflisten und die Verknüpfung aufheben. Die Verknüpfung erfordert eine aktuelle Anmeldung und wird mit dem eigenen Token des Benutzers bestätigt. Daher funktioniert sie auch, wenn sich das Frontend auf einer anderen Origin als die API befindet. Eine Identität kann nur zu einem Konto gehören. Um eine Identität zu verknüpfen, die bereits ein eigenes Konto besitzt, muss ein Administrator dieses Konto zuerst löschen (seine Bearbeitungen bleiben erhalten, aber in der Versionshistorie wird sein Name nicht mehr angezeigt). Die letzte verknüpfte Identität kann nur mit dem aktuellen Passwort des Kontos entfernt werden und überhaupt nicht, wenn `OIDC_DISABLE_LOCAL_AUTH` gesetzt ist.
 
-E-Mail-Adressen vom Anbieter werden nur gespeichert, wenn der Anbieter sie als verifiziert markiert (oder den `email_verified`-Anspruch ganz weglässt); andernfalls erfolgt die Anmeldung, ohne eine E-Mail-Adresse zu speichern. Da E-Mail-Adressen nicht einzigartig sein müssen (seit Gramps Web API 3.22), wird eine Adresse gespeichert, selbst wenn ein anderes Konto sie bereits verwendet.
+E-Mail-Adressen des Anbieters werden nur gespeichert, wenn der Anbieter sie als bestätigt kennzeichnet (oder den Claim `email_verified` vollständig weglässt). Andernfalls wird die Anmeldung ohne Speicherung einer E-Mail-Adresse fortgesetzt. Da E-Mail-Adressen seit Gramps Web API 3.22 nicht eindeutig sein müssen, wird eine Adresse auch dann gespeichert, wenn ein anderes Konto sie bereits verwendet.
 
 ## OIDC-Abmeldung
 
-Gramps Web unterstützt Single Sign-Out (SSO-Abmeldung) für OIDC-Anbieter. `GET /api/oidc/logout/` sucht den `end_session_endpoint` des Anbieters und gibt ihn als `logout_url` in der Antwort zurück; es ist das Gramps Web-Frontend, das den Browser dorthin navigiert, um die Sitzung beim Identitätsanbieter tatsächlich zu beenden. `logout_url` ist `null`, wenn der Anbieter keinen `end_session_endpoint` hat.
+Gramps Web unterstützt Single Sign-Out (SSO-Abmeldung) für OIDC-Anbieter. `GET /api/oidc/logout/` sucht den `end_session_endpoint` des Anbieters und gibt ihn als `logout_url` in der Antwort zurück. Das Gramps-Web-Frontend navigiert den Browser dorthin, um die Sitzung beim Identitätsanbieter tatsächlich zu beenden. `logout_url` ist `null`, wenn der Anbieter keinen `end_session_endpoint` besitzt.
 
 !!! warning "Tokens werden bei der Abmeldung nicht widerrufen"
-    Das Abmelden beendet nur die Browsersitzung; es gibt derzeit keine Möglichkeit, ein bereits ausgegebenes Gramps Web-Token zu widerrufen. Tokens bleiben gültig, bis sie ablaufen (`JWT_ACCESS_TOKEN_EXPIRES`, standardmäßig 15 Minuten für Zugriffstokens), unabhängig davon, ob der Benutzer sich seitdem bei Gramps Web oder beim Identitätsanbieter abgemeldet hat.
+    Die Abmeldung beendet nur die Browsersitzung. Derzeit gibt es keine Möglichkeit, ein bereits ausgegebenes Gramps-Web-Token zu widerrufen. Tokens bleiben bis zu ihrem Ablauf gültig (`JWT_ACCESS_TOKEN_EXPIRES`, standardmäßig 15 Minuten für Zugriffstokens), unabhängig davon, ob sich der Benutzer inzwischen bei Gramps Web oder beim Identitätsanbieter abgemeldet hat.
 
-## Fehlersuche
+## Fehlerbehebung
 
-Beginnen Sie an dem Punkt, an dem die Anmeldung stoppt, und folgen Sie dem Zweig. Gramps Web protokolliert den Grund für einen fehlgeschlagenen Callback (suchen Sie nach `OIDC callback error for provider` im Serverprotokoll), der normalerweise spezifischer ist als die Meldung, die im Browser angezeigt wird.
+Beginne an der Stelle, an der die Anmeldung stoppt, und folge dem entsprechenden Zweig. Gramps Web protokolliert den Grund für einen fehlgeschlagenen Callback (suche im Serverprotokoll nach `OIDC callback error for provider`). Dieser Grund ist normalerweise genauer als die im Browser angezeigte Meldung.
 
-**1. Fehlt der Anmeldebutton?**
+**1. Fehlt die Anmeldeschaltfläche?**
 
-- Überprüfen Sie `<BASE_URL>/api/oidc/config/`. Wenn `enabled` `false` ist oder `providers` leer ist, ist OIDC nicht konfiguriert: `OIDC_ENABLED` muss auf `True` gesetzt sein, und ein benutzerdefinierter Anbieter benötigt sowohl `OIDC_ISSUER` als auch `OIDC_CLIENT_ID`.
-- Ein integrierter Anbieter (Google, Microsoft) ist nur registriert, wenn sowohl seine Client-ID als auch sein Client-Geheimnis gesetzt sind.
-- Suchen Sie im Serverprotokoll beim Start nach `Could not load discovery document`. Dies bedeutet, dass der Server `<issuer>/.well-known/openid-configuration` (oder `OIDC_OPENID_CONFIG_URL`) nicht erreichen konnte. Er versucht es beim ersten Gebrauch erneut, aber der Gramps Web-Container muss die Aussteller-URL selbst auflösen und erreichen können, nicht nur Ihr Browser.
+- Prüfe `<BASE_URL>/api/oidc/config/`. Wenn `enabled` den Wert `false` hat oder `providers` leer ist, ist OIDC nicht konfiguriert: `OIDC_ENABLED` muss `True` sein, und ein benutzerdefinierter Anbieter benötigt sowohl `OIDC_ISSUER` als auch `OIDC_CLIENT_ID`.
+- Ein integrierter Anbieter (Google, Microsoft) wird nur registriert, wenn sowohl seine Client-ID als auch sein Client-Geheimnis gesetzt sind.
+- Suche beim Start im Serverprotokoll nach `Could not load discovery document`. Dies bedeutet, dass der Server `<issuer>/.well-known/openid-configuration` (oder `OIDC_OPENID_CONFIG_URL`) nicht erreichen konnte. Beim ersten Einsatz wird ein erneuter Versuch unternommen. Der Gramps-Web-Container muss die Issuer-URL jedoch selbst auflösen und erreichen können, nicht nur dein Browser.
 
-**2. Erhält der Browser einen Fehler, direkt nachdem er zum Anbieter gesendet wurde?**
+**2. Erhält der Browser direkt nach der Weiterleitung zum Anbieter einen Fehler?**
 
-Der Fehler wird vom Identitätsanbieter angezeigt, bevor Sie sich anmelden.
+Der Fehler wird vom Identitätsanbieter angezeigt, bevor du dich anmeldest.
 
-- *"redirect URI mismatch"* (oder ähnlich): Die beim Anbieter registrierte Weiterleitungs-URI muss genau übereinstimmen, einschließlich Schema, Host, Port und Anbieter-ID. Siehe [Erforderliche Weiterleitungs-URIs](#required-redirect-uris). Beachten Sie, dass sie aus `BASE_URL` erstellt wird, sodass ein falsches `BASE_URL` eine falsche Weiterleitungs-URI ergibt.
-- *Ein PKCE-Fehler* (zum Beispiel `invalid_request`, "code challenge required" oder ein fehlender `code_challenge`-Parameter): Der Anbieter erfordert PKCE, aber Gramps Web hat es nicht gesendet. Gehen Sie zum [PKCE-Zweig](#pkce-branch) unten.
+- *„redirect URI mismatch“* (oder ähnlich): Die beim Anbieter registrierte Weiterleitungs-URI muss exakt übereinstimmen, einschließlich Schema, Host, Port und Anbieter-ID. Siehe [Erforderliche Weiterleitungs-URIs](#required-redirect-uris). Beachte, dass sie aus `BASE_URL` gebildet wird. Ein falsches `BASE_URL` führt daher zu einer falschen Weiterleitungs-URI.
+- *Ein PKCE-Fehler* (zum Beispiel `invalid_request`, „code challenge required“ oder ein fehlender `code_challenge`-Parameter): Der Anbieter verlangt PKCE, aber Gramps Web hat es nicht gesendet. Wechsle zum [PKCE-Zweig](#pkce-branch) weiter unten.
 
-**3. Akzeptiert der Anbieter die Anmeldung, zeigt Gramps Web dann jedoch einen Fehler an?**
+**3. Akzeptiert der Anbieter die Anmeldung, zeigt Gramps Web anschließend aber einen Fehler?**
 
-- *`mismatching_state`, oder der Fehler erwähnt die Sitzung oder den Zustand*: Der Browser hat das Sitzungs-Cookie, das Gramps Web gesetzt hat, als die Anmeldung begann, nicht zurückgesendet. Dieses Cookie trägt auch den PKCE-Codeverifier. Stellen Sie sicher, dass die Adresse im Browser mit `BASE_URL` übereinstimmt (das gleiche Schema und den gleichen Host), dass ein Reverse-Proxy Cookies und den ursprünglichen Host weitergibt und dass die Anmeldung im selben Browser-Tab oder -Fenster gestartet und abgeschlossen wird.
-- *`OIDC authentication failed for <provider>` (HTTP 401)*: Überprüfen Sie das Serverprotokoll auf den zugrunde liegenden Grund. Häufige Ursachen sind ein falsches Client-Geheimnis, eine Aussteller-URL, die nicht mit dem `iss`-Anspruch der Tokens übereinstimmt, und der Anbieter, der einen Fehler an den Callback zurückgibt (zum Beispiel PKCE, siehe unten).
-- *Zu viele Versuche*: Die Anmelde- und Callback-Endpunkte sind drosselbar (5 Anfragen pro Minute). Warten Sie eine Minute und versuchen Sie es erneut.
+- *`mismatching_state` oder ein Fehler, der die Sitzung oder den Status erwähnt*: Der Browser hat das Sitzungscookie nicht zurückgesendet, das Gramps Web beim Start der Anmeldung gesetzt hat. Dieses Cookie enthält auch den PKCE-Codeprüfer. Stelle sicher, dass die Adresse im Browser mit `BASE_URL` übereinstimmt (gleiches Schema und gleicher Host), dass ein Reverse-Proxy Cookies und den ursprünglichen Host weitergibt und dass die Anmeldung im selben Browser-Tab oder -Fenster begonnen und abgeschlossen wird.
+- *`OIDC authentication failed for <provider>` (HTTP 401)*: Prüfe das Serverprotokoll auf den zugrunde liegenden Grund. Häufige Ursachen sind ein falsches Client-Geheimnis, eine Issuer-URL, die nicht mit dem `iss`-Claim der Tokens übereinstimmt, sowie ein Fehler des Anbieters beim Callback (z. B. PKCE, siehe unten).
+- *Zu viele Versuche*: Die Anmelde- und Callback-Endpunkte sind auf 5 Anfragen pro Minute begrenzt. Warte eine Minute und versuche es erneut.
 
-**4. Erfolgt die Anmeldung, aber Sie sehen "Konto wird überprüft" oder können nichts tun?**
+**4. Ist die Anmeldung erfolgreich, siehst du aber „Account Under Review“ oder kannst nichts tun?**
 
-Neue Konten werden deaktiviert erstellt, es sei denn, die Rollenabbildung weist ihnen eine Rolle zu. Siehe [Erster Login und Bootstrapping](#first-login-and-bootstrapping) und [Verhalten der Rollenabbildung](#role-mapping-behavior). Ein Administrator kann das Konto auch unter Einstellungen > Verwaltung > Benutzer verwalten aktivieren.
+Neue Konten werden deaktiviert erstellt, sofern die Rollenzuordnung ihnen keine Rolle zuweist. Siehe [Erste Anmeldung und erstmalige Einrichtung](#first-login-and-bootstrapping) und [Verhalten der Rollenzuordnung](#role-mapping-behavior). Ein Administrator kann das Konto außerdem unter Einstellungen > Administration > Benutzer verwalten aktivieren.
 
 ### PKCE-Zweig
 
-Gramps Web entscheidet, ob PKCE verwendet wird, wenn eine Anmeldung beginnt (siehe [PKCE](#pkce)). Um herauszufinden, was für Ihr Setup passiert ist, arbeiten Sie diese Fragen der Reihe nach durch:
+Gramps Web entscheidet beim Start einer Anmeldung, ob PKCE verwendet wird (siehe [PKCE](#pkce)). Um herauszufinden, was in deiner Konfiguration geschehen ist, arbeite diese Fragen in der angegebenen Reihenfolge durch:
 
-1. **Ist `OIDC_PKCE` gesetzt?** (Für integrierte Anbieter, `OIDC_GOOGLE_PKCE` oder `OIDC_MICROSOFT_PKCE`.)
-    - `True`: PKCE wird verwendet. Überspringen Sie zu Frage 3.
-    - `False`: PKCE ist absichtlich deaktiviert, und das Entdeckungsdokument des Anbieters wird ignoriert. Wenn Ihr Anbieter PKCE erfordert, entfernen Sie die Einstellung oder setzen Sie sie auf `True`.
-    - Nicht gesetzt oder leer: Fahren Sie mit Frage 2 fort.
-2. **Listet das Entdeckungsdokument `S256` auf?** Öffnen Sie `<issuer>/.well-known/openid-configuration` und suchen Sie nach `S256` in `code_challenge_methods_supported`.
-    - Ja: PKCE wird automatisch verwendet. Fahren Sie mit Frage 3 fort.
-    - Nein oder das Feld fehlt: PKCE wird **nicht** verwendet. Setzen Sie `OIDC_PKCE` auf `True`, wenn Ihr Anbieter es erfordert. Überprüfen Sie auch das Serverprotokoll auf `Could not check the provider for PKCE support`, was bedeutet, dass das Entdeckungsdokument nicht abgerufen werden konnte und PKCE daher deaktiviert wurde.
-3. **Wurde PKCE wirklich gesendet?** Starten Sie eine Anmeldung und sehen Sie sich die Adresse der Anmeldeseite des Anbieters (oder die erste Weiterleitung im Netzwerk-Tab Ihres Browsers) an. Sie sollte `code_challenge=` und `code_challenge_method=S256` enthalten.
-    - Vorhanden, aber die Anmeldung schlägt beim Callback immer noch fehl: Der Anbieter hat den Codeverifier abgelehnt. Das Sitzungscookie könnte zwischen der Weiterleitung und dem Callback verloren gegangen sein (siehe Zweig 3 oben), oder der Anbieter unterstützt `S256` nicht, in diesem Fall setzen Sie `OIDC_PKCE` auf `False`, wenn der Anbieter PKCE nicht erfordert.
-    - Abwesend: Die obigen Einstellungen wurden nicht angewendet. Überprüfen Sie, ob die Umgebungsvariable das richtige Präfix und einen Kleinbuchstabenwert hat (zum Beispiel `GRAMPSWEB_OIDC_PKCE=true` in Docker; `True` wird nicht als Boolean gelesen), starten Sie den Server neu und sehen Sie sich die Konfiguration erneut an.
+1. **Ist `OIDC_PKCE` gesetzt?** (Bei integrierten Anbietern `OIDC_GOOGLE_PKCE` oder `OIDC_MICROSOFT_PKCE`.)
+    - `True`: PKCE wird verwendet. Fahre mit Frage 3 fort.
+    - `False`: PKCE ist absichtlich deaktiviert und das Discovery-Dokument des Anbieters wird ignoriert. Wenn dein Anbieter PKCE verlangt, entferne die Einstellung oder setze sie auf `True`.
+    - Nicht gesetzt oder leer: Fahre mit Frage 2 fort.
+2. **Führt das Discovery-Dokument `S256` auf?** Öffne `<issuer>/.well-known/openid-configuration` und suche in `code_challenge_methods_supported` nach `S256`.
+    - Ja: PKCE wird automatisch verwendet. Fahre mit Frage 3 fort.
+    - Nein oder Feld fehlt: PKCE wird **nicht** verwendet. Setze `OIDC_PKCE` auf `True`, wenn dein Anbieter PKCE verlangt. Prüfe außerdem das Serverprotokoll auf `Could not check the provider for PKCE support`. Dies bedeutet, dass das Discovery-Dokument nicht abgerufen werden konnte und PKCE deshalb deaktiviert blieb.
+3. **Wurde PKCE tatsächlich gesendet?** Starte eine Anmeldung und prüfe die Adresse der Anmeldeseite des Anbieters (oder die erste Weiterleitung im Netzwerk-Tab deines Browsers). Sie sollte `code_challenge=` und `code_challenge_method=S256` enthalten.
+    - Vorhanden, die Anmeldung schlägt beim Callback aber weiterhin fehl: Der Anbieter hat den Codeprüfer abgelehnt. Das Sitzungscookie könnte zwischen Weiterleitung und Callback verloren gegangen sein (siehe Zweig 3 oben), oder der Anbieter unterstützt `S256` nicht. Setze in diesem Fall `OIDC_PKCE` auf `False`, sofern der Anbieter PKCE nicht verlangt.
+    - Nicht vorhanden: Die obigen Einstellungen wurden nicht übernommen. Prüfe, ob die Umgebungsvariable das richtige Präfix und einen kleingeschriebenen Wert besitzt (z. B. `GRAMPSWEB_OIDC_PKCE=true` in Docker; `True` wird nicht als boolescher Wert eingelesen), starte den Server neu und prüfe die Konfiguration erneut.
 
 !!! note
-    Mit PKCE, das beim Anbieter als *optional* aktiviert ist oder gar nicht aktiviert ist, funktionieren Anmeldungen unabhängig davon, ob Gramps Web eine Herausforderung sendet oder nicht. Nur Anbieter (oder Clients), die so konfiguriert sind, dass sie PKCE *erfordern*, machen diese Einstellung wichtig.
+    Wenn PKCE beim Anbieter *optional* aktiviert oder überhaupt nicht aktiviert ist, funktionieren Anmeldungen unabhängig davon, ob Gramps Web eine Challenge sendet. Nur Anbieter (oder Clients), die PKCE als *erforderlich* konfigurieren, machen diese Einstellung relevant.
 
 ## Beispielkonfigurationen
 
 ### Benutzerdefinierter OIDC-Anbieter (Keycloak)
 
 ```python
-TREE="Mein Familienstammbaum"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # Ihr geheimer Schlüssel
+SECRET_KEY="..."  # dein geheimer Schlüssel
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 
 # Benutzerdefinierte OIDC-Konfiguration
@@ -232,31 +232,31 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.example.com/realms/myrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="your-client-secret"
-OIDC_NAME="Familien-SSO"
+OIDC_NAME="Family SSO"
 OIDC_SCOPES="openid email profile"
-OIDC_AUTO_REDIRECT=True  # Optional: automatisch zur SSO-Anmeldung umleiten
-OIDC_DISABLE_LOCAL_AUTH=True  # Optional: Benutzername/Passwort-Anmeldung deaktivieren
+OIDC_AUTO_REDIRECT=True  # Optional: automatisch zur SSO-Anmeldung weiterleiten
+OIDC_DISABLE_LOCAL_AUTH=True  # Optional: Anmeldung mit Benutzername/Passwort deaktivieren
 
-# Optional: Rollenabbildung von OIDC-Gruppen zu Gramps-Rollen
-OIDC_ROLE_CLAIM="groups"  # oder "roles", je nach Anbieter
+# Optional: Rollenzuordnung von OIDC-Gruppen zu Gramps-Rollen
+OIDC_ROLE_CLAIM="groups"  # oder "roles", abhängig von deinem Anbieter
 OIDC_GROUP_ADMIN="gramps-admins"
 OIDC_GROUP_EDITOR="gramps-editors"
 OIDC_GROUP_MEMBER="gramps-members"
 
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
-EMAIL_USE_SSL=True  # Verwenden Sie implizites SSL für Port 465
+EMAIL_USE_SSL=True  # Implizites SSL für Port 465 verwenden
 EMAIL_HOST_USER="gramps@example.com"
-EMAIL_HOST_PASSWORD="..." # Ihr SMTP-Passwort
+EMAIL_HOST_PASSWORD="..." # dein SMTP-Passwort
 DEFAULT_FROM_EMAIL="gramps@example.com"
 ```
 
 ### Integrierter Anbieter (Google)
 
 ```python
-TREE="Mein Familienstammbaum"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # Ihr geheimer Schlüssel
+SECRET_KEY="..."  # dein geheimer Schlüssel
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 
 # Google OAuth
@@ -266,12 +266,12 @@ OIDC_GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
 ### Mehrere Anbieter
 
-Sie können mehrere OIDC-Anbieter gleichzeitig aktivieren:
+Du kannst mehrere OIDC-Anbieter gleichzeitig aktivieren:
 
 ```python
-TREE="Mein Familienstammbaum"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # Ihr geheimer Schlüssel
+SECRET_KEY="..."  # dein geheimer Schlüssel
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 
 # Benutzerdefinierter Anbieter
@@ -279,7 +279,7 @@ OIDC_ENABLED=True
 OIDC_ISSUER="https://auth.example.com/realms/myrealm"
 OIDC_CLIENT_ID="gramps-web"
 OIDC_CLIENT_SECRET="your-client-secret"
-OIDC_NAME="Unternehmens-SSO"
+OIDC_NAME="Company SSO"
 
 # Google OAuth
 OIDC_GOOGLE_CLIENT_ID="your-google-client-id"
@@ -292,7 +292,7 @@ OIDC_MICROSOFT_CLIENT_SECRET="your-microsoft-client-secret"
 
 ### Pocket ID
 
-Erstellen Sie einen OIDC-Client in Pocket ID mit der Weiterleitungs-URI `<BASE_URL>/api/oidc/callback/custom` (siehe [Erforderliche Weiterleitungs-URIs](#required-redirect-uris)). Wenn Sie "PKCE erforderlich" für den Client aktivieren, sind keine zusätzlichen Gramps Web-Konfigurationen erforderlich, da Pocket ID die PKCE-Unterstützung in seinem Entdeckungsdokument bewirbt. Konfigurieren Sie dann:
+Erstelle in Pocket ID einen OIDC-Client mit der Weiterleitungs-URI `<BASE_URL>/api/oidc/callback/custom` (siehe [Erforderliche Weiterleitungs-URIs](#required-redirect-uris)). Wenn du für den Client „Require PKCE“ aktivierst, ist keine zusätzliche Gramps-Web-Konfiguration erforderlich, da Pocket ID die PKCE-Unterstützung in seinem Discovery-Dokument ankündigt. Konfiguriere anschließend:
 
 ```
 GRAMPSWEB_OIDC_ENABLED=True
@@ -304,14 +304,14 @@ GRAMPSWEB_OIDC_NAME=Pocket ID
 
 ### Authelia
 
-Ein von der Community erstellter OIDC-Setup-Leitfaden für Gramps Web ist auf der [offiziellen Authelia-Dokumentationswebsite](https://www.authelia.com/integration/openid-connect/clients/gramps/) verfügbar.
+Eine von der Community erstellte Anleitung zur OIDC-Einrichtung von Gramps Web ist auf der [offiziellen Authelia-Dokumentationswebsite](https://www.authelia.com/integration/openid-connect/clients/gramps/) verfügbar.
 
 ### Keycloak
 
-Die meisten Konfigurationen für Keycloak können auf ihren Standardeinstellungen belassen werden (*Client → Client erstellen → Client-Authentifizierung EIN*). Es gibt einige Ausnahmen:
+Der größte Teil der Keycloak-Konfiguration kann auf den Standardwerten belassen werden (*Client → Create client → Client authentication ON*). Es gibt einige Ausnahmen:
 
-1. **OpenID-Bereich** – Der `openid`-Bereich ist in allen Keycloak-Versionen nicht standardmäßig enthalten. Um Probleme zu vermeiden, fügen Sie ihn manuell hinzu: *Client → [Gramps-Client] → Client-Bereiche → Bereich hinzufügen → Name: `openid` → Als Standard festlegen.*
-2. **Rollen** – Rollen können entweder auf der Client-Ebene oder global pro Realm zugewiesen werden.
+1. **OpenID-Scope** – Der Scope `openid` ist standardmäßig nicht in allen Keycloak-Versionen enthalten. Um Probleme zu vermeiden, füge ihn manuell hinzu: *Client → [Gramps client] → Client scopes → Add scope → Name: `openid` → Set as default.*
+2. **Rollen** – Rollen können entweder auf Clientebene oder global pro Realm zugewiesen werden.
 
-    * Wenn Sie Client-Rollen verwenden, setzen Sie die Konfigurationsoption `OIDC_ROLE_CLAIM` auf: `resource_access.[gramps-client-name].roles`
-    * Um Rollen für Gramps sichtbar zu machen, navigieren Sie zu *Client-Bereichen* (der oberste Abschnitt, nicht unter dem spezifischen Client), dann: *Rollen → Mapper → Client-Rollen → Zu Benutzerinfo hinzufügen → EIN.*
+    * Wenn du Client-Rollen verwendest, setze die Konfigurationsoption `OIDC_ROLE_CLAIM` auf: `resource_access.[gramps-client-name].roles`
+    * Damit Rollen für Gramps sichtbar werden, navigiere zu *Client Scopes* (dem Abschnitt der obersten Ebene, nicht innerhalb des jeweiligen Clients) und anschließend zu: *Roles → Mappers → client roles → Add to userinfo → ON.*

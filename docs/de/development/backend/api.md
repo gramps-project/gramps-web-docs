@@ -5,6 +5,6 @@ hide:
 
 # API-Spezifikation
 
-Die interaktive API-Spezifikation (Swagger UI) wird direkt von Ihrer Gramps Web-Instanz unter `/api/swagger-ui` bereitgestellt – zum Beispiel `https://mygrampsweb.example.com/api/swagger-ui`.
+Die interaktive API-Spezifikation (Swagger UI) wird direkt von deiner Gramps-Web-Instanz unter `/api/swagger-ui` bereitgestellt – zum Beispiel `https://mygrampsweb.example.com/api/swagger-ui`.
 
-Sie können auch über [Benutzereinstellungen](../../user-guide/settings.md) darauf zugreifen, indem Sie auf die Schaltfläche **Swagger starten** klicken, die die Swagger UI mit Ihrem Sitzungstoken vorausgefüllt öffnet.
+Du kannst sie auch über [Benutzereinstellungen](../../user-guide/settings.md) aufrufen. Klicke dazu auf die Schaltfläche **Swagger starten**, die die Swagger UI mit deinem vorausgefüllten Sitzungstoken öffnet.

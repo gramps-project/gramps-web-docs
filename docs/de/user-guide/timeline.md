@@ -1,24 +1,24 @@
-# Zeitachse
+# Zeitleiste
 
 !!! info
-    Die Zeitachsenansicht erfordert eine ausreichend aktuelle Gramps Web API-Version. Wenn Ihr Server älter ist, wird der **Zeitachse**-Eintrag aus der Seitenleiste ausgeblendet.
+    Die Zeitleistenansicht erfordert eine ausreichend aktuelle Version der Gramps-Web-API. Wenn dein Server älter ist, wird der Eintrag **Zeitleiste** in der Seitenleiste ausgeblendet.
 
-**Zeitachse** ist ein Element in der Seitenleiste, das alle Ereignisse in Ihrem Stammbaum chronologisch auf einer horizontalen, zoombaren Zeitachse anzeigt.
+**Zeitleiste** ist ein Eintrag in der Seitenleiste, der alle Ereignisse in deinem Stammbaum chronologisch auf einer horizontalen, zoombaren Zeitleiste anzeigt.
 
-## Durchsuchen der Zeitachse
+## Durch die Zeitleiste navigieren
 
-- Scrollen, ziehen oder kneifen, um durch die Zeit zu navigieren; verwenden Sie die Zoom-Schaltflächen (oder Ihr Mausrad/Kneifgeste), um hinein- und herauszuzoomen.
-- Wenn Sie hineinzoomen, erscheinen die Ereignisetiketten; klicken Sie auf einen Ereignispunkt, um die Details anzuzeigen (und die anderer Ereignisse am selben Datum).
+- Scrolle, ziehe oder wische, um dich durch die Zeit zu bewegen; verwende die Zoom-Schaltflächen (oder das Mausrad bzw. die Pinch-Geste), um hinein- und herauszuzoomen.
+- Wenn du hineinzoomst, werden Bezeichnungen der Ereignisse angezeigt; klicke auf einen Ereignispunkt, um dessen Details (und die aller anderen Ereignisse am selben Datum) anzuzeigen.
 
 ## Filtern
 
-Verwenden Sie das Filterfeld, um die Zeitachse auf eine einzelne **Person** oder **Ort** zu fokussieren:
+Verwende das Filterfeld, um die Zeitleiste auf eine einzelne **Person** oder einen **Ort** zu beschränken:
 
-- **Person** – zeigt nur Ereignisse an, die mit dieser Person verknüpft sind, einschließlich der Ereignisse ihrer Familien, wie z.B. Ehen. Ein Umschalter ermöglicht es Ihnen, zwischen **Person** (nur Ereignisse dieser Person), **Vorfahren** und **Nachkommen** (Ereignisse aller ihrer Vorfahren/Nachkommen) zu wechseln.
+- **Person** – zeigt nur Ereignisse an, die mit dieser Person verknüpft sind, einschließlich der Ereignisse ihrer Familien, wie zum Beispiel Eheschließungen. Mit einem Umschalter kannst du zwischen **Person** (nur Ereignisse dieser Person), **Vorfahren** und **Nachkommen** (Ereignisse aller ihrer Vorfahren bzw. Nachkommen) wechseln.
 - **Ort** – zeigt nur Ereignisse an, die dort stattgefunden haben.
 
-Löschen Sie den Filterchip, um zur vollständigen Zeitachse zurückzukehren.
+Lösche das Filter-Tag, um zur vollständigen Zeitleiste zurückzukehren.
 
-## Zur Zeitachse springen
+## Zur Zeitleiste springen
 
-Auf der Detailseite eines Ereignisses oder Ortes öffnet die Schaltfläche **Auf Zeitachse anzeigen** die Zeitachsenansicht, die auf das Datum dieses Ereignisses gescrollt und gezoomt ist.
+Auf der Detailseite eines Ereignisses oder Ortes öffnet die Schaltfläche **Auf der Zeitleiste anzeigen** die Zeitleistenansicht, die auf das Datum dieses Ereignisses gescrollt und gezoomt ist.

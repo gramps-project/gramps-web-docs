@@ -6,29 +6,29 @@ hide:
 
 # Funktionen
 
-Gramps Web ist eine Webanwendung für kollaborative Genealogie. Es basiert auf [Gramps](https://gramps-project.org/), dem Open-Source-Genealogieprogramm, und arbeitet mit denselben Daten. Sie können es auf Ihrem eigenen Server ausführen oder einen Hosting-Anbieter nutzen.
+Gramps Web ist eine Webanwendung für kollaborative Genealogie. Sie basiert auf [Gramps](https://gramps-project.org/), dem quelloffenen Genealogieprogramm, und verwendet dieselben Daten. Du kannst sie auf deinem eigenen Server betreiben oder einen Hosting-Anbieter nutzen.
 
-[Demo ausprobieren](#demo){ .md-button .md-button--primary } [Loslegen](../install_setup/setup.md){ .md-button }
+[Demo ausprobieren](#demo){ .md-button .md-button--primary } [Erste Schritte](../install_setup/setup.md){ .md-button }
 
-## Erkunden Sie Ihren Stammbaum { .feature-group }
+## Deinen Stammbaum erkunden { .feature-group }
 
-![Fächerdiagramm, das sieben Generationen von Vorfahren zeigt](screenshots/fan.png){ align=right width="400"}
+![Fächerdiagramm mit sieben Generationen von Vorfahren](screenshots/fan.png){ align=right width="400"}
 
-### Interaktive Stammbaumgrafiken
+### Interaktive Stammbaumdiagramme
 
-Navigieren Sie durch Ihren Stammbaum als Ahnenbaum, Nachkommenbaum, Sanduhrdiagramm, Beziehungsdiagramm oder Fächerdiagramm, mit hochwertigen interaktiven Grafiken und einer konfigurierbaren Anzahl von Generationen.
+Navigiere durch deinen Stammbaum als Vorfahrenbaum, Nachkommenbaum, Sanduhrdiagramm, Verwandtschaftsdiagramm oder Fächerdiagramm – mit hochwertigen interaktiven Grafiken und einer konfigurierbaren Anzahl von Generationen.
 
-Fahren Sie mit der Maus über eine Person, um eine Vorschaukarte mit ihren wichtigsten Fakten zu sehen, und springen Sie direkt vom Diagramm zur vollständigen Detailseite.
+Bewege den Mauszeiger über eine beliebige Person, um eine Vorschaukarte mit den wichtigsten Fakten zu sehen, und springe direkt vom Diagramm zur vollständigen Detailseite.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Zeitleiste der Familienereignisse zwischen den 1940er und 1970er Jahren](screenshots/timeline.png){ align=left width="400"}
+![Zeitleiste von Familienereignissen zwischen den 1940er- und 1970er-Jahren](screenshots/timeline.png){ align=left width="400"}
 
 ### Chronologische Zeitleiste
 
-Sehen Sie jedes Ereignis in Ihrem Stammbaum auf einer horizontalen, zoombaren Zeitleiste. Scrollen und zoomen Sie durch die Jahrhunderte, filtern Sie dann nach einer einzelnen Person – oder nach allen ihren Vorfahren oder Nachkommen – oder nach allem, was an einem bestimmten Ort passiert ist.
+Sieh dir jedes Ereignis in deinem Stammbaum auf einer horizontalen, zoombaren Zeitleiste an. Scrolle und zoome durch die Jahrhunderte und filtere dann auf eine einzelne Person – oder auf alle ihre Vorfahren oder Nachkommen – oder auf alles, was an einem Ort geschehen ist.
 
 Siehe [Zeitleiste](../user-guide/timeline.md).
 
@@ -36,49 +36,49 @@ Siehe [Zeitleiste](../user-guide/timeline.md).
 
 ---
 
-![Karte von London mit einem ausgewählten Ort, der sein Foto und Ereignisse zeigt](screenshots/map.png){ align=right width="400"}
+![Karte von London mit ausgewähltem Ort, seinem Foto und seinen Ereignissen](screenshots/map.png){ align=right width="400"}
 
 ### Interaktive Karte
 
-Zeigen Sie alle Orte in Ihrem Stammbaum auf einer interaktiven, durchsuchbaren Karte an. Suchen Sie nach neuen Orten direkt auf OpenStreetMap, wenn Sie einen Ort erstellen, plotten Sie die Personen in Ihrer Datenbank geografisch und verfolgen Sie das Leben einer einzelnen Person, indem Sie ihre Ereignisse mit Linien auf der Karte verbinden.
+Zeige alle Orte in deinem Stammbaum auf einer interaktiven, durchsuchbaren Karte an. Suche beim Erstellen eines Ortes direkt auf OpenStreetMap nach neuen Orten, stelle die Personen in deiner Datenbank geografisch dar und verfolge das Leben einer einzelnen Person, indem du ihre Ereignisse auf der Karte mit Linien verbindest.
 
 <div style="clear:both;"></div>
 
 ---
 
-![London auf der OpenHistoricalMap-Ebene, mit dem Zeitregler auf 1707 eingestellt](screenshots/ohm.png){ align=left width="400"}
+![London auf der OpenHistoricalMap-Ebene mit dem auf 1707 eingestellten Zeitschieberegler](screenshots/ohm.png){ align=left width="400"}
 
 ### Historische Karten
 
-Verwandeln Sie eine historische Karte, die als Medienobjekt in Gramps gespeichert ist, in eine benutzerdefinierte Kartenüberlagerung.
+Verwandle eine in Gramps als Medienobjekt gespeicherte historische Karte in eine benutzerdefinierte Kartenebene.
 
-Sie können auch zu den historischen Vektorkarten des [OpenHistoricalMap](https://www.openhistoricalmap.org/) Projekts wechseln. Verwenden Sie den Zeitregler, um durch die Entwicklung der Orte in Ihrer Familiengeschichte zu scrollen und die Orte anzuzeigen, an denen Vorfahren lebten oder Ereignisse stattfanden.
+Du kannst auch zu den historischen Vektorkarten des Projekts [OpenHistoricalMap](https://www.openhistoricalmap.org/) wechseln. Verwende den Zeitschieberegler, um die Entwicklung der Orte in deiner Familiengeschichte zu verfolgen und die Orte anzuzeigen, an denen Vorfahren gelebt haben oder Ereignisse stattgefunden haben.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Suchergebnisse für "Albert" über Personen, Ereignisse und Medien](screenshots/search.png){ align=right width="400"}
+![Suchergebnisse für „Albert“ in Personen, Ereignissen und Medien](screenshots/search.png){ align=right width="400"}
 
 ### Alles finden
 
-Die Volltext-Suchmaschine deckt alle Gramps-Objekttypen ab, einschließlich des Inhalts von Textnotizen, und unterstützt Platzhalter und logische Operatoren.
+Die Volltextsuche umfasst alle Gramps-Objekttypen, einschließlich des Inhalts von Textnotizen, und unterstützt Platzhalter sowie logische Operatoren.
 
-Für präzise Abfragen bieten die Objektlistenansichten einen erweiterten Filtermodus basierend auf der [Gramps Object Query Language](../user-guide/goql.md), neben schnellen Filtern nach Text, Etikett und Datenschutz.
+Für präzise Abfragen bieten die Ansichten der Objektlisten einen erweiterten Filtermodus auf Grundlage der [Gramps Object Query Language](../user-guide/goql.md), zusätzlich zu Schnellfiltern nach Text, Etikett und Privatsphäre.
 
-Von der Seite jeder Person aus öffnet die [Externe Suche](../user-guide/external-search.md) eine vorab ausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Seiten – und Sie können Ihre eigenen hinzufügen.
+Auf der Seite jeder Person öffnet die [externe Suche](../user-guide/external-search.md) eine vorausgefüllte Suche auf FamilySearch, Ancestry, CompGen und anderen Websites – und du kannst eigene hinzufügen.
 
 <div style="clear:both;"></div>
 
-## Erstellen und Forschen { .feature-group }
+## Aufbauen und forschen { .feature-group }
 
-![Ahnenbaum im Bearbeitungsmodus mit dem Dialog zum Hinzufügen eines Familienmitglieds](screenshots/tree-edit.png){ align=left width="400"}
+![Vorfahrenbaum im Bearbeitungsmodus mit dem Dialog zum Hinzufügen eines Familienmitglieds](screenshots/tree-edit.png){ align=left width="400"}
 
-### Erstellen Sie Ihren Baum direkt im Diagramm
+### Deinen Stammbaum direkt im Diagramm aufbauen
 
-Schalten Sie die Baumansicht in den Bearbeitungsmodus und erweitern Sie Ihren Stammbaum, ohne das Diagramm zu verlassen. Jede Personenkarte erhält einen **+**-Button, um einen Vater, eine Mutter, ein Kind oder einen Ehepartner hinzuzufügen – entweder indem Sie jemanden verlinken, der bereits in Ihrer Datenbank ist, oder indem Sie sofort eine ganz neue Person erstellen. Jede Änderung wird sofort gespeichert.
+Wechsle die Stammbaumansicht in den Bearbeitungsmodus und erweitere deinen Stammbaum, ohne das Diagramm zu verlassen. Jede Personenkarte erhält eine **+**-Schaltfläche zum Hinzufügen eines Vaters, einer Mutter, eines Kindes oder eines Ehepartners – entweder durch Verknüpfen einer bereits in deiner Datenbank vorhandenen Person oder durch sofortiges Erstellen einer völlig neuen Person. Jede Änderung wird sofort gespeichert.
 
-Siehe [Bearbeiten des Stammbaums](../user-guide/tree-edit.md).
+Siehe [Stammbaum bearbeiten](../user-guide/tree-edit.md).
 
 <div style="clear:both;"></div>
 
@@ -88,101 +88,101 @@ Siehe [Bearbeiten des Stammbaums](../user-guide/tree-edit.md).
 
 ### Integrierter KI-Assistent
 
-Stellen Sie Fragen zu Ihrem Stammbaum in Ihrer eigenen Sprache und erhalten Sie Antworten basierend auf Ihren Daten.
+Stelle Fragen zu deinem Stammbaum in deiner eigenen Sprache und erhalte Antworten auf Grundlage deiner Daten.
 
-Der Assistent sucht nicht nur: Er fragt Ihre Datenbank direkt mit einer Reihe von Werkzeugen ab, filtert Personen, Ereignisse, Familien und Orte und berechnet Beziehungen zwischen Individuen. Sie können beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt, und längere Fragen werden als Hintergrundaufgaben ausgeführt, sodass Sie navigieren und später zurückkommen können.
+Der Assistent sucht nicht nur: Er fragt deine Datenbank direkt mit einer Reihe von Werkzeugen ab, filtert Personen, Ereignisse, Familien und Orte und berechnet Verwandtschaftsbeziehungen zwischen Personen. Du kannst beobachten, welche Werkzeuge er verwendet, während er eine Antwort erstellt. Längere Fragen werden als Hintergrundaufgaben ausgeführt, sodass du weg navigieren und später zurückkehren kannst.
 
-Der Assistent ist optional und muss [vom Serveradministrator eingerichtet werden](../install_setup/chat.md) mit einem KI-Modellanbieter.
-
-<div style="clear:both;"></div>
-
----
-
-![Chromosomenbrowser, der die gemeinsamen DNA-Segmente von elf Übereinstimmungen anzeigt](screenshots/dna.png){ align=left width="400"}
-
-### DNA-Übereinstimmungen, Chromosomenbrowser & Y-DNA
-
-Laden Sie DNA-Übereinstimmungsdaten von Ihrem DNA-Testanbieter hoch, speichern Sie sie zusammen mit Ihrem Stammbaum und sehen Sie Ihre Übereinstimmungen in einem interaktiven Chromosomenbrowser.
-
-Rohdaten zu Y-Chromosomen-SNPs können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre patrilinearen Vorfahren im menschlichen Y-Chromosomenbaum mit Zeitangaben anzuzeigen. Die Analyse erfolgt vollständig auf Ihrem eigenen Server – keine Daten werden an Dritte gesendet.
+Der Assistent ist optional und muss vom [Serveradministrator eingerichtet](../install_setup/chat.md) werden, einschließlich eines KI-Modellanbieters.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Gemälde mit zwei markierten Personen und den anderen erkannten Gesichtern umrandet](screenshots/tag.png){ align=right width="400"}
+![Chromosomen-Browser mit den gemeinsamen DNA-Segmenten von elf Übereinstimmungen](screenshots/dna.png){ align=left width="400"}
 
-### Personen in Fotos mit automatischer Gesichtserkennung markieren
+### DNA-Übereinstimmungen, Chromosomen-Browser & Y-DNA
 
-Identifizieren Sie Vorfahren in alten Familienfotos zusammen mit Ihren Verwandten. Gesichter werden automatisch erkannt, sodass das Markieren einer Person nur zwei Klicks benötigt.
+Lade DNA-Übereinstimmungsdaten von deinem DNA-Testanbieter hoch, speichere sie zusammen mit deinem Stammbaum und sieh dir deine Übereinstimmungen in einem interaktiven Chromosomen-Browser an.
 
-<div style="clear:both;"></div>
-
----
-
-![Liste der Forschungsaufgaben mit Status, Priorität und Etiketten](screenshots/tasks.png){ align=left width="400"}
-
-### Integrierte Aufgabenverwaltungs-App
-
-Gramps Web kommt mit einer integrierten Aufgabenverwaltungs-App, um Ihre genealogische Forschung zu organisieren und zu planen. Geben Sie jeder Aufgabe einen Status, eine Priorität und Etiketten, dokumentieren Sie Ihren Fortschritt in einer Rich-Text-Beschreibung und fügen Sie die Medien hinzu, die Sie unterwegs gesammelt haben.
-
-Die Aufgaben werden als Quellen in der Gramps-Datenbank gespeichert, sodass sie Teil Ihrer genealogischen Daten sind und auch in Gramps Desktop zugegriffen und bearbeitet werden können.
+Rohdaten zu SNPs des Y-Chromosoms können verwendet werden, um die wahrscheinlichste [Y-DNA-Haplogruppe](../user-guide/y-dna.md) einer Person zu bestimmen und ihre väterlichen Vorfahren im menschlichen Y-Chromosomenbaum mit Zeitschätzungen anzuzeigen. Die Analyse läuft vollständig auf deinem eigenen Server – es werden keine Daten an Dritte gesendet.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Blogbeitrag über die Identifizierung der Personen in einem Familienfoto](screenshots/blog.png){ align=right width="400"}
+![Gemälde mit zwei etikettierten Personen und den Umrissen weiterer erkannter Gesichter](screenshots/tag.png){ align=right width="400"}
 
-### Genealogie-Blog enthalten
+### Personen in Fotos mit automatischer Gesichtserkennung etikettieren
 
-Fassen Sie Ihre Forschung in Form von Bloggeschichten mit Bildern zusammen und teilen Sie sie mit Ihren Verwandten. Ein spezieller Editor macht das Schreiben eines neuen Beitrags einfach. Alle Daten werden in der Gramps-Datenbank gespeichert.
+Identifiziere gemeinsam mit deinen Verwandten Vorfahren auf alten Familienfotos. Gesichter werden automatisch erkannt, sodass das Etikettieren einer Person zwei Klicks erfordert.
 
 <div style="clear:both;"></div>
 
-## Gemeinsam arbeiten { .feature-group }
+---
+
+![Liste von Forschungsaufgaben mit Status, Priorität und Etiketten](screenshots/tasks.png){ align=left width="400"}
+
+### Integrierte Aufgabenverwaltung
+
+Gramps Web verfügt über eine integrierte Aufgabenverwaltung, mit der du deine genealogische Forschung organisieren und planen kannst. Weise jeder Aufgabe einen Status, eine Priorität und Etiketten zu, dokumentiere deinen Fortschritt in einer Rich-Text-Beschreibung und füge die dabei gesammelten Medien hinzu.
+
+Die Aufgaben werden als Quellen in der Gramps-Datenbank gespeichert und sind somit Teil deiner genealogischen Daten. Sie können auch in Gramps Desktop aufgerufen und bearbeitet werden.
+
+<div style="clear:both;"></div>
+
+---
+
+![Blogbeitrag über die Identifizierung der Personen auf einem Familienfoto](screenshots/blog.png){ align=right width="400"}
+
+### Genealogie-Blog inklusive
+
+Fasse deine Forschung in Form von Bloggeschichten mit Bildern zusammen und teile sie mit deinen Verwandten. Ein eigener Editor macht das Schreiben eines neuen Beitrags unkompliziert. Alle Daten werden in der Gramps-Datenbank gespeichert.
+
+<div style="clear:both;"></div>
+
+## Zusammenarbeiten { .feature-group }
 
 ![Liste der Personen im Stammbaum](screenshots/list.png){ align=left width="400"}
 
-### Datenschutzeinstellungen & Benutzerzugriff
+### Privatsphärestufen und Benutzerzugriff
 
-Sie können [Datensätze als privat markieren](../user-guide/privacy.md) – bis hin zu einem einzelnen Namen, Ereignislink oder DNA-Übereinstimmung – und steuern, welche Benutzer private Datensätze einsehen dürfen. Private Datensätze werden auf der Datenbankebene für maximale Sicherheit herausgefiltert. Darüber hinaus können Sie steuern, was Benutzer hinzufügen und bearbeiten dürfen.
+Du kannst [Datensätze als privat markieren](../user-guide/privacy.md) – bis hin zu einem einzelnen Namen, einer Ereignisverknüpfung oder einer DNA-Übereinstimmung – und festlegen, welche Benutzer private Datensätze anzeigen dürfen. Private Datensätze werden für maximale Sicherheit auf Datenbankebene herausgefiltert. Außerdem kannst du steuern, was Benutzer hinzufügen und bearbeiten dürfen.
 
-Benutzer können sich mit einem Passwort anmelden oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) – Google und Microsoft sofort, sowie benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
-
-<div style="clear:both;"></div>
-
----
-
-![Eine Revision, die die geänderten Felder in einem Personen-Datensatz zeigt](screenshots/revisions.png){ align=right width="400"}
-
-### Vollständige Revisionshistorie – mit Rückgängig
-
-Jede Bearbeitung Ihres Stammbaums wird aufgezeichnet. Durchsuchen Sie die vollständige Historie, gruppiert nach Transaktion, und tauchen Sie in jede einzelne Änderung ein, um genau zu sehen, welche Felder hinzugefügt, entfernt oder geändert wurden, und machen Sie eine Transaktion rückgängig, wenn sich herausstellt, dass es ein Fehler war. Jede Objektseite hat auch ihren eigenen Reiter für Revisionen, der zeigt, wer es wann geändert hat.
-
-Siehe [Revisionshistorie](../user-guide/revisions.md).
+Benutzer können sich mit einem Passwort oder über einen externen Identitätsanbieter mit [OpenID Connect](../install_setup/oidc.md) anmelden – Google und Microsoft sind sofort verfügbar, ebenso benutzerdefinierte Anbieter wie Keycloak, Authentik und Authelia.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Das Menü "Werkzeuge" von Gramps Desktop mit dem Eintrag "Gramps Web Sync"](screenshots/sync.png){ align=left width="300"}
+![Eine Revision mit den in einem Personendatensatz geänderten Feldern](screenshots/revisions.png){ align=right width="400"}
+
+### Vollständiger Revisionsverlauf – mit Rückgängig-Funktion
+
+Jede Bearbeitung deines Stammbaums wird aufgezeichnet. Durchsuche den vollständigen Verlauf, nach Transaktionen gruppiert, und sieh dir jede einzelne Änderung genau an, um festzustellen, welche Felder hinzugefügt, entfernt oder geändert wurden. Mache eine Transaktion rückgängig, wenn sie sich als Fehler herausstellt. Die Seite jedes Objekts verfügt außerdem über einen eigenen Revisionstab, der anzeigt, wer es wann geändert hat.
+
+Siehe [Revisionsverlauf](../user-guide/revisions.md).
+
+<div style="clear:both;"></div>
+
+---
+
+![Das Menü „Werkzeuge“ von Gramps Desktop mit dem Eintrag „Gramps Web Sync“](screenshots/sync.png){ align=left width="300"}
 
 ### Vollständige Integration mit Gramps Desktop
 
-Gramps Web verwendet dasselbe Datenmodell und dieselbe Datenbank wie [Gramps Desktop](https://gramps-project.org/). Sie können alle gleichen [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen und bearbeiten: Personen, Familien, Ereignisse, Orte, Archive, Quellen, Zitationen, Medienobjekte und Notizen.
+Gramps Web verwendet dasselbe Datenmodell und dieselbe Datenbank wie [Gramps Desktop](https://gramps-project.org/). Du kannst dieselben [Datensatztypen](https://gramps-project.org/wiki/index.php/Gramps_Data_Model) durchsuchen und bearbeiten: Personen, Familien, Ereignisse, Orte, Repositorien, Quellen, Quellenangaben, Medienobjekte und Notizen.
 
-Mit dem [Gramps Web Sync-Add-on](../administration/sync.md) für Gramps Desktop können Sie Ihre Daten in beide Richtungen synchronisieren, sodass Sie sowohl in Gramps Desktop als auch in Gramps Web gleichzeitig weiterarbeiten können.
+Mit dem [Gramps-Web-Sync-Add-on](../administration/sync.md) für Gramps Desktop kannst du deine Daten in beide Richtungen synchronisieren und so parallel in Gramps Desktop und Gramps Web arbeiten.
 
 <div style="clear:both;"></div>
 
 ## Berichte und Datenexport { .feature-group }
 
-![Ahnenbericht, der als PDF generiert wurde](screenshots/report.png){ align=right width="400"}
+![Als PDF erstellter Vorfahrenbericht](screenshots/report.png){ align=right width="400"}
 
-### Erstellen Sie druckbare Berichte
+### Druckbare Berichte erstellen
 
-Gramps Web basiert auf demselben Kern wie Gramps Desktop, sodass Sie fast alle [Berichte](https://gramps-project.org/wiki/index.php/Gramps_6.0_Wiki_Manual_-_Reports) der Desktop-App direkt im Browser generieren können, einschließlich Beziehungsdiagrammen oder Buchberichten als PDF.
+Gramps Web basiert auf demselben Kern wie Gramps Desktop. Daher kannst du fast alle vom Desktopprogramm unterstützten [Berichte](https://gramps-project.org/wiki/index.php/Gramps_6.0_Wiki_Manual_-_Reports) direkt im Browser erstellen, einschließlich Verwandtschaftsdiagrammen oder Buchberichten als PDF.
 
 <div style="clear:both;"></div>
 
@@ -190,59 +190,59 @@ Gramps Web basiert auf demselben Kern wie Gramps Desktop, sodass Sie fast alle [
 
 ![Exportseite mit der Liste der verfügbaren Dateiformate](screenshots/export.png){ align=left width="300"}
 
-### Kein Lock-in – Datenimport und -export
+### Keine Bindung – Datenimport und -export
 
-Importieren Sie Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, und laden Sie jederzeit alle Ihre Daten herunter – Stammbaumdaten, Mediendateien und Benutzerkonten – für Backups oder um zu einem anderen Server zu wechseln.
+Importiere Daten in verschiedenen Formaten, einschließlich Gramps XML und GEDCOM, und lade jederzeit alle deine Daten herunter – Stammbaumdaten, Mediendateien und Benutzerkonten – für Sicherungen oder zum Umzug auf einen anderen Server.
 
-Importe können als Trockenlauf vor dem Schreiben angezeigt werden, und ein vollständiges Backup kann wieder in den Baum zurückgestellt werden.
+Importe können vor dem Schreiben als Probelauf in der Vorschau angezeigt werden, und eine vollständige Sicherung kann wieder in den Stammbaum eingespielt werden.
 
 <div style="clear:both;"></div>
 
 ## Überall verwenden { .feature-group }
 
-![Die gleiche Personenseite auf einem Desktop und auf einem Telefon](screenshots/mobile.png){ align=right width="400"}
+![Dieselbe Personenseite auf einem Desktopcomputer und einem Smartphone](screenshots/mobile.png){ align=right width="400"}
 
 ### Funktioniert auf jedem Gerät
 
-Verwenden Sie Gramps Web auf jedem Gerät mit einem Webbrowser: Laden Sie Fotos hoch, erstellen oder bearbeiten Sie Datensätze oder zeigen Sie Ihren Stammbaum Verwandten beim nächsten Familientreffen.
+Verwende Gramps Web auf jedem Gerät mit einem Webbrowser: Lade Fotos hoch, erstelle oder bearbeite Datensätze oder zeige deinen Verwandten beim nächsten Familientreffen deinen Stammbaum.
 
-Gramps Web ist eine progressive Webanwendung: Installieren Sie es auf Ihrem Startbildschirm oder Desktop, und es verhält sich wie eine native App. Auf dem Desktop bringen Sie [Tastenkombinationen](../user-guide/shortcuts.md) überallhin in wenigen Tastenanschlägen – drücken Sie `?`, um sie alle zu sehen.
+Gramps Web ist eine progressive Web-App: Installiere sie auf deinem Startbildschirm oder Desktop, und sie verhält sich wie eine native App. Auf dem Desktop bringen dich [Tastenkürzel](../user-guide/shortcuts.md) mit wenigen Tastenanschlägen überallhin – drücke `?`, um alle anzuzeigen.
 
 <div style="clear:both;"></div>
 
 ---
 
-![Spracheauswahlmenü](screenshots/lang.png){ align=left width="300"}
+![Menü zur Sprachauswahl](screenshots/lang.png){ align=left width="300"}
 
 ### Vollständig internationalisiert
 
-Verwenden Sie die Benutzeroberfläche in einer von mehr als 50 Sprachen, die von der Gramps-Community übersetzt wurden.
+Verwende die Benutzeroberfläche in jeder der mehr als 50 Sprachen, die von der Gramps-Community übersetzt wurden.
 
 <div style="clear:both;"></div>
 
-## Und mehr
+## Und vieles mehr
 
-- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Indexerneuerungen laufen im Hintergrund, mit Fortschritten und Fehlern, die an einem Ort gesammelt werden
-- **Etiketten, Lesezeichen und Verlauf** – Organisieren Sie Objekte mit farbcodierten Etiketten und kehren Sie zu dem zurück, woran Sie gearbeitet haben
-- **Massenbearbeitung** – Wählen Sie mehrere Objekte in den Listenansichten aus, um sie auf einmal zu löschen oder doppelte Objekte zusammenzuführen
-- **Anpassbare Listenansichten** – Wählen Sie, welche Spalten angezeigt werden sollen, und filtern Sie nach Text, Etikett oder Datenschutz
-- **Texterkennung (OCR)** – Extrahieren Sie Text aus gescannten Dokumenten in Ihrer Mediathek
-- **Datenüberprüfung** – Überprüfen Sie Ihren Baum auf unplausible Daten und andere Datenprobleme
-- **Kalender** – Geben Sie Daten im Gregorianischen, Julianischen, Hebräischen, Französischen Republik, Persischen, Islamischen oder Schwedischen Kalender ein
-- **Gestalten Sie es nach Ihren Wünschen** – Geben Sie Ihrer Website einen eigenen Namen, Themenfarben sowie Text und Bild für die Startseite
+- **Benachrichtigungen und Hintergrundaufgaben** – Importe, Exporte, Berichte und Indexneuerstellungen werden im Hintergrund ausgeführt; Fortschritt und Fehler werden an einer Stelle gesammelt
+- **Etiketten, Lesezeichen und Verlauf** – Organisiere Objekte mit farbcodierten Etiketten und kehre zu deiner letzten Arbeit zurück
+- **Massenbearbeitung** – Wähle in den Listenansichten mehrere Objekte aus, um sie auf einmal zu löschen oder doppelte Objekte zusammenzuführen
+- **Anpassbare Listenansichten** – Wähle die anzuzeigenden Spalten und filtere nach Text, Etikett oder Privatsphäre
+- **Texterkennung (OCR)** – Extrahiere Text aus gescannten Dokumenten in deiner Mediengalerie
+- **Datenüberprüfung** – Überprüfe deinen Stammbaum auf unplausible Datumsangaben und andere Datenprobleme
+- **Kalender** – Gib Datumsangaben im gregorianischen, julianischen, hebräischen, französisch-republikanischen, persischen, islamischen oder schwedischen Kalender ein
+- **Mach es zu deinem eigenen** – Gib deiner Website einen eigenen Namen, eigene Designfarben sowie einen eigenen Text und ein eigenes Bild für die Startseite
 
 ## Demo
 
-Um sich in die Demo einzuloggen, verwenden Sie eines der folgenden Benutzername/Passwort-Paare. Jedes repräsentiert eine der Benutzerrollen in Gramps Web.
+Um dich bei der Demo anzumelden, verwende eines der folgenden Benutzername-/Passwort-Paare. Jedes steht für eine der Benutzerrollen in Gramps Web.
 
 `owner / owner` <br>
 `editor / editor` <br>
 `contributor / contributor` <br>
 `member / member`
 
-Die Demo wird alle zwei Stunden zurückgesetzt, sodass alle Änderungen, die Sie vornehmen, vorübergehend sind.
+Die Demo wird alle zwei Stunden zurückgesetzt, daher sind alle von dir vorgenommenen Änderungen vorübergehend.
 
-[Zur Demo-Anmeldung gehen](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
+[Zur Demo-Anmeldung](https://demo.grampsweb.org/){ .md-button .md-button--primary target="_blank"}
 
 ### Danke
 

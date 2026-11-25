@@ -1,48 +1,48 @@
-# Baum anpassen
+# Den Stammbaum anpassen
 
-Baumeigentümer und Administratoren können den Namen und das Aussehen des Baums sowie dessen Startseite für alle Benutzer anpassen. Diese Einstellungen befinden sich im Abschnitt **Baumeinstellungen** und **Anpassung** der [Administrations-Einstellungen](settings.md).
+Stammbaumbesitzer und Administratoren können den Namen und das Erscheinungsbild des Stammbaums sowie dessen Startseite für alle Benutzer anpassen. Diese Einstellungen befinden sich in den Abschnitten **Stammbau-Einstellungen** und **Anpassung** der [Administrationseinstellungen](settings.md).
 
-## Name des Stammbaums
+## Name des Familienstammbaums
 
 !!! note
-    Das Umbenennen des Baums funktioniert nur in einer [Multi-Baum-Konfiguration](../install_setup/multi-tree.md) oder wenn `TREE_ID` explizit in der [Serverkonfiguration](../install_setup/configuration.md) gesetzt ist. Bei einer Standardinstallation mit nur einem Baum ohne gesetztes `TREE_ID` wird ein Fehler angezeigt.
+    Das Umbenennen des Stammbaums funktioniert nur in einer [Konfiguration mit mehreren Stammbäumen](../install_setup/multi-tree.md) oder wenn `TREE_ID` in der [Serverkonfiguration](../install_setup/configuration.md) ausdrücklich festgelegt ist. Bei einer standardmäßigen Installation mit nur einem Stammbaum, bei der `TREE_ID` nicht festgelegt ist, führt dies zu einem Fehler.
 
-Dies ermöglicht das Ändern des Namens der zugrunde liegenden Gramps-Stammbaum-Datenbank. Geben Sie einen neuen Namen ein und klicken Sie auf **Umbenennen**, um die Änderungen anzuwenden.
+Damit kannst du den Namen der zugrunde liegenden Gramps-Familienstammbaumdatenbank ändern. Gib einen neuen Namen ein und klicke auf **Umbenennen**, um die Änderung anzuwenden.
 
 !!! tip
-    Wenn Sie nur den Namen ändern möchten, der in der App-Leiste angezeigt wird, ohne die Datenbank umzubenennen, verwenden Sie stattdessen die Einstellung [App-Titel](#app-title).
+    Wenn du nur den in der App-Leiste angezeigten Namen ändern möchtest, ohne die Datenbank umzubenennen, verwende stattdessen die Einstellung [App-Titel](#app-title).
 
 ## Informationen zum Forscher
 
-Legen Sie den Namen, die Adresse und die Kontaktdaten des Hauptforschers fest. Diese Informationen sind in Exporten (z.B. GEDCOM-Dateien) eingebettet.
+Lege den Namen, die Adresse und die Kontaktdaten des Hauptforschers fest. Diese Informationen werden in Exporte eingebettet (z. B. GEDCOM-Dateien).
 
-## Farbthemen
+## Designfarben
 
-Legen Sie eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps-Weboberfläche fest. Diese Farben werden für alle Benutzer dieses Baums angewendet und treten sofort nach dem Speichern in Kraft.
+Lege eine benutzerdefinierte **Primärfarbe** und **Akzentfarbe** für die Gramps-Web-Oberfläche fest. Diese Farben werden auf alle Benutzer dieses Stammbaums angewendet und sind unmittelbar nach dem Speichern wirksam.
 
-Verwenden Sie die Farbauswähler, um Farben auszuwählen, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Zurücksetzen**, um die Standardwerte wiederherzustellen.
+Verwende die Farbauswahl, um Farben auszuwählen, und klicke anschließend auf **Speichern**. Klicke auf **Zurücksetzen**, um die Standardwerte wiederherzustellen.
 
 ## App-Titel
 
-Legen Sie einen benutzerdefinierten Titel für die Anwendung fest. Wenn festgelegt, überschreibt dies den Namen des Stammbaums in der Titelleiste des Browsers und der oberen App-Leiste.
+Lege einen benutzerdefinierten Titel für die Anwendung fest. Wenn dieser festgelegt ist, überschreibt er den Namen des Familienstammbaums in der Titelleiste des Browsers und in der oberen App-Leiste.
 
-Geben Sie einen Titel ein und klicken Sie auf **Speichern**. Lassen Sie das Feld leer, um den Standardwert (den Namen des Stammbaums) zu verwenden.
+Gib einen Titel ein und klicke auf **Speichern**. Lass das Feld leer, um den Standardwert (den Namen des Familienstammbaums) zu verwenden.
 
-## Hinweis zur Startseite
+## Hinweis auf der Startseite
 
-Wählen Sie ein Gramps **Notiz**-Objekt aus, das auf der Startseite des Dashboards angezeigt werden soll. Der Inhalt der Notiz wird unter den Hauptspalten des Dashboards angezeigt und ist für alle Benutzer sichtbar, die Zugriff auf den Baum haben.
+Wähle ein Gramps-Objekt vom Typ **Notiz** aus, das auf der Startseite des Dashboards angezeigt werden soll. Der Inhalt der Notiz wird unterhalb der Hauptspalten des Dashboards dargestellt und ist für alle Benutzer sichtbar, die Zugriff auf den Stammbaum haben.
 
-Verwenden Sie den Objektwähler, um nach einer Notiz zu suchen und eine auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um den aktuellen Hinweis auf der Startseite zu löschen.
+Verwende die Objektauswahl, um nach einer Notiz zu suchen und sie auszuwählen, und speichere anschließend. Klicke auf **Entfernen**, um den aktuellen Hinweis auf der Startseite zu löschen.
 
-## Bild der Startseite
+## Bild auf der Startseite
 
-Wählen Sie ein Gramps **Medien**-Objekt aus, das als Bild auf der Startseite des Dashboards angezeigt werden soll. In Kombination mit einem Hinweis auf der Startseite erscheint das Bild neben dem Notiztext. Ohne eine Notiz wird nur das Bild angezeigt.
+Wähle ein Gramps-Objekt vom Typ **Medium** aus, das als Bild auf der Startseite des Dashboards angezeigt werden soll. In Kombination mit einem Hinweis auf der Startseite wird das Bild neben dem Text des Hinweises angezeigt. Ohne Hinweis wird nur das Bild angezeigt.
 
-Verwenden Sie den Objektwähler, um nach einem Medienobjekt zu suchen und eines auszuwählen, und speichern Sie dann. Klicken Sie auf **Entfernen**, um das aktuelle Bild auf der Startseite zu löschen.
+Verwende die Objektauswahl, um nach einem Medienobjekt zu suchen und es auszuwählen, und speichere anschließend. Klicke auf **Entfernen**, um das aktuelle Bild auf der Startseite zu löschen.
 
-## Export-/Importeinstellungen
+## Einstellungen exportieren/importieren
 
-Baumebene Einstellungen (App-Titel, Farbthemen, Hinweis/Bild der Startseite usw.) können als JSON-Datei zur Sicherung oder zum Kopieren in eine andere Gramps-Webinstanz exportiert werden.
+Einstellungen auf Stammbaumebene (App-Titel, Designfarben, Hinweis/Bild auf der Startseite usw.) können als JSON-Datei zur Sicherung oder zum Kopieren in eine andere Gramps-Web-Instanz exportiert werden.
 
-- Klicken Sie auf **Einstellungen exportieren**, um die aktuellen Einstellungen als JSON-Datei herunterzuladen.
-- Klicken Sie auf **Baumeinstellungen importieren**, um eine zuvor exportierte JSON-Datei hochzuladen und die Einstellungen anzuwenden.
+- Klicke auf **Einstellungen exportieren**, um die aktuellen Einstellungen als JSON-Datei herunterzuladen.
+- Klicke auf **Stammbaum-Einstellungen importieren**, um eine zuvor exportierte JSON-Datei hochzuladen und die Einstellungen anzuwenden.

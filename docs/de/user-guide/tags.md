@@ -1,34 +1,35 @@
 # Etiketten
 
-Etiketten sind Bezeichnungen, die auf jedes Objekt in der Gramps-Datenbank angewendet werden können – Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Repositories, Notizen und Medien. Sie sind nützlich zum Gruppieren und Filtern von Objekten. Etiketten werden in der Gramps-Familienstammbaum-Datenbank gespeichert und sind für alle Benutzer zugänglich; sie sind auch vollständig kompatibel mit Etiketten, die in Gramps Desktop erstellt wurden.
+Etiketten sind Bezeichnungen, die auf jedes Objekt in der Gramps-Datenbank angewendet werden können – Personen, Familien, Ereignisse, Orte, Quellen, Zitate, Repositorien, Notizen und Medien. Sie sind nützlich, um Objekte zu gruppieren und zu filtern. Etiketten werden in der Gramps-Stammbaumdatenbank gespeichert und von allen Benutzern gemeinsam genutzt. Außerdem sind sie vollständig mit in Gramps Desktop erstellten Etiketten kompatibel.
 
-## Verwaltung von Etiketten
 
-Etiketten werden im Abschnitt **Etiketten** der [Administrations-Einstellungen](../administration/settings.md#tags) verwaltet, der nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar ist. Es werden alle vorhandenen Etiketten angezeigt und Sie können:
+## Etiketten verwalten
 
-- **Ein neues Etikett erstellen** mit der Schaltfläche **Neues Etikett**
-- **Ein Etikett umbenennen** mit dem Bearbeiten (Bleistift)-Symbol
-- **Die Farbe eines Etiketts ändern** mit dem Farbauswahlwerkzeug
-- **Ein Etikett löschen** mit dem Löschsymbol
+Etiketten werden im Abschnitt **Etiketten** der [Administrationseinstellungen](../administration/settings.md#tags) verwaltet, der nur Benutzern mit der Rolle „Besitzer“ oder „Administrator“ zur Verfügung steht. Dort werden alle vorhandenen Etiketten angezeigt und du kannst:
 
-!!! Hinweis
-    Das Löschen eines Etiketts entfernt es von allen Objekten, auf die es angewendet wurde.
+- Mit der Schaltfläche **Neues Etikett** ein neues Etikett **erstellen**
+- Ein Etikett über das Bearbeitungssymbol (Stift) **umbenennen**
+- Die **Farbe eines Etiketts ändern**, indem du die Farbauswahl verwendest
+- Ein Etikett über das Löschsymbol **löschen**
 
-## Anwenden von Etiketten auf Objekte
+!!! note
+    Durch das Löschen eines Etiketts wird es von allen Objekten entfernt, auf die es angewendet wurde.
 
-Etiketten können auf einem Objekt auf seiner Detailseite im Bearbeitungsmodus angewendet oder entfernt werden. Um viele Objekte auf einmal zu etikettieren, wählen Sie sie in einer Liste aus und verwenden Sie die Aktion **Etikett hinzufügen** oder **Etikett entfernen**, siehe [Listen](lists.md#tags-and-privacy).
+## Etiketten auf Objekte anwenden
 
-Etiketten werden in der **Etiketten**-Spalte der Listen sowie in Suchergebnissen, Lesezeichen und der Historie angezeigt. Wenn eine Liste die Spalte nicht anzeigt, aktivieren Sie sie im Spaltenauswahlwerkzeug.
+Etiketten können auf der Detailseite eines Objekts im Bearbeitungsmodus auf ein Objekt angewendet oder von ihm entfernt werden. Um mehrere Objekte gleichzeitig mit einem Etikett zu versehen, wähle sie in einer Liste aus und verwende die Aktion **Etikett hinzufügen** oder **Etikett entfernen**. Siehe [Listen](lists.md#tags-and-privacy).
 
-## Filtern nach Etikett
+Etiketten werden in der Spalte **Etiketten** der Listen sowie in Suchergebnissen, Lesezeichen und im Verlauf angezeigt. Wenn eine Liste die Spalte nicht anzeigt, aktiviere sie in der Spaltenauswahl.
 
-Alle [Objektlisten-Seiten](lists.md) (Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Repositories, Notizen, Medien) enthalten einen Etikettenfilter. Verwenden Sie ihn, um nur Objekte anzuzeigen, die ein bestimmtes Etikett haben.
+## Nach Etikett filtern
 
-## Besondere Etiketten
+Alle [Objektlistenseiten](lists.md) (Personen, Familien, Ereignisse, Orte, Quellen, Zitate, Repositorien, Notizen und Medien) enthalten einen Etikettenfilter. Verwende ihn, um nur Objekte anzuzeigen, auf die ein bestimmtes Etikett angewendet wurde.
 
-Zwei Etiketten haben eine besondere Bedeutung in Gramps Web:
+## Spezielle Etiketten
 
-- **`Blog`** – jede Quelle, die mit `Blog` etikettiert ist, wird als Blogbeitrag behandelt und erscheint in der [Blog](blog.md)-Ansicht
-- **`ToDo`** – jede Notiz, die mit `ToDo` etikettiert ist, wird als Forschungsaufgabe behandelt und erscheint in der [Aufgaben](tasks.md)-Ansicht
+Zwei Etiketten haben in Gramps Web eine besondere Bedeutung:
 
-Diese Etiketten werden automatisch erstellt, wenn Sie die Blog- oder Aufgabenfunktionen zum ersten Mal verwenden. Das Umbenennen oder Löschen dieser Etiketten wird die entsprechende Funktion beeinträchtigen.
+- **`Blog`** – Jede mit `Blog` etikettierte Quelle wird als Blogbeitrag behandelt und in der Ansicht [Blog](blog.md) angezeigt
+- **`ToDo`** – Jede mit `ToDo` etikettierte Notiz wird als Rechercheaufgabe behandelt und in der Ansicht [Aufgaben](tasks.md) angezeigt
+
+Diese Etiketten werden automatisch erstellt, wenn du die Funktionen „Blog“ oder „Aufgaben“ zum ersten Mal verwendest. Durch das Umbenennen oder Löschen dieser Etiketten wird die entsprechende Funktion beeinträchtigt.

@@ -1,46 +1,46 @@
-# Gramps Web DigitalOcean 1-Tıklama Uygulaması
+# Gramps Web DigitalOcean 1-Tık Uygulaması
 
-[Gramps Web'i kendiniz kurmak](deployment.md) yerine, [Gramps Web DigitalOcean 1-Tıklama Uygulaması](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy)'nı da kullanabilirsiniz. Digital Ocean, Gramps Web'in Demo sürümünü barındırmaktadır.
+[Gramps Web'i kendiniz kurmak](deployment.md) yerine [Gramps Web DigitalOcean 1-Tık Uygulaması](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) uygulamasını da kullanabilirsiniz. Digital Ocean, Gramps Web'in Demo sürümünü barındırır.
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
 
-Kurulum prosedürü kapsamında, DigitalOcean'da bir hesap oluşturmanız ve kullanmak için "droplet" (sanallaştırılmış makine) için ücretli bir plan seçmeniz gerekecektir.
+Kurulum prosedürünün bir parçası olarak DigitalOcean'da bir hesap oluşturmanız ve kullanacağınız “droplet” (sanal makine) için ücretli bir plan seçmeniz gerekir.
 
-Bu, şu anda kendi, kendine barındırılan Gramps Web örneğinizi SSL ile güvenli bir şekilde, kendi donanımınızı kullanmadan dağıtmanın en basit yolu olarak değerlendirilebilir.
+Bu yöntem, kendi donanımınızı kullanmadan, SSL ile güvence altına alınmış, kendi barındırdığınız Gramps Web örneğinizi dağıtmanın şu anda en basit yolu sayılabilir.
 
 !!! info
-    DigitalOcean'a barındırma hizmetleri için ödeme yapacağınızı unutmayın. Gramps açık kaynak projesi ücretli destek sağlamaz.
+    Barındırma hizmetleri için DigitalOcean'a ödeme yapacağınızı unutmayın. Gramps açık kaynak projesi ücretli destek sağlamaz.
 
-## Adım 1: DigitalOcean hesabı oluşturun
+## 1. Adım: DigitalOcean hesabı oluşturma
 
-Henüz bir hesabınız yoksa [DigitalOcean](https://www.digitalocean.com/) adresinde bir hesap oluşturun.
+Henüz bir hesabınız yoksa [DigitalOcean](https://www.digitalocean.com/) üzerinde bir hesap oluşturun.
 
-## Adım 2: Droplet oluşturun
+## 2. Adım: Droplet oluşturma
 
-- [Gramps Web 1-Tıklama Uygulaması](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) sayfasına gidin ve "Gramps Web Droplet Oluştur" butonuna tıklayın.
-- En az 2 GB RAM'e sahip bir plan seçin.
-- Droplet'inize kimlik doğrulama ayarlarını yapın.
-- "Droplet Oluştur" butonuna tıklayın.
+- [Gramps Web 1-Tık Uygulaması](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) sayfasına gidin ve “Create Gramps Web Droplet” seçeneğine tıklayın.
+- En az 2 GB RAM içeren bir plan seçin.
+- Droplet'ınız için kimlik doğrulamayı ayarlayın
+- “Create Droplet” seçeneğine tıklayın
 
-## Adım 3: Alan adı ayarlayın
+## 3. Adım: Alan adı ayarlama
 
-Bir alan adına (veya alt alan adına) ihtiyacınız olacak. Eğer bir alan adınız varsa, bunu droplet'inizin IP adresine yönlendirin. Aksi takdirde, [DuckDNS](https://www.duckdns.org/) gibi ücretsiz bir hizmet kullanabilirsiniz.
+Bir alan adına (veya alt alan adına) ihtiyacınız olacaktır. Bir alan adınız varsa alan adınızı droplet'ınızın IP adresine yönlendirin. Aksi takdirde [DuckDNS](https://www.duckdns.org/) gibi ücretsiz bir hizmet kullanabilirsiniz.
 
-## Adım 4: Droplet'inize giriş yapın
+## 4. Adım: Droplet'ınıza giriş yapma
 
-Droplet'inize SSH ile bağlanın. "Gramps Web DigitalOcean 1-tıklama uygulaması kurulumuna hoş geldiniz!" mesajını görmelisiniz. Eğer böyle bir mesaj görmüyorsanız, birkaç dakika bekleyin ve tekrar deneyin (kurulum henüz tamamlanmamış olabilir).
+Droplet'ınıza SSH ile bağlanın. “Welcome to the Gramps Web DigitalOcean 1-click app setup!” mesajını görmeniz gerekir. Mesajı görmüyorsanız birkaç dakika bekleyip tekrar deneyin (kurulum henüz tamamlanmamış olabilir).
 
-Kurulum betiği sizden alan adını (örneğin, `mygrampswebinstance.duckdns.org`) ve bir e-posta adresini (Let's Encrypt sertifikası için gereklidir) isteyecektir. İsteğe bağlı olarak, Gramps Web'in e-posta göndermek için kullandığı SMTP ayarlarını da isteyebilir; şifre sıfırlama gibi işlemler için; bu kısmı atlamak için SMTP sunucusunu boş bırakabilirsiniz.
+Kurulum betiği sizden alan adını (ör. `mygrampswebinstance.duckdns.org`) ve bir e-posta adresini (Let's Encrypt sertifikası için gereklidir) girmenizi isteyecektir. İsteğe bağlı olarak Gramps Web'in e-posta göndermek için kullandığı SMTP ayarlarını da (ör. parola sıfırlama işlemleri için) isteyecektir; bunu atlamak için SMTP sunucusu alanını boş bırakın.
 
-Bu işlem tamamlandıktan sonra, arka planda kurulumun tamamlanmasını bekleyin.
+Bu işlem tamamlandığında kurulumun arka planda tamamlanmasını bekleyin
 
-## Adım 5: Gramps Web'i başlatın
+## 5. Adım: Gramps Web'i başlatma
 
-Gramps Web örneğiniz artık alan adınızın kökünde, geçerli bir SSL sertifikası ile erişilebilir olmalı ve ilk çalıştırma asistanını göstermelidir.
+Gramps Web örneğinize artık alan adınızın kökünden geçerli bir SSL sertifikasıyla erişilebilmesi ve ilk çalıştırma yardımcısının görüntülenmesi gerekir.
 
-## Daha sonra yapılandırmayı değiştirme
+## Yapılandırmayı daha sonra değiştirme
 
-Kurulum betiği, temel URL'yi ve e-posta ayarlarını `/root/letsencrypt.env` dosyasında `GRAMPSWEB_` ile başlayan [yapılandırma seçenekleri](configuration.md) olarak saklar, örneğin:
+Kurulum betiği, temel URL'yi ve e-posta ayarlarını [yapılandırma seçenekleri](configuration.md) olarak `GRAMPSWEB_` ön ekiyle `/root/letsencrypt.env` dosyasında depolar; örneğin:
 
 ```
 GRAMPSWEB_EMAIL_HOST=smtp.example.com
@@ -48,7 +48,8 @@ GRAMPSWEB_EMAIL_PORT=587
 GRAMPSWEB_EMAIL_USE_STARTTLS=true
 ```
 
-Ayar eklemek veya değiştirmek için, bu dosyayı droplet üzerinde düzenleyin ve değişikliği uygulamak için
+Ayar eklemek veya değiştirmek için droplet üzerindeki bu dosyayı düzenleyin ve değişikliği şu komutla uygulayın:
 
 ```bash
 cd /opt/grampsweb && docker compose up -d
+```

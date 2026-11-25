@@ -4,32 +4,32 @@ hide:
 ---
 
 
-# So tragen Sie zu Gramps Web bei
+# Wie du zu Gramps Web beitragen kannst
 
-Vielen Dank, dass Sie in Betracht ziehen, zu Gramps Web beizutragen! Je nach Ihren Fähigkeiten und Interessen gibt es viele Möglichkeiten, wie Sie helfen können.
+Danke, dass du darüber nachdenkst, zu Gramps Web beizutragen! Je nach deinen Fähigkeiten und Interessen gibt es viele Möglichkeiten, wie du helfen kannst.
 
-## Helfen Sie, Gramps Web in Ihre Sprache zu übersetzen
+## Hilf dabei, Gramps Web in deine Sprache zu übersetzen
 
-Gramps & Gramps Web unterstützen mehrere Dutzend verschiedene Sprachen. Die Hilfe bei der Übersetzung der App erfordert keine Programmierkenntnisse. Wir verwenden das leistungsstarke Online-Tool Weblate für Übersetzungen. Bitte sehen Sie [hier](../development/frontend/translation.md) nach, um Anweisungen zu erhalten, wie Sie anfangen können.
-
-
-## Helfen Sie, die Fragen anderer Benutzer zu beantworten
-
-Wenn Sie Gramps Web bereits verwenden, helfen Sie neuen Benutzern, Antworten auf ihre Fragen zu finden, indem Sie zu Diskussionen in der [Gramps Web-Kategorie](https://gramps.discourse.group/c/gramps-web/) des offiziellen Gramps Discourse-Forums beitragen.
-
-## Helfen Sie, die Dokumentation zu verbessern
-
-Die Dokumentationsseite, die Sie gerade ansehen, wird [auf Github](https://github.com/gramps-project/gramps-web-docs) gehostet. Beiträge zur Verbesserung sind sehr willkommen. Reichen Sie einfach einen Pull-Request an dieses Repository ein.
-
-## Tragen Sie zur Backend-Entwicklung (Python) bei
-
-Wenn Sie ein Python-Programmierer sind, tragen Sie zur Entwicklung der [Gramps Web API](https://github.com/gramps-project/gramps-web-api/) bei, die das Backend von Gramps Web unterstützt. Siehe [Backend-Entwicklung](../development/backend/index.md) für Anweisungen, wie Sie anfangen können.
+Gramps und Gramps Web unterstützen mehrere Dutzend verschiedene Sprachen. Um bei der Übersetzung der App zu helfen, sind keine Programmierkenntnisse erforderlich. Wir verwenden das leistungsstarke Online-Übersetzungstool Weblate. Eine Anleitung für die ersten Schritte findest du [hier](../development/frontend/translation.md).
 
 
-## Tragen Sie zur Frontend-Entwicklung (Javascript) bei
+## Hilf dabei, die Fragen anderer Benutzer zu beantworten
 
-Wenn Sie ein Web-Programmierer sind, tragen Sie zur Entwicklung des [responsiven Frontends von Gramps Web](https://github.com/gramps-project/gramps-web/) bei. Siehe [Frontend-Entwicklung](../development/frontend/index.md) für Anweisungen, wie Sie anfangen können.
+Wenn du Gramps Web bereits verwendest, hilf neuen Benutzern, Antworten auf ihre Fragen zu finden, indem du dich an Diskussionen in der offiziellen [Gramps-Web-Kategorie](https://gramps.discourse.group/c/gramps-web/) des Gramps-Discourse-Forums beteiligst.
 
-## Tragen Sie zum Sync-Addon (Python) bei
+## Hilf dabei, die Dokumentation zu verbessern
 
-Wenn Sie Erfahrung in der Entwicklung mit Python und GTK haben, tragen Sie zur Verbesserung des Gramps Web Sync-Addons bei. Sie können das [Entwicklungsrepository](https://github.com/DavidMStraub/gramps-web-sync/) nutzen, um Verbesserungen vorzuschlagen und einzureichen.
+Die Dokumentationsseite, die du gerade liest, wird [auf Github](https://github.com/gramps-project/gramps-web-docs) gehostet. Beiträge zu ihrer Verbesserung sind sehr willkommen. Reiche einfach einen Pull Request für dieses Repository ein.
+
+## Trage zur Backend-Entwicklung bei (Python)
+
+Wenn du Python programmierst, trage zur Entwicklung der [Gramps Web API](https://github.com/gramps-project/gramps-web-api/) bei, die das Backend von Gramps Web bereitstellt. Eine Anleitung für die ersten Schritte findest du unter [Backend-Entwicklung](../development/backend/index.md).
+
+
+## Trage zur Frontend-Entwicklung bei (Javascript) bei
+
+Wenn du Webanwendungen programmierst, trage zur Entwicklung des [responsiven Frontends von Gramps Web](https://github.com/gramps-project/gramps-web/) bei. Eine Anleitung für die ersten Schritte findest du unter [Frontend-Entwicklung](../development/frontend/index.md).
+
+## Trage zum Sync-Addon bei (Python)
+
+Wenn du Erfahrung in der Entwicklung mit Python und GTK hast, trage zur Verbesserung des Gramps Web Sync Addons bei. Du kannst das [Entwicklungsrepository](https://github.com/DavidMStraub/gramps-web-sync/) verwenden, um Verbesserungen vorzuschlagen und einzureichen.

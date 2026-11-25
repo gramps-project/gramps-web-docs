@@ -1,35 +1,35 @@
-# Verwenden Sie den integrierten Blog
+# Verwende den integrierten Blog
 
-Der Blog dient dazu, Geschichten über Ihre Familienforschung zu präsentieren.
+Der Blog dient dazu, Geschichten über deine Familienforschung zu präsentieren.
 
-In der Gramps-Datenbank werden Blogbeiträge als Quellen mit einer angehängten Notiz dargestellt, die den Text des Blogs enthält und optional Mediendateien für die Bilder des Blogbeitrags. Gramps Web behandelt jede Quelle mit dem Etikett `Blog` als Blogartikel.
+In der Gramps-Datenbank werden Blogbeiträge als Quellen mit einer angehängten Notiz dargestellt, die den Text des Blogs enthält, sowie optional mit Mediendateien für die Bilder des Blogbeitrags. Gramps Web behandelt jede Quelle mit dem Etikett `Blog` als Blogartikel.
 
-## Fügen Sie einen Blogbeitrag hinzu
+## Einen Blogbeitrag hinzufügen
 
-Der schnellste Weg, einen Beitrag zu schreiben, ist das spezielle **Neuer Blogbeitrag**-Formular in Gramps Web. Öffnen Sie es entweder über die blaue **+**-Schaltfläche auf der Blog-Seite oder über das **Hinzufügen**-Menü (Plus-Symbol) in der oberen App-Leiste, indem Sie **Blogbeitrag** auswählen.
+Am schnellsten verfasst du einen Beitrag über das spezielle Formular **Neuer Blogbeitrag** in Gramps Web. Öffne es entweder über die blaue Schaltfläche **+** auf der Blogseite oder über das Menü **Hinzufügen** (Plus-Symbol) in der oberen App-Leiste, indem du **Blogbeitrag** auswählst.
 
-Das Formular hat Felder für:
+Das Formular enthält folgende Felder:
 
 - **Titel** – der Titel des Beitrags (erforderlich)
-- **Autor** – wer ihn geschrieben hat
-- **Inhalt** – einen Rich-Text-Editor für den Beitrag selbst
-- **Medien** – ein oder mehrere Medienobjekte. Das erste wird als Vorschaubild über dem Text angezeigt; alle erscheinen als Galerie darunter.
-- **Etiketten** und einen **privat**-Schalter, wie bei jedem anderen Objekt
+- **Autor** – wer ihn verfasst hat
+- **Inhalt** – ein Rich-Text-Editor für den Beitrag selbst
+- **Medien** – ein oder mehrere Medienobjekte. Das erste wird zum Vorschaubild, das über dem Text angezeigt wird; alle werden darunter als Galerie angezeigt.
+- **Etiketten** und ein Schalter für **privat**, wie bei jedem anderen Objekt
 
-Das Speichern des Formulars erstellt für Sie die zugrunde liegende Quelle, Notiz und das Etikett `Blog`, wie [unten](#relation-between-blog-and-sources) beschrieben.
+Beim Speichern des Formulars werden die zugrunde liegende Quelle, Notiz und das Etikett `Blog` für dich erstellt, wie [weiter unten](#relation-between-blog-and-sources) beschrieben.
 
-### Hinzufügen eines Beitrags manuell
+### Einen Beitrag manuell hinzufügen
 
-Sie können auch einen Beitrag erstellen, indem Sie die zugrunde liegenden Objekte selbst erstellen. Dies ist der einzige Weg, es in Gramps Desktop zu tun ([synchronisiert](../administration/sync.md) mit Gramps Web), und die Schritte sind in beiden Anwendungen gleich:
+Du kannst einen Beitrag auch erstellen, indem du die zugrunde liegenden Objekte selbst anlegst. Dies ist die einzige Möglichkeit, dies in Gramps Desktop zu tun ([synchronisiert](../administration/sync.md) mit Gramps Web), und die Schritte sind in beiden Anwendungen gleich:
 
-- Fügen Sie eine neue Quelle hinzu. Der Titel der Quelle wird der Titel Ihres Blogbeitrags sein, der Autor der Quelle wird der Autor des Beitrags sein.
-- Optional: Verknüpfen Sie die Quelle mit einem Repository, das Ihrem Gramps Web-Blog entspricht.
-- Fügen Sie der Quelle eine neue Notiz hinzu. Schreiben Sie Ihren Blogbeitrag und kopieren Sie den Text in die Notiz.
-- Optional: Fügen Sie ein oder mehrere Mediendateien zu Ihrer Quelle hinzu. Die erste Mediendatei wird als Vorschaubild des Beitrags über dem Text verwendet. Alle Mediendateien werden unter dem Text als Galerie angezeigt.
-- Fügen Sie der Quelle das Etikett `Blog` hinzu (erstellen Sie es, wenn es nicht existiert).
+- Füge eine neue Quelle hinzu. Der Titel der Quelle wird zum Titel deines Blogbeitrags, der Autor der Quelle zum Autor des Beitrags.
+- Verknüpfe die Quelle optional mit einem Archiv, das deinem Gramps-Web-Blog entspricht.
+- Füge der Quelle eine neue Notiz hinzu. Verfasse deinen Blogbeitrag und kopiere den Text in die Notiz.
+- Füge deiner Quelle optional eine oder mehrere Mediendateien hinzu. Die erste Mediendatei wird als Vorschaubild des Beitrags verwendet und über dem Text angezeigt. Alle Mediendateien werden unter dem Text als Galerie angezeigt.
+- Füge der Quelle das Etikett `Blog` hinzu (erstelle es, falls es nicht vorhanden ist).
 
 ## Beziehung zwischen Blog und Quellen
 
-Da Blogbeiträge nur Quellen sind, erscheinen alle Blogartikel auch in der Liste der Quellen und werden in Suchanfragen als Quellen angezeigt. Im Quellansichtsfenster gibt es eine Schaltfläche "im Blog anzeigen", die Sie zur Blogansicht für diesen Blogbeitrag führt. Die URL des Blogbeitrags enthält auch die Gramps-ID der entsprechenden Quelle, sodass ein Artikel unter `yourdomain.com/blog/S0123` der Quelle unter `yourdomain.com/source/S0123` entspricht.
+Da Blogbeiträge einfach Quellen sind, erscheinen alle Blogartikel auch in der Quellenliste und werden bei Suchen als Quellen angezeigt. In der Quellenansicht gibt es eine Schaltfläche „im Blog anzeigen“, über die du zur Blogansicht dieses Blogbeitrags gelangst. Die URL des Blogbeitrags enthält ebenfalls die Gramps-ID der entsprechenden Quelle. Ein Artikel unter `yourdomain.com/blog/S0123` entspricht daher der Quelle unter `yourdomain.com/source/S0123`.
 
-Am Ende jedes Blogbeitrags gibt es eine Schaltfläche "Details", die Sie zur Quellansicht führt.
+Am Ende jedes Blogbeitrags gibt es eine Schaltfläche „Details“, über die du zur Quellenansicht gelangst.

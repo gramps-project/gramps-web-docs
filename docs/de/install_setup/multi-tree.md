@@ -1,59 +1,64 @@
-# Einrichtung für das Hosting mehrerer Bäume
+# Einrichtung zum Hosten mehrerer Stammbäume
 
-Standardmäßig erlaubt Gramps Web nur den Zugriff auf eine einzelne Familienstammbaum-Datenbank („Baum“), die in der Konfigurationsdatei angegeben ist.
 
-Mit der Version 0.7.0 des Gramps Web API-Backends ist es jedoch auch möglich, mehrere Bäume aus einer einzigen Installation bereitzustellen. Jeder Benutzer ist jedoch (derzeit) an einen einzelnen Baum gebunden, sodass dieses Setup nicht für das Teilen von Bäumen zwischen Benutzern geeignet ist, sondern für das Hosting mehrerer isolierter Gramps Web-Instanzen.
+Standardmäßig erlaubt Gramps Web nur den Zugriff auf eine einzelne Stammbaumdatenbank (&ldquo;Stammbaum&rdquo;), die in der Konfigurationsdatei angegeben wird.
 
-## Multi-Baum-Unterstützung aktivieren
+Ab Version 0.7.0 des Gramps-Web-API-Backends ist es jedoch auch möglich, mehrere Stammbäume über eine einzige Installation bereitzustellen. Jeder Benutzer ist (derzeit) an einen einzelnen Stammbaum gebunden. Diese Einrichtung eignet sich daher nicht zum gemeinsamen Nutzen von Stammbäumen durch mehrere Benutzer, sondern zum Hosten mehrerer isolierter Gramps-Web-Instanzen.
 
-Um die Multi-Baum-Unterstützung zu aktivieren, muss die `TREE`-Konfigurationsoption auf einen einzelnen Stern `*` gesetzt werden, z. B. in einer Konfigurationsdatei:
+## Unterstützung für mehrere Stammbäume aktivieren
+
+Um die Unterstützung für mehrere Stammbäume zu aktivieren, muss die Konfigurationsoption `TREE` auf ein einzelnes Sternchen `*` gesetzt werden, z. B. in einer Konfigurationsdatei:
 
 ```python
 TREE = "*"
 ```
 
-Dies macht alle Bäume im Gramps-Datenbankverzeichnis des Servers zugänglich (vorausgesetzt, die Benutzer haben ausreichende Berechtigungen). Die ID des Baums ist der Name des Unterverzeichnisses. Sie können vorhandene Bäume (Namen und IDs) mit dem Befehl auflisten
+Dadurch werden alle Stammbäume im Gramps-Datenbankverzeichnis des Servers zugänglich (sofern ausreichende Benutzerberechtigungen vorhanden sind). Die ID des Stammbaums ist der Name des Unterverzeichnisses. Mit dem folgenden Befehl kannst du vorhandene Stammbäume (Namen und IDs) auflisten:
 
 ```bash
 python -m gramps_webapi --config /app/config/config.cfg tree list
 ```
 
-Darüber hinaus sollten Sie die `MEDIA_PREFIX_TREE`-Konfigurationsoption auf `True` setzen, um sicherzustellen, dass Mediendateien in separaten Unterordnern gespeichert werden. Andernfalls können Benutzer auf Mediendateien zugreifen, die zu einem Baum gehören, für den sie keine Berechtigung haben!
+Zusätzlich solltest du die Konfigurationsoption `MEDIA_PREFIX_TREE` auf `True` setzen, damit Mediendateien in separaten Unterordnern gespeichert werden. Andernfalls können Benutzer auf Mediendateien zugreifen, die zu einem Stammbaum gehören, für den sie keine Berechtigung haben!
 
-## Ein Benutzerkonto zu einem bestimmten Baum hinzufügen
+## Ein Benutzerkonto einem bestimmten Stammbaum hinzufügen
 
-Um einen Benutzer zu einem bestimmten Baum hinzuzufügen, fügen Sie einfach die `--tree TREEID`-Befehlszeilenoption zum Befehl zum Hinzufügen eines Benutzers hinzu. Sie können auch eine POST-Anfrage an den Endpunkt `/users/` mit der `tree`-Eigenschaft im JSON-Payload senden.
+Um einen Benutzer einem bestimmten Stammbaum hinzuzufügen, füge dem Befehl zum Hinzufügen eines Benutzers einfach die Befehlszeilenoption `--tree TREEID` hinzu. Du kannst auch einen POST an den Endpunkt `/users/` senden und dabei die Eigenschaft `tree` in der JSON-Nutzlast setzen.
 
-Benutzernamen müssen über *alle* Bäume hinweg eindeutig sein. E-Mail-Adressen müssen nicht eindeutig sein (seit Gramps Web API 3.22), sodass dieselbe Person beispielsweise Konten in mehreren Bäumen mit einer einzigen E-Mail-Adresse haben kann.
+Benutzernamen müssen über *alle* Stammbäume hinweg eindeutig sein. E-Mail-Adressen müssen nicht eindeutig sein (seit Gramps Web API 3.22), sodass dieselbe Person beispielsweise mit einer einzigen E-Mail-Adresse Konten in mehreren Stammbäumen haben kann.
 
-## Einen neuen Baum erstellen
+## Einen neuen Stammbaum erstellen
 
-Um einen neuen Baum zu erstellen, wird empfohlen, eine POST-Anfrage an den Endpunkt `/trees/` zu senden, anstatt die Gramps-CLI zu verwenden. Dies verwendet eine UUIDv4 als Baum-ID, was zusätzliche Sicherheit bietet, da der Name nicht erraten werden kann. Neu erstellte Bäume verwenden das in der `NEW_DB_BACKEND`-Konfigurationsoption festgelegte Datenbank-Backend: SQLite (der Standard) oder SharedPostgreSQL. Siehe [Verwendung einer PostgreSQL-Datenbank](postgres.md) für Details.
+Um einen neuen Stammbaum zu erstellen, wird empfohlen, einen POST an den Endpunkt `/trees/` zu senden, statt die Gramps-CLI zu verwenden. Dadurch wird eine UUIDv4 als Stammbaum-ID verwendet, was zusätzliche Sicherheit bietet, da der Name nicht erraten werden kann. Neu erstellte Stammbäume verwenden das in der Konfigurationsoption `NEW_DB_BACKEND` festgelegte Datenbank-Backend: SQLite (Standard) oder SharedPostgreSQL. Einzelheiten findest du unter [Eine PostgreSQL-Datenbank verwenden](postgres.md).
+
 
 ## Autorisieren
 
-Um sich zu autorisieren (ein Token abzurufen), sind nur Benutzername und Passwort erforderlich, wie im Einzelbaum-Modus, da die Baum-ID für jeden Benutzer bekannt ist und es daher nicht notwendig ist, sie anzugeben.
+Zum Autorisieren (Abrufen eines Tokens) sind wie im Einzelstammbaum-Modus nur Benutzername und Passwort erforderlich, da die Stammbaum-ID für jeden Benutzer bekannt ist und daher nicht angegeben werden muss.
+
 
 ## Vorhandene Mediendateien migrieren
 
-Wenn Sie eine vorhandene Gramps Web-Instanz auf die Multi-Baum-Unterstützung migrieren und lokale Mediendateien verwenden möchten, können Sie diese einfach in einen Unterordner des ursprünglichen Standorts mit der Baum-ID als Namen verschieben.
+Wenn du eine vorhandene Gramps-Web-Instanz auf die Unterstützung mehrerer Stammbäume umstellen möchtest und lokale Mediendateien verwendest, kannst du sie einfach in einen Unterordner des ursprünglichen Speicherorts verschieben, der die Stammbaum-ID als Namen trägt.
 
-Wenn Sie Mediendateien verwenden, die auf S3 gehostet werden, können Sie das im `scripts`-Verzeichnis des `gramps-web-api`-Repositories bereitgestellte Skript verwenden:
+Wenn du Mediendateien verwendest, die auf S3 gehostet werden, kannst du das Skript verwenden, das im Verzeichnis `scripts` des Repositorys `gramps-web-api` bereitgestellt wird:
 
 ```bash
 python scripts/s3_rename.py BUCKET_NAME TREE_ID
 ```
 
-Dies setzt voraus, dass die relevanten Zugriffsschlüssel bereits als Umgebungsvariablen festgelegt sind.
+Dies setzt voraus, dass die entsprechenden Zugriffsschlüssel bereits als Umgebungsvariablen festgelegt sind.
+
 
 ## Vorhandene Benutzerdatenbank migrieren
 
-Wenn Sie die Multi-Baum-Unterstützung aktivieren und vorhandene Benutzer wiederverwenden möchten, müssen Sie sie einem bestimmten Baum zuweisen. Sie können den folgenden Befehl verwenden, der dafür bereitgestellt wird,
+Wenn du die Unterstützung für mehrere Stammbäume aktivieren und vorhandene Benutzer wiederverwenden möchtest, musst du sie einem bestimmten Stammbaum zuweisen. Zu diesem Zweck kannst du den folgenden Befehl verwenden:
 
 ```bash
 python -m gramps_webapi --config /app/config/config.cfg user fill-tree TREE_ID
 ```
 
-## Das Frontend anpassen
 
-Die Registrierungsseite, die von der Anmeldeseite aus zugänglich ist, funktioniert in einem Multi-Baum-Setup nicht, da ein Baum für die Registrierung angegeben werden muss. Es ist daher ratsam, `hideRegisterLink` auf `true` in der [Frontend-Konfiguration](frontend-config.md) zu setzen.
+## Frontend anpassen
+
+Die über die Anmeldeseite zugängliche Registrierungsseite funktioniert in einer Einrichtung mit mehreren Stammbäumen nicht, da für die Registrierung ein Stammbaum angegeben werden muss. Daher empfiehlt es sich, `hideRegisterLink` in der [Frontend-Konfiguration](frontend-config.md) auf `true` zu setzen.

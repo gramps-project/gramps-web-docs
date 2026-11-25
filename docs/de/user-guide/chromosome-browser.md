@@ -1,19 +1,19 @@
-# Chromosomenbrowser
+# Chromosomen-Browser
 
-Der Chromosomenbrowser ist ein Werkzeug zur Visualisierung der DNA-Übereinstimmungen einer Person. Er zeigt die DNA-Segmente, die mit anderen Personen im Stammbaum geteilt werden, als farbige Balken auf den Chromosomen.
+Der Chromosomen-Browser ist ein Werkzeug zur Visualisierung der DNA-Matches einer Person. Er zeigt die mit anderen Personen im Stammbaum geteilten DNA-Segmente als farbige Balken auf den Chromosomen an.
 
-Sie finden ihn unter dem Tab „Chromosomenbrowser“ in der DNA-Ansicht.
+Du findest ihn im DNA-Bereich unter dem Tab &ldquo;Chromosomen-Browser&rdquo;.
 
-Für jedes Chromosom repräsentiert der obere (hellblaue) Balken die vom Vater geerbte Kopie, der untere (hellrote) Balken die von der Mutter geerbte. Die geteilten Segmente werden als farbige Balken oben auf diesen angezeigt. Segmente, deren Seite (väterlich oder mütterlich) nicht bekannt ist, werden in einem separaten Track zwischen den beiden angezeigt. Wo Segmente mehrerer Übereinstimmungen überlappen, werden sie in separaten, dünneren Bahnen gezeichnet, sodass jedes Segment sichtbar bleibt.
+Für jedes Chromosom stellt der obere (hellblaue) Balken die vom Vater geerbte Kopie dar, der untere (hellrote) Balken die von der Mutter geerbte. Die geteilten Segmente werden darüber als farbige Balken angezeigt. Segmente, deren Seite (väterlicher- oder mütterlicherseits) nicht bekannt ist, werden in einer separaten Spur zwischen den beiden angezeigt. Wo sich Segmente mehrerer Matches überschneiden, werden sie in separaten, dünneren Bahnen dargestellt, sodass jedes Segment sichtbar bleibt.
 
-Wenn Sie auf den Namen einer Übereinstimmung in der Legende klicken, werden nur die geteilten Segmente dieser Person angezeigt.
+Wenn du in der Legende auf den Namen eines Matches klickst, werden nur die geteilten Segmente dieser Person angezeigt.
 
 ## Gruppierung nach gemeinsamen Vorfahren
 
-Über der Legende können Sie zwischen der Färbung der Segmente nach **Übereinstimmungen** und nach **gemeinsamen Vorfahren** wechseln. Bei gemeinsamen Vorfahren teilen Übereinstimmungen, die von denselben letzten gemeinsamen Vorfahren mit der ausgewählten Person abstammen, eine Farbe und eine Zeile in der Legende. Dies zeigt auf einen Blick, welche Teile der Chromosomen von welchem Ahnenpaar geerbt wurden – ein Segment einer anderen Übereinstimmung, das mit denen einer Gruppe auf derselben Seite überlappt, stammt wahrscheinlich von denselben Vorfahren, was hilft, eine neue, unbekannte Übereinstimmung einzuordnen.
+Oberhalb der Legende kannst du zwischen der Einfärbung der Segmente nach **Matches** und nach **Gemeinsamen Vorfahren** wechseln. Bei der Gruppierung nach gemeinsamen Vorfahren haben Matches, die von denselben nächsten gemeinsamen Vorfahren mit der ausgewählten Person abstammen, dieselbe Farbe und dieselbe Zeile in der Legende. Dadurch ist auf einen Blick erkennbar, welche Teile der Chromosomen von welchem Vorfahrenpaar geerbt wurden – ein Segment eines anderen Matches, das sich auf derselben Seite mit den Segmenten einer Gruppe überschneidet, stammt wahrscheinlich von denselben Vorfahren. Das hilft dabei, ein neues, unbekanntes Match einzuordnen.
 
-Die Gruppen sind nach der nächsten Beziehung geordnet. Übereinstimmungen ohne bekannte gemeinsame Vorfahren werden unter „Unbekannt“ gruppiert. Eine Übereinstimmung, die durch mehrere Linien verwandt ist, wird nach der nächsten gruppiert.
+Die Gruppen sind nach der engsten Verwandtschaft geordnet, zuerst die engste. Matches ohne bekannte gemeinsame Vorfahren werden unter „Unbekannt“ gruppiert. Ein Match, das über mehrere Linien verwandt ist, wird nach der engsten Linie gruppiert.
 
-## Diagramm speichern
+## Speichern des Diagramms
 
-Um das Diagramm zu speichern, klicken Sie auf die Schaltfläche „Herunterladen“ neben dem Personenauswahlfeld. Es wird eine SVG-Datei mit einem weißen Hintergrund und der Legende heruntergeladen, einschließlich der insgesamt geteilten Zentimorgans jeder Übereinstimmung. Wenn eine Übereinstimmung oder Gruppe in der Legende ausgewählt ist, wird nur diese einbezogen.
+Um das Diagramm zu speichern, klicke auf die Download-Schaltfläche neben der Personenauswahl. Dadurch wird eine SVG-Datei mit weißem Hintergrund und der Legende heruntergeladen, einschließlich der insgesamt geteilten Zentimorgans jedes Matches. Wenn ein Match oder eine Gruppe in der Legende ausgewählt ist, wird nur dieses eine Element einbezogen.

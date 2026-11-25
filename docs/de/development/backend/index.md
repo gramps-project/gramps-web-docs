@@ -3,10 +3,10 @@ hide:
   - toc
 ---
 
-# Gramps Web Backend-Entwicklung
+# Entwicklung des Gramps-Web-Backends
 
-Das Backend von Gramps Web wird als [Gramps Web API](https://github.com/gramps-project/gramps-web-api/) bezeichnet. Tatsächlich ist es mehr als nur ein App-Backend: Es bietet eine RESTful API, um eine Gramps-Datenbank zu lesen und zu modifizieren.
+Das Backend von Gramps Web heißt [Gramps Web API](https://github.com/gramps-project/gramps-web-api/). Tatsächlich ist es mehr als nur ein App-Backend: Es stellt eine RESTful API zum Lesen und Ändern einer Gramps-Datenbank bereit.
 
-Gramps Web API ist eine Python-Anwendung und wird von der `gramps`-Bibliothek selbst unterstützt (die auch die Gramps-Desktop-Anwendung antreibt).
+Die Gramps Web API ist eine Python-Anwendung und wird von der `gramps`-Bibliothek selbst unterstützt (die auch die Gramps-Desktop-Anwendung unterstützt).
 
-In diesem Abschnitt der Dokumentation können Sie lernen, wie Sie zur Entwicklung der Gramps Web API beitragen können.
+In diesem Abschnitt der Dokumentation erfährst du, wie du zur Entwicklung der Gramps Web API beitragen kannst.

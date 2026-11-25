@@ -1,10 +1,10 @@
 # Telemetrie
 
-Seit der Gramps Web API Version 3.2.0 sendet Gramps Web standardmäßig alle 24 Stunden vollständig anonymisierte Telemetriedaten an einen von dem Gramps Web-Team kontrollierten Analyse-Endpunkt. Diese Seite enthält Informationen über die gesammelten Telemetriedaten, wie sie verwendet werden und wie man sie bei Bedarf deaktivieren kann.
+Ab der Gramps Web API-Version 3.2.0 sendet Gramps Web standardmäßig alle 24 Stunden vollständig anonymisierte Telemetriedaten an einen vom Gramps-Web-Team kontrollierten Analyseendpunkt. Diese Seite enthält Informationen zu den erhobenen Telemetriedaten, ihrer Verwendung und dazu, wie du die Telemetrie bei Bedarf deaktivieren kannst.
 
-## Welche Daten werden gesammelt?
+## Welche Daten werden erhoben?
 
-Die Telemetriedaten sind eine kleine JSON-Nutzlast in folgendem Format:
+Bei den Telemetriedaten handelt es sich um eine kleine JSON-Nutzlast der folgenden Form:
 
 ```json
 {
@@ -14,35 +14,35 @@ Die Telemetriedaten sind eine kleine JSON-Nutzlast in folgendem Format:
 }
 ```
 
-Wie Sie selbst [im Quellcode](https://github.com/gramps-project/gramps-web-api/blob/master/gramps_webapi/api/telemetry.py#L83-L87) überprüfen können, sind die Server- und Baum-Identifikatoren einzigartig für den Server und den Baum, enthalten jedoch keine personenbezogenen Daten. Der `timestamp` ist die aktuelle Zeit als Unix-Zeitstempel.
+Wie du selbst [im Quellcode](https://github.com/gramps-project/gramps-web-api/blob/master/gramps_webapi/api/telemetry.py#L83-L87) überprüfen kannst, sind die Server- und Baumkennungen für den Server bzw. Baum eindeutig, enthalten jedoch keine personenbezogenen Daten. Der `timestamp` ist die aktuelle Zeit als Unix-Zeitstempel.
 
-## Warum werden die Daten gesammelt?
+## Warum werden die Daten erhoben?
 
-Das Senden eines eindeutigen Identifikators einmal täglich ermöglicht es dem Gramps Web-Team, nachzuvollziehen, wie viele eindeutige Server Gramps Web ausführen und wie viele eindeutige Bäume verwendet werden.
+Das einmal tägliche Senden einer eindeutigen Kennung ermöglicht es dem Gramps-Web-Team, zu verfolgen, wie viele eindeutige Server Gramps Web ausführen und wie viele eindeutige Bäume verwendet werden.
 
-Dies ist wichtig, um die Auswirkungen auf externe Dienste zu verstehen, die von Gramps Web verwendet werden, wie z. B. Kartenkacheln.
+Dies ist wichtig, um die Auswirkungen auf externe Dienste zu verstehen, die von Gramps Web verwendet werden, beispielsweise Kartenkacheln.
 
-## Wie werden die Daten gesammelt?
+## Wie werden die Daten erhoben?
 
-Wenn eine Anfrage an Ihren Gramps Web API-Server gestellt wird, überprüft dieser, ob in den letzten 24 Stunden Telemetrie gesendet wurde (indem ein Schlüssel im lokalen Cache überprüft wird). Wenn nicht, wird die oben genannte Nutzlast an einen Endpunkt gesendet, der die Daten protokolliert.
+Wenn eine Anfrage an deinen Gramps-Web-API-Server gestellt wird, wird geprüft, ob in den letzten 24 Stunden Telemetriedaten gesendet wurden (indem ein Schlüssel im lokalen Cache überprüft wird). Falls nicht, wird die oben aufgeführte Nutzlast an einen Endpunkt gesendet, der die Daten protokolliert.
 
-Der Protokollierungsendpunkt wird auf Google Cloud Run gehostet und direkt aus einem [Open-Source-Repository](https://github.com/DavidMStraub/cloud-run-telemetry) bereitgestellt, sodass Sie überprüfen können, wie die Daten verarbeitet werden.
+Der Protokollierungsendpunkt wird auf Google Cloud Run gehostet und direkt aus einem [Open-Source-Repository](https://github.com/DavidMStraub/cloud-run-telemetry) bereitgestellt, sodass du überprüfen kannst, wie die Daten verarbeitet werden.
 
-## Was wird mit den Daten gemacht?
+## Was geschieht mit den Daten?
 
-Zunächst einmal wird das Gramps Web-Team keine Daten über die anonymisierte Nutzlast hinaus verwenden, die hypothetisch gesammelt werden könnten (wie z. B. die IP-Adresse des Servers).
+In erster Linie wird vom Gramps-Web-Team keinerlei Daten verwendet, die über die anonymisierte Nutzlast hinausgehen und theoretisch erhoben werden könnten (beispielsweise die IP-Adresse des Servers).
 
-Die gesammelten anonymisierten IDs und der Zeitstempel werden aggregiert, um Grafiken zu erstellen, wie zum Beispiel:
+Die erhobenen anonymisierten IDs und der Zeitstempel werden aggregiert, um Diagramme wie die folgenden zu erstellen:
 
-- Anzahl der aktiven Gramps Web-Installationen in Abhängigkeit von der Zeit
-- Anzahl der aktiven Gramps Web-Bäume in Abhängigkeit von der Zeit
+- Anzahl der aktiven Gramps-Web-Installationen im Zeitverlauf
+- Anzahl der aktiven Gramps-Web-Bäume im Zeitverlauf
 
-Diese Grafiken werden auf der Dokumentationsseite von Gramps Web veröffentlicht.
+Diese Diagramme werden auf der Gramps-Web-Dokumentationsseite veröffentlicht.
 
-## Wie deaktiviert man die Telemetrie?
+## Wie kann die Telemetrie deaktiviert werden?
 
-Da die Statistikdaten für das Gramps Web-Team nützlich sind und wir sichergestellt haben, dass keine personenbezogenen Daten gesendet werden, **wären wir dankbar, wenn Sie die Telemetrie nicht deaktivieren!**
+Da die Statistikdaten für das Gramps-Web-Team nützlich sind und wir sichergestellt haben, dass keine personenbezogenen Daten gesendet werden, **wären wir dir dankbar, wenn du die Telemetrie nicht deaktivierst!**
 
-Dennoch gibt Gramps Web den Benutzern die volle Kontrolle, sodass Sie die Funktion selbstverständlich deaktivieren können, wenn Sie möchten.
+Dennoch gibt Gramps Web den Benutzern die vollständige Kontrolle, sodass du die Funktion natürlich deaktivieren kannst, wenn du möchtest.
 
-Um dies zu tun, setzen Sie einfach die Konfigurationsoption `DISABLE_TELEMETRY` auf `True` (z. B. indem Sie die Umgebungsvariable `GRAMPSWEB_DISABLE_TELEMETRY` auf `true` setzen – siehe die [Konfigurationsdokumentation](configuration.md) für Details).
+Setze dazu einfach die Konfigurationsoption `DISABLE_TELEMETRY` auf `True` (z. B. indem du die Umgebungsvariable `GRAMPSWEB_DISABLE_TELEMETRY` auf `true` setzt &ndash; Einzelheiten findest du in der [Konfigurationsdokumentation](configuration.md)).

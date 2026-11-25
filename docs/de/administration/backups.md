@@ -1,55 +1,55 @@
-# Backup und Wiederherstellung
+# Sichern und Wiederherstellen
 
-Baum-Eigentümer können im Abschnitt **Backups** der [Administrations-Einstellungen](settings.md) Backups des Baums erstellen, herunterladen und wiederherstellen.
+Besitzer von Stammbäumen können im Abschnitt **Sicherungen** der [Administrationseinstellungen](settings.md) Sicherungen des Stammbaums erstellen, herunterladen und wiederherstellen.
 
-Ein Backup enthält die Daten des Stammbaums, einschließlich privater Datensätze, der Baumeinstellungen und der Benutzer des Baums. Mediendateien sind nicht enthalten; siehe [Sichern Sie Ihre Mediendateien](export.md#back-up-your-media-files).
+Eine Sicherung enthält die Daten des Stammbaums einschließlich privater Datensätze, die Einstellungen des Stammbaums und die Benutzer des Stammbaums. Mediendateien sind nicht enthalten; siehe [Mediendateien sichern](export.md#back-up-your-media-files).
 
-## Gespeicherte Backups
+## Gespeicherte Sicherungen
 
-Wenn der Serveradministrator ein Backup-Verzeichnis (`BACKUP_DIR`, siehe [Serverkonfiguration](../install_setup/configuration.md)) festgelegt hat, können Backups auf dem Server gespeichert werden. Andernfalls zeigt der Abschnitt eine Mitteilung an, dass das Speichern von Backups nicht konfiguriert ist und nur die Wiederherstellung aus einer hochgeladenen Datei verfügbar ist.
+Wenn der Serveradministrator ein Sicherungsverzeichnis (`BACKUP_DIR`, siehe [Serverkonfiguration](../install_setup/configuration.md)) festgelegt hat, können Sicherungen auf dem Server gespeichert werden. Andernfalls wird in diesem Abschnitt ein Hinweis angezeigt, dass das Speichern von Sicherungen nicht konfiguriert ist, und es ist nur die Wiederherstellung aus einer hochgeladenen Datei verfügbar.
 
-Klicken Sie auf **Backup erstellen...**, um ein Backup zu erstellen. Es wird als Hintergrundaufgabe erstellt und erscheint dann in der Liste der gespeicherten Backups mit Datum, Anzahl der Personen und Größe. Der Server behält nur die neuesten Backups (standardmäßig fünf) und löscht ältere automatisch. Auch die Anzahl der Backups, die pro Tag erstellt werden können, ist begrenzt.
+Klicke auf **Sicherung erstellen ...**, um eine Sicherung zu erstellen. Sie wird als Hintergrundaufgabe erstellt und erscheint anschließend in der Liste der gespeicherten Sicherungen mit ihrem Datum, der Anzahl der Personen und ihrer Größe. Der Server behält nur die neuesten Sicherungen (standardmäßig fünf) und löscht ältere automatisch. Auch die Anzahl der Sicherungen, die pro Tag erstellt werden können, ist begrenzt.
 
-Für jedes gespeicherte Backup können Sie:
+Für jede gespeicherte Sicherung kannst du:
 
-- **Herunterladen** als `.tar`-Datei, zum Beispiel um eine Kopie an einem anderen Ort aufzubewahren.
-- **Wiederherstellen**, wie unten beschrieben.
-- **Löschen**, nach Bestätigung.
+- sie als `.tar`-Datei **herunterladen**, zum Beispiel um anderswo eine Kopie aufzubewahren.
+- sie wie unten beschrieben **wiederherstellen**.
+- sie nach einer Bestätigung **löschen**.
 
-Ein Backup, das mit einer neueren Version von Gramps Web als der auf dem Server laufenden erstellt wurde, ist mit einem Warnsymbol gekennzeichnet und kann nicht wiederhergestellt werden.
+Eine Sicherung, die mit einer neueren Version von Gramps Web als der auf dem Server ausgeführten erstellt wurde, ist mit einem Warnsymbol gekennzeichnet und kann nicht wiederhergestellt werden.
 
-## Wiederherstellung aus Backup
+## Aus Sicherung wiederherstellen
 
-Stellt den Baum aus einem gespeicherten Backup oder aus einer hochgeladenen Datei wieder her. Um ein gespeichertes Backup wiederherzustellen, klicken Sie auf die Schaltfläche Wiederherstellen daneben. Um aus einer Datei wiederherzustellen, wählen Sie ein Gramps Web-Backup (`.tar`) oder eine Gramps XML-Datei (`.gramps`) aus und klicken Sie auf **Wiederherstellen**.
+Stellt den Stammbaum aus einer gespeicherten Sicherung oder einer hochgeladenen Datei wieder her. Um eine gespeicherte Sicherung wiederherzustellen, klicke auf die Wiederherstellungsschaltfläche daneben. Um eine Datei wiederherzustellen, wähle eine Gramps-Web-Sicherung (`.tar`) oder eine Gramps-XML-Datei (`.gramps`) aus und klicke auf **Wiederherstellen**.
 
 !!! danger
-    Die Wiederherstellung der Daten ist ein destruktiver Ersatz, kein Merge. Jedes vorhandene Objekt, das im Backup nicht vorhanden ist, wird gelöscht.
+    Das Wiederherstellen der Daten ist ein destruktives Ersetzen, keine Zusammenführung. Jedes vorhandene Objekt, das nicht in der Sicherung enthalten ist, wird gelöscht.
 
-Für ein Gramps Web-Backup wird ein Dialog angezeigt, der zeigt, wann das Backup erstellt wurde, für welchen Baum und mit welcher Version, und lässt Sie auswählen, welche Teile wiederhergestellt werden sollen:
+Bei einer Gramps-Web-Sicherung wird in einem Dialog angezeigt, wann die Sicherung erstellt wurde, für welchen Stammbaum und mit welcher Version. Außerdem kannst du auswählen, welche Teile wiederhergestellt werden sollen:
 
 - **Daten** – die Objekte des Stammbaums
-- **Baumeinstellungen** – die Einstellungen der Administrationsseite, wie Farbthemen, App-Titel und Notiz auf der Startseite
-- **Benutzer** – die Benutzer des Baums
+- **Stammeinstellungen** – die Einstellungen der Administrationsseite, z. B. Designfarben, App-Titel und Notiz der Startseite
+- **Benutzer** – die Benutzer des Stammbaums
 
-Klicken Sie auf **Vorschau**, um zu sehen, was die Wiederherstellung ändern würde. Eine Gramps XML-Datei enthält nur Daten, sodass die Vorschau für eine solche Datei sofort beginnt. Sie werden aufgefordert, sich erneut zu authentifizieren, wenn Ihre Sitzung nicht frisch genug ist. Die Vorschau läuft als Hintergrundaufgabe und öffnet, sobald sie abgeschlossen ist, einen Dialog, der die Änderungen pro Objekttyp (Personen, Familien, Ereignisse, Orte, Zitationen, Quellen, Repositories, Medienobjekte, Notizen, Etiketten) sowie für die Baumeinstellungen und Benutzer, falls ausgewählt:
+Klicke auf **Vorschau**, um zu sehen, was durch die Wiederherstellung geändert würde. Eine Gramps-XML-Datei enthält nur Daten. Daher beginnt die Vorschau bei einer solchen Datei sofort. Du wirst aufgefordert, dich erneut zu authentifizieren, wenn deine Sitzung nicht mehr aktuell genug ist. Die Vorschau wird als Hintergrundaufgabe ausgeführt und öffnet nach Abschluss einen Dialog, der die Änderungen nach Objekttyp zusammenfasst (Personen, Familien, Ereignisse, Orte, Zitate, Quellen, Repositorien, Medienobjekte, Notizen, Etiketten) sowie für die Stammeinstellungen und Benutzer, falls ausgewählt:
 
-- **Hinzufügen** – Objekte, die im Backup vorhanden, aber im aktuellen Baum fehlen
-- **Aktualisieren** – Objekte, die in beiden vorhanden sind, aber unterschiedlich sind
-- **Löschen** – Objekte im aktuellen Baum, die im Backup fehlen
+- **Hinzufügen** – Objekte, die in der Sicherung vorhanden sind, aber im aktuellen Stammbaum fehlen
+- **Aktualisieren** – Objekte, die in beiden vorhanden sind, sich aber unterscheiden
+- **Löschen** – Objekte im aktuellen Stammbaum, die in der Sicherung fehlen
 - **Unverändert** – Objekte, die in beiden identisch sind
 
-Wenn Objekte gelöscht werden würden, warnt der Dialog, wie viele. Überprüfen Sie die Zusammenfassung und klicken Sie dann auf **Wiederherstellen**, um die Änderungen anzuwenden, oder auf **Abbrechen**, um abzubrechen.
+Wenn Objekte gelöscht würden, warnt der Dialog mit der entsprechenden Anzahl. Überprüfe die Zusammenfassung und klicke dann auf **Wiederherstellen**, um die Änderungen anzuwenden, oder auf **Abbrechen**, um den Vorgang abzubrechen.
 
-Nach der Wiederherstellung werden die Benutzer, die aus dem Backup hinzugefügt wurden, aufgelistet. Sie erhalten ein zufälliges Passwort, sodass sie ihr Passwort zurücksetzen müssen, bevor sie sich anmelden können. Benutzer, die bereits auf dem Server existieren, werden niemals geändert. Medienobjekte, deren Dateien auf dem Server fehlen, werden ebenfalls aufgelistet; laden Sie sie über [Medien-Dateien importieren](import-media.md) hoch.
+Nach der Wiederherstellung werden die aus der Sicherung hinzugefügten Benutzer aufgelistet. Sie erhalten ein zufälliges Passwort und müssen ihr Passwort daher zurücksetzen, bevor sie sich anmelden können. Benutzer, die bereits auf dem Server vorhanden sind, werden niemals geändert. Medienobjekte, deren Dateien auf dem Server fehlen, werden ebenfalls aufgelistet; lade sie über [Mediendateien importieren](import-media.md) hoch.
 
 !!! note
-    Die Wiederherstellung von Daten stellt nur die Objektdaten und Medienreferenzen wieder her. Binäre Mediendateien selbst und Baum-Metadaten (Standardperson, Lesezeichen, Namensgruppen) sind nicht betroffen.
+    Beim Wiederherstellen von Daten werden nur Objektdaten und Medienreferenzen wiederhergestellt. Die binären Mediendateien selbst sowie Metadaten des Stammbaums (Standardperson, Lesezeichen, Namensgruppen) werden nicht beeinflusst.
 
 !!! tip
-    Verwenden Sie dies, um einen Baum auf ein bekannt gutes Backup zurückzusetzen, zum Beispiel nach einem schlechten Import oder einer unerwünschten Massenbearbeitung.
+    Verwende dies, um einen Stammbaum auf eine bekannte funktionierende Sicherung zurückzusetzen, beispielsweise nach einem fehlerhaften Import oder einer unerwünschten Massenbearbeitung.
 
-## Gramps XML als Backup
+## Gramps XML als Sicherung
 
-Wenn das Speichern von Backups nicht verfügbar ist oder Sie nur eine Kopie der Stammbaumdaten aufbewahren möchten, [exportieren](export.md) Sie den Baum als Gramps XML. Eine solche Datei kann ebenfalls über [Wiederherstellung aus Backup](#restore-from-backup) wiederhergestellt werden.
+Wenn das Speichern von Sicherungen nicht verfügbar ist oder du nur eine Kopie der Stammbaumdaten aufbewahren möchtest, [exportiere](export.md) den Stammbaum als Gramps XML. Eine solche Datei kann ebenfalls über [Aus Sicherung wiederherstellen](#restore-from-backup) wiederhergestellt werden.
 
-Bitte beachten Sie, dass, wenn Ihr Gramps Web-Benutzer keine Berechtigung hat, private Datensätze anzuzeigen, der Export kein vollständiges Backup sein wird, da er keine privaten Datensätze enthalten wird.
+Beachte, dass der Export keine vollständige Sicherung darstellt, wenn dein Gramps-Web-Benutzer nicht die Berechtigung zum Anzeigen privater Datensätze hat, da er keine privaten Datensätze enthalten wird.

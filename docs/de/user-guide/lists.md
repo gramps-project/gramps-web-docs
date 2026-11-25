@@ -1,93 +1,93 @@
 # Listen
 
-Jeder Objekttyp in Gramps Web hat eine Listenansicht: Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Archive, Notizen und Medien. Sie funktionieren alle gleich und teilen sich die gleichen Werkzeuge zum Sortieren, Filtern und Bearbeiten in großen Mengen.
+Jeder Objekttyp in Gramps Web verfügt über eine Listenansicht: Personen, Familien, Ereignisse, Orte, Quellen, Zitate, Repositorien, Notizen und Medien. Sie funktionieren alle auf dieselbe Weise und verwenden dieselben Werkzeuge zum Sortieren, Filtern und Bearbeiten in großen Mengen.
 
-## Sortieren und Seitenwechsel
+## Sortieren und Seiten
 
-Klicken Sie auf einen Spaltenkopf, um nach dieser Spalte zu sortieren; klicken Sie erneut darauf, um die Reihenfolge umzukehren. Das Sortieren erfolgt durch den Server, sodass es für die gesamte Liste gilt, nicht nur für die Seite, die Sie gerade ansehen.
+Klicke auf eine Spaltenüberschrift, um nach dieser Spalte zu sortieren; klicke erneut darauf, um die Reihenfolge umzukehren. Die Sortierung wird vom Server durchgeführt und gilt daher für die gesamte Liste, nicht nur für die angezeigte Seite.
 
-Lange Listen werden in Seiten unterteilt. Verwenden Sie die Seitensteuerung am unteren Ende, um zwischen ihnen zu wechseln.
+Lange Listen werden auf mehrere Seiten aufgeteilt. Verwende die Seitennavigation am unteren Rand, um zwischen den Seiten zu wechseln.
 
-Auf schmalen Bildschirmen wechselt die Tabelle automatisch zu einem kompakten Layout, sodass die Listenansichten auf einem Telefon weiterhin nutzbar bleiben.
+Auf schmalen Bildschirmen wechselt die Tabelle automatisch zu einem kompakten Layout, sodass Listenansichten auch auf einem Smartphone verwendbar bleiben.
 
 ## Spalten auswählen
 
-Klicken Sie auf das Zahnradsymbol am rechten Ende der Symbolleiste über der Liste, um den **Spalten**-Dialog zu öffnen. Aktivieren oder deaktivieren Sie eine Spalte, um sie anzuzeigen oder auszublenden. **Zurücksetzen** stellt die Standardauswahl für diese Liste wieder her.
+Klicke auf das Zahnradsymbol am rechten Ende der Werkzeugleiste über der Liste, um den Dialog **Spalten** zu öffnen. Aktiviere oder deaktiviere eine Spalte, um sie ein- oder auszublenden. **Zurücksetzen** stellt die Standardauswahl für diese Liste wieder her.
 
-Mindestens eine Spalte muss sichtbar bleiben, sodass die letzte verbleibende Spalte nicht deaktiviert werden kann.
+Mindestens eine Spalte muss sichtbar bleiben, daher kann die letzte verbleibende Spalte nicht deaktiviert werden.
 
-Neben den Standardspalten bietet jede Liste eine **Etiketten**-Spalte und für Benutzer, die private Datensätze einsehen können, eine **Privatsphäre**-Spalte, die ein Schloss für jedes private Objekt anzeigt. Wenn Sie die Spaltenauswahl einer Liste zuvor geändert haben, werden neue Spalten wie **Etiketten** nicht automatisch hinzugefügt; aktivieren Sie sie im Dialog.
+Neben den Standardsäulen bietet jede Liste eine Spalte **Etiketten** und für Benutzer, die private Datensätze anzeigen können, eine Spalte **Privatsphäre**, die für jedes private Objekt ein Schloss anzeigt. Wenn du die Spaltenauswahl einer Liste zuvor geändert hast, werden neue Spalten wie **Etiketten** nicht automatisch hinzugefügt; aktiviere sie im Dialog.
 
-Ihre Spaltenauswahl wird pro Objekttyp und pro Familienbaum gespeichert. Sie wird in Ihrem Browser gespeichert, sodass sie für andere Benutzer nicht sichtbar ist – aber sie folgt Ihnen auch nicht zu einem anderen Browser oder Gerät.
+Deine Spaltenauswahl wird pro Objekttyp und Familienstammbaum gespeichert. Sie wird in deinem Browser gespeichert und ist daher für andere Benutzer nicht sichtbar – sie wird jedoch auch nicht in einen anderen Browser oder auf ein anderes Gerät übernommen.
 
 ## Filtern
 
-Klicken Sie auf die **Filter**-Schaltfläche, um das Filterpanel zu öffnen. Es bietet drei Möglichkeiten zum Filtern, die kombiniert werden können:
+Klicke auf die Schaltfläche **Filter**, um das Filterfenster zu öffnen. Es bietet drei kombinierbare Filtermöglichkeiten:
 
-- **Fertige Filter** in zusammenklappbaren Abschnitten, die vom Objekttyp abhängen. Bei Personen können Sie beispielsweise nach Name, Geburtsjahr, Sterbejahr, verschiedenen Personenmerkmalen, der Anzahl der Verbindungen, Etiketten und ob ein Objekt privat oder öffentlich ist, filtern. Familien können nach dem Namen des Vaters, der Mutter oder eines Kindes gefiltert werden, Quellen nach Autor und Orte sowie Archive nach ihrem Typ.
-- **Erweiterter Filter** – ein Bedingungsbuilder für Filter, die die fertigen nicht ausdrücken können, beschrieben [unten](#erweiterter-filter).
-- **GOQL** – ein Textfeld für einen Ausdruck in der [Gramps Object Query Language](goql.md), mit Syntaxhervorhebung. Geben Sie den Ausdruck ein und drücken Sie die Eingabetaste oder klicken Sie auf **Übernehmen**. Wenn der Ausdruck ungültig ist, wird das Feld als Fehler markiert. Ein Ausdruck wird zusätzlich zu den anderen Filtern angewendet.
+- **Vorgefertigte Filter** in aufklappbaren Abschnitten, die vom Objekttyp abhängen. Bei Personen kannst du beispielsweise nach Name, Geburtsjahr, Todesjahr, verschiedenen Personeneigenschaften, der Anzahl der Verknüpfungen, Etiketten und danach filtern, ob ein Objekt privat oder öffentlich ist. Familien können nach dem Namen des Vaters, der Mutter oder eines Kindes gefiltert werden, Quellen nach dem Autor sowie Orte und Repositorien nach ihrem Typ.
+- **Erweiterter Filter** – ein Bedingungsgenerator für Filter, die mit den vorgefertigten Filtern nicht ausgedrückt werden können, beschrieben [weiter unten](#erweiterter-filter).
+- **GOQL** – ein Textfeld für einen Ausdruck in der [Gramps Object Query Language](goql.md) mit Syntaxhervorhebung. Gib den Ausdruck ein und drücke die Eingabetaste oder klicke auf **Anwenden**. Wenn der Ausdruck ungültig ist, wird das Feld als fehlerhaft markiert. Ein Ausdruck wird zusätzlich zu den anderen Filtern angewendet.
 
-Aktive Filter werden als Chips in einer Reihe unter der Symbolleiste angezeigt. Entfernen Sie einen einzelnen Filter, indem Sie auf die Löschtaste des Chips klicken, oder verwenden Sie **Alle Filter löschen**, um sie alle auf einmal zu entfernen.
+Aktive Filter werden als Chips in einer Zeile unter der Werkzeugleiste angezeigt. Entferne einen einzelnen Filter, indem du auf die Schaltfläche zum Löschen des Chips klickst, oder verwende **Alle Filter löschen**, um alle Filter gleichzeitig zu entfernen.
 
 ### Erweiterter Filter
 
-Klicken Sie auf **Erweiterter Filter** am unteren Ende des Filterpanels, um den Bedingungsbuilder zu öffnen. Seine Bedingungen sind die Filterregeln, die aus Gramps Desktop bekannt sind, wie „Personen mit dem &lt;name&gt;“ oder „Vorfahren von &lt;person&gt;“.
+Klicke am unteren Rand des Filterfensters auf **Erweiterter Filter**, um den Bedingungsgenerator zu öffnen. Seine Bedingungen sind die aus Gramps Desktop bekannten Filterregeln, beispielsweise „Personen mit dem &lt;Namen&gt;“ oder „Vorfahren von &lt;Person&gt;“.
 
-- Klicken Sie auf **Bedingung hinzufügen**, um eine Regel auszuwählen. Die Regeln sind in Kategorien gruppiert und können nach Name oder Beschreibung durchsucht werden.
-- Füllen Sie die Parameter der Regel aus. Jeder Parameter hat ein passendes Eingabefeld, zum Beispiel ein Datumsfeld, einen Etikettensucher oder einen Objektauswähler für eine Person oder einen Ort.
-- Wählen Sie aus, wie die Bedingungen einer Gruppe kombiniert werden: **Alle Bedingungen**, **Eine Bedingung** oder – über das Menü daneben – **Genau eine Bedingung**.
-- Klicken Sie auf **Gruppe hinzufügen**, um eine Gruppe von Bedingungen innerhalb einer anderen Gruppe hinzuzufügen, mit ihrer eigenen Art, sie zu kombinieren.
-- Wählen Sie **Nicht** für eine Bedingung oder Gruppe, um sie umzukehren.
+- Klicke auf **Bedingung hinzufügen**, um eine Regel auszuwählen. Die Regeln sind in Kategorien gruppiert und können nach Name oder Beschreibung durchsucht werden.
+- Fülle die Parameter der Regel aus. Jeder Parameter verfügt über eine passende Eingabe, beispielsweise ein Datumsfeld, eine Etikettenauswahl oder eine Objektauswahl für eine Person oder einen Ort.
+- Wähle aus, wie die Bedingungen einer Gruppe kombiniert werden: **Alle Bedingungen**, **Beliebige Bedingung** oder – über das Menü daneben – **Genau eine Bedingung**.
+- Klicke auf **Gruppe hinzufügen**, um innerhalb einer anderen Gruppe eine Gruppe von Bedingungen mit einer eigenen Kombinationsmethode hinzuzufügen.
+- Wähle bei einer Bedingung oder Gruppe **Nicht**, um sie umzukehren.
 
-Klicken Sie auf **Übernehmen**, um die Liste zu filtern.
+Klicke auf **Anwenden**, um die Liste zu filtern.
 
-Die fertigen Filter und der GOQL-Ausdruck, die aktiv sind, wenn Sie den Builder öffnen, erscheinen dort als Bedingungen. Ein GOQL-Ausdruck kann auch als eigene Bedingung hinzugefügt werden, um beispielsweise mehrere Ausdrücke mit **Eine Bedingung** zu kombinieren. Wenn der Filter, den Sie erstellen, mit den fertigen Filtern ausgedrückt werden kann, wird er nach dem Anwenden mit ihnen angezeigt. Andernfalls wird er als einzelner **Erweiterter Filter**-Chip angezeigt, und das Filterpanel bietet eine **Bearbeiten**-Schaltfläche, um den Builder erneut zu öffnen.
+Die vorgefertigten Filter und der GOQL-Ausdruck, die beim Öffnen des Generators aktiv sind, werden dort als Bedingungen angezeigt. Ein GOQL-Ausdruck kann auch als eigene Bedingung hinzugefügt werden, beispielsweise um mehrere Ausdrücke mit **Beliebige Bedingung** zu kombinieren. Wenn der von dir erstellte Filter mit den vorgefertigten Filtern ausgedrückt werden kann, wird er nach dem Anwenden zusammen mit diesen angezeigt. Andernfalls wird er als einzelner Chip **Erweiterter Filter** angezeigt, und das Filterfenster bietet eine Schaltfläche **Bearbeiten**, um den Generator erneut zu öffnen.
 
-!!! Hinweis
-    Regeln, die auf benutzerdefinierte Filter verweisen, die in Gramps Desktop gespeichert sind, sind im Builder nicht verfügbar. Die Regeln werden in Ihrer Sprache mit Gramps Web API 3.24 oder neuer angezeigt.
+!!! note
+    Regeln, die sich auf in Gramps Desktop gespeicherte benutzerdefinierte Filter beziehen, sind im Generator nicht verfügbar. Die Regeln werden mit Gramps Web API 3.24 oder neuer in deiner Sprache angezeigt.
 
 #### Gespeicherte Filter
 
-Um einen Filter, den Sie erstellt haben, wiederzuverwenden, klicken Sie auf **Speichern** im Bedingungsbuilder und geben Sie ihm einen Namen. Das Speichern unter einem bestehenden Namen ersetzt diesen Filter. **Gespeicherte Filter** im Builder listet die gespeicherten Filter für den aktuellen Objekttyp auf; die Auswahl eines Filters lädt ihn in den Builder, wo Sie ihn ändern können, bevor Sie auf **Übernehmen** klicken.
+Um einen von dir erstellten Filter wiederzuverwenden, klicke im Bedingungsgenerator auf **Speichern** und gib ihm einen Namen. Beim Speichern unter einem bereits vorhandenen Namen wird dieser Filter ersetzt. **Gespeicherte Filter** im Generator führt die gespeicherten Filter für den aktuellen Objekttyp auf; durch Auswahl eines Filters wird er in den Generator geladen, wo du ihn vor dem Klicken auf **Anwenden** ändern kannst.
 
-Gespeicherte Filter werden in Ihrem Browser pro Familienbaum und Objekttyp gespeichert, sodass sie für andere Benutzer oder auf Ihren anderen Geräten nicht verfügbar sind.
+Gespeicherte Filter werden in deinem Browser pro Familienstammbaum und Objekttyp gespeichert und sind daher für andere Benutzer oder auf deinen anderen Geräten nicht verfügbar.
 
-Ein gespeicherter Filter kann nicht mehr funktionieren, wenn sich der Baum ändert, zum Beispiel, wenn er auf eine Person verweist, die seitdem gelöscht wurde (der Objektauswähler zeigt dann „Nicht gefunden“). Ein solcher Filter kann nicht angewendet oder gespeichert werden, bis die Bedingung behoben ist.
+Ein gespeicherter Filter kann nicht mehr funktionieren, wenn sich der Stammbaum ändert, beispielsweise wenn er sich auf eine inzwischen gelöschte Person bezieht (die Objektauswahl zeigt dann „Nicht gefunden“ an). Ein solcher Filter kann erst angewendet oder gespeichert werden, wenn die Bedingung korrigiert wurde.
 
-## Objekte auswählen und in großen Mengen bearbeiten
+## Objekte auswählen und gesammelt bearbeiten
 
-Benutzer mit Bearbeitungsberechtigungen sehen eine **Auswählen**-Schaltfläche neben der Filter-Schaltfläche. Klicken Sie darauf, um den Auswahlmodus zu aktivieren, der ein Kontrollkästchen zu jeder Zeile hinzufügt.
+Benutzer mit Bearbeitungsberechtigungen sehen neben der Filterschaltfläche eine Schaltfläche **Auswählen**. Klicke darauf, um den Auswahlmodus zu aktivieren, der jeder Zeile ein Kontrollkästchen hinzufügt.
 
-Aktivieren Sie die Objekte, die Sie möchten, und eine Symbolleiste erscheint, die anzeigt, wie viele ausgewählt sind, zusammen mit einem **Aktion**-Dropdown und einer **Übernehmen**-Schaltfläche.
+Aktiviere die gewünschten Objekte. Daraufhin wird eine Werkzeugleiste angezeigt, die angibt, wie viele Objekte ausgewählt sind, und ein Dropdown-Menü **Aktion** sowie eine Schaltfläche **Anwenden** enthält.
 
-Das Kontrollkästchen im Tabellenkopf wählt alle Objekte auf der aktuellen Seite aus. Wenn mehr Objekte den aktuellen Filtern entsprechen, bietet die Symbolleiste dann **Alle auswählen (N)** an, was alle N übereinstimmenden Objekte über alle Seiten hinweg auswählt. Das Deaktivieren einer Zeile, das Wechseln der Seite oder der Filter oder das Verlassen des Auswahlmodus beendet diese Auswahl.
+Das Kontrollkästchen in der Tabellenüberschrift wählt alle Objekte auf der aktuellen Seite aus. Wenn weitere Objekte den aktuellen Filtern entsprechen, bietet die Werkzeugleiste anschließend **Alle auswählen (N)** an, wodurch alle N passenden Objekte auf allen Seiten ausgewählt werden. Durch das Deaktivieren einer Zeile, das Wechseln der Seite oder der Filter oder das Verlassen des Auswahlmodus wird diese Auswahl beendet.
 
 ### Löschen
 
-Wählen Sie ein oder mehrere Objekte aus, wählen Sie **Löschen** und klicken Sie auf **Übernehmen**. Ein Bestätigungsdialog fordert Sie zur Bestätigung auf und warnt, dass die Aktion nicht rückgängig gemacht werden kann.
+Wähle ein oder mehrere Objekte aus, wähle **Löschen** und klicke auf **Anwenden**. Ein Bestätigungsdialog fordert dich zur Bestätigung auf und weist darauf hin, dass die Aktion nicht rückgängig gemacht werden kann.
 
-Das Löschen von mehr als zehn Objekten wird als Hintergrundaufgabe ausgeführt. Der Fortschritt wird neben der **Übernehmen**-Schaltfläche und in [Benachrichtigungen](notifications.md) angezeigt, und die Liste wird neu geladen, wenn es abgeschlossen ist.
+Das Löschen von mehr als zehn Objekten wird als Hintergrundaufgabe ausgeführt. Der Fortschritt wird neben der Schaltfläche **Anwenden** und in den [Benachrichtigungen](notifications.md) angezeigt. Nach Abschluss wird die Liste neu geladen.
 
-!!! Tipp
-    Löschvorgänge werden in der [Versionsgeschichte](revisions.md) wie jede andere Änderung aufgezeichnet, sodass ein versehentliches Massenlöschen durch das Rückgängigmachen der entsprechenden Transaktion rückgängig gemacht werden kann.
+!!! tip
+    Löschvorgänge werden wie jede andere Änderung in der [Änderungshistorie](revisions.md) aufgezeichnet, sodass ein versehentliches Löschen in großen Mengen durch Rückgängigmachen der entsprechenden Transaktion rückgängig gemacht werden kann.
 
 ### Etiketten und Privatsphäre
 
-Die Aktionen **Etikett hinzufügen**, **Etikett entfernen** und **Privatsphäre** ändern alle ausgewählten Objekte auf einmal (erfordert Gramps Web API 3.26 oder neuer):
+Die Aktionen **Etikett hinzufügen**, **Etikett entfernen** und **Privatsphäre** ändern alle ausgewählten Objekte gleichzeitig (erfordert Gramps Web API 3.26 oder neuer):
 
-- **Etikett hinzufügen** fügt ein vorhandenes Etikett oder ein neues hinzu, das Sie im Dialog erstellen.
-- **Etikett entfernen** entfernt ein Etikett von den ausgewählten Objekten, die es haben.
-- **Privatsphäre** kennzeichnet die ausgewählten Objekte als privat oder öffentlich. Dies ändert nur die Objekte selbst, nicht deren Teile oder die Datensätze, auf die sie verweisen – siehe [Private Datensätze](privacy.md).
+- **Etikett hinzufügen** fügt ein vorhandenes Etikett oder ein neues Etikett hinzu, das du im Dialog erstellst.
+- **Etikett entfernen** entfernt ein Etikett von den ausgewählten Objekten, die dieses Etikett besitzen.
+- **Privatsphäre** markiert die ausgewählten Objekte als privat oder öffentlich. Dies ändert nur die Objekte selbst, nicht ihre Bestandteile oder die Datensätze, auf die sie verweisen – siehe [Private Datensätze](privacy.md).
 
-Wie beim Löschen wird das Bearbeiten von mehr als zehn Objekten als Hintergrundaufgabe ausgeführt. Die Änderungen werden in der [Versionsgeschichte](revisions.md) als eine Transaktion aufgezeichnet, sodass sie zusammen rückgängig gemacht werden können.
+Wie beim Löschen wird die Bearbeitung von mehr als zehn Objekten als Hintergrundaufgabe ausgeführt. Die Änderungen werden als eine Transaktion in der [Änderungshistorie](revisions.md) aufgezeichnet, sodass sie gemeinsam rückgängig gemacht werden können.
 
 ### Zusammenführen
 
-Wählen Sie **genau zwei** Objekte aus, wählen Sie **Zusammenführen** und klicken Sie auf **Übernehmen**. Ein Dialog fragt, welches der beiden die primären Daten für das zusammengeführte Objekt bereitstellen soll; klicken Sie auf das, das Sie als primär behalten möchten. Die Daten des anderen Objekts werden in es zusammengeführt und die Verweise werden aktualisiert.
+Wähle **genau zwei** Objekte aus, wähle **Zusammenführen** und klicke auf **Anwenden**. Ein Dialog fragt, welches der beiden Objekte die Primärdaten für das zusammengeführte Objekt bereitstellen soll; klicke auf das Objekt, das du als primär beibehalten möchtest. Die Daten des anderen Objekts werden darin zusammengeführt und Verweise werden aktualisiert.
 
-Das Zusammenführen ist für Personen, Familien, Ereignisse, Orte, Quellen und Zitationen verfügbar. Es ist nicht für Archive, Notizen und Medienobjekte verfügbar.
+Das Zusammenführen ist für Personen, Familien, Ereignisse, Orte, Quellen und Zitate verfügbar. Für Repositorien, Notizen und Medienobjekte ist es nicht verfügbar.
 
-In der Medienansicht funktioniert die Auswahl sowohl in der Galerie als auch im Listenlayout: Im Auswahlmodus wechselt das Klicken auf eine Kachel oder Zeile den Status. Medienobjekte können nicht zusammengeführt werden.
+In der Medienansicht funktioniert die Auswahl sowohl in der Galerie- als auch in der Listenansicht: Im Auswahlmodus wird ein Objekt durch Klicken auf eine Kachel oder Zeile ausgewählt bzw. die Auswahl aufgehoben. Medienobjekte können nicht zusammengeführt werden.
 
-Wenn Sie eine Aktion ohne eine gültige Auswahl wählen – zum Beispiel ein Zusammenführen mit nur einem ausgewählten Objekt – erklärt ein Dialog, was erforderlich ist.
+Wenn du eine Aktion ohne gültige Auswahl auswählst – beispielsweise das Zusammenführen mit nur einem ausgewählten Objekt –, erklärt ein Dialog, was erforderlich ist.

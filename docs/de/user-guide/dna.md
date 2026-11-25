@@ -1,9 +1,9 @@
-# Verwendung von Gramps Web für DNA-Genalogie
+# Gramps Web für DNA-Genealogie verwenden
 
-Es gibt drei Zweige der DNA-Genalogie, die von der Art der verwendeten DNA abhängen:
+Es gibt drei Bereiche der DNA-Genealogie, abhängig von der verwendeten DNA:
 
-- Autosomale Chromosomen (Nummer 1–22) werden von Vater und Mutter geerbt, so dass die Wahrscheinlichkeit, ein Stück DNA von einem gegebenen Vorfahren zu erben, exponentiell mit der Anzahl der Generationen reduziert. Dies macht sie nützlich, um Trenngrade mit Verwandten zu finden, wenn es einen relativ jüngeren (weiblichen Generationen) gemeinsamen Vorfahren gibt.
-- Ja. Das Y-Chromosom wird nur von Vater zu Sohn weitergegeben, so kann es verwendet werden, um die väterliche Linie zu verfolgen.
-- Mitochondriale DNA wird von Mutter an Tochter weitergegeben, so dass es verwendet werden kann, um die mütterliche Linie zu verfolgen.
+- Autosomale Chromosomen (nummeriert 1&ndash;22) werden vom Vater und von der Mutter vererbt. Daher nimmt die Wahrscheinlichkeit, ein DNA-Stück von einem bestimmten Vorfahren zu erben, mit der Anzahl der Generationen exponentiell ab. Dadurch eignen sie sich dazu, Verwandtschaftsgrade mit Verwandten zu ermitteln, wenn es einen relativ nahen (wenige Generationen zurückliegenden) gemeinsamen Vorfahren gibt.
+- Das Y-Chromosom wird nur vom Vater an den Sohn weitergegeben und kann daher verwendet werden, um die väterliche Linie zurückzuverfolgen.
+- Mitochondriale DNA wird von der Mutter an die Tochter weitergegeben und kann daher verwendet werden, um die mütterliche Linie zurückzuverfolgen.
 
-Derzeit bietet Gramps Web Tools, um mit [matches from autosomal DNA tests](dna-matches.md) zu arbeiten. Um diese Daten zu erhalten, benötigen Sie Zugriff auf einen DNA-Test, der auf eine passende Datenbank hochgeladen wird, die es erlaubt, DNA-Segment-Anpassungsdaten (z.B. MyHeritage, Gedmatch, FamilytreeDNA) anzuzeigen. Gramps Web führt das Matching selbst nicht durch, da es nur Zugriff auf die von Ihnen hochgeladenen Daten hat.
+Derzeit bietet Gramps Web Werkzeuge für die Arbeit mit [Übereinstimmungen aus autosomalen DNA-Tests](dna-matches.md). Um diese Daten zu erhalten, benötigst du Zugriff auf einen DNA-Test, der in eine Vergleichsdatenbank hochgeladen wurde, die das Anzeigen von DNA-Segmentübereinstimmungen ermöglicht (z. B. MyHeritage, Gedmatch, FamilytreeDNA). Gramps Web führt den Abgleich nicht selbst durch, da es nur Zugriff auf die von dir hochgeladenen Daten hat.

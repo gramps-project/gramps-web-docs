@@ -1,77 +1,77 @@
-# Stammbaum
+# Familienbaum
 
-Die Stammbaum-Seite ist über die Seitenleiste zugänglich und zeigt interaktive Diagramme, die sich auf eine ausgewählte Person konzentrieren. Fünf Diagrammtypen sind über Registerkarten am oberen Rand der Seite verfügbar.
+Die Seite „Familienbaum“ ist über die Seitenleiste erreichbar und zeigt interaktive Diagramme, die auf eine ausgewählte Person zentriert sind. Über Tabs am oberen Rand der Seite stehen fünf Diagrammtypen zur Verfügung.
 
-## Auswahl der Startperson
+## Auswählen der Ausgangsperson
 
-Alle Diagramme beginnen mit der Person, die derzeit im Baum ausgewählt ist (angezeigt in der Symbolleiste). Die derzeit zentrierte Person ist mit einem Schlagschatten hervorgehoben. Verwenden Sie die **Hauptperson**-Schaltfläche, um zu Ihrer Hauptperson zurückzuspringen, oder die **Zurück**-Schaltfläche, um zur zuvor angezeigten Person zurückzukehren. Durch Klicken auf die Karte einer Person in einem Diagramm wird das Diagramm wieder auf diese Person zentriert.
+Alle Diagramme beginnen mit der Person, die aktuell im Stammbaum ausgewählt ist (in der Werkzeugleiste angezeigt). Die derzeit zentrierte Person wird mit einem Schlagschatten hervorgehoben. Verwende die Schaltfläche **Hauptperson**, um zu deiner Hauptperson zurückzuspringen, oder die Schaltfläche **Zurück**, um zur zuvor angezeigten Person zurückzukehren. Wenn du im Diagramm auf die Karte einer Person klickst, wird das Diagramm auf diese Person zentriert.
 
-Wenn keine Hauptperson festgelegt wurde, bietet die Seite eine **Hauptperson festlegen**-Schaltfläche, um direkt nach einer zu suchen und eine auszuwählen. Wenn der Baum noch keine Personen enthält, sehen Benutzer mit der Rolle Editor oder höher stattdessen eine **Neue Person**-Schaltfläche – die erste Person, die in einem leeren Baum erstellt wird, wird automatisch Ihre Hauptperson, sodass das Diagramm sofort angezeigt wird.
+Wenn noch keine Hauptperson festgelegt wurde, bietet die Seite eine Schaltfläche **Hauptperson festlegen**, mit der du direkt nach einer Person suchen und sie auswählen kannst. Wenn der Stammbaum noch keine Personen enthält, sehen Benutzer mit der Rolle „Bearbeiter“ oder höher stattdessen eine Schaltfläche **Neue Person**. Die erste in einem leeren Stammbaum erstellte Person wird automatisch deine Hauptperson, sodass das Diagramm sofort angezeigt wird.
 
 ## Diagrammtypen
 
-### Ahnenbaum
+### Vorfahrendiagramm
 
-Ein Stammbaumdiagramm, das die Vorfahren der ausgewählten Person zeigt. Eltern erscheinen links (oder rechts, je nach Layout), Großeltern weiter außen und so weiter.
+Ein Ahnentafel-Diagramm, das die Vorfahren der ausgewählten Person zeigt. Die Eltern erscheinen links (oder je nach Layout rechts), die Großeltern weiter außen usw.
 
-### Nachkommenbaum
+### Nachfahrendiagramm
 
-Zeigt die Nachkommen der ausgewählten Person – Kinder, Enkelkinder und so weiter.
+Zeigt die Nachkommen der ausgewählten Person – Kinder, Enkelkinder usw.
 
-### Sanduhr-Diagramm
+### Sanduhrdiagramm
 
-Kombiniert Vorfahren über und Nachkommen unter der ausgewählten Person in einer einzigen Ansicht.
+Kombiniert die Vorfahren oberhalb und die Nachkommen unterhalb der ausgewählten Person in einer einzigen Ansicht.
 
 ### Beziehungsdiagramm
 
-Zeigt den Beziehungsweg zwischen zwei Personen. Die ausgewählte Person ist ein Endpunkt; klicken Sie auf eine andere Person im Diagramm, um den zweiten Endpunkt festzulegen und den kürzesten Beziehungsweg zwischen ihnen anzuzeigen.
+Zeigt den Beziehungspfad zwischen zwei Personen. Die ausgewählte Person ist ein Endpunkt. Klicke auf eine beliebige andere Person im Diagramm, um den zweiten Endpunkt festzulegen und den kürzesten Beziehungspfad zwischen ihnen anzuzeigen.
 
-Jedes Paar wird durch einen kleinen Familienknoten zwischen den beiden Partnern verbunden. Fahren Sie mit der Maus darüber oder klicken oder tippen Sie darauf, um die Details der Familie zu sehen – wie das Heiratsdatum und den -ort sowie die Kinder – ohne das Diagramm zu verlassen. Die **Öffnen**-Schaltfläche in der Vorschau führt zur Seite der Familie. Der Knoten eines Paares, das nicht verheiratet ist, hat eine gestrichelte Umrandung.
+Jedes Paar ist durch einen kleinen Familienknoten zwischen den beiden Partnern verbunden. Bewege den Mauszeiger darüber oder klicke bzw. tippe darauf, um die Details der Familie zu sehen – etwa Heiratsdatum und -ort sowie die Kinder – ohne das Diagramm zu verlassen. Die Schaltfläche **Öffnen** in der Vorschau führt zur Seite der Familie. Der Knoten eines nicht verheirateten Paares hat eine gestrichelte Umrandung.
 
-!!! Hinweis
-    Dieselbe Person kann mehr als einmal im Diagramm erscheinen – zum Beispiel, wenn jemand mehrmals verheiratet war und in mehreren Familieinheiten entlang des Pfades erscheint. Dies ist beabsichtigt, kein Fehler.
+!!! note
+    Dieselbe Person kann im Diagramm mehr als einmal erscheinen – beispielsweise wenn jemand mehrfach verheiratet war und entlang des Pfads in mehreren Familieneinheiten erscheint. Das ist beabsichtigt und kein Fehler.
 
-### Fächerdiagramm
+### Fächergrafik
 
-Ein kreisförmiges Stammbaumdiagramm. Vorfahren strahlen von der ausgewählten Person in der Mitte nach außen.
+Ein kreisförmiges Ahnentafel-Diagramm. Die Vorfahren strahlen von der ausgewählten Person in der Mitte nach außen.
 
-Die **Farbe**-Schaltfläche in der Symbolleiste färbt die Segmente nach einem Merkmal jeder Person: der Anzahl der Ereignisse oder Notizen, Geburtsjahr, Sterbejahr, Alter, Nachname, Religion oder Vorfahrenhäufigkeit (wie oft eine Person im Diagramm erscheint). Die Färbung nach Nachname verwendet den Nachnamen der Geburtsnamen der Person oder den Hauptnamen, wenn kein Geburtsname vorhanden ist. Um die Färbung zu entfernen, löschen Sie den Chip, der die gewählte Farbe anzeigt.
+Die Schaltfläche **Farbe** in der Werkzeugleiste färbt die Segmente anhand einer Eigenschaft jeder Person: der Anzahl der Ereignisse oder Notizen, des Geburtsjahrs, des Todesjahrs, des Alters, des Nachnamens, der Religion oder der Vorfahrenhäufigkeit (wie oft eine Person im Diagramm erscheint). Bei der Färbung nach Nachnamen wird der Nachname des Geburtsnamens der Person verwendet oder, wenn kein Geburtsname vorhanden ist, der Nachname des primären Namens. Um die Färbung zu entfernen, entferne das Etikett, das die ausgewählte Farbe anzeigt.
 
-## Zu Verwandten wechseln und Äste erweitern
+## Zu Verwandten wechseln und Zweige erweitern
 
-Im Ahnenbaum und im Fächerdiagramm hat die ausgewählte Person eine Chevron-Schaltfläche, die ein Menü ihrer Kinder öffnet. Im Nachkommenbaum öffnet sie stattdessen ein Menü ihrer Eltern. Die Auswahl einer Person aus dem Menü zentriert das Diagramm auf diese Person.
+Im Vorfahrendiagramm und in der Fächergrafik verfügt die ausgewählte Person über eine Chevron-Schaltfläche, die ein Menü mit ihren Kindern öffnet. Im Nachfahrendiagramm öffnet sie stattdessen ein Menü mit ihren Eltern. Wenn du eine Person aus dem Menü auswählst, wird das Diagramm auf diese Person zentriert.
 
-Im Ahnenbaum, Nachkommenbaum und Sanduhr-Diagramm haben Personen am Rand des Diagramms, deren Eltern oder Kinder nicht angezeigt werden, einen Chevron auf der Seite, wo ihr Ast weitergeht. Ein Klick darauf fügt dieser Verzweigung eine weitere Generation hinzu, während die ausgewählte Person gleich bleibt. So können Sie beispielsweise alle Großeltern betrachten und dann nur eine Linie weiter zurückverfolgen. Erweiterte Äste werden zurückgesetzt, wenn Sie eine andere Person auswählen oder zu einem anderen Diagramm wechseln.
+Im Vorfahrendiagramm, Nachfahrendiagramm und Sanduhrdiagramm haben Personen am Rand des Diagramms, deren Eltern oder Kinder nicht angezeigt werden, auf der Seite, auf der ihr Zweig fortgesetzt wird, ein Chevron. Wenn du darauf klickst, wird diesem Zweig eine weitere Generation hinzugefügt, während die ausgewählte Person unverändert bleibt. So kannst du beispielsweise alle Großeltern anzeigen und anschließend nur einer Linie weiter zurück folgen. Erweiterte Zweige werden zurückgesetzt, wenn du eine andere Person auswählst oder zu einem anderen Diagramm wechselst.
 
-## Navigationssteuerungen
+## Navigationssteuerelemente
 
-Alle Diagrammtypen teilen sich eine Symbolleiste mit den folgenden Schaltflächen:
+Alle Diagrammtypen verfügen über eine Werkzeugleiste mit den folgenden Schaltflächen:
 
-- **Hauptperson** – zurück zu Ihrer Hauptperson springen
-- **Zurück** – zurück zur zuvor zentrierten Person
+- **Hauptperson** – zu deiner Hauptperson zurückspringen
+- **Zurück** – zur zuvor zentrierten Person zurückkehren
 - **Personendetails** – die vollständige Profilseite der derzeit zentrierten Person öffnen
-- **Einstellungen** – ein Dialogfeld öffnen, um diagrammspezifische Anzeigeoptionen anzupassen (siehe unten)
+- **Einstellungen** – einen Dialog öffnen, um diagrammspezifische Anzeigeoptionen anzupassen (siehe unten)
 
-Alle Diagramme unterstützen **Pan** (klicken und ziehen) und **Zoom** (Scrollrad oder Pinch).
+Alle Diagramme unterstützen **Verschieben** (klicken und ziehen) und **Zoomen** (Mausrad oder Auf- und Zuziehen).
 
 ## Diagrammeinstellungen
 
-Das **Einstellungen**-Dialogfeld (Zahnrad-Symbol in der Symbolleiste) ermöglicht es Ihnen, die folgenden Optionen anzupassen, abhängig vom Diagrammtyp:
+Der Dialog **Einstellungen** (Zahnradsymbol in der Werkzeugleiste) ermöglicht dir, abhängig vom Diagrammtyp, die folgenden Optionen anzupassen:
 
-- **Maximale Ahnen-Generationen** – wie viele Generationen von Vorfahren angezeigt werden sollen
-- **Maximale Nachkommen-Generationen** – wie viele Generationen von Nachkommen angezeigt werden sollen
-- **Maximaler Grad der Trennung** – für das Beziehungsdiagramm, die maximale Pfadlänge, die gesucht werden soll. Hohe Werte können das Diagramm bei großen Bäumen langsam laden lassen.
-- **Maximale Anzahl der angezeigten Bilder** – begrenzt die Profilfotos, die im Diagramm aus Leistungsgründen angezeigt werden
-- **Namensanzeigeformat** – steuert, wie Namen auf Personenkarten angezeigt werden
+- **Maximale Vorfahrengenerationen** – wie viele Generationen von Vorfahren angezeigt werden
+- **Maximale Nachfahrengenerationen** – wie viele Generationen von Nachkommen angezeigt werden
+- **Maximaler Verwandtschaftsgrad** – für das Beziehungsdiagramm die maximale Länge des zu suchenden Pfads. Hohe Werte können dazu führen, dass das Diagramm bei großen Stammbäumen langsam geladen wird.
+- **Maximale Anzahl angezeigter Bilder** – begrenzt die im Diagramm angezeigten Profilfotos, um die Leistung zu verbessern
+- **Namensanzeigeformat** – legt fest, wie Namen auf Personenkarten angezeigt werden
 
-Klicken Sie auf **Zurücksetzen**, um die Standardeinstellungen wiederherzustellen, oder auf **Schließen**, um Ihre Änderungen anzuwenden.
+Klicke auf **Zurücksetzen**, um die Standardeinstellungen wiederherzustellen, oder auf **Schließen**, um deine Änderungen anzuwenden.
 
-Die Einstellungen für Diagrammeinstellungen werden im lokalen Speicher des Browsers gespeichert, sodass sie über Sitzungen auf demselben Gerät hinweg bestehen bleiben.
+Die Einstellungen für Diagramme werden im lokalen Speicher des Browsers gespeichert und bleiben daher sitzungsübergreifend auf demselben Gerät erhalten.
 
-## Standard-Diagrammtyp
+## Standarddiagrammtyp
 
-Der Diagrammtyp, der angezeigt wird, wenn Sie die Stammbaum-Seite zum ersten Mal öffnen, kann in den [Benutzereinstellungen](settings.md) konfiguriert werden. Ihr gewählter Standard gilt auf all Ihren Geräten.
+Der Diagrammtyp, der beim ersten Öffnen der Seite „Familienbaum“ angezeigt wird, kann in den [Benutzereinstellungen](settings.md) konfiguriert werden. Deine gewählte Standardeinstellung gilt auf allen deinen Geräten.
 
-## Bearbeiten des Baums
+## Bearbeiten des Stammbaums
 
-Benutzer mit der Rolle Editor oder höher können Personen direkt aus dem Ahnenbaum hinzufügen und verknüpfen. Siehe [Bearbeiten des Stammbaums](tree-edit.md) für Details.
+Benutzer mit der Rolle „Bearbeiter“ oder höher können Personen direkt über das Vorfahrendiagramm hinzufügen und verknüpfen. Einzelheiten findest du unter [Bearbeiten des Stammbaums](tree-edit.md).

@@ -1,46 +1,46 @@
 # Gramps Web DigitalOcean 1-Click App
 
-[Gramps Webを自分で設定する](deployment.md)代わりに、[Gramps Web DigitalOcean 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy)を使用することもできます。Digital OceanはGramps Webのデモ版をホストしています。
+[Gramps Web を自分でセットアップする](deployment.md)代わりに、[Gramps Web DigitalOcean 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy)も使用できます。Digital Ocean は Gramps Web のデモ版をホストしています。
 
 <a href="https://www.digitalocean.com/?refcode=b1d13ebe86ac&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
 
-セットアップ手順の一環として、DigitalOceanのアカウントにサインアップし、「ドロップレット」（仮想マシン）を使用するための有料プランを選択する必要があります。
+セットアップ手順の一環として、DigitalOcean のアカウントを作成し、使用する「droplet」（仮想マシン）の有料プランを選択する必要があります。
 
-現在、これは自分のハードウェアを使用せずにSSLで保護された自己ホスト型のGramps Webインスタンスをデプロイする最も簡単な方法と言えるでしょう。
+これは、現在のところ、自分のハードウェアを使用せずに、SSL で保護された独自のセルフホスト型 Gramps Web インスタンスをデプロイする最も簡単な方法と言えるでしょう。
 
 !!! info
-    DigitalOceanのホスティングサービスに対して料金を支払うことになりますのでご注意ください。Grampsオープンソースプロジェクトは有料サポートを提供していません。
+    DigitalOcean のホスティングサービスに対して料金を支払う必要があることに注意してください。Gramps オープンソースプロジェクトでは、有料サポートを提供していません。
 
-## ステップ1: DigitalOceanアカウントを作成する
+## 手順 1: DigitalOcean アカウントを作成する
 
-まだアカウントを持っていない場合は、[DigitalOcean](https://www.digitalocean.com/)でアカウントを作成してください。
+まだアカウントをお持ちでない場合は、[DigitalOcean](https://www.digitalocean.com/) でアカウントを作成してください。
 
-## ステップ2: ドロップレットを作成する
+## 手順 2: droplet を作成する
 
-- [Gramps Web 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy)に移動し、「Gramps Web Dropletを作成」をクリックします。
-- 最低2GBのRAMを持つプランを選択します。
-- ドロップレットへの認証を設定します。
-- 「ドロップレットを作成」をクリックします。
+- [Gramps Web 1-Click App](https://marketplace.digitalocean.com/apps/gramps-web?refcode=b1d13ebe86ac&action=deploy) に移動し、「Create Gramps Web Droplet」をクリックしてください。
+- RAM が 2 GB 以上のプランを選択してください。
+- droplet の認証を設定してください。
+- 「Create Droplet」をクリックしてください。
 
-## ステップ3: ドメイン名を設定する
+## 手順 3: ドメイン名を設定する
 
-ドメイン名（またはサブドメイン）が必要です。ドメインを所有している場合は、それをドロップレットのIPアドレスにポイントしてください。そうでない場合は、[DuckDNS](https://www.duckdns.org/)のような無料サービスを使用できます。
+ドメイン名（またはサブドメイン）が必要です。ドメインを所有している場合は、そのドメインを droplet の IP アドレスに向けてください。それ以外の場合は、[DuckDNS](https://www.duckdns.org/) などの無料サービスを使用できます。
 
-## ステップ4: ドロップレットにログインする
+## 手順 4: droplet にログインする
 
-SSHを使用してドロップレットに接続します。「Gramps Web DigitalOcean 1-click app setup!へようこそ！」というメッセージが表示されるはずです。これが表示されない場合は、数分待って再試行してください（インストールはまだ完了していません）。
+droplet に SSH 接続してください。「Welcome to the Gramps Web DigitalOcean 1-click app setup!」というメッセージが表示されるはずです。表示されない場合は、数分待ってからもう一度試してください（インストールがまだ完了していない可能性があります）。
 
-セットアップスクリプトは、ドメイン名（例: `mygrampswebinstance.duckdns.org`）とメールアドレス（Let's Encrypt証明書に必要）を尋ねます。オプションとして、Gramps Webがパスワードリセットなどのためにメールを送信する際に使用するSMTP設定も尋ねられます。SMTPホストを空白のままにすると、これをスキップできます。
+セットアップスクリプトで、ドメイン名（例: `mygrampswebinstance.duckdns.org`）とメールアドレス（Let's Encrypt 証明書に必要です）の入力を求められます。必要に応じて、パスワードのリセットなど、Gramps Web がメール送信に使用する SMTP 設定の入力も求められます。これを省略するには、SMTP ホストを空のままにしてください。
 
-これが完了したら、バックグラウンドでのセットアップが完了するのを待ちます。
+完了したら、バックグラウンドでセットアップが完了するまで待ってください。
 
-## ステップ5: Gramps Webを起動する
+## 手順 5: Gramps Web を起動する
 
-あなたのGramps Webインスタンスは、ドメインのルートでアクセス可能になり、有効なSSL証明書があり、初回実行アシスタントが表示されるはずです。
+これで、Gramps Web インスタンスが有効な SSL 証明書とともにドメインのルートでアクセス可能になり、初回実行アシスタントが表示されるはずです。
 
-## 後で設定を変更する
+## 後から設定を変更する
 
-セットアップスクリプトは、基本URLとメール設定をファイル`/root/letsencrypt.env`に[設定オプション](configuration.md)として保存します。これらは`GRAMPSWEB_`で始まります。例えば：
+セットアップスクリプトは、ベース URL とメール設定を、`GRAMPSWEB_` をプレフィックスとする[設定オプション](configuration.md)としてファイル `/root/letsencrypt.env` に保存します。例:
 
 ```
 GRAMPSWEB_EMAIL_HOST=smtp.example.com
@@ -48,7 +48,8 @@ GRAMPSWEB_EMAIL_PORT=587
 GRAMPSWEB_EMAIL_USE_STARTTLS=true
 ```
 
-設定を追加または変更するには、このファイルをドロップレット上で編集し、次のコマンドで変更を適用します。
+設定を追加または変更するには、droplet 上でこのファイルを編集し、次のコマンドで変更を適用してください。
 
 ```bash
 cd /opt/grampsweb && docker compose up -d
+```

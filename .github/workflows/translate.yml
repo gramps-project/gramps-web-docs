@@ -36,8 +36,15 @@ jobs:
         run: |
           # Get list of added or modified Markdown files in docs/en/
           # Using --diff-filter=AM to include both Added and Modified files
-          # Only check for changed files if docs were actually modified
-          CHANGED_FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD | grep '^docs/en/.*\.md$' || true)
+          # Compare against the state before the push, so that all commits of
+          # a multi-commit push are covered. Fall back to HEAD~1 for manual runs
+          # or when the previous commit is unknown.
+          BASE="${{ github.event.before }}"
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            BASE="HEAD~1"
+          fi
+          echo "Comparing against $BASE"
+          CHANGED_FILES=$(git diff --name-only --diff-filter=AM "$BASE" HEAD | grep '^docs/en/.*\.md$' || true)
 
           if [ -z "$CHANGED_FILES" ]; then
             echo "No Markdown files changed in docs/en/"
@@ -57,14 +64,15 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # Translate each changed file
+          # Translate all changed files in one (parallel) run
+          RELATIVE_PATHS=""
           for file in ${{ steps.changed-files.outputs.files }}; do
             # Remove 'docs/en/' prefix to get relative path
-            RELATIVE_PATH="${file#docs/en/}"
-            
-            echo "Translating: $RELATIVE_PATH"
-            python translate.py --file "$RELATIVE_PATH" --lang all --force
+            RELATIVE_PATHS="$RELATIVE_PATHS ${file#docs/en/}"
           done
+
+          echo "Translating:$RELATIVE_PATHS"
+          python translate.py --file $RELATIVE_PATHS --lang all --force
 
       - name: Check for translation changes
         id: check-changes

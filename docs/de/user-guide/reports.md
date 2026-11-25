@@ -1,30 +1,30 @@
 # Berichte
 
-Ein Bericht ist ein formatiertes, herunterladbares Dokument, das aus Ihren Familienstammdaten generiert wird. Berichte sind dieselben Plugins, die in Gramps Desktop verfügbar sind – siehe die [Gramps-Wiki-Seite zu Berichten](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports) für einen vollständigen Überblick. Die Weboberfläche verwendet denselben Bericht-Engine auf dem Server und liefert die resultierende Datei an Ihren Browser.
+Ein Bericht ist ein formatiertes, herunterladbares Dokument, das aus den Daten deines Familienstammbaums erstellt wird. Berichte sind dieselben Plugins, die in Gramps Desktop verfügbar sind – eine vollständige Übersicht findest du auf der [Gramps-Wiki-Seite zu Berichten](https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Reports). Die Weboberfläche verwendet dieselbe Bericht-Engine auf dem Server und stellt die resultierende Datei deinem Browser bereit.
 
 Berichte sind über die Seitenleiste zugänglich.
 
 ## Berichtskategorien
 
-Die Berichtsseite listet alle verfügbaren Berichte, gruppiert nach Kategorien:
+Die Berichtsseite listet alle verfügbaren Berichte nach Kategorien gruppiert auf:
 
-- **Textberichte** – narrative oder tabellarische Dokumente wie Ahnenlisten, Nachkommenberichte und Geburtstagskalender. Ausgabeformate umfassen PDF, ODT/OpenDocument, RTF, HTML und andere.
-- **Grafische Berichte** – Diagramme und Grafiken wie Ahnenbäume und Fächergrafiken. Ausgabeformate umfassen PDF, SVG, PNG und andere.
+- **Textberichte** – erzählende oder tabellarische Dokumente wie Vorfahrenlisten, Nachfahrenberichte und Geburtstagskalender. Zu den Ausgabeformaten gehören PDF, ODT/OpenDocument, RTF, HTML und weitere.
+- **Grafische Berichte** – Diagramme und Grafiken wie Vorfahrentafeln und Fächertafeln. Zu den Ausgabeformaten gehören PDF, SVG, PNG und weitere.
 - **Bäume** – Diagramme von Familienstammbäumen.
-- **Bücher** – mehrteilige Berichtsbücher, die mehrere Text- und Grafikberichte in einem einzigen Dokument kombinieren.
-- **Webseiten** – statische Website-Generatoren, die ein vollständiges Set von HTML-Seiten aus Ihrem Baum erstellen.
+- **Bücher** – mehrkapitelige Berichtsbücher, die mehrere Text- und grafische Berichte in einem einzigen Dokument zusammenfassen.
+- **Webseiten** – Generatoren für statische Websites, die aus deinem Stammbaum einen vollständigen Satz von HTML-Seiten erstellen.
 
-Die angezeigten Berichte hängen davon ab, welche Gramps-Bericht-Plugins auf dem Server installiert sind.
+Welche Berichte angezeigt werden, hängt davon ab, welche Gramps-Berichtsplugins auf dem Server installiert sind.
 
 ## Einen Bericht ausführen
 
-Klicken Sie auf einen Bericht, um dessen Optionsseite zu öffnen, die Folgendes anzeigt:
+Klicke auf einen Bericht, um seine Optionsseite zu öffnen. Dort werden folgende Informationen angezeigt:
 
-- **Beschreibung** – was der Bericht enthält
+- **Beschreibung** – welche Inhalte der Bericht enthält
 - **Autor** und **Version** des Plugins
-- **Optionen** – berichtspezifische Einstellungen wie die Startperson, Anzahl der Generationen, Ausgabeformat, Seitengröße und andere Parameter
+- **Optionen** – berichtsspezifische Einstellungen wie die Startperson, die Anzahl der Generationen, das Ausgabeformat, die Seitengröße und weitere Parameter
 
-Passen Sie die Optionen nach Bedarf an und klicken Sie dann auf **Generieren**. Der Bericht wird auf dem Server generiert und die resultierende Datei wird automatisch in Ihren Browser heruntergeladen.
+Passe die Optionen nach Bedarf an und klicke dann auf **Generieren**. Der Bericht wird auf dem Server erstellt und die resultierende Datei automatisch in deinen Browser heruntergeladen.
 
 !!! tip
-    Die meisten Berichte verwenden standardmäßig die **Datenbank-Hausperson** – die Hausperson, die in der Gramps-Datenbank festgelegt ist, die von Ihrer persönlichen Hauspersoneneinstellung im Browser abweichen kann. Wenn der Bericht die falsche Person abdeckt, ändern Sie die Personenoption in den Berichtseinstellungen.
+    Bei den meisten Berichten ist standardmäßig die **Hauptperson der Datenbank** ausgewählt – die Hauptperson, die in der Gramps-Datenbank festgelegt ist und sich von deiner persönlichen Einstellung der Hauptperson im Browser unterscheiden kann. Wenn der Bericht die falsche Person betrifft, ändere die Personenoption in den Berichtseinstellungen.

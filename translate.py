@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Gramps Web Docs Translation Tool using OpenAI GPT-4o-mini
+Gramps Web Docs Translation Tool using the OpenAI API
 Translates Markdown documentation while preserving formatting.
 """
 
@@ -8,6 +8,7 @@ import argparse
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -20,10 +21,12 @@ load_dotenv()
 CONFIG = {
     "api": {
         "provider": "openai",
-        "model": "gpt-4o-mini",
-        "timeout": 180,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "low",
+        "timeout": 300,
         "max_retries": 3,
-        "retry_delay": 5
+        "retry_delay": 5,
+        "workers": 8  # parallel API requests
     },
     "translation": {
         "source_language": "en",
@@ -60,10 +63,12 @@ if not API_KEY:
     )
 
 
+CLIENT = OpenAI(api_key=API_KEY)  # thread-safe, shared by all workers
+
+
 def translate_with_openai(content, target_lang, source_lang="en"):
-    """Translate Markdown content using OpenAI GPT-4o-mini"""
+    """Translate Markdown content using the configured OpenAI model"""
     api_config = CONFIG["api"]
-    client = OpenAI(api_key=API_KEY)
     model = api_config["model"]
     
     target_lang_name = LANGUAGE_NAMES.get(target_lang, target_lang)
@@ -78,6 +83,26 @@ TERMINOLOGY (always use these translations, consistent with official Gramps Germ
 """,
     }
     glossary = GLOSSARIES.get(target_lang, "")
+
+    # How to address the reader, matching the existing translations
+    ADDRESS = {
+        "de": "informal \"du\" (lowercase, never \"Sie\")",
+        "fr": "formal \"vous\"",
+        "es": "informal \"tú\"",
+        "it": "informal \"tu\"",
+        "pt": "\"você\"",
+        "ru": "formal \"вы\"",
+        "uk": "formal \"ви\"",
+        "da": "\"du\"",
+        "fi": "\"sinä\" (singular verb forms such as \"voit\")",
+        "tr": "formal \"siz\"",
+        "vi": "\"bạn\"",
+        "zh": "polite \"您\"",
+        "ja": "polite です/ます style",
+    }
+    address = ADDRESS.get(target_lang)
+    if address:
+        glossary += f"\nADDRESS THE READER CONSISTENTLY: use {address} throughout.\n"
 
     prompt = f"""You are translating technical documentation from {source_lang_name} to {target_lang_name}.
 
@@ -99,27 +124,29 @@ Translated document in {target_lang_name}:"""
     
     for attempt in range(max_retries):
         try:
-            response = client.chat.completions.create(
+            response = CLIENT.chat.completions.create(
                 model=model,
                 messages=[
                     {"role": "system", "content": "You are a professional translator specialized in technical documentation. You preserve Markdown formatting perfectly."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.3,  # Lower temperature for more consistent translations
+                reasoning_effort=api_config["reasoning_effort"],
                 timeout=timeout
             )
+
+            choice = response.choices[0]
+            if choice.finish_reason != "stop":
+                # e.g. "length": never save a truncated translation
+                raise Exception(f"Incomplete response (finish_reason={choice.finish_reason})")
+            translated = choice.message.content
             
-            translated = response.choices[0].message.content
-            
-            # Remove potential markdown code block wrappers if AI added them
-            if translated.startswith("```markdown\n"):
-                translated = translated[len("```markdown\n"):]
-            if translated.startswith("```\n"):
-                translated = translated[len("```\n"):]
-            if translated.endswith("\n```"):
-                translated = translated[:-len("\n```")]
-            if translated.endswith("```"):
-                translated = translated[:-len("```")]
+            # Remove a markdown code block wrapper if the AI added one. Only
+            # strip the closing fence together with an opening wrapper: a
+            # document may legitimately end with a code block.
+            for opening in ("```markdown\n", "```md\n", "```\n"):
+                if translated.startswith(opening) and translated.rstrip().endswith("```"):
+                    translated = translated[len(opening):].rstrip()[:-len("```")]
+                    break
             
             return translated.strip()
             
@@ -163,18 +190,25 @@ def translate_file(src_path, target_lang, force=False):
         return True
         
     except Exception as e:
-        print(f"   ERROR: Failed to translate {src_path}: {e}")
+        print(f"   ERROR: Failed to translate {src_path} to {target_lang}: {e}")
         return False
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Translate Gramps Web documentation using OpenAI GPT-4o-mini"
+        description=f"Translate Gramps Web documentation using OpenAI {CONFIG['api']['model']}"
     )
     parser.add_argument(
         "--file",
         type=str,
-        help="Translate a specific file (relative to docs/en/)"
+        nargs="+",
+        help="Translate specific file(s) (relative to docs/en/)"
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=CONFIG["api"]["workers"],
+        help="Number of translations to run in parallel"
     )
     parser.add_argument(
         "--lang",
@@ -214,16 +248,18 @@ def main():
     if args.test:
         files_to_translate = [source_dir / "user-guide" / "first-login.md"]
     elif args.file:
-        file_path = Path(args.file)
-        if not file_path.is_absolute():
-            file_path = source_dir / file_path
-        files_to_translate = [file_path]
+        files_to_translate = []
+        for name in args.file:
+            file_path = Path(name)
+            if not file_path.is_absolute():
+                file_path = source_dir / file_path
+            files_to_translate.append(file_path)
     else:
         # Find all .md files recursively
         files_to_translate = sorted(source_dir.rglob("*.md"))
-    
+
     print("=" * 60)
-    print("Gramps Web Docs Translation (OpenAI GPT-4o-mini)")
+    print(f"Gramps Web Docs Translation (OpenAI {CONFIG['api']['model']})")
     print("=" * 60)
     print(f"Source: {source_dir}")
     print(f"Target languages: {', '.join(target_languages)}")
@@ -239,22 +275,23 @@ def main():
                 print(f"  Would translate: {file_path.relative_to(source_dir)}")
         return
     
-    success_count = 0
-    error_count = 0
-    
+    jobs = []
     for file_path in files_to_translate:
         if not file_path.exists():
             print(f"WARNING: File not found: {file_path}")
             continue
-        
-        print(f"\n{file_path.relative_to(source_dir)}")
-        
         for lang in target_languages:
-            if translate_file(file_path, lang, force=args.force):
-                success_count += 1
-            else:
-                error_count += 1
-    
+            jobs.append((file_path, lang))
+
+    # Run (file, language) translations in parallel
+    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as executor:
+        results = list(executor.map(
+            lambda job: translate_file(job[0], job[1], force=args.force), jobs
+        ))
+
+    success_count = sum(results)
+    error_count = len(results) - success_count
+
     print()
     print("=" * 60)
     print(f" Success: {success_count}")

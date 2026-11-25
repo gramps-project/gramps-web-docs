@@ -1,37 +1,37 @@
 # Sunucu Yapılandırması
 
-Varsayılan Docker imajını kullanarak, gerekli tüm yapılandırmalar tarayıcıdan yapılabilir. Ancak, dağıtıma bağlı olarak, sunucu yapılandırmasını özelleştirmek gerekebilir.
+Varsayılan Docker görüntüsünü kullanarak gerekli tüm yapılandırmalar tarayıcı üzerinden yapılabilir. Ancak dağıtıma bağlı olarak sunucu yapılandırmasını özelleştirmeniz gerekebilir.
 
-Bu sayfa, yapılandırmayı değiştirmek için tüm yöntemleri ve mevcut tüm yapılandırma seçeneklerini listeler.
+Bu sayfada yapılandırmayı değiştirmek için kullanılabilecek tüm yöntemler ve mevcut tüm yapılandırma seçenekleri listelenmektedir.
 
 
-## Yapılandırma dosyası vs. ortam değişkenleri
+## Yapılandırma dosyası ve ortam değişkenleri
 
-Ayarlar için ya bir yapılandırma dosyası ya da ortam değişkenleri kullanabilirsiniz.
+Ayarlar için bir yapılandırma dosyası veya ortam değişkenleri kullanabilirsiniz.
 
-[Docker Compose tabanlı kurulum](deployment.md) kullanıyorsanız, `grampsweb:` bloğundaki `volumes:` anahtarının altına aşağıdaki liste öğesini ekleyerek bir yapılandırma dosyası dahil edebilirsiniz:
+[Docker Compose tabanlı kurulumu](deployment.md) kullandığınızda, `grampsweb:` bloğundaki `volumes:` anahtarının altına aşağıdaki liste öğesini ekleyerek bir yapılandırma dosyası ekleyebilirsiniz:
 
 ```yaml
       - /path/to/config.cfg:/app/config/config.cfg
 ```
-burada `/path/to/config.cfg`, sunucunuzun dosya sistemindeki yapılandırma dosyasının yoludur (sağ taraf, konteynerdeki yolu ifade eder ve değiştirilmemelidir).
+Burada `/path/to/config.cfg`, sunucunuzun dosya sistemindeki yapılandırma dosyasının yoludur (sağ taraf kapsayıcıdaki yolu ifade eder ve değiştirilmemelidir).
 
-Ortam değişkenleri kullanırken,
+Ortam değişkenlerini kullanırken:
 
-- her ayar adını `GRAMPSWEB_` ile öne ekleyin, böylece ortam değişkeninin adını elde edersiniz
-- İç içe sözlük ayarları için çift alt çizgi kullanın, örneğin `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT`, `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` yapılandırma seçeneğinin değerini ayarlayacaktır
+- ortam değişkeninin adını elde etmek için her ayar adının başına `GRAMPSWEB_` ekleyin
+- İç içe sözlük ayarları için çift alt çizgi kullanın; örneğin `GRAMPSWEB_THUMBNAIL_CACHE_CONFIG__CACHE_DEFAULT_TIMEOUT`, `THUMBNAIL_CACHE_CONFIG['CACHE_DEFAULT_TIMEOUT']` yapılandırma seçeneğinin değerini ayarlar
 
-Ortam aracılığıyla ayarlanan yapılandırma seçeneklerinin, yapılandırma dosyasındakiler üzerinde önceliği olduğunu unutmayın. Her ikisi de mevcutsa, ortam değişkeni "kazanır".
+Ortam üzerinden ayarlanan yapılandırma seçeneklerinin, yapılandırma dosyasındakilere göre öncelikli olduğunu unutmayın. Her ikisi de mevcutsa ortam değişkeni “kazanır”.
 
-!!! warning "Öne eklenmemiş ortam değişkenleri kullanımdan kaldırılmıştır"
-    Tarihsel nedenlerle, bir dizi ayar – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL` ve `STATIC_PATH` – hala `GRAMPSWEB_` öne eki olmadan bir ortam değişkeni aracılığıyla ayarlanabilir. Bu kullanımda kaldırılmıştır, başlangıçta bir uyarı kaydeder ve gelecekteki bir sürümde çalışmayı durduracaktır. Her zaman öne ekli biçimi kullanın, örneğin `GRAMPSWEB_TREE` yerine `TREE`.
+!!! warning "Öneksiz ortam değişkenleri kullanımdan kaldırılmıştır"
+    Geçmiş nedenlerden dolayı bazı ayarlar – `TREE`, `SECRET_KEY`, `USER_DB_URI`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `MEDIA_BASE_DIR`, `SEARCH_INDEX_DIR`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`, `BASE_URL` ve `STATIC_PATH` – hâlâ `GRAMPSWEB_` öneki olmadan bir ortam değişkeni üzerinden ayarlanabilir. Bu kullanım artık önerilmemektedir, başlangıçta bir uyarı günlüğe kaydedilir ve gelecekteki bir sürümde çalışmayı durduracaktır. Her zaman önekli biçimi kullanın; örneğin `TREE` yerine `GRAMPSWEB_TREE`.
 
-    Bunun yalnızca ortam değişkenlerini ilgilendirdiğini unutmayın. Bir yapılandırma dosyasında, ayar adları her zaman öne ek olmadan kullanılır.
+    Bunun yalnızca ortam değişkenleriyle ilgili olduğunu unutmayın. Yapılandırma dosyasında ayar adları her zaman öneksiz olarak kullanılır.
 
-!!! tip "Kaldırılmış seçenekleri kontrol etme"
-    Sunucunuzun hala bağlı olduğu kaldırılmış yapılandırma seçenekleri – öne ek olmadan ortam değişkenleri, `SEARCH_INDEX_DIR` veya `EMAIL_USE_TLS` gibi – başlangıçta uyarı olarak kaydedilir. Gramps Web API 3.22'den itibaren, bunlar ayrıca, yerel yönetici olarak oturum açtığınızda **Sistem Bilgileri** sayfasının en üstünde, yerine geçecek olanları ve desteğin kaldırılacağı sürümü ile birlikte listelenir.
+!!! tip "Kullanımdan kaldırılmış seçenekleri denetleme"
+    Sunucunuzun hâlâ dayandığı, öneksiz ortam değişkenleri, `SEARCH_INDEX_DIR` veya `EMAIL_USE_TLS` gibi kullanımdan kaldırılmış yapılandırma seçenekleri başlangıçta uyarı olarak günlüğe kaydedilir. Gramps Web API 3.22 sürümünden itibaren, yönetici olarak oturum açtığınızda bunlar, yerine geçen seçenek ve desteğin kaldırılacağı sürümle birlikte **Sistem Bilgileri** sayfasının üst kısmında da listelenir (üst uygulama çubuğundaki kullanıcı simgesi üzerinden erişilebilir).
 
-    Eski sürümlerin ilk çalıştırma sihirbazının veritabanında depoladığı e-posta ayarları ve temel URL de burada listelenir. Bunları yapılandırmanızda depolanan değerlere ayarlayın; eşleştiğinde uyarı kaybolur.
+    Eski sürümlerin ilk çalıştırma sihirbazının veritabanında depoladığı e-posta ayarları ve temel URL de burada listelenir. Bunları depolanan değerlerle eşleşecek şekilde yapılandırmanızda ayarlayın; eşleştiklerinde uyarı kaybolur.
 
 ## Mevcut yapılandırma ayarları
 Aşağıdaki yapılandırma seçenekleri mevcuttur.
@@ -40,155 +40,156 @@ Aşağıdaki yapılandırma seçenekleri mevcuttur.
 
 Anahtar | Açıklama
 ----|-------------
-`TREE` | Kullanılacak aile ağacı veritabanının adı. Mevcut ağaçları `gramps -l` ile gösterin. Bu isimde bir ağaç yoksa, yeni boş bir tane oluşturulacaktır.
-`SECRET_KEY` | Flask için gizli anahtar. Gizli anahtar kamuya açık olarak paylaşılmamalıdır. Değiştirilmesi, tüm erişim jetonlarını geçersiz kılacaktır.
-`USER_DB_URI` | Kullanıcı veritabanının veritabanı URL'si. SQLAlchemy ile uyumlu herhangi bir URL kabul edilir.
+`TREE` | Kullanılacak aile ağacı veritabanının adı. Kullanılabilir ağaçları `gramps -l` ile gösterin. Bu ada sahip bir ağaç yoksa yeni ve boş bir ağaç oluşturulur.
+`SECRET_KEY` | Flask için gizli anahtar. Gizli anahtar herkese açık olarak paylaşılmamalıdır. Bu anahtarın değiştirilmesi tüm erişim belirteçlerini geçersiz kılar.
+`USER_DB_URI` | Kullanıcı veritabanının veritabanı URL'si. SQLAlchemy ile uyumlu tüm URL'lere izin verilir.
 
 !!! info
-    Güvenli bir gizli anahtar oluşturmak için, örneğin şu komutu kullanabilirsiniz:
+    Örneğin aşağıdaki komutla güvenli bir gizli anahtar oluşturabilirsiniz:
 
     ```
     python3 -c "import secrets;print(secrets.token_urlsafe(32))"
     ```
 
-### Opsiyonel ayarlar
+### İsteğe bağlı ayarlar
 
 Anahtar | Açıklama
 ----|-------------
-`MEDIA_BASE_DIR` | Medya dosyaları için temel dizin olarak kullanılacak yol, Gramps'ta ayarlanan medya temel dizinini geçersiz kılar. [S3](s3.md) kullanıyorsanız, `s3://<bucket_name>` biçiminde olmalıdır.
-`TREE_ID` | Tek ağaç modunda kullanılacak aile ağacı veritabanının dizin adı (eğer `TREE` `*` olarak ayarlanmamışsa). Ayarlandığında, sunucu ağacı dizin adıyla tanımlar, bu da yeniden adlandırmalara karşı daha sağlamdır. API aracılığıyla ağacı yeniden adlandırmak istiyorsanız gereklidir. Dizin adı, `GET /api/trees/-` (id alanı) ile bulunabilir.
-`SEARCH_INDEX_DB_URI` | Arama dizini için veritabanı URL'si. Yalnızca `sqlite` veya `postgresql` arka uçları kabul edilir. Varsayılan olarak `sqlite:///indexdir/search_index.db`'dir ve bu, scriptin çalıştırıldığı yolun göreli olarak `indexdir` klasöründe bir SQLite dosyası oluşturur.
-`SEARCH_INDEX_DIR` | **Kaldırılmış** (bunun yerine `SEARCH_INDEX_DB_URI` kullanın). Arama dizinini içeren dizin. `SEARCH_INDEX_DB_URI` ayarlanmamışken ayarlanırsa, arama dizini URL'si `sqlite:///<SEARCH_INDEX_DIR>/search_index.db` olarak türetilir.
-`STATIC_PATH` | Statik dosyaların sunulacağı yol (örneğin, statik bir web ön yüzü)
-`BASE_URL` | API'nin erişilebileceği temel URL (örneğin, `https://mygramps.mydomain.com/`). Bu, doğru şifre sıfırlama bağlantıları oluşturmak için gereklidir. Web Push ayrıca kamuya açık bir HTTPS URL'si gerektirir; varsayılan `http://localhost/` Web Push'i devre dışı bırakır. Bu ayarı ortam aracılığıyla yapılandırırken, `GRAMPSWEB_BASE_URL` kullanın.
-`CORS_ORIGINS` | CORS isteklerinin izin verildiği kökenler. Varsayılan olarak, tümü yasaktır. Herhangi bir alan adından istekleri izin vermek için `"*"` kullanın.
-`EMAIL_HOST` | SMTP sunucu ana bilgisayarı (örneğin, şifre sıfırlama e-postalarını göndermek için)
-`EMAIL_PORT` | SMTP sunucu portu. Varsayılan olarak 465
-`EMAIL_HOST_USER` | SMTP sunucu kullanıcı adı
-`EMAIL_HOST_PASSWORD` | SMTP sunucu şifresi
-`EMAIL_USE_TLS` | **Kaldırılmış** (bunun yerine `EMAIL_USE_SSL` veya `EMAIL_USE_STARTTLS` kullanın). E-postaları göndermek için TLS kullanılıp kullanılmayacağını belirten boolean. Varsayılan olarak `True`'dur. STARTTLS kullanırken, bunu `False` olarak ayarlayın ve 25'ten farklı bir port kullanın.
-`EMAIL_USE_SSL` | SMTP için örtük SSL/TLS kullanılıp kullanılmayacağını belirten boolean (v3.6.0+). `EMAIL_USE_TLS` açıkça ayarlanmamışsa varsayılan olarak `True`'dur. Genellikle 465 portu ile kullanılır.
-`EMAIL_USE_STARTTLS` | SMTP için açık STARTTLS kullanılıp kullanılmayacağını belirten boolean (v3.6.0+). Varsayılan olarak `False`'dır. Genellikle 587 veya 25 portu ile kullanılır.
-`DEFAULT_FROM_EMAIL` | Otomatik e-postalar için "Gönderen" adresi
-`THUMBNAIL_CACHE_CONFIG` | Küçük resim önbelleği için ayarları içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
-`REQUEST_CACHE_CONFIG` | İstek önbelleği için ayarları içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
-`PERSISTENT_CACHE_CONFIG` | Kalıcı önbellek için ayarları içeren sözlük, örneğin telemetri için kullanılır. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
-`CELERY_CONFIG` | Celery arka plan görev kuyruğu için ayarlar. Olası ayarlar için [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) sayfasına bakın.
+`MEDIA_BASE_DIR` | Gramps'te ayarlanan medya temel dizinini geçersiz kılarak medya dosyaları için temel dizin olarak kullanılacak yol. [S3](s3.md) kullanılırken `s3://<bucket_name>` biçiminde olmalıdır.
+`TREE_ID` | Tek ağaç modunda (`TREE` değeri `*` olarak ayarlanmadığında) kullanılacak aile ağacı veritabanının dizin adı. Ayarlandığında sunucu, ağacı görünen adı yerine dizin adıyla tanımlar; bu, yeniden adlandırmalara karşı daha dayanıklıdır. Ağacı API üzerinden yeniden adlandırmak istiyorsanız gereklidir. Dizin adı `GET /api/trees/-` üzerinden (`id` alanı) bulunabilir.
+`SEARCH_INDEX_DB_URI` | Arama dizininin veritabanı URL'si. Arka uç olarak yalnızca `sqlite` veya `postgresql` kullanılabilir. Varsayılan değer `sqlite:///indexdir/search_index.db`'dir; bu değer, betiğin çalıştırıldığı yola göre `indexdir` klasöründe bir SQLite dosyası oluşturur.
+`SEARCH_INDEX_DIR` | **Kullanımdan kaldırılmıştır** (bunun yerine `SEARCH_INDEX_DB_URI` kullanın). Arama dizinini içeren dizin. `SEARCH_INDEX_DB_URI` ayarlanmamışken ayarlanırsa arama dizini URL'si `sqlite:///<SEARCH_INDEX_DIR>/search_index.db` olarak türetilir.
+`STATIC_PATH` | Statik dosyaların sunulacağı yol (ör. statik bir web ön yüzü)
+`BASE_URL` | API'ye ulaşılabilecek temel URL (ör. `https://mygramps.mydomain.com/`). Örneğin doğru parola sıfırlama bağlantıları oluşturmak için gereklidir. Web Push ayrıca herkese açık şekilde erişilebilen bir HTTPS URL'si gerektirir; varsayılan `http://localhost/` değeri Web Push'ı devre dışı bırakır. Bu ayarı ortam üzerinden yapılandırırken `GRAMPSWEB_BASE_URL` kullanın.
+`CORS_ORIGINS` | CORS isteklerine izin verilen kaynaklar. Varsayılan olarak hiçbir kaynağa izin verilmez. Herhangi bir etki alanından gelen isteklere izin vermek için `"*"` kullanın.
+`EMAIL_HOST` | SMTP sunucusunun ana bilgisayar adı (ör. parola sıfırlama e-postaları göndermek için)
+`EMAIL_PORT` | SMTP sunucusunun bağlantı noktası. Varsayılan değer 465'tir.
+`EMAIL_HOST_USER` | SMTP sunucusu kullanıcı adı
+`EMAIL_HOST_PASSWORD` | SMTP sunucusu parolası
+`EMAIL_USE_TLS` | **Kullanımdan kaldırılmıştır** (bunun yerine `EMAIL_USE_SSL` veya `EMAIL_USE_STARTTLS` kullanın). E-posta gönderirken TLS kullanılıp kullanılmayacağını belirten Boolean değer. Varsayılan değer `True`'dur. STARTTLS kullanırken bunu `False` olarak ayarlayın ve 25'ten farklı bir bağlantı noktası kullanın.
+`EMAIL_USE_SSL` | SMTP için örtük SSL/TLS kullanılıp kullanılmayacağını belirten Boolean değer (v3.6.0+). `EMAIL_USE_TLS` açıkça ayarlanmadıysa varsayılan değer `True`'dur. Genellikle 465 numaralı bağlantı noktasıyla kullanılır.
+`EMAIL_USE_STARTTLS` | SMTP için açık STARTTLS kullanılıp kullanılmayacağını belirten Boolean değer (v3.6.0+). Varsayılan değer `False`'tur. Genellikle 587 veya 25 numaralı bağlantı noktasıyla kullanılır.
+`DEFAULT_FROM_EMAIL` | Otomatik e-postalar için “From” adresi
+`THUMBNAIL_CACHE_CONFIG` | Küçük resim önbelleğinin ayarlarını içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
+`REQUEST_CACHE_CONFIG` | İstek önbelleğinin ayarlarını içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
+`PERSISTENT_CACHE_CONFIG` | Örneğin telemetri için kullanılan kalıcı önbelleğin ayarlarını içeren sözlük. Olası ayarlar için [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/) sayfasına bakın.
+`CELERY_CONFIG` | Celery arka plan görev kuyruğunun ayarları. Olası ayarlar için [Celery](https://docs.celeryq.dev/en/stable/userguide/configuration.html) sayfasına bakın.
 `REPORT_DIR` | Çalıştırılan Gramps raporlarının çıktısının depolanacağı geçici dizin
-`EXPORT_DIR` | Gramps veritabanasının dışa aktarım çıktısının depolanacağı geçici dizin
-`BACKUP_DIR` | [Yedeklerin](../administration/backups.md) depolandığı dizin, her ağaç için bir alt dizinde (v3.24.0+). Ayarlanmazsa (varsayılan), yedekler sunucuda depolanamaz, ancak yine de yüklenen bir dosyadan geri yüklenebilir. Kalıcı bir konum kullanın, örneğin bir Docker hacmi ve tercihen kendisi de yedeklenen veya başka bir yerde senkronize edilen bir konum.
-`BACKUP_KEEP` | Her ağaç için saklanan yedek sayısı; yeni bir yedek oluşturulduğunda daha eski olanlar silinir (v3.24.0+). Varsayılan olarak `5`'tir.
-`RATE_LIMIT_BACKUP` | Yedek oluşturma için oran limiti, her ağaç için (v3.24.0+). Varsayılan olarak `"10 per day"`'dir.
-`RATE_LIMIT_MEDIA_ARCHIVE` | Dışa Aktarma sayfasında medya arşivleri oluşturma için oran limiti. Varsayılan olarak `"1 per hour"`'dır.
-`REGISTRATION_DISABLED` | Eğer `True` ise, yeni kullanıcı kaydını engelleyin (varsayılan `False`). Gramps Web API 3.26'dan itibaren, giriş sayfası da kayıt bağlantısını gizler.
-`PROXY_FIX_X_FOR` | Gramps Web'in önündeki güvenilir ters proxy sayısı (v3.26.0+). Oran limitlerinin her istemci için geçerli olması için tek bir ters proxy'nin arkasında `1` olarak ayarlayın. Varsayılan olarak `0`'dır. Sadece sunucu yalnızca bu proxy'ler aracılığıyla erişilebiliyorsa ayarlayın.
-`DISABLE_TELEMETRY` | Eğer `True` ise, istatistik telemetrisini devre dışı bırakın (varsayılan `False`). Ayrıntılar için [telemetri](telemetry.md) sayfasına bakın.
-`PILLOW_MAX_IMAGE_PIXELS` | İşlenen görüntünün içerebileceği piksel sayısını belirten PIL.Image.MAX_IMAGE_PIXELS parametresini ayarlar. Ayrıntılar için [docs](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) sayfasına bakın.
-`MAX_THUMBNAIL_FILE_BYTES` | Küçük resimler için sert bir maksimum dosya boyutu belirler. Varsayılan olarak `50 * 1024 * 1024` (50 MB) olarak ayarlanmıştır. Bunu artırmak, bellek kullanımını büyük ölçüde artırabilir ve büyük dosyalar bellekte açıldığında bellek yetersizliği hatalarına veya veri kaybına yol açabilir.
+`EXPORT_DIR` | Gramps veritabanının dışa aktarılmasının çıktısının depolanacağı geçici dizin
+`BACKUP_DIR` | [Yedeklerin](../administration/backups.md) ağaç başına bir alt dizinde depolandığı dizin (v3.24.0+). Ayarlanmadığında (varsayılan), yedekler sunucuda depolanamaz; ancak yüklenen bir dosyadan geri yüklenebilir. Kalıcı bir konum, örneğin bir Docker birimi kullanın ve tercihen bu konumun kendisinin de yedeklenmesini veya başka bir konumla eşzamanlanmasını sağlayın.
+`BACKUP_KEEP` | Ağaç başına saklanacak yedek sayısı; yeni bir yedek oluşturulduğunda daha eski yedekler silinir (v3.24.0+). Varsayılan değer `5`'tir.
+`RATE_LIMIT_BACKUP` | Ağaç başına yedek oluşturma hız sınırı (v3.24.0+). Varsayılan değer `"10 per day"`'dir.
+`RATE_LIMIT_MEDIA_ARCHIVE` | Dışa Aktarma sayfasında medya arşivleri oluşturma hız sınırı. Varsayılan değer `"1 per hour"`'dır.
+`REGISTRATION_DISABLED` | `True` ise yeni kullanıcı kaydına izin verilmez (varsayılan `False`). Gramps Web API 3.26 sürümünden itibaren oturum açma sayfası kayıt bağlantısını da gizler.
+`PROXY_FIX_X_FOR` | Gramps Web'in önündeki güvenilen ters proxy sayısı (v3.26.0+). Tek bir ters proxy arkasında, hız sınırlarının tüm kullanıcılara birlikte değil istemci başına uygulanması için `1` olarak ayarlayın. Varsayılan değer `0`'dır. Yalnızca sunucuya sadece bu proxy'ler üzerinden erişilebiliyorsa ayarlayın.
+`DISABLE_TELEMETRY` | `True` ise istatistik telemetrisi devre dışı bırakılır (varsayılan `False`). Ayrıntılar için [telemetri](telemetry.md) sayfasına bakın.
+`PILLOW_MAX_IMAGE_PIXELS` | İşlenen görüntünün içerebileceği piksel sayısını belirten `PIL.Image.MAX_IMAGE_PIXELS` parametresini ayarlar. Ayrıntılar için [belgelere](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.MAX_IMAGE_PIXELS) bakın.
+`MAX_THUMBNAIL_FILE_BYTES` | Küçük resimler için kesin bir maksimum dosya boyutu belirler. Varsayılan değer `50 * 1024 * 1024` (50 MB)'tır. Bu değeri artırmak bellek kullanımını büyük ölçüde artırabilir ve büyük dosyaların bellekte sıkıştırmasının açılması durumunda bellek yetersizliği çökmelerine veya veri kaybına yol açabilir.
 
 
 !!! info
-    Yapılandırma için ortam değişkenleri kullanırken, `EMAIL_USE_SSL` gibi boolean seçeneklerin ya `true` ya da `false` (büyük/küçük harf duyarlı!) olması gerekir.
+    Yapılandırma için ortam değişkenlerini kullanırken `EMAIL_USE_SSL` gibi Boolean seçenekler, `true` veya `false` dizesi olmalıdır (büyük/küçük harfe duyarlıdır!).
 
 
 ### PostgreSQL veritabanları için ayarlar
 
-Bu ayarlar, aile ağaçlarınızın [PostgreSQL veritabanında](postgres.md) SharedPostgreSQL eklentisi kullanılarak barındırılması durumunda gereklidir.
+Aile ağaçlarınız [SharedPostgreSQL eklentisi](postgres.md) kullanılarak bir [PostgreSQL veritabanında](postgres.md) barındırılıyorsa bu ayarlar gereklidir.
 
 Anahtar | Açıklama
 ----|-------------
 `POSTGRES_USER` | Veritabanı bağlantısı için kullanıcı adı
-`POSTGRES_PASSWORD` | Veritabanı kullanıcısı için şifre
+`POSTGRES_PASSWORD` | Veritabanı kullanıcısının parolası
 
 
-### Birden fazla ağaç barındırma ile ilgili ayarlar
+### Birden fazla ağacı barındırmayla ilgili ayarlar
 
-Aşağıdaki ayarlar, [birden fazla ağaç barındırma](multi-tree.md) durumunda geçerlidir.
+Aşağıdaki ayarlar [birden fazla ağaç barındırdığınızda](multi-tree.md) geçerlidir.
 
 
 Anahtar | Açıklama
 ----|-------------
-`MEDIA_PREFIX_TREE` | Her ağacın medya dosyaları için ayrı bir alt klasör kullanılıp kullanılmayacağını belirten boolean. Varsayılan olarak `False`'dır, ancak çoklu ağaç kurulumunda `True` kullanılması şiddetle önerilir.
-`NEW_DB_BACKEND` | Yeni oluşturulan aile ağaçları için kullanılacak veritabanı arka ucu. `sqlite` veya `sharedpostgresql`'dan biri olmalıdır. Varsayılan olarak `sqlite`'dır. `postgresql` değeri hala kabul edilir ancak kaldırılmıştır, çünkü PostgreSQL arka ucu Gramps Web API 4.0'da kaldırılacaktır.
-`POSTGRES_HOST` | SharedPostgreSQL arka ucunu kullanan çoklu ağaç kurulumunda yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun ana bilgisayar adı
-`POSTGRES_PORT` | SharedPostgreSQL arka ucunu kullanan çoklu ağaç kurulumunda yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun portu
+`MEDIA_PREFIX_TREE` | Her ağacın medya dosyaları için ayrı bir alt klasör kullanılıp kullanılmayacağını belirten Boolean değer. Varsayılan değer `False`'tur; ancak çok ağaçlı bir kurulumda `True` kullanmanız önemle önerilir.
+`NEW_DB_BACKEND` | Yeni oluşturulan aile ağaçları için kullanılacak veritabanı arka ucu. `sqlite` veya `sharedpostgresql` değerlerinden biri olmalıdır. Varsayılan değer `sqlite`'tır. PostgreSQL arka ucu Gramps Web API 4.0 sürümünde kaldırılacağından `postgresql` değeri hâlâ kabul edilse de kullanımdan kaldırılmıştır.
+`POSTGRES_HOST` | SharedPostgreSQL arka ucuyla çok ağaçlı bir kurulum kullanılırken yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun ana bilgisayar adı
+`POSTGRES_PORT` | SharedPostgreSQL arka ucuyla çok ağaçlı bir kurulum kullanılırken yeni ağaçlar oluşturmak için kullanılan PostgreSQL sunucusunun bağlantı noktası
 
 
-### OIDC kimlik doğrulama ayarları
+### OIDC kimlik doğrulaması için ayarlar
 
-Bu ayarlar, harici sağlayıcılarla OpenID Connect (OIDC) kimlik doğrulaması kullanmak istiyorsanız gereklidir. Ayrıntılı kurulum talimatları ve örnekler için [OIDC Kimlik Doğrulama](oidc.md) sayfasına bakın.
+Harici sağlayıcılarla OpenID Connect (OIDC) kimlik doğrulamasını kullanmak istiyorsanız bu ayarlar gereklidir. Ayrıntılı kurulum yönergeleri ve örnekler için [OIDC Kimlik Doğrulaması](oidc.md) sayfasına bakın.
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ENABLED` | OIDC kimlik doğrulamasını etkinleştirip etkinleştirmeyeceğini belirten boolean. Varsayılan olarak `False`'dır.
-`OIDC_ISSUER` | OIDC sağlayıcı yayıncı URL'si (özel OIDC sağlayıcıları için)
+`OIDC_ENABLED` | OIDC kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirten Boolean değer. Varsayılan değer `False`'tur.
+`OIDC_ISSUER` | OIDC sağlayıcısının veren URL'si (özel OIDC sağlayıcıları için)
 `OIDC_CLIENT_ID` | OAuth istemci kimliği (özel OIDC sağlayıcıları için)
-`OIDC_CLIENT_SECRET` | OAuth istemci sırrı (özel OIDC sağlayıcıları için)
-`OIDC_NAME` | Sağlayıcı için özel görüntüleme adı. Varsayılan olarak "OIDC"dır.
-`OIDC_SCOPES` | OAuth kapsamları. Varsayılan olarak "openid email profile"dır.
-`OIDC_USERNAME_CLAIM` | Kullanıcı adı için kullanılacak talep. Varsayılan olarak "preferred_username"dır.
-`OIDC_OPENID_CONFIG_URL` | Opsiyonel: Standart `/.well-known/openid-configuration` kullanılmıyorsa OpenID Connect yapılandırma uç noktasının URL'si
-`OIDC_PKCE` | PKCE kullanılıp kullanılmayacağını belirten boolean. Ayarlanmazsa, sağlayıcının keşif belgesi `S256` listelendiğinde PKCE kullanılır. [PKCE](oidc.md#pkce) sayfasına bakın.
-`OIDC_DISABLE_LOCAL_AUTH` | Yerel kullanıcı adı/şifre kimlik doğrulamasını devre dışı bırakıp bırakmayacağını belirten boolean. Varsayılan olarak `False`'dır.
-`OIDC_AUTO_REDIRECT` | Sadece bir sağlayıcı yapılandırıldığında otomatik olarak OIDC'ye yönlendirilip yönlendirilmeyeceğini belirten boolean. Varsayılan olarak `False`'dır.
-`OIDC_ALLOWED_REDIRECT_URIS` | Yerel uygulamaların giriş sonucunu alabileceği `https` URI'lerinin listesi (v3.26.0+), bir ortam değişkeninde JSON listesi olarak ayarlanır. Varsayılan olarak boştur. Sadece bir yerel uygulamanın belgeleri bunu istiyorsa gereklidir. [Yerel uygulamalar](oidc.md#native-apps) sayfasına bakın.
+`OIDC_CLIENT_SECRET` | OAuth istemci gizli anahtarı (özel OIDC sağlayıcıları için)
+`OIDC_NAME` | Sağlayıcı için özel görünen ad. Varsayılan değer `"OIDC"`'dir.
+`OIDC_SCOPES` | OAuth kapsamları. Varsayılan değer `"openid email profile"`'dır.
+`OIDC_USERNAME_CLAIM` | Kullanıcı adı için kullanılacak talep. Varsayılan değer `"preferred_username"`'dir.
+`OIDC_OPENID_CONFIG_URL` | İsteğe bağlı: OpenID Connect yapılandırma uç noktasının URL'si (standart `/.well-known/openid-configuration` kullanılmıyorsa)
+`OIDC_PKCE` | PKCE kullanılıp kullanılmayacağını belirten Boolean değer. Ayarlanmazsa sağlayıcının keşif belgesinde `S256` listeleniyorsa PKCE kullanılır. Bkz. [PKCE](oidc.md#pkce)
+`OIDC_DISABLE_LOCAL_AUTH` | Yerel kullanıcı adı/parola kimlik doğrulamasının devre dışı bırakılıp bırakılmayacağını belirten Boolean değer. Varsayılan değer `False`'tur.
+`OIDC_AUTO_REDIRECT` | Yalnızca bir sağlayıcı yapılandırılmışsa OIDC'ye otomatik olarak yönlendirme yapılıp yapılmayacağını belirten Boolean değer. Varsayılan değer `False`'tur.
+`OIDC_ALLOWED_REDIRECT_URIS` | Yerel uygulamaların oturum açma sonucunu alabileceği `https` URI'lerinin listesi (v3.26.0+); ortam değişkeninde JSON listesi olarak ayarlanır. Varsayılan olarak boştur. Yalnızca yerel bir uygulamanın belgelerinde isteniyorsa gereklidir. Bkz. [Yerel uygulamalar](oidc.md#native-apps)
 
 #### Yerleşik OIDC sağlayıcıları
 
-Yerleşik sağlayıcılar (Google, Microsoft) için bu ayarları kullanın:
+Yerleşik sağlayıcılar (Google, Microsoft) için şu ayarları kullanın:
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_GOOGLE_CLIENT_ID` | Google OAuth için istemci kimliği
-`OIDC_GOOGLE_CLIENT_SECRET` | Google OAuth için istemci sırrı
-`OIDC_MICROSOFT_CLIENT_ID` | Microsoft OAuth için istemci kimliği
-`OIDC_MICROSOFT_CLIENT_SECRET` | Microsoft OAuth için istemci sırrı
-`OIDC_GOOGLE_PKCE` | Google için PKCE ayarı, [PKCE](oidc.md#pkce) sayfasına bakın.
-`OIDC_MICROSOFT_PKCE` | Microsoft için PKCE ayarı, [PKCE](oidc.md#pkce) sayfasına bakın.
+`OIDC_GOOGLE_CLIENT_ID` | Google OAuth istemci kimliği
+`OIDC_GOOGLE_CLIENT_SECRET` | Google OAuth istemci gizli anahtarı
+`OIDC_MICROSOFT_CLIENT_ID` | Microsoft OAuth istemci kimliği
+`OIDC_MICROSOFT_CLIENT_SECRET` | Microsoft OAuth istemci gizli anahtarı
+`OIDC_GOOGLE_PKCE` | Google için Boolean PKCE ayarı; bkz. [PKCE](oidc.md#pkce)
+`OIDC_MICROSOFT_PKCE` | Microsoft için Boolean PKCE ayarı; bkz. [PKCE](oidc.md#pkce)
 
-#### OIDC Rol Haritalama
+#### OIDC Rol Eşleme
 
-Bu ayarlar, kimlik sağlayıcınızdan OIDC gruplarını/rollerini Gramps Web kullanıcı rollerine eşlemenizi sağlar:
+Bu ayarlar, kimlik sağlayıcınızdaki OIDC gruplarını/rollerini Gramps Web kullanıcı rollerine eşlemenize olanak tanır:
 
 Anahtar | Açıklama
 ----|-------------
-`OIDC_ROLE_CLAIM` | Kullanıcının gruplarını/rollerini içeren OIDC jetonundaki talep adı. Varsayılan olarak "groups"dır.
-`OIDC_GROUP_ADMIN` | Gramps "Yönetici" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_OWNER` | Gramps "Sahip" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_EDITOR` | Gramps "Editör" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_CONTRIBUTOR` | Gramps "Katkıda Bulunan" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_MEMBER` | Gramps "Üye" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
-`OIDC_GROUP_GUEST` | Gramps "Misafir" rolüne karşılık gelen OIDC sağlayıcınızdaki grup/rol adı
+`OIDC_ROLE_CLAIM` | Kullanıcının gruplarını/rollerini içeren OIDC belirtecindeki talep adı. Varsayılan değer `"groups"`'tur.
+`OIDC_GROUP_ADMIN` | OIDC sağlayıcınızdaki Gramps “Admin” rolüne eşlenen grup/rol adı
+`OIDC_GROUP_OWNER` | OIDC sağlayıcınızdaki Gramps “Owner” rolüne eşlenen grup/rol adı
+`OIDC_GROUP_EDITOR` | OIDC sağlayıcınızdaki Gramps “Editor” rolüne eşlenen grup/rol adı
+`OIDC_GROUP_CONTRIBUTOR` | OIDC sağlayıcınızdaki Gramps “Contributor” rolüne eşlenen grup/rol adı
+`OIDC_GROUP_MEMBER` | OIDC sağlayıcınızdaki Gramps “Member” rolüne eşlenen grup/rol adı
+`OIDC_GROUP_GUEST` | OIDC sağlayıcınızdaki Gramps “Guest” rolüne eşlenen grup/rol adı
 
-### Sadece AI özellikleri için ayarlar
+### Yalnızca yapay zekâ özellikleri için ayarlar
 
-AI sohbeti kullanmak istiyorsanız bu ayarlar gereklidir. Ayrıntılar için [AI sohbetini ayarlama](chat.md) sayfasına bakın.
+Yapay zekâ sohbetini kullanmak istiyorsanız bu ayarlar gereklidir. Ayrıntılar için [Yapay zekâ sohbetini ayarlama](chat.md) sayfasına bakın.
 
 !!! note
-    `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` ve `VECTOR_EMBEDDING_API_KEY` ayarları, Gramps Web API 3.25'ten itibaren göz ardı edilmektedir; bu sürümde anlamsal arama kaldırılmıştır. AI sohbeti yalnızca `LLM_MODEL`'a ihtiyaç duyar.
+    Anlamsal arama için kullanılan `VECTOR_EMBEDDING_MODEL`, `VECTOR_EMBEDDING_BASE_URL` ve `VECTOR_EMBEDDING_API_KEY` ayarları, anlamsal aramayı kaldıran Gramps Web API 3.25 sürümünden beri yok sayılmaktadır. Yapay zekâ sohbeti için yalnızca `LLM_MODEL` gereklidir.
 
 Anahtar | Açıklama
 ----|-------------
-`LLM_BASE_URL` | OpenAI uyumlu sohbet API'si için temel URL. Varsayılan olarak `None`'dur, bu da OpenAI API'sini kullanır.
-`LLM_MODEL` | OpenAI uyumlu sohbet API'si için kullanılacak model. Ayarlanmazsa (varsayılan), sohbet devre dışıdır. v3.6.0'dan itibaren, AI asistanı araç çağırma yetenekleri ile Pydantic AI kullanır.
-`LLM_MAX_OUTPUT_TOKENS` | Modelin tek bir yanıt içinde üretebileceği maksimum token sayısı. Varsayılan olarak ayarlanmamıştır, bu da sınırı model sunucusuna bırakır. Kendi sınırı olmayan model sunucuları için yararlıdır, aksi takdirde bir yanıt sonsuz bir şekilde devam edebilir.
-`LLM_MAX_CONTEXT_LENGTH` | LLM'ye sağlanan aile ağacı bağlamı için karakter sınırı. Varsayılan olarak 50000'dir.
-`LLM_SYSTEM_PROMPT` | LLM sohbet asistanı için özel sistem istemi (v3.6.0+). Ayarlanmazsa, varsayılan soybilim optimize edilmiş istemi kullanılır.
-`LLM_VISION` | Kullanıcıların sorularına resim ekleyip ekleyemeyeceğini belirten boolean (v3.26.0+). Sadece model resimleri kabul ediyorsa etkinleştirin. Varsayılan olarak `False`'dır. [Sorulardaki resimler](chat.md#images-in-questions) sayfasına bakın.
-`LLM_ALLOW_WRITE_PROPOSALS` | Asistanın kullanıcıların gözden geçirmesi ve uygulaması için ağaçta değişiklik önermesine izin verilip verilmeyeceğini belirten boolean (v3.26.0+). Varsayılan olarak `False`'dır. [Asistanın değişiklik önermesine izin verme](chat.md#letting-the-assistant-propose-changes) sayfasına bakın.
+`LLM_BASE_URL` | OpenAI uyumlu sohbet API'si için temel URL. Varsayılan değer, OpenAI API'sini kullanan `None`'dır.
+`LLM_MODEL` | OpenAI uyumlu sohbet API'si için kullanılacak model. Ayarlanmazsa (varsayılan), sohbet devre dışı bırakılır. v3.6.0 sürümünden itibaren yapay zekâ asistanı, araç çağırma özelliklerine sahip Pydantic AI kullanır.
+`LLM_MAX_OUTPUT_TOKENS` | Modelin tek bir yanıtta oluşturabileceği maksimum belirteç sayısı. Varsayılan olarak ayarlanmaz; sınır model sunucusuna bırakılır. Kendi sınırı olmayan model sunucuları için kullanışlıdır; aksi hâlde bir yanıt süresiz olarak devam edebilir.
+`LLM_MAX_CONTEXT_LENGTH` | LLM'ye sağlanan aile ağacı bağlamı için karakter sınırı. Varsayılan değer 50000'dir.
+`LLM_SYSTEM_PROMPT` | LLM sohbet asistanı için özel sistem istemi (v3.6.0+). Ayarlanmazsa varsayılan, soybilim için optimize edilmiş istem kullanılır.
+`LLM_VISION` | Kullanıcıların sorularına görüntü ekleyip ekleyemeyeceğini belirten Boolean değer (v3.26.0+). Yalnızca model görüntüleri kabul ediyorsa etkinleştirin. Varsayılan değer `False`'tur. Bkz. [Sorulardaki görüntüler](chat.md#images-in-questions)
+`LLM_ALLOW_WRITE_PROPOSALS` | Asistanın, kullanıcıların inceleyip uygulayabilmesi için ağaçta değişiklik önerip öneremeyeceğini belirten Boolean değer (v3.26.0+). Varsayılan değer `False`'tur. Bkz. [Asistanın değişiklik önermesine izin verme](chat.md#letting-the-assistant-propose-changes)
 
 
 ## Örnek yapılandırma dosyası
 
-Üretim için minimal bir yapılandırma dosyası şu şekilde görünebilir:
+Üretim ortamı için minimal bir yapılandırma dosyası aşağıdakine benzeyebilir:
 ```python
-TREE="Ailem Ağacı"
+TREE="My Family Tree"
 BASE_URL="https://mytree.example.com"
-SECRET_KEY="..."  # gizli anahtarınız
+SECRET_KEY="..."  # your secret key
 USER_DB_URI="sqlite:////path/to/users.sqlite"
 EMAIL_HOST="mail.example.com"
 EMAIL_PORT=465
-EMAIL_USE_SSL=True  # 465 portu için örtük SSL kullanın
+EMAIL_USE_SSL=True  # Use implicit SSL for port 465
 EMAIL_HOST_USER="gramps@example.com"
-EMAIL_HOST_PASSWORD="..." # SMTP şifreniz
+EMAIL_HOST_PASSWORD="..." # your SMTP password
 DEFAULT_FROM_EMAIL="gramps@example.com"
+```

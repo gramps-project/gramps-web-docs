@@ -1,61 +1,61 @@
-# Starte einen neuen Stammbaum
+# Einen neuen Stammbaum beginnen
 
-Diese Seite führt dich durch die ersten Schritte in einem leeren Stammbaum: dich selbst hinzuzufügen, deine Eltern hinzuzufügen und das Ergebnis im Stammbaum-Diagramm zu sehen. Es dauert etwa 15 Minuten.
+Diese Seite führt dich durch die ersten Schritte in einem leeren Stammbaum: dich selbst hinzufügen, deine Eltern hinzufügen und das Ergebnis im Stammbaumdiagramm ansehen. Das dauert ungefähr 15 Minuten.
 
-Wenn du bereits einen Stammbaum in einem anderen Genealogie-Programm oder in Gramps Desktop hast, musst du ihn nicht erneut von Hand eingeben – siehe stattdessen [Daten importieren](../administration/import.md).
+Wenn du bereits einen Stammbaum in einem anderen Genealogieprogramm oder in Gramps Desktop hast, musst du ihn nicht noch einmal von Hand eingeben – siehe stattdessen [Daten importieren](../administration/import.md).
 
-!!! Hinweis
-    Personen hinzuzufügen erfordert die Rolle Editor oder höher. Der Besitzer eines Stammbaums hat diese Rolle immer. Siehe [Benutzersystem](../install_setup/users.md) für alle Rollen.
+!!! note
+    Zum Hinzufügen von Personen benötigst du die Rolle „Editor“ oder eine höhere Rolle. Der Eigentümer eines Stammbaums verfügt immer über diese Berechtigung. Eine Übersicht über alle Rollen findest du unter [Benutzersystem](../install_setup/users.md).
 
-## 1. Erstelle einen Ort
+## 1. Einen Ort erstellen
 
-In Gramps wird ein Ort einmal erstellt und dann für jedes Ereignis ausgewählt, das dort stattgefunden hat – zum Beispiel die Geburten mehrerer Geschwister in derselben Stadt. Aus diesem Grund muss ein Ort existieren, bevor du ihn als Geburtsort einer Person auswählen kannst.
+In Gramps wird ein Ort einmal erstellt und anschließend für jedes Ereignis ausgewählt, das dort stattgefunden hat – zum Beispiel für die Geburten mehrerer Geschwister in derselben Stadt. Deshalb muss ein Ort vorhanden sein, bevor du ihn als Geburtsort einer Person auswählen kannst.
 
-Um den Ort zu erstellen, an dem du geboren wurdest:
+So erstellst du den Ort, an dem du geboren wurdest:
 
-1. Klicke auf die **+** (Hinzufügen) Schaltfläche in der oberen App-Leiste und wähle **Ort**.
-2. Gib den **Namen** des Ortes ein und optional seinen **Typ** (wie Stadt oder Dorf).
-3. Optional, klicke auf **Auf der Karte auswählen**, um seine Koordinaten festzulegen, damit der Ort auf der [Karte](map.md) erscheint.
+1. Klicke in der oberen App-Leiste auf die Schaltfläche **+** (Hinzufügen) und wähle **Ort**.
+2. Gib den **Namen** des Ortes und optional den **Typ** (z. B. Stadt oder Dorf) ein.
+3. Klicke optional auf **Auf der Karte auswählen**, um die Koordinaten festzulegen, damit der Ort auf der [Karte](map.md) angezeigt wird.
 4. Klicke auf **Hinzufügen**.
 
-Erstelle die Geburtsorte deiner Eltern auf die gleiche Weise. Wenn du einen Ort noch nicht kennst, überspringe ihn – du kannst ihn später hinzufügen.
+Erstelle die Geburtsorte deiner Eltern auf dieselbe Weise. Wenn du einen Ort noch nicht kennst, überspringe ihn – du kannst ihn später hinzufügen.
 
-## 2. Füge dich selbst hinzu
+## 2. Dich selbst hinzufügen
 
-Gehe zurück zur Startseite. Während der Stammbaum leer ist, zeigt er eine **Loslegen**-Karte. Klicke auf **Neue Person**, um das Formular für eine neue Person zu öffnen:
+Kehre zur Startseite zurück. Solange der Stammbaum leer ist, wird eine Karte **Erste Schritte** angezeigt. Klicke auf **Neue Person**, um das Formular für eine neue Person zu öffnen:
 
 - **Name** – dein Vorname und Nachname
 - **Geschlecht**
-- **Geburtsdatum** – siehe [Dateneingabe](#dateneingabe) unten
-- **Geburtsort** – klicke auf **Einen bestehenden Ort auswählen** und suche nach dem Ort, den du erstellt hast
+- **Geburtsdatum** – siehe unten [Daten eingeben](#daten-eingeben)
+- **Geburtsort** – klicke auf **Vorhandenen Ort auswählen** und suche nach dem von dir erstellten Ort
 
-Lasse die Felder für das Todesdatum leer und klicke auf **Hinzufügen**. Die Seite der neuen Person öffnet sich.
+Lasse die Felder zum Tod leer und klicke auf **Hinzufügen**. Die Seite der neuen Person wird geöffnet.
 
-Die erste Person, die in einem leeren Stammbaum erstellt wird, wird automatisch deine **Hauptperson**: die Person, von der das Stammbaum-Diagramm ausgeht. Du kannst jederzeit eine andere Hauptperson auf der Startseite auswählen.
+Die erste Person, die in einem leeren Stammbaum erstellt wird, wird automatisch zu deiner **Hauptperson**: der Person, von der das Stammbaumdiagramm ausgeht. Du kannst auf der Startseite jederzeit eine andere Hauptperson auswählen.
 
-### Dateneingabe
+### Daten eingeben
 
-Ein Datum wird als separate Felder für Jahr, Monat und Tag eingegeben. Wenn du nur das Jahr kennst, fülle nur das Jahr aus. Bei unsicheren Daten ändere den Typ des Datums – zum Beispiel in "ungefähr" oder "vor" – anstatt einen genauen Tag zu schätzen.
+Ein Datum wird in separate Felder für Jahr, Monat und Tag eingegeben. Wenn du nur das Jahr kennst, fülle nur das Jahresfeld aus. Bei unsicheren Datumsangaben änderst du den Datentyp – zum Beispiel in „ungefähr“ oder „vor“ –, anstatt einen genauen Tag zu vermuten.
 
-## 3. Füge deine Eltern hinzu
+## 3. Deine Eltern hinzufügen
 
-1. Klicke auf **Stammbaum** in der Seitenleiste. Das Diagramm zeigt dich als Hauptperson.
-2. Klicke auf das Bleistiftsymbol in der unteren rechten Ecke, um den Bearbeitungsmodus zu aktivieren.
-3. Klicke auf die kleine **+**-Schaltfläche auf deiner Karte. Der Dialog **Familienmitglied hinzufügen** öffnet sich.
-4. Klicke neben **Vater** auf das **+**-Symbol, um eine neue Person zu erstellen, fülle das Formular wie zuvor aus und speichere. Dein Vater erscheint im Diagramm, bereits mit dir verknüpft.
-5. Wiederhole dies mit **Mutter**.
+1. Klicke in der Seitenleiste auf **Stammbaum**. Das Diagramm zeigt dich als Hauptperson.
+2. Klicke unten rechts auf die Schaltfläche mit dem Bleistiftsymbol, um den Bearbeitungsmodus einzuschalten.
+3. Klicke auf deiner Karte auf die kleine Schaltfläche **+**. Der Dialog **Familienmitglied hinzufügen** wird geöffnet.
+4. Klicke neben **Vater** auf das Symbol **+**, um eine neue Person zu erstellen, fülle das Formular wie zuvor aus und speichere es. Dein Vater wird im Diagramm angezeigt und ist bereits mit dir verknüpft.
+5. Wiederhole den Vorgang für **Mutter**.
 
-Das **Verknüpfungs**-Symbol neben jeder Beziehung verbindet eine Person, die bereits in deinem Stammbaum existiert, anstatt eine neue zu erstellen.
+Mit dem Symbol **Verknüpfen** neben jeder Beziehung kannst du eine Person, die bereits in deinem Stammbaum vorhanden ist, verknüpfen, anstatt eine neue Person zu erstellen.
 
-Auf die gleiche Weise kannst du auf das **+** auf jeder Karte im Diagramm klicken, um die Eltern, Kinder oder den Ehepartner dieser Person hinzuzufügen. Jede Änderung wird sofort gespeichert. Um den Bearbeitungsmodus zu verlassen, klicke auf die Schaltfläche zum Schließen in der oberen App-Leiste.
+Klicke auf dieselbe Weise auf einer beliebigen Karte im Diagramm auf **+**, um die Eltern, Kinder oder den Ehepartner dieser Person hinzuzufügen. Jede Änderung wird sofort gespeichert. Um den Bearbeitungsmodus zu verlassen, klicke auf die Schaltfläche zum Schließen in der oberen App-Leiste.
 
-## 4. Sieh dir das Ergebnis an
+## 4. Das Ergebnis ansehen
 
-Das Diagramm zeigt jetzt dich mit deinen Eltern. Probiere die anderen Diagrammtypen in den Tabs oben auf der Seite aus – zum Beispiel das Fächerdiagramm – und klicke auf die Karte einer Person, um das Diagramm auf sie zu zentrieren. Siehe [Stammbaum](tree.md) für alle Diagramme und Optionen.
+Das Diagramm zeigt dich nun mit deinen Eltern. Probiere die anderen Diagrammtypen in den Registerkarten oben auf der Seite aus – zum Beispiel das Fächerdiagramm – und klicke auf die Karte einer beliebigen Person, um das Diagramm auf diese Person zu zentrieren. Unter [Stammbaum](tree.md) findest du alle Diagramme und Optionen.
 
 ## Nächste Schritte
 
-- **Verstehe die Struktur.** Siehe [Wie Gramps Daten organisiert](data-model.md) für die Zusammenhänge zwischen Personen, Familien, Ereignissen, Orten und Quellen.
-- **Füge weitere Details hinzu.** Öffne die Seite einer Person – zum Beispiel mit der Schaltfläche **Personendetails** in der Diagramm-Toolbar – um weitere Ereignisse, Notizen, Quellen und mehr hinzuzufügen. Siehe [Bearbeiten im Baumansicht](tree-edit.md) für das, was direkt im Diagramm gemacht werden kann.
-- **Füge Fotos und Dokumente hinzu.** Siehe [Medien Dateien hinzufügen](media.md).
-- **Lade deine Familie ein.** Verwandte benötigen ein eigenes Konto in deinem Stammbaum; siehe [Benutzer verwalten](../administration/users.md) und [Registrierung](registration.md).
+- **Die Struktur verstehen.** Unter [Wie Gramps Daten organisiert](data-model.md) erfährst du, wie Personen, Familien, Ereignisse, Orte und Quellen zusammengehören.
+- **Weitere Details hinzufügen.** Öffne die Seite einer Person – zum Beispiel mit der Schaltfläche **Personendetails** in der Diagramm-Symbolleiste –, um weitere Ereignisse, Notizen, Quellen und mehr hinzuzufügen. Unter [Im Stammbaumdiagramm bearbeiten](tree-edit.md) erfährst du, was direkt im Diagramm möglich ist.
+- **Fotos und Dokumente hinzufügen.** Siehe [Mediendateien hinzufügen](media.md).
+- **Deine Familie einladen.** Verwandte benötigen ein eigenes Konto für deinen Stammbaum; siehe [Benutzer verwalten](../administration/users.md) und [Registrierung](registration.md).

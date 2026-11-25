@@ -5,79 +5,79 @@ hide:
 
 # Benutzerhandbuch
 
-Dieser Abschnitt dokumentiert die Funktionen, die den Benutzern von Gramps Web zur Verfügung stehen.
+Dieser Abschnitt dokumentiert die für Benutzer von Gramps Web verfügbaren Funktionen.
 
-!!! note "Sehen Sie nicht alle Funktionen?"
-    Gramps Web verwendet ein rollenbasiertes Berechtigungssystem. Einige Funktionen – wie das Bearbeiten von Daten, das Verwalten von Etiketten oder das Anzeigen von privaten Datensätzen – sind nur für Benutzer mit ausreichenden Berechtigungen verfügbar. Sie können Ihre aktuelle Rolle in den [Benutzereinstellungen](settings.md) überprüfen. Wenn Sie mehr Zugriff benötigen, wenden Sie sich an den Eigentümer oder Administrator Ihres Baums. Siehe [Benutzersystem](../install_setup/users.md) für eine Beschreibung aller Rollen.
+!!! note "Werden nicht alle Funktionen angezeigt?"
+    Gramps Web verwendet ein rollenbasiertes Berechtigungssystem. Einige Funktionen – wie das Bearbeiten von Daten, Verwalten von Etiketten oder Anzeigen privater Datensätze – sind nur für Benutzer mit ausreichenden Berechtigungen verfügbar. Du kannst deine aktuelle Rolle in den [Benutzereinstellungen](settings.md) überprüfen. Wenn du mehr Zugriff benötigst, wende dich an den Eigentümer deines Stammbaums oder an den Administrator. Eine Beschreibung aller Rollen findest du unter [Benutzersystem](../install_setup/users.md).
 
-## Navigation in der Benutzeroberfläche
+## Navigieren in der Benutzeroberfläche
 
 ### Hauptnavigation
 
-Die Seitenleiste (oder das Hamburger-Menü auf Mobilgeräten) ist der primäre Weg, um zwischen den Abschnitten zu wechseln:
+Die Seitenleiste (oder das Hamburger-Menü auf Mobilgeräten) ist die wichtigste Möglichkeit, zwischen den Abschnitten zu wechseln:
 
 - **Startseite** – das Dashboard (siehe unten)
-- **Blog** – Familiengeschichten, die als Blogbeiträge verfasst wurden
-- **Familienbaum** – interaktive Baumdiagramme
-- **Zeitachse** – chronologische Ansicht von Ereignissen im Baum (erfordert eine ausreichend aktuelle Gramps Web API-Version)
-- **Karte** – geografische Ansicht der Orte im Baum
+- **Blog** – als Blogbeiträge verfasste Geschichten zur Familiengeschichte
+- **Stammbaum** – interaktive Stammbaumdiagramme
+- **Zeitleiste** – chronologische Ansicht der Ereignisse im gesamten Stammbaum (erfordert eine ausreichend aktuelle Version der Gramps-Web-API)
+- **Karte** – geografische Ansicht der Orte im Stammbaum
 - **DNA** – Werkzeuge zur Analyse von DNA-Übereinstimmungen
-- **Listen** – Durchsuchen aller Objekte jedes Typs: Personen, Familien, Ereignisse, Orte, Quellen, Zitationen, Repositorien, Notizen
-- **Medien** – Durchsuchen aller Mediendateien (Fotos, Dokumente usw.)
-- **Assistent** – KI-Chat-Assistent (wenn vom Administrator aktiviert)
+- **Listen** – alle Objekte jedes Typs durchsuchen: Personen, Familien, Ereignisse, Orte, Quellen, Zitate, Archive, Notizen
+- **Medien** – alle Mediendateien durchsuchen (Fotos, Dokumente usw.)
+- **Assistent** – KI-Chatassistent (falls vom Administrator aktiviert)
 - **Verlauf** – kürzlich geänderte Objekte
-- **Lesezeichen** – Ihre gespeicherten Lesezeichen
+- **Lesezeichen** – deine gespeicherten Lesezeichen
 - **Aufgaben** – Forschungsaufgaben
 - **Berichte** – Berichte erstellen
-- **Export** – den Familienbaum exportieren
-- **Revisionen** – vollständige Transaktionshistorie (sichtbar für Mitglieder und höher)
+- **Export** – den Stammbaum exportieren
+- **Revisionen** – vollständiger Transaktionsverlauf (für Mitglieder und höhere Rollen sichtbar)
 
 !!! note
-    Etiketten werden nicht mehr über die Seitenleiste verwaltet – die Etikettenverwaltung wurde in die [Administrationseinstellungen](../administration/settings.md#tags) verschoben (nur Eigentümer/Administratoren). Siehe [Etiketten](tags.md) für die Verwendung von Etiketten.
+    Etiketten werden nicht mehr über die Seitenleiste verwaltet – die Verwaltung von Etiketten wurde in die [Administrationseinstellungen](../administration/settings.md#tags) verschoben (nur für Eigentümer/Administratoren). Unter [Etiketten](tags.md) erfährst du, wie Etiketten verwendet werden.
 
-### Oben in der App-Leiste
+### Obere App-Leiste
 
-Die Leiste oben auf jeder Seite enthält:
+Die Leiste am oberen Rand jeder Seite enthält:
 
-- **Hinzufügen** (Plus-Symbol, sichtbar für Mitwirkende und höher) – öffnet ein Menü zum Erstellen eines neuen Objekts: Person, Familie, Ereignis, Ort, Quelle, Zitation, Repositorium, Notiz, Medienobjekt oder Aufgabe
-- **Suche** (Lupe) – öffnet die Suchseite
-- **Glocke** – öffnet die [Benachrichtigungen](notifications.md), einschließlich Änderungen durch andere Benutzer und abgeschlossene Hintergrundaufgaben
-- **Benutzersymbol** – öffnet das Einstellungsmenü: Benutzereinstellungen, Administration (nur für Eigentümer), Benutzer verwalten (nur für Eigentümer), Systeminfo
+- **Hinzufügen** (Plus-Symbol, für Mitwirkende und höhere Rollen sichtbar) – öffnet ein Menü zum Erstellen eines neuen Objekts: Person, Familie, Ereignis, Ort, Quelle, Zitat, Archiv, Notiz, Medienobjekt oder Aufgabe
+- **Suchen** (Lupensymbol) – öffnet die Suchseite
+- **Glocke** – öffnet die [Benachrichtigungen](notifications.md), einschließlich Änderungen durch andere Benutzer und abgeschlossener Hintergrundaufgaben
+- **Benutzersymbol** – öffnet das Einstellungsmenü: Benutzereinstellungen, Administration (nur für Eigentümer), Benutzer verwalten (nur für Eigentümer), Systeminformationen
 
 ## Die Startseite (Dashboard)
 
-Das Dashboard wird angezeigt, wenn Sie sich zum ersten Mal anmelden. Es hat zwei Spalten:
+Das Dashboard wird angezeigt, wenn du dich zum ersten Mal anmeldest. Es besteht aus zwei Spalten:
 
 **Linke Spalte:**
 
-- **Hauptperson-Karte** – zeigt den Namen, das Foto (falls verfügbar) und wichtige Fakten Ihrer gewählten Hauptperson an, mit einem Link zu ihrem vollständigen Profil und einer schnellen Navigation zum Familienbaum. Klicken Sie auf die Schaltfläche **Hauptperson festlegen** auf der Karte, um nach einer anderen Person zu suchen und diese auszuwählen.
-- **Jubiläen** – bevorstehende Geburtstage und Jubiläen aus dem Baum, basierend auf dem heutigen Datum.
-- **Kürzlich geändert** – eine kurze Liste der zuletzt modifizierten Objekte, nützlich zur Verfolgung gemeinsamer Bearbeitungen.
+- **Karte der Hauptperson** – zeigt den Namen, das Foto (falls vorhanden) und wichtige Fakten der von dir ausgewählten Hauptperson, mit einem Link zu ihrem vollständigen Profil und einer Schnellnavigation zum Stammbaum. Klicke auf der Karte auf die Schaltfläche **Hauptperson festlegen**, um nach einer anderen Person zu suchen und sie auszuwählen.
+- **Jahrestage** – bevorstehende Geburtstage und Jahrestage aus dem Stammbaum, basierend auf dem heutigen Datum.
+- **Kürzlich geändert** – eine kurze Liste der zuletzt geänderten Objekte, die hilfreich ist, um gemeinsam vorgenommene Änderungen nachzuverfolgen.
 
 **Rechte Spalte:**
 
-- **Aktuelle Blogbeiträge** – die neuesten Einträge aus dem [Blog](blog.md), falls vorhanden.
-- **Statistiken** – eine Zusammenfassung der Objektzahlen im Baum (Anzahl der Personen, Familien, Ereignisse usw.).
+- **Neueste Blogbeiträge** – die neuesten Einträge aus dem [Blog](blog.md), sofern vorhanden.
+- **Statistiken** – eine Zusammenfassung der Objektanzahlen im Stammbaum (Anzahl der Personen, Familien, Ereignisse usw.).
 
-Während der Baum noch leer ist, blendet das Dashboard die Panels aus, die nichts zu zeigen hätten, und zeigt stattdessen eine **Loslegen**-Karte für Benutzer mit Bearbeitungsberechtigungen an: Zuerst wird angeboten, eine Person zu erstellen oder eine Familienbaumdatei zu importieren, und sobald Personen vorhanden sind, sie durch das Erstellen einer Familie zu verbinden. Die Karte verschwindet, sobald der Baum eine Familie enthält.
+Solange der Stammbaum noch leer ist, blendet das Dashboard die Bereiche aus, die keine Inhalte anzeigen könnten, und zeigt stattdessen eine Karte **Erste Schritte** für Benutzer mit Bearbeitungsberechtigungen an: Zunächst wird angeboten, eine Person zu erstellen oder eine Stammbaumdatei zu importieren. Sobald Personen vorhanden sind, wird angeboten, sie durch das Erstellen einer Familie zu verbinden. Die Karte verschwindet, sobald der Stammbaum eine Familie enthält.
 
-Wenn der Baumadministrator eine **Startseitennotiz** und/oder ein **Startseitenbild** konfiguriert hat, werden diese prominent über den Hauptspalten angezeigt. Das Bild erscheint neben dem Notiztext, wenn beide festgelegt sind. Siehe [Administrationseinstellungen](../administration/customization.md) für die Konfiguration dieser.
+Wenn der Stammbaumadministrator eine **Notiz für die Startseite** und/oder ein **Bild für die Startseite** konfiguriert hat, werden diese prominent oberhalb der Hauptspalten angezeigt. Wenn beide festgelegt sind, erscheint das Bild neben dem Text der Notiz. Unter [Administrationseinstellungen](../administration/customization.md) erfährst du, wie du diese konfigurierst.
 
 !!! tip
-    Wenn der Baum leer ist und Sie Bearbeitungsberechtigungen haben, zeigt das Dashboard eine "Loslegen"-Aufforderung mit Schaltflächen zum Hinzufügen Ihrer ersten Person oder zum Importieren einer Familienbaumdatei an.
+    Wenn der Stammbaum leer ist und du über Bearbeitungsberechtigungen verfügst, zeigt das Dashboard eine Aufforderung "Erste Schritte" mit Schaltflächen an, über die du deine erste Person hinzufügen oder eine Stammbaumdatei importieren kannst.
 
 ## Gramps Web als App installieren
 
-Gramps Web ist eine progressive Web-App (PWA), was bedeutet, dass Ihr Browser sie neben Ihren anderen Anwendungen installieren kann, anstatt sie in einem Browser-Tab zu belassen. Sie erhält dann ihr eigenes Symbol und öffnet sich in einem eigenen Fenster, ohne die Adressleiste und die Browser-Toolbars.
+Gramps Web ist eine progressive Web-App (PWA). Das bedeutet, dass dein Browser sie zusammen mit deinen anderen Anwendungen installieren kann, anstatt sie in einem Browser-Tab geöffnet zu halten. Sie erhält dann ein eigenes Symbol und wird in einem eigenen Fenster geöffnet, ohne Adressleiste und Browser-Symbolleisten.
 
-Wie Sie es installieren, hängt von Ihrem Browser ab:
+Wie du sie installierst, hängt von deinem Browser ab:
 
-- **Android (Chrome)** – öffnen Sie das Menü und wählen Sie "App installieren" oder "Zum Startbildschirm hinzufügen".
-- **iOS/iPadOS (Safari)** – tippen Sie auf die Teilen-Schaltfläche und wählen Sie "Zum Home-Bildschirm hinzufügen".
-- **Desktop (Chrome, Edge)** – klicken Sie auf das Installationssymbol am rechten Ende der Adressleiste oder verwenden Sie den Menüeintrag "Installieren".
-- **Desktop (Firefox, Safari)** – die Installation wird nicht unterstützt; verwenden Sie einen normalen Browser-Tab oder ein Fenster.
+- **Android (Chrome)** – öffne das Menü und wähle "App installieren" oder "Zum Startbildschirm hinzufügen".
+- **iOS/iPadOS (Safari)** – tippe auf die Teilen-Schaltfläche und wähle "Zum Home-Bildschirm".
+- **Desktop (Chrome, Edge)** – klicke am rechten Ende der Adressleiste auf das Installationssymbol oder verwende den Menüeintrag "Installieren" im Browsermenü.
+- **Desktop (Firefox, Safari)** – die Installation wird nicht unterstützt; verwende einen normalen Browser-Tab oder ein normales Browserfenster.
 
-Es ändert sich nichts an der Funktionsweise von Gramps Web, und keine Daten werden anders gespeichert – es ist dieselbe Anwendung, nur als eigenständige App präsentiert.
+Die Funktionsweise von Gramps Web ändert sich nicht und es werden keine Daten anders gespeichert – es handelt sich um dieselbe Anwendung, die lediglich als eigenständige App dargestellt wird.
 
 !!! note
-    Gramps Web muss weiterhin Ihren Server erreichen, um Ihre Daten anzuzeigen, sodass eine installierte App Ihnen nicht erlaubt, Ihren Familienbaum offline zu durchsuchen.
+    Gramps Web muss weiterhin deinen Server erreichen, um deine Daten anzuzeigen. Eine installierte App ermöglicht es dir daher nicht, deinen Stammbaum offline zu durchsuchen.

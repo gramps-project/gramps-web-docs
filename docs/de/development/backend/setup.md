@@ -1,73 +1,73 @@
-# Backend-Entwicklungssetup
+# Backend-Entwicklungsumgebung
 
-Diese Seite listet die Schritte auf, die erforderlich sind, um mit der Entwicklung der [Gramps Web API](https://github.com/gramps-project/gramps-web-api/), dem Backend (Serverkomponente) von Gramps Web, zu beginnen.
+Diese Seite listet die Schritte auf, die erforderlich sind, um mit der Entwicklung der [Gramps Web API](https://github.com/gramps-project/gramps-web-api), des Backends (Serverkomponente) von Gramps Web, zu beginnen.
 
 
 ## Voraussetzungen
 
-Das empfohlene Entwicklungssetup verwendet Visual Studio Code mit Dev-Containern. Dieser Ansatz erstellt eine vorkonfigurierte Entwicklungsumgebung mit allen benötigten Tools. Um zu beginnen, benötigen Sie die folgenden Zutaten:
+Die empfohlene Entwicklungsumgebung verwendet Visual Studio Code mit Dev-Containern. Dieser Ansatz erstellt eine vorkonfigurierte Entwicklungsumgebung mit allen benötigten Tools. Für den Einstieg benötigst du Folgendes:
 
 - [Docker](https://docs.docker.com/get-docker/)
-- [Visual Studio Code](https://code.visualstudio.com/) mit der installierten [Dev Containers-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [Visual Studio Code](https://code.visualstudio.com/) mit installierter [Dev-Containers-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - [Git](https://git-scm.com)
 
-Sie können Linux, macOS oder Windows als Betriebssystem verwenden.
+Du kannst Linux, macOS oder Windows als Betriebssystem verwenden.
 
 
 ## Erste Schritte
 
-1. Öffnen Sie das [Gramps Web API-Repository](https://github.com/gramps-project/gramps-web-api) und klicken Sie auf "fork".
-2. Klonen Sie Ihr geforktes Repository auf Ihren lokalen Rechner mit Git.
-3. Öffnen Sie das geklonte Repository in Visual Studio Code. Wenn Sie dazu aufgefordert werden, wählen Sie "Im Container erneut öffnen" oder öffnen Sie manuell die Befehlspalette (Ctrl+Shift+P oder Cmd+Shift+P) und wählen Sie "Dev Containers: Neu aufbauen und im Container erneut öffnen".
-4. Warten Sie, bis der Dev-Container gebaut und gestartet ist. Dies kann einige Minuten dauern, insbesondere beim ersten Mal.
+1. Öffne das [Gramps-Web-API-Repository](https://github.com/gramps-project/gramps-web-api) und klicke auf „fork“
+2. Klone dein geforktes Repository mit Git auf deinen lokalen Rechner
+3. Öffne das geklonte Repository in Visual Studio Code. Wähle bei entsprechender Aufforderung „Reopen in Container“ aus oder öffne manuell die Befehlspalette (Ctrl+Shift+P oder Cmd+Shift+P) und wähle „Dev Containers: Rebuild and Reopen in Container“ aus.
+4. Warte, bis der Dev-Container erstellt und gestartet wurde. Dies kann einige Minuten dauern, insbesondere beim ersten Mal.
 
-    **Nachdem der Build des Dev-Containers erfolgreich war, gibt der Befehl zurück:**
+    **Nach erfolgreichem Erstellen des Dev-Containers wird der folgende Befehl ausgegeben:**
 
-    `Erfolgreich installiert gramps-webapi-x.x.x.`
+    `Successfully installed gramps-webapi-x.x.x.`
 
     !!! info
-        Um den Container in Visual Studio Code neu aufzubauen:
+        So erstellst du den Container in Visual Studio Code neu:
 
-        - Wenn Sie sich im Container befinden, verwenden Sie den Befehl "Im Container neu aufbauen" in der Befehlspalette.
+        - Wenn du dich im Container befindest, verwende den Palettenbefehl „Rebuild in container“.
 
-        - Wenn Sie sich in der Ordneransicht befinden (d. h. nicht im Container), verwenden Sie den Befehl "Neu aufbauen und im Container erneut öffnen" in der Befehlspalette.
+        - Wenn du dich in der Ordneransicht befindest (d. h. nicht im Container), verwende den Palettenbefehl „Rebuild and Reopen in Container“.
 
 ## Aufgaben
 
-Wenn Sie nur den Backend-Code ändern, müssen Sie nicht unbedingt einen Webserver starten - Unit-Tests verwenden einen Flask-Testclient, der es ermöglicht, Anfragen an die API zu simulieren, ohne einen laufenden Server zu benötigen.
+Wenn du nur den Backend-Code änderst, musst du nicht unbedingt einen Webserver starten – bei Unit-Tests wird ein Flask-Testclient verwendet, mit dem sich Anfragen an die API simulieren lassen, ohne dass ein laufender Server erforderlich ist.
 
-Das Ausführen eines Servers ist jedoch nützlich, wenn Sie
+Das Ausführen eines Servers ist jedoch hilfreich, wenn du
 
-- Ihre Änderungen mit echten HTTP-Anfragen ausprobieren möchten (siehe [manuelle Abfragen](queries.md)), 
-- die Auswirkungen von Änderungen auf die gesamte Gramps Web-Anwendung vorab anzeigen möchten, oder
-- auch gleichzeitig Änderungen am Frontend vornehmen möchten (siehe [Frontend-Entwicklungssetup](../frontend/setup.md)).
+- deine Änderungen mit echten HTTP-Anfragen ausprobieren möchtest (siehe [manuelle Abfragen](queries.md)), 
+- die Auswirkungen von Änderungen auf die vollständige Gramps-Web-Anwendung überprüfen möchtest oder
+- gleichzeitig Änderungen am Frontend vornehmen möchtest (siehe [Frontend-Entwicklungsumgebung](../frontend/setup.md)).
 
-Das Ausführen des Servers wird im Dev-Container durch vordefinierte Aufgaben vereinfacht. Sie können diese Aufgaben über die Befehlspalette (Ctrl+Shift+P oder Cmd+Shift+P) ausführen, indem Sie "Aufgaben: Aufgabe ausführen" auswählen und dann eine der folgenden Optionen wählen:
-- "Web API bereitstellen" - startet den Flask-Entwicklungsserver auf Port 5555 mit aktivierter Debug-Protokollierung
-- "Celery-Worker starten" - startet einen Celery-Worker zur Verarbeitung von Hintergrundaufgaben.
+Das Ausführen des Servers wird im Dev-Container durch vordefinierte Aufgaben vereinfacht. Du kannst diese Aufgaben über die Befehlspalette (Ctrl+Shift+P oder Cmd+Shift+P) ausführen, indem du „Tasks: Run Task“ auswählst und anschließend eine der folgenden Aufgaben auswählst:
+- „Serve Web API“ – startet den Flask-Entwicklungsserver auf Port 5555 mit aktivierter Debug-Protokollierung
+- „Start Celery worker“ – startet einen Celery-Worker zur Verarbeitung von Hintergrundaufgaben.
 
 
 ## Debugging
 
-Debugging kann manchmal herausfordernd sein, insbesondere wenn es darum geht, komplexes Verhalten nachzuvollziehen oder subtile Probleme zu identifizieren. Um dies zu erleichtern, können Sie sowohl eine laufende API-Instanz als auch einzelne Testfälle direkt in Visual Studio Code debuggen.
+Das Debuggen kann manchmal herausfordernd sein, insbesondere beim Nachverfolgen komplexer Abläufe oder beim Erkennen schwer zu ermittelnder Probleme. Um dies zu erleichtern, kannst du sowohl eine laufende API-Instanz als auch einzelne Testfälle direkt in Visual Studio Code debuggen.
 
-### Debugging der Gramps Web API
+### Debuggen der Gramps Web API
 
-Um die laufende API zu debuggen:
+So debuggst du die laufende API:
 
-1. Öffnen Sie Visual Studio Code und gehen Sie zur **Ausführen und Debuggen**-Ansicht.  
-2. Wählen Sie die **"Web API"**-Konfiguration aus dem Dropdown-Menü.  
-3. Starten Sie das Debugging.  
-4. Wenn Sie Anfragen an das Backend senden (entweder manuell oder über die Gramps Web GUI), wird die Ausführung an allen Haltepunkten, die Sie im Code gesetzt haben, angehalten.  
-   Dies ermöglicht es Ihnen, Variablen, den Kontrollfluss und andere Laufzeitdetails zu inspizieren.
+1. Öffne Visual Studio Code und wechsle zur Ansicht **Run and Debug**.  
+2. Wähle im Dropdown-Menü die Konfiguration **„Web API“** aus.  
+3. Starte das Debugging.  
+4. Wenn du Anfragen an das Backend sendest (entweder manuell oder über die Gramps-Web-GUI), wird die Ausführung an allen Breakpoints angehalten, die du im Code gesetzt hast.  
+   Dadurch kannst du Variablen, den Kontrollfluss und andere Laufzeitdetails untersuchen.
 
-### Debugging von Testfällen
+### Debuggen von Testfällen
 
-Um einen bestimmten Testfall zu debuggen:
+So debuggst du einen bestimmten Testfall:
 
-1. Öffnen Sie die Testdatei, die Sie debuggen möchten (zum Beispiel `test_people.py`).  
-2. Öffnen Sie in Visual Studio Code die **Ausführen und Debuggen**-Ansicht.  
-3. Wählen Sie die **"Aktuelle Testdatei"**-Konfiguration.  
-4. Starten Sie das Debugging - die Ausführung wird an allen Haltepunkten, die innerhalb dieser Testdatei gesetzt wurden, angehalten.  
+1. Öffne die Testdatei, die du debuggen möchtest (zum Beispiel `test_people.py`).  
+2. Öffne in Visual Studio Code die Ansicht **Run and Debug**.  
+3. Wähle die Konfiguration **„Current Test File“** aus.  
+4. Starte das Debugging – die Ausführung wird an allen Breakpoints angehalten, die in dieser Testdatei gesetzt wurden.  
 
-Dieses Setup ermöglicht es Ihnen, durch die Testlogik zu schrittweise zu gehen, Variablenwerte zu untersuchen und Testfehler oder unerwartete Ergebnisse besser zu verstehen.
+Mit dieser Einrichtung kannst du die Testlogik schrittweise durchlaufen, Variablenwerte untersuchen und Testfehler oder unerwartete Ergebnisse besser verstehen.

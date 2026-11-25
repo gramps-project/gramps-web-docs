@@ -1,72 +1,72 @@
 # Benutzer verwalten
 
-Die Benutzerverwaltungsoberfläche ist über **Einstellungen > Benutzer verwalten** (das Benutzersymbol in der oberen App-Leiste) zugänglich. Sie ist nur für Benutzer mit der Rolle Eigentümer oder Administrator verfügbar.
+Die Benutzerverwaltungsoberfläche ist über **Einstellungen > Benutzer verwalten** (das Benutzersymbol in der oberen App-Leiste) erreichbar. Sie ist nur für Benutzer mit der Rolle „Besitzer“ oder „Administrator“ verfügbar.
 
 ## Benutzerrollen
 
-Siehe [Benutzersystem](../install_setup/users.md) für eine vollständige Beschreibung der verfügbaren Benutzerrollen und deren Berechtigungen. Der Hauptunterschied zwischen Gästen und Mitgliedern besteht darin, dass Gäste keine [privaten Datensätze](../user-guide/privacy.md) sehen können, wählen Sie also die Rolle zusammen mit dem, was Sie als privat markieren.
+Eine vollständige Beschreibung der verfügbaren Benutzerrollen und ihrer Berechtigungen findest du unter [Benutzersystem](../install_setup/users.md). Der wichtigste Unterschied zwischen Gästen und Mitgliedern besteht darin, dass Gäste [private Datensätze](../user-guide/privacy.md) nicht sehen können. Wähle die Rolle daher zusammen mit der Einstellung aus, welche Datensätze du als privat markierst.
 
 ## Benutzer anzeigen und filtern
 
-Die Seite Benutzer verwalten zeigt eine Tabelle aller registrierten Benutzerkonten mit den folgenden Spalten:
+Auf der Seite zur Benutzerverwaltung wird eine Tabelle mit allen registrierten Benutzerkonten und den folgenden Spalten angezeigt:
 
 - **Benutzername** – der Anmeldename
 - **Vollständiger Name** – der Anzeigename
 - **E-Mail** – die E-Mail-Adresse des Benutzers
-- **Rolle** – die zugewiesene Rolle (Gast, Mitglied, Mitwirkender, Redakteur, Eigentümer oder Administrator)
-- **Kontenquelle** – entweder "Passwort" (lokales Konto) oder der Name eines externen Identitätsanbieters (z. B. bei Verwendung von OIDC)
+- **Rolle** – die zugewiesene Rolle (Gast, Mitglied, Mitwirkender, Bearbeiter, Besitzer oder Administrator)
+- **Kontenquelle** – entweder „Passwort“ (lokales Konto) oder der Name eines externen Identitätsanbieters (z. B. bei Verwendung von OIDC)
 
-Verwenden Sie das Suchfeld und das Rollenauswahlfeld oben in der Tabelle, um die Liste zu filtern. Klicken Sie auf die Schaltfläche zum Zurücksetzen der Filter, um alle Filter zurückzusetzen.
+Verwende das Suchfeld und das Rollen-Drop-down oben in der Tabelle, um die Liste zu filtern. Klicke auf die Schaltfläche zum Löschen der Filter, um alle Filter zurückzusetzen.
 
-## Benutzer bearbeiten
+## Einen Benutzer bearbeiten
 
-Klicken Sie auf das Bearbeiten (Bleistift)-Symbol in einer beliebigen Zeile, um den Bearbeitungsdialog zu öffnen. Sie können die folgenden Informationen des Benutzers ändern:
+Klicke in einer beliebigen Zeile auf das Bearbeitungssymbol (Stift), um den Bearbeitungsdialog zu öffnen. Du kannst Folgendes am Benutzer ändern:
 
 - Vollständiger Name
 - E-Mail-Adresse
 - Rolle
 
-Dies ist der primäre Weg, um **einen neu selbstregistrierten Benutzer zu aktivieren**: Ändern Sie seine Rolle von *deaktiviert* zu einer aktiven Rolle (z. B. Mitglied oder Redakteur).
+Dies ist die wichtigste Möglichkeit, um einen **neu selbstregistrierten Benutzer zu aktivieren**: Ändere dessen Rolle von *deaktiviert* in eine beliebige aktive Rolle (z. B. Mitglied oder Bearbeiter).
 
-E-Mail-Adressen müssen nicht einzigartig sein (seit Gramps Web API 3.22), sodass mehrere Konten dieselbe Adresse teilen können.
+E-Mail-Adressen müssen nicht eindeutig sein (seit Gramps Web API 3.22), sodass mehrere Konten dieselbe Adresse verwenden können.
 
-Das Deaktivieren eines Benutzers oder das Ändern seines Passworts beendet alle seine Sitzungen innerhalb von 15 Minuten.
+Wenn du einen Benutzer deaktivierst oder sein Passwort änderst, werden alle seine Sitzungen innerhalb von 15 Minuten beendet.
 
-!!! Hinweis
-    Eigentümer können Benutzer mit einer höheren Rolle, wie den Site-Administrator, nicht bearbeiten, das Passwort ändern oder löschen. Benutzer mit derselben Rolle, wie zwei Eigentümer eines Baums, können sich gegenseitig verwalten.
+!!! note
+    Besitzer können keine Benutzer mit einer höheren Rolle, wie z. B. den Website-Administrator, bearbeiten, deren Passwort ändern oder sie löschen. Benutzer mit derselben Rolle, z. B. zwei Besitzer eines Stammbaums, können sich gegenseitig verwalten.
 
-## Benutzer manuell hinzufügen
+## Einen Benutzer manuell hinzufügen
 
-Klicken Sie auf das **Benutzer hinzufügen** (person-add)-Symbol über der Tabelle, um ein neues Benutzerkonto direkt zu erstellen, ohne dass eine Selbstregistrierung erforderlich ist. Füllen Sie im Dialogfeld den Benutzernamen, den vollständigen Namen, die E-Mail-Adresse, das Passwort und die Rolle aus und klicken Sie auf **Speichern**.
+Klicke oberhalb der Tabelle auf das Symbol **Benutzer hinzufügen** (Person-mit-Plus-Symbol), um direkt ein neues Benutzerkonto zu erstellen, ohne eine Selbstregistrierung zu benötigen. Gib im Dialog den Benutzernamen, den vollständigen Namen, die E-Mail-Adresse, das Passwort und die Rolle ein und klicke auf **Speichern**.
 
-## Benutzer löschen
+## Einen Benutzer löschen
 
-Klicken Sie auf das Löschen (Mülltonne)-Symbol in einer beliebigen Zeile und bestätigen Sie den Dialog. Diese Aktion kann nicht rückgängig gemacht werden.
+Klicke in einer beliebigen Zeile auf das Löschsymbol (Papierkorb) und bestätige den Dialog. Diese Aktion kann nicht rückgängig gemacht werden.
 
-!!! Hinweis
-    Um zu verhindern, dass ein Baum ohne jemanden bleibt, der ihn verwalten kann, können Sie Ihre eigene Rolle nicht unter Eigentümer herabsetzen oder Ihr eigenes Konto löschen, wenn Sie der einzige Eigentümer oder Administrator des Baums sind. Befördern Sie zuerst einen anderen Benutzer zum Eigentümer. Ein Administrator kann weiterhin den letzten Eigentümer eines Baums eines anderen Benutzers ändern oder entfernen, da er einen neuen ernennen kann.
+!!! note
+    Damit ein Stammbaum nicht ohne jemanden bleibt, der ihn verwalten kann, kannst du deine eigene Rolle nicht unter „Besitzer“ herabstufen und dein eigenes Konto nicht löschen, wenn du der einzige Besitzer oder Administrator des Stammbaums bist. Befördere zuerst einen anderen Benutzer zum Besitzer. Ein Administrator kann den letzten Besitzer des Stammbaums eines anderen Benutzers weiterhin ändern oder entfernen, da er einen neuen Besitzer ernennen kann.
 
 ## Benutzerkonten exportieren und importieren
 
-Diese Schaltflächen sind nützlich, wenn Sie [zu einer anderen Gramps Web-Instanz migrieren](export.md).
+Diese Schaltflächen sind nützlich, wenn du [zu einer anderen Gramps-Web-Instanz migrierst](export.md).
 
-- **Benutzerdetails exportieren** (Download-Symbol) – lädt eine JSON-Datei herunter, die alle Benutzerkonten enthält (ohne Passwörter, da Passwörter in verschlüsselter Form gespeichert werden).
-- **Benutzerkonten importieren** (Gruppen hinzufügen-Symbol) – lädt eine zuvor exportierte JSON-Datei hoch, um Benutzerkonten in großen Mengen zu erstellen. Alle importierten Benutzer müssen ein neues Passwort über den Link "Passwort vergessen" festlegen, da Passwörter nicht übertragen werden können.
+- **Benutzerdetails exportieren** (Downloadsymbol) – lädt eine JSON-Datei mit allen Benutzerkonten herunter (ohne Passwörter, da Passwörter in verschlüsselter Form gespeichert werden).
+- **Benutzerkonten importieren** (Symbol „Gruppe hinzufügen“) – lädt eine zuvor exportierte JSON-Datei hoch, um Benutzerkonten gesammelt zu erstellen. Alle importierten Benutzer müssen über den Link „Passwort vergessen“ ein neues Passwort festlegen, da Passwörter nicht übertragen werden können.
 
-## Registrierungslink (nur bei Mehrbaum-Setup)
+## Registrierungslink (nur Einrichtung mit mehreren Stammbäumen)
 
-In einem Mehrbaum-Setup wird der Registrierungslink für neue Benutzer oben auf der Seite Benutzer verwalten angezeigt. Sie können diesen Link kopieren und mit Personen teilen, die Sie einladen möchten, ein Konto auf Ihrem Baum zu registrieren.
+Bei einer Einrichtung mit mehreren Stammbäumen wird der Registrierungslink für neue Benutzer oben auf der Seite zur Benutzerverwaltung angezeigt. Du kannst diesen Link kopieren und mit Personen teilen, die du zur Registrierung eines Kontos in deinem Stammbaum einladen möchtest.
 
-!!! Hinweis
-    In einem Einbaum-Setup gibt es einen generischen "Registrieren"-Link auf der Anmeldeseite; der registrierungsspezifische Link pro Baum wird nur in Mehrbaum-Installationen benötigt.
+!!! note
+    Bei einer Einrichtung mit nur einem Stammbaum gibt es auf der Anmeldeseite einen allgemeinen Link „Registrieren“. Der Registrierungslink pro Stammbaum wird nur bei Installationen mit mehreren Stammbäumen benötigt.
 
-## AI-Chat-Berechtigungen
+## Berechtigungen für den KI-Chat
 
-Wenn der AI-Chat auf dem Server aktiviert wurde, können Sie über ein Dropdown-Menü oben auf der Seite steuern, welche Benutzerrollen die Chat-Funktion nutzen dürfen:
+Wenn der KI-Chat auf dem Server aktiviert wurde, kannst du über ein Drop-down oben auf der Seite festlegen, welche Benutzerrollen die Chat-Funktion verwenden dürfen:
 
-- Jeder (einschließlich Gäste)
+- Alle (einschließlich Gästen)
 - Mitglied und höher
 - Mitwirkender und höher
-- Redakteur und höher
-- Nur Eigentümer und Administratoren
+- Bearbeiter und höher
+- Nur Besitzer und Administratoren
 - Niemand (Chat für alle Benutzer deaktivieren)

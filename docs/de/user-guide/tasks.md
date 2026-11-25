@@ -1,56 +1,56 @@
-# Verwenden Sie das integrierte Aufgabenmanagement
+# Verwende die integrierte Aufgabenverwaltung
 
-Gramps Web enthält ein integriertes genealogisches Aufgabenmanagement-Tool. Es soll Forschern ermöglichen, ihre Aufgaben zu planen und zu priorisieren, aber auch zu dokumentieren. Aus diesem Grund werden Aufgaben als Quellen in der Gramps-Datenbank dargestellt. Nach Abschluss einer Aufgabe kann der zugehörige Inhalt als Quelle dienen, die den Forschungsprozess dokumentiert.
+Gramps Web enthält ein integriertes genealogisches Aufgabenverwaltungswerkzeug. Es soll Forschenden ermöglichen, ihre Aufgaben zu planen und zu priorisieren, aber auch zu dokumentieren. Deshalb werden Aufgaben in der Gramps-Datenbank als Quellen dargestellt. Nach Abschluss einer Aufgabe können die zugehörigen Inhalte als Quelle dienen, die den Forschungsprozess dokumentiert.
 
-## Grundlagen der Aufgaben
+## Grundlagen von Aufgaben
 
 Aufgaben haben die folgenden Eigenschaften:
 
-- Status. Dies kann "Offen", "In Bearbeitung", "Blockiert" oder "Erledigt" sein.
-- Priorität. Dies kann "Niedrig", "Mittel" oder "Hoch" sein.
-- Etiketten. Die Etiketten sind normale Gramps-Etiketten der zugrunde liegenden Quelle. (Beachten Sie, dass alle Aufgaben zusätzlich das Etikett `ToDo` haben, um sie als Aufgaben zu kennzeichnen, aber dieses Etikett in der Aufgabenliste ausgeblendet ist, um Unordnung zu vermeiden.)
-- Titel. Wird in der Aufgabenliste angezeigt.
-- Beschreibung. Ein Rich-Text-Feld, das verwendet werden kann, um die Problemstellung zu beschreiben, aber auch um Fortschritte zu dokumentieren.
-- Medien. Alle Mediendateien, die an die Aufgabe angehängt sind.
+- Status. Dieser kann „Offen“, „In Bearbeitung“, „Blockiert“ oder „Erledigt“ sein
+- Priorität. Diese kann „Niedrig“, „Mittel“ oder „Hoch“ sein
+- Etiketten. Die Etiketten sind normale Gramps-Etiketten der zugrunde liegenden Quelle. (Beachte, dass alle Aufgaben zusätzlich das Etikett `ToDo` haben, um sie als Aufgaben zu identifizieren. Dieses Etikett wird jedoch in der Aufgabenliste ausgeblendet, um Unübersichtlichkeit zu vermeiden.)
+- Titel. Wird in der Aufgabenliste angezeigt
+- Beschreibung. Ein Rich-Text-Feld, das verwendet werden kann, um die Problemstellung zu beschreiben, aber auch, um bereits erzielte Fortschritte zu dokumentieren
+- Medien. Alle Mediendateien, die an die Aufgabe angehängt sind
 
 ## Eine Aufgabe erstellen
 
 Da Aufgaben normale Gramps-Objekte sind, können sie von derselben Benutzergruppe bearbeitet oder erstellt werden, die auch andere Objekte (wie Personen oder Ereignisse) bearbeiten oder erstellen kann.
 
-Um eine Aufgabe zu erstellen, klicken Sie auf die Schaltfläche + auf der Seite der Aufgabenliste. Geben Sie mindestens einen Titel ein und optional eine Priorität, eine Beschreibung, Anhänge und Etiketten. Der Status ist bei der Erstellung immer "Offen".
+Um eine Aufgabe zu erstellen, klicke auf der Seite mit der Aufgabenliste auf die Schaltfläche +. Gib mindestens einen Titel und optional eine Priorität, eine Beschreibung, Anhänge und Etiketten ein. Der Status ist beim Erstellen immer „Offen“.
 
 ## Die Aufgabenliste
 
-Standardmäßig ist die Aufgabenliste nach Status sortiert – erledigte Aufgaben zuletzt – und innerhalb jedes Status nach Priorität, wobei die höchste zuerst kommt. Das Sortiermenü in der Filterleiste sortiert ebenfalls nach Priorität, Titel oder letzter Änderung (neueste zuerst).
+Standardmäßig ist die Aufgabenliste nach Status sortiert – erledigte Aufgaben zuletzt – und innerhalb jedes Status nach Priorität, wobei die höchste Priorität zuerst angezeigt wird. Das Sortiermenü in der Filterleiste sortiert außerdem nach Priorität, Titel oder letzter Änderung (neueste zuerst).
 
-Klicken Sie auf eine Aufgabe, um sie zu öffnen. Benutzer mit Bearbeitungsberechtigungen können auch auf das Statussymbol einer Aufgabe klicken, um ihren Status direkt in der Liste zu ändern, zum Beispiel um sie als erledigt zu markieren.
+Klicke auf eine Aufgabe, um sie zu öffnen. Benutzer mit Bearbeitungsberechtigungen können auch direkt in der Liste auf das Statussymbol einer Aufgabe klicken, um deren Status zu ändern, beispielsweise um sie als erledigt zu markieren.
 
-Die **Filter**-Schaltfläche über der Liste filtert die Aufgaben nach Titel, Status, Priorität oder Etikett, mit einem [GOQL](goql.md)-Ausdruck oder mit dem [erweiterten Filter](lists.md#advanced-filter). Das Ankreuzen mehrerer Status oder Prioritäten zeigt Aufgaben mit einem von ihnen an, zum Beispiel alle offenen und blockierten Aufgaben.
+Die Schaltfläche **Filter** über der Liste filtert die Aufgaben nach Titel, Status, Priorität oder Etikett, mit einem [GOQL](goql.md)-Ausdruck oder mit dem [erweiterten Filter](lists.md#advanced-filter). Wenn mehrere Status oder Prioritäten ausgewählt werden, werden Aufgaben mit einem beliebigen dieser Werte angezeigt, beispielsweise alle offenen und blockierten Aufgaben.
 
 ## Eine Aufgabe bearbeiten
 
-Die Aufgaben-Seite hat keinen separaten "Bearbeitungsmodus" wie andere Gramps-Objekte:
+Die Aufgabenseite verfügt nicht wie andere Gramps-Objekte über einen separaten „Bearbeitungsmodus“:
 
-- Klicken Sie auf den Titel, um ihn zu bearbeiten. Drücken Sie die Eingabetaste, klicken Sie auf ✓ oder klicken Sie an eine andere Stelle, um zu speichern; drücken Sie die Escape-Taste oder klicken Sie auf ✕, um abzubrechen.
-- Änderungen am Status und an der Priorität werden sofort angewendet.
-- Um die Beschreibung oder die Anhänge zu bearbeiten, klicken Sie auf die Schaltfläche "Bearbeiten" neben der Überschrift des Abschnitts. Die Beschreibung wird mit der Schaltfläche "Speichern" darunter gespeichert; das Bearbeiten von Anhängen endet mit **Fertig**.
-- Die Schaltfläche "Sperren" legt fest, ob die Aufgabe privat ist. Die Beschreibung der Aufgabe erhält die gleiche Privatsphäre.
+- Klicke auf den Titel, um ihn zu bearbeiten. Drücke die Eingabetaste, klicke auf ✓ oder klicke an eine andere Stelle, um zu speichern; drücke die Escape-Taste oder klicke auf ✕, um abzubrechen.
+- Änderungen an Status und Priorität werden sofort angewendet.
+- Um die Beschreibung oder die Anhänge zu bearbeiten, klicke auf die Bearbeitungsschaltfläche neben der Überschrift des Abschnitts. Die Beschreibung wird mit der Schaltfläche „Speichern“ darunter gespeichert; die Bearbeitung von Anhängen endet mit **Fertig**.
+- Die Schaltfläche zum Sperren legt fest, ob die Aufgabe privat ist. Für die Beschreibung der Aufgabe gilt dieselbe Privatsphäre.
 
-Benutzer ohne Bearbeitungsberechtigungen sehen den Status und die Priorität als Text, und Abschnitte ohne Inhalt sind ausgeblendet.
+Benutzer ohne Bearbeitungsberechtigungen sehen Status und Priorität als Text, und Abschnitte ohne Inhalt werden ausgeblendet.
 
-Unter dem Titel sehen Bearbeiter zwei weitere Schaltflächen: **Quelle bearbeiten** öffnet die Quelle, die die Aufgabe darstellt, wo ihre anderen Notizen, Zitationen und Attribute bearbeitet werden können. **Löschen** löscht die Aufgabe nach einer Bestätigung und kehrt zur Aufgabenliste zurück; die angezeigte Nachricht hat eine Rückgängig-Schaltfläche, um die Aufgabe wiederherzustellen.
+Unterhalb des Titels sehen Bearbeiter zwei weitere Schaltflächen: **Quelle bearbeiten** öffnet die Quelle, die die Aufgabe darstellt. Dort können die anderen Notizen, Zitate und Attribute bearbeitet werden. **Löschen** löscht die Aufgabe nach einer Bestätigung und kehrt zur Aufgabenliste zurück; die angezeigte Meldung enthält eine Rückgängig-Schaltfläche, mit der die Aufgabe wiederhergestellt werden kann.
 
-## Massenänderung von Aufgaben-Eigenschaften
+## Aufgabenigenschaften gesammelt ändern
 
-Benutzer mit Bearbeitungsberechtigungen sehen ein Kontrollkästchen in jeder Zeile der Aufgabenliste. Wählen Sie Aufgaben aus und verwenden Sie **Priorität festlegen** oder **Status festlegen** über der Liste, um alle ausgewählten Aufgaben auf einmal zu ändern.
+Benutzer mit Bearbeitungsberechtigungen sehen in jeder Zeile der Aufgabenliste ein Kontrollkästchen. Wähle Aufgaben aus und verwende **Priorität festlegen** oder **Status festlegen** über der Liste, um alle ausgewählten Aufgaben gleichzeitig zu ändern.
 
 ## Aufgaben in Gramps Desktop
 
-Beim Hinzufügen von Aufgaben über Gramps Web haben sowohl die Quellen als auch die Notizen das Etikett `ToDo`, sodass die Aufgaben sowohl im Desktop [To Do Notes Gramplet](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) als auch im [To Do Report](https://gramps-project.org/wiki/index.php/Addon:ToDoReport) angezeigt werden.
+Wenn Aufgaben über Gramps Web hinzugefügt werden, wird sowohl den Quellen als auch den Notizen das Etikett `ToDo` zugewiesen. Dadurch werden die Aufgaben sowohl im Desktop-[To Do Notes Gramplet](https://gramps-project.org/wiki/index.php/Addon:ToDoNotesGramplet) als auch im [To Do Report](https://gramps-project.org/wiki/index.php/Addon:ToDoReport) angezeigt.
 
-Um eine Aufgabe in Gramps Desktop hinzuzufügen oder zu bearbeiten, verwenden Sie die folgenden Richtlinien:
+Um eine Aufgabe in Gramps Desktop hinzuzufügen oder zu bearbeiten, befolge die folgenden Richtlinien
 
-- Fügen Sie eine Quelle mit dem Etikett `ToDo` und dem Aufgabentitel als Titel hinzu.
-- Fügen Sie optional eine Notiz zur Quelle mit dem Etikett `ToDo`, dem Typ "To Do" und der Beschreibung als Text hinzu.
-- Fügen Sie ein Attribut "Status" hinzu und setzen Sie es auf "Offen", "In Bearbeitung", "Blockiert" oder "Erledigt".
-- Fügen Sie ein Attribut "Priorität" hinzu und setzen Sie es auf 9 für niedrig, 5 für mittel oder 1 für hoch (diese kontraintuitiven Werte stammen aus der iCalendar-Spezifikation).
+- Füge eine Quelle mit dem Etikett `ToDo` und dem Aufgabentitel als Titel hinzu
+- Füge der Quelle optional eine Notiz mit dem Etikett `ToDo`, dem Typ „To Do“ und der Beschreibung als Text hinzu
+- Füge ein Attribut „Status“ hinzu und setze es auf „Offen“, „In Bearbeitung“, „Blockiert“ oder „Erledigt“
+- Füge ein Attribut „Priorität“ hinzu und setze es auf 9 für niedrig, 5 für mittel oder 1 für hoch (diese kontraintuitiven Werte stammen aus der iCalendar-Spezifikation)
