@@ -1,0 +1,97 @@
+/*
+ * Theme colours matching the Gramps Web app.
+ * Values come from the app's default seed colours (src/theme.js in
+ * gramps-project/gramps-web): primary #6d4c41, secondary #0277bd,
+ * expanded with Material colour utilities using the same tones as the app.
+ */
+
+/* Light */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #6d4c41;
+  --md-primary-fg-color--light: #79564b;
+  --md-primary-fg-color--dark: #5e3f35;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+
+  --md-accent-fg-color: #0277bd;
+  --md-accent-fg-color--transparent: rgba(2, 119, 189, 0.1);
+  --md-accent-bg-color: #ffffff;
+
+  --md-typeset-a-color: #6d4c41;
+}
+
+/* Dark: the app uses tone 60 of the same palettes on neutral surfaces */
+[data-md-color-scheme="slate"] {
+  --md-hue: 0;
+  --md-default-bg-color: #131313;
+  --md-default-bg-color--light: rgba(19, 19, 19, 0.54);
+  --md-default-bg-color--lighter: rgba(19, 19, 19, 0.26);
+  --md-default-bg-color--lightest: rgba(19, 19, 19, 0.07);
+  --md-code-bg-color: #1f1f1f;
+  --md-footer-bg-color: #1b1b1b;
+  --md-footer-bg-color--dark: #0e0e0e;
+
+  /* Keep the header in the brand brown so the white logo stays visible */
+  --md-primary-fg-color: #452920;
+  --md-primary-fg-color--light: #52342a;
+  --md-primary-fg-color--dark: #391f16;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+
+  --md-accent-fg-color: #3f96de;
+  --md-accent-fg-color--transparent: rgba(63, 150, 222, 0.1);
+  --md-accent-bg-color: #131313;
+
+  --md-typeset-a-color: #cca294;
+}
+
+/* Rounded surfaces, like the cards in the app */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 12px;
+  border-width: 0 0 0 4px;
+  box-shadow: none;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  background-color: var(--md-code-bg-color);
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight {
+  border-radius: 8px;
+}
+
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.md-typeset img {
+  border-radius: 8px;
+}
+
+.md-search__form {
+  border-radius: 999px;
+}
+
+/* Group headings on the features page */
+.md-typeset h2.feature-group {
+  margin-top: 2em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 1.7em;
+  font-weight: 500;
+}
+
+/* Outlined buttons use the primary colour, which is too dark on the dark background */
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary) {
+  color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):hover {
+  color: var(--md-accent-bg-color);
+  background-color: var(--md-typeset-a-color);
+}
